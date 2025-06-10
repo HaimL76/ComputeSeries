@@ -47,7 +47,10 @@ def main():
     expression1: ExponentialExpression = ExponentialExpression(exps=[exp1, exp2, exp3, exp4])
     expression2: ExponentialExpression = ExponentialExpression(exps=[exp12, exp34])
 
-    expression2.break_by_exponent()
+    list_series = expression2.break_by_exponent()
+
+    for series in list_series:
+        print(series)
 
     print(f"expression1 = {expression1}")
     print(f"expression2 = {expression2}")

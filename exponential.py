@@ -1,4 +1,6 @@
+from element import Element
 from polynomial import Polynomial
+from series import Series
 
 
 class Exponential:
@@ -46,6 +48,8 @@ class ExponentialExpression:
         return "*".join(f"{exp}" for exp in self.exponentials.values())
 
     def break_by_exponent(self):
+        l: list = []
+
         exponent_symbols: dict = {}
 
         for base_symbol in self.exponentials.keys():
@@ -66,6 +70,15 @@ class ExponentialExpression:
                     d[base_symbol] = monom.coefficient
                 else:
                     d[base_symbol] += monom.coefficient
+
+        for pow in exponent_symbols.keys():
+            val: dict = exponent_symbols[pow]
+
+            series: Series = Series(val, pow)
+
+            l.append(series)
+
+        return l
 
     @staticmethod
     def parse(text: str):
