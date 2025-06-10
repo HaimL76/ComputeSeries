@@ -1,0 +1,130 @@
+from element import Element
+from rational import Rational
+
+
+class Monomial:
+    def __init__(self, elems: dict = {}, coeff: Rational = Rational(1), const_coeff: str = ""):
+        self.elements: dict = {}
+
+        if isinstance(elems, dict):
+            self.elements = elems
+        elif isinstance(elems, list):
+            for elem in elems:
+                if elem.symbol not in self.elements:
+                    self.elements[elem.symbol] = Element(symb=elem.symbol, pow=elem.power)
+                else:
+                    self.elements[elem.symbol] *= elem
+
+        self.coefficient: Rational = coeff
+        self.const_coefficient: str = const_coeff
+
+    @staticmethod
+    def are_same_monomials(monom1, monom2):
+        l: list = list(monom1.elements.keys())
+
+        mons: list = [monom1, monom2]
+
+        different: bool = False
+        index = 0
+
+        while not different and index < len(mons):
+            m1: Monomial = mons[index]
+            m2: Monomial = mons[(index + 1) % 2]
+            index += 1
+
+            index0: int = 0
+
+            l: list = list(m1.elements.keys())
+
+            while not different and index0 < len(l):
+                symb: str = l[index0]
+                index0 += 1
+
+                if symb not in m2:
+                    different = True
+                else:
+                    elem1: Element = m1.elements[symb]
+                    elem2: Element = m2.elements[symb]
+
+                    if elem1 != elem2:
+                        different = True
+
+        return not different
+
+    def __iter__(self):
+        for symb in self.elements.keys():
+            yield symb
+
+    def __mul__(self, other):
+        coeff: int = self.coefficient * other.coefficient
+
+        elems: dict = {}
+
+        for symb in self.elements.keys():
+            val = self.elements[symb]
+
+            elems[symb] = val
+
+        for symb in other.elements.keys():
+            val = other.elements[symb]
+
+            if symb not in elems:
+                elems[symb] = val
+            else:
+                elems[symb] *= val
+
+        return Monomial(elems, coeff=coeff)
+
+    @staticmethod
+    def parse(text: str):
+        coeff: Rational = Rational(1)
+
+        l: list = []
+
+        l0: list = text.split(".")
+
+        for s in l0:
+            s = s.strip()
+
+            if s:
+                if s.isnumeric():
+                    coeff = Rational.parse(s)
+                else:
+                    element: Element = Element.parse(s)
+
+                    if element:
+                        l.append(element)
+
+        return Monomial(l, coeff=coeff)
+
+    def remove_element(self, symb: str):
+        if symb in self.elements:
+            self.elements.pop(symb)
+
+    def __str__(self):
+        s: str = ""
+
+        if self.elements is None or len(self.elements) < 1:
+            s = f"{self.coefficient}"
+        else:
+            if self.coefficient != Rational(1):
+                s = f"{self.coefficient}"
+
+            if self.const_coefficient:
+                if len(s) > 0:
+                    s = f"{s}*"
+
+                s = f"{s}{self.const_coefficient}"
+
+            s0: str = ""
+
+            if len(self.elements) > 0:
+                s0 = "*".join(f"{elem}" for elem in self.elements.values())
+
+            if len(s0) > 0:
+                if len(s) > 0:
+                    s = f"{s}*"
+
+                s = f"{s}{s0}"
+
+        return s
