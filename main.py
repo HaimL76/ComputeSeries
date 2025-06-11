@@ -50,7 +50,7 @@ def main():
     list_series = expression2.break_by_exponent()
 
     for series in list_series:
-        print(series)
+        print(f"series = {series}, sum = {series.sum()}")
 
     print(f"expression1 = {expression1}")
     print(f"expression2 = {expression2}")
