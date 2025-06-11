@@ -1,5 +1,6 @@
 from exponential import Exponential, ExponentialExpression
 from polynomial import Polynomial
+from series import SeriesProduct
 from substitution import VariableSubstitution
 
 
@@ -48,6 +49,14 @@ def main():
     expression2: ExponentialExpression = ExponentialExpression(exps=[exp12, exp34])
 
     list_series = expression2.break_by_exponent()
+
+    series_product: SeriesProduct = SeriesProduct(list_series)
+
+    p0: Polynomial = Polynomial.parse("23.a^56+12.b")
+
+    series_product.multiply_by_polynomial(p0)
+
+    print(f"series_product = {series_product}")
 
     for series in list_series:
         print(f"series = {series}, sum = {series.sum()}")
