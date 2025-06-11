@@ -6,10 +6,9 @@ from substitution import VariableSubstitution
 
 def main():
     p = Polynomial.parse("3.v1+v2")
-    list_polynomials = Polynomial.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")
+    substitution: VariableSubstitution = VariableSubstitution.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")
 
-    for polynomial in list_polynomials:
-        print(f"polynomial: {polynomial}")
+    print(f"substitution: {substitution}")
 
     return
 

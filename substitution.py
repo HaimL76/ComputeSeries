@@ -9,6 +9,21 @@ class VariableSubstitution:
     def add_mapping(self, symb: str, polynom: Polynomial):
         self.substitution[symb] = polynom
 
+    @staticmethod
+    def parse(text: str):
+        substitution: VariableSubstitution = VariableSubstitution()
+
+        list_polynomials: list = Polynomial.parse(text)
+
+        if isinstance(list_polynomials, list) and len(list_polynomials) > 0:
+            for polynomial in list_polynomials:
+                name: str = polynomial.name
+
+                if name:
+                    substitution.add_mapping(symb=name, polynom=polynomial)
+
+        return substitution
+
     def substitute_monomial(self, original_monomial: Monomial):
         l: list = []
 
@@ -39,3 +54,6 @@ class VariableSubstitution:
                 polynomial.add_monomial(monom)
 
         return polynomial
+
+    def __str__(self):
+        return "\n".join(f"{key}->{self.substitution[key]}" for key in self.substitution)
