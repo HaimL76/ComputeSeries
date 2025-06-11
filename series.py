@@ -1,3 +1,5 @@
+import copy
+
 from element import Element
 from monomial import Monomial
 from polynomial import Polynomial
@@ -51,12 +53,30 @@ class SeriesProduct:
     def multiply_by_polynomial(self, polynomial: Polynomial):
         l: list = []
 
-        for series in self.list_series:
-            for monom in polynomial.monomials:
+        for monom in polynomial.monomials:
+            new_list: list = copy.deepcopy(self.list_series)
+
+            for series in new_list:
                 if series.power in monom.elements:
                     elem: Element = monom.elements[series.power]
 
                     series.coefficient = elem
-                #if monom.coefficient != Rational(1):
-                    #series.coefficient *= monom.coefficient
-                #for elem in monom.elements:
+
+            new_series_product: SeriesProduct = SeriesProduct(new_list)
+
+            l.append(new_series_product)
+
+        return l
+
+class SeriesProductSum:
+    def __init__(self, ser_prods: list = []):
+        self.series_products: list = ser_prods
+
+    def __str__(self):
+        return " +\n+ ".join(f"{ser_prod}" for ser_prod in self.series_products)
+
+    @staticmethod
+    def multiply_series_product_by_polynomial(series_product: SeriesProduct, polynomial: Polynomial):
+        l: list = series_product.multiply_by_polynomial(polynomial)
+
+        return SeriesProductSum(l)

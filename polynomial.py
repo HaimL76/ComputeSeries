@@ -2,8 +2,9 @@ from monomial import Monomial
 
 
 class Polynomial:
-    def __init__(self, monoms: list = []):
+    def __init__(self, monoms: list = [], nm: str = ""):
         self.monomials: list = []
+        self.name: str = nm
 
         for monom in monoms:
             self.monomials.append(monom)
@@ -41,20 +42,45 @@ class Polynomial:
 
     @staticmethod
     def parse(text: str):
-        l: list = []
+        list_polynomials: list = []
 
-        l0: list = text.split("+")
+        l0: list = text.split(",")
 
         for s in l0:
             s = s.strip()
 
             if s:
-                monomial: Monomial = Monomial.parse(s)
+                l1: list = s.split("=")
 
-                if monomial:
-                    l.append(monomial)
+                if isinstance(l1, list) and len(l1) > 0:
+                    name: str = ""
 
-        return Polynomial(monoms=l)
+                    s1: str = l1[0]
+
+                    if len(l1) > 1:
+                        name = s1
+                        s1 = l1[1]
+
+                    l2: list = s1.split("+")
+
+                    if isinstance(l2, list) and len(l2) > 0:
+                        list_monomials: list = []
+
+                        for s2 in l2:
+                            s2 = s2.strip()
+
+                            if s2:
+                                monomial: Monomial = Monomial.parse(s2)
+
+                                if monomial:
+                                    list_monomials.append(monomial)
+
+                        if len(list_monomials) > 0:
+                            polynomial: Polynomial = Polynomial(monoms=list_monomials, nm=name)
+
+                            list_polynomials.append(polynomial)
+
+        return list_polynomials
 
 
     def __add__(self, other):
@@ -66,4 +92,11 @@ class Polynomial:
         return polynomial
 
     def __str__(self):
-        return " + ".join(f"{monom}" for monom in self.monomials)
+        s: str = ""
+
+        if self.name:
+            s = f"{self.name} = "
+
+        s += " + ".join(f"{monom}" for monom in self.monomials)
+
+        return s

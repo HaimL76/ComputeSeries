@@ -1,18 +1,17 @@
 from exponential import Exponential, ExponentialExpression
 from polynomial import Polynomial
-from series import SeriesProduct
+from series import SeriesProduct, SeriesProductSum
 from substitution import VariableSubstitution
 
 
 def main():
-    p1 = Polynomial.parse("3.v1+v2")
-    p2 = Polynomial.parse("1+v3")
+    p = Polynomial.parse("3.v1+v2")
+    list_polynomials = Polynomial.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")
 
+    for polynomial in list_polynomials:
+        print(f"polynomial: {polynomial}")
 
-    print(f"p1 = {p1}")
-    print(f"p2 = {p2}")
-
-    v1 = Polynomial.parse("2.a+b+c")
+    return
 
     print(f"v1 = {v1}")
 
@@ -56,10 +55,13 @@ def main():
 
     series_product.multiply_by_polynomial(p0)
 
+    print(f"p0 = {p0}")
+
     print(f"series_product = {series_product}")
 
-    for series in list_series:
-        print(f"series = {series}, sum = {series.sum()}")
+    ser_prod_sum: SeriesProductSum = SeriesProductSum.multiply_series_product_by_polynomial(series_product, p0)
+
+    print(f"ser_prod_sum = {ser_prod_sum}")
 
     print(f"expression1 = {expression1}")
     print(f"expression2 = {expression2}")
