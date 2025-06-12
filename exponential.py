@@ -21,7 +21,24 @@ class Exponential:
         l: list = text.split("^")
 
         if isinstance(l, list) and len(l) == 2:
-            exponential = Exponential(symb=l[0], exp=Polynomial.parse(l[1]))
+            symbol: str = l[0]
+
+            if symbol:
+                symbol = symbol.strip()
+
+            str_exp: str = l[1]
+
+            if len(str_exp) > 2 and str_exp[0] == "{" and str_exp[-1] == "}":
+                str_exp = str_exp[1:-1]
+
+            if str_exp:
+                str_exp = str_exp.strip()
+
+            if str_exp and symbol:
+                exponent: Polynomial = Polynomial.parse_single(str_exp)
+
+                if exponent is not None:
+                    exponential = Exponential(symb=symbol, exp=exponent)
 
         return exponential
 
@@ -87,6 +104,23 @@ class ExponentialExpression:
         l: list = text.split("^")
 
         if isinstance(l, list) and len(l) == 2:
-            exponential = Exponential(symb=l[0], exp=Polynomial.parse(l[1]))
+            symbol: str = l[0]
+
+            if symbol:
+                symbol = symbol.strip()
+
+            str_exp: str = l[1]
+
+            if len(str_exp) > 2 and str_exp[0] == "{" and str_exp[-1] == "}":
+                str_exp = str_exp[1:-1]
+
+            if str_exp:
+                str_exp = str_exp.strip()
+
+            if str_exp and symbol:
+                exponent: Polynomial = Polynomial.parse_single(str_exp)
+
+                if exponent is not None:
+                    exponential = Exponential(symb=symbol, exp=exponent)
 
         return exponential

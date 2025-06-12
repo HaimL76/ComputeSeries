@@ -24,6 +24,12 @@ def main():
     print(f"p0 = {p0}")
     print(f"substitution: {substitution}")
 
+    exp: Exponential = Exponential.parse("p^{7.v1+10.v2+10.v3+7.v4}")
+    exp0: Exponential = substitution.substitude_exponential(exp)
+
+    print(f"exp = {exp}")
+    print(f"exp0 = {exp0}")
+
     return
 
     print(f"v1 = {v1}")

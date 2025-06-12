@@ -1,3 +1,4 @@
+from exponential import Exponential
 from monomial import Monomial
 from polynomial import Polynomial
 from rational import Rational
@@ -67,6 +68,13 @@ class VariableSubstitution:
                     result_polynomial.add_monomial(monom)
 
         return result_polynomial
+
+    def substitude_exponential(self, original_exponential: Exponential):
+        polynomial: Polynomial = original_exponential.exponent
+
+        polynomial = self.substitude_polynomial(polynomial)
+
+        return Exponential(symb=original_exponential.symbol, exp=polynomial)
 
     def __str__(self):
         return "\n".join(f"{key}->{self.substitution[key]}" for key in self.substitution)
