@@ -43,7 +43,7 @@ class Exponential:
         return exponential
 
 
-class ExponentialExpression:
+class ExponentialProduct:
     def __init__(self, exps: list=[]):
         self.exponentials: dict = {}
 
@@ -58,8 +58,27 @@ class ExponentialExpression:
             else:
                 self.exponentials[exp.symbol] *= exp
 
-    def __mul__(self, other):
-        return Exponential(symb=self.symbol, exp=self.exponent + other.exponent)
+    def __iter__(self):
+        for key in self.exponentials.keys():
+            yield key
+
+    @staticmethod
+    def parse(text: str):
+        exponential_product: ExponentialProduct = ExponentialProduct()
+
+        l: list = text.split("*")
+
+        if isinstance(l, list) and len(l) > 0:
+            for s in l:
+                s = s.strip()
+
+                if s:
+                    exponential: Exponential = Exponential.parse(s)
+
+                    if isinstance(exponential, Exponential):
+                        exponential_product.add_exponential(exponential)
+
+        return exponential_product
 
     def __str__(self):
         return "*".join(f"{exp}" for exp in self.exponentials.values())
@@ -96,31 +115,3 @@ class ExponentialExpression:
             l.append(series)
 
         return l
-
-    @staticmethod
-    def parse(text: str):
-        exponential = None
-
-        l: list = text.split("^")
-
-        if isinstance(l, list) and len(l) == 2:
-            symbol: str = l[0]
-
-            if symbol:
-                symbol = symbol.strip()
-
-            str_exp: str = l[1]
-
-            if len(str_exp) > 2 and str_exp[0] == "{" and str_exp[-1] == "}":
-                str_exp = str_exp[1:-1]
-
-            if str_exp:
-                str_exp = str_exp.strip()
-
-            if str_exp and symbol:
-                exponent: Polynomial = Polynomial.parse_single(str_exp)
-
-                if exponent is not None:
-                    exponential = Exponential(symb=symbol, exp=exponent)
-
-        return exponential

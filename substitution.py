@@ -1,4 +1,4 @@
-from exponential import Exponential
+from exponential import Exponential, ExponentialProduct
 from monomial import Monomial
 from polynomial import Polynomial
 from rational import Rational
@@ -76,5 +76,18 @@ class VariableSubstitution:
 
         return Exponential(symb=original_exponential.symbol, exp=polynomial)
 
+    def substitude_exponential_product(self, original_exponential_product: ExponentialProduct):
+        exponential_product: ExponentialProduct = ExponentialProduct()
+
+        for key in original_exponential_product.exponentials.keys():
+            exponential: Exponential = original_exponential_product.exponentials[key]
+
+            if isinstance(exponential, Exponential):
+                exp: Exponential = self.substitude_exponential(exponential)
+
+                if isinstance(exp, Exponential):
+                    exponential_product.add_exponential(exp)
+
+        return exponential_product
     def __str__(self):
         return "\n".join(f"{key}->{self.substitution[key]}" for key in self.substitution)

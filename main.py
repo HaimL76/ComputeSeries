@@ -1,4 +1,4 @@
-from exponential import Exponential, ExponentialExpression
+from exponential import Exponential, ExponentialProduct
 from polynomial import Polynomial
 from series import SeriesProduct, SeriesProductSum
 from substitution import VariableSubstitution
@@ -24,11 +24,11 @@ def main():
     print(f"p0 = {p0}")
     print(f"substitution: {substitution}")
 
-    exp: Exponential = Exponential.parse("p^{7.v1+10.v2+10.v3+7.v4}")
-    exp0: Exponential = substitution.substitude_exponential(exp)
+    exp_prod: ExponentialProduct = ExponentialProduct.parse("p^{7.v1+10.v2+10.v3+7.v4}*t^{4.v1+6.v2+6.v3+4.v4}")
+    exp_prod0: ExponentialProduct = substitution.substitude_exponential_product(exp_prod)
 
-    print(f"exp = {exp}")
-    print(f"exp0 = {exp0}")
+    print(f"exp_prod = {exp_prod}")
+    print(f"exp_prod0 = {exp_prod0}")
 
     return
 
