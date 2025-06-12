@@ -14,10 +14,14 @@ def main():
     print(f"p2 = {p2}")
 
     p: Polynomial = p1 * p2
-    substitution: VariableSubstitution = VariableSubstitution.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")
-
 
     print(f"p = {p}")
+
+    substitution: VariableSubstitution = VariableSubstitution.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")
+
+    p0: Polynomial = substitution.substitude_polynomial(p)
+
+    print(f"p0 = {p0}")
     print(f"substitution: {substitution}")
 
     return

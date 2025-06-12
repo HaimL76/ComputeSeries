@@ -10,7 +10,7 @@ class Monomial:
         self.elements: dict = {}
 
         if isinstance(elems, dict):
-            self.elements = elems
+            self.elements = copy.deepcopy(elems)
         elif isinstance(elems, list):
             for elem in elems:
                 if elem.symbol not in self.elements:

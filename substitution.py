@@ -1,5 +1,6 @@
 from monomial import Monomial
 from polynomial import Polynomial
+from rational import Rational
 
 
 class VariableSubstitution:
@@ -25,35 +26,41 @@ class VariableSubstitution:
         return substitution
 
     def substitute_monomial(self, original_monomial: Monomial):
+        elems: dict = original_monomial.elements
+
         l: list = []
 
-        for symb in self.substitution.keys():
-            if symb in original_monomial:
-                val: Polynomial = self.substitution[symb]
+        if not isinstance(elems, dict) or len(elems) < 1:
+            return [original_monomial]
 
-                if val is not None:
-                    original_monomial.remove_element(symb)
+        coeffs_monomial: Monomial = Monomial(coeff=original_monomial.coefficient,
+                                    const_coeffs=original_monomial.const_coefficients)
 
-                    for monom in val:
-                        m = original_monomial * monom
+        for key in elems:
+            elem: str = elems[key]
 
-                        l.append(m)
+            if key in self.substitution:
+                val = self.substitution[key]
+
+                for monom in val.monomials:
+                    result_monomial: Monomial = coeffs_monomial * monom
+
+                    l.append(result_monomial)
 
         return l
 
+
     def substitude_polynomial(self, original_polynom: Polynomial):
-        polynomial: Polynomial = Polynomial()
+        result_polynomial: Polynomial = Polynomial()
 
-        for monom in original_polynom:
-            monoms: list = self.substitute_monomial(monom)
+        for monomial in original_polynom:
+            monomials: list = self.substitute_monomial(monomial)
 
-            if not isinstance(monoms, list) or len(monoms) < 1:
-                monoms = [monom]
+            if isinstance(monomials, list) and len(monomials) > 0:
+                for monom in monomials:
+                    result_polynomial.add_monomial(monom)
 
-            for monom in monoms:
-                polynomial.add_monomial(monom)
-
-        return polynomial
+        return result_polynomial
 
     def __str__(self):
         return "\n".join(f"{key}->{self.substitution[key]}" for key in self.substitution)
