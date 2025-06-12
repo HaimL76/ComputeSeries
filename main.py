@@ -9,11 +9,14 @@ coeff: str = const_coefficient
 def main():
     p1: Polynomial = Polynomial.parse_single(f"1+{coeff}.v2")
     p2: Polynomial = Polynomial.parse_single(f"1+{coeff}.v3")
-    p: Polynomial = p1 * p2
-    substitution: VariableSubstitution = VariableSubstitution.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")
 
     print(f"p1 = {p1}")
     print(f"p2 = {p2}")
+
+    p: Polynomial = p1 * p2
+    substitution: VariableSubstitution = VariableSubstitution.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")
+
+
     print(f"p = {p}")
     print(f"substitution: {substitution}")
 

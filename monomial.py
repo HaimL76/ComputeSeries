@@ -1,9 +1,12 @@
+import copy
+
 from element import Element
 from rational import Rational
 
 
 class Monomial:
-    def __init__(self, elems: dict = {}, coeff: Rational = Rational(1), const_coeff: str = ""):
+    def __init__(self, elems: dict = {}, coeff: Rational = Rational(1),
+                  const_coeffs: dict = {}):
         self.elements: dict = {}
 
         if isinstance(elems, dict):
@@ -16,7 +19,7 @@ class Monomial:
                     self.elements[elem.symbol] *= elem
 
         self.coefficient: Rational = coeff
-        self.const_coefficient: str = const_coeff
+        self.const_coefficients: dict = copy.deepcopy(const_coeffs)
 
     @staticmethod
     def are_same_monomials(monom1, monom2):
@@ -56,10 +59,15 @@ class Monomial:
             yield symb
 
     def __mul__(self, other):
-        const_coeff: str = self.const_coefficient
+        const_coeffs: dict = self.const_coefficients
 
-        if other.const_coefficient:
-            const_coeff = f"{const_coeff}{other.const_coefficient}"
+        if isinstance(other.const_coefficients, dict) and len(other.const_coefficients):
+            for key in other.const_coefficients:
+                if key not in const_coeffs:
+                    const_coeffs[key] = Element(symb=key, pow=0)
+
+                val: Element = const_coeffs[key]
+                const_coeffs[key] = Element(val.symbol, val.power + 1)
 
         coeff: int = self.coefficient * other.coefficient
 
@@ -78,12 +86,12 @@ class Monomial:
             else:
                 elems[symb] *= val
 
-        return Monomial(elems, coeff=coeff, const_coeff=const_coeff)
+        return Monomial(elems, coeff=coeff, const_coeffs=const_coeffs)
 
     @staticmethod
     def parse(text: str):
         coeff: Rational = Rational(1)
-        const_coeff: str = ""
+        const_coeffs: dict = {}
 
         l: list = []
 
@@ -97,13 +105,19 @@ class Monomial:
                     coeff = Rational.parse(s)
                 elif len(s) > 2 and s[0] == "(" and s[-1] == ")":
                     const_coeff = s[1:-1]
+
+                    if const_coeff not in const_coeffs:
+                        const_coeffs[const_coeff] = Element(symb=const_coeff, pow=0)
+
+                    val: Element = const_coeffs[const_coeff]
+                    const_coeffs[const_coeff] = Element(val.symbol, val.power + 1)
                 else:
                     element: Element = Element.parse(s)
 
                     if element:
                         l.append(element)
 
-        return Monomial(l, coeff=coeff, const_coeff=const_coeff)
+        return Monomial(l, coeff=coeff, const_coeffs=const_coeffs)
 
     def remove_element(self, symb: str):
         if symb in self.elements:
@@ -118,11 +132,18 @@ class Monomial:
             if self.coefficient != Rational(1):
                 s = f"{self.coefficient}"
 
-            if self.const_coefficient:
+            if isinstance(self.const_coefficients, dict) and len(self.const_coefficients) > 0:
                 if len(s) > 0:
                     s = f"{s}*"
 
-                s = f"{s}({self.const_coefficient})"
+                for key in self.const_coefficients.keys():
+                    const_coeff: Element = self.const_coefficients[key]
+
+                    if const_coeff is not None and const_coeff.symbol:
+                        s = f"{s}({const_coeff.symbol})"
+
+                        if const_coeff.power > 1:
+                            s = f"{s}^{const_coeff.power}"
 
             s0: str = ""
 
