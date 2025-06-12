@@ -56,6 +56,11 @@ class Monomial:
             yield symb
 
     def __mul__(self, other):
+        const_coeff: str = self.const_coefficient
+
+        if other.const_coefficient:
+            const_coeff = f"{const_coeff}{other.const_coefficient}"
+
         coeff: int = self.coefficient * other.coefficient
 
         elems: dict = {}
@@ -73,7 +78,7 @@ class Monomial:
             else:
                 elems[symb] *= val
 
-        return Monomial(elems, coeff=coeff)
+        return Monomial(elems, coeff=coeff, const_coeff=const_coeff)
 
     @staticmethod
     def parse(text: str):
