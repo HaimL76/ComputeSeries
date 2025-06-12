@@ -78,6 +78,7 @@ class Monomial:
     @staticmethod
     def parse(text: str):
         coeff: Rational = Rational(1)
+        const_coeff: str = ""
 
         l: list = []
 
@@ -89,13 +90,15 @@ class Monomial:
             if s:
                 if s.isnumeric():
                     coeff = Rational.parse(s)
+                elif len(s) > 2 and s[0] == "(" and s[-1] == ")":
+                    const_coeff = s[1:-1]
                 else:
                     element: Element = Element.parse(s)
 
                     if element:
                         l.append(element)
 
-        return Monomial(l, coeff=coeff)
+        return Monomial(l, coeff=coeff, const_coeff=const_coeff)
 
     def remove_element(self, symb: str):
         if symb in self.elements:
@@ -114,7 +117,7 @@ class Monomial:
                 if len(s) > 0:
                     s = f"{s}*"
 
-                s = f"{s}{self.const_coefficient}"
+                s = f"{s}({self.const_coefficient})"
 
             s0: str = ""
 

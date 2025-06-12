@@ -82,6 +82,13 @@ class Polynomial:
 
         return list_polynomials
 
+    @staticmethod
+    def parse_single(text: str):
+        l: list = Polynomial.parse(text)
+
+        if isinstance(l, list) and len(l) == 1:
+            return l[0]
+
 
     def __add__(self, other):
         polynomial: Polynomial = Polynomial(self.monomials)
