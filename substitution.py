@@ -28,13 +28,13 @@ class VariableSubstitution:
     def substitute_monomial(self, original_monomial: Monomial):
         elems: dict = original_monomial.elements
 
-        l: list = []
-
         if not isinstance(elems, dict) or len(elems) < 1:
             return [original_monomial]
 
         coeffs_monomial: Monomial = Monomial(coeff=original_monomial.coefficient,
                                     const_coeffs=original_monomial.const_coefficients)
+
+        l: list = [coeffs_monomial]
 
         for key in elems:
             elem: str = elems[key]
@@ -42,10 +42,16 @@ class VariableSubstitution:
             if key in self.substitution:
                 val = self.substitution[key]
 
-                for monom in val.monomials:
-                    result_monomial: Monomial = coeffs_monomial * monom
+                l0: list = []
 
-                    l.append(result_monomial)
+                for monom in val.monomials:
+                    for mon in l:
+                        monomial: Monomial = mon * monom
+
+                        if isinstance(monomial, Monomial):
+                            l0.append(monomial)
+
+                l = l0
 
         return l
 

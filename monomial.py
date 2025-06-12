@@ -126,25 +126,29 @@ class Monomial:
     def __str__(self):
         s: str = ""
 
-        if self.elements is None or len(self.elements) < 1:
-            s = f"{self.coefficient}"
-        else:
-            if self.coefficient != Rational(1):
-                s = f"{self.coefficient}"
+        counter: int = 0
 
-            if isinstance(self.const_coefficients, dict) and len(self.const_coefficients) > 0:
-                if len(s) > 0:
+        if self.coefficient != Rational(1):
+            s = f"{self.coefficient}"
+            counter += 1
+
+        const_coeffs: dict = self.const_coefficients
+
+        if isinstance(const_coeffs, dict) and len(const_coeffs) > 0:
+            for key in const_coeffs.keys():
+                const_coeff: Element = const_coeffs[key]
+
+                if counter > 0:
                     s = f"{s}*"
 
-                for key in self.const_coefficients.keys():
-                    const_coeff: Element = self.const_coefficients[key]
+                s = f"{s}({const_coeff.symbol})"
 
-                    if const_coeff is not None and const_coeff.symbol:
-                        s = f"{s}({const_coeff.symbol})"
+                if const_coeff.power != 1:
+                    s = f"{s}^{const_coeff.power}"
 
-                        if const_coeff.power > 1:
-                            s = f"{s}^{const_coeff.power}"
+                counter += 1
 
+        if isinstance(self.elements, dict) and len(self.elements) > 0:
             s0: str = ""
 
             if len(self.elements) > 0:
@@ -155,5 +159,6 @@ class Monomial:
                     s = f"{s}*"
 
                 s = f"{s}{s0}"
+                counter += 1
 
         return s

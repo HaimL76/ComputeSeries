@@ -13,7 +13,7 @@ class Element:
 
             ##result.coefficient = self.coefficient * other.coefficient
 
-            result.sign = self.sign != other.sign
+            ##result.sign = self.sign != other.sign
 
         return result
 
