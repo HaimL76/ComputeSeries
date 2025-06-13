@@ -27,7 +27,7 @@ class Series:
 
         s = f"{s}\sum_{{{self.power}={self.start_index}}}"
 
-        if self.coefficient is not None:
+        if self.coefficient is not None and self.coefficient != Rational(1):
             s = f"{s}{self.coefficient}*"
 
         s = f"{s}({self.monomial})^{self.power}"
@@ -68,6 +68,8 @@ class SeriesProduct:
 
                         val[symb] += monom.coefficient
 
+        l: list = []
+
         for symb in d.keys():
             elements: dict = {}
 
@@ -83,9 +85,11 @@ class SeriesProduct:
 
             monomial: Monomial = Monomial(elems=elements)
 
-            series: Series = Series(monom=monomial)
+            series: Series = Series(monom=monomial, pow=symb)
 
-        return d
+            l.append(series)
+
+        return SeriesProduct(sers=l)
 
     def __str__(self):
         s: str = "*".join(f"{ser}" for ser in self.list_series)
