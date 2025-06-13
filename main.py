@@ -30,6 +30,10 @@ def main():
     print(f"exp_prod = {exp_prod}")
     print(f"exp_prod0 = {exp_prod0}")
 
+    series_product = SeriesProduct.from_exponential_product(exp_prod0)
+
+    print(f"series_product = {series_product}")
+
     return
 
     print(f"v1 = {v1}")

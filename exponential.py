@@ -1,6 +1,5 @@
 from element import Element
 from polynomial import Polynomial
-from series import Series
 
 
 class Exponential:
@@ -82,36 +81,3 @@ class ExponentialProduct:
 
     def __str__(self):
         return "*".join(f"{exp}" for exp in self.exponentials.values())
-
-    def break_by_exponent(self):
-        l: list = []
-
-        exponent_symbols: dict = {}
-
-        for base_symbol in self.exponentials.keys():
-            exp: Exponential = self.exponentials[base_symbol]
-
-            exponent_polynomial: Polynomial = exp.exponent
-
-            for monom in exponent_polynomial.monomials:
-                elem_symbol: str = next(iter(monom.elements))
-                elem: Element = monom.elements[elem_symbol]
-
-                if elem_symbol not in exponent_symbols:
-                    exponent_symbols[elem_symbol] = {}
-
-                d = exponent_symbols[elem_symbol]
-
-                if base_symbol not in d:
-                    d[base_symbol] = monom.coefficient
-                else:
-                    d[base_symbol] += monom.coefficient
-
-        for pow in exponent_symbols.keys():
-            val: dict = exponent_symbols[pow]
-
-            series: Series = Series(val, pow)
-
-            l.append(series)
-
-        return l

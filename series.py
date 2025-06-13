@@ -1,6 +1,7 @@
 import copy
 
 from element import Element
+from exponential import ExponentialProduct
 from monomial import Monomial
 from polynomial import Polynomial
 from rational import Rational
@@ -8,18 +9,11 @@ from polynomial_rational import PolynomialRational
 
 
 class Series:
-    def __init__(self, d: dict = {}, pow: str = "", start: int = 0, coeff: Rational = Rational(1)):
+    def __init__(self, monom: Monomial, pow: str = "", start: int = 0, coeff: Rational = Rational(1)):
         self.start_index: int = start
         self.coefficient: Rational = coeff
 
-        elems: dict = {}
-
-        for key in d.keys():
-            val: int = d[key]
-
-            elems[key] = Element(symb=key, pow=val)
-
-        self.monomial: Monomial = Monomial(elems=elems)
+        self.monomial: Monomial = monom
         self.power: str = pow
 
     def sum(self):
@@ -40,10 +34,58 @@ class Series:
 
         return s
 
+
 class SeriesProduct:
     def __init__(self, sers: list = [], coeff: Rational = Rational(1)):
         self.list_series: list = sers
         self.coefficient: Rational = coeff
+
+    @staticmethod
+    def from_exponential_product(exponential_product: ExponentialProduct):
+        d: dict = {}
+
+        for symb in exponential_product.exponentials.keys():
+            exponential: ExponentialProduct = exponential_product.exponentials[symb]
+
+            polynomial: Polynomial = exponential.exponent
+
+            for monom in polynomial.monomials:
+                if len(monom.elements) == 1:
+                    key: str = next(iter(monom.elements))
+
+                    if key and key in monom.elements:
+                        element: Element = monom.elements[key]
+
+                        exp: str = element.symbol
+
+                        if exp not in d:
+                            d[exp]: dict = {}
+
+                        val: dict = d[exp]
+
+                        if symb not in val:
+                            val[symb] = Rational(0)
+
+                        val[symb] += monom.coefficient
+
+        for symb in d.keys():
+            elements: dict = {}
+
+            val = d[symb]
+
+            for key in val:
+                num = val[key]
+
+                elem: Element = Element(symb=key, pow=num)
+
+                if elem.symbol not in elements:
+                    elements[elem.symbol] = elem
+
+            monomial: Monomial = Monomial(elems=elements)
+
+            series: Series = Series(monom=monomial)
+
+        return d
 
     def __str__(self):
         s: str = "*".join(f"{ser}" for ser in self.list_series)
