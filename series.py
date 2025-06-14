@@ -27,7 +27,7 @@ class Series:
 
         s = f"{s}\sum_{{{self.power}={self.start_index}}}"
 
-        if self.coefficient is not None:
+        if self.coefficient is not None and self.coefficient != Rational(1):
             s = f"{s}{self.coefficient}*"
 
         s = f"{s}({self.monomial})^{self.power}"
