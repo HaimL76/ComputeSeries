@@ -36,8 +36,8 @@ class Series:
 
 
 class SeriesProduct:
-    def __init__(self, sers: list = [], coeff: Rational = Rational(1)):
-        self.list_series: list = sers
+    def __init__(self, sers: dict = {}, coeff: Rational = Rational(1)):
+        self.dict_series: list = copy.deepcopy(sers)
         self.coefficient: Rational = coeff
 
     @staticmethod
@@ -68,6 +68,8 @@ class SeriesProduct:
 
                         val[symb] += monom.coefficient
 
+        d0: dict = {}
+
         for symb in d.keys():
             elements: dict = {}
 
@@ -83,12 +85,14 @@ class SeriesProduct:
 
             monomial: Monomial = Monomial(elems=elements)
 
-            series: Series = Series(monom=monomial)
+            series: Series = Series(monom=monomial, pow=symb)
 
-        return d
+            d0[series.power] = series
+
+        return SeriesProduct(sers=d0)
 
     def __str__(self):
-        s: str = "*".join(f"{ser}" for ser in self.list_series)
+        s: str = "*".join(f"{ser}" for ser in self.dict_series.values())
 
         return s
 
