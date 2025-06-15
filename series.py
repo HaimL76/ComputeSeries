@@ -1,5 +1,7 @@
 import copy
 
+from colorama import Fore, Style
+
 from element import Element
 from exponential import ExponentialProduct
 from monomial import Monomial
@@ -26,9 +28,11 @@ class Series:
         s: str = ""
 
         if self.coefficient is not None and not self.coefficient.is_one():
-            s = f"{self.coefficient}"
+            s = f"{Fore.YELLOW}{self.coefficient}{Style.RESET_ALL}"
 
-        s = rf"\sum_{{{self.power}={self.start_index}}}{s}({self.monomial})^{self.power}"
+        s = rf"\sum_{{{self.power}={self.start_index}}}{s}({self.monomial})"
+
+        s = f"{s}^{Fore.YELLOW}{self.power}{Style.RESET_ALL}"
 
         return s
 
