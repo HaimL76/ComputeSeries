@@ -30,7 +30,6 @@ class Series:
 
         s = rf"{s}\sum_{{{self.power}={self.start_index}}}({self.monomial})"
 
-
         return s
 
 
@@ -114,14 +113,20 @@ class SeriesProduct:
                     symb: str = elem.symbol
 
                     if symb not in d0:
-                        d0[symb] = 0
+                        d0[symb] = Element(symb=symb, pow=0)
 
-                    d0[symb] += elem.power
+                    elem = d0[symb]
+
+                    elem = Element(symb=elem.symbol, pow=elem.power + 1)
+
+                    d0[symb] = elem
 
                     if len(d0) > 0:
                         monomial: Monomial = Monomial(elems=d0)
 
                         series.coefficient = monomial
+
+                        s: str = f"{monomial}"
 
                 new_dict[pow] = series
 
