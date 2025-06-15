@@ -119,6 +119,12 @@ class Monomial:
 
         return Monomial(l, coeff=coeff, const_coeffs=const_coeffs)
 
+    def is_one(self):
+        return ((self.elements is None or len(self.elements) < 1)
+                and (self.const_coefficients is None or len(self.const_coefficients) < 1)
+                and self.coefficient == Rational(1))
+
+
     def remove_element(self, symb: str):
         if symb in self.elements:
             self.elements.pop(symb)

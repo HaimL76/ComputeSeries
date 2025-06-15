@@ -25,10 +25,10 @@ class Series:
     def __str__(self):
         s: str = ""
 
-        if self.coefficient is not None:
+        if self.coefficient is not None and not self.coefficient.is_one():
             s = f"{self.coefficient}"
 
-        s = rf"{s}\sum_{{{self.power}={self.start_index}}}({self.monomial})"
+        s = rf"\sum_{{{self.power}={self.start_index}}}{s}({self.monomial})^{self.power}"
 
         return s
 
@@ -90,7 +90,7 @@ class SeriesProduct:
         return SeriesProduct(sers=d0)
 
     def __str__(self):
-        s: str = "*".join(f"{ser}" for ser in self.dict_series.values())
+        s: str = "*".join(f"[{ser}]" for ser in self.dict_series.values())
 
         return s
 
