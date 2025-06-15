@@ -11,7 +11,7 @@ from polynomial_rational import PolynomialRational
 class Series:
     def __init__(self, monom: Monomial, pow: str = "", start: int = 0, coeff: Rational = Rational(1)):
         self.start_index: int = start
-        self.coefficient: Rational = coeff
+        self.coefficient: Monomial = Monomial(coeff=Rational(1))
 
         self.monomial: Monomial = monom
         self.power: str = pow
@@ -25,12 +25,11 @@ class Series:
     def __str__(self):
         s: str = ""
 
-        s = f"{s}\sum_{{{self.power}={self.start_index}}}"
+        if self.coefficient is not None:
+            s = f"{self.coefficient}"
 
-        if self.coefficient is not None and self.coefficient != Rational(1):
-            s = f"{s}{self.coefficient}*"
+        s = rf"{s}\sum_{{{self.power}={self.start_index}}}({self.monomial})"
 
-        s = f"{s}({self.monomial})^{self.power}"
 
         return s
 
@@ -100,15 +99,33 @@ class SeriesProduct:
         l: list = []
 
         for monom in polynomial.monomials:
-            new_list: list = copy.deepcopy(self.list_series)
+            new_dict: dict = copy.deepcopy(self.dict_series)
 
-            for series in new_list:
-                if series.power in monom.elements:
-                    elem: Element = monom.elements[series.power]
+            for key in new_dict.keys():
+                series: Series = new_dict[key]
 
-                    series.coefficient = elem
+                pow: str = series.power
 
-            new_series_product: SeriesProduct = SeriesProduct(new_list)
+                d0: dict = {}
+
+                if pow in monom.elements.keys():
+                    elem: Element = monom.elements[pow]
+
+                    symb: str = elem.symbol
+
+                    if symb not in d0:
+                        d0[symb] = 0
+
+                    d0[symb] += elem.power
+
+                    if len(d0) > 0:
+                        monomial: Monomial = Monomial(elems=d0)
+
+                        series.coefficient = monomial
+
+                new_dict[pow] = series
+
+            new_series_product: SeriesProduct = SeriesProduct(new_dict)
 
             l.append(new_series_product)
 

@@ -32,7 +32,13 @@ def main():
 
     series_product = SeriesProduct.from_exponential_product(exp_prod0)
 
-    print(f"series_product = {series_product}")
+    l: list = series_product.multiply_by_polynomial(p0)
+
+    counter: int = 0
+
+    for ser_prod in l:
+        print(f"[{counter}], ser_prod: {ser_prod}")
+        counter += 1
 
     return
 

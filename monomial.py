@@ -128,7 +128,7 @@ class Monomial:
 
         counter: int = 0
 
-        if self.coefficient != Rational(1):
+        if self.coefficient != Rational(1) or (len(self.elements) < 1 and len(self.const_coefficients) <1):
             s = f"{self.coefficient}"
             counter += 1
 
