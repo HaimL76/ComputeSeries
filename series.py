@@ -28,18 +28,18 @@ class Series:
         s: str = ""
 
         if self.coefficient is not None and not self.coefficient.is_one():
-            s = f"{Fore.YELLOW}{self.coefficient}{Style.RESET_ALL}"
+            s = f"{Fore.LIGHTGREEN_EX}{self.coefficient}{Style.RESET_ALL}"
 
         s = rf"\sum_{{{self.power}={self.start_index}}}{s}({self.monomial})"
 
-        s = f"{s}^{Fore.YELLOW}{self.power}{Style.RESET_ALL}"
+        s = f"{s}^{Fore.LIGHTGREEN_EX}{self.power}{Style.RESET_ALL}"
 
         return s
 
 
 class SeriesProduct:
     def __init__(self, sers: dict = {}, coeff: Rational = Rational(1)):
-        self.dict_series: list = copy.deepcopy(sers)
+        self.dict_series: dict = copy.deepcopy(sers)
         self.coefficient: Rational = coeff
 
     @staticmethod
@@ -94,7 +94,14 @@ class SeriesProduct:
         return SeriesProduct(sers=d0)
 
     def __str__(self):
-        s: str = "*".join(f"[{ser}]" for ser in self.dict_series.values())
+        s: str = ""
+
+        if self.coefficient is not None and self.coefficient != Rational(1):
+            s = f"{Fore.LIGHTCYAN_EX}{self.coefficient}{Style.RESET_ALL}"
+
+        s0: str = "*".join(f"[{ser}]" for ser in self.dict_series.values())
+
+        s = f"{s}{s0}"
 
         return s
 
@@ -134,7 +141,7 @@ class SeriesProduct:
 
                 new_dict[pow] = series
 
-            new_series_product: SeriesProduct = SeriesProduct(new_dict)
+            new_series_product: SeriesProduct = SeriesProduct(new_dict, coeff=monom.coefficient)
 
             l.append(new_series_product)
 
