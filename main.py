@@ -37,13 +37,12 @@ def main():
     counter: int = 0
 
     for ser_prod in l:
-        print(f"[{counter}], ser_prod: {ser_prod}")
+        print(f"[{counter}] ser_prod: {ser_prod}")
         counter += 1
 
         sum = ser_prod.sum()
 
-        for d0 in sum.values():
-            print(f"d0: {d0}")
+        print(f"sum: {sum}")
 
     return
 

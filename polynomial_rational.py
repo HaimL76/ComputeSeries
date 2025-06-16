@@ -1,3 +1,5 @@
+import copy
+
 from polynomial import Polynomial
 from rational import Rational
 
@@ -49,10 +51,39 @@ class PolynomialRational:
         return self.numerator == other.numerator and self.denominator == other.denominator
 
     def __str__(self):
-        s: str = f"{self.numerator}"
+        s: str = "*".join([f"({polynom})" for polynom in self.numerator])
 
-        if self.denominator != 1:
-            s = f"[{s}]/[{self.denominator}]"
+        if self.denominator != [1]:
+            s0: str = "*".join([f"({polynom})" for polynom in self.denominator])
+            s = f"[{s}]/[{s0}]"
 
         return s
 
+class MultiplePolynomialRational:
+    def __init__(self, numer: dict[Polynomial, int], denom: dict[Polynomial, int]):
+        self.numerator: dict[Polynomial, int] = copy.deepcopy(numer)
+        self.denominator: dict[Polynomial, int] = copy.deepcopy(denom)
+
+
+    def __mul__(self, other):
+        for numer in other.numerator.keys():
+            #numer = other.numerator[key]
+
+            if numer not in self.numerator:
+                self.numerator[numer] = 0
+
+            self.numerator[numer] += 1
+
+
+
+    def __eq__(self, other):
+        return self.numerator == other.numerator and self.denominator == other.denominator
+
+    def __str__(self):
+        s: str = "*".join([f"({polynom})" for polynom in self.numerator])
+
+        if self.denominator != [1]:
+            s0: str = "*".join([f"({polynom})" for polynom in self.denominator])
+            s = f"[{s}]/[{s0}]"
+
+        return s

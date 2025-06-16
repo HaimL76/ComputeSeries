@@ -20,6 +20,7 @@ class Monomial:
 
         self.coefficient: Rational = coeff
         self.const_coefficients: dict = copy.deepcopy(const_coeffs)
+        ##self.power: int = 1
 
     @staticmethod
     def are_same_monomials(monom1, monom2):
@@ -166,5 +167,8 @@ class Monomial:
 
                 s = f"{s}{s0}"
                 counter += 1
+
+        ##if self.power != 1:
+          ##  s = f"({s}^{self.power})"
 
         return s

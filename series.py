@@ -7,7 +7,7 @@ from exponential import ExponentialProduct
 from monomial import Monomial
 from polynomial import Polynomial
 from rational import Rational
-from polynomial_rational import PolynomialRational
+from polynomial_rational import PolynomialRational, MultiplePolynomialRational
 
 
 class Series:
@@ -21,6 +21,12 @@ class Series:
     def sum(self):
         numer: Polynomial = Polynomial.parse_single("1")
         denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}")
+
+        elems: dict = self.coefficient.elements
+
+        if isinstance(elems, dict) and self.power in elems:
+            numer = Polynomial([self.monomial])
+            denom.power = Rational(2)
 
         return PolynomialRational(numer, denom)
 
@@ -43,14 +49,31 @@ class SeriesProduct:
         self.coefficient: Rational = coeff
 
     def sum(self):
-        d: dict = {}
+
+        numerator: dict[Polynomial, int] = {}
+        denominator: dict[Polynomial, int] = {}
 
         for key in self.dict_series.keys():
             series: Series = self.dict_series[key]
 
-            d[series.power] = series.sum()
+            sum: PolynomialRational = series.sum()
 
-        return d
+            numers: list = sum.numerator
+            denoms: list = sum.denominator
+
+            for numer in numers:
+                if numer not in numerator:
+                    numerator[numer] = 0
+
+                numerator[numer] += 1
+
+            for denom in denoms:
+                if denom not in denominator:
+                    denominator[denom] = 0
+
+                denominator[denom] += 1
+
+        return MultiplePolynomialRational(numer=numerator, denom=denominator)
 
     @staticmethod
     def from_exponential_product(exponential_product: ExponentialProduct):

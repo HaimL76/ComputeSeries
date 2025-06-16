@@ -1,13 +1,17 @@
+import copy
+
+from colorama import Fore, Style
+
 from monomial import Monomial
+from rational import Rational
 
 
 class Polynomial:
     def __init__(self, monoms: list = [], nm: str = ""):
-        self.monomials: list = []
+        self.monomials: list = copy.deepcopy(monoms)
         self.name: str = nm
 
-        for monom in monoms:
-            self.monomials.append(monom)
+        self.power: Rational = Rational(1)
 
     def __iter__(self):
         for monom in self.monomials:
@@ -105,5 +109,8 @@ class Polynomial:
             s = f"{self.name} = "
 
         s += " + ".join(f"{monom}" for monom in self.monomials)
+
+        if self.power != 1:
+            s = f"({s})^{Fore.LIGHTYELLOW_EX}{self.power}{Style.RESET_ALL}"
 
         return s
