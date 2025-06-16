@@ -80,10 +80,19 @@ class MultiplePolynomialRational:
         return self.numerator == other.numerator and self.denominator == other.denominator
 
     def __str__(self):
-        s: str = "*".join([f"({polynom})" for polynom in self.numerator])
+        numerator0: list = list(filter(lambda p: not p.is_one(), self.numerator))
 
-        if self.denominator != [1]:
-            s0: str = "*".join([f"({polynom})" for polynom in self.denominator])
+        s: str = "1"
+
+        if len(numerator0) > 0:
+            s = "*".join([f"({polynom})" for polynom in numerator0])
+
+        denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
+
+        s0: str = "1"
+
+        if len(denominator0):
+            s0 = "*".join([f"({polynom})" for polynom in denominator0])
             s = f"[{s}]/[{s0}]"
 
         return s

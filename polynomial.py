@@ -17,6 +17,9 @@ class Polynomial:
         for monom in self.monomials:
             yield monom
 
+    def is_one(self):
+        return len(self.monomials) == 1 and next(iter(self.monomials)).is_one()
+
     def __mul__(self, other):
         monoms: list = []
 
