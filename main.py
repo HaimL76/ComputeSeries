@@ -40,6 +40,11 @@ def main():
         print(f"[{counter}], ser_prod: {ser_prod}")
         counter += 1
 
+        sum = ser_prod.sum()
+
+        for d0 in sum.values():
+            print(f"d0: {d0}")
+
     return
 
     print(f"v1 = {v1}")

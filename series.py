@@ -19,8 +19,8 @@ class Series:
         self.power: str = pow
 
     def sum(self):
-        numer: Polynomial = Polynomial.parse("1")
-        denom: Polynomial = Polynomial.parse(f"1-{self.monomial}")
+        numer: Polynomial = Polynomial.parse_single("1")
+        denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}")
 
         return PolynomialRational(numer, denom)
 
@@ -41,6 +41,16 @@ class SeriesProduct:
     def __init__(self, sers: dict = {}, coeff: Rational = Rational(1)):
         self.dict_series: dict = copy.deepcopy(sers)
         self.coefficient: Rational = coeff
+
+    def sum(self):
+        d: dict = {}
+
+        for key in self.dict_series.keys():
+            series: Series = self.dict_series[key]
+
+            d[series.power] = series.sum()
+
+        return d
 
     @staticmethod
     def from_exponential_product(exponential_product: ExponentialProduct):

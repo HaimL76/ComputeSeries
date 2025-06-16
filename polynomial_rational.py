@@ -52,7 +52,7 @@ class PolynomialRational:
         s: str = f"{self.numerator}"
 
         if self.denominator != 1:
-            s = f"{s}/{self.denominator}"
+            s = f"[{s}]/[{self.denominator}]"
 
         return s
 
