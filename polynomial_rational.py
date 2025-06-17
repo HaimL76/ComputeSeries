@@ -1,13 +1,13 @@
 import copy
 
-from polynomial import Polynomial
+from polynomial import Polynomial, PolynomialWithPower
 from rational import Rational
 
 
 class PolynomialRational:
-    def __init__(self, numer: Polynomial, denom: Polynomial):
-        self.numerator: Polynomial = numer
-        self.denominator: Polynomial = denom
+    def __init__(self, numer: PolynomialWithPower, denom: PolynomialWithPower):
+        self.numerator: Polynomial = copy.deepcopy(numer)
+        self.denominator: Polynomial = copy.deepcopy(denom)
 
     @staticmethod
     def parse(text: str):

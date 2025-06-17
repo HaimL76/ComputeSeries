@@ -5,7 +5,7 @@ from colorama import Fore, Style
 from element import Element
 from exponential import ExponentialProduct
 from monomial import Monomial
-from polynomial import Polynomial
+from polynomial import Polynomial, PolynomialWithPower
 from rational import Rational
 from polynomial_rational import PolynomialRational, MultiplePolynomialRational
 
@@ -19,8 +19,8 @@ class Series:
         self.power: str = pow
 
     def sum(self):
-        numer: Polynomial = Polynomial.parse_single("1")
-        denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}")
+        numer: PolynomialWithPower = PolynomialWithPower.parse_single("1")
+        denom: PolynomialWithPower = PolynomialWithPower.parse_single(f"1-{self.monomial}")
 
         elems: dict = self.coefficient.elements
 
@@ -49,7 +49,6 @@ class SeriesProduct:
         self.coefficient: Rational = coeff
 
     def sum(self):
-
         numerator: dict[Polynomial, int] = {}
         denominator: dict[Polynomial, int] = {}
 
@@ -58,20 +57,18 @@ class SeriesProduct:
 
             sum: PolynomialRational = series.sum()
 
-            numers: list = sum.numerator
-            denoms: list = sum.denominator
+            numer: Polynomial = sum.numerator
+            denom: Polynomial = sum.denominator
 
-            for numer in numers:
-                if numer not in numerator:
-                    numerator[numer] = 0
+            if numer not in numerator:
+                numerator[numer] = 0
 
-                numerator[numer] += 1
+            numerator[numer] += 1
 
-            for denom in denoms:
-                if denom not in denominator:
-                    denominator[denom] = 0
+            if denom not in denominator:
+                denominator[denom] = 0
 
-                denominator[denom] += 1
+            denominator[denom] += 1
 
         return MultiplePolynomialRational(numer=numerator, denom=denominator)
 

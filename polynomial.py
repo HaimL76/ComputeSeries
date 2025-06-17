@@ -11,8 +11,6 @@ class Polynomial:
         self.monomials: list = copy.deepcopy(monoms)
         self.name: str = nm
 
-        self.power: Rational = Rational(1)
-
     def __iter__(self):
         for monom in self.monomials:
             yield monom
@@ -96,6 +94,8 @@ class Polynomial:
         if isinstance(l, list) and len(l) == 1:
             return l[0]
 
+    # def __eq__(self, other):
+    #   return
 
     def __add__(self, other):
         polynomial: Polynomial = Polynomial(self.monomials)
@@ -111,7 +111,20 @@ class Polynomial:
         if self.name:
             s = f"{self.name} = "
 
-        s += " + ".join(f"{monom}" for monom in self.monomials)
+        s0: str = " + ".join(f"{monom}" for monom in self.monomials)
+
+        s = f"{s}{s0}"
+
+        return s
+
+
+class PolynomialWithPower(Polynomial):
+    def __init__(self, monoms: list = [], nm: str = "", pow: Rational = Rational(1)):
+        super().__init__(monoms=monoms, nm=nm)
+        self.power: Rational = pow
+
+    def __str__(self):
+        s = super().__str__()
 
         if self.power != 1:
             s = f"({s})^{Fore.LIGHTYELLOW_EX}{self.power}{Style.RESET_ALL}"
