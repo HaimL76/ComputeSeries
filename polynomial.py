@@ -142,6 +142,26 @@ class PolynomialWithPower(Polynomial):
 
         return s
 
+    def __eq__(self, other):
+        equals: bool = False
+
+        if len(self.monomials) == len(other.monomials):
+            counter0: int = 0
+
+            for monom in self.monomials:
+                if monom in other.monomials:
+                    counter0 += 1
+
+            counter1: int = 0
+
+            for monom in other.monomials:
+                if monom in self.monomials:
+                    counter1 += 1
+
+            equals = counter0 == counter1 and counter0 == len(self.monomials)
+
+        return equals
+
     @staticmethod
     def parse(text: str):
         list_list_monomials: list[(list[Monomial], str)] = Polynomial.parse_monomials(text)

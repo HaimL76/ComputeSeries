@@ -59,22 +59,21 @@ class PolynomialRational:
 
         return s
 
-class MultiplePolynomialRational:
-    def __init__(self, numer: dict[Polynomial, int], denom: dict[Polynomial, int]):
-        self.numerator: dict[Polynomial, int] = copy.deepcopy(numer)
-        self.denominator: dict[Polynomial, int] = copy.deepcopy(denom)
 
+class MultiplePolynomialRational:
+    def __init__(self, numer: list[PolynomialWithPower],
+                 denom: list[PolynomialWithPower]):
+        self.numerator: list[PolynomialWithPower] = copy.deepcopy(numer)
+        self.denominator: list[PolynomialWithPower] = copy.deepcopy(denom)
 
     def __mul__(self, other):
         for numer in other.numerator.keys():
-            #numer = other.numerator[key]
+            # numer = other.numerator[key]
 
             if numer not in self.numerator:
                 self.numerator[numer] = 0
 
             self.numerator[numer] += 1
-
-
 
     def __eq__(self, other):
         return self.numerator == other.numerator and self.denominator == other.denominator

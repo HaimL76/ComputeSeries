@@ -52,8 +52,8 @@ class SeriesProduct:
         self.coefficient: Rational = coeff
 
     def sum(self):
-        numerator: set[PolynomialWithPower] = set[PolynomialWithPower]()
-        denominator: set[PolynomialWithPower] = set[PolynomialWithPower]()
+        numerator: list[PolynomialWithPower] = []
+        denominator: list[PolynomialWithPower] = []
 
         for key in self.dict_series.keys():
             series: Series = self.dict_series[key]
@@ -63,11 +63,23 @@ class SeriesProduct:
             numer: PolynomialWithPower = sum0.numerator
             denom: PolynomialWithPower = sum0.denominator
 
-            if numer not in numerator:
-                numerator.add(numer)
+            flag: bool = False
 
-            if denom not in denominator:
-                denominator.add(denom)
+            for polynom in numerator:
+                if polynom == numer:
+                    flag = True
+
+            if not flag:
+                numerator.append(numer)
+
+            flag = False
+
+            for polynom in denominator:
+                if polynom == denom:
+                    flag = True
+
+            if not flag:
+                denominator.append(denom)
 
         return MultiplePolynomialRational(numer=numerator, denom=denominator)
 

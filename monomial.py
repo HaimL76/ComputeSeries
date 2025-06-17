@@ -55,6 +55,27 @@ class Monomial:
 
         return not different
 
+    def __eq__(self, other):
+        equals: bool = False
+
+        if (self.coefficient == other.coefficient and
+                len(self.elements) == len(other.elements)):
+            counter0: int = 0
+
+            for elem in self.elements:
+                if elem in other.elements:
+                    counter0 += 1
+
+            counter1: int = 0
+
+            for elem in other.elements:
+                if elem in self.elements:
+                    counter1 += 1
+
+            return counter0 == counter1 and counter0 == len(self.elements)
+
+        return equals
+
     def __iter__(self):
         for symb in self.elements.keys():
             yield symb
