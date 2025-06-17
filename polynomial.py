@@ -46,8 +46,8 @@ class Polynomial:
             self.monomials.append(monomial)
 
     @staticmethod
-    def parse(text: str):
-        list_polynomials: list = []
+    def parse_monomials(text: str):
+        list_list_monomials: list[(list[Monomial], str)] = []
 
         l0: list = text.split(",")
 
@@ -81,9 +81,20 @@ class Polynomial:
                                     list_monomials.append(monomial)
 
                         if len(list_monomials) > 0:
-                            polynomial: Polynomial = Polynomial(monoms=list_monomials, nm=name)
+                            list_list_monomials.append((list_monomials, name))
 
-                            list_polynomials.append(polynomial)
+        return list_list_monomials
+
+    @staticmethod
+    def parse(text: str):
+        list_list_monomials: list[(list[Monomial], str)] = Polynomial.parse_monomials(text)
+
+        list_polynomials: list[Polynomial] = []
+
+        for l0 in list_list_monomials:
+            polynomial: Polynomial = Polynomial(monoms=l0[0], nm=l0[1])
+
+            list_polynomials.append(polynomial)
 
         return list_polynomials
 
@@ -126,7 +137,27 @@ class PolynomialWithPower(Polynomial):
     def __str__(self):
         s = super().__str__()
 
-        if self.power != 1:
+        if self.power != Rational(1):
             s = f"({s})^{Fore.LIGHTYELLOW_EX}{self.power}{Style.RESET_ALL}"
 
         return s
+
+    @staticmethod
+    def parse(text: str):
+        list_list_monomials: list[(list[Monomial], str)] = Polynomial.parse_monomials(text)
+
+        list_polynomials: list[PolynomialWithPower] = []
+
+        for l0 in list_list_monomials:
+            polynomial: PolynomialWithPower = PolynomialWithPower(monoms=l0[0], nm=l0[1])
+
+            list_polynomials.append(polynomial)
+
+        return list_polynomials
+
+    @staticmethod
+    def parse_single(text: str):
+        l: list[PolynomialWithPower] = PolynomialWithPower.parse(text)
+
+        if isinstance(l, list) and len(l) == 1:
+            return l[0]

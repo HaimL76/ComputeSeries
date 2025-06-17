@@ -6,8 +6,8 @@ from rational import Rational
 
 class PolynomialRational:
     def __init__(self, numer: PolynomialWithPower, denom: PolynomialWithPower):
-        self.numerator: Polynomial = copy.deepcopy(numer)
-        self.denominator: Polynomial = copy.deepcopy(denom)
+        self.numerator: PolynomialWithPower = copy.deepcopy(numer)
+        self.denominator: PolynomialWithPower = copy.deepcopy(denom)
 
     @staticmethod
     def parse(text: str):

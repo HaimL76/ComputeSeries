@@ -22,10 +22,13 @@ class Series:
         numer: PolynomialWithPower = PolynomialWithPower.parse_single("1")
         denom: PolynomialWithPower = PolynomialWithPower.parse_single(f"1-{self.monomial}")
 
+        numer.__class__ = PolynomialWithPower
+        denom.__class__ = PolynomialWithPower
+
         elems: dict = self.coefficient.elements
 
         if isinstance(elems, dict) and self.power in elems:
-            numer = Polynomial([self.monomial])
+            numer = PolynomialWithPower([self.monomial])
             denom.power = Rational(2)
 
         return PolynomialRational(numer, denom)
@@ -49,26 +52,22 @@ class SeriesProduct:
         self.coefficient: Rational = coeff
 
     def sum(self):
-        numerator: dict[Polynomial, int] = {}
-        denominator: dict[Polynomial, int] = {}
+        numerator: set[PolynomialWithPower] = set[PolynomialWithPower]()
+        denominator: set[PolynomialWithPower] = set[PolynomialWithPower]()
 
         for key in self.dict_series.keys():
             series: Series = self.dict_series[key]
 
-            sum: PolynomialRational = series.sum()
+            sum0: PolynomialRational = series.sum()
 
-            numer: Polynomial = sum.numerator
-            denom: Polynomial = sum.denominator
+            numer: PolynomialWithPower = sum0.numerator
+            denom: PolynomialWithPower = sum0.denominator
 
             if numer not in numerator:
-                numerator[numer] = 0
-
-            numerator[numer] += 1
+                numerator.add(numer)
 
             if denom not in denominator:
-                denominator[denom] = 0
-
-            denominator[denom] += 1
+                denominator.add(denom)
 
         return MultiplePolynomialRational(numer=numerator, denom=denominator)
 
