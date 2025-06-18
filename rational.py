@@ -3,6 +3,9 @@ class Rational:
         self.numerator: int = numer
         self.denominator: int = denom
 
+    def __gt__(self, other):
+        return self.numerator * other.denominator > other.numerator * self.denominator
+
     @staticmethod
     def parse(text: str):
         numer: int = 0

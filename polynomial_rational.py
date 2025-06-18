@@ -59,12 +59,34 @@ class PolynomialRational:
 
         return s
 
-
 class MultiplePolynomialRational:
     def __init__(self, numer: list[PolynomialWithPower],
                  denom: list[PolynomialWithPower]):
         self.numerator: list[PolynomialWithPower] = copy.deepcopy(numer)
         self.denominator: list[PolynomialWithPower] = copy.deepcopy(denom)
+
+    def add_polynomial_rational(self, polynomial_rational):
+        def add_from_list(src: list[PolynomialWithPower], dst: list[PolynomialWithPower]):
+            for polynom_src in src:
+                flag: bool = False
+
+                for polynom_dst in dst:
+                    if polynom_src == polynom_dst:
+                        polynom_dst.power = max(polynom_src.power, polynom_dst.power)
+                        flag = True
+
+                if not flag:
+                    dst.append(polynom_src)
+
+            return dst
+
+        _ = add_from_list(polynomial_rational.numerator, self.numerator)
+        _ = add_from_list(polynomial_rational.denominator, self.denominator)
+
+        return self
+
+
+
 
     def __mul__(self, other):
         for numer in other.numerator.keys():
@@ -74,6 +96,10 @@ class MultiplePolynomialRational:
                 self.numerator[numer] = 0
 
             self.numerator[numer] += 1
+
+
+
+
 
     def __eq__(self, other):
         return self.numerator == other.numerator and self.denominator == other.denominator
