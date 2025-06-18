@@ -7,9 +7,10 @@ from rational import Rational
 
 
 class Polynomial:
-    def __init__(self, monoms: list = [], nm: str = ""):
+    def __init__(self, monoms: list = [], nm: str = "", pow0: Rational = Rational(1)):
         self.monomials: list = copy.deepcopy(monoms)
         self.name: str = nm
+        self.power: Rational = pow0
 
     def __iter__(self):
         for monom in self.monomials:
@@ -85,6 +86,26 @@ class Polynomial:
 
         return list_list_monomials
 
+    def base_equals(self, other):
+        equals: bool = False
+
+        if len(self.monomials) == len(other.monomials):
+            counter0: int = 0
+
+            for monom in self.monomials:
+                if monom in other.monomials:
+                    counter0 += 1
+
+            counter1: int = 0
+
+            for monom in other.monomials:
+                if monom in self.monomials:
+                    counter1 += 1
+
+            equals = counter0 == counter1 and counter0 == len(self.monomials)
+
+        return equals
+
     @staticmethod
     def parse(text: str):
         list_list_monomials: list[(list[Monomial], str)] = Polynomial.parse_monomials(text)
@@ -128,56 +149,22 @@ class Polynomial:
 
         return s
 
+class PolynomialProduct:
+    def __init__(self):
+        self.list_polynomials = []
 
-class PolynomialWithPower(Polynomial):
-    def __init__(self, monoms: list = [], nm: str = "", pow: Rational = Rational(1)):
-        super().__init__(monoms=monoms, nm=nm)
-        self.power: Rational = pow
+    def __iter__(self):
+        for polynomial in self.list_polynomials:
+            yield polynomial
 
-    def __str__(self):
-        s = super().__str__()
+    def mul_polynomial(self, input_polynomial):
+        flag: bool = False
 
-        if self.power != Rational(1):
-            s = f"({s})^{Fore.LIGHTYELLOW_EX}{self.power}{Style.RESET_ALL}"
+        for polynom in self.list_polynomials:
+            if polynom.base_equals(input_polynomial):
+                polynom.power += input_polynomial.power
 
-        return s
+                flag = True
 
-    def __eq__(self, other):
-        equals: bool = False
-
-        if len(self.monomials) == len(other.monomials):
-            counter0: int = 0
-
-            for monom in self.monomials:
-                if monom in other.monomials:
-                    counter0 += 1
-
-            counter1: int = 0
-
-            for monom in other.monomials:
-                if monom in self.monomials:
-                    counter1 += 1
-
-            equals = counter0 == counter1 and counter0 == len(self.monomials)
-
-        return equals
-
-    @staticmethod
-    def parse(text: str):
-        list_list_monomials: list[(list[Monomial], str)] = Polynomial.parse_monomials(text)
-
-        list_polynomials: list[PolynomialWithPower] = []
-
-        for l0 in list_list_monomials:
-            polynomial: PolynomialWithPower = PolynomialWithPower(monoms=l0[0], nm=l0[1])
-
-            list_polynomials.append(polynomial)
-
-        return list_polynomials
-
-    @staticmethod
-    def parse_single(text: str):
-        l: list[PolynomialWithPower] = PolynomialWithPower.parse(text)
-
-        if isinstance(l, list) and len(l) == 1:
-            return l[0]
+        if not flag:
+            self.list_polynomials.append(input_polynomial)

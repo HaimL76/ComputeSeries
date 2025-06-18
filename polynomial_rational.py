@@ -1,13 +1,13 @@
 import copy
 
-from polynomial import Polynomial, PolynomialWithPower
+from polynomial import Polynomial, PolynomialProduct
 from rational import Rational
 
 
 class PolynomialRational:
-    def __init__(self, numer: PolynomialWithPower, denom: PolynomialWithPower):
-        self.numerator: PolynomialWithPower = copy.deepcopy(numer)
-        self.denominator: PolynomialWithPower = copy.deepcopy(denom)
+    def __init__(self, numer: Polynomial, denom: Polynomial):
+        self.numerator: Polynomial = copy.deepcopy(numer)
+        self.denominator: Polynomial = copy.deepcopy(denom)
 
     @staticmethod
     def parse(text: str):
@@ -59,34 +59,66 @@ class PolynomialRational:
 
         return s
 
-class MultiplePolynomialRational:
-    def __init__(self, numer: list[PolynomialWithPower],
-                 denom: list[PolynomialWithPower]):
-        self.numerator: list[PolynomialWithPower] = copy.deepcopy(numer)
-        self.denominator: list[PolynomialWithPower] = copy.deepcopy(denom)
+class PolynomialProductRational:
+    def __init__(self, numer: PolynomialProduct, denom: PolynomialProduct):
+        self.numerator: PolynomialProduct = copy.deepcopy(numer)
+        self.denominator: PolynomialProduct = copy.deepcopy(denom)
 
     def add_polynomial_rational(self, polynomial_rational):
-        def add_from_list(src: list[PolynomialWithPower], dst: list[PolynomialWithPower]):
-            for polynom_src in src:
-                flag: bool = False
+        numer_self: list[PolynomialWithPower] = self.numerator
+        denom_self: list[PolynomialWithPower] = self.denominator
+        numer_input: list[PolynomialWithPower] = polynomial_rational.numerator
+        denom_input: list[PolynomialWithPower] = polynomial_rational.denominator
 
-                for polynom_dst in dst:
-                    if polynom_src == polynom_dst:
-                        polynom_dst.power = max(polynom_src.power, polynom_dst.power)
-                        flag = True
+        for polynom_input in denom_input:
+            flag: bool = False
 
-                if not flag:
-                    dst.append(polynom_src)
+            list_self: list = []
+            list_input: list = []
 
-            return dst
+            for polynom_self in denom_self:
+                if polynom_input == polynom_self:
+                    power_input: Rational = polynom_input.power
+                    power_self: Rational = polynom_self.power
 
-        _ = add_from_list(polynomial_rational.numerator, self.numerator)
-        _ = add_from_list(polynomial_rational.denominator, self.denominator)
+                    polynom_self.power = max(power_input, power_self)
+
+                    if power_self > power_input:
+                        pow0: Rational = power_self - power_input
+
+                        list_input.append(polynom_input)
+                    elif power_input > power_self:
+                        pow0: Rational = power_input - power_self
+
+                        list_self.append(polynom_input)
+
+                    flag = True
+
+            if not flag:
+                denom_self.append(polynom_input)
+
+            if len(list_self):
+                for polynom in list_self:
+                    numer_input = self.multiply(numer_input, polynom)
+
+            if len(list_input):
+                for polynom in list_input:
+                    numer_self = self.multiply(numer_self, polynom)
 
         return self
 
+    def multiply(self, list_polynomials, polynomial):
+        list0: list = []
 
+        for polynom in list_polynomials:
+            if polynom == polynomial:
+                _ = 0
+            else:
+                polynom *= polynomial
 
+            list0.append(polynom)
+
+        return list0
 
     def __mul__(self, other):
         for numer in other.numerator.keys():

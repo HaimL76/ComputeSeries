@@ -5,9 +5,9 @@ from colorama import Fore, Style
 from element import Element
 from exponential import ExponentialProduct
 from monomial import Monomial
-from polynomial import Polynomial, PolynomialWithPower
+from polynomial import Polynomial, PolynomialProduct
 from rational import Rational
-from polynomial_rational import PolynomialRational, MultiplePolynomialRational
+from polynomial_rational import PolynomialRational, PolynomialProductRational
 
 
 class Series:
@@ -19,16 +19,13 @@ class Series:
         self.power: str = pow
 
     def sum(self):
-        numer: PolynomialWithPower = PolynomialWithPower.parse_single("1")
-        denom: PolynomialWithPower = PolynomialWithPower.parse_single(f"1-{self.monomial}")
-
-        numer.__class__ = PolynomialWithPower
-        denom.__class__ = PolynomialWithPower
+        numer: Polynomial = Polynomial.parse_single("1")
+        denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}")
 
         elems: dict = self.coefficient.elements
 
         if isinstance(elems, dict) and self.power in elems:
-            numer = PolynomialWithPower([self.monomial])
+            numer = Polynomial([self.monomial])
             denom.power = Rational(2)
 
         return PolynomialRational(numer, denom)
@@ -52,36 +49,38 @@ class SeriesProduct:
         self.coefficient: Rational = coeff
 
     def sum(self):
-        numerator: list[PolynomialWithPower] = []
-        denominator: list[PolynomialWithPower] = []
+        result_numerator: PolynomialProduct = PolynomialProduct()
+        result_denominator: PolynomialProduct = PolynomialProduct()
 
         for key in self.dict_series.keys():
             series: Series = self.dict_series[key]
 
-            sum0: PolynomialRational = series.sum()
+            single_series_sum: PolynomialRational = series.sum()
 
-            numer: PolynomialWithPower = sum0.numerator
-            denom: PolynomialWithPower = sum0.denominator
+            single_series_sum_numerator: Polynomial = single_series_sum.numerator
+            single_series_sum_denominator: Polynomial = single_series_sum.denominator
 
             flag: bool = False
 
-            for polynom in numerator:
-                if polynom == numer:
+            for polynom in result_numerator.list_polynomials:
+                if polynom.base_equals(single_series_sum_numerator):
+                    polynom.power += single_series_sum_numerator.power
                     flag = True
 
             if not flag:
-                numerator.append(numer)
+                result_numerator.list_polynomials.append(single_series_sum_numerator)
 
             flag = False
 
-            for polynom in denominator:
-                if polynom == denom:
+            for polynom in result_denominator.list_polynomials:
+                if polynom.base_equals(single_series_sum_denominator):
+                    polynom.power += single_series_sum_denominator.power
                     flag = True
 
             if not flag:
-                denominator.append(denom)
+                result_denominator.list_polynomials.append(single_series_sum_denominator)
 
-        return MultiplePolynomialRational(numer=numerator, denom=denominator)
+        return PolynomialProductRational(numer=result_numerator, denom=result_denominator)
 
     @staticmethod
     def from_exponential_product(exponential_product: ExponentialProduct):

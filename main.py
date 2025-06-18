@@ -1,6 +1,6 @@
 from exponential import Exponential, ExponentialProduct
 from polynomial import Polynomial
-from polynomial_rational import MultiplePolynomialRational
+from polynomial_rational import PolynomialProductRational
 from series import SeriesProduct, SeriesProductSum
 from substitution import VariableSubstitution
 
@@ -37,18 +37,18 @@ def main():
 
     counter: int = 0
 
-    total_sum: MultiplePolynomialRational = MultiplePolynomialRational(numer=[], denom=[])
+    #total_sum: MultiplePolynomialRational = MultiplePolynomialRational(numer=[], denom=[])
 
     for ser_prod in l:
         print(f"[{counter}] ser_prod: {ser_prod}")
         counter += 1
 
-        sum0: MultiplePolynomialRational = ser_prod.sum()
+        sum0: PolynomialProductRational = ser_prod.sum()
 
-        total_sum.add_polynomial_rational(sum0)
+        #total_sum.add_polynomial_rational(sum0)
 
         print(f"sum: {sum0}")
 
-    print(f"total sum: {total_sum}")
+    #print(f"total sum: {total_sum}")
 
 main()

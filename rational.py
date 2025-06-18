@@ -41,6 +41,9 @@ class Rational:
 
         return Rational(numer=numer1 + numer2, denom=denom)
 
+    def __sub__(self, other):
+        return self + other
+
     def __mul__(self, other):
         return Rational(numer=self.numerator * other.numerator, denom=self.denominator * other.denominator)
 
