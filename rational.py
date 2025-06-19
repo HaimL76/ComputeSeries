@@ -41,6 +41,19 @@ class Rational:
 
         return Rational(numer=numer1 + numer2, denom=denom)
 
+    def __abs__(self):
+        numer: int = self.numerator
+        denom: int = self.denominator
+
+        if numer < 0 < denom:
+            numer *= -1
+
+        if denom < 0 < numer:
+            denom *= -1
+
+        return Rational(numer=numer, denom=denom)
+
+
     def __sub__(self, other):
         return self + other
 

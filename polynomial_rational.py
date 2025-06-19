@@ -153,3 +153,42 @@ class PolynomialProductRational:
             s = f"[{s}]/[{s0}]"
 
         return s
+
+class PolynomialSummationRational:
+    def __init__(self):
+        self.numerator: list[PolynomialProduct] = []
+        self.denominator: PolynomialProduct = PolynomialProduct()
+
+    def add_polynomial_rational(self, input_product: PolynomialProductRational):
+        input_numerator = input_product.numerator
+        input_denominator = input_product.denominator
+
+        found: bool = False
+
+        numerator_self: PolynomialProduct = PolynomialProduct()
+        numerator_input: PolynomialProduct = PolynomialProduct()
+
+        for polynomial_denominator_input in input_denominator.list_polynomials:
+            found: bool = False
+
+            for polynomial_denominator_self in self.denominator.list_polynomials:
+                if polynomial_denominator_self.base_equals(polynomial_denominator_input):
+                    found = True
+
+                    power_input: Rational = polynomial_denominator_input.power
+                    power_self: Rational = polynomial_denominator_self.power
+
+                    diff = abs(power_self - power_input)
+
+                    if diff > 0:
+                        polynom = copy.deepcopy(polynomial_denominator_self)
+                        polynom.power = diff
+
+                        if power_input > power_self:
+                            polynomial_denominator_self.power = power_input
+
+                        if power_self > power_input:
+                            _ = 0
+
+            if not found:
+                self.denominator.mul_polynomial(polynomial_denominator_input)
