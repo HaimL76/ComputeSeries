@@ -62,15 +62,23 @@ class Monomial:
                 len(self.elements) == len(other.elements)):
             counter0: int = 0
 
-            for elem in self.elements:
-                if elem in other.elements:
-                    counter0 += 1
+            for key in self.elements.keys():
+                if key in other.elements.keys():
+                    elem_self = self.elements[key]
+                    elem_other = other.elements[key]
+
+                    if elem_self.power == elem_other.power:
+                        counter0 += 1
 
             counter1: int = 0
 
-            for elem in other.elements:
-                if elem in self.elements:
-                    counter1 += 1
+            for key in other.elements.keys():
+                if key in self.elements.keys():
+                    elem_self = self.elements[key]
+                    elem_other = other.elements[key]
+
+                    if elem_self.power == elem_other.power:
+                        counter1 += 1
 
             return counter0 == counter1 and counter0 == len(self.elements)
 

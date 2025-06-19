@@ -93,14 +93,16 @@ class Polynomial:
             counter0: int = 0
 
             for monom in self.monomials:
-                if monom in other.monomials:
-                    counter0 += 1
+                for monom0 in other.monomials:
+                    if monom0 == monom:
+                        counter0 += 1
 
             counter1: int = 0
 
             for monom in other.monomials:
-                if monom in self.monomials:
-                    counter1 += 1
+                for monom0 in self.monomials:
+                    if monom0 == monom:
+                        counter1 += 1
 
             equals = counter0 == counter1 and counter0 == len(self.monomials)
 
@@ -144,6 +146,11 @@ class Polynomial:
             s = f"{self.name} = "
 
         s0: str = " + ".join(f"{monom}" for monom in self.monomials)
+
+        s0 = f"({s0})"
+
+        if self.power != Rational(1):
+            s0 = f"{s0}^{Fore.LIGHTYELLOW_EX}{self.power}{Style.RESET_ALL}"
 
         s = f"{s}{s0}"
 

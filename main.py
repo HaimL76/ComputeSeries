@@ -41,13 +41,14 @@ def main():
 
     for ser_prod in l:
         print(f"[{counter}] ser_prod: {ser_prod}")
-        counter += 1
 
         sum0: PolynomialProductRational = ser_prod.sum()
 
         #total_sum.add_polynomial_rational(sum0)
 
-        print(f"sum: {sum0}")
+        print(f"[{counter}] sum: {sum0}")
+
+        counter += 1
 
     #print(f"total sum: {total_sum}")
 

@@ -38,7 +38,7 @@ class Series:
 
         s = rf"\sum_{{{self.power}={self.start_index}}}{s}({self.monomial})"
 
-        s = f"{s}^{Fore.LIGHTGREEN_EX}{self.power}{Style.RESET_ALL}"
+        s = f"{s}^{Fore.LIGHTCYAN_EX}{self.power}{Style.RESET_ALL}"
 
         return s
 
