@@ -187,6 +187,12 @@ class PolynomialSummationRational:
                         if power_input > power_self:
                             polynomial_denominator_self.power = power_input
 
+                            if self.numerator is not None and len(self.numerator) > 0:
+                                for product in self.numerator:
+                                    product.mul_polynomial(polynom)
+                            else:
+                                self.numerator = [PolynomialProduct(polynoms=[polynom])]
+
                         if power_self > power_input:
                             _ = 0
 

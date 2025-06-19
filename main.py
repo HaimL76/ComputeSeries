@@ -50,6 +50,6 @@ def main():
 
         counter += 1
 
-    #print(f"total sum: {total_sum}")
+    print(f"total sum: {total_sum}")
 
 main()

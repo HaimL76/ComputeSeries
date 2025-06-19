@@ -12,6 +12,10 @@ class Polynomial:
         self.name: str = nm
         self.power: Rational = pow0
 
+    @staticmethod
+    def create_one():
+        return Polynomial(monoms=[Monomial()])
+
     def __iter__(self):
         for monom in self.monomials:
             yield monom
@@ -157,8 +161,11 @@ class Polynomial:
         return s
 
 class PolynomialProduct:
-    def __init__(self):
-        self.list_polynomials = []
+    def __init__(self, polynoms: list[Polynomial] = []):
+        self.list_polynomials = polynoms
+
+        if self.list_polynomials is None or len(self.list_polynomials) < 1:
+            self.list_polynomials = [Polynomial.create_one()]
 
     def __iter__(self):
         for polynomial in self.list_polynomials:
