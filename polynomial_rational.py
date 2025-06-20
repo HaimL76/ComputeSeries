@@ -163,35 +163,39 @@ class PolynomialSummationRational:
         input_numerator = input_product.numerator
         input_denominator = input_product.denominator
 
-        found: bool = False
-
-        for polynomial_denominator_input in input_denominator.list_polynomials:
+        if (self.numerator is None or len(self.numerator) < 1) and (self.denominator is None or self.denominator.list_polynomials is None or len(self.denominator.list_polynomials) < 1):
+            self.numerator = [copy.deepcopy(input_numerator)]
+            self.denominator = copy.deepcopy(input_denominator)
+        else:
             found: bool = False
 
-            for polynomial_denominator_self in self.denominator.list_polynomials:
-                if polynomial_denominator_self.base_equals(polynomial_denominator_input):
-                    found = True
+            for polynomial_denominator_input in input_denominator.list_polynomials:
+                found: bool = False
 
-                    power_input: Rational = polynomial_denominator_input.power
-                    power_self: Rational = polynomial_denominator_self.power
+                for polynomial_denominator_self in self.denominator.list_polynomials:
+                    if polynomial_denominator_self.base_equals(polynomial_denominator_input):
+                        found = True
 
-                    diff = abs(power_self - power_input)
+                        power_input: Rational = polynomial_denominator_input.power
+                        power_self: Rational = polynomial_denominator_self.power
 
-                    if diff > 0:
-                        polynom = copy.deepcopy(polynomial_denominator_self)
-                        polynom.power = diff
+                        diff = abs(power_self - power_input)
 
-                        if power_input > power_self:
-                            polynomial_denominator_self.power = power_input
+                        if diff > 0:
+                            polynom = copy.deepcopy(polynomial_denominator_self)
+                            polynom.power = diff
 
-                            if self.numerator is not None and len(self.numerator) > 0:
-                                for product in self.numerator:
-                                    product.mul_polynomial(polynom)
-                            else:
-                                self.numerator = [PolynomialProduct(polynoms=[polynom])]
+                            if power_input > power_self:
+                                polynomial_denominator_self.power = power_input
 
-                        if power_self > power_input:
-                            _ = 0
+                                if self.numerator is not None and len(self.numerator) > 0:
+                                    for product in self.numerator:
+                                        product.mul_polynomial(polynom)
+                                else:
+                                    self.numerator = [PolynomialProduct(polynoms=[polynom])]
 
-            if not found:
-                self.denominator.mul_polynomial(polynomial_denominator_input)
+                            if power_self > power_input:
+                                input_numerator.mul_polynomial(polynom)
+
+                if not found:
+                    self.denominator.mul_polynomial(polynomial_denominator_input)
