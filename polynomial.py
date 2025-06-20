@@ -185,3 +185,6 @@ class PolynomialProduct:
 
         if not flag:
             self.list_polynomials.append(input_polynomial)
+
+    def __str__(self):
+        return "*".join(f"{polynom}" for polynom in self.list_polynomials)

@@ -167,8 +167,6 @@ class PolynomialSummationRational:
             self.numerator = [copy.deepcopy(input_numerator)]
             self.denominator = copy.deepcopy(input_denominator)
         else:
-            found: bool = False
-
             for polynomial_denominator_input in input_denominator.list_polynomials:
                 found: bool = False
 
@@ -199,3 +197,18 @@ class PolynomialSummationRational:
 
                 if not found:
                     self.denominator.mul_polynomial(polynomial_denominator_input)
+
+                    if self.numerator is not None and len(self.numerator) > 0:
+                        for product in self.numerator:
+                            product.mul_polynomial(polynomial_denominator_input)
+                    else:
+                        self.numerator = [PolynomialProduct(polynoms=[polynomial_denominator_input])]
+
+            self.numerator.append(input_numerator)
+
+    def __str__(self):
+        s: str = "+".join(f"{product}" for product in self.numerator)
+
+        s = f"{s}/{self.denominator}"
+
+        return s
