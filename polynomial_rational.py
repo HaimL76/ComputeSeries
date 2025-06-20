@@ -165,9 +165,6 @@ class PolynomialSummationRational:
 
         found: bool = False
 
-        numerator_self: PolynomialProduct = PolynomialProduct()
-        numerator_input: PolynomialProduct = PolynomialProduct()
-
         for polynomial_denominator_input in input_denominator.list_polynomials:
             found: bool = False
 

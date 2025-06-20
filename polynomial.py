@@ -161,11 +161,14 @@ class Polynomial:
         return s
 
 class PolynomialProduct:
-    def __init__(self, polynoms: list[Polynomial] = []):
+    def __init__(self, polynoms=None):
+        if polynoms is None:
+            polynoms = []
+
         self.list_polynomials = polynoms
 
-        if self.list_polynomials is None or len(self.list_polynomials) < 1:
-            self.list_polynomials = [Polynomial.create_one()]
+        #if self.list_polynomials is None or len(self.list_polynomials) < 1:
+         #   self.list_polynomials = [Polynomial.create_one()]
 
     def __iter__(self):
         for polynomial in self.list_polynomials:

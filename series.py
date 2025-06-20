@@ -64,7 +64,9 @@ class SeriesProduct:
 
             for polynom in result_numerator.list_polynomials:
                 if polynom.base_equals(single_series_sum_numerator):
-                    polynom.power += single_series_sum_numerator.power
+                    if not polynom.is_one():
+                        polynom.power += single_series_sum_numerator.power
+
                     flag = True
 
             if not flag:
