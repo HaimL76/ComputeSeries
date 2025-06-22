@@ -16,6 +16,8 @@ def main():
 
     p: Polynomial = p1 * p2
 
+    p = Polynomial.parse_brackets(f"[1+{coeff}.v2][1+{coeff}.v3]")
+
     print(f"p = {p}")
 
     substitution: VariableSubstitution = VariableSubstitution.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")

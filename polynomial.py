@@ -113,6 +113,25 @@ class Polynomial:
         return equals
 
     @staticmethod
+    def parse_brackets(text: str):
+        text = text.replace("[", "|")
+        text = text.replace("]", "|")
+
+        l: list[str] = text.split("|")
+
+        polynomial: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(1))])
+
+        for s in l:
+            s = s.strip()
+
+            if s:
+                p: Polynomial = Polynomial.parse_single(s)
+
+                polynomial *= p
+
+        return polynomial
+
+    @staticmethod
     def parse(text: str):
         list_list_monomials: list[(list[Monomial], str)] = Polynomial.parse_monomials(text)
 
