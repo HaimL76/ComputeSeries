@@ -161,11 +161,13 @@ class Polynomial:
         return s
 
 class PolynomialProduct:
-    def __init__(self, polynoms=None):
+    def __init__(self, polynoms=None, coeff: Rational = Rational(1)):
         if polynoms is None:
             polynoms = []
 
         self.list_polynomials = polynoms
+
+        self.coefficient: Rational = coeff
 
         #if self.list_polynomials is None or len(self.list_polynomials) < 1:
          #   self.list_polynomials = [Polynomial.create_one()]
@@ -187,4 +189,14 @@ class PolynomialProduct:
             self.list_polynomials.append(input_polynomial)
 
     def __str__(self):
-        return "*".join(f"{polynom}" for polynom in self.list_polynomials)
+        list_polynoms: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.list_polynomials))
+
+        if len(list_polynoms) < 1:
+            list_polynoms = self.list_polynomials[0:1]
+
+        s: str = "*".join(f"{polynom}" for polynom in list_polynoms)
+
+        if self.coefficient != Rational(1):
+            s = f"{Fore.LIGHTMAGENTA_EX}{self.coefficient}{Style.RESET_ALL}*{s}"
+
+        return s

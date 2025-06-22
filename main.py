@@ -39,13 +39,13 @@ def main():
 
     total_sum: PolynomialSummationRational = PolynomialSummationRational()
 
-    debug_counter: int = 2
+    debug_counter: int = 3
 
     for ser_prod in l:
-        if debug_counter <= 0:
-            continue
+        #if debug_counter <= 0:
+         #   continue
 
-        debug_counter -= 1
+        #debug_counter -= 1
 
         print(f"[{counter}] ser_prod: {ser_prod}")
 

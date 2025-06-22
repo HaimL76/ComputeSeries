@@ -1,5 +1,7 @@
 import copy
 
+from colorama import Fore, Style
+
 from polynomial import Polynomial, PolynomialProduct
 from rational import Rational
 
@@ -144,9 +146,15 @@ class PolynomialProductRational:
         if len(numerator0) > 0:
             s = "*".join([f"({polynom})" for polynom in numerator0])
 
+        if self.numerator.coefficient != Rational(1):
+            s = f"{Fore.LIGHTMAGENTA_EX}{self.numerator.coefficient}{Style.RESET_ALL}*{s}"
+
         denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
 
         s0: str = "1"
+
+        if self.denominator.coefficient != Rational(1):
+            s = f"{Fore.LIGHTMAGENTA_EX}{self.denominator.coefficient}{Style.RESET_ALL}*{s}"
 
         if len(denominator0):
             s0 = "*".join([f"({polynom})" for polynom in denominator0])
@@ -207,8 +215,8 @@ class PolynomialSummationRational:
             self.numerator.append(input_numerator)
 
     def __str__(self):
-        s: str = "+".join(f"{product}" for product in self.numerator)
+        s: str = " + ".join(f"{product}" for product in self.numerator)
 
-        s = f"{s}/{self.denominator}"
+        s = f"[{s}]/[{self.denominator}]"
 
         return s

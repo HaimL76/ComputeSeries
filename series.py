@@ -82,6 +82,8 @@ class SeriesProduct:
             if not flag:
                 result_denominator.list_polynomials.append(single_series_sum_denominator)
 
+        result_numerator.coefficient = self.coefficient
+
         return PolynomialProductRational(numer=result_numerator, denom=result_denominator)
 
     @staticmethod
@@ -139,7 +141,7 @@ class SeriesProduct:
         s: str = ""
 
         if self.coefficient is not None and self.coefficient != Rational(1):
-            s = f"{Fore.LIGHTCYAN_EX}{self.coefficient}{Style.RESET_ALL}"
+            s = f"{Fore.LIGHTMAGENTA_EX}{self.coefficient}{Style.RESET_ALL}"
 
         s0: str = "*".join(f"[{ser}]" for ser in self.dict_series.values())
 
