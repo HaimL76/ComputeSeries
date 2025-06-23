@@ -44,9 +44,10 @@ class Series:
 
 
 class SeriesProduct:
-    def __init__(self, sers: dict = {}, coeff: Rational = Rational(1)):
+    def __init__(self, sers: dict = {}, coeff: Rational = Rational(1), const_coeffs: dict[str, Element] = {}):
         self.dict_series: dict = copy.deepcopy(sers)
         self.coefficient: Rational = coeff
+        self.const_coefficients: dict[str, Element] = copy.deepcopy(const_coeffs)
 
     def sum(self):
         result_numerator: PolynomialProduct = PolynomialProduct()
@@ -185,7 +186,7 @@ class SeriesProduct:
 
                 new_dict[pow] = series
 
-            new_series_product: SeriesProduct = SeriesProduct(new_dict, coeff=monom.coefficient)
+            new_series_product: SeriesProduct = SeriesProduct(new_dict, coeff=monom.coefficient, const_coeffs=monom.const_coefficients)
 
             l.append(new_series_product)
 

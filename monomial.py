@@ -6,7 +6,7 @@ from rational import Rational
 
 class Monomial:
     def __init__(self, elems: dict = {}, coeff: Rational = Rational(1),
-                  const_coeffs: dict = {}):
+                  const_coeffs: dict[str, Element] = {}):
         self.elements: dict = {}
 
         if isinstance(elems, dict):
@@ -19,7 +19,7 @@ class Monomial:
                     self.elements[elem.symbol] *= elem
 
         self.coefficient: Rational = coeff
-        self.const_coefficients: dict = copy.deepcopy(const_coeffs)
+        self.const_coefficients: dict[str, Element] = copy.deepcopy(const_coeffs)
         ##self.power: int = 1
 
     @staticmethod

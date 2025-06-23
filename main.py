@@ -8,26 +8,24 @@ const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 def main():
-    #p1: Polynomial = Polynomial.parse_single(f"1+{coeff}.v2")
-    #p2: Polynomial = Polynomial.parse_single(f"1+{coeff}.v3")
+    process_line("[1+(1-p^{-1}).v2][1+(1-p^{-1}).v3];v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b;p^{7.v1+10.v2+10.v3+7.v4}*t^{"
+                 "4.v1+6.v2+6.v3+4.v4}")
 
-    #print(f"p1 = {p1}")
-    #print(f"p2 = {p2}")
+def process_line(text: str):
+    strs: list[str] = text.split(";")
 
-    #p: Polynomial = p1 * p2
-
-    p: Polynomial = Polynomial.parse_brackets(f"[1+{coeff}.v2][1+{coeff}.v3]")
+    p: Polynomial = Polynomial.parse_brackets(strs[0])
 
     print(f"p = {p}")
 
-    substitution: VariableSubstitution = VariableSubstitution.parse("v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b")
+    substitution: VariableSubstitution = VariableSubstitution.parse(strs[1])
 
     p0: Polynomial = substitution.substitude_polynomial(p)
 
     print(f"p0 = {p0}")
     print(f"substitution: {substitution}")
 
-    exp_prod: ExponentialProduct = ExponentialProduct.parse("p^{7.v1+10.v2+10.v3+7.v4}*t^{4.v1+6.v2+6.v3+4.v4}")
+    exp_prod: ExponentialProduct = ExponentialProduct.parse(strs[2])
     exp_prod0: ExponentialProduct = substitution.substitude_exponential_product(exp_prod)
 
     print(f"exp_prod = {exp_prod}")
