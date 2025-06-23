@@ -8,15 +8,15 @@ const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 def main():
-    p1: Polynomial = Polynomial.parse_single(f"1+{coeff}.v2")
-    p2: Polynomial = Polynomial.parse_single(f"1+{coeff}.v3")
+    #p1: Polynomial = Polynomial.parse_single(f"1+{coeff}.v2")
+    #p2: Polynomial = Polynomial.parse_single(f"1+{coeff}.v3")
 
-    print(f"p1 = {p1}")
-    print(f"p2 = {p2}")
+    #print(f"p1 = {p1}")
+    #print(f"p2 = {p2}")
 
-    p: Polynomial = p1 * p2
+    #p: Polynomial = p1 * p2
 
-    p = Polynomial.parse_brackets(f"[1+{coeff}.v2][1+{coeff}.v3]")
+    p: Polynomial = Polynomial.parse_brackets(f"[1+{coeff}.v2][1+{coeff}.v3]")
 
     print(f"p = {p}")
 
