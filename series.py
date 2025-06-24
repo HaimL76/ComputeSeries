@@ -85,6 +85,8 @@ class SeriesProduct:
 
         result_numerator.coefficient = self.coefficient
 
+        result_numerator.const_coefficients = copy.deepcopy(self.const_coefficients)
+
         return PolynomialProductRational(numer=result_numerator, denom=result_denominator)
 
     @staticmethod
@@ -143,6 +145,14 @@ class SeriesProduct:
 
         if self.coefficient is not None and self.coefficient != Rational(1):
             s = f"{Fore.LIGHTMAGENTA_EX}{self.coefficient}{Style.RESET_ALL}"
+
+        if self.const_coefficients:
+            if s:
+                s = f"{s}*"
+
+            s1: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients])
+
+            s = f"{s}{Fore.RED}{s1}{Style.RESET_ALL}"
 
         s0: str = "*".join(f"[{ser}]" for ser in self.dict_series.values())
 

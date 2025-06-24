@@ -2,6 +2,7 @@ import copy
 
 from colorama import Fore, Style
 
+from element import Element
 from monomial import Monomial
 from rational import Rational
 
@@ -180,13 +181,15 @@ class Polynomial:
         return s
 
 class PolynomialProduct:
-    def __init__(self, polynoms=None, coeff: Rational = Rational(1)):
+    def __init__(self, polynoms=None, coeff: Rational = Rational(1), const_coeffs: dict[str, Element] = {}):
         if polynoms is None:
             polynoms = []
 
         self.list_polynomials = polynoms
 
         self.coefficient: Rational = coeff
+
+        self.const_coefficients: dict[str, Element] = copy.deepcopy(const_coeffs)
 
         #if self.list_polynomials is None or len(self.list_polynomials) < 1:
          #   self.list_polynomials = [Polynomial.create_one()]

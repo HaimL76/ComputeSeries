@@ -146,6 +146,11 @@ class PolynomialProductRational:
         if len(numerator0) > 0:
             s = "*".join([f"({polynom})" for polynom in numerator0])
 
+        if len(self.numerator.const_coefficients) > 0:
+            s1 = "*".join([f"({const_coeff})" for const_coeff in self.numerator.const_coefficients])
+
+            s = f"{Fore.RED}{s1}{Style.RESET_ALL}*{s}"
+
         if self.numerator.coefficient != Rational(1):
             s = f"{Fore.LIGHTMAGENTA_EX}{self.numerator.coefficient}{Style.RESET_ALL}*{s}"
 
