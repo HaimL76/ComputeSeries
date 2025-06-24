@@ -211,6 +211,27 @@ class PolynomialProduct:
             self.list_polynomials.append(input_polynomial)
 
     def __str__(self):
+        return self.get_ltx_str()
+
+    def get_ltx_str(self):
+        list_polynoms: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.list_polynomials))
+
+        if len(list_polynoms) < 1:
+            list_polynoms = self.list_polynomials[0:1]
+
+        s: str = "".join(f"{polynom}" for polynom in list_polynoms)
+
+        if len(self.const_coefficients) > 0:
+            s0: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients])
+
+            s = f"{s0}{s}"
+
+        if self.coefficient != Rational(1):
+            s = f"{self.coefficient}{s}"
+
+        return s
+
+    def get_str(self):
         list_polynoms: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.list_polynomials))
 
         if len(list_polynoms) < 1:

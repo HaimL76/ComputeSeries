@@ -11,7 +11,13 @@ class Exponential:
         return Exponential(symb=self.symbol, exp=self.exponent + other.exponent)
 
     def __str__(self):
+        return self.get_ltx_str()
+
+    def get_str(self):
         return f"{self.symbol}^({self.exponent})"
+
+    def get_ltx_str(self):
+        return f"{self.symbol}^{{{self.exponent}}}"
 
     @staticmethod
     def parse(text: str):
@@ -80,4 +86,10 @@ class ExponentialProduct:
         return exponential_product
 
     def __str__(self):
+        return self.get_ltx_str()
+
+    def get_str(self):
         return "*".join(f"{exp}" for exp in self.exponentials.values())
+
+    def get_ltx_str(self):
+        return "".join(f"{exp}" for exp in self.exponentials.values())

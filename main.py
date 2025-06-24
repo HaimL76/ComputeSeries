@@ -57,6 +57,7 @@ def process_line(text: str):
 
         counter += 1
 
-    print(f"total sum: {total_sum}")
+    with open(r"c:\gpp\1.tex", "w") as fw:
+        fw.write(f"{total_sum}")
 
 main()

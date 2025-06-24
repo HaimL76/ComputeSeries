@@ -39,10 +39,21 @@ class Element:
 
         return Element(symb, pow)
 
-    def __str__(self):
+    def get_str(self):
         s: str = self.symbol
 
         if self.power != 1:
             s = f"{s}^{self.power}"
 
         return s
+
+    def get_ltx_str(self):
+        s: str = self.symbol
+
+        if self.power != 1:
+            s = f"{s}^{{{self.power}}}"
+
+        return s
+
+    def __str__(self):
+        return self.get_ltx_str()

@@ -66,6 +66,17 @@ class Rational:
         return self.numerator == other.numerator and self.denominator == other.denominator
 
     def __str__(self):
+        return self.get_ltx_str()
+
+    def get_ltx_str(self):
+        s: str = f"{self.numerator}"
+
+        if self.denominator != 1:
+            s = f"\\frac{{{s}}}{{{self.denominator}}}"
+
+        return s
+
+    def get_str(self):
         s: str = f"{self.numerator}"
 
         if self.denominator != 1:

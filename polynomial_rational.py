@@ -220,6 +220,16 @@ class PolynomialSummationRational:
             self.numerator.append(input_numerator)
 
     def __str__(self):
+        return self.get_ltx_str()
+
+    def get_ltx_str(self):
+        s: str = "+".join(f"{product}" for product in self.numerator)
+
+        s = f"\\frac{{{s}}}{{{self.denominator}}}"
+
+        return s
+
+    def get_str(self):
         s: str = " + ".join(f"{product}" for product in self.numerator)
 
         s = f"[{s}]/[{self.denominator}]"
