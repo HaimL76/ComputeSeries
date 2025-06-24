@@ -218,6 +218,11 @@ class PolynomialProduct:
 
         s: str = "*".join(f"{polynom}" for polynom in list_polynoms)
 
+        if len(self.const_coefficients) > 0:
+            s0: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients])
+
+            s = f"{Fore.RED}{s0}{Style.RESET_ALL}*{s}"
+
         if self.coefficient != Rational(1):
             s = f"{Fore.LIGHTMAGENTA_EX}{self.coefficient}{Style.RESET_ALL}*{s}"
 
