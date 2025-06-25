@@ -28,8 +28,14 @@ class Series:
         elems: dict = self.coefficient.elements
 
         if isinstance(elems, dict) and self.power in elems:
-            numer = Polynomial([self.monomial])
-            denom.power = Rational(2)
+            elem: Element = elems[self.power]
+
+            if elem.power == 1:
+                numer = Polynomial([self.monomial])
+                denom.power = Rational(2)
+            elif elem.power == 2:
+                numer = Polynomial([self.monomial*self.monomial, self.monomial])
+                denom.power = Rational(3)
 
         return PolynomialRational(numer, denom)
 
