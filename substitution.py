@@ -89,5 +89,11 @@ class VariableSubstitution:
                     exponential_product.add_exponential(exp)
 
         return exponential_product
+
     def __str__(self):
+        return self.get_ltx_str()
+
+    def get_ltx_str(self):
+        return "".join(f"\\[{key}\\rightarrow{{{self.substitution[key]}}}\\]" for key in self.substitution)
+    def get_str(self):
         return "\n".join(f"{key}->{self.substitution[key]}" for key in self.substitution)

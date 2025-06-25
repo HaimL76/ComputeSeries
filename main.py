@@ -8,8 +8,8 @@ const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 def main():
-    process_line("[1+(1-p^{-1}).v2][1+(1-p^{-1}).v3];v1=2.a+b+c+d,v2=a,v3=a+b+c,v4=a+b;p^{7.v1+10.v2+10.v3+7.v4}*t^{"
-                 "4.v1+6.v2+6.v3+4.v4}")
+    process_line("[1+(1-p^{-1}).v_2][1+(1-p^{-1}).v_3];v_1=2.a+b+c+d,v_2=a,v_3=a+b+c,v_4=a+b;p^{7.v_1+10.v_2+10.v_3+7.v_4}*t^{"
+                 "4.v_1+6.v_2+6.v_3+4.v_4}")
 
 def process_line(text: str):
     strs: list[str] = text.split(";")
@@ -63,7 +63,11 @@ def process_line(text: str):
         \usepackage{graphicx} % Required for inserting images
         \begin{document}
         """)
+        fw.write(f"\\[{p}\\]")
+        fw.write(f"{substitution}")
         fw.write(f"\\[{p0}\\]")
+        s0: str = "+".join([f"\\[{ser_prod}\\]" for ser_prod in l])
+        fw.write(f"{s0}")
         fw.write(f"{total_sum}")
         fw.write("""\end{document}""")
 main()

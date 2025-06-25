@@ -33,7 +33,7 @@ class Series:
 
         return PolynomialRational(numer, denom)
 
-    def __str__(self):
+    def get_str(self):
         s: str = ""
 
         if self.coefficient is not None and not self.coefficient.is_one():
@@ -45,6 +45,20 @@ class Series:
 
         return s
 
+    def get_ltx_str(self):
+        s: str = ""
+
+        if self.coefficient is not None and not self.coefficient.is_one():
+            s = f"{self.coefficient}"
+
+        s = f"\\sum_{{{self.power}={self.start_index}}}{s}({self.monomial})"
+
+        s = f"{s}^{{{self.power}}}"
+
+        return s
+
+    def __str__(self):
+        return self.get_ltx_str()
 
 class SeriesProduct:
     def __init__(self, sers: dict = {}, coeff: Rational = Rational(1), const_coeffs: dict[str, Element] = {}):
@@ -143,7 +157,7 @@ class SeriesProduct:
 
         return SeriesProduct(sers=d0)
 
-    def __str__(self):
+    def get_str(self):
         s: str = ""
 
         if self.coefficient is not None and self.coefficient != Rational(1):
@@ -162,6 +176,26 @@ class SeriesProduct:
         s = f"{s}{s0}"
 
         return s
+
+    def get_ltx_str(self):
+        s: str = ""
+
+        if self.coefficient is not None and self.coefficient != Rational(1):
+            s = f"{self.coefficient}"
+
+        if self.const_coefficients:
+            s1: str = "".join([f"({const_coeff})" for const_coeff in self.const_coefficients])
+
+            s = f"{s}{s1}"
+
+        s0: str = "".join(f"{ser}" for ser in self.dict_series.values())
+
+        s = f"{s}{s0}"
+
+        return s
+
+    def __str__(self):
+        return self.get_ltx_str()
 
     def multiply_by_polynomial(self, polynomial: Polynomial):
         l: list = []
