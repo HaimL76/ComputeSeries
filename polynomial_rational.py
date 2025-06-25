@@ -66,75 +66,6 @@ class PolynomialProductRational:
         self.numerator: PolynomialProduct = copy.deepcopy(numer)
         self.denominator: PolynomialProduct = copy.deepcopy(denom)
 
-    def add_polynomial_rational(self, polynomial_rational):
-        numer_self: list[PolynomialWithPower] = self.numerator
-        denom_self: list[PolynomialWithPower] = self.denominator
-        numer_input: list[PolynomialWithPower] = polynomial_rational.numerator
-        denom_input: list[PolynomialWithPower] = polynomial_rational.denominator
-
-        for polynom_input in denom_input:
-            flag: bool = False
-
-            list_self: list = []
-            list_input: list = []
-
-            for polynom_self in denom_self:
-                if polynom_input == polynom_self:
-                    power_input: Rational = polynom_input.power
-                    power_self: Rational = polynom_self.power
-
-                    polynom_self.power = max(power_input, power_self)
-
-                    if power_self > power_input:
-                        pow0: Rational = power_self - power_input
-
-                        list_input.append(polynom_input)
-                    elif power_input > power_self:
-                        pow0: Rational = power_input - power_self
-
-                        list_self.append(polynom_input)
-
-                    flag = True
-
-            if not flag:
-                denom_self.append(polynom_input)
-
-            if len(list_self):
-                for polynom in list_self:
-                    numer_input = self.multiply(numer_input, polynom)
-
-            if len(list_input):
-                for polynom in list_input:
-                    numer_self = self.multiply(numer_self, polynom)
-
-        return self
-
-    def multiply(self, list_polynomials, polynomial):
-        list0: list = []
-
-        for polynom in list_polynomials:
-            if polynom == polynomial:
-                _ = 0
-            else:
-                polynom *= polynomial
-
-            list0.append(polynom)
-
-        return list0
-
-    def __mul__(self, other):
-        for numer in other.numerator.keys():
-            # numer = other.numerator[key]
-
-            if numer not in self.numerator:
-                self.numerator[numer] = 0
-
-            self.numerator[numer] += 1
-
-
-
-
-
     def __eq__(self, other):
         return self.numerator == other.numerator and self.denominator == other.denominator
 
@@ -223,9 +154,7 @@ class PolynomialSummationRational:
         return self.get_ltx_str()
 
     def get_ltx_str(self):
-        s: str = "+".join(f"{product}" for product in self.numerator)
-
-        s = f"\\frac{{{s}}}{{{self.denominator}}}"
+        s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
 
         return s
 

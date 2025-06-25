@@ -58,6 +58,12 @@ def process_line(text: str):
         counter += 1
 
     with open(r"c:\gpp\1.tex", "w") as fw:
+        fw.write(r"""
+        \documentclass{article}
+        \usepackage{graphicx} % Required for inserting images
+        \begin{document}
+        """)
+        fw.write(f"\\[{p0}\\]")
         fw.write(f"{total_sum}")
-
+        fw.write("""\end{document}""")
 main()

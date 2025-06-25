@@ -8,10 +8,11 @@ from rational import Rational
 
 
 class Polynomial:
-    def __init__(self, monoms: list = [], nm: str = "", pow0: Rational = Rational(1)):
+    def __init__(self, monoms: list = [], nm: str = "", pow0: Rational = Rational(1), in_product: bool = False):
         self.monomials: list = copy.deepcopy(monoms)
         self.name: str = nm
         self.power: Rational = pow0
+        self.in_polynomial_product: bool = in_product
 
     @staticmethod
     def create_one():
@@ -164,6 +165,9 @@ class Polynomial:
         return polynomial
 
     def __str__(self):
+        return self.get_ltx_str()
+
+    def get_str(self):
         s: str = ""
 
         if self.name:
@@ -175,6 +179,21 @@ class Polynomial:
 
         if self.power != Rational(1):
             s0 = f"{s0}^{Fore.LIGHTYELLOW_EX}{self.power}{Style.RESET_ALL}"
+
+        s = f"{s}{s0}"
+
+        return s
+
+    def get_ltx_str(self):
+        s: str = ""
+
+        s0: str = "+".join(f"{monom}" for monom in self.monomials)
+
+        if self.in_polynomial_product or self.power != Rational(1):
+            s0 = f"({s0})"
+
+        if self.power != Rational(1):
+            s0 = f"{s0}^{{{self.power}}}"
 
         s = f"{s}{s0}"
 

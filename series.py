@@ -22,6 +22,9 @@ class Series:
         numer: Polynomial = Polynomial.parse_single("1")
         denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}")
 
+        numer.in_polynomial_product = True
+        denom.in_polynomial_product = True
+
         elems: dict = self.coefficient.elements
 
         if isinstance(elems, dict) and self.power in elems:
