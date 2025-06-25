@@ -218,11 +218,11 @@ class SeriesProduct:
                     if symb not in d0:
                         d0[symb] = Element(symb=symb, pow=0)
 
-                    elem = d0[symb]
+                    elem0 = d0[symb]
 
-                    elem = Element(symb=elem.symbol, pow=elem.power + 1)
+                    elem0 = Element(symb=elem0.symbol, pow=elem0.power + elem.power)
 
-                    d0[symb] = elem
+                    d0[symb] = elem0
 
                     if len(d0) > 0:
                         monomial: Monomial = Monomial(elems=d0)
