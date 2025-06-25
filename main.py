@@ -8,7 +8,8 @@ const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 def main():
-    process_line("[1+(1-p^{-1}).v_2][1+(1-p^{-1}).v_3];v_1=2.a+b+c+d,v_2=a,v_3=a+b+c,v_4=a+b;p^{7.v_1+10.v_2+10.v_3+7.v_4}*t^{"
+    process_line("[1+(1-p^{-1}).v_2][1+(1-p^{-1}).v_3];v_1=2.a+b+c+d,v_2=a,v_3=a+b+c,v_4=a+b;a>=0,b>=0,c>=0,"
+                 "d>=1;p^{7.v_1+10.v_2+10.v_3+7.v_4}*t^{"
                  "4.v_1+6.v_2+6.v_3+4.v_4}")
 
 def process_line(text: str):
@@ -25,13 +26,15 @@ def process_line(text: str):
     print(f"p0 = {p0}")
     print(f"substitution: {substitution}")
 
-    exp_prod: ExponentialProduct = ExponentialProduct.parse(strs[2])
+    exp_prod: ExponentialProduct = ExponentialProduct.parse(strs[3])
     exp_prod0: ExponentialProduct = substitution.substitude_exponential_product(exp_prod)
 
     print(f"exp_prod = {exp_prod}")
     print(f"exp_prod0 = {exp_prod0}")
 
     series_product = SeriesProduct.from_exponential_product(exp_prod0)
+
+    series_product.parse_starting_indices(strs[2])
 
     l: list = series_product.multiply_by_polynomial(p0)
 

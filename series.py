@@ -22,6 +22,9 @@ class Series:
         numer: Polynomial = Polynomial.parse_single("1")
         denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}")
 
+        if self.start_index == 1:
+            numer = Polynomial([self.monomial], in_product=True)
+
         numer.in_polynomial_product = True
         denom.in_polynomial_product = True
 
@@ -31,10 +34,10 @@ class Series:
             elem: Element = elems[self.power]
 
             if elem.power == 1:
-                numer = Polynomial([self.monomial])
+                numer = Polynomial([self.monomial], in_product=True)
                 denom.power = Rational(2)
             elif elem.power == 2:
-                numer = Polynomial([self.monomial*self.monomial, self.monomial])
+                numer = Polynomial([self.monomial*self.monomial, self.monomial], in_product=True)
                 denom.power = Rational(3)
 
         return PolynomialRational(numer, denom)
@@ -71,6 +74,36 @@ class SeriesProduct:
         self.dict_series: dict = copy.deepcopy(sers)
         self.coefficient: Rational = coeff
         self.const_coefficients: dict[str, Element] = copy.deepcopy(const_coeffs)
+
+    def parse_starting_indices(self, text: str):
+        l: list[str] = text.split(",")
+
+        for s in l:
+            if s:
+                s = s.strip()
+
+            if s:
+                l0: list[str] = s.split(">=")
+
+                if len(l0) == 2:
+                    s = l0[0]
+
+                    if s:
+                        s = s.strip()
+
+                    if s and s in self.dict_series:
+                        ser: Series = self.dict_series[s]
+
+                        if ser is not None:
+                            s = l0[1]
+
+                            if s:
+                                s = s.strip()
+
+                            if s and s.isnumeric():
+                                ser.start_index = int(s)
+
+
 
     def sum(self):
         result_numerator: PolynomialProduct = PolynomialProduct()
