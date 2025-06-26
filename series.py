@@ -2,6 +2,7 @@ import copy
 
 from colorama import Fore, Style
 
+from debug_write import DebugWrite
 from element import Element
 from exponential import ExponentialProduct
 from monomial import Monomial
@@ -40,7 +41,13 @@ class Series:
                 numer = Polynomial([self.monomial*self.monomial, self.monomial], in_product=True)
                 denom.power = Rational(3)
 
-        return PolynomialRational(numer, denom)
+        polynomial_rational: PolynomialRational = PolynomialRational(numer, denom)
+
+        debug_write: DebugWrite = DebugWrite.get_instance()
+
+        debug_write.write(f"\\[{self}={polynomial_rational}\\]")
+
+        return polynomial_rational
 
     def get_str(self):
         s: str = ""
@@ -60,7 +67,7 @@ class Series:
         if self.coefficient is not None and not self.coefficient.is_one():
             s = f"{self.coefficient}"
 
-        s = f"\\sum_{{{self.power}={self.start_index}}}{s}({self.monomial})"
+        s = f"\\sum_{{{self.power}\\geq{{{self.start_index}}}}}{s}({self.monomial})"
 
         s = f"{s}^{{{self.power}}}"
 

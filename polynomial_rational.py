@@ -52,7 +52,7 @@ class PolynomialRational:
     def __eq__(self, other):
         return self.numerator == other.numerator and self.denominator == other.denominator
 
-    def __str__(self):
+    def get_str(self):
         s: str = "*".join([f"({polynom})" for polynom in self.numerator])
 
         if self.denominator != [1]:
@@ -60,6 +60,17 @@ class PolynomialRational:
             s = f"[{s}]/[{s0}]"
 
         return s
+
+    def get_ltx_str(self):
+        s: str = "".join([f"({polynom})" for polynom in self.numerator])
+
+        if self.denominator != [1]:
+            s = f"\\frac{{{s}}}{{{self.denominator}}}"
+
+        return s
+
+    def __str__(self):
+        return self.get_ltx_str()
 
 class PolynomialProductRational:
     def __init__(self, numer: PolynomialProduct, denom: PolynomialProduct):
@@ -69,7 +80,7 @@ class PolynomialProductRational:
     def __eq__(self, other):
         return self.numerator == other.numerator and self.denominator == other.denominator
 
-    def __str__(self):
+    def get_str(self):
         numerator0: list = list(filter(lambda p: not p.is_one(), self.numerator))
 
         s: str = "1"
@@ -97,6 +108,38 @@ class PolynomialProductRational:
             s = f"[{s}]/[{s0}]"
 
         return s
+
+    def get_ltx_str(self):
+        numerator0: list = list(filter(lambda p: not p.is_one(), self.numerator))
+
+        s: str = "1"
+
+        if len(numerator0) > 0:
+            s = "".join([f"{polynom}" for polynom in numerator0])
+
+        if len(self.numerator.const_coefficients) > 0:
+            s1 = "".join([f"({const_coeff})" for const_coeff in self.numerator.const_coefficients])
+
+            s = f"{s1}{s}"
+
+        if self.numerator.coefficient != Rational(1):
+            s = f"{self.numerator.coefficient}{s}"
+
+        denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
+
+        s0: str = "1"
+
+        if self.denominator.coefficient != Rational(1):
+            s = f"{self.denominator.coefficient}{s}"
+
+        if len(denominator0):
+            s0 = "".join([f"{polynom}" for polynom in denominator0])
+            s = f"\\frac{{{s}}}{{{s0}}}"
+
+        return s
+
+    def __str__(self):
+        return self.get_ltx_str()
 
 class PolynomialSummationRational:
     def __init__(self):
@@ -126,6 +169,9 @@ class PolynomialSummationRational:
                         if diff > 0:
                             polynom = copy.deepcopy(polynomial_denominator_self)
                             polynom.power = diff
+
+                            if diff > Rational(2):
+                                _ = 0
 
                             if power_input > power_self:
                                 polynomial_denominator_self.power = power_input

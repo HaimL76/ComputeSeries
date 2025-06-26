@@ -1,5 +1,6 @@
 import webbrowser
 
+from debug_write import DebugWrite
 from exponential import Exponential, ExponentialProduct
 from polynomial import Polynomial
 from polynomial_rational import PolynomialProductRational, PolynomialSummationRational
@@ -17,7 +18,8 @@ def main():
 def process_file(file_path: str):
     with open(file_path, 'r') as file:
         with open(r"c:\gpp\1.tex", "w") as fw:
-            fw.write(r"""
+            debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
+            debug_write.write(r"""
             \documentclass{article}
             \usepackage{graphicx} % Required for inserting images
             \begin{document}
@@ -26,9 +28,9 @@ def process_file(file_path: str):
                 if line:
                     line = line.strip()
 
-                if line:
+                if line and line[0] != "#":
                     process_line(line, fw)
-            fw.write("""\end{document}""")
+            debug_write.write("""\end{document}""")
 
 def process_line(text: str, fw):
     strs: list[str] = text.split(";")
@@ -78,6 +80,9 @@ def process_line(text: str, fw):
         sum_product: PolynomialProductRational = ser_prod.sum()
 
         total_sum.add_polynomial_rational(sum_product)
+
+        fw.write(f"\\[{ser_prod}\\]")
+        fw.write(f"\\[{sum_product}\\]")
 
         print(f"[{counter}] sum: {sum_product}")
 

@@ -14,6 +14,9 @@ class Polynomial:
         self.power: Rational = pow0
         self.in_polynomial_product: bool = in_product
 
+        if self.power > Rational(0):
+            _ = 0
+
     @staticmethod
     def create_one():
         return Polynomial(monoms=[Monomial()])
