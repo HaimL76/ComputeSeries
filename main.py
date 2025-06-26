@@ -4,6 +4,8 @@ from polynomial_rational import PolynomialProductRational, PolynomialSummationRa
 from series import SeriesProduct, SeriesProductSum
 from substitution import VariableSubstitution
 
+import matplotlib.pyplot as plt
+
 const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
@@ -60,17 +62,19 @@ def process_line(text: str):
 
         counter += 1
 
+    output: str = f"\\[{p}\\]"
+    output = f"{output}{substitution}"
+    output = f"{output}\\[{p0}\\]"
+    s0: str = "+".join([f"\\[{ser_prod}\\]" for ser_prod in l])
+    output = f"{output}{s0}"
+    output = f"{output}{total_sum}"
+
     with open(r"c:\gpp\1.tex", "w") as fw:
         fw.write(r"""
         \documentclass{article}
         \usepackage{graphicx} % Required for inserting images
         \begin{document}
         """)
-        fw.write(f"\\[{p}\\]")
-        fw.write(f"{substitution}")
-        fw.write(f"\\[{p0}\\]")
-        s0: str = "+".join([f"\\[{ser_prod}\\]" for ser_prod in l])
-        fw.write(f"{s0}")
-        fw.write(f"{total_sum}")
+        fw.write(output)
         fw.write("""\end{document}""")
 main()

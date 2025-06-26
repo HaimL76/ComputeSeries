@@ -51,7 +51,7 @@ class Element:
         s: str = self.symbol
 
         if self.power != 1:
-            s = f"{s}^{{{self.power}}}"
+            s = f"({s})^{{{self.power}}}"
 
         return s
 

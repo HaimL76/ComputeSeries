@@ -206,7 +206,7 @@ class SeriesProduct:
             if s:
                 s = f"{s}*"
 
-            s1: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients])
+            s1: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients.values()])
 
             s = f"{s}{Fore.RED}{s1}{Style.RESET_ALL}"
 
@@ -223,7 +223,7 @@ class SeriesProduct:
             s = f"{self.coefficient}"
 
         if self.const_coefficients:
-            s1: str = "".join([f"({const_coeff})" for const_coeff in self.const_coefficients])
+            s1: str = "".join([f"({const_coeff})" for const_coeff in self.const_coefficients.values()])
 
             s = f"{s}{s1}"
 
