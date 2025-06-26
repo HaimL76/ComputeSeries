@@ -12,25 +12,44 @@ const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 def main():
-    process_line("[1+(1-p^{-1}).v_2][1+(1-p^{-1}).v_3];v_1=2.a+b+c+d,v_2=a,v_3=a+b+c,v_4=a+b;a>=0,b>=0,c>=0,"
-                 "d>=1;p^{7.v_1+10.v_2+10.v_3+7.v_4}*t^{"
-                 "4.v_1+6.v_2+6.v_3+4.v_4}")
+    process_file("c:\\gpp\\1.txt")
 
-def process_line(text: str):
+def process_file(file_path: str):
+    with open(file_path, 'r') as file:
+        with open(r"c:\gpp\1.tex", "w") as fw:
+            fw.write(r"""
+            \documentclass{article}
+            \usepackage{graphicx} % Required for inserting images
+            \begin{document}
+            """)
+            for line in file:
+                if line:
+                    line = line.strip()
+
+                if line:
+                    process_line(line, fw)
+            fw.write("""\end{document}""")
+
+def process_line(text: str, fw):
     strs: list[str] = text.split(";")
 
-    p: Polynomial = Polynomial.parse_brackets(strs[0])
+    pt: str = strs[0]
+    polynomials: str = strs[1]
+    substitutes: str = strs[2]
+    power_range: str = strs[3]
+
+    p: Polynomial = Polynomial.parse_brackets(polynomials)
 
     print(f"p = {p}")
 
-    substitution: VariableSubstitution = VariableSubstitution.parse(strs[1])
+    substitution: VariableSubstitution = VariableSubstitution.parse(substitutes)
 
     p0: Polynomial = substitution.substitude_polynomial(p)
 
     print(f"p0 = {p0}")
     print(f"substitution: {substitution}")
 
-    exp_prod: ExponentialProduct = ExponentialProduct.parse(strs[3])
+    exp_prod: ExponentialProduct = ExponentialProduct.parse(pt)
     exp_prod0: ExponentialProduct = substitution.substitude_exponential_product(exp_prod)
 
     print(f"exp_prod = {exp_prod}")
@@ -38,7 +57,7 @@ def process_line(text: str):
 
     series_product = SeriesProduct.from_exponential_product(exp_prod0)
 
-    series_product.parse_starting_indices(strs[2])
+    series_product.parse_starting_indices(power_range)
 
     l: list = series_product.multiply_by_polynomial(p0)
 
@@ -64,21 +83,16 @@ def process_line(text: str):
 
         counter += 1
 
-    output: str = f"\\[{p}\\]"
+    output: str = f"\\[[{exp_prod}][{p}]\\]"
     output = f"{output}{substitution}"
+    output = f"{output}\\[{exp_prod0}\\]"
     output = f"{output}\\[{p0}\\]"
     s0: str = "+".join([f"\\[{ser_prod}\\]" for ser_prod in l])
     output = f"{output}{s0}"
     output = f"{output}{total_sum}"
 
-    with open(r"c:\gpp\1.tex", "w") as fw:
-        fw.write(r"""
-        \documentclass{article}
-        \usepackage{graphicx} % Required for inserting images
-        \begin{document}
-        """)
+    if fw is not None:# check open
         fw.write(output)
-        fw.write("""\end{document}""")
 
     url: str = 'https://www.overleaf.com/project/685ae79d032d2247cd797478'
 

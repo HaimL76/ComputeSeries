@@ -47,6 +47,9 @@ class Element:
 
         return s
 
+    def get_copy_with_parentheses(self):
+        return Element(symb=f"({self.symbol})", pow=self.power)
+
     def get_ltx_str(self):
         s: str = self.symbol
 

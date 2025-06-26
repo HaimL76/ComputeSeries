@@ -223,7 +223,7 @@ class SeriesProduct:
             s = f"{self.coefficient}"
 
         if self.const_coefficients:
-            s1: str = "".join([f"({const_coeff})" for const_coeff in self.const_coefficients.values()])
+            s1: str = "".join([f"{const_coeff.get_copy_with_parentheses()}" for const_coeff in self.const_coefficients.values()])
 
             s = f"{s}{s1}"
 

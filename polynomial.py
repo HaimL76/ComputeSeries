@@ -241,7 +241,7 @@ class PolynomialProduct:
         s: str = "".join(f"{polynom}" for polynom in list_polynoms)
 
         if len(self.const_coefficients) > 0:
-            s0: str = "".join([f"({const_coeff})" for const_coeff in self.const_coefficients.values()])
+            s0: str = "".join([f"{const_coeff.get_copy_with_parentheses()}" for const_coeff in self.const_coefficients.values()])
 
             s = f"{s0}{s}"
 
