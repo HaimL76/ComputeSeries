@@ -1,3 +1,5 @@
+import webbrowser
+
 from exponential import Exponential, ExponentialProduct
 from polynomial import Polynomial
 from polynomial_rational import PolynomialProductRational, PolynomialSummationRational
@@ -77,4 +79,12 @@ def process_line(text: str):
         """)
         fw.write(output)
         fw.write("""\end{document}""")
+
+    url: str = 'https://www.overleaf.com/project/685ae79d032d2247cd797478'
+
+    # Windows
+    chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+
+    webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
+    #webbrowser.get('chrome').open_new_tab(url)
 main()

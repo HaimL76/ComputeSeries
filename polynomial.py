@@ -241,7 +241,7 @@ class PolynomialProduct:
         s: str = "".join(f"{polynom}" for polynom in list_polynoms)
 
         if len(self.const_coefficients) > 0:
-            s0: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients])
+            s0: str = "".join([f"({const_coeff})" for const_coeff in self.const_coefficients.values()])
 
             s = f"{s0}{s}"
 
@@ -250,6 +250,7 @@ class PolynomialProduct:
 
         return s
 
+    @property
     def get_str(self):
         list_polynoms: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.list_polynomials))
 
@@ -259,7 +260,7 @@ class PolynomialProduct:
         s: str = "*".join(f"{polynom}" for polynom in list_polynoms)
 
         if len(self.const_coefficients) > 0:
-            s0: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients])
+            s0: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients.values()])
 
             s = f"{Fore.RED}{s0}{Style.RESET_ALL}*{s}"
 
