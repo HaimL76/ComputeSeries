@@ -13,11 +13,11 @@ const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 def main():
-    process_file("c:\\gpp\\1.txt")
+    process_file("1.txt")
 
 def process_file(file_path: str):
     with open(file_path, 'r') as file:
-        with open(r"c:\gpp\1.tex", "w") as fw:
+        with open("1.tex", "w") as fw:
             debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
             debug_write.write(r"""
             \documentclass{article}
@@ -29,10 +29,12 @@ def process_file(file_path: str):
                     line = line.strip()
 
                 if line and line[0] != "#":
-                    process_line(line, fw)
-            debug_write.write("""\end{document}""")
+                    process_line(line)
+            debug_write.write("\\end{document}")
 
-def process_line(text: str, fw):
+def process_line(text: str):
+    debug_write: DebugWrite = DebugWrite.get_instance()
+
     strs: list[str] = text.split(";")
 
     pt: str = strs[0]
@@ -81,8 +83,8 @@ def process_line(text: str, fw):
 
         total_sum.add_polynomial_rational(sum_product)
 
-        fw.write(f"\\[{ser_prod}\\]")
-        fw.write(f"\\[{sum_product}\\]")
+        debug_write.write(f"\\[{ser_prod}\\]")
+        debug_write.write(f"\\[{sum_product}\\]")
 
         print(f"[{counter}] sum: {sum_product}")
 
@@ -96,8 +98,8 @@ def process_line(text: str, fw):
     output = f"{output}{s0}"
     output = f"{output}{total_sum}"
 
-    if fw is not None:# check open
-        fw.write(output)
+    if debug_write is not None:# check open
+        debug_write.write(output)
 
     url: str = 'https://www.overleaf.com/project/685ae79d032d2247cd797478'
 

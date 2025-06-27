@@ -10,6 +10,8 @@ class DebugWrite:
 
     def __init__(self, fw):
         self.file_writer = fw
+        self.debug_level: int = 0
 
-    def write(self, text: str):
-        self.file_writer.write(text)
+    def write(self, text: str, level: int = 0):
+        if level <= self.debug_level:
+            self.file_writer.write(text)
