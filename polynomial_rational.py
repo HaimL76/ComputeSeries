@@ -62,7 +62,7 @@ class PolynomialRational:
         return s
 
     def get_ltx_str(self):
-        s: str = "".join([f"({polynom})" for polynom in self.numerator])
+        s: str = f"{self.numerator}"
 
         if self.denominator != [1]:
             s = f"\\frac{{{s}}}{{{self.denominator}}}"

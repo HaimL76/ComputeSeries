@@ -45,7 +45,7 @@ class Series:
 
         debug_write: DebugWrite = DebugWrite.get_instance()
 
-        debug_write.write(f"\\[{self}={polynomial_rational}\\]")
+        debug_write.write(f"\\[{self}={polynomial_rational}\\]", level=1)
 
         return polynomial_rational
 
