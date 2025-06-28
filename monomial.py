@@ -91,7 +91,7 @@ class Monomial:
             yield symb
 
     def __mul__(self, other):
-        const_coeffs: dict = self.const_coefficients
+        const_coeffs: dict = copy.deepcopy(self.const_coefficients)
 
         if isinstance(other.const_coefficients, dict) and len(other.const_coefficients):
             for key in other.const_coefficients:
@@ -118,7 +118,9 @@ class Monomial:
             else:
                 elems[symb] *= val
 
-        return Monomial(elems, coeff=coeff, const_coeffs=const_coeffs)
+        is_minus: bool = self.is_minus != other.is_minus
+
+        return Monomial(elems, coeff=coeff, const_coeffs=const_coeffs, minus=is_minus)
 
     @staticmethod
     def parse(text: str):
