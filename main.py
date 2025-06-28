@@ -65,7 +65,7 @@ def process_line(text: str):
 
     l: list = series_product.multiply_by_polynomial(p0)
 
-    counter: int = 0
+    counter: int = 1
 
     total_sum: PolynomialSummationRational = PolynomialSummationRational()
 
@@ -83,8 +83,14 @@ def process_line(text: str):
 
         total_sum.add_polynomial_rational(sum_product)
 
-        debug_write.write(f"\\[{ser_prod}\\]")
+        s2: str = "".join(f"{counter}" for i in range(25))
+
+        debug_write.write(f"{s2}\\newline")
         debug_write.write(f"\\[{sum_product}\\]")
+        debug_write.write(f"\\[{total_sum}\\]")
+
+        debug_write.write(f"\\[{ser_prod}\\]", 1)
+        debug_write.write(f"\\[{sum_product}\\]", 1)
 
         print(f"[{counter}] sum: {sum_product}")
 

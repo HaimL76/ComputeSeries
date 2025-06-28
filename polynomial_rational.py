@@ -164,6 +164,9 @@ class PolynomialSummationRational:
                         power_input: Rational = polynomial_denominator_input.power
                         power_self: Rational = polynomial_denominator_self.power
 
+                        if power_input > 2:
+                            _ = 0
+
                         diff = abs(power_self - power_input)
 
                         if diff > 0:

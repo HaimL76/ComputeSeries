@@ -221,6 +221,8 @@ class PolynomialProduct:
             yield polynomial
 
     def mul_polynomial(self, input_polynomial):
+        input_polynomial = copy.deepcopy(input_polynomial)
+
         flag: bool = False
 
         for polynom in self.list_polynomials:
