@@ -85,9 +85,9 @@ def process_line(text: str):
 
         s2: str = "".join(f"{counter}" for i in range(25))
 
-        debug_write.write(f"{s2}\\newline")
-        debug_write.write(f"\\[{sum_product}\\]")
-        debug_write.write(f"\\[{total_sum}\\]")
+        debug_write.write(f"{s2}\\newline", 1)
+        debug_write.write(f"\\[{sum_product}\\]", 1)
+        debug_write.write(f"\\[{total_sum}\\]", 1)
 
         debug_write.write(f"\\[{ser_prod}\\]", 1)
         debug_write.write(f"\\[{sum_product}\\]", 1)

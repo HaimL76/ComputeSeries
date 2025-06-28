@@ -76,18 +76,61 @@ class Polynomial:
                         name = s1
                         s1 = l1[1]
 
-                    l2: list = s1.split("+")
+                    l2: list[(str, bool)] = []
+
+                    buffer: list[str] = []
+
+                    is_minus: bool = False
+
+                    counter_round: int = 0
+                    counter_square: int = 0
+                    counter_curly: int = 0
+
+                    for ch in s1:
+                        if ch == "(":
+                            counter_round += 1
+
+                        if ch == ")":
+                            counter_round -= 1
+
+                        if ch == "{":
+                            counter_curly += 1
+
+                        if ch == "}":
+                            counter_curly -= 1
+
+                        check_sign: bool = counter_round == 0 and counter_curly == 0
+
+                        if check_sign and ch in ["+", "-"]:
+                            if buffer is not None and len(buffer) > 0:
+                                l2.append(("".join(buffer), is_minus))
+                                buffer = []
+
+                            is_minus = ch == "-"
+                        else:
+                            if buffer is None:
+                                buffer = []
+
+                            buffer.append(ch)
+
+                    if buffer is not None and len(buffer) > 0:
+                        l2.append(("".join(buffer), is_minus))
 
                     if isinstance(l2, list) and len(l2) > 0:
                         list_monomials: list = []
 
-                        for s2 in l2:
+                        for tup in l2:
+                            s2: str = tup[0]
+
+                            is_minus: bool = tup[1]
+
                             s2 = s2.strip()
 
                             if s2:
                                 monomial: Monomial = Monomial.parse(s2)
 
                                 if monomial:
+                                    monomial.is_minus = is_minus
                                     list_monomials.append(monomial)
 
                         if len(list_monomials) > 0:
@@ -190,7 +233,14 @@ class Polynomial:
     def get_ltx_str(self):
         s: str = ""
 
-        s0: str = "+".join(f"{monom}" for monom in self.monomials)
+        s0: str = ""
+
+        for monom in self.monomials:
+            if len(s0) > 0:
+                s1: str = "-" if monom.is_minus else "+"
+                s0 = f"{s0}{s1}"
+
+            s0 = f"{s0}{monom}"
 
         if self.in_polynomial_product or self.power != Rational(1):
             s0 = f"({s0})"

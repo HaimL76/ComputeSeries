@@ -6,7 +6,9 @@ from rational import Rational
 
 class Monomial:
     def __init__(self, elems: dict = {}, coeff: Rational = Rational(1),
-                  const_coeffs: dict[str, Element] = {}):
+                  const_coeffs: dict[str, Element] = {}, minus: bool = False):
+        self.is_minus: bool = minus
+
         self.elements: dict = {}
 
         if isinstance(elems, dict):
