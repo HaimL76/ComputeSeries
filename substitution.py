@@ -12,10 +12,10 @@ class VariableSubstitution:
         self.substitution[symb] = polynom
 
     @staticmethod
-    def parse(text: str):
+    def parse(text: str, list_const_coeffs: list[str]):
         substitution: VariableSubstitution = VariableSubstitution()
 
-        list_polynomials: list = Polynomial.parse(text)
+        list_polynomials: list = Polynomial.parse(text, list_const_coeffs=list_const_coeffs)
 
         if isinstance(list_polynomials, list) and len(list_polynomials) > 0:
             for polynomial in list_polynomials:

@@ -123,7 +123,7 @@ class Monomial:
         return Monomial(elems, coeff=coeff, const_coeffs=const_coeffs, minus=is_minus)
 
     @staticmethod
-    def parse(text: str):
+    def parse(text: str, list_const_coeffs: list[str]):
         coeff: Rational = Rational(1)
         const_coeffs: dict = {}
 
@@ -137,8 +137,8 @@ class Monomial:
             if s:
                 if s.isnumeric():
                     coeff = Rational.parse(s)
-                elif len(s) > 2 and s[0] == "(" and s[-1] == ")":
-                    const_coeff = s[1:-1]
+                elif s in list_const_coeffs:
+                    const_coeff: str = s
 
                     if const_coeff not in const_coeffs:
                         const_coeffs[const_coeff] = Element(symb=const_coeff, pow=0)

@@ -20,8 +20,8 @@ class Series:
         self.power: str = pow
 
     def sum(self):
-        numer: Polynomial = Polynomial.parse_single("1")
-        denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}")
+        numer: Polynomial = Polynomial.parse_single("1", list_const_coeffs=[])
+        denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}", list_const_coeffs=[])
 
         if self.start_index == 1:
             numer = Polynomial([self.monomial], in_product=True)

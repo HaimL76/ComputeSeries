@@ -20,7 +20,7 @@ class Exponential:
         return f"{self.symbol}^{{{self.exponent}}}"
 
     @staticmethod
-    def parse(text: str):
+    def parse(text: str, list_const_coeffs: list[str]):
         exponential = None
 
         l: list = text.split("^")
@@ -40,7 +40,7 @@ class Exponential:
                 str_exp = str_exp.strip()
 
             if str_exp and symbol:
-                exponent: Polynomial = Polynomial.parse_single(str_exp)
+                exponent: Polynomial = Polynomial.parse_single(str_exp, list_const_coeffs=list_const_coeffs)
 
                 if exponent is not None:
                     exponential = Exponential(symb=symbol, exp=exponent)
@@ -68,7 +68,7 @@ class ExponentialProduct:
             yield key
 
     @staticmethod
-    def parse(text: str):
+    def parse(text: str, list_const_coeffs: list[str]):
         exponential_product: ExponentialProduct = ExponentialProduct()
 
         l: list = text.split("*")
@@ -78,7 +78,7 @@ class ExponentialProduct:
                 s = s.strip()
 
                 if s:
-                    exponential: Exponential = Exponential.parse(s)
+                    exponential: Exponential = Exponential.parse(s, list_const_coeffs=list_const_coeffs)
 
                     if isinstance(exponential, Exponential):
                         exponential_product.add_exponential(exponential)

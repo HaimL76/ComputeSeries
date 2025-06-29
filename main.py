@@ -42,18 +42,21 @@ def process_line(text: str):
     substitutes: str = strs[2]
     power_range: str = strs[3]
 
-    p: Polynomial = Polynomial.parse_brackets(polynomials)
+    ##list_const_coeffs: list[str] = ["1-p^{-1}"]
+    list_const_coeffs: list[str] = ["A"]
+
+    p: Polynomial = Polynomial.parse_brackets(polynomials, list_const_coeffs=list_const_coeffs)
 
     print(f"p = {p}")
 
-    substitution: VariableSubstitution = VariableSubstitution.parse(substitutes)
+    substitution: VariableSubstitution = VariableSubstitution.parse(substitutes, list_const_coeffs=list_const_coeffs)
 
     p0: Polynomial = substitution.substitude_polynomial(p)
 
     print(f"p0 = {p0}")
     print(f"substitution: {substitution}")
 
-    exp_prod: ExponentialProduct = ExponentialProduct.parse(pt)
+    exp_prod: ExponentialProduct = ExponentialProduct.parse(pt, list_const_coeffs=list_const_coeffs)
     exp_prod0: ExponentialProduct = substitution.substitude_exponential_product(exp_prod)
 
     print(f"exp_prod = {exp_prod}")

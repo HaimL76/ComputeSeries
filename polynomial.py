@@ -79,7 +79,7 @@ class Polynomial:
             self.monomials.append(monomial)
 
     @staticmethod
-    def parse_monomials(text: str):
+    def parse_monomials(text: str, list_const_coeffs: list[str]):
         list_list_monomials: list[(list[Monomial], str)] = []
 
         l0: list = text.split(",")
@@ -150,7 +150,7 @@ class Polynomial:
                             s2 = s2.strip()
 
                             if s2:
-                                monomial: Monomial = Monomial.parse(s2)
+                                monomial: Monomial = Monomial.parse(s2, list_const_coeffs)
 
                                 if monomial:
                                     monomial.is_minus = is_minus
@@ -184,7 +184,7 @@ class Polynomial:
         return equals
 
     @staticmethod
-    def parse_brackets(text: str):
+    def parse_brackets(text: str, list_const_coeffs: list[str]):
         text = text.replace("[", "|")
         text = text.replace("]", "|")
 
@@ -196,15 +196,15 @@ class Polynomial:
             s = s.strip()
 
             if s:
-                p: Polynomial = Polynomial.parse_single(s)
+                p: Polynomial = Polynomial.parse_single(s, list_const_coeffs=list_const_coeffs)
 
                 polynomial *= p
 
         return polynomial
 
     @staticmethod
-    def parse(text: str):
-        list_list_monomials: list[(list[Monomial], str)] = Polynomial.parse_monomials(text)
+    def parse(text: str, list_const_coeffs: list[str]):
+        list_list_monomials: list[(list[Monomial], str)] = Polynomial.parse_monomials(text, list_const_coeffs)
 
         list_polynomials: list[Polynomial] = []
 
@@ -216,8 +216,8 @@ class Polynomial:
         return list_polynomials
 
     @staticmethod
-    def parse_single(text: str):
-        l: list = Polynomial.parse(text)
+    def parse_single(text: str, list_const_coeffs: list[str]):
+        l: list = Polynomial.parse(text, list_const_coeffs)
 
         if isinstance(l, list) and len(l) == 1:
             return l[0]
