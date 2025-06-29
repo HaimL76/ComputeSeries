@@ -58,6 +58,8 @@ class Polynomial:
                 if not found:
                     monoms.append(m)
 
+        monoms = [m for m in monoms if m.coefficient != Rational(0)]
+
         return Polynomial(monoms)
 
     def add_monomial(self, monomial: Monomial):
