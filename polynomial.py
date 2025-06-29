@@ -188,11 +188,66 @@ class Polynomial:
         text = text.replace("[", "|")
         text = text.replace("]", "|")
 
-        l: list[str] = text.split("|")
+        list_polynomials: list[str] = text.split("|")
+
+        list_strings: list[str] = []
+
+        for s in list_polynomials:
+            s = s.strip()
+
+            if s:
+                index_left: int = s.find("(")
+                index_right: int = s.find(")")
+
+                if -1 < index_left < index_right:
+                    list_strs: list[str] = []
+
+                    list_buffer: list[str] = []
+
+                    str_to_append: str = ""
+
+                    for s1 in s:
+                        if s1 == "(" and isinstance(list_buffer, list) and len(list_buffer) > 0:
+                            str_to_append = "".join(list_buffer)
+                            list_buffer = []
+                        elif s1 == ")" and isinstance(list_buffer, list) and len(list_buffer) > 0:
+                            if str_to_append:
+                                list_strs.append(str_to_append)
+
+                            list_strs.append("".join(list_buffer))
+                            list_buffer = []
+                        elif s1 in ["+", "-"]:
+                            if list_buffer is not None and len(list_buffer) > 0:
+                                if str_to_append:
+                                    list_strs.append(str_to_append)
+
+                                list_strs.append("".join(list_buffer))
+
+                                list_strs.append(s1)
+                                list_buffer = []
+                        else:
+                            if list_buffer is None:
+                                list_buffer = []
+
+                            list_buffer.append(s1)
+
+                    if isinstance(list_buffer, list) and len(list_buffer) > 0:
+                        if str_to_append:
+                            list_strs.append(str_to_append)
+
+                        list_strs.append("".join(list_buffer))
+                        list_buffer = []
+
+                    if isinstance(list_strs, list) and len(list_strs) > 0:
+                        list_strings.append("".join(list_strs))
+                else:
+                    list_strings.append(s)
+
+        list_polynomials = copy.deepcopy(list_strings)
 
         polynomial: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(1))])
 
-        for s in l:
+        for s in list_polynomials:
             s = s.strip()
 
             if s:
