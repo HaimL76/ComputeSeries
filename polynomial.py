@@ -35,7 +35,28 @@ class Polynomial:
             for monom_other in other.monomials:
                 m = monom_self * monom_other
 
-                monoms.append(m)
+                found: bool = False
+                index: int = 0
+
+                while not found and index < len(monoms):
+                    mon: Monomial = monoms[index]
+                    index += 1
+
+                    if Monomial.are_same_monomials(mon, m):
+                        if mon.is_minus == m.is_minus:
+                            mon.coefficient = abs(mon.coefficient + m.coefficient)
+                        else:
+                            coeff0: Rational = mon.coefficient - m.coefficient
+
+                            if coeff0 < Rational(0):
+                                mon.is_minus = not mon.is_minus
+
+                            mon.coefficient = abs(coeff0)
+
+                        found = True
+
+                if not found:
+                    monoms.append(m)
 
         return Polynomial(monoms)
 
