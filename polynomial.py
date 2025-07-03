@@ -327,6 +327,10 @@ class Polynomial:
 
                         p = p1 - p0
 
+                        half = Polynomial([Monomial(elems={}, coeff=Rational(1, 2))])
+
+                        p *= half
+
                         _ = 0
 
     @staticmethod
