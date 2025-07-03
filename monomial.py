@@ -20,7 +20,11 @@ class Monomial:
                 else:
                     self.elements[elem.symbol] *= elem
 
-        self.coefficient: Rational = coeff
+        self.coefficient: Rational = abs(coeff)
+
+        if coeff.is_minus():
+            self.is_minus = not self.is_minus
+
         self.const_coefficients: dict[str, Element] = copy.deepcopy(const_coeffs)
         ##self.power: int = 1
 

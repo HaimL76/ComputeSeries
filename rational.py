@@ -6,6 +6,9 @@ class Rational:
     def __gt__(self, other):
         return self.numerator * other.denominator > other.numerator * self.denominator
 
+    def is_minus(self):
+        return self.numerator * self.denominator < 0
+
     @staticmethod
     def parse(text: str):
         numer: int = 0

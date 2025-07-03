@@ -12,8 +12,10 @@ import matplotlib.pyplot as plt
 const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
+
 def main():
     process_file("1.txt")
+
 
 def process_file(file_path: str):
     with open(file_path, 'r') as file:
@@ -32,6 +34,7 @@ def process_file(file_path: str):
                     process_line(line)
             debug_write.write("\\end{document}")
 
+
 def process_line(text: str):
     debug_write: DebugWrite = DebugWrite.get_instance()
 
@@ -45,7 +48,9 @@ def process_line(text: str):
     ##list_const_coeffs: list[str] = ["1-p^{-1}"]
     list_const_coeffs: list[str] = ["A"]
 
-    p: Polynomial = Polynomial.parse_brackets(polynomials, list_const_coeffs=list_const_coeffs)
+    p: Polynomial = Polynomial.parse_curly(polynomials,
+                                           list_const_coeffs) if "{" in polynomials else Polynomial.parse_brackets(
+        polynomials, list_const_coeffs=list_const_coeffs)
 
     print(f"p = {p}")
 
@@ -75,10 +80,10 @@ def process_line(text: str):
     debug_counter: int = 3
 
     for ser_prod in l:
-        #if debug_counter <= 0:
-         #   continue
+        # if debug_counter <= 0:
+        #   continue
 
-        #debug_counter -= 1
+        # debug_counter -= 1
 
         print(f"[{counter}] ser_prod: {ser_prod}")
 
@@ -107,7 +112,7 @@ def process_line(text: str):
     output = f"{output}{s0}"
     output = f"{output}{total_sum}"
 
-    if debug_write is not None:# check open
+    if debug_write is not None:  # check open
         debug_write.write(output)
 
     url: str = 'https://www.overleaf.com/project/685ae79d032d2247cd797478'
@@ -116,5 +121,7 @@ def process_line(text: str):
     chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
     webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
-    #webbrowser.get('chrome').open_new_tab(url)
+    # webbrowser.get('chrome').open_new_tab(url)
+
+
 main()

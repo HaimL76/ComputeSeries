@@ -290,6 +290,46 @@ class Polynomial:
         _ = 0
 
     @staticmethod
+    def parse_curly(text: str, list_const_coeffs: list[str]=[]):
+        text = text.replace("{", "|")
+        text = text.replace("}", "|")
+
+        list_strings: list[str] = text.split("|")
+
+        if len(list_strings) > 0:
+            list_strings = list([s for s in list_strings if s])
+
+        if len(list_strings) == 3 and list_strings[1] in ["+", "-"]:
+            str0 = list_strings[0]
+            str2 = list_strings[2]
+
+            if "..." in str2:
+                index_left = str2.find("(")
+                index_right = str2.find(")")
+
+                if 0 < index_left < index_right:
+                    in_round_brackets = str2[index_left+1:index_right]
+
+                    list0: list = in_round_brackets.split("...")
+
+                    if len(list0) == 2:
+                        s0 = list0[0]
+                        s1 = list0[1]
+
+                        p0 = Polynomial.parse_single(s0, list_const_coeffs=list_const_coeffs)
+                        p1 = Polynomial.parse_single(s1, list_const_coeffs=list_const_coeffs)
+
+                        p0_1 = p0 - Polynomial([Monomial(elems={}, coeff=Rational(1))])
+                        p1_1 = p1 - Polynomial([Monomial(elems={}, coeff=Rational(1))])
+
+                        p0 *= p0_1
+                        p1 *= p1_1
+
+                        p = p1 - p0
+
+                        _ = 0
+
+    @staticmethod
     def parse_brackets(text: str, list_const_coeffs: list[str]):
         text = text.replace("[", "|")
         text = text.replace("]", "|")
@@ -367,6 +407,13 @@ class Polynomial:
             polynomial.add_monomial(monom)
 
         return polynomial
+
+    def __sub__(self, other):
+        other0 = copy.deepcopy(other)
+
+        other0 *= Polynomial([Monomial(elems={}, coeff=Rational(-1))])
+
+        return self + other0
 
     def __str__(self):
         return self.get_ltx_str()
