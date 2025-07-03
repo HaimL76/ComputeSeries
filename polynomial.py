@@ -201,17 +201,27 @@ class Polynomial:
                 for s1 in text:
                     if s1 == "(" and isinstance(list_buffer, list) and len(list_buffer) > 0:
                         str_to_append = "".join(list_buffer)
+
+                        if list_strs[-1] == "-":
+                            str_to_append = f"-{str_to_append}"
+
                         list_buffer = []
                     elif s1 == ")" and isinstance(list_buffer, list) and len(list_buffer) > 0:
                         if str_to_append:
-                            list_strs.append(str_to_append)
+                            if str_to_append[0] in ["+", "-"] and list_strs[-1] in ["+", "-"]:
+                                list_strs[-1] = str_to_append
+                            else:
+                                list_strs.append(str_to_append)
 
                         list_strs.append("".join(list_buffer))
                         list_buffer = []
                     elif s1 in ["+", "-"]:
                         if list_buffer is not None and len(list_buffer) > 0:
                             if str_to_append:
-                                list_strs.append(str_to_append)
+                                if str_to_append[0] in ["+", "-"] and list_strs[-1] in ["+", "-"]:
+                                    list_strs[-1] = str_to_append
+                                else:
+                                    list_strs.append(str_to_append)
 
                             list_strs.append("".join(list_buffer))
 
@@ -225,7 +235,10 @@ class Polynomial:
 
                 if isinstance(list_buffer, list) and len(list_buffer) > 0:
                     if str_to_append:
-                        list_strs.append(str_to_append)
+                        if str_to_append[0] in ["+", "-"] and list_strs[-1] in ["+", "-"]:
+                            list_strs[-1] = str_to_append
+                        else:
+                            list_strs.append(str_to_append)
 
                     list_strs.append("".join(list_buffer))
                     list_buffer = []
@@ -238,6 +251,45 @@ class Polynomial:
         return list_strings
 
     @staticmethod
+    def parse_arithmetic_series(text: str):
+        list_strings: list[str] = []
+
+        arr: list[str] = text.split("...")
+
+        if isinstance(arr, list) and len(arr) == 2:
+            s0: str = arr[0]
+            s1: str = arr[1]
+
+            s0 = s0.strip()
+            s1 = s1.strip()
+
+            list_strs: list[str] = []
+
+            if s0 and s1:
+                list_strs = Polynomial.parse_polynomial_with_round_brackets(s0)
+
+                if isinstance(list_strs, list) and len(list_strs) > 0:
+                    for s in list_strs:
+                        list_strings.append(s)
+
+                list_strs = Polynomial.parse_polynomial_with_round_brackets(s1)
+
+                if isinstance(list_strs, list) and len(list_strs) > 0:
+                    for s in list_strs:
+                        list_strings.append(s)
+
+        return list_strings
+
+    @staticmethod
+    def compute_arithmetic_series(s0: str, s1: str, list_const_coeffs: list[str] = []):
+        p0: Polynomial = Polynomial.parse_single(s0, list_const_coeffs)
+        p1: Polynomial = Polynomial.parse_single(s1, list_const_coeffs)
+
+        sum_elements: Polynomial = p1 + p0
+
+        _ = 0
+
+    @staticmethod
     def parse_brackets(text: str, list_const_coeffs: list[str]):
         text = text.replace("[", "|")
         text = text.replace("]", "|")
@@ -246,18 +298,25 @@ class Polynomial:
 
         list_strings: list[str] = []
 
+        list_series_polynomials: list[str] = []
+
         for text in list_polynomials:
             text = text.strip()
 
             if text:
-                list_strs: list[str] = Polynomial.parse_polynomial_with_round_brackets(text)
+                list_strs: list[str] = []
 
-                if isinstance(list_strs, list) and len(list_strs) > 0:
-                    for s in list_strs:
-                        s = s.strip()
+                if "..." in text:
+                    list_series_polynomials = Polynomial.parse_arithmetic_series(text)
+                else:
+                    list_strs = Polynomial.parse_polynomial_with_round_brackets(text)
 
-                        if s:
-                            list_strings.append(copy.deepcopy(s))
+                    if isinstance(list_strs, list) and len(list_strs) > 0:
+                        for s in list_strs:
+                            s = s.strip()
+
+                            if s:
+                                list_strings.append(copy.deepcopy(s))
 
         if len(list_strings) > 0:
             list_polynomials = copy.deepcopy(list_strings)
@@ -271,6 +330,10 @@ class Polynomial:
                 p: Polynomial = Polynomial.parse_single(s, list_const_coeffs=list_const_coeffs)
 
                 polynomial *= p
+
+        if isinstance(list_series_polynomials, list) and len(list_series_polynomials) == 2:
+            Polynomial.compute_arithmetic_series(list_series_polynomials[0], list_series_polynomials[1],
+                                                 list_const_coeffs=list_const_coeffs)
 
         return polynomial
 
