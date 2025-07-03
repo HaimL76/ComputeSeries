@@ -308,6 +308,12 @@ class Polynomial:
                 index_right = str2.find(")")
 
                 if 0 < index_left < index_right:
+                    pref = str2[0:index_left]
+
+                    mon_pref = Monomial.parse(pref, list_const_coeffs=list_const_coeffs)
+
+                    pol_pref = Polynomial([mon_pref])
+
                     in_round_brackets = str2[index_left+1:index_right]
 
                     list0: list = in_round_brackets.split("...")

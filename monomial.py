@@ -139,7 +139,22 @@ class Monomial:
             s = s.strip()
 
             if s:
-                if s.isnumeric():
+                found = False
+
+                if "^" in s:
+                    list0 = s.split("^")
+
+                    if len(list0) == 2:
+                        s0_0 = list0[0]
+                        s0_1 = list0[1]
+
+                        if s0_0 in list_const_coeffs and s0_1.isnumeric():
+                            if s0_0 not in const_coeffs:
+                                const_coeffs[s0_0] = Element(symb=s0_0, pow=0)
+
+                            val: Element = const_coeffs[s0_0]
+                            const_coeffs[s0_0] = Element(val.symbol, val.power + int(s0_1))
+                elif s.isnumeric():
                     coeff = Rational.parse(s)
                 elif s in list_const_coeffs:
                     const_coeff: str = s
