@@ -99,11 +99,13 @@ class Monomial:
 
         if isinstance(other.const_coefficients, dict) and len(other.const_coefficients):
             for key in other.const_coefficients:
+                val_other = other.const_coefficients[key]
+
                 if key not in const_coeffs:
                     const_coeffs[key] = Element(symb=key, pow=0)
 
                 val: Element = const_coeffs[key]
-                const_coeffs[key] = Element(val.symbol, val.power + 1)
+                const_coeffs[key] = Element(val.symbol, val.power + val_other.power)
 
         coeff: int = self.coefficient * other.coefficient
 

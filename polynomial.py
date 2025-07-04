@@ -337,6 +337,8 @@ class Polynomial:
 
                         p *= half
 
+                        p *= pol_pref
+
                         _ = 0
 
     @staticmethod
