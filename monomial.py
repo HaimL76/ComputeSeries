@@ -37,6 +37,32 @@ class Monomial:
         different: bool = False
         index = 0
 
+        const_coeff1 = None
+        const_coeff2 = None
+
+        if len(monom1.const_coefficients) > 0:
+            const_coeff1 = next(iter(monom1.const_coefficients.values()))
+
+        if len(monom2.const_coefficients) > 0:
+            const_coeff2 = next(iter(monom2.const_coefficients.values()))
+
+        counter = 0
+
+        if const_coeff1 is not None:
+            counter += 1
+
+        if const_coeff2 is not None:
+            counter += 1
+
+        if counter == 1:
+            return False
+
+        if const_coeff1 is not None and const_coeff2 is not None:
+            are_same = const_coeff1.symbol == const_coeff2.symbol and const_coeff1.power == const_coeff2.power
+
+            if not are_same:
+                return False
+
         while not different and index < len(mons):
             m1: Monomial = mons[index]
             m2: Monomial = mons[(index + 1) % 2]

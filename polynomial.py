@@ -331,15 +331,33 @@ class Polynomial:
                         p0 *= p0_1
                         p1 *= p1_1
 
-                        p = p1 - p0
+                        pol2 = p1 - p0
 
                         half = Polynomial([Monomial(elems={}, coeff=Rational(1, 2))])
 
-                        p *= half
+                        pol2 *= half
 
-                        p *= pol_pref
+                        pol2 *= pol_pref
 
-                        _ = 0
+                        index_left = str0.find("(")
+                        index_right = str0.find(")")
+
+                        if 0 < index_left < index_right:
+                            pref = str0[0:index_left]
+
+                            mon_pref = Monomial.parse(pref, list_const_coeffs=list_const_coeffs)
+
+                            pol_pref = Polynomial([mon_pref])
+
+                            in_round_brackets = str0[index_left + 1:index_right]
+
+                            pol0 = Polynomial.parse_single(in_round_brackets, list_const_coeffs=list_const_coeffs)
+
+                            pol0 *= pol_pref
+
+                            pol = pol0 + pol2
+
+                            return pol
 
     @staticmethod
     def parse_brackets(text: str, list_const_coeffs: list[str]):
