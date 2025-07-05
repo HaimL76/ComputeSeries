@@ -182,21 +182,25 @@ class Monomial:
 
                             val: Element = const_coeffs[s0_0]
                             const_coeffs[s0_0] = Element(val.symbol, val.power + int(s0_1))
-                elif s.isnumeric():
-                    coeff = Rational.parse(s)
-                elif s in list_const_coeffs:
-                    const_coeff: str = s
 
-                    if const_coeff not in const_coeffs:
-                        const_coeffs[const_coeff] = Element(symb=const_coeff, pow=0)
+                            found = True
 
-                    val: Element = const_coeffs[const_coeff]
-                    const_coeffs[const_coeff] = Element(val.symbol, val.power + 1)
-                else:
-                    element: Element = Element.parse(s)
+                if not found:
+                    if s.isnumeric():
+                        coeff = Rational.parse(s)
+                    elif s in list_const_coeffs:
+                        const_coeff: str = s
 
-                    if element:
-                        l.append(element)
+                        if const_coeff not in const_coeffs:
+                            const_coeffs[const_coeff] = Element(symb=const_coeff, pow=0)
+
+                        val: Element = const_coeffs[const_coeff]
+                        const_coeffs[const_coeff] = Element(val.symbol, val.power + 1)
+                    else:
+                        element: Element = Element.parse(s)
+
+                        if element:
+                            l.append(element)
 
         return Monomial(l, coeff=coeff, const_coeffs=const_coeffs)
 
