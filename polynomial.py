@@ -360,50 +360,84 @@ class Polynomial:
                             return pol
 
     @staticmethod
+    def parse_round_brackets(text, list_const_coeffs):
+        index_left = text.find("(")
+        index_right = text.find(")")
+
+        if 0 < index_left < index_right:
+            pref = text[0:index_left]
+
+            mon_pref = Monomial.parse(pref, list_const_coeffs=list_const_coeffs)
+
+            pol_pref = Polynomial([mon_pref])
+
+            in_round_brackets = text[index_left + 1:index_right]
+
+            pol = Polynomial.parse_single(in_round_brackets, list_const_coeffs=list_const_coeffs)
+
+            pol *= pol_pref
+
+            return pol
+
+    @staticmethod
     def parse_brackets(text: str, list_const_coeffs: list[str]):
         text = text.replace("[", "|")
         text = text.replace("]", "|")
 
-        list_polynomials: list[str] = text.split("|")
+        list_strings: list[str] = text.split("|")
 
-        list_strings: list[str] = []
+        list_polynomials: list[Polynomial] = []
 
-        list_series_polynomials: list[str] = []
-
-        for text in list_polynomials:
+        for text in list_strings:
             text = text.strip()
 
             if text:
-                list_strs: list[str] = []
+                list_polynoms: list[Polynomial] = []
 
-                if "..." in text:
-                    list_series_polynomials = Polynomial.parse_arithmetic_series(text)
-                else:
-                    list_strs = Polynomial.parse_polynomial_with_round_brackets(text)
+                buffer: list[str] = []
 
-                    if isinstance(list_strs, list) and len(list_strs) > 0:
-                        for s in list_strs:
-                            s = s.strip()
+                count_round = 0
 
-                            if s:
-                                list_strings.append(copy.deepcopy(s))
+                for ch in text:
+                    if ch == "(":
+                        count_round += 1
+                        buffer.append(ch)
+                    elif ch == ")":
+                        count_round -= 1
+                        buffer.append(ch)
+                    elif ch in ["+", "-"] and count_round < 1:
+                        if len(buffer) > 0:
+                            str0 = "".join(buffer)
+                            buffer = []
 
-        if len(list_strings) > 0:
-            list_polynomials = copy.deepcopy(list_strings)
+                            pol0 = Polynomial.parse_round_brackets(str0, list_const_coeffs=list_const_coeffs) if "(" in str0 else Polynomial.parse_single(str0, list_const_coeffs=list_const_coeffs)
 
-        polynomial: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(1))])
+                            if pol0 is not None:
+                                list_polynoms.append(pol0)
+                    else:
+                        buffer.append(ch)
 
-        for s in list_polynomials:
-            s = s.strip()
+                if len(buffer) > 0:
+                    str0 = "".join(buffer)
+                    buffer = []
 
-            if s:
-                p: Polynomial = Polynomial.parse_single(s, list_const_coeffs=list_const_coeffs)
+                    pol0 = Polynomial.parse_round_brackets(str0, list_const_coeffs=list_const_coeffs) if "(" in str0 else Polynomial.parse_single(str0,
+                                                                                                                 list_const_coeffs=list_const_coeffs)
 
-                polynomial *= p
+                    if pol0 is not None:
+                        list_polynoms.append(pol0)
 
-        if isinstance(list_series_polynomials, list) and len(list_series_polynomials) == 2:
-            Polynomial.compute_arithmetic_series(list_series_polynomials[0], list_series_polynomials[1],
-                                                 list_const_coeffs=list_const_coeffs)
+                pol = Polynomial([Monomial(coeff=Rational(0))])
+
+                for p in list_polynoms:
+                    pol += p
+
+                list_polynomials.append(pol)
+
+        polynomial = Polynomial([Monomial(coeff=Rational(1))])
+
+        for pol in list_polynomials:
+            polynomial *= pol
 
         return polynomial
 
