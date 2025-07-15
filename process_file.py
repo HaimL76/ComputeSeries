@@ -1,6 +1,7 @@
 from debug_write import DebugWrite
 from exponential import ExponentialProduct
 from polynomial import Polynomial
+from substitution import VariableSubstitution
 
 list_const_coeffs: list[str] = ["A"]
 
@@ -10,6 +11,8 @@ class ProcessFile:
         self.pt_product = None
         self.polynomials = None
         self.reset_polynomials = False
+        self.substitution = None
+        self.reset_substitution = False
 
     def process_file(self):
         with open(self.file_path, 'r') as file:
@@ -30,6 +33,7 @@ class ProcessFile:
 
     def process_line(self, text: str):
         is_polynomial: bool = False
+        is_substitution: bool = False
 
         debug_write: DebugWrite = DebugWrite.get_instance()
 
@@ -69,7 +73,6 @@ class ProcessFile:
 
                         if self.reset_polynomials:
                             self.polynomials = None
-                            self.reset_polynomials = False
 
                         if self.polynomials is None:
                             self.polynomials = []
@@ -86,9 +89,18 @@ class ProcessFile:
             if text:
                 text = text.strip()
 
-        if not is_polynomial:
-            self.reset_polynomials = True
+            if text:
+                is_substitution = True
 
+                if self.reset_substitution:
+                    self.substitution = None
+
+                self.substitution = VariableSubstitution.parse(text, list_const_coeffs=list_const_coeffs,
+                                                               substitution=self.substitution)
+
+        self.reset_polynomials = not is_polynomial
+
+        self.reset_substitution = not is_substitution
 
     def aaa(self):
         polynomials: str = strs[1]
