@@ -1,9 +1,11 @@
 from debug_write import DebugWrite
 from exponential import ExponentialProduct
 from polynomial import Polynomial
+from series import SeriesProduct
 from substitution import VariableSubstitution
 
 list_const_coeffs: list[str] = ["A"]
+
 
 class ProcessFile:
     def __init__(self, path: str):
@@ -13,6 +15,7 @@ class ProcessFile:
         self.reset_polynomials = False
         self.substitution = None
         self.reset_substitution = False
+        self.start_index = None
 
     def process_file(self):
         with open(self.file_path, 'r') as file:
@@ -34,6 +37,7 @@ class ProcessFile:
     def process_line(self, text: str):
         is_polynomial: bool = False
         is_substitution: bool = False
+        is_index: bool = False
 
         debug_write: DebugWrite = DebugWrite.get_instance()
 
@@ -74,7 +78,7 @@ class ProcessFile:
                         if self.reset_polynomials:
                             self.polynomials = None
 
-                        if self.polynomials is None:
+                        if not isinstance(self.polynomials, list):
                             self.polynomials = []
 
                         self.polynomials.append(p)
@@ -96,11 +100,70 @@ class ProcessFile:
                     self.substitution = None
 
                 self.substitution = VariableSubstitution.parse(text, list_const_coeffs=list_const_coeffs,
-                                                               substitution=self.substitution)
+                                                                       substitution=self.substitution)
+
+        prefix = "indices: "
+
+        if text.startswith(prefix):
+            text = text[len(prefix):]
+
+            if text:
+                text = text.strip()
+
+            if text:
+                arr = text.split(",")
+
+                for s in arr:
+                    if s:
+                        s = s.strip()
+
+                    if s:
+                        arr_index: list[str] = s.split(">=")
+
+                        if isinstance(arr_index, list) and len(arr_index) == 2:
+                            is_index = True
+
+                            s0 = arr_index[0]
+                            s1 = arr_index[1]
+
+                            index = 1 if s1 == "1" else 0
+
+                            if not isinstance(self.start_index, dict):
+                                self.start_index = {}
+
+                            self.start_index[s0] = index
 
         self.reset_polynomials = not is_polynomial
 
         self.reset_substitution = not is_substitution
+
+        if not is_substitution and isinstance(self.substitution, VariableSubstitution) and \
+                isinstance(self.polynomials, list) and len(self.polynomials) > 0 and \
+                isinstance(self.pt_product, ExponentialProduct):
+            for polynomial in self.polynomials:
+                converted_polynomial: Polynomial = self.substitution.substitude_polynomial(polynomial)
+
+                converted_pt_product: ExponentialProduct = \
+                    self.substitution.substitude_exponential_product(self.pt_product)
+
+                series_product = SeriesProduct.from_exponential_product(converted_pt_product)
+
+                if isinstance(series_product, SeriesProduct) and isinstance(self.start_index, dict) \
+                        and len(self.start_index) > 0:
+                    for key in self.start_index.keys():
+                        if key:
+                            val: int = self.start_index[key]
+
+                            if isinstance(val, int):
+                                series_product.add_start_index(key, val)
+
+                l: list = series_product.multiply_by_polynomial(p0)
+
+                counter: int = 1
+
+                total_sum: PolynomialSummationRational = PolynomialSummationRational()
+
+                _ = 0
 
     def aaa(self):
         polynomials: str = strs[1]
@@ -108,7 +171,6 @@ class ProcessFile:
         power_range: str = strs[3]
 
         ##list_const_coeffs: list[str] = ["1-p^{-1}"]
-
 
         p: Polynomial = Polynomial.parse_curly(polynomials,
                                                list_const_coeffs) if "{" in polynomials else Polynomial.parse_brackets(
@@ -183,7 +245,7 @@ class ProcessFile:
 
         url: str = 'https://www.overleaf.com/project/685ae79d032d2247cd797478'
 
-    # Windows
+        # Windows
         chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
         webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))

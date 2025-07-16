@@ -82,6 +82,16 @@ class SeriesProduct:
         self.coefficient: Rational = coeff
         self.const_coefficients: dict[str, Element] = copy.deepcopy(const_coeffs)
 
+    def add_start_index(self, symbol: str, index: int):
+        if symbol:
+            symbol = symbol.strip()
+
+        if symbol:
+            ser: Series = self.dict_series[symbol]
+
+            if isinstance(ser, Series):
+                ser.start_index = index
+
     def parse_starting_indices(self, text: str):
         l: list[str] = text.split(",")
 

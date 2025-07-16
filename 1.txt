@@ -7,7 +7,8 @@ substitution: v_1=2.a+b+c+d
 substitution: v_2=a
 substitution: v_3=a+b+c
 substitution: v_4=a+b
-;a>=0,b>=1,c>=0,d>=0
+
+indices: a>=0,b>=1,c>=0,d>=0
 
 
 #Case 1: v1>=
