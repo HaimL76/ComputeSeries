@@ -398,6 +398,8 @@ class Polynomial:
 
                 count_round = 0
 
+                next_minus: bool = False
+
                 for ch in text:
                     if ch == "(":
                         count_round += 1
@@ -413,7 +415,16 @@ class Polynomial:
                             pol0 = Polynomial.parse_round_brackets(str0, list_const_coeffs=list_const_coeffs) if "(" in str0 else Polynomial.parse_single(str0, list_const_coeffs=list_const_coeffs)
 
                             if pol0 is not None:
+                                if next_minus:
+                                    pol0 *= Polynomial([Monomial(coeff=Rational(-1))])
+
+                                    next_minus = False
+
+                            if pol0 is not None:
                                 list_polynoms.append(pol0)
+
+                        if ch == "-":
+                            next_minus = True
                     else:
                         buffer.append(ch)
 
@@ -423,6 +434,12 @@ class Polynomial:
 
                     pol0 = Polynomial.parse_round_brackets(str0, list_const_coeffs=list_const_coeffs) if "(" in str0 else Polynomial.parse_single(str0,
                                                                                                                  list_const_coeffs=list_const_coeffs)
+
+                    if pol0 is not None:
+                        if next_minus:
+                            pol0 *= Polynomial([Monomial(coeff=Rational(-1))])
+
+                            next_minus = False
 
                     if pol0 is not None:
                         list_polynoms.append(pol0)
