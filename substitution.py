@@ -1,3 +1,4 @@
+from element import Element
 from exponential import Exponential, ExponentialProduct
 from monomial import Monomial
 from polynomial import Polynomial
@@ -28,6 +29,8 @@ class VariableSubstitution:
         return substitution
 
     def substitute_monomial(self, original_monomial: Monomial):
+        is_minus: bool = original_monomial.is_minus
+
         elems: dict = original_monomial.elements
 
         if not isinstance(elems, dict) or len(elems) < 1:
@@ -38,11 +41,19 @@ class VariableSubstitution:
 
         l: list = [coeffs_monomial]
 
-        for key in elems:
-            elem: str = elems[key]
+        for key in elems.keys():
+            elem: Element = elems[key]
 
             if key in self.substitution:
-                val = self.substitution[key]
+                val: Polynomial = self.substitution[key]
+
+                power: int = elem.power
+
+                if power > 1:
+                    power0: int = power - 1
+
+                    for i in range(power0):
+                        val *= val
 
                 l0: list = []
 
@@ -51,6 +62,7 @@ class VariableSubstitution:
                         monomial: Monomial = mon * monom
 
                         if isinstance(monomial, Monomial):
+                            monomial.is_minus = is_minus
                             l0.append(monomial)
 
                 l = l0
