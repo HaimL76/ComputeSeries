@@ -71,7 +71,12 @@ class Polynomial:
             index += 1
 
             if Monomial.are_same_monomials(monom, monomial):
-                monom.coefficient += monomial.coefficient
+                mon_coeff = monomial.coefficient
+
+                if monomial.is_minus:
+                    mon_coeff *= Rational(-1)
+
+                monom.coefficient += mon_coeff
 
                 found = True
 
