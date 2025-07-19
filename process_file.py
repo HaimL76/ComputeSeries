@@ -157,7 +157,7 @@ class ProcessFile:
                             if isinstance(val, int):
                                 series_product.add_start_index(key, val)
 
-                l: list = series_product.multiply_by_polynomial(p0)
+                l: list = series_product.multiply_by_polynomial(converted_polynomial)
 
                 counter: int = 1
 

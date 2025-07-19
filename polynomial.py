@@ -526,7 +526,9 @@ class Polynomial:
 
         s0: str = ""
 
-        for monom in self.monomials:
+        monoms: list[Monomial] = [monom for monom in self.monomials if monom.coefficient != Rational(0)]
+
+        for monom in monoms:
             if len(s0) > 0:
                 s1: str = "-" if monom.is_minus else "+"
                 s0 = f"{s0}{s1}"
