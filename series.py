@@ -256,7 +256,9 @@ class SeriesProduct:
     def multiply_by_polynomial(self, polynomial: Polynomial):
         l: list = []
 
-        for monom in polynomial.monomials:
+        monoms: list[Monomial] = [monom for monom in polynomial.monomials if monom.coefficient != Rational(0)]
+
+        for monom in monoms:
             new_dict: dict = copy.deepcopy(self.dict_series)
 
             for key in new_dict.keys():
