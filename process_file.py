@@ -1,6 +1,9 @@
+import copy
+
 from debug_write import DebugWrite
 from exponential import ExponentialProduct
 from polynomial import Polynomial
+from polynomial_rational import PolynomialSummationRational, PolynomialProductRational
 from series import SeriesProduct
 from substitution import VariableSubstitution
 
@@ -158,6 +161,27 @@ class ProcessFile:
                                 series_product.add_start_index(key, val)
 
                 list_series: list = series_product.multiply_by_polynomial(converted_polynomial)
+
+                total_sum: PolynomialSummationRational = PolynomialSummationRational()
+
+                debug_sums: list = []
+
+                for ser_prod in list_series:
+                    sum_product: PolynomialProductRational = ser_prod.sum()
+
+                    debug_sums.append(copy.deepcopy(sum_product))
+
+                    total_sum.add_polynomial_rational(sum_product)
+
+                debug_write: DebugWrite = DebugWrite.get_instance()
+
+                if debug_write is not None:
+                    for sum_product in debug_sums:
+                        str_to_print: str = f"\\[{sum_product}\\]"
+                        debug_write.write(str_to_print)
+
+                    str_to_print: str = f"{total_sum}"
+                    debug_write.write(str_to_print)
 
                 _ = 0
 

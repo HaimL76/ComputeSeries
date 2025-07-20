@@ -118,7 +118,7 @@ class PolynomialProductRational:
             s = "".join([f"{polynom}" for polynom in numerator0])
 
         if len(self.numerator.const_coefficients) > 0:
-            s1 = "".join([f"({const_coeff})" for const_coeff in self.numerator.const_coefficients])
+            s1 = "".join([f"({self.numerator.const_coefficients[const_coeff]})" for const_coeff in self.numerator.const_coefficients.keys()])
 
             s = f"{s1}{s}"
 
@@ -140,6 +140,7 @@ class PolynomialProductRational:
 
     def __str__(self):
         return self.get_ltx_str()
+
 
 class PolynomialSummationRational:
     def __init__(self):
