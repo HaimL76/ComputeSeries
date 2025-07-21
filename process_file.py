@@ -27,6 +27,7 @@ class ProcessFile:
                 debug_write.write(r"""
                 \documentclass{article}
                 \usepackage{graphicx} % Required for inserting images
+                \usepackage{xcolor}
                 \begin{document}
                 """)
                 for line in file:
@@ -168,6 +169,8 @@ class ProcessFile:
 
                 for ser_prod in list_series:
                     sum_product: PolynomialProductRational = ser_prod.sum()
+
+                    debug_write.write(f"\\[{ser_prod}={sum_product}\\]", 1)
 
                     debug_sums.append(copy.deepcopy(sum_product))
 

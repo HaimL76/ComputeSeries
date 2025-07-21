@@ -43,9 +43,9 @@ class Series:
 
         polynomial_rational: PolynomialRational = PolynomialRational(numer, denom)
 
-        debug_write: DebugWrite = DebugWrite.get_instance()
+        ##debug_write: DebugWrite = DebugWrite.get_instance()
 
-        debug_write.write(f"\\[{self}={polynomial_rational}\\]", level=1)
+        ##debug_write.write(f"\\[{self}={polynomial_rational}\\]", level=1)
 
         return polynomial_rational
 
@@ -64,8 +64,10 @@ class Series:
     def get_ltx_str(self):
         s: str = ""
 
+        color = "red"
+
         if self.coefficient is not None and not self.coefficient.is_one():
-            s = f"{self.coefficient}"
+            s = f"\\textcolor{{{color}}}{self.coefficient}"
 
         s = f"\\sum_{{{self.power}\\geq{{{self.start_index}}}}}{s}({self.monomial})"
 

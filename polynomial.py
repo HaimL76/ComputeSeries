@@ -538,8 +538,10 @@ class Polynomial:
         if self.in_polynomial_product or self.power != Rational(1):
             s0 = f"({s0})"
 
+        color = "red"
+
         if self.power != Rational(1):
-            s0 = f"{s0}^{{{self.power}}}"
+            s0 = f"{s0}^{{\\textcolor{{{color}}}{{{self.power}}}}}"
 
         s = f"{s}{s0}"
 
