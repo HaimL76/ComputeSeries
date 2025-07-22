@@ -145,7 +145,13 @@ class ProcessFile:
                 isinstance(self.polynomials, list) and len(self.polynomials) > 0 and \
                 isinstance(self.pt_product, ExponentialProduct):
             for polynomial in self.polynomials:
+                debug_write.write(f"\\[{polynomial}\\]", 1)
+
+                debug_write.write(f"{self.substitution}")
+
                 converted_polynomial: Polynomial = self.substitution.substitude_polynomial(polynomial)
+
+                debug_write.write(f"\\[{converted_polynomial}\\]", 1)
 
                 converted_pt_product: ExponentialProduct = \
                     self.substitution.substitude_exponential_product(self.pt_product)

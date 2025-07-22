@@ -186,8 +186,17 @@ class Monomial:
                             found = True
 
                 if not found:
-                    if s.isnumeric():
-                        coeff = Rational.parse(s)
+                    found_coeff = None
+
+                    if "/" in s:
+                        arr01: list[str] = s.split("/")
+
+                        if isinstance(arr01, list) and len(arr01) == 2:
+                            if (arr01[0].isnumeric() and arr01[1].isnumeric()):
+                                found_coeff = Rational(numer=int(arr01[0]), denom=int(arr01[1]))
+
+                    if s.isnumeric() or found_coeff is not None:
+                        coeff = found_coeff if found_coeff is not None else Rational.parse(s)
                     elif s in list_const_coeffs:
                         const_coeff: str = s
 
