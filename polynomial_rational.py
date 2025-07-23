@@ -73,9 +73,10 @@ class PolynomialRational:
         return self.get_ltx_str()
 
 class PolynomialProductRational:
-    def __init__(self, numer: PolynomialProduct, denom: PolynomialProduct):
+    def __init__(self, numer: PolynomialProduct, denom: PolynomialProduct, minus: bool = False):
         self.numerator: PolynomialProduct = copy.deepcopy(numer)
         self.denominator: PolynomialProduct = copy.deepcopy(denom)
+        self.is_minus: bool = minus
 
     def __eq__(self, other):
         return self.numerator == other.numerator and self.denominator == other.denominator
@@ -135,6 +136,9 @@ class PolynomialProductRational:
         if len(denominator0):
             s0 = "".join([f"{polynom}" for polynom in denominator0])
             s = f"\\frac{{{s}}}{{{s0}}}"
+
+            if self.is_minus:
+                s = f"-{s}"
 
         return s
 
@@ -204,7 +208,13 @@ class PolynomialSummationRational:
         return self.get_ltx_str()
 
     def get_ltx_str(self):
-        s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
+        #s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
+
+        s: str = ""
+
+        for product in self.numerator:
+            sign = "-" if product.is_minus else "+"
+            s += f"\\[{sign}\\frac{{{product}}}{{{self.denominator}}}+\\]"
 
         return s
 

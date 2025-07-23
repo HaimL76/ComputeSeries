@@ -548,7 +548,10 @@ class Polynomial:
         return s
 
 class PolynomialProduct:
-    def __init__(self, polynoms=None, coeff: Rational = Rational(1), const_coeffs: dict[str, Element] = {}):
+    def __init__(self, polynoms=None, coeff: Rational = Rational(1),
+                 const_coeffs: dict[str, Element] = {}, minus: bool = False):
+        self.is_minus: bool = minus
+
         if polynoms is None:
             polynoms = []
 

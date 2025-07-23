@@ -79,10 +79,12 @@ class Series:
         return self.get_ltx_str()
 
 class SeriesProduct:
-    def __init__(self, sers: dict = {}, coeff: Rational = Rational(1), const_coeffs: dict[str, Element] = {}):
+    def __init__(self, sers: dict = {}, coeff: Rational = Rational(1), const_coeffs: dict[str, Element] = {},
+                 minus: bool = False):
         self.dict_series: dict = copy.deepcopy(sers)
         self.coefficient: Rational = coeff
         self.const_coefficients: dict[str, Element] = copy.deepcopy(const_coeffs)
+        self.is_minus = minus
 
     def add_start_index(self, symbol: str, index: int):
         if symbol:
@@ -162,7 +164,8 @@ class SeriesProduct:
 
         result_numerator.const_coefficients = copy.deepcopy(self.const_coefficients)
 
-        return PolynomialProductRational(numer=result_numerator, denom=result_denominator)
+        return PolynomialProductRational(numer=result_numerator, denom=result_denominator,
+                                         minus=self.is_minus)
 
     @staticmethod
     def from_exponential_product(exponential_product: ExponentialProduct):
@@ -238,8 +241,11 @@ class SeriesProduct:
     def get_ltx_str(self):
         s: str = ""
 
+        if self.is_minus:
+            s = "-"
+
         if self.coefficient is not None and self.coefficient != Rational(1):
-            s = f"{self.coefficient}"
+            s += f"{self.coefficient}"
 
         if self.const_coefficients:
             s1: str = "".join([f"{const_coeff.get_copy_with_parentheses()}" for const_coeff in self.const_coefficients.values()])
@@ -293,7 +299,9 @@ class SeriesProduct:
 
                 new_dict[pow] = series
 
-            new_series_product: SeriesProduct = SeriesProduct(new_dict, coeff=monom.coefficient, const_coeffs=monom.const_coefficients)
+            new_series_product: SeriesProduct = SeriesProduct(new_dict, coeff=monom.coefficient,
+                                                              const_coeffs=monom.const_coefficients,
+                                                              minus=monom.is_minus)
 
             l.append(new_series_product)
 
