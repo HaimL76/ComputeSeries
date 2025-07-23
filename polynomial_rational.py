@@ -152,8 +152,13 @@ class PolynomialSummationRational:
         self.denominator: PolynomialProduct = PolynomialProduct()
 
     def add_polynomial_rational(self, input_product: PolynomialProductRational):
+        is_minus0: bool = input_product.is_minus
+
         input_numerator = copy.deepcopy(input_product.numerator)
         input_denominator = copy.deepcopy(input_product.denominator)
+
+        if is_minus0:
+            input_numerator.is_minus = is_minus0
 
         if (self.numerator is None or len(self.numerator) < 1) and (self.denominator is None or self.denominator.list_polynomials is None or len(self.denominator.list_polynomials) < 1):
             self.numerator = [copy.deepcopy(input_numerator)]

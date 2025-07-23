@@ -173,6 +173,8 @@ class ProcessFile:
 
                 debug_sums: list = []
 
+                debug_write.write("All series and their sums")
+
                 for ser_prod in list_series:
                     sum_product: PolynomialProductRational = ser_prod.sum()
 
@@ -182,12 +184,14 @@ class ProcessFile:
 
                     total_sum.add_polynomial_rational(sum_product)
 
+                    _ = 0
+
                 debug_write: DebugWrite = DebugWrite.get_instance()
 
                 if debug_write is not None:
-                    for sum_product in debug_sums:
-                        str_to_print: str = f"\\[{sum_product}\\]"
-                        debug_write.write(str_to_print)
+                    #for sum_product in debug_sums:
+                     #   str_to_print: str = f"\\[{sum_product}\\]"
+                      #  debug_write.write(str_to_print)
 
                     str_to_print: str = f"{total_sum}"
                     debug_write.write(str_to_print)
