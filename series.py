@@ -67,7 +67,7 @@ class Series:
         color = "red"
 
         if self.coefficient is not None and not self.coefficient.is_one():
-            s = f"\\textcolor{{{color}}}{self.coefficient}"
+            s = f"\\textcolor{{{color}}}{{{self.coefficient}}}"
 
         s = f"\\sum_{{{self.power}\\geq{{{self.start_index}}}}}{s}({self.monomial})"
 

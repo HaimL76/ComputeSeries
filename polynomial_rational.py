@@ -219,7 +219,7 @@ class PolynomialSummationRational:
 
         for product in self.numerator:
             sign = "-" if product.is_minus else "+"
-            s += f"\\[{sign}\\frac{{{product}}}{{{self.denominator}}}+\\]"
+            s += f"\\[{sign}\\frac{{{product}}}{{{self.denominator}}}\\]"
 
         return s
 
