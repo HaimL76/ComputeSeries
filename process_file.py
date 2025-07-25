@@ -1,4 +1,6 @@
 import copy
+import os
+import re
 
 from debug_write import DebugWrite
 from exponential import ExponentialProduct
@@ -8,6 +10,21 @@ from series import SeriesProduct
 from substitution import VariableSubstitution
 
 list_const_coeffs: list[str] = ["A"]
+
+
+class ProcessFolder:
+    def __init__(self, path):
+        self.folder_path: str = path
+
+    def process_folder(self, pattern=None):
+        file_paths: list = os.listdir(self.folder_path)
+
+        for path in file_paths:
+            if pattern:
+                search_result = re.search(pattern, path)
+
+                if search_result:
+                    print(path)
 
 
 class ProcessFile:
@@ -104,7 +121,7 @@ class ProcessFile:
                     self.substitution = None
 
                 self.substitution = VariableSubstitution.parse(text, list_const_coeffs=list_const_coeffs,
-                                                                       substitution=self.substitution)
+                                                               substitution=self.substitution)
 
         prefix = "indices: "
 
@@ -189,9 +206,9 @@ class ProcessFile:
                 debug_write: DebugWrite = DebugWrite.get_instance()
 
                 if debug_write is not None:
-                    #for sum_product in debug_sums:
-                     #   str_to_print: str = f"\\[{sum_product}\\]"
-                      #  debug_write.write(str_to_print)
+                    # for sum_product in debug_sums:
+                    #   str_to_print: str = f"\\[{sum_product}\\]"
+                    #  debug_write.write(str_to_print)
 
                     str_to_print: str = f"{total_sum}"
                     debug_write.write(str_to_print)
