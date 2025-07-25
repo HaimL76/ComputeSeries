@@ -25,6 +25,8 @@ class ProcessFolder:
 
                 if search_result:
                     print(path)
+                    proc_file: ProcessFile = ProcessFile(path)
+                    proc_file.process_file()
 
 
 class ProcessFile:
@@ -39,7 +41,8 @@ class ProcessFile:
 
     def process_file(self):
         with open(self.file_path, 'r') as file:
-            with open("1.tex", "w") as fw:
+            out_file_path: str = self.file_path.replace(".txt", ".tex")
+            with open(out_file_path, "w") as fw:
                 debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
                 debug_write.write(r"""
                 \documentclass{article}

@@ -6,6 +6,11 @@ class DebugWrite:
         if DebugWrite.debug_write_instance is None:
             DebugWrite.debug_write_instance = DebugWrite(fw)
 
+        fw0 = DebugWrite.debug_write_instance.file_writer
+
+        if fw is not None and fw0 != fw:
+            DebugWrite.debug_write_instance = DebugWrite(fw)
+
         return DebugWrite.debug_write_instance
 
     def __init__(self, fw):
