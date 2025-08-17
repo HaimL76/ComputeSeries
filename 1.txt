@@ -1,10 +1,12 @@
-pt-product: p^{8.v_1+11.v_2+11.v_3+7.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}
+pt-product: p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}
 
-polynomial: 1+A.v_4+A.v_3+A^2.v_4.v_3-1/2.A^2.v_3^2-1/2.A^2.v_3
+polynomial: 1 + A.v_1 + A^2.v_1.v_2 + A.v_2 - A^2.1/2.v_2.v_2 - A^2.1/2.v_2
 
-substitution: v_1=a+b
-substitution: v_2=a+b+c+d
-substitution: v_3=a
-substitution: v_4=a+b+c
+substitution: v_1=a+b+c
+substitution: v_2=a
+substitution: v_3=a+b+c+d
+substitution: v_4=a+b
 
-indices: a>=0,b>=0,c>=1,d>=0
+indices: a>=0,c>=0,b>=1,d>=0
+
+run

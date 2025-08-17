@@ -120,9 +120,6 @@ class ProcessFile:
             if text:
                 is_substitution = True
 
-                if self.reset_substitution:
-                    self.substitution = None
-
                 self.substitution = VariableSubstitution.parse(text, list_const_coeffs=list_const_coeffs,
                                                                substitution=self.substitution)
 
@@ -157,13 +154,7 @@ class ProcessFile:
 
                             self.start_index[s0] = index
 
-        self.reset_polynomials = not is_polynomial
-
-        self.reset_substitution = not is_substitution
-
-        if not is_substitution and isinstance(self.substitution, VariableSubstitution) and \
-                isinstance(self.polynomials, list) and len(self.polynomials) > 0 and \
-                isinstance(self.pt_product, ExponentialProduct):
+        if text == "run":
             for polynomial in self.polynomials:
                 debug_write.write(f"\\[{polynomial}\\]", 1)
 
@@ -217,6 +208,9 @@ class ProcessFile:
                     debug_write.write(str_to_print)
 
                 _ = 0
+
+            self.substitution = None
+            self.start_index = None
 
     def aaa(self):
         polynomials: str = strs[1]
