@@ -52,22 +52,12 @@ indices: a>=0,d>=0,b>=1,c>=1
 
 run
 
-=== 5 ===
+=== 6 ===
 substitution: v_1=a
 substitution: v_2=a+b
 substitution: v_3=2.a+b+c+d
 substitution: v_4=2.a+b+c
 
 indices: a>=0,d>=0,b>=1,c>=1
-
-run
-
-=== 6 ===
-substitution: v_1=a+b
-substitution: v_2=a
-substitution: v_3=2.a+b+c+d
-substitution: v_4=2.a+b+c
-
-indices: a>=0,b>=0,d>=0,c>=1
 
 run

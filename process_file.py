@@ -38,6 +38,7 @@ class ProcessFile:
         self.substitution = None
         self.reset_substitution = False
         self.start_index = None
+        self.substitution_counter: int = 0
 
     def process_file(self):
         with open(self.file_path, 'r') as file:
@@ -141,13 +142,17 @@ class ProcessFile:
                     if s:
                         arr_index: list[str] = s.split(">=")
 
-                        if isinstance(arr_index, list) and len(arr_index) == 2:
+                        if isinstance(arr_index, list) and len(arr_index) > 0:
                             is_index = True
 
                             s0 = arr_index[0]
-                            s1 = arr_index[1]
 
-                            index = 1 if s1 == "1" else 0
+                            index = 1
+
+                            if len(arr_index) > 1:
+                                s1 = arr_index[1]
+
+                                index = 1 if s1 == "1" else 0
 
                             if not isinstance(self.start_index, dict):
                                 self.start_index = {}
@@ -157,6 +162,9 @@ class ProcessFile:
         if text == "run":
             for polynomial in self.polynomials:
                 debug_write.write(f"\\[{polynomial}\\]", 1)
+
+                self.substitution_counter += 1
+                debug_write.write(f"Substitution no. {self.substitution_counter}")
 
                 debug_write.write(f"{self.substitution}")
 
