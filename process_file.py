@@ -13,24 +13,33 @@ list_const_coeffs: list[str] = ["A"]
 
 
 class ProcessFolder:
-    def __init__(self, path):
-        self.folder_path: str = path
+    def __init__(self, input_path: str, output_path: str = None):
+        self.input_folder_path: str = input_path
+
+        self.output_folder_path: str = output_path
+
+        if not self.output_folder_path:
+            self.output_folder_path = self.input_folder_path
 
     def process_folder(self, pattern=None):
-        file_paths: list = os.listdir(self.folder_path)
+        file_paths: list = os.listdir(self.input_folder_path)
+
+        output_full_path: str = os.path.abspath(self.output_folder_path)
 
         for path in file_paths:
             if pattern:
                 search_result = re.search(pattern, path)
 
                 if search_result:
+                    path = os.path.join(self.input_folder_path, path)
+                    path = os.path.abspath(path)
                     print(path)
-                    proc_file: ProcessFile = ProcessFile(path)
+                    proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
                     proc_file.process_file()
 
 
 class ProcessFile:
-    def __init__(self, path: str):
+    def __init__(self, path: str, output_directory: str):
         self.file_path: str = path
         self.pt_product = None
         self.polynomials = None
@@ -39,10 +48,19 @@ class ProcessFile:
         self.reset_substitution = False
         self.start_index = None
         self.substitution_counter: int = 0
+        self.output_directory_path: str = output_directory
 
     def process_file(self):
         with open(self.file_path, 'r') as file:
-            out_file_path: str = self.file_path.replace(".txt", ".tex")
+            file_name: str = os.path.basename(self.file_path)
+
+            out_file_path: str = file_name.replace(".txt", ".tex")
+
+            if not os.path.exists(self.output_directory_path):
+                os.makedirs(self.output_directory_path)q
+
+            out_file_path = os.path.join(self.output_directory_path, out_file_path)
+
             with open(out_file_path, "w") as fw:
                 debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
                 debug_write.write(r"""

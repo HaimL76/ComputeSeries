@@ -7,6 +7,6 @@ substitution: v_2=a
 substitution: v_3=a+b+c+d
 substitution: v_4=a+b
 
-indices: a>=0,c>=0,b>=1,d>=0
+indices: b
 
 run

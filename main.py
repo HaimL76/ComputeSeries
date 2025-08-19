@@ -15,17 +15,8 @@ coeff: str = const_coefficient
 
 
 def main():
-    pf: ProcessFolder = ProcessFolder(".")
+    pf: ProcessFolder = ProcessFolder(".\\input\\", ".\\output\\")
 
     pf.process_folder(".txt$")
-
-    _ = 0
-
-    pf: ProcessFile = ProcessFile("1.txt")
-
-    pf.process_file()
-
-
-
 
 main()

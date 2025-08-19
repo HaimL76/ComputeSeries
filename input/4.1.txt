@@ -41,16 +41,6 @@ indices: d
 run
 
 === 5 ===
-substitution: v_1=a
-substitution: v_2=a+b
-substitution: v_3=2.a+b+c+d
-substitution: v_4=2.a+b+c
-
-indices: a>=0,d>=0,b>=1,c>=1
-
-run
-
-=== 6 ===
 substitution: v_1=2.a+b+c
 substitution: v_2=a
 substitution: v_3=a+b
