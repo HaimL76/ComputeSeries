@@ -168,7 +168,28 @@ class SeriesProduct:
                                          minus=self.is_minus)
 
     @staticmethod
-    def from_exponential_product(exponential_product: ExponentialProduct):
+    def get_new_symbol(conversion_table: dict):
+        index: int = 0
+
+        if isinstance(conversion_table, dict) and len(conversion_table) > 0:
+            for key in conversion_table.keys():
+                val = conversion_table[key]
+
+                if isinstance(val, str) and len(val) > 1:
+                    s: str = val[1:]
+
+                    if s and s.isnumeric():
+                        num: int = int(s)
+
+                        if num > index:
+                            index = num
+
+            index += 1
+
+        return f"x{index}"
+
+    @staticmethod
+    def from_exponential_product(exponential_product: ExponentialProduct, conversion_table: dict):
         d: dict = {}
 
         for symb in exponential_product.exponentials.keys():
@@ -211,6 +232,28 @@ class SeriesProduct:
                     elements[elem.symbol] = elem
 
             monomial: Monomial = Monomial(elems=elements)
+
+            key: tuple = 0,0
+
+            if "p" in elements and "t" in elements:
+                elem = elements["p"]
+                p_power = elem.power.numerator
+                elem = elements["t"]
+                t_power = elem.power.numerator
+
+                key = p_power,t_power
+
+            if key not in conversion_table:
+                new_symbol = SeriesProduct.get_new_symbol(conversion_table=conversion_table)
+
+                if new_symbol:
+                    conversion_table[key] = new_symbol
+
+            conv_val = conversion_table[key]
+
+            new_elements: dict = {conv_val: Element(symb=conv_val)}
+
+            monomial.elements = new_elements
 
             series: Series = Series(monom=monomial, pow=symb)
 

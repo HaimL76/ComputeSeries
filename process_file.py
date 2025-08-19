@@ -14,6 +14,8 @@ list_const_coeffs: list[str] = ["A"]
 
 class ProcessFolder:
     def __init__(self, input_path: str, output_path: str = None):
+        self.conversion_table: dict = {}
+
         self.input_folder_path: str = input_path
 
         self.output_folder_path: str = output_path
@@ -35,7 +37,7 @@ class ProcessFolder:
                     path = os.path.abspath(path)
                     print(path)
                     proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
-                    proc_file.process_file()
+                    proc_file.process_file(conversion_table=self.conversion_table)
 
 
 class ProcessFile:
@@ -50,7 +52,7 @@ class ProcessFile:
         self.substitution_counter: int = 0
         self.output_directory_path: str = output_directory
 
-    def process_file(self):
+    def process_file(self, conversion_table: dict):
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
 
@@ -74,10 +76,10 @@ class ProcessFile:
                         line = line.strip()
 
                     if line and line[0] != "#":
-                        self.process_line(line)
+                        self.process_line(line, conversion_table=conversion_table)
                 debug_write.write("\\end{document}")
 
-    def process_line(self, text: str):
+    def process_line(self, text: str, conversion_table: dict):
         is_polynomial: bool = False
         is_substitution: bool = False
         is_index: bool = False
@@ -193,7 +195,7 @@ class ProcessFile:
                 converted_pt_product: ExponentialProduct = \
                     self.substitution.substitude_exponential_product(self.pt_product)
 
-                series_product = SeriesProduct.from_exponential_product(converted_pt_product)
+                series_product = SeriesProduct.from_exponential_product(converted_pt_product, conversion_table)
 
                 if isinstance(series_product, SeriesProduct) and isinstance(self.start_index, dict) \
                         and len(self.start_index) > 0:
