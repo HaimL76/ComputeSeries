@@ -57,7 +57,7 @@ class ProcessFile:
             out_file_path: str = file_name.replace(".txt", ".tex")
 
             if not os.path.exists(self.output_directory_path):
-                os.makedirs(self.output_directory_path)q
+                os.makedirs(self.output_directory_path)
 
             out_file_path = os.path.join(self.output_directory_path, out_file_path)
 

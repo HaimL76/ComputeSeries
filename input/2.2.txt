@@ -7,7 +7,7 @@ substitution: v_2=c+d
 substitution: v_3=a+b+c+d
 substitution: v_4=a+c+d
 
-indices: b>=0,c>=0,a>=0,d>=1
+indices: ,,,d
 
 run
 
@@ -16,7 +16,7 @@ substitution: v_2=b+c+d
 substitution: v_3=a+b+c+d
 substitution: v_4=a+2.b+c+d
 
-indices: c>=0,a>=0,b>=0,d>=1
+indices: ,,,d
 
 run
 
@@ -25,6 +25,6 @@ substitution: v_2=a+b+c+d
 substitution: v_3=b+c+d
 substitution: v_4=a+2.b+c+d
 
-indices: a>=0,c>=0,b>=1,d>=1
+indices: ,,b,d
 
 run
