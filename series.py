@@ -168,25 +168,26 @@ class SeriesProduct:
                                          minus=self.is_minus)
 
     @staticmethod
-    def get_new_symbol(conversion_table: dict):
+    def check_and_store_new_index(conversion_table: dict[tuple[int, int], int], key: tuple[int, int]):
         index: int = 0
 
-        if isinstance(conversion_table, dict) and len(conversion_table) > 0:
-            for key in conversion_table.keys():
-                val = conversion_table[key]
+        if isinstance(conversion_table, dict):
+            if key in conversion_table:
+                index = conversion_table[key]
+            else:
+                if len(conversion_table) > 0:
+                    for k in conversion_table.keys():
+                        val = conversion_table[k]
 
-                if isinstance(val, str) and len(val) > 1:
-                    s: str = val[1:]
+                        if isinstance(val, int) and val > index:
+                            index = val
 
-                    if s and s.isnumeric():
-                        num: int = int(s)
+                    index += 1
 
-                        if num > index:
-                            index = num
+                conversion_table[key] = index
 
-            index += 1
+        return f"x_{{{index}}}"
 
-        return f"x{index}"
 
     @staticmethod
     def from_exponential_product(exponential_product: ExponentialProduct, conversion_table: dict):
@@ -233,7 +234,7 @@ class SeriesProduct:
 
             monomial: Monomial = Monomial(elems=elements)
 
-            key: tuple = 0,0
+            key0: tuple[int, int] = 0,0
 
             if "p" in elements and "t" in elements:
                 elem = elements["p"]
@@ -241,17 +242,11 @@ class SeriesProduct:
                 elem = elements["t"]
                 t_power = elem.power.numerator
 
-                key = p_power,t_power
+                key0 = p_power,t_power
 
-            if key not in conversion_table:
-                new_symbol = SeriesProduct.get_new_symbol(conversion_table=conversion_table)
+            new_symbol: str = SeriesProduct.check_and_store_new_index(conversion_table=conversion_table, key=key0)
 
-                if new_symbol:
-                    conversion_table[key] = new_symbol
-
-            conv_val = conversion_table[key]
-
-            new_elements: dict = {conv_val: Element(symb=conv_val)}
+            new_elements: dict = {new_symbol: Element(symb=new_symbol)}
 
             monomial.elements = new_elements
 
