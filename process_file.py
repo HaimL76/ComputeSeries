@@ -11,8 +11,17 @@ from substitution import VariableSubstitution
 
 list_const_coeffs: list[str] = ["A"]
 
+str_pt_product_1: str = "p^{8.v_1+11.v_2+11.v_3+7.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
+str_pt_product_4: str = "p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
+
 
 class ProcessFolder:
+    pt_product_1: ExponentialProduct = ExponentialProduct.parse(str_pt_product_1,
+                                                                list_const_coeffs=list_const_coeffs)
+
+    pt_product_4: ExponentialProduct = ExponentialProduct.parse(str_pt_product_4,
+                                                                list_const_coeffs=list_const_coeffs)
+
     def __init__(self, input_path: str, output_path: str = None):
         self.conversion_table: dict = {}
 
@@ -98,8 +107,17 @@ class ProcessFile:
                 text = text.strip()
 
             if text:
-                self.pt_product: ExponentialProduct = ExponentialProduct.parse(text,
-                                                                               list_const_coeffs=list_const_coeffs)
+                arr11: list[str] = text.split("_")
+
+                index11: int = 0
+
+                if len(arr11) == 2 and arr11[0] == "v" and arr11[1] and arr11[1].isnumeric():
+                    index11 = int(arr11[1])
+
+                self.pt_product: ExponentialProduct = copy.deepcopy(ProcessFolder.pt_product_1) if index11 == 1 \
+                    else copy.deepcopy(ProcessFolder.pt_product_4)
+
+                _ = 0
 
         prefix = "polynomial: "
 
