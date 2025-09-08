@@ -2,50 +2,32 @@ pt-product: v_1
 
 polynomial: 1+A.v_2+A.v_3+A^2.v_2.v_3
 
-=== 1 ===
-substitution: v_1=a+2.b+c
+==== 4.2.1 ====
+substitution: v_1=a+2.b+c+d
 substitution: v_2=a+b+c+d
 substitution: v_3=b+c+d
 substitution: v_4=a+2.b+2.c+d
-
-indices: c,d
-
-run
-
-=== 2 ===
-substitution: v_1=a+2.b+c
-substitution: v_2=a+b+c
-substitution: v_3=b+c
-substitution: v_4=a+2.b+2.c+d
-
-run
-
-=== 3 ===
-substitution: v_1=a+b
-substitution: v_2=a+b+c
-substitution: v_3=a
-substitution: v_4=2.a+b+c+d
 
 indices: c
 
 run
 
-=== 4 ===
-substitution: v_1=2.a+b+c
-substitution: v_2=a+b
-substitution: v_3=a
-substitution: v_4=2.a+b+c+d
+==== 4.2.2 ====
+substitution: v_1=a+2.b+c+d
+substitution: v_2=b+c+d
+substitution: v_3=a+b+b+c
+substitution: v_4=a+2.b+2.c+d
 
-indices: d
+indices: a,c,d
 
 run
 
-=== 5 ===
-substitution: v_1=2.a+b+c
-substitution: v_2=a
-substitution: v_3=a+b
-substitution: v_4=2.a+b+c+d
+==== 4.2.3 ====
+substitution: v_1=a+c+d
+substitution: v_2=a+b+c+d
+substitution: v_3=c+d
+substitution: v_4=a+b+2.c+d
 
-indices: b,d
+indices: b
 
 run
