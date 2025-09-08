@@ -2,29 +2,35 @@ pt-product: v_4
 
 polynomial: 1 + A.v_2 + A.v_3 - A^2.1/2.v_2.v_2 + A^2.v_1.v_2 - A^2.1/2.v_3.v_3 + A^2.v_1.v_3 - A^2.1/2.v_1.v_1 - A^2.1/2.v_2 - A^2.1/2.v_3 + A^2.1/2.v_1
 
+==== 2.2.1 ====
+
 substitution: v_1=a+b+2.c+d
 substitution: v_2=c+d
 substitution: v_3=a+b+c+d
 substitution: v_4=a+c+d
 
-indices: ,,,d
+indices: a,d
 
 run
+
+==== 2.2.2 ====
 
 substitution: v_1=a+2.b+2.c+d
 substitution: v_2=b+c+d
 substitution: v_3=a+b+c+d
 substitution: v_4=a+2.b+c+d
 
-indices: ,,,d
+indices: a,d
 
 run
+
+==== 2.2.3 ====
 
 substitution: v_1=a+2.b+2.c+d
 substitution: v_2=a+b+c+d
 substitution: v_3=b+c+d
 substitution: v_4=a+2.b+c+d
 
-indices: ,,b,d
+indices: b,d
 
 run
