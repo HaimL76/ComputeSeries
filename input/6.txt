@@ -1,8 +1,8 @@
 pt-product: v_1
 
-polynomial: 1+A.v_4+A.v_3+A^2.v_4.v_3-A^2.1/2.v_3.v_3-A^2.1/2.v_3
+polynomial: 1+A.v_4+A.v_1+A^2.v_4.v_1-A^2.1/2.v_1.v_1-A^2.1/2.v_1
 
-=== 1 ===
+==== 6.1 ====
 substitution: v_1=a
 substitution: v_2=a+b+c+d
 substitution: v_3=a+b
@@ -12,7 +12,7 @@ indices: b,c
 
 run
 
-=== 2 ===
+==== 6.2 ====
 substitution: v_1=a
 substitution: v_2=a+b+c+d
 substitution: v_3=a+b+c
@@ -22,7 +22,7 @@ indices: b
 
 run
 
-=== 3 ===
+==== 6.3 ====
 substitution: v_1=a
 substitution: v_2=a+b+c
 substitution: v_3=a+b+c+d
