@@ -1,0 +1,73 @@
+pt-product: v_4
+
+polynomial: 1+A.v_4+A.v_3+A^2.v_3.v_4
+
+==== 8.2.1 ====
+substitution: v_1=a+b+2.c+d
+substitution: v_2=a+c+d
+substitution: v_3=a+b+c+d
+substitution: v_4=c+d
+
+indices: b,d
+
+run
+
+==== 8.2.2 ====
+substitution: v_1=a+2.b+2.c+d
+substitution: v_2=a+2.b+c+d
+substitution: v_3=a+b+c+d
+substitution: v_4=b+c+d
+
+indices: d
+
+run
+
+==== 8.2.3 ====
+substitution: v_1=a+2.b+2.c+d
+substitution: v_2=a+2.b+c
+substitution: v_3=b+c+d
+substitution: v_4=a+b+c+d
+
+indices: a,d
+
+run
+
+==== 8.2.4 ====
+substitution: v_1=a+2.b+c+d
+substitution: v_2=a+2.b+2.c+d
+substitution: v_3=b+c+d
+substitution: v_4=a+b+c+d
+
+indices: a,c
+
+run
+
+==== 8.2.5 ====
+substitution: v_1=a+2.b+c+d
+substitution: v_2=a+2.b+2.c+d
+substitution: v_3=a+b+c+d
+substitution: v_4=b+c+d
+
+indices: c,d
+
+run
+
+==== 8.2.6 ====
+substitution: v_1=a+2.b+c
+substitution: v_2=a+2.b+2.c+d
+substitution: v_3=b+c
+substitution: v_4=a+b+c
+
+indices: a,c,d
+
+run
+
+==== 8.2.7 ====
+substitution: v_1=a+2.b+c
+substitution: v_2=a+2.b+2.c+d
+substitution: v_3=a+b+c
+substitution: v_4=b+c
+
+indices: c
+
+run
