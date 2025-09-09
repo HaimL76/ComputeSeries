@@ -1,7 +1,40 @@
+import math
+
+
 class Rational:
+    primes: list[int] = [2, 3, 5, 7, 11]
+
+    def reduce(self):
+        check_reduce: bool = abs(self.numerator) != 1 and abs(self.denominator) != 1
+
+        if check_reduce:
+            is_reduced: bool = False
+
+            while not is_reduced:
+                index: int = 0
+
+                while not is_reduced and index < len(Rational.primes):
+                    prime: int = Rational.primes[index]
+
+                    numer0 = self.numerator / prime
+                    denom0 = self.denominator / prime
+
+                    if numer0 == math.floor(numer0) and denom0 == math.floor(denom0):
+                        self.numerator = int(numer0)
+                        self.denominator = int(denom0)
+
+                    if abs(self.numerator) == 1 or abs(self.denominator) == 1:
+                        is_reduced = True
+
+                    index += 1
+
+                is_reduced = True
+
     def __init__(self, numer: int, denom: int = 1):
         self.numerator: int = numer
         self.denominator: int = denom
+
+        self.reduce()
 
     def __gt__(self, other):
         return self.numerator * other.denominator > other.numerator * self.denominator
@@ -55,7 +88,6 @@ class Rational:
             denom *= -1
 
         return Rational(numer=numer, denom=denom)
-
 
     def __sub__(self, other):
         minus_other: Rational = Rational(numer=other.numerator * -1, denom=other.denominator)

@@ -37,16 +37,33 @@ class ProcessFolder:
 
         output_full_path: str = os.path.abspath(self.output_folder_path)
 
-        for path in file_paths:
-            if pattern:
-                search_result = re.search(pattern, path)
+        if not os.path.exists(output_full_path):
+            os.makedirs(output_full_path)
 
-                if search_result:
-                    path = os.path.join(self.input_folder_path, path)
-                    path = os.path.abspath(path)
-                    print(path)
-                    proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
-                    proc_file.process_file(conversion_table=self.conversion_table)
+        out_file_path = os.path.join(output_full_path, "output.tex")
+
+        with open(out_file_path, "w") as fw:
+            debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
+            debug_write.write(r"""
+            \documentclass{article}
+            \usepackage{graphicx} % Required for inserting images
+            \usepackage{xcolor}
+            \begin{document}
+            """)
+
+            for path in file_paths:
+                if pattern:
+                    search_result = re.search(pattern, path)
+
+                    if search_result:
+                        path = os.path.join(self.input_folder_path, path)
+                        path = os.path.abspath(path)
+                        print(path)
+                        proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
+                        proc_file.process_file(conversion_table=self.conversion_table,
+                                               debug_write0=debug_write)
+
+            debug_write.write("\\end{document}")
 
 
 class ProcessFile:
@@ -61,7 +78,7 @@ class ProcessFile:
         self.substitution_counter: int = 0
         self.output_directory_path: str = output_directory
 
-    def process_file(self, conversion_table: dict):
+    def process_file(self, conversion_table: dict, debug_write0: DebugWrite):
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
 
@@ -85,10 +102,11 @@ class ProcessFile:
                         line = line.strip()
 
                     if line and line[0] != "#":
-                        self.process_line(line, conversion_table=conversion_table)
+                        self.process_line(line, conversion_table=conversion_table,
+                                          debug_write0=debug_write0)
                 debug_write.write("\\end{document}")
 
-    def process_line(self, text: str, conversion_table: dict):
+    def process_line(self, text: str, conversion_table: dict, debug_write0: DebugWrite):
         is_polynomial: bool = False
         is_substitution: bool = False
         is_index: bool = False
@@ -252,6 +270,7 @@ class ProcessFile:
 
                     str_to_print: str = f"{total_sum}"
                     debug_write.write(str_to_print)
+                    debug_write0.write(str_to_print)
 
                 _ = 0
 
