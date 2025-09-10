@@ -246,6 +246,8 @@ class ProcessFile:
                             self.start_index[s0] = index
 
         if text == "run":
+            s: str = ".".join([str(index) for index in self.case_indices])
+            debug_write0.write(f"\n{s}\n")
             for polynomial in self.polynomials:
                 debug_write.write(f"\\[{polynomial}\\]", 1)
 
