@@ -42,6 +42,8 @@ class ProcessFolder:
 
         out_file_path = os.path.join(output_full_path, "output.tex")
 
+        list_rationals: list = []
+
         with open(out_file_path, "w") as fw:
             debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
             debug_write.write(r"""
@@ -61,7 +63,7 @@ class ProcessFolder:
                         print(path)
                         proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
                         proc_file.process_file(conversion_table=self.conversion_table,
-                                               debug_write0=debug_write)
+                                               debug_write0=debug_write, list_rationals=list_rationals)
 
             debug_write.write("\\end{document}")
 
@@ -77,8 +79,10 @@ class ProcessFile:
         self.start_index = None
         self.substitution_counter: int = 0
         self.output_directory_path: str = output_directory
+        self.case_indices: list[int] = []
 
-    def process_file(self, conversion_table: dict, debug_write0: DebugWrite):
+    def process_file(self, conversion_table: dict, debug_write0: DebugWrite,
+                     list_rationals: list):
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
 
@@ -103,10 +107,11 @@ class ProcessFile:
 
                     if line and line[0] != "#":
                         self.process_line(line, conversion_table=conversion_table,
-                                          debug_write0=debug_write0)
+                                          debug_write0=debug_write0, list_rationals=list_rationals)
                 debug_write.write("\\end{document}")
 
-    def process_line(self, text: str, conversion_table: dict, debug_write0: DebugWrite):
+    def process_line(self, text: str, conversion_table: dict, debug_write0: DebugWrite,
+                     list_rationals: list):
         is_polynomial: bool = False
         is_substitution: bool = False
         is_index: bool = False
@@ -136,6 +141,31 @@ class ProcessFile:
                     else copy.deepcopy(ProcessFolder.pt_product_4)
 
                 _ = 0
+
+        text0: str = text.strip()
+
+        if text0.startswith("="):
+            text0 = text0.strip("=").strip()
+
+            list0: list[str] = text0.split(".")
+
+            list1: list[int] = [0] * len(list0)
+
+            not_num: bool = False
+            index: int = 0
+
+            while not not_num and index < len(list0):
+                s: str = list0[index]
+
+                if s.isnumeric():
+                    list1[index] = int(s)
+                else:
+                    not_num = True
+
+                index += 1
+
+            if not not_num:
+                self.case_indices = list1
 
         prefix = "polynomial: "
 
@@ -258,6 +288,9 @@ class ProcessFile:
                     debug_sums.append(copy.deepcopy(sum_product))
 
                     total_sum.add_polynomial_rational(sum_product)
+
+                    if isinstance(list_rationals, list):
+                        list_rationals.append(total_sum)
 
                     _ = 0
 
