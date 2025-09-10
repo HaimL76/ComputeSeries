@@ -18,7 +18,7 @@ substitution: v_2=b+c+d
 substitution: v_3=a+b+b+c
 substitution: v_4=a+2.b+2.c+d
 
-indices: a,c,d
+indices: a,c
 
 run
 
