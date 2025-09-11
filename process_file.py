@@ -3,6 +3,7 @@ import os
 import re
 
 from debug_write import DebugWrite
+from element import Element
 from exponential import ExponentialProduct
 from polynomial import Polynomial
 from polynomial_rational import PolynomialSummationRational, PolynomialProductRational
@@ -53,6 +54,8 @@ class ProcessFolder:
             \begin{document}
             """)
 
+            dict_rationals: dict = {}
+
             for path in file_paths:
                 if pattern:
                     search_result = re.search(pattern, path)
@@ -63,7 +66,7 @@ class ProcessFolder:
                         print(path)
                         proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
                         proc_file.process_file(conversion_table=self.conversion_table,
-                                               debug_write0=debug_write, list_rationals={})
+                                               debug_write0=debug_write, list_rationals=dict_rationals)
 
             debug_write.write("\\end{document}")
 
@@ -293,17 +296,32 @@ class ProcessFile:
                     total_sum.add_polynomial_rational(sum_product)
 
                     if isinstance(list_rationals, dict):
+                        indices: list[int] = []
+
                         list_pols: list = total_sum.denominator.list_polynomials
                         for pol in list_pols:
                             list_mons: list = pol.monomials
 
                             for mon in list_mons:
-                                list_elems = mon.elements
+                                dict_elems: dict = mon.elements
 
-                                for elem in list_elems:
+                                for key in dict_elems:
+                                    elem: Element = dict_elems[key]
+
                                     if elem.index is not None:
                                         ind = elem.index
-                        #list_rationals.append(total_sum)
+
+                                        if ind is not None:
+                                            indices.append(ind)
+
+                        indices.sort()
+
+                        key = "-".join([str(index) for index in indices])
+
+                        if key not in list_rationals:
+                            list_rationals[key] = []
+
+                        list_rationals[key].append((total_sum, self.case_indices))
 
                     _ = 0
 
