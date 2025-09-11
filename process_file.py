@@ -68,6 +68,13 @@ class ProcessFolder:
                         proc_file.process_file(conversion_table=self.conversion_table,
                                                debug_write0=debug_write, list_rationals=dict_rationals)
 
+                        cases: int = 0
+
+                        for key in dict_rationals:
+                            l: list = dict_rationals[key]
+
+                            cases += len(l)
+
             debug_write.write("\\end{document}")
 
 
@@ -295,35 +302,8 @@ class ProcessFile:
 
                     total_sum.add_polynomial_rational(sum_product)
 
-                    if isinstance(list_rationals, dict):
-                        indices: list[int] = []
-
-                        list_pols: list = total_sum.denominator.list_polynomials
-                        for pol in list_pols:
-                            list_mons: list = pol.monomials
-
-                            for mon in list_mons:
-                                dict_elems: dict = mon.elements
-
-                                for key in dict_elems:
-                                    elem: Element = dict_elems[key]
-
-                                    if elem.index is not None:
-                                        ind = elem.index
-
-                                        if ind is not None:
-                                            indices.append(ind)
-
-                        indices.sort()
-
-                        key = "-".join([str(index) for index in indices])
-
-                        if key not in list_rationals:
-                            list_rationals[key] = []
-
-                        list_rationals[key].append((total_sum, self.case_indices))
-
-                    _ = 0
+                get_indices(list_rationals=list_rationals, total_sum=total_sum,
+                            case_indices=self.case_indices)
 
                 debug_write: DebugWrite = DebugWrite.get_instance()
 
@@ -340,3 +320,37 @@ class ProcessFile:
 
             self.substitution = None
             self.start_index = None
+
+
+def get_indices(list_rationals: dict, total_sum, case_indices):
+    list_polynomials: list[Polynomial] = total_sum.denominator.list_polynomials
+
+    if isinstance(list_rationals, dict) and isinstance(list_polynomials, list):
+        indices: list[int] = []
+
+        list_pols: list = total_sum.denominator.list_polynomials
+        for pol in list_pols:
+            list_mons: list = pol.monomials
+
+            for mon in list_mons:
+                dict_elems: dict = mon.elements
+
+                for key in dict_elems:
+                    elem: Element = dict_elems[key]
+
+                    if elem.index is not None:
+                        ind = elem.index
+
+                        if ind is not None:
+                            indices.append(ind)
+
+        indices.sort()
+
+        key = "-".join([str(index) for index in indices])
+
+        if key not in list_rationals:
+            list_rationals[key] = []
+
+        list_rationals[key].append((total_sum, case_indices))
+
+    _ = 0
