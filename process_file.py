@@ -63,7 +63,7 @@ class ProcessFolder:
                         print(path)
                         proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
                         proc_file.process_file(conversion_table=self.conversion_table,
-                                               debug_write0=debug_write, list_rationals=list_rationals)
+                                               debug_write0=debug_write, list_rationals={})
 
             debug_write.write("\\end{document}")
 
@@ -82,7 +82,7 @@ class ProcessFile:
         self.case_indices: list[int] = []
 
     def process_file(self, conversion_table: dict, debug_write0: DebugWrite,
-                     list_rationals: list):
+                     list_rationals: dict):
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
 
@@ -111,7 +111,7 @@ class ProcessFile:
                 debug_write.write("\\end{document}")
 
     def process_line(self, text: str, conversion_table: dict, debug_write0: DebugWrite,
-                     list_rationals: list):
+                     list_rationals: dict):
         is_polynomial: bool = False
         is_substitution: bool = False
         is_index: bool = False
@@ -247,6 +247,7 @@ class ProcessFile:
 
         if text == "run":
             s: str = ".".join([str(index) for index in self.case_indices])
+            debug_write.write(f"\n{s}\n")
             debug_write0.write(f"\n{s}\n")
             for polynomial in self.polynomials:
                 debug_write.write(f"\\[{polynomial}\\]", 1)
@@ -291,8 +292,9 @@ class ProcessFile:
 
                     total_sum.add_polynomial_rational(sum_product)
 
-                    if isinstance(list_rationals, list):
-                        list_rationals.append(total_sum)
+                    if isinstance(list_rationals, dict):
+                        a = total_sum.denominator.list_polynomials
+                        #list_rationals.append(total_sum)
 
                     _ = 0
 
@@ -311,89 +313,3 @@ class ProcessFile:
 
             self.substitution = None
             self.start_index = None
-
-    def aaa(self):
-        polynomials: str = strs[1]
-        substitutes: str = strs[2]
-        power_range: str = strs[3]
-
-        ##list_const_coeffs: list[str] = ["1-p^{-1}"]
-
-        p: Polynomial = Polynomial.parse_curly(polynomials,
-                                               list_const_coeffs) if "{" in polynomials else Polynomial.parse_brackets(
-            polynomials, list_const_coeffs=list_const_coeffs)
-
-        print(f"p = {p}")
-
-        debug_write.write(f"\\[{p}\\]\\newline", 1)
-
-        substitution: VariableSubstitution = VariableSubstitution.parse(substitutes,
-                                                                        list_const_coeffs=list_const_coeffs)
-
-        p0: Polynomial = substitution.substitude_polynomial(p)
-
-        print(f"p0 = {p0}")
-        print(f"substitution: {substitution}")
-
-        exp_prod0: ExponentialProduct = substitution.substitude_exponential_product(exp_prod)
-
-        print(f"exp_prod = {exp_prod}")
-        print(f"exp_prod0 = {exp_prod0}")
-
-        series_product = SeriesProduct.from_exponential_product(exp_prod0)
-
-        series_product.parse_starting_indices(power_range)
-
-        l: list = series_product.multiply_by_polynomial(p0)
-
-        counter: int = 1
-
-        total_sum: PolynomialSummationRational = PolynomialSummationRational()
-
-        debug_counter: int = 3
-
-        for ser_prod in l:
-            # if debug_counter <= 0:
-            #   continue
-
-            # debug_counter -= 1
-
-            print(f"[{counter}] ser_prod: {ser_prod}")
-
-            sum_product: PolynomialProductRational = ser_prod.sum()
-
-            total_sum.add_polynomial_rational(sum_product)
-
-        s2: str = "".join(f"{counter}" for i in range(25))
-
-        debug_write.write(f"{s2}\\newline", 1)
-        s2: str = "".join(f"-" for i in range(25))
-        debug_write.write(f"{s2}\\[{sum_product}\\]", 1)
-        s2: str = "".join(f"+" for i in range(25))
-        debug_write.write(f"{s2}{total_sum}", 1)
-
-        debug_write.write(f"\\[{ser_prod}\\]", 1)
-        debug_write.write(f"\\[{sum_product}\\]", 1)
-
-        print(f"[{counter}] sum: {sum_product}")
-
-        counter += 1
-
-        output: str = f"\\[[{exp_prod}][{p}]\\]"
-        output = f"{output}{substitution}"
-        output = f"{output}\\[{exp_prod0}\\]"
-        output = f"{output}\\[{p0}\\]"
-        s0: str = "+".join([f"\\[{ser_prod}\\]" for ser_prod in l])
-        output = f"{output}{s0}"
-        output = f"{output}{total_sum}"
-
-        if debug_write is not None:  # check open
-            debug_write.write(output)
-
-        url: str = 'https://www.overleaf.com/project/685ae79d032d2247cd797478'
-
-        # Windows
-        chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-
-        webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
-    # webbrowser.get('chrome').open_new_tab(url)

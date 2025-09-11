@@ -186,7 +186,7 @@ class SeriesProduct:
 
                 conversion_table[key] = index
 
-        return f"x_{{{index}}}"
+        return "x", index
 
 
     @staticmethod
@@ -244,9 +244,11 @@ class SeriesProduct:
 
                 key0 = p_power,t_power
 
-            new_symbol: str = SeriesProduct.check_and_store_new_index(conversion_table=conversion_table, key=key0)
+            new_symbol, new_index = SeriesProduct.check_and_store_new_index(conversion_table=conversion_table, key=key0)
 
-            new_elements: dict = {new_symbol: Element(symb=new_symbol)}
+            key: str = f"{new_symbol}_{new_index}"
+
+            new_elements: dict = {new_symbol: Element(symb=new_symbol, ind=new_index)}
 
             monomial.elements = new_elements
 

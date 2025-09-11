@@ -1,7 +1,8 @@
 class Element:
-    def __init__(self, symb: str = "", pow: int = 1):
+    def __init__(self, symb: str = "", pow: int = 1, ind = None):
         self.power: int = pow
         self.symbol: str = symb
+        self.index: int = ind
 
     def __mul__(self, other):
         result = None
@@ -52,6 +53,9 @@ class Element:
 
     def get_ltx_str(self):
         s: str = self.symbol
+
+        if self.index is not None:
+            s += f"_{self.index}"
 
         if self.power != 1:
             s = f"{s}^{{{self.power}}}"
