@@ -246,9 +246,11 @@ class SeriesProduct:
 
             new_symbol, new_index = SeriesProduct.check_and_store_new_index(conversion_table=conversion_table, key=key0)
 
-            key: str = f"{new_symbol}_{new_index}"
+            elem: Element = Element(symb=new_symbol, ind=new_index)
 
-            new_elements: dict = {new_symbol: Element(symb=new_symbol, ind=new_index)}
+            key: str = str(elem)
+
+            new_elements: dict = {key: elem}
 
             monomial.elements = new_elements
 
