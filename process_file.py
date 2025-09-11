@@ -293,7 +293,16 @@ class ProcessFile:
                     total_sum.add_polynomial_rational(sum_product)
 
                     if isinstance(list_rationals, dict):
-                        a = total_sum.denominator.list_polynomials
+                        list_pols: list = total_sum.denominator.list_polynomials
+                        for pol in list_pols:
+                            list_mons: list = pol.monomials
+
+                            for mon in list_mons:
+                                list_elems = mon.elements
+
+                                for elem in list_elems:
+                                    if elem.index is not None:
+                                        ind = elem.index
                         #list_rationals.append(total_sum)
 
                     _ = 0

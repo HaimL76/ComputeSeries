@@ -248,7 +248,7 @@ class SeriesProduct:
 
             elem: Element = Element(symb=new_symbol, ind=new_index)
 
-            key: str = str(elem)
+            key: str = f"{elem.symbol}_{elem.index}"
 
             new_elements: dict = {key: elem}
 

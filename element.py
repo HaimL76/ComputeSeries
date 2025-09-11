@@ -4,6 +4,9 @@ class Element:
         self.symbol: str = symb
         self.index: int = ind
 
+        if self.symbol == "x_0":
+            _ = 0
+
     def __mul__(self, other):
         result = None
 
@@ -23,6 +26,7 @@ class Element:
 
     @staticmethod
     def parse(text: str):
+        index = None
         l: list = []
 
         l0: list = text.split("^")
@@ -38,7 +42,14 @@ class Element:
             if spow.isnumeric():
                 pow = int(spow)
 
-        return Element(symb, pow)
+        l1: list[str] = symb.split("_")
+
+        if len(l1) == 2:
+            if l1[0] == "x" and l1[1].isnumeric():
+                symb = "x"
+                index = int(l1[1])
+
+        return Element(symb, pow, ind=index)
 
     def get_str(self):
         s: str = self.symbol

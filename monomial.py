@@ -15,10 +15,15 @@ class Monomial:
             self.elements = copy.deepcopy(elems)
         elif isinstance(elems, list):
             for elem in elems:
+                key: str = elem.symbol
+
+                if elem.index is not None:
+                    key += f"_{elem.index}"
+
                 if elem.symbol not in self.elements:
-                    self.elements[elem.symbol] = Element(symb=elem.symbol, pow=elem.power)
+                    self.elements[key] = Element(symb=elem.symbol, pow=elem.power, ind=elem.index)
                 else:
-                    self.elements[elem.symbol] *= elem
+                    self.elements[key] *= elem
 
         self.coefficient: Rational = abs(coeff)
 
