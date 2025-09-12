@@ -111,6 +111,7 @@ class ProcessFile:
                 \usepackage{xcolor}
                 \begin{document}
                 """)
+
                 for line in file:
                     if line:
                         line = line.strip()
@@ -118,6 +119,16 @@ class ProcessFile:
                     if line and line[0] != "#":
                         self.process_line(line, conversion_table=conversion_table,
                                           debug_write0=debug_write0, list_rationals=list_rationals)
+
+                for key in conversion_table.keys():
+                    index: int = conversion_table[key]
+
+                    s: str = f"x_{index}"
+
+                    s = f"\\[{s}\\rightarrow{{p^{{{key[0]}}}t^{{{key[1]}}}}}\\]"
+
+                    debug_write.write(s)
+
                 debug_write.write("\\end{document}")
 
     def process_line(self, text: str, conversion_table: dict, debug_write0: DebugWrite,
@@ -302,7 +313,7 @@ class ProcessFile:
 
                     total_sum.add_polynomial_rational(sum_product)
 
-                get_indices(list_rationals=list_rationals, total_sum=total_sum,
+                store_by_indices(list_rationals=list_rationals, total_sum=total_sum,
                             case_indices=self.case_indices)
 
                 debug_write: DebugWrite = DebugWrite.get_instance()
@@ -322,11 +333,11 @@ class ProcessFile:
             self.start_index = None
 
 
-def get_indices(list_rationals: dict, total_sum, case_indices):
+def store_by_indices(list_rationals: dict, total_sum, case_indices):
     list_polynomials: list[Polynomial] = total_sum.denominator.list_polynomials
 
     if isinstance(list_rationals, dict) and isinstance(list_polynomials, list):
-        indices: list[int] = []
+        indices: dict[int, int] = {}
 
         list_pols: list = total_sum.denominator.list_polynomials
         for pol in list_pols:
@@ -342,11 +353,30 @@ def get_indices(list_rationals: dict, total_sum, case_indices):
                         ind = elem.index
 
                         if ind is not None:
-                            indices.append(ind)
+                            # we check that there is no other power of the same symbol
+                            if ind in indices:
+                                power: int = indices[ind]
 
-        indices.sort()
+                                if power != pol.power:
+                                    _ = 0 #debug
 
-        key = "-".join([str(index) for index in indices])
+                            indices[ind] = pol.power
+
+        list_indices: list[int] = sorted(indices.keys())
+
+        list0: list[str] = [""] * len(list_indices)
+
+        index: int = 0
+
+        for index in range(0, len(list_indices)):
+            ind: int = list_indices[index]
+            power: int = indices[ind]
+
+            s: str = f"{ind}-{power}"
+
+            list0[index] = s
+
+        key = "=".join([s for s in list0])
 
         if key not in list_rationals:
             list_rationals[key] = []
