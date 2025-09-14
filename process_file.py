@@ -267,8 +267,6 @@ class ProcessFile:
                             self.start_index[s0] = index
 
         if text == "run":
-            if self.case_indices[0] == 2 and self.case_indices[1] == 1 and self.case_indices[2] == 5:
-                _ = 0
 
             s: str = ".".join([str(index) for index in self.case_indices])
             debug_write.write(f"\n{s}\n")
@@ -381,7 +379,7 @@ def store_by_indices(list_rationals: dict, total_sum, case_indices):
 
         key = "=".join([s for s in list0])
 
-        if len(list0) == 5:
+        if len(list0) != 4:
             _ = 0
 
         if key not in list_rationals:
