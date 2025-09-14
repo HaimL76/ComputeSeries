@@ -49,7 +49,7 @@ run
 ==== 2.1.5 ====
 
 substitution: v_1=2.a+b+c+d
-substitution: v_2=ש
+substitution: v_2=a
 substitution: v_3=a+b
 substitution: v_4=2.a+b+c
 
