@@ -334,6 +334,8 @@ class ProcessFile:
 
                 debug_write: DebugWrite = DebugWrite.get_instance()
 
+                debug_write.write("\nTotal sum\n")
+
                 if debug_write is not None:
                     # for sum_product in debug_sums:
                     #   str_to_print: str = f"\\[{sum_product}\\]"
