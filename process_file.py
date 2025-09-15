@@ -68,12 +68,27 @@ class ProcessFolder:
                         proc_file.process_file(conversion_table=self.conversion_table,
                                                debug_write0=debug_write, list_rationals=dict_rationals)
 
-                        cases: int = 0
+            cases: int = 0
 
-                        for key in dict_rationals:
-                            l: list = dict_rationals[key]
+            for key in dict_rationals:
+                l: list = dict_rationals[key]
 
-                            cases += len(l)
+                cases += len(l)
+
+            total = PolynomialSummationRational()
+
+            for key in dict_rationals:
+                l: list = dict_rationals[key]
+
+                total0 = PolynomialSummationRational()
+
+                for tup in l:
+                    pol_sum_rational: PolynomialSummationRational = tup[0]
+
+                    total0 += pol_sum_rational
+
+                _ = 0
+                    #total += pol_sum_rational
 
             debug_write.write("\\end{document}")
 

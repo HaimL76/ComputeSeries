@@ -151,6 +151,23 @@ class PolynomialSummationRational:
         self.numerator: list[PolynomialProduct] = []
         self.denominator: PolynomialProduct = PolynomialProduct()
 
+    def __add__(self, other):
+        self_copy = copy.deepcopy(self)
+
+        other_denominator: PolynomialProduct = copy.deepcopy(other.denominator)
+        other_numerator = copy.deepcopy(other.numerator)
+
+        for pol_prod in other_numerator:
+            pol_prod0 = copy.deepcopy(pol_prod)
+
+            rational_product: PolynomialProductRational = PolynomialProductRational(numer=pol_prod0,
+                                                                                    denom=other_denominator,
+                                                                                    minus=pol_prod.is_minus)
+
+            self_copy.add_polynomial_rational(rational_product)
+
+        return self_copy
+
     def add_polynomial_rational(self, input_product: PolynomialProductRational):
         is_minus0: bool = input_product.is_minus
 
