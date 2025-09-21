@@ -45,6 +45,8 @@ class ProcessFolder:
 
         list_rationals: list = []
 
+        total_total_sum: PolynomialSummationRational = PolynomialSummationRational()
+
         with open(out_file_path, "w") as fw:
             debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
             debug_write.write(r"""
@@ -66,7 +68,8 @@ class ProcessFolder:
                         print(path)
                         proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
                         proc_file.process_file(conversion_table=self.conversion_table,
-                                               debug_write0=debug_write, list_rationals=dict_rationals)
+                                               debug_write0=debug_write, list_rationals=dict_rationals,
+                                               total_total_sum=total_total_sum)
 
             cases: int = 0
 
@@ -107,7 +110,7 @@ class ProcessFile:
         self.case_indices: list[int] = []
 
     def process_file(self, conversion_table: dict, debug_write0: DebugWrite,
-                     list_rationals: dict):
+                     list_rationals: dict, total_total_sum: PolynomialSummationRational):
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
 
@@ -133,7 +136,8 @@ class ProcessFile:
 
                     if line and line[0] != "#":
                         self.process_line(line, conversion_table=conversion_table,
-                                          debug_write0=debug_write0, list_rationals=list_rationals)
+                                          debug_write0=debug_write0, list_rationals=list_rationals,
+                                          total_total_sum=total_total_sum)
 
                 for key in conversion_table.keys():
                     index: int = conversion_table[key]
@@ -147,7 +151,7 @@ class ProcessFile:
                 debug_write.write("\\end{document}")
 
     def process_line(self, text: str, conversion_table: dict, debug_write0: DebugWrite,
-                     list_rationals: dict):
+                     list_rationals: dict, total_total_sum: PolynomialSummationRational):
         is_polynomial: bool = False
         is_substitution: bool = False
         is_index: bool = False
@@ -323,11 +327,15 @@ class ProcessFile:
                 for ser_prod in list_series:
                     sum_product: PolynomialProductRational = ser_prod.sum()
 
+                    sum_product0: PolynomialProductRational = copy.deepcopy(sum_product)
+
                     debug_write.write(f"\\[{ser_prod}={sum_product}\\]", 1)
 
                     debug_sums.append(copy.deepcopy(sum_product))
 
                     total_sum.add_polynomial_rational(sum_product)
+
+                    total_total_sum.add_polynomial_rational(sum_product0)
 
                 store_by_indices(list_rationals=list_rationals, total_sum=total_sum,
                             case_indices=self.case_indices)
