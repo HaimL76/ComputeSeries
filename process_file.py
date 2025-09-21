@@ -67,6 +67,7 @@ class ProcessFolder:
                         path = os.path.abspath(path)
                         print(path)
                         proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
+
                         proc_file.process_file(conversion_table=self.conversion_table,
                                                debug_write0=debug_write, list_rationals=dict_rationals,
                                                total_total_sum=total_total_sum)
@@ -93,7 +94,38 @@ class ProcessFolder:
                 _ = 0
                     #total += pol_sum_rational
 
+            debug_write.write(f"{total_total_sum}")
+
             debug_write.write("\\end{document}")
+
+        finished: bool = False
+
+        index: int = 0
+
+        take: int = 100
+
+        while not finished:
+            out_file_path0: str = out_file_path.replace(".tex", f"{index}.tex")
+
+            str0, finished = total_total_sum.get_ltx_str_partial(index * take, take)
+
+            index += 1
+
+            with open(out_file_path0, "w") as fw:
+                fw.write(r"""
+                \documentclass{article}
+                \usepackage{graphicx} % Required for inserting images
+                \usepackage{xcolor}
+                \begin{document}
+                """)
+
+                fw.write("\\tiny{")
+
+                fw.write(str0)
+
+                fw.write("}")
+
+                fw.write("\\end{document}")
 
 
 class ProcessFile:
@@ -289,7 +321,10 @@ class ProcessFile:
 
             s: str = ".".join([str(index) for index in self.case_indices])
             debug_write.write(f"\n{s}\n")
-            debug_write0.write(f"\n{s}\n")
+
+            if debug_write0 is not None:
+                debug_write0.write(f"\n{s}\n")
+
             for polynomial in self.polynomials:
                 debug_write.write(f"\\[{polynomial}\\]", 1)
 
@@ -351,7 +386,9 @@ class ProcessFile:
 
                     str_to_print: str = f"{total_sum}"
                     debug_write.write(str_to_print)
-                    debug_write0.write(str_to_print)
+
+                    if debug_write0 is not None:
+                        debug_write0.write(str_to_print)
 
                 _ = 0
 
