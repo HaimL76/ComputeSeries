@@ -25,6 +25,7 @@ class ProcessFolder:
 
     def __init__(self, input_path: str, output_path: str = None):
         self.conversion_table: dict = {}
+        self.reverse_conversion_table: dict = {}
 
         self.input_folder_path: str = input_path
 
@@ -69,6 +70,7 @@ class ProcessFolder:
                         proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
 
                         proc_file.process_file(conversion_table=self.conversion_table,
+                                               reverse_conversion_table=self.reverse_conversion_table,
                                                debug_write0=debug_write, list_rationals=dict_rationals,
                                                total_total_sum=total_total_sum)
 
@@ -78,6 +80,8 @@ class ProcessFolder:
                 l: list = dict_rationals[key]
 
                 cases += len(l)
+
+            Element.reverse_conversion_table = self.reverse_conversion_table
 
             total = PolynomialSummationRational()
 
@@ -148,7 +152,7 @@ class ProcessFile:
         self.output_directory_path: str = output_directory
         self.case_indices: list[int] = []
 
-    def process_file(self, conversion_table: dict, debug_write0: DebugWrite,
+    def process_file(self, conversion_table: dict, reverse_conversion_table: dict, debug_write0: DebugWrite,
                      list_rationals: dict, total_total_sum: PolynomialSummationRational):
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
@@ -175,6 +179,7 @@ class ProcessFile:
 
                     if line and line[0] != "#":
                         self.process_line(line, conversion_table=conversion_table,
+                                          reverse_conversion_table=reverse_conversion_table,
                                           debug_write0=debug_write0, list_rationals=list_rationals,
                                           total_total_sum=total_total_sum)
 
@@ -189,7 +194,8 @@ class ProcessFile:
 
                 debug_write.write("\\end{document}")
 
-    def process_line(self, text: str, conversion_table: dict, debug_write0: DebugWrite,
+    def process_line(self, text: str, conversion_table: dict, reverse_conversion_table: dict,
+                     debug_write0: DebugWrite,
                      list_rationals: dict, total_total_sum: PolynomialSummationRational):
         is_polynomial: bool = False
         is_substitution: bool = False
@@ -347,7 +353,8 @@ class ProcessFile:
                 converted_pt_product: ExponentialProduct = \
                     self.substitution.substitude_exponential_product(self.pt_product)
 
-                series_product = SeriesProduct.from_exponential_product(converted_pt_product, conversion_table)
+                series_product = SeriesProduct.from_exponential_product(converted_pt_product, conversion_table,
+                                                                        reverse_conversion_table)
 
                 if isinstance(series_product, SeriesProduct) and isinstance(self.start_index, dict) \
                         and len(self.start_index) > 0:

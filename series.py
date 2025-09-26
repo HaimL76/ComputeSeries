@@ -21,7 +21,17 @@ class Series:
 
     def sum(self):
         numer: Polynomial = Polynomial.parse_single("1", list_const_coeffs=[])
-        denom: Polynomial = Polynomial.parse_single(f"1-{self.monomial}", list_const_coeffs=[])
+
+        str0: str = f"{self.monomial}"
+
+        if len(self.monomial.elements) == 1:
+            for k in self.monomial.elements.keys():
+                v = self.monomial.elements[k]
+
+                if v.index is not None:
+                    str0 = f"{v.symbol}_{v.index}"
+
+        denom: Polynomial = Polynomial.parse_single(f"1-{str0}", list_const_coeffs=[])
 
         if self.start_index == 1:
             numer = Polynomial([self.monomial], in_product=True)
@@ -190,7 +200,8 @@ class SeriesProduct:
 
 
     @staticmethod
-    def from_exponential_product(exponential_product: ExponentialProduct, conversion_table: dict):
+    def from_exponential_product(exponential_product: ExponentialProduct, conversion_table: dict,
+                                 reverse_conversion_table: dict):
         d: dict = {}
 
         for symb in exponential_product.exponentials.keys():
@@ -245,6 +256,11 @@ class SeriesProduct:
                 key0 = p_power,t_power
 
             new_symbol, new_index = SeriesProduct.check_and_store_new_index(conversion_table=conversion_table, key=key0)
+
+            #rkey: str = f"{new_symbol}_{new_index}"
+            rkey = new_index
+
+            reverse_conversion_table[rkey] = key0
 
             elem: Element = Element(symb=new_symbol, ind=new_index)
 

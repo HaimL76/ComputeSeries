@@ -1,10 +1,12 @@
 class Element:
+    reverse_conversion_table: dict = None
+
     def __init__(self, symb: str = "", pow: int = 1, ind = None):
         self.power: int = pow
         self.symbol: str = symb
         self.index: int = ind
 
-        if self.symbol == "x_0":
+        if self.symbol.startswith("x") and self.index is None:
             _ = 0
 
     def __mul__(self, other):
@@ -68,13 +70,35 @@ class Element:
         return Element(symb=f"({self.symbol})", pow=self.power)
 
     def get_ltx_str(self):
+        converted: bool = False
+
         s: str = self.symbol
 
         if self.index is not None:
             s = f"{s}_{{{self.index}}}"
 
+            if Element.reverse_conversion_table is not None:
+                #rkey: str = f"{self.symbol}_{self.index}"
+                rkey = self.index
+
+                if rkey in Element.reverse_conversion_table:
+                    p,t = Element.reverse_conversion_table[rkey]
+
+                    s = f"p^{{{p}}}t^{{{t}}}"
+                    converted = True
+                else:
+                    _ = 0
+            else:
+                _ = 0
+
         if self.power != 1:
+            if converted:
+                s = f"({s})"
+
             s = f"{s}^{{{self.power}}}"
+
+        if Element.reverse_conversion_table is not None and not converted:
+            _ = 0
 
         return s
 
