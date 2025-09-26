@@ -10,8 +10,13 @@ class Element:
     def __mul__(self, other):
         result = None
 
-        if self.symbol == other.symbol:
-            result = Element(symb=self.symbol)
+        equal_symbol: bool = self.symbol == other.symbol
+
+        #no_index: bool = self.index is None and other.index is None
+        equal_index: bool = self.index == other.index
+
+        if equal_symbol and equal_index:
+            result = Element(symb=self.symbol, ind=self.index)
 
             result.power = self.power + other.power
 
@@ -66,7 +71,7 @@ class Element:
         s: str = self.symbol
 
         if self.index is not None:
-            s += f"_{self.index}"
+            s = f"{s}_{{{self.index}}}"
 
         if self.power != 1:
             s = f"{s}^{{{self.power}}}"

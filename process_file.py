@@ -102,10 +102,15 @@ class ProcessFolder:
 
         index: int = 0
 
-        take: int = 100
+        take: int = 0
 
         while not finished:
-            out_file_path0: str = out_file_path.replace(".tex", f"{index}.tex")
+            out_file_path0: str = out_file_path
+
+            if take > 0:
+                out_file_path0 = out_file_path.replace(".tex", f"{index}.tex")
+
+            str1: str = total_total_sum.get_ltx_str_denominator()
 
             str0, finished = total_total_sum.get_ltx_str_partial(index * take, take)
 
@@ -120,6 +125,8 @@ class ProcessFolder:
                 """)
 
                 fw.write("\\tiny{")
+
+                fw.write(str1)
 
                 fw.write(str0)
 

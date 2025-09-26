@@ -240,6 +240,9 @@ class PolynomialSummationRational:
 
         return s
 
+    def get_ltx_str_denominator(self):
+        return f"\\[{self.denominator}\\]"
+
     def get_ltx_str_partial(self, skip: int, take: int):
         #s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
 
@@ -251,12 +254,14 @@ class PolynomialSummationRational:
 
         len_products: int = len(self.numerator)
 
-        while index < min(end_index, len_products):
+        end_index0: int = min(end_index, len_products) if take > 0 else len_products
+
+        while index < end_index0:
             product: PolynomialProduct = self.numerator[index]
             index += 1
 
             sign = "-" if product.is_minus else "+"
-            s += f"\\[{sign}\\frac{{{product}}}{{{self.denominator}}}\\]"
+            s += f"${sign}{product}$"
 
         more_products: bool = index < len_products
 
