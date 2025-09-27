@@ -7,6 +7,7 @@ from element import Element
 from exponential import ExponentialProduct
 from polynomial import Polynomial
 from polynomial_rational import PolynomialSummationRational, PolynomialProductRational
+from rational import Rational
 from series import SeriesProduct
 from substitution import VariableSubstitution
 
@@ -374,17 +375,28 @@ class ProcessFile:
                 debug_write.write("All series and their sums")
 
                 for ser_prod in list_series:
-                    sum_product: PolynomialProductRational = ser_prod.sum()
+                    ser_prod0 = copy.deepcopy(ser_prod)
+                    ser_prod1 = copy.deepcopy(ser_prod0)
+
+                    sum_product: PolynomialProductRational = ser_prod0.sum()
+
+                    for pol in sum_product.denominator.list_polynomials:
+                        if pol.power == Rational(4):
+                            aaa = ser_prod1.sum()
 
                     sum_product0: PolynomialProductRational = copy.deepcopy(sum_product)
 
+                    sum_product1: PolynomialProductRational = copy.deepcopy(sum_product0)
+
+                    sum_product2: PolynomialProductRational = copy.deepcopy(sum_product1)
+
                     debug_write.write(f"\\[{ser_prod}={sum_product}\\]", 1)
 
-                    debug_sums.append(copy.deepcopy(sum_product))
+                    debug_sums.append(copy.deepcopy(sum_product0))
 
-                    total_sum.add_polynomial_rational(sum_product)
+                    total_sum.add_polynomial_rational(sum_product1)
 
-                    total_total_sum.add_polynomial_rational(sum_product0)
+                    total_total_sum.add_polynomial_rational(sum_product2)
 
                 store_by_indices(list_rationals=list_rationals, total_sum=total_sum,
                             case_indices=self.case_indices)

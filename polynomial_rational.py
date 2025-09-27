@@ -174,6 +174,10 @@ class PolynomialSummationRational:
         input_numerator = copy.deepcopy(input_product.numerator)
         input_denominator = copy.deepcopy(input_product.denominator)
 
+        for pol in input_denominator:
+            if pol.power == Rational(4):
+                _ = 0
+
         if is_minus0:
             input_numerator.is_minus = is_minus0
 
@@ -223,6 +227,10 @@ class PolynomialSummationRational:
                             product.mul_polynomial(polynomial_denominator_input)
                     else:
                         self.numerator = [PolynomialProduct(polynoms=[polynomial_denominator_input])]
+
+            for pol in self.denominator.list_polynomials:
+                if pol.power == Rational(4):
+                    _ = 0
 
             self.numerator.append(input_numerator)
 
