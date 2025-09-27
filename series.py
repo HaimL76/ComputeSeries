@@ -268,7 +268,7 @@ class SeriesProduct:
 
             new_elements: dict = {key: elem}
 
-            monomial.elements = new_elements
+            #monomial.elements = new_elements
 
             series: Series = Series(monom=monomial, pow=symb)
 
