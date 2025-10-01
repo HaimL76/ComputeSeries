@@ -2,6 +2,7 @@ import copy
 
 from colorama import Fore, Style
 
+from monomial import Monomial
 from polynomial import Polynomial, PolynomialProduct
 from rational import Rational
 
@@ -147,6 +148,34 @@ class PolynomialProductRational:
 
 
 class PolynomialSummationRational:
+    def multiply(self):
+        for product in self.numerator:
+            product0: PolynomialProduct = copy.deepcopy(product)
+
+            product1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
+
+            for pol in product0.list_polynomials:
+                pol1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
+
+                pol0 = copy.deepcopy(pol)
+
+                pow0: int = 1
+
+                if pol0.power is not None:
+                    pow0 = pol0.power.numerator
+
+                if pow0 > 1:
+                    pol0.power = Rational(1)
+
+                for i in range(pow0):
+                    pol1 *= pol0
+
+                product1 *= pol1
+
+                _ = 0
+
+            _ = product1
+
     def __init__(self):
         self.numerator: list[PolynomialProduct] = []
         self.denominator: PolynomialProduct = PolynomialProduct()

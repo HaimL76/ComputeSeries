@@ -6,6 +6,9 @@ class Element:
         self.symbol: str = symb
         self.index: int = ind
 
+        if self.symbol.startswith("p^"):
+            _ = 0
+
         if self.symbol.startswith("x") and self.index is None:
             _ = 0
 
@@ -48,6 +51,12 @@ class Element:
 
             if spow.isnumeric():
                 pow = int(spow)
+
+            if spow[0] == "{" and spow[-1] == "}":
+                spow0: str = spow[1:-1]
+
+                if spow0.isnumeric():
+                    pow = int(spow0)
 
         l1: list[str] = symb.split("_")
 

@@ -161,6 +161,39 @@ class Monomial:
 
     @staticmethod
     def parse(text: str, list_const_coeffs: list[str]):
+        if text.startswith("p^{") and "t^{" in text:
+            str0: str = ""
+
+            found: bool = False
+            i: int = 0
+            while not found and i < len(text):
+                ch = text[i]
+                i += 1
+
+                str0 += ch
+
+                if ch == "}":
+                    found = True
+
+            str1: str = ""
+
+            found: bool = False
+            while not found and i < len(text):
+                ch = text[i]
+                i += 1
+
+                str1 += ch
+
+                if ch == "}":
+                    found = True
+
+            if len(str0) > 0 and len(str1) > 0:
+                elem0: Element = Element.parse(str0)
+                elem1: Element = Element.parse(str1)
+
+                if elem0 is not None and elem1 is not None:
+                    return Monomial(elems={elem0.symbol: elem0, elem1.symbol: elem1}, coeff=Rational(1), const_coeffs={})
+
         coeff: Rational = Rational(1)
         const_coeffs: dict = {}
 
