@@ -149,7 +149,13 @@ class PolynomialProductRational:
 
 class PolynomialSummationRational:
     def multiply(self):
+        index: int = 0
+        sum1 = Polynomial(monoms=[Monomial(coeff=Rational(0))])
+
         for product in self.numerator:
+            print(f"product {index} of {len(self.numerator)}")
+            index += 1
+
             product0: PolynomialProduct = copy.deepcopy(product)
 
             product1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
@@ -172,9 +178,9 @@ class PolynomialSummationRational:
 
                 product1 *= pol1
 
-                _ = 0
+            sum1 += product1
 
-            _ = product1
+        #sum0 += sum1
 
     def __init__(self):
         self.numerator: list[PolynomialProduct] = []

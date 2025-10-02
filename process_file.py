@@ -5,6 +5,7 @@ import re
 from debug_write import DebugWrite
 from element import Element
 from exponential import ExponentialProduct
+from monomial import Monomial
 from polynomial import Polynomial
 from polynomial_rational import PolynomialSummationRational, PolynomialProductRational
 from rational import Rational
@@ -98,6 +99,10 @@ class ProcessFolder:
 
                 _ = 0
                     #total += pol_sum_rational
+
+            total_total_sum0 = copy.deepcopy(total_total_sum)
+
+            total_total_sum0.multiply()
 
             debug_write.write(f"{total_total_sum}")
 
@@ -374,6 +379,8 @@ class ProcessFile:
 
                 debug_write.write("All series and their sums")
 
+                sum0 = Polynomial(monoms=[Monomial(coeff=Rational(0))])
+
                 for ser_prod in list_series:
                     ser_prod0 = copy.deepcopy(ser_prod)
                     ser_prod1 = copy.deepcopy(ser_prod0)
@@ -405,7 +412,7 @@ class ProcessFile:
 
                 debug_write.write("\nTotal sum\n")
 
-                total_sum.multiply()
+                #total_sum.multiply(sum0)
 
                 if debug_write is not None:
                     # for sum_product in debug_sums:
