@@ -152,15 +152,20 @@ class PolynomialSummationRational:
         index: int = 0
         sum1 = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
-        for product in self.numerator:
-            print(f"product {index} of {len(self.numerator)}")
-            index += 1
+        list_pols0: list[str] = []
 
+        for product in self.numerator:
             product0: PolynomialProduct = copy.deepcopy(product)
 
             product1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
 
+            index0: int = 0
+
             for pol in product0.list_polynomials:
+                print(f"product {index} of {len(self.numerator)},"
+                      f" polynomial {index0} of {len(product0.list_polynomials)}")
+                index0 += 1
+
                 pol1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
 
                 pol0 = copy.deepcopy(pol)
@@ -178,9 +183,21 @@ class PolynomialSummationRational:
 
                 product1 *= pol1
 
+            #list_pols0.append(f"{product}={product1}")
+
+            coeff = copy.deepcopy(product.coefficient)
+            const_coeffs = copy.deepcopy(product.const_coefficients)
+
+            if coeff != Rational(1) or (isinstance(const_coeffs, dict) and len(const_coeffs) > 0):
+                pol_coeff: Polynomial = Polynomial(monoms=[Monomial(coeff=coeff, const_coeffs=const_coeffs)])
+
+                product1 *= pol_coeff
+
             sum1 += product1
 
-        #sum0 += sum1
+            index += 1
+
+        return sum1
 
     def __init__(self):
         self.numerator: list[PolynomialProduct] = []

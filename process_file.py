@@ -95,14 +95,14 @@ class ProcessFolder:
                 for tup in l:
                     pol_sum_rational: PolynomialSummationRational = tup[0]
 
-                    total0 += pol_sum_rational
+                    #total0 += pol_sum_rational
 
                 _ = 0
                     #total += pol_sum_rational
 
-            total_total_sum0 = copy.deepcopy(total_total_sum)
+            #total_total_sum0 = copy.deepcopy(total_total_sum)
 
-            total_total_sum0.multiply()
+            #total_total_sum0.multiply()
 
             debug_write.write(f"{total_total_sum}")
 
@@ -136,9 +136,24 @@ class ProcessFolder:
 
                 fw.write("\\tiny{")
 
-                fw.write(str1)
+                #fw.write(str1)
 
-                fw.write(str0)
+                #fw.write(str0)
+
+                #fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
+
+                total_total_sum0: PolynomialSummationRational = copy.deepcopy(total_total_sum)
+
+                sum1: Polynomial = total_total_sum0.multiply()
+
+                fw.write(f"${sum1}$")
+
+                index0: int = 0
+
+                #for p in sum1:
+                 #   if index0 < 0:
+                  #      fw.write(f"\\[{p}\\]")
+                   # index0 += 1
 
                 fw.write("}")
 

@@ -7,6 +7,7 @@ from monomial import Monomial
 from rational import Rational
 
 
+
 class Polynomial:
     def __init__(self, monoms: list = [], nm: str = "", pow0: Rational = Rational(1), in_product: bool = False):
         self.monomials: list = copy.deepcopy(monoms)
