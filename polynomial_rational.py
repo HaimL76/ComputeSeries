@@ -188,7 +188,10 @@ class PolynomialSummationRational:
             coeff = copy.deepcopy(product.coefficient)
             const_coeffs = copy.deepcopy(product.const_coefficients)
 
-            if coeff != Rational(1) or (isinstance(const_coeffs, dict) and len(const_coeffs) > 0):
+            if coeff != Rational(1) or (isinstance(const_coeffs, dict) and len(const_coeffs) > 0) or product.is_minus:
+                if product.is_minus:
+                    coeff = Rational(0)-coeff
+
                 pol_coeff: Polynomial = Polynomial(monoms=[Monomial(coeff=coeff, const_coeffs=const_coeffs)])
 
                 product1 *= pol_coeff
