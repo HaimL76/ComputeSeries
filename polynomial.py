@@ -7,7 +7,6 @@ from monomial import Monomial
 from rational import Rational
 
 
-
 class Polynomial:
     def __init__(self, monoms: list = [], nm: str = "", pow0: Rational = Rational(1), in_product: bool = False):
         self.monomials: list = copy.deepcopy(monoms)
@@ -296,7 +295,7 @@ class Polynomial:
         _ = 0
 
     @staticmethod
-    def parse_curly(text: str, list_const_coeffs: list[str]=[]):
+    def parse_curly(text: str, list_const_coeffs: list[str] = []):
         text = text.replace("{", "|")
         text = text.replace("}", "|")
 
@@ -320,7 +319,7 @@ class Polynomial:
 
                     pol_pref = Polynomial([mon_pref])
 
-                    in_round_brackets = str2[index_left+1:index_right]
+                    in_round_brackets = str2[index_left + 1:index_right]
 
                     list0: list = in_round_brackets.split("...")
 
@@ -418,7 +417,9 @@ class Polynomial:
                             str0 = "".join(buffer)
                             buffer = []
 
-                            pol0 = Polynomial.parse_round_brackets(str0, list_const_coeffs=list_const_coeffs) if "(" in str0 else Polynomial.parse_single(str0, list_const_coeffs=list_const_coeffs)
+                            pol0 = Polynomial.parse_round_brackets(str0,
+                                                                   list_const_coeffs=list_const_coeffs) if "(" in str0 else Polynomial.parse_single(
+                                str0, list_const_coeffs=list_const_coeffs)
 
                             if pol0 is not None:
                                 if next_minus:
@@ -438,8 +439,10 @@ class Polynomial:
                     str0 = "".join(buffer)
                     buffer = []
 
-                    pol0 = Polynomial.parse_round_brackets(str0, list_const_coeffs=list_const_coeffs) if "(" in str0 else Polynomial.parse_single(str0,
-                                                                                                                 list_const_coeffs=list_const_coeffs)
+                    pol0 = Polynomial.parse_round_brackets(str0,
+                                                           list_const_coeffs=list_const_coeffs) if "(" in str0 else Polynomial.parse_single(
+                        str0,
+                        list_const_coeffs=list_const_coeffs)
 
                     if pol0 is not None:
                         if next_minus:
@@ -548,6 +551,7 @@ class Polynomial:
 
         return s
 
+
 class PolynomialProduct:
     def __init__(self, polynoms=None, coeff: Rational = Rational(1),
                  const_coeffs: dict[str, Element] = {}, minus: bool = False):
@@ -562,8 +566,8 @@ class PolynomialProduct:
 
         self.const_coefficients: dict[str, Element] = copy.deepcopy(const_coeffs)
 
-        #if self.list_polynomials is None or len(self.list_polynomials) < 1:
-         #   self.list_polynomials = [Polynomial.create_one()]
+        # if self.list_polynomials is None or len(self.list_polynomials) < 1:
+        #   self.list_polynomials = [Polynomial.create_one()]
 
     def __iter__(self):
         for polynomial in self.list_polynomials:
@@ -595,7 +599,8 @@ class PolynomialProduct:
         s: str = "".join(f"{polynom}" for polynom in list_polynoms)
 
         if len(self.const_coefficients) > 0:
-            s0: str = "".join([f"{const_coeff.get_copy_with_parentheses()}" for const_coeff in self.const_coefficients.values()])
+            s0: str = "".join(
+                [f"{const_coeff.get_copy_with_parentheses()}" for const_coeff in self.const_coefficients.values()])
 
             s = f"{s0}{s}"
 

@@ -74,6 +74,7 @@ class PolynomialRational:
     def __str__(self):
         return self.get_ltx_str()
 
+
 class PolynomialProductRational:
     def __init__(self, numer: PolynomialProduct, denom: PolynomialProduct, minus: bool = False):
         self.numerator: PolynomialProduct = copy.deepcopy(numer)
@@ -121,7 +122,8 @@ class PolynomialProductRational:
             s = "".join([f"{polynom}" for polynom in numerator0])
 
         if len(self.numerator.const_coefficients) > 0:
-            s1 = "".join([f"({self.numerator.const_coefficients[const_coeff]})" for const_coeff in self.numerator.const_coefficients.keys()])
+            s1 = "".join([f"({self.numerator.const_coefficients[const_coeff]})" for const_coeff in
+                          self.numerator.const_coefficients.keys()])
 
             s = f"{s1}{s}"
 
@@ -163,7 +165,7 @@ class PolynomialSummationRational:
 
         for product in self.numerator:
             if not product.is_minus:
-                _ = 0#continue
+                _ = 0  # continue
             product0: PolynomialProduct = copy.deepcopy(product)
 
             product1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
@@ -192,14 +194,14 @@ class PolynomialSummationRational:
 
                 product1 *= pol1
 
-            #list_pols0.append(f"{product}={product1}")
+            # list_pols0.append(f"{product}={product1}")
 
             coeff = copy.deepcopy(product.coefficient)
             const_coeffs = copy.deepcopy(product.const_coefficients)
 
             if coeff != Rational(1) or (isinstance(const_coeffs, dict) and len(const_coeffs) > 0) or product.is_minus:
                 if product.is_minus:
-                    coeff = Rational(0)-coeff
+                    coeff = Rational(0) - coeff
 
                 pol_coeff: Polynomial = Polynomial(monoms=[Monomial(coeff=coeff, const_coeffs=const_coeffs)])
 
@@ -277,7 +279,9 @@ class PolynomialSummationRational:
         if is_minus0:
             input_numerator.is_minus = is_minus0
 
-        if (self.numerator is None or len(self.numerator) < 1) and (self.denominator is None or self.denominator.list_polynomials is None or len(self.denominator.list_polynomials) < 1):
+        if (self.numerator is None or len(self.numerator) < 1) and (
+                self.denominator is None or self.denominator.list_polynomials is None or len(
+                self.denominator.list_polynomials) < 1):
             self.numerator = [copy.deepcopy(input_numerator)]
             self.denominator = copy.deepcopy(input_denominator)
         else:
@@ -334,7 +338,7 @@ class PolynomialSummationRational:
         return self.get_ltx_str()
 
     def get_ltx_str(self):
-        #s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
+        # s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
 
         s: str = ""
 
@@ -348,7 +352,7 @@ class PolynomialSummationRational:
         return f"\\[{self.denominator}\\]"
 
     def get_ltx_str_partial(self, skip: int, take: int):
-        #s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
+        # s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
 
         s: str = ""
 

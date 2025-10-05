@@ -106,6 +106,9 @@ class Element:
 
             s = f"{s}^{{{self.power}}}"
 
+        if self.power == 155:
+            _ = 0
+
         if Element.reverse_conversion_table is not None and not converted:
             _ = 0
 
