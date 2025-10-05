@@ -62,7 +62,7 @@ class ProcessFolder:
             dict_rationals: dict = {}
 
             for path in file_paths:
-                if path != "1.txt":
+                if False:# path != "1.txt":
                     continue
                 if pattern:
                     search_result = re.search(pattern, path)
@@ -132,7 +132,7 @@ class ProcessFolder:
 
                 #fw.write(str1)
 
-                fw.write(str0)
+                #fw.write(str0)
 
                 fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
 
@@ -140,10 +140,12 @@ class ProcessFolder:
 
                 sum1, list_pols0, dict0 = total_total_sum0.multiply()
 
+                sum11: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
+
                 for key0 in dict0:
                     list_mons0 = dict0[key0]
 
-                    fw.write(f"\\[")#p^{key0[0]}t^{key0[1]}")
+                    #fw.write(f"\\[")#p^{key0[0]}t^{key0[1]}")
 
                     sum0: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
@@ -153,20 +155,22 @@ class ProcessFolder:
                         pol0: Polynomial = Polynomial(monoms=[mon1])
                         sum0 += pol0
 
-                        str0: str = mon0.get_ltx_str(True)
+                        #str0: str = mon0.get_ltx_str(True)
 
-                        fw.write(f"{str0},")
+                        #fw.write(f"{str0},")
 
-                    fw.write(f"={sum0}\\]")
+                    #fw.write(f"=\\[{sum0}\\]")
 
-                fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
-
-                for pol0 in list_pols0:
-                    fw.write(f"\\[{pol0}\\]")
+                    sum11 += sum0
 
                 fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
 
-                fw.write(f"${sum1}$")
+                #for pol0 in list_pols0:
+                 #   fw.write(f"\\[{pol0}\\]")
+
+                fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
+
+                fw.write(f"${sum11}$")
 
                 index0: int = 0
 

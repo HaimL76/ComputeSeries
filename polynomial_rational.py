@@ -202,7 +202,6 @@ class PolynomialSummationRational:
             if coeff != Rational(1) or (isinstance(const_coeffs, dict) and len(const_coeffs) > 0) or product.is_minus:
                 if product.is_minus:
                     _ = 0
-                 #   coeff = Rational(0) - coeff
 
                 pol_coeff: Polynomial = Polynomial(monoms=[Monomial(coeff=coeff, const_coeffs=const_coeffs, minus=product.is_minus)])
 
