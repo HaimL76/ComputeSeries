@@ -62,6 +62,8 @@ class ProcessFolder:
             dict_rationals: dict = {}
 
             for path in file_paths:
+                if path != "1.txt":
+                    continue
                 if pattern:
                     search_result = re.search(pattern, path)
 
@@ -94,15 +96,7 @@ class ProcessFolder:
 
                 for tup in l:
                     pol_sum_rational: PolynomialSummationRational = tup[0]
-
-                    #total0 += pol_sum_rational
-
                 _ = 0
-                    #total += pol_sum_rational
-
-            #total_total_sum0 = copy.deepcopy(total_total_sum)
-
-            #total_total_sum0.multiply()
 
             debug_write.write(f"{total_total_sum}")
 
@@ -138,22 +132,43 @@ class ProcessFolder:
 
                 #fw.write(str1)
 
-                #fw.write(str0)
+                fw.write(str0)
 
-                #fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
+                fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
 
                 total_total_sum0: PolynomialSummationRational = copy.deepcopy(total_total_sum)
 
-                sum1: Polynomial = total_total_sum0.multiply()
+                sum1, list_pols0, dict0 = total_total_sum0.multiply()
+
+                for key0 in dict0:
+                    list_mons0 = dict0[key0]
+
+                    fw.write(f"\\[")#p^{key0[0]}t^{key0[1]}")
+
+                    sum0: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
+
+                    for mon0 in list_mons0:
+                        mon1: Monomial = copy.deepcopy(mon0)
+
+                        pol0: Polynomial = Polynomial(monoms=[mon1])
+                        sum0 += pol0
+
+                        str0: str = mon0.get_ltx_str(True)
+
+                        fw.write(f"{str0},")
+
+                    fw.write(f"={sum0}\\]")
+
+                fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
+
+                for pol0 in list_pols0:
+                    fw.write(f"\\[{pol0}\\]")
+
+                fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
 
                 fw.write(f"${sum1}$")
 
                 index0: int = 0
-
-                #for p in sum1:
-                 #   if index0 < 0:
-                  #      fw.write(f"\\[{p}\\]")
-                   # index0 += 1
 
                 fw.write("}")
 

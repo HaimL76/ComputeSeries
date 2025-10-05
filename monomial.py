@@ -264,7 +264,11 @@ class Monomial:
     def __str__(self):
         return self.get_ltx_str()
 
-    def get_ltx_str(self):
+    Disable_Print_Sign = 0
+    Print_Sign_If_Minus = 1
+    Print_Sign_Anyway = 2
+
+    def get_ltx_str(self, print_sign: int = Disable_Print_Sign):
         s: str = ""
 
         counter: int = 0
@@ -302,8 +306,11 @@ class Monomial:
                 s = f"{s}{s0}"
                 counter += 1
 
-        ##if self.power != 1:
-          ##  s = f"({s}^{self.power})"
+        if print_sign != Monomial.Disable_Print_Sign:
+            if print_sign == Monomial.Print_Sign_Anyway or self.is_minus:
+                sign = "-" if self.is_minus else "+"
+
+                s = f"{sign}{s}"
 
         return s
 
@@ -344,8 +351,5 @@ class Monomial:
 
                 s = f"{s}{s0}"
                 counter += 1
-
-        ##if self.power != 1:
-          ##  s = f"({s}^{self.power})"
 
         return s

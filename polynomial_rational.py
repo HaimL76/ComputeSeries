@@ -159,7 +159,7 @@ class PolynomialSummationRational:
         index: int = 0
         sum1 = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
-        list_pols0: list[str] = []
+        list_pols0: list[Polynomial] = []
 
         num_monoms: int = 0
 
@@ -201,9 +201,10 @@ class PolynomialSummationRational:
 
             if coeff != Rational(1) or (isinstance(const_coeffs, dict) and len(const_coeffs) > 0) or product.is_minus:
                 if product.is_minus:
-                    coeff = Rational(0) - coeff
+                    _ = 0
+                 #   coeff = Rational(0) - coeff
 
-                pol_coeff: Polynomial = Polynomial(monoms=[Monomial(coeff=coeff, const_coeffs=const_coeffs)])
+                pol_coeff: Polynomial = Polynomial(monoms=[Monomial(coeff=coeff, const_coeffs=const_coeffs, minus=product.is_minus)])
 
                 product1 *= pol_coeff
 
@@ -221,6 +222,8 @@ class PolynomialSummationRational:
                     dict0[key0].append(mon0)
 
             num_monoms += len(product1.monomials)
+
+            list_pols0.append(product1)
 
             sum1 += product1
 
@@ -243,7 +246,7 @@ class PolynomialSummationRational:
 
         print(f"num monoms={num_monoms}, [{len(dict0)}], [{len(dict1)}]")
 
-        return sum1
+        return sum1, list_pols0, dict0
 
     def __init__(self):
         self.numerator: list[PolynomialProduct] = []
@@ -369,7 +372,7 @@ class PolynomialSummationRational:
             index += 1
 
             sign = "-" if product.is_minus else "+"
-            s += f"${sign}{product}$"
+            s += f"\\[{sign}{product}\\]"
 
         more_products: bool = index < len_products
 

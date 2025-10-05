@@ -71,12 +71,22 @@ class Polynomial:
             index += 1
 
             if Monomial.are_same_monomials(monom, monomial):
-                mon_coeff = monomial.coefficient
+                monomial_coefficient = monomial.coefficient
+                monom_coefficient = monom.coefficient
+
+                if monom.is_minus:
+                    monom_coefficient *= -1
 
                 if monomial.is_minus:
-                    mon_coeff *= Rational(-1)
+                    monomial_coefficient *= -1
 
-                monom.coefficient += mon_coeff
+                sum_coefficients = monom_coefficient + monomial_coefficient
+
+                if sum_coefficients < Rational(0):
+                    sum_coefficients *= -1
+                    monom.is_minus = True
+
+                monom.coefficient = sum_coefficients
 
                 found = True
 
@@ -526,30 +536,29 @@ class Polynomial:
         return s
 
     def get_ltx_str(self):
-        s: str = ""
-
-        s0: str = ""
+        str_polynomial: str = ""
 
         monoms: list[Monomial] = [monom for monom in self.monomials if monom.coefficient != Rational(0)]
 
-        for monom in monoms:
-            if len(s0) > 0:
-                s1: str = "-" if monom.is_minus else "+"
-                s0 = f"{s0}{s1}"
+        index: int = 0
 
-            s0 = f"{s0}{monom}"
+        for monom in monoms:
+            print_sign = Monomial.Print_Sign_Anyway if index > 0 else Monomial.Print_Sign_If_Minus
+
+            str_monomial: str = monom.get_ltx_str(print_sign=print_sign)
+            index += 1
+
+            str_polynomial = f"{str_polynomial}{str_monomial}"
 
         if self.in_polynomial_product or self.power != Rational(1):
-            s0 = f"({s0})"
+            str_polynomial = f"({str_polynomial})"
 
         color = "red"
 
         if self.power != Rational(1):
-            s0 = f"{s0}^{{\\textcolor{{{color}}}{{{self.power}}}}}"
+            str_polynomial = f"{str_polynomial}^{{\\textcolor{{{color}}}{{{self.power}}}}}"
 
-        s = f"{s}{s0}"
-
-        return s
+        return str_polynomial
 
 
 class PolynomialProduct:

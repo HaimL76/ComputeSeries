@@ -79,6 +79,8 @@ class Element:
         return Element(symb=f"({self.symbol})", pow=self.power)
 
     def get_ltx_str(self):
+        if self.power.numerator == 118:
+            _ = 0
         converted: bool = False
 
         s: str = self.symbol
