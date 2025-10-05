@@ -2,6 +2,7 @@ import copy
 
 from colorama import Fore, Style
 
+from element import Element
 from monomial import Monomial
 from polynomial import Polynomial, PolynomialProduct
 from rational import Rational
@@ -149,12 +150,20 @@ class PolynomialProductRational:
 
 class PolynomialSummationRational:
     def multiply(self):
+        dict0: dict[(int, int), list[Monomial]] = {}
+
+        ##dict0: dict[(int, int), int] = {}
+
         index: int = 0
         sum1 = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
         list_pols0: list[str] = []
 
+        num_monoms: int = 0
+
         for product in self.numerator:
+            if not product.is_minus:
+                _ = 0#continue
             product0: PolynomialProduct = copy.deepcopy(product)
 
             product1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
@@ -163,7 +172,7 @@ class PolynomialSummationRational:
 
             for pol in product0.list_polynomials:
                 print(f"product {index} of {len(self.numerator)},"
-                      f" polynomial {index0} of {len(product0.list_polynomials)}")
+                      f" polynomial {index0} of {len(product0.list_polynomials)}, pol={len(pol.monomials)}, product={len(product1.monomials)}")
                 index0 += 1
 
                 pol1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
@@ -196,9 +205,41 @@ class PolynomialSummationRational:
 
                 product1 *= pol_coeff
 
+            for mon0 in product1.monomials:
+                if isinstance(mon0.elements, dict) and 'p' in mon0.elements and 't' in mon0.elements:
+                    pow_p: Element = mon0.elements['p']
+                    pow_t: Element = mon0.elements['t']
+
+                    key0 = (pow_p.power.numerator, pow_t.power.numerator)
+
+                    if key0 not in dict0:
+                        print(f"[{len(dict0)}], p={pow_p.power.numerator}, t={pow_t.power.numerator}")
+                        dict0[key0] = []
+
+                    dict0[key0].append(mon0)
+
+            num_monoms += len(product1.monomials)
+
             sum1 += product1
 
             index += 1
+
+        dict1: dict[(int, int), list[Monomial]] = {}
+
+        for mon1 in sum1.monomials:
+            if isinstance(mon1.elements, dict) and 'p' in mon1.elements and 't' in mon1.elements:
+                pow_p: Element = mon1.elements['p']
+                pow_t: Element = mon1.elements['t']
+
+                key1 = (pow_p.power.numerator, pow_t.power.numerator)
+
+                if key1 not in dict1:
+                    print(f"[{len(dict1)}], p={pow_p.power.numerator}, t={pow_t.power.numerator}")
+                    dict1[key1] = []
+
+                dict1[key1].append(mon1)
+
+        print(f"num monoms={num_monoms}, [{len(dict0)}], [{len(dict1)}]")
 
         return sum1
 
