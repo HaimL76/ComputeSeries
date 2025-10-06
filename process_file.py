@@ -72,13 +72,15 @@ class ProcessFolder:
 
             dict_rationals: dict = {}
 
-            debug_num_files: int = 2
+            debug_num_files: int = 0
+
+            debug_files_counter: int = 0
 
             for path in input_file_paths:
-                if debug_num_files < 1:
+                if 0 < debug_num_files <= debug_files_counter:
                     break
 
-                debug_num_files -= 1
+                debug_files_counter += 1
 
                 if pattern:
                     search_result = re.search(pattern, path)
