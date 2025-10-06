@@ -53,11 +53,13 @@ class ProcessFolder:
 
         out_file_path = os.path.join(output_full_path, "output.tex")
 
+        out_file_path_rational_sum_all: str = out_file_path.replace(".tex", "_rational_sum_all.tex")
+
         list_rationals: list = []
 
-        total_total_sum: PolynomialSummationRational = PolynomialSummationRational()
+        rational_sum_of_all_products: PolynomialSummationRational = PolynomialSummationRational()
 
-        with open(out_file_path, "w") as fw:
+        with open(out_file_path_rational_sum_all, "w") as fw:
             debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
             debug_write.write(r"""
             \documentclass{article}
@@ -88,7 +90,7 @@ class ProcessFolder:
                         proc_file.process_file(conversion_table=self.conversion_table,
                                                reverse_conversion_table=self.reverse_conversion_table,
                                                debug_write0=debug_write, list_rationals=dict_rationals,
-                                               total_total_sum=total_total_sum)
+                                               total_total_sum=rational_sum_of_all_products)
 
             cases: int = 0
 
@@ -110,7 +112,11 @@ class ProcessFolder:
                     pol_sum_rational: PolynomialSummationRational = tup[0]
                 _ = 0
 
-            debug_write.write(f"{total_total_sum}")
+            debug_write.write("\\tiny{")
+
+            debug_write.write(f"{rational_sum_of_all_products}")
+
+            debug_write.write("}")
 
             debug_write.write("\\end{document}")
 
@@ -126,9 +132,9 @@ class ProcessFolder:
             if take > 0:
                 out_file_path0 = out_file_path.replace(".tex", f"{index}.tex")
 
-            str1: str = total_total_sum.get_ltx_str_denominator()
+            str1: str = rational_sum_of_all_products.get_ltx_str_denominator()
 
-            str0, finished = total_total_sum.get_ltx_str_partial(index * take, take)
+            str0, finished = rational_sum_of_all_products.get_ltx_str_partial(index * take, take)
 
             index += 1
 
@@ -148,7 +154,7 @@ class ProcessFolder:
 
                 fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
 
-                total_total_sum0: PolynomialSummationRational = copy.deepcopy(total_total_sum)
+                total_total_sum0: PolynomialSummationRational = copy.deepcopy(rational_sum_of_all_products)
 
                 sum1, list_pols0, dict0 = total_total_sum0.multiply()
 
