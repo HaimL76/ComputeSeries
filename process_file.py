@@ -37,12 +37,19 @@ class ProcessFolder:
             self.output_folder_path = self.input_folder_path
 
     def process_folder(self, pattern=None):
-        file_paths: list = os.listdir(self.input_folder_path)
+        input_file_paths: list = os.listdir(self.input_folder_path)
 
         output_full_path: str = os.path.abspath(self.output_folder_path)
 
         if not os.path.exists(output_full_path):
             os.makedirs(output_full_path)
+        else:
+            output_file_paths: list = os.listdir(self.output_folder_path)
+
+            for existing_output_file in output_file_paths:
+                path = os.path.join(self.output_folder_path, existing_output_file)
+
+                os.remove(path)
 
         out_file_path = os.path.join(output_full_path, "output.tex")
 
@@ -61,9 +68,14 @@ class ProcessFolder:
 
             dict_rationals: dict = {}
 
-            for path in file_paths:
-                if False:# path != "1.txt":
-                    continue
+            debug_num_files: int = 2
+
+            for path in input_file_paths:
+                if debug_num_files < 1:
+                    break
+
+                debug_num_files -= 1
+
                 if pattern:
                     search_result = re.search(pattern, path)
 
