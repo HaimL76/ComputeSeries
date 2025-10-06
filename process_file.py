@@ -19,6 +19,13 @@ str_pt_product_4: str = "p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_
 
 
 class ProcessFolder:
+    file_prefix: str = r"""
+        \documentclass{article}
+        \usepackage{graphicx} % Required for inserting images
+        \usepackage{xcolor}
+        \begin{document}
+    """
+
     pt_product_1: ExponentialProduct = ExponentialProduct.parse(str_pt_product_1,
                                                                 list_const_coeffs=list_const_coeffs)
 
@@ -61,12 +68,7 @@ class ProcessFolder:
 
         with open(out_file_path_rational_sum_all, "w") as fw:
             debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
-            debug_write.write(r"""
-            \documentclass{article}
-            \usepackage{graphicx} % Required for inserting images
-            \usepackage{xcolor}
-            \begin{document}
-            """)
+            debug_write.write(ProcessFolder.file_prefix)
 
             dict_rationals: dict = {}
 
@@ -89,7 +91,7 @@ class ProcessFolder:
 
                         proc_file.process_file(conversion_table=self.conversion_table,
                                                reverse_conversion_table=self.reverse_conversion_table,
-                                               debug_write0=debug_write, list_rationals=dict_rationals,
+                                               general_debug_writer=debug_write, list_rationals=dict_rationals,
                                                total_total_sum=rational_sum_of_all_products)
 
             cases: int = 0
@@ -139,12 +141,7 @@ class ProcessFolder:
             index += 1
 
             with open(out_file_path0, "w") as fw:
-                fw.write(r"""
-                \documentclass{article}
-                \usepackage{graphicx} % Required for inserting images
-                \usepackage{xcolor}
-                \begin{document}
-                """)
+                fw.write(ProcessFolder.file_prefix)
 
                 fw.write("\\tiny{")
 
@@ -181,12 +178,8 @@ class ProcessFolder:
 
                     sum11 += sum0
 
-                fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
-
                 #for pol0 in list_pols0:
                  #   fw.write(f"\\[{pol0}\\]")
-
-                fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
 
                 fw.write(f"${sum11}$")
 
@@ -210,7 +203,8 @@ class ProcessFile:
         self.output_directory_path: str = output_directory
         self.case_indices: list[int] = []
 
-    def process_file(self, conversion_table: dict, reverse_conversion_table: dict, debug_write0: DebugWrite,
+    def process_file(self, conversion_table: dict, reverse_conversion_table: dict,
+                     general_debug_writer: DebugWrite,
                      list_rationals: dict, total_total_sum: PolynomialSummationRational):
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
@@ -238,7 +232,7 @@ class ProcessFile:
                     if line and line[0] != "#":
                         self.process_line(line, conversion_table=conversion_table,
                                           reverse_conversion_table=reverse_conversion_table,
-                                          debug_write0=debug_write0, list_rationals=list_rationals,
+                                          general_debug_writer=general_debug_writer, list_rationals=list_rationals,
                                           total_total_sum=total_total_sum)
 
                 for key in conversion_table.keys():
@@ -253,7 +247,7 @@ class ProcessFile:
                 debug_write.write("\\end{document}")
 
     def process_line(self, text: str, conversion_table: dict, reverse_conversion_table: dict,
-                     debug_write0: DebugWrite,
+                     general_debug_writer: DebugWrite,
                      list_rationals: dict, total_total_sum: PolynomialSummationRational):
         is_polynomial: bool = False
         is_substitution: bool = False
@@ -390,11 +384,13 @@ class ProcessFile:
 
         if text == "run":
 
-            s: str = ".".join([str(index) for index in self.case_indices])
-            debug_write.write(f"\n{s}\n")
+            str_case_indices: str = ".".join([str(index) for index in self.case_indices])
+            str_case_indices = f"Case {str_case_indices}"
 
-            if debug_write0 is not None:
-                debug_write0.write(f"\n{s}\n")
+            debug_write.write(f"\n{str_case_indices}\n")
+
+            if general_debug_writer is not None:
+                general_debug_writer.write(f"\n{str_case_indices}\n")
 
             for polynomial in self.polynomials:
                 debug_write.write(f"\\[{polynomial}\\]", 1)
@@ -474,8 +470,8 @@ class ProcessFile:
                     str_to_print: str = f"{total_sum}"
                     debug_write.write(str_to_print)
 
-                    if debug_write0 is not None:
-                        debug_write0.write(str_to_print)
+                    if general_debug_writer is not None:
+                        general_debug_writer.write(str_to_print)
 
                 _ = 0
 

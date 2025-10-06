@@ -605,18 +605,16 @@ class PolynomialProduct:
         if len(list_polynoms) < 1:
             list_polynoms = self.list_polynomials[0:1]
 
-        s: str = "".join(f"{polynom}" for polynom in list_polynoms)
+        str_output: str = "".join(f"{polynom}" for polynom in list_polynoms)
 
         if len(self.const_coefficients) > 0:
-            s0: str = "".join(
-                [f"{const_coeff.get_copy_with_parentheses()}" for const_coeff in self.const_coefficients.values()])
-
-            s = f"{s0}{s}"
+            for const_coefficient in self.const_coefficients.values():
+                str_output = f"{const_coefficient.get_ltx_str(with_parentheses=Element.WithParenthesesByLength)}{str_output}"
 
         if self.coefficient != Rational(1):
-            s = f"{self.coefficient}{s}"
+            str_output = f"{self.coefficient}{str_output}"
 
-        return s
+        return str_output
 
     @property
     def get_str(self):

@@ -75,18 +75,18 @@ class Element:
 
         return s
 
-    def get_copy_with_parentheses(self):
-        return Element(symb=f"({self.symbol})", pow=self.power)
+    WithoutParentheses: int = 0
+    WithParenthesesAnyway: int = 1
+    WithParenthesesByLength: int = 2
+    WithParenthesesByForPowerByLength: int = 3
 
-    def get_ltx_str(self):
-        if self.power.numerator == 118:
-            _ = 0
+    def get_ltx_str(self, with_parentheses: int = WithParenthesesByLength):
         converted: bool = False
 
-        s: str = self.symbol
+        str_output: str = self.symbol
 
         if self.index is not None:
-            s = f"{s}_{{{self.index}}}"
+            s = f"{str_output}_{{{self.index}}}"
 
             if Element.reverse_conversion_table is not None:
                 #rkey: str = f"{self.symbol}_{self.index}"
@@ -95,26 +95,28 @@ class Element:
                 if rkey in Element.reverse_conversion_table:
                     p,t = Element.reverse_conversion_table[rkey]
 
-                    s = f"p^{{{p}}}t^{{{t}}}"
+                    str_output = f"p^{{{p}}}t^{{{t}}}"
                     converted = True
                 else:
                     _ = 0
             else:
                 _ = 0
 
+        length_more_than_1: bool = len(self.symbol) > 1
+
+        anyway: bool = with_parentheses == Element.WithParenthesesAnyway
+
+        by_length: bool = with_parentheses == Element.WithParenthesesByLength and length_more_than_1
+
+        for_power_by_length = with_parentheses == Element.WithParenthesesByForPowerByLength and length_more_than_1 and self.power != 1
+
+        if anyway or by_length or for_power_by_length:
+            str_output = f"\\left({str_output}\\right)"
+
         if self.power != 1:
-            if converted:
-                s = f"({s})"
+            str_output = f"{str_output}^{{{self.power}}}"
 
-            s = f"{s}^{{{self.power}}}"
-
-        if self.power == 155:
-            _ = 0
-
-        if Element.reverse_conversion_table is not None and not converted:
-            _ = 0
-
-        return s
+        return str_output
 
     def __str__(self):
         return self.get_ltx_str()

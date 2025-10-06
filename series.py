@@ -297,24 +297,25 @@ class SeriesProduct:
         return s
 
     def get_ltx_str(self):
-        s: str = ""
+        str_output: str = ""
 
         if self.is_minus:
-            s = "-"
+            str_output = "-"
 
         if self.coefficient is not None and self.coefficient != Rational(1):
-            s += f"{self.coefficient}"
+            str_output = f"{str_output}{self.coefficient}"
 
         if self.const_coefficients:
-            s1: str = "".join([f"{const_coeff.get_copy_with_parentheses()}" for const_coeff in self.const_coefficients.values()])
+            for key in self.const_coefficients:
+                val: Element = self.const_coefficients[key]
 
-            s = f"{s}{s1}"
+                str_output = f"{str_output}{val.get_ltx_str(with_parentheses=Element.WithParenthesesByLength)}"
 
-        s0: str = "".join(f"{ser}" for ser in self.dict_series.values())
+        str_series: str = "".join(f"{ser}" for ser in self.dict_series.values())
 
-        s = f"{s}{s0}"
+        str_output = f"{str_output}{str_series}"
 
-        return s
+        return str_output
 
     def __str__(self):
         return self.get_ltx_str()
