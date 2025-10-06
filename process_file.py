@@ -129,65 +129,55 @@ class ProcessFolder:
         take: int = 0
 
         while not finished:
-            out_file_path0: str = out_file_path
+            out_file_path_numerator_polynmomials: str = out_file_path.replace(".tex", f"_numerator_polynomials.tex")
+            out_file_path_sum_numerator: str = out_file_path.replace(".tex", f"_sum_numerator.tex")
 
             if take > 0:
-                out_file_path0 = out_file_path.replace(".tex", f"{index}.tex")
+                out_file_path_sum_numerator = out_file_path.replace(".tex", f"{index}.tex")
 
-            str1: str = rational_sum_of_all_products.get_ltx_str_denominator()
+            str_denominator: str = rational_sum_of_all_products.get_ltx_str_denominator()
 
             str0, finished = rational_sum_of_all_products.get_ltx_str_partial(index * take, take)
 
             index += 1
 
-            with open(out_file_path0, "w") as fw:
-                fw.write(ProcessFolder.file_prefix)
+            with (open(out_file_path_sum_numerator, "w") as fw_sum_numerator,
+                  open(out_file_path_numerator_polynmomials, "w") as fw_numerator_polynomials):
+                fw_numerator_polynomials.write(ProcessFolder.file_prefix)
+                fw_sum_numerator.write(ProcessFolder.file_prefix)
 
-                fw.write("\\tiny{")
-
-                #fw.write(str1)
-
-                #fw.write(str0)
-
-                fw.write("\n\n@@@@@@@@@@@@@@@@@@\n\n")
+                fw_numerator_polynomials.write("\\tiny{")
+                fw_sum_numerator.write("\\tiny{")
 
                 total_total_sum0: PolynomialSummationRational = copy.deepcopy(rational_sum_of_all_products)
 
-                sum1, list_pols0, dict0 = total_total_sum0.multiply()
+                sum1, list_pols0, dict_numerator = total_total_sum0.multiply()
 
-                sum11: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
+                sum_numerator: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
-                for key0 in dict0:
-                    list_mons0 = dict0[key0]
+                for key in dict_numerator:
+                    list_monomials = dict_numerator[key]
 
-                    #fw.write(f"\\[")#p^{key0[0]}t^{key0[1]}")
+                    sum_monomials: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
-                    sum0: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
+                    fw_numerator_polynomials.write("$")
 
-                    for mon0 in list_mons0:
-                        mon1: Monomial = copy.deepcopy(mon0)
+                    for monomial in list_monomials:
+                        monomial_copy: Monomial = copy.deepcopy(monomial)
 
-                        pol0: Polynomial = Polynomial(monoms=[mon1])
-                        sum0 += pol0
+                        fw_numerator_polynomials.write(f"{monomial_copy.get_ltx_str(print_sign=Monomial.Print_Sign_If_Minus)},")
 
-                        #str0: str = mon0.get_ltx_str(True)
+                        polynomial: Polynomial = Polynomial(monoms=[monomial_copy])
+                        sum_monomials += polynomial
 
-                        #fw.write(f"{str0},")
+                    sum_numerator += sum_monomials
 
-                    #fw.write(f"=\\[{sum0}\\]")
+                    fw_numerator_polynomials.write("$\n\n")
 
-                    sum11 += sum0
-
-                #for pol0 in list_pols0:
-                 #   fw.write(f"\\[{pol0}\\]")
-
-                fw.write(f"${sum11}$")
-
-                index0: int = 0
-
-                fw.write("}")
-
-                fw.write("\\end{document}")
+                fw_numerator_polynomials.write("}\\end{document}")
+                fw_sum_numerator.write(f"${sum_numerator}$")
+                fw_sum_numerator.write("}")
+                fw_sum_numerator.write("\\end{document}")
 
 
 class ProcessFile:
