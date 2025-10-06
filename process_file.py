@@ -160,19 +160,37 @@ class ProcessFolder:
 
                     sum_monomials: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
-                    fw_numerator_polynomials.write("$")
+                    monomials_counter: int = 0
+
+                    line_monomials_counter: int = 0
 
                     for monomial in list_monomials:
                         monomial_copy: Monomial = copy.deepcopy(monomial)
 
-                        fw_numerator_polynomials.write(f"{monomial_copy.get_ltx_str(print_sign=Monomial.Print_Sign_If_Minus)},")
+                        if line_monomials_counter == 0:
+                            fw_numerator_polynomials.write("$")
+                        else:
+                            fw_numerator_polynomials.write(",")
+
+                        fw_numerator_polynomials.write(f"{monomial_copy.get_ltx_str(print_sign=Monomial.Print_Sign_If_Minus)}")
+
+                        monomials_counter += 1
+                        line_monomials_counter += 1
+
+                        line_break: bool = line_monomials_counter == 8
+                        polynomials_printed: bool = monomials_counter == len(list_monomials)
+
+                        if line_break or polynomials_printed:
+                            if polynomials_printed:
+                                fw_numerator_polynomials.write("\\\\\\\\")
+
+                            fw_numerator_polynomials.write("$\n\n")
+                            line_monomials_counter = 0
 
                         polynomial: Polynomial = Polynomial(monoms=[monomial_copy])
                         sum_monomials += polynomial
 
                     sum_numerator += sum_monomials
-
-                    fw_numerator_polynomials.write("$\n\n")
 
                 fw_numerator_polynomials.write("}\\end{document}")
                 fw_sum_numerator.write(f"${sum_numerator}$")
