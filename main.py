@@ -1,4 +1,4 @@
-import webbrowser
+from typing import List, Dict, Optional, Tuple, Union
 
 from debug_write import DebugWrite
 from exponential import Exponential, ExponentialProduct
@@ -8,15 +8,15 @@ from process_file import ProcessFile, ProcessFolder
 from series import SeriesProduct, SeriesProductSum
 from substitution import VariableSubstitution
 
-import matplotlib.pyplot as plt
-
 const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 
-def main():
+def main() -> None:
+    """Main function to process input files and generate output."""
     pf: ProcessFolder = ProcessFolder(".\\input\\", ".\\output\\")
-
     pf.process_folder(".txt$")
 
-main()
+
+if __name__ == "__main__":
+    main()

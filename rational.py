@@ -1,122 +1,122 @@
 import math
+from typing import List
 
 
 class Rational:
-    primes: list[int] = [2, 3, 5, 7, 11]
+    primes: List[int] = [2, 3, 5, 7, 11]
 
-    def reduce(self):
-        check_reduce: bool = abs(self.numerator) != 1 and abs(self.denominator) != 1
+    def reduce(self) -> None:
+        """Reduce the rational number to its simplest form."""
+        if self.denominator == 0:
+            raise ValueError("Denominator cannot be zero")
+        
+        # Handle zero case
+        if self.numerator == 0:
+            self.denominator = 1
+            return
+            
+        # Handle negative denominator
+        if self.denominator < 0:
+            self.numerator = -self.numerator
+            self.denominator = -self.denominator
 
-        if check_reduce:
-            is_reduced: bool = False
+        # Find GCD and reduce
+        gcd_value = self._gcd(abs(self.numerator), abs(self.denominator))
+        self.numerator = self.numerator // gcd_value
+        self.denominator = self.denominator // gcd_value
 
-            index: int = 0
-
-            while not is_reduced and index < len(Rational.primes):
-                prime: int = Rational.primes[index]
-
-                is_reduced_for_prime: bool = False
-
-                while not is_reduced and not is_reduced_for_prime:
-                    numer0 = self.numerator / prime
-                    denom0 = self.denominator / prime
-
-                    if numer0 == math.floor(numer0) and denom0 == math.floor(denom0):
-                        self.numerator = int(numer0)
-                        self.denominator = int(denom0)
-
-                        if abs(self.numerator) == 1 or abs(self.denominator) == 1:
-                            is_reduced = True
-                    else:
-                        is_reduced_for_prime = True
-
-                index += 1
+    def _gcd(self, a: int, b: int) -> int:
+        """Calculate greatest common divisor using Euclidean algorithm."""
+        while b:
+            a, b = b, a % b
+        return a
 
     def __init__(self, numer: int, denom: int = 1):
+        """Initialize a rational number with numerator and denominator."""
+        if denom == 0:
+            raise ValueError("Denominator cannot be zero")
         self.numerator: int = numer
         self.denominator: int = denom
-
         self.reduce()
 
-    def __gt__(self, other):
+    def __gt__(self, other: 'Rational') -> bool:
+        """Compare if this rational is greater than other."""
+        if not isinstance(other, Rational):
+            return NotImplemented
         return self.numerator * other.denominator > other.numerator * self.denominator
 
-    def is_minus(self):
+    def is_minus(self) -> bool:
+        """Check if the rational number is negative."""
         return self.numerator * self.denominator < 0
 
     @staticmethod
-    def parse(text: str):
-        numer: int = 0
-        denom: int = 1
+    def parse(text: str) -> 'Rational':
+        """Parse a string representation of a rational number."""
+        if not text or not text.strip():
+            return Rational(0, 1)
+            
+        text = text.strip()
+        parts: List[str] = text.split("/")
 
-        l: list = text.split("/")
+        if len(parts) == 1:
+            if parts[0].isnumeric():
+                return Rational(int(parts[0]), 1)
+            else:
+                raise ValueError(f"Invalid rational number format: {text}")
+        elif len(parts) == 2:
+            if parts[0].isnumeric() and parts[1].isnumeric():
+                return Rational(int(parts[0]), int(parts[1]))
+            else:
+                raise ValueError(f"Invalid rational number format: {text}")
+        else:
+            raise ValueError(f"Invalid rational number format: {text}")
 
-        if isinstance(l, list) and len(l) > 0:
-            s: str = l[0]
-
-            if s:
-                s = s.strip()
-
-                if s and s.isnumeric():
-                    numer = int(s)
-
-                    if len(l) > 1:
-                        s = l[1]
-
-                        if s:
-                            s = s.strip()
-
-                            if s and s.isnumeric():
-                                denom = int(s)
-
-        return Rational(numer=numer, denom=denom)
-
-    def __add__(self, other):
+    def __add__(self, other: 'Rational') -> 'Rational':
+        """Add two rational numbers."""
+        if not isinstance(other, Rational):
+            return NotImplemented
         denom: int = self.denominator * other.denominator
-
         numer1: int = self.numerator * other.denominator
         numer2: int = other.numerator * self.denominator
-
         return Rational(numer=numer1 + numer2, denom=denom)
 
-    def __abs__(self):
-        numer: int = self.numerator
-        denom: int = self.denominator
+    def __abs__(self) -> 'Rational':
+        """Return absolute value of the rational number."""
+        return Rational(numer=abs(self.numerator), denom=abs(self.denominator))
 
-        if numer < 0 < denom:
-            numer *= -1
-
-        if denom < 0 < numer:
-            denom *= -1
-
-        return Rational(numer=numer, denom=denom)
-
-    def __sub__(self, other):
+    def __sub__(self, other: 'Rational') -> 'Rational':
+        """Subtract two rational numbers."""
+        if not isinstance(other, Rational):
+            return NotImplemented
         minus_other: Rational = Rational(numer=other.numerator * -1, denom=other.denominator)
-
         return self + minus_other
 
-    def __mul__(self, other):
+    def __mul__(self, other: 'Rational') -> 'Rational':
+        """Multiply two rational numbers."""
+        if not isinstance(other, Rational):
+            return NotImplemented
         return Rational(numer=self.numerator * other.numerator, denom=self.denominator * other.denominator)
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
+        """Check equality of two rational numbers."""
+        if not isinstance(other, Rational):
+            return NotImplemented
         return self.numerator == other.numerator and self.denominator == other.denominator
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """String representation of the rational number."""
         return self.get_ltx_str()
 
-    def get_ltx_str(self):
+    def get_ltx_str(self) -> str:
+        """Get LaTeX string representation."""
         s: str = f"{self.numerator}"
-
         if self.denominator != 1:
             s = f"\\frac{{{s}}}{{{self.denominator}}}"
-
         return s
 
-    def get_str(self):
+    def get_str(self) -> str:
+        """Get string representation."""
         s: str = f"{self.numerator}"
-
         if self.denominator != 1:
             s = f"{s}/{self.denominator}"
-
         return s
