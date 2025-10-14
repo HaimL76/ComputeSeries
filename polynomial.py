@@ -509,6 +509,10 @@ class Polynomial:
         if self.name:
             s = f"{self.name} = "
 
+        # Handle empty polynomial case
+        if not self.monomials:
+            return s + "0"
+
         s0: str = " + ".join(f"{monom}" for monom in self.monomials)
         s0 = f"({s0})"
 
@@ -522,6 +526,10 @@ class Polynomial:
         """Get LaTeX string representation of the polynomial."""
         str_polynomial: str = ""
         monoms: List[Monomial] = [monom for monom in self.monomials if monom.coefficient != Rational(0)]
+
+        # Handle empty polynomial case
+        if not monoms:
+            return "0"
 
         for index, monom in enumerate(monoms):
             print_sign = Monomial.Print_Sign_Anyway if index > 0 else Monomial.Print_Sign_If_Minus
