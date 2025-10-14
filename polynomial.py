@@ -76,16 +76,17 @@ class Polynomial:
                 monomial_coeff = monomial.coefficient
                 existing_coeff = existing_monom.coefficient
 
+                # Handle signs properly using Rational arithmetic
                 if existing_monom.is_minus:
-                    existing_coeff = -existing_coeff
+                    existing_coeff = Rational(-existing_coeff.numerator, existing_coeff.denominator)
                 if monomial.is_minus:
-                    monomial_coeff = -monomial_coeff
+                    monomial_coeff = Rational(-monomial_coeff.numerator, monomial_coeff.denominator)
 
                 sum_coefficients = existing_coeff + monomial_coeff
 
-                if sum_coefficients < Rational(0):
+                if sum_coefficients.numerator < 0:
                     existing_monom.is_minus = True
-                    existing_monom.coefficient = abs(sum_coefficients)
+                    existing_monom.coefficient = Rational(-sum_coefficients.numerator, sum_coefficients.denominator)
                 else:
                     existing_monom.is_minus = False
                     existing_monom.coefficient = sum_coefficients

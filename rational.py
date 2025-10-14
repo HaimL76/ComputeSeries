@@ -15,7 +15,7 @@ class Rational:
             self.denominator = 1
             return
             
-        # Handle negative denominator
+        # Handle negative denominator - move sign to numerator
         if self.denominator < 0:
             self.numerator = -self.numerator
             self.denominator = -self.denominator

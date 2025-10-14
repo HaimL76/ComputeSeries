@@ -27,10 +27,19 @@ class Monomial:
                     key += f"_{elem.index}"
 
                 if key not in self.elements:
-                    self.elements[key] = Element(symb=elem.symbol, pow=elem.power, ind=elem.index)
+                    # Convert power to int if it's a Rational
+                    power = elem.power
+                    if hasattr(power, 'numerator'):  # It's a Rational
+                        power = power.numerator
+                    self.elements[key] = Element(symb=elem.symbol, pow=power, ind=elem.index)
                 else:
                     existing = self.elements[key]
-                    multiplied = existing * elem
+                    # Convert power to int if it's a Rational
+                    power = elem.power
+                    if hasattr(power, 'numerator'):  # It's a Rational
+                        power = power.numerator
+                    elem_copy = Element(symb=elem.symbol, pow=power, ind=elem.index)
+                    multiplied = existing * elem_copy
                     if multiplied is not None:
                         self.elements[key] = multiplied
 

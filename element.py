@@ -1,12 +1,16 @@
-from typing import Optional, Dict, Tuple, List
+from typing import Optional, Dict, Tuple, List, Union
 
 
 class Element:
     reverse_conversion_table: Optional[Dict[int, Tuple[int, int]]] = None
 
-    def __init__(self, symb: str = "", pow: int = 1, ind: Optional[int] = None):
+    def __init__(self, symb: str = "", pow: Union[int, 'Rational'] = 1, ind: Optional[int] = None):
         """Initialize an Element with symbol, power, and optional index."""
-        self.power: int = pow
+        # Convert Rational to int if needed
+        if hasattr(pow, 'numerator'):  # It's a Rational
+            self.power: int = pow.numerator
+        else:
+            self.power: int = pow
         self.symbol: str = symb
         self.index: Optional[int] = ind
 
