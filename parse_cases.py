@@ -72,6 +72,7 @@ def parse_cases(file_path):
                 information_collection.item_counter = 0
 
             if line.startswith("\\item"):
+                finish_collecting_case_information(information_collection=information_collection)
                 information_collection.item_counter += 1
 
             occurrences: list[str] = re.findall(str_subs_pattern, line)
@@ -101,7 +102,7 @@ def parse_cases(file_path):
 
                                 second_part = second_part[1:-1]  # remove { and }
 
-                                finish_collecting_case_information(information_collection=information_collection)
+                                #finish_collecting_case_information(information_collection=information_collection)
 
                                 information_collection.dict_subs[index] = second_part
 
