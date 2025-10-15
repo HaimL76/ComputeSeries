@@ -26,6 +26,9 @@ def parse_cases(file_path):
 
                 item_counter = 0  # Reset item counter for new subsection
 
+            if line.startswith("\\begin{enumerate}"):
+                item_counter = 0  # Reset item counter at the beginning of an enumerate environment
+
             if line.startswith("\\end{enumerate}"):
                 item_counter = 0  # Reset item counter at the end of an enumerate environment
 
@@ -60,5 +63,19 @@ def parse_cases(file_path):
                                 index: int = int(str_index)
 
                                 dict_subs[index] = str_subs
+
+                                if len(dict_subs) == 4:
+                                    str_indices = f"{section_counter}"
+
+                                    if subsection_counter > 0:
+                                        str_indices = f"{str_indices}.{section_counter}"
+
+                                    if item_counter > 0:
+                                        str_indices = f"{str_indices}.{item_counter}"
+
+                                    for key in dict_subs.keys():
+                                        print(f"{str_indices}: {dict_subs[key]}")
+
+                                    dict_subs.clear()
 
                 # print(f"{section_counter}.{subsection_counter}.{item_counter}, {line}")
