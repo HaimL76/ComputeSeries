@@ -1,0 +1,1 @@
+5, substitution: v_1=a+b5, substitution: v_2=a+b+c+d5, substitution: v_3=a5, substitution: v_4=a+b+c

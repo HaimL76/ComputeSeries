@@ -1,0 +1,1 @@
+4.2.2, substitution: v_1=a+c+d4.2.2, substitution: v_2=a+b+c+d4.2.2, substitution: v_3=c+d4.2.2, substitution: v_4=a+b+2.c+d

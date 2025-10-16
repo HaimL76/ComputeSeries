@@ -4,28 +4,35 @@ import re
 
 class InformationCollection:
     def __init__(self):
-        self.dict_subs: dict[int, str] = {}
+        self.dict_subst: dict[str, str] = {}
         self.dict_start_indices: dict[str, int] = {}
         self.section_counter: int = 0
         self.subsection_counter: int = 0
         self.item_counter: int = 0
 
+def get_str_indices(information_collection: InformationCollection) -> tuple[str, str]:
+    str_indices = f"{information_collection.section_counter}"
+    str_indices_file: str = str_indices
+
+    if information_collection.subsection_counter > 0:
+        str_indices = f"{str_indices}.{information_collection.subsection_counter}"
+        str_indices_file = str_indices
+
+    if information_collection.item_counter > 0:
+        str_indices = f"{str_indices}.{information_collection.item_counter}"
+
+    return str_indices_file, str_indices
+
 
 def finish_collecting_case_information(information_collection: InformationCollection, input_folder: str):
-    if len(information_collection.dict_subs) == 4:
-        str_indices = f"{information_collection.section_counter}"
-        str_indices_file: str = str_indices
-
-        if information_collection.subsection_counter > 0:
-            str_indices = f"{str_indices}.{information_collection.subsection_counter}"
-            str_indices_file = str_indices
-
-        if information_collection.item_counter > 0:
-            str_indices = f"{str_indices}.{information_collection.item_counter}"
+    if len(information_collection.dict_subst) == 4:
+        str_indices_file, str_indices = get_str_indices(information_collection=information_collection)
 
         file_path: str = os.path.join(input_folder, f"{str_indices_file}.txt")
 
         if os.path.exists(file_path):
+            list_errors: list[str] = []
+
             with open(file_path, 'r') as file:
                 finished: bool = False
                 start_check: bool = False
@@ -52,35 +59,37 @@ def finish_collecting_case_information(information_collection: InformationCollec
                                     key_subst: str = arr[0].strip()
                                     val_subst: str = arr[1].strip()
 
-                                    arr_key: list[str] = key_subst.split("_")
+                                    if key_subst in information_collection.dict_subst:
+                                        val_from_dict: str = information_collection.dict_subst[key_subst]
 
-                                    if isinstance(arr_key, list) and len(arr_key) == 2:
-                                        str_index: str = arr_key[1]
+                                        val_subst = val_subst.replace(".", "")
 
-                                        if isinstance(str_index, str) and str_index.isnumeric():
-                                            index: int = int(str_index)
+                                        if val_subst != val_from_dict:
+                                            list_errors.append(f"{str_indices}, {line}")
 
-                                            if index in information_collection.dict_subs:
-                                                val_from_dict: str = information_collection.dict_subs[index]
+            if len(list_errors) > 0:
+                error_file = os.path.join(input_folder, f"{str_indices_file}.err.txt")
 
-                                                val_subst = val_subst.replace(".", "")
+                with open(error_file, 'w') as ef:
+                    for error in list_errors:
+                        ef.write(error)
 
-                                                print(f"{val_subst}, {val_from_dict}")
-
-        for key_subst in information_collection.dict_subs.keys():
+        for key_subst in information_collection.dict_subst.keys():
             list_of_1_indices: list[str] = [key for key, value in information_collection.dict_start_indices.items() if value == 1]
 
             str_starting_index: str = ",".join(f"{str_index}" for str_index in list_of_1_indices)
 
-            val_subst: str = information_collection.dict_subs[key_subst]
+            val_subst: str = information_collection.dict_subst[key_subst]
 
-            print(f"{str_indices}: v_{key_subst}->{val_subst}, {str_starting_index}")
+            print(f"{str_indices}: {key_subst}->{val_subst}, {str_starting_index}")
 
-        information_collection.dict_subs.clear()
+        information_collection.dict_subst.clear()
         information_collection.dict_start_indices.clear()
 
 
 def parse_cases(file_path, input_folder: str):
+    dict_output: dict[str, (dict[int, str], dict[str, int])] = {}
+
     str_subs_pattern: str = r"(\$v_\d\\rightarrow{([\d]*[abcd][+-])*[\d]*[abcd]}\$)"
     str_starting_index_pattern: str = r"(([abcd],)*[abcd]\\geq\{[01]\})"
 
@@ -90,7 +99,7 @@ def parse_cases(file_path, input_folder: str):
     information_collection.subsection_counter = 0
     information_collection.item_counter = 0
 
-    information_collection.dict_subs = {}
+    information_collection.dict_subst = {}
     information_collection.dict_start_indices = {}
 
     cases = []
@@ -135,23 +144,28 @@ def parse_cases(file_path, input_folder: str):
                     if len(groups) > 0:
                         prefix: str = groups[0]
 
-                        arr = prefix.split("_")
+                        key: str = prefix[1:] # remove $ at the beginning
 
-                        if isinstance(arr, list) and len(arr) == 2:
-                            str_index: str = arr[1]
+                        second_part: str = str_subs[len(prefix):-1]  # remove $ at the end
 
-                            if isinstance(str_index, str) and str_index.isnumeric():
-                                index: int = int(str_index)
+                        second_part = second_part[len("\\rightarrow"):]  # remove \\rightarrow
 
-                                second_part: str = str_subs[len(prefix):-1]  # remove $ at the end
+                        second_part = second_part[1:-1]  # remove { and }
 
-                                second_part = second_part[len("\\rightarrow"):]  # remove \\rightarrow
+                        #finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)
 
-                                second_part = second_part[1:-1]  # remove { and }
+                        information_collection.dict_subst[key] = second_part
 
-                                #finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)
+                        str_indices_file, str_indices = get_str_indices(information_collection=information_collection)
 
-                                information_collection.dict_subs[index] = second_part
+                        if str_indices not in dict_output:
+                            dict_output[str_indices] = ({}, {})
+
+                        tup: tuple[dict[str, str], dict[str, int]] = dict_output[str_indices]
+
+                        dict_subst: dict[str, str] = tup[0]
+
+                        dict_subst[key] = second_part
 
             starting_indices: list[str] = re.findall(str_starting_index_pattern, line)
 
