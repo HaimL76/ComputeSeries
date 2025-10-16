@@ -86,7 +86,17 @@ def finish_collecting_case_information(information_collection: InformationCollec
         information_collection.dict_subst.clear()
         information_collection.dict_start_indices.clear()
 
+
 def parse_cases(file_path, input_folder: str):
+    list_files: list[str] = os.listdir(input_folder)
+
+    if isinstance(list_files, list) and len(list_files) > 0:
+        list_error_files: list[str] = [os.path.join(input_folder, file_path) for file_path in list_files if file_path.endswith(".err.txt")]
+
+        if isinstance(list_error_files, list) and len(list_error_files) > 0:
+            for error_file in list_error_files:
+                os.remove(error_file)
+
     dict_output: dict[str, (dict[int, str], dict[str, int])] = {}
 
     str_subs_pattern: str = r"(\$v_\d\\rightarrow{([\d]*[abcd][+-])*[\d]*[abcd]}\$)"
@@ -188,5 +198,20 @@ def parse_cases(file_path, input_folder: str):
 
                         for start_index in arr_indices:
                             information_collection.dict_start_indices[start_index] = int(str_index)
+
+                            if str_indices not in dict_output:
+                                dict_output[str_indices] = ({}, {})
+
+                            tup: tuple[dict[str, str], dict[str, int]] = dict_output[str_indices]
+
+                            dict_start_indices: dict[str, int] = tup[1]
+
+                            dict_start_indices[start_index] = int(str_index)
+
+    _ = 0
+
+
+
+
 
         #finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)
