@@ -1,1 +1,0 @@
-3.2.6, substitution: v_1=a+b+c3.2.6, substitution: v_2=b+c

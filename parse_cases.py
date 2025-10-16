@@ -86,7 +86,6 @@ def finish_collecting_case_information(information_collection: InformationCollec
         information_collection.dict_subst.clear()
         information_collection.dict_start_indices.clear()
 
-
 def parse_cases(file_path, input_folder: str):
     dict_output: dict[str, (dict[int, str], dict[str, int])] = {}
 

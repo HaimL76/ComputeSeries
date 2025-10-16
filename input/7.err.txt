@@ -1,1 +1,0 @@
-7.2, substitution: v_1=a+b+c7.2, substitution: v_2=a+b
