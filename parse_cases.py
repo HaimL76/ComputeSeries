@@ -28,52 +28,6 @@ def finish_collecting_case_information(information_collection: InformationCollec
     if len(information_collection.dict_subst) == 4:
         str_indices_file, str_indices = get_str_indices(information_collection=information_collection)
 
-        file_path: str = os.path.join(input_folder, f"{str_indices_file}.txt")
-
-        if os.path.exists(file_path):
-            list_errors: list[str] = []
-
-            with open(file_path, 'r') as file:
-                finished: bool = False
-                start_check: bool = False
-                while not finished:
-                    line = file.readline()
-
-                    finished = not line
-
-                    if not finished:
-                        line = line.strip()
-
-                        if str_indices in line:
-                            start_check = True
-
-                            print(line)
-
-                        if start_check:
-                            if "substitution:" in line:
-                                subst = line.replace("substitution:", "").strip()
-
-                                arr: list[str] = subst.split("=")
-
-                                if isinstance(arr, list) and len(arr) == 2:
-                                    key_subst: str = arr[0].strip()
-                                    val_subst: str = arr[1].strip()
-
-                                    if key_subst in information_collection.dict_subst:
-                                        val_from_dict: str = information_collection.dict_subst[key_subst]
-
-                                        val_subst = val_subst.replace(".", "")
-
-                                        if val_subst != val_from_dict:
-                                            list_errors.append(f"{str_indices}, {line}")
-
-            if len(list_errors) > 0:
-                error_file = os.path.join(input_folder, f"{str_indices_file}.err.txt")
-
-                with open(error_file, 'w') as ef:
-                    for error in list_errors:
-                        ef.write(error)
-
         for key_subst in information_collection.dict_subst.keys():
             list_of_1_indices: list[str] = [key for key, value in information_collection.dict_start_indices.items() if value == 1]
 
@@ -208,7 +162,67 @@ def parse_cases(file_path, input_folder: str):
 
                             dict_start_indices[start_index] = int(str_index)
 
-    _ = 0
+    list_files = os.listdir(input_folder)
+
+    if isinstance(list_files, list) and len(list_files) > 0:
+        for file_path in list_files:
+            file_path = os.path.join(input_folder, file_path)
+            with open(file_path, 'r') as file:
+                str_indices_in_file: str = ""
+
+                pattern: str = "^=+\\s*(\\d+\\.)*\\d+\\s*=+$"
+
+                for line in file:
+                    line = line.strip()
+                    if re.search(pattern=pattern, string=line):
+                        str_indices_in_file = line.replace("=", "").strip()
+
+                        _ = 0
+
+
+
+
+
+                finished: bool = False
+                start_check: bool = False
+                while not finished:
+                    line = file.readline()
+
+                    finished = not line
+
+                    if not finished:
+                        line = line.strip()
+
+                        if str_indices in line:
+                            start_check = True
+
+                            print(line)
+
+                        if start_check:
+                            if "substitution:" in line:
+                                subst = line.replace("substitution:", "").strip()
+
+                                arr: list[str] = subst.split("=")
+
+                                if isinstance(arr, list) and len(arr) == 2:
+                                    key_subst: str = arr[0].strip()
+                                    val_subst: str = arr[1].strip()
+
+                                    if key_subst in information_collection.dict_subst:
+                                        val_from_dict: str = information_collection.dict_subst[key_subst]
+
+                                        val_subst = val_subst.replace(".", "")
+
+                                        if val_subst != val_from_dict:
+                                            list_errors.append(f"{str_indices}, {line}")
+
+            if len(list_errors) > 0:
+                error_file = os.path.join(input_folder, f"{str_indices_file}.err.txt")
+
+                with open(error_file, 'w') as ef:
+                    for error in list_errors:
+                        ef.write(error)
+
 
 
 
