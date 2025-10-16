@@ -1,3 +1,4 @@
+import os
 import re
 
 
@@ -10,15 +11,61 @@ class InformationCollection:
         self.item_counter: int = 0
 
 
-def finish_collecting_case_information(information_collection: InformationCollection):
+def finish_collecting_case_information(information_collection: InformationCollection, input_folder: str):
     if len(information_collection.dict_subs) == 4:
         str_indices = f"{information_collection.section_counter}"
+        str_indices_file: str = str_indices
 
         if information_collection.subsection_counter > 0:
             str_indices = f"{str_indices}.{information_collection.subsection_counter}"
+            str_indices_file = str_indices
 
         if information_collection.item_counter > 0:
             str_indices = f"{str_indices}.{information_collection.item_counter}"
+
+        file_path: str = os.path.join(input_folder, f"{str_indices_file}.txt")
+
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                finished: bool = False
+                start_check: bool = False
+                while not finished:
+                    line = file.readline()
+
+                    finished = not line
+
+                    if not finished:
+                        line = line.strip()
+
+                        if str_indices in line:
+                            start_check = True
+
+                            print(line)
+
+                        if start_check:
+                            if "substitution:" in line:
+                                subst = line.replace("substitution:", "").strip()
+
+                                arr: list[str] = subst.split("=")
+
+                                if isinstance(arr, list) and len(arr) == 2:
+                                    key_subst: str = arr[0].strip()
+                                    val_subst: str = arr[1].strip()
+
+                                    arr_key: list[str] = key_subst.split("_")
+
+                                    if isinstance(arr_key, list) and len(arr_key) == 2:
+                                        str_index: str = arr_key[1]
+
+                                        if isinstance(str_index, str) and str_index.isnumeric():
+                                            index: int = int(str_index)
+
+                                            if index in information_collection.dict_subs:
+                                                val_from_dict: str = information_collection.dict_subs[index]
+
+                                                val_subst = val_subst.replace(".", "")
+
+                                                print(f"{val_subst}, {val_from_dict}")
 
         for key_subst in information_collection.dict_subs.keys():
             list_of_1_indices: list[str] = [key for key, value in information_collection.dict_start_indices.items() if value == 1]
@@ -33,7 +80,7 @@ def finish_collecting_case_information(information_collection: InformationCollec
         information_collection.dict_start_indices.clear()
 
 
-def parse_cases(file_path):
+def parse_cases(file_path, input_folder: str):
     str_subs_pattern: str = r"(\$v_\d\\rightarrow{([\d]*[abcd][+-])*[\d]*[abcd]}\$)"
     str_starting_index_pattern: str = r"(([abcd],)*[abcd]\\geq\{[01]\})"
 
@@ -52,7 +99,7 @@ def parse_cases(file_path):
             line = line.strip()
 
             if line.startswith("\\section{Case"):
-                finish_collecting_case_information(information_collection=information_collection)
+                finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)
 
                 information_collection.section_counter += 1
 
@@ -60,19 +107,19 @@ def parse_cases(file_path):
                 information_collection.item_counter = 0  # Reset item counter for new section
 
             if line.startswith("\\subsection{Sub"):
-                finish_collecting_case_information(information_collection=information_collection)
+                finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)
 
                 information_collection.subsection_counter += 1
 
                 information_collection.item_counter = 0  # Reset item counter for new subsection
 
             if line.startswith("\\begin{enumerate}") or line.startswith("\\end{enumerate}"):
-                finish_collecting_case_information(information_collection=information_collection)
+                finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)
 
                 information_collection.item_counter = 0
 
             if line.startswith("\\item"):
-                finish_collecting_case_information(information_collection=information_collection)
+                finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)
                 information_collection.item_counter += 1
 
             occurrences: list[str] = re.findall(str_subs_pattern, line)
@@ -102,7 +149,7 @@ def parse_cases(file_path):
 
                                 second_part = second_part[1:-1]  # remove { and }
 
-                                #finish_collecting_case_information(information_collection=information_collection)
+                                #finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)
 
                                 information_collection.dict_subs[index] = second_part
 
@@ -129,4 +176,4 @@ def parse_cases(file_path):
                         for start_index in arr_indices:
                             information_collection.dict_start_indices[start_index] = int(str_index)
 
-        #finish_collecting_case_information(information_collection=information_collection)
+        #finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)

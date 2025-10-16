@@ -16,7 +16,7 @@ coeff: str = const_coefficient
 
 
 def main():
-    parse_cases(".\\input\\cases.tex")
+    parse_cases(".\\input\\cases.tex", ".\\input\\")
 
     return
 
