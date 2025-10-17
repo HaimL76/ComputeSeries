@@ -232,19 +232,20 @@ def check_input_files(input_folder: str, dict_output: dict[str,dict[str, (dict[s
                             for ind in arr:
                                 ind = ind.strip()
 
-                                if str_indices_file not in dict_input:
-                                    dict_input[str_indices_file] = {}
+                                if ind:
+                                    if str_indices_file not in dict_input:
+                                        dict_input[str_indices_file] = {}
 
-                                inner_dict = dict_input[str_indices_file]
+                                    inner_dict = dict_input[str_indices_file]
 
-                                if str_indices_in_file not in inner_dict:
-                                    inner_dict[str_indices_in_file] = ({}, {}, str_indices_file)
+                                    if str_indices_in_file not in inner_dict:
+                                        inner_dict[str_indices_in_file] = ({}, {}, str_indices_file)
 
-                                tup: tuple[dict[str, str], dict[str, int]] = inner_dict[str_indices_in_file]
+                                    tup: tuple[dict[str, str], dict[str, int]] = inner_dict[str_indices_in_file]
 
-                                dict_starting_indices: dict[str, int] = tup[1]
+                                    dict_starting_indices: dict[str, int] = tup[1]
 
-                                dict_starting_indices[ind] = 1
+                                    dict_starting_indices[ind] = 1
 
     compare_dictionaries(dict_input, dict_output, dict_error_lines)
     compare_dictionaries(dict_output, dict_input, dict_error_lines)
