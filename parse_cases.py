@@ -169,59 +169,47 @@ def parse_cases(file_path, input_folder: str):
             file_path = os.path.join(input_folder, file_path)
             with open(file_path, 'r') as file:
                 str_indices_in_file: str = ""
+                list_error_lines: list[str] = []
 
-                pattern: str = "^=+\\s*(\\d+\\.)*\\d+\\s*=+$"
+                pattern_indices: str = "^=+\\s*(\\d+\\.)*\\d+\\s*=+$"
 
-                for line in file:
+                for num, line in enumerate(file):
                     line = line.strip()
-                    if re.search(pattern=pattern, string=line):
+                    if re.search(pattern=pattern_indices, string=line):
                         str_indices_in_file = line.replace("=", "").strip()
 
-                        _ = 0
+                    if "substitution:" in line:
+                        subst = line.replace("substitution:", "").strip()
 
+                        arr: list[str] = subst.split("=")
 
+                        if isinstance(arr, list) and len(arr) == 2:
+                            key_subst: str = arr[0].strip()
+                            val_subst: str = arr[1].strip()
 
+                            if str_indices_in_file not in dict_output:
+                                list_error_lines.append(f"{num}, {line} ({str_indices_in_file})")
+                            else:
+                                tup: tuple[dict[str, str], dict[str, int]] = dict_output[str_indices_in_file]
 
+                                dict_subst: dict[str, str] = tup[0]
 
-                finished: bool = False
-                start_check: bool = False
-                while not finished:
-                    line = file.readline()
+                                if key_subst not in dict_subst:
+                                    list_error_lines.append(f"{num}, {line} ({str_indices_in_file})")
+                                else:
+                                    val_from_dict: str = dict_subst[key_subst]
 
-                    finished = not line
+                                    val_subst = val_subst.replace(".", "")
 
-                    if not finished:
-                        line = line.strip()
+                                    if val_subst != val_from_dict:
+                                        list_error_lines.append(f"{num}, {line} ({str_indices_in_file} should be {val_from_dict})")
 
-                        if str_indices in line:
-                            start_check = True
+            if len(list_error_lines) > 0:
+                error_file_path = file_path.replace(".txt", ".err.txt")
 
-                            print(line)
-
-                        if start_check:
-                            if "substitution:" in line:
-                                subst = line.replace("substitution:", "").strip()
-
-                                arr: list[str] = subst.split("=")
-
-                                if isinstance(arr, list) and len(arr) == 2:
-                                    key_subst: str = arr[0].strip()
-                                    val_subst: str = arr[1].strip()
-
-                                    if key_subst in information_collection.dict_subst:
-                                        val_from_dict: str = information_collection.dict_subst[key_subst]
-
-                                        val_subst = val_subst.replace(".", "")
-
-                                        if val_subst != val_from_dict:
-                                            list_errors.append(f"{str_indices}, {line}")
-
-            if len(list_errors) > 0:
-                error_file = os.path.join(input_folder, f"{str_indices_file}.err.txt")
-
-                with open(error_file, 'w') as ef:
-                    for error in list_errors:
-                        ef.write(error)
+                with open(error_file_path, 'w') as ef:
+                    for error in list_error_lines:
+                        ef.write(f"{error}\r\n")
 
 
 
