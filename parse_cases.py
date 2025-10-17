@@ -298,7 +298,7 @@ def compare_dictionaries(dict_input: dict[str,dict[str, (dict[str, str], dict[st
                                 val_subst_output = val_subst_output.replace(".", "")
 
                                 if val_from_dict_input != val_subst_output:
-                                    add_error_line(dict_error_lines, str_indices_file, f"should be {val_subst_output} in {str_indices}")
+                                    add_error_line(dict_error_lines, str_indices_file, f"{key_subst} should be {val_subst_output} in {str_indices}")
 
                 dict_starting_indices_output: dict[str, int] = tup_output[1]
 
@@ -324,5 +324,5 @@ def compare_dictionaries(dict_input: dict[str,dict[str, (dict[str, str], dict[st
                                 int_index_input: int = dict_starting_indices_input[ind]
 
                                 if int_index_output != int_index_input:
-                                    add_error_line(dict_error_lines, str_indices_file, f"should be {int_index_output} in {str_indices})")
+                                    add_error_line(dict_error_lines, str_indices_file, f"{ind} should be {int_index_output} in {str_indices})")
 
