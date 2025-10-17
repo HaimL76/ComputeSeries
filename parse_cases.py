@@ -51,7 +51,7 @@ def parse_cases(file_path, input_folder: str):
             for error_file in list_error_files:
                 os.remove(error_file)
 
-    dict_output: dict[str, (dict[int, str], dict[str, int])] = {}
+    dict_output: dict[str, (dict[int, str], dict[str, int], str)] = {}
 
     str_subs_pattern: str = r"(\$v_\d\\rightarrow{([\d]*[abcd][+-])*[\d]*[abcd]}\$)"
     str_starting_index_pattern: str = r"(([abcd],)*[abcd]\\geq\{[01]\})"
@@ -122,7 +122,7 @@ def parse_cases(file_path, input_folder: str):
                         str_indices_file, str_indices = get_str_indices(information_collection=information_collection)
 
                         if str_indices not in dict_output:
-                            dict_output[str_indices] = ({}, {})
+                            dict_output[str_indices] = ({}, {}, str_indices_file)
 
                         tup: tuple[dict[str, str], dict[str, int]] = dict_output[str_indices]
 
@@ -150,17 +150,28 @@ def parse_cases(file_path, input_folder: str):
                     if isinstance(str_index, str) and str_index.isnumeric():
                         arr_indices = str_starting_indices.split(',')
 
-                        for start_index in arr_indices:
-                            information_collection.dict_start_indices[start_index] = int(str_index)
+                        for str_start_index in arr_indices:
+                            information_collection.dict_start_indices[str_start_index] = int(str_index)
 
                             if str_indices not in dict_output:
-                                dict_output[str_indices] = ({}, {})
+                                dict_output[str_indices] = ({}, {}, str_indices_file)
 
                             tup: tuple[dict[str, str], dict[str, int]] = dict_output[str_indices]
 
                             dict_start_indices: dict[str, int] = tup[1]
 
-                            dict_start_indices[start_index] = int(str_index)
+                            dict_start_indices[str_start_index] = int(str_index)
+
+    check_input_files(input_folder=input_folder, dict_output=dict_output)
+
+def add_error_line(dict_errors: dict[str, list[str]], file_path: str, line: str):
+    if file_path not in dict_errors:
+        dict_errors[file_path] = []
+
+    dict_errors[file_path].append(line)
+
+def check_input_files(input_folder: str, dict_output: dict[str, (dict[str, str], dict[str, int])]):
+    dict_input: dict[str, (dict[int, str], dict[str, int], str)] = {}
 
     list_files = os.listdir(input_folder)
 
@@ -169,7 +180,7 @@ def parse_cases(file_path, input_folder: str):
             file_path = os.path.join(input_folder, file_path)
             with open(file_path, 'r') as file:
                 str_indices_in_file: str = ""
-                list_error_lines: list[str] = []
+                dict_error_lines: dict[str, list[str]] = {}
 
                 pattern_indices: str = "^=+\\s*(\\d+\\.)*\\d+\\s*=+$"
 
@@ -187,33 +198,88 @@ def parse_cases(file_path, input_folder: str):
                             key_subst: str = arr[0].strip()
                             val_subst: str = arr[1].strip()
 
-                            if str_indices_in_file not in dict_output:
-                                list_error_lines.append(f"{num}, {line} ({str_indices_in_file})")
-                            else:
-                                tup: tuple[dict[str, str], dict[str, int]] = dict_output[str_indices_in_file]
+                        if str_indices_in_file not in dict_input:
+                            dict_input[str_indices_in_file] = ({}, {}, file_path)
 
-                                dict_subst: dict[str, str] = tup[0]
+                        tup: tuple[dict[str, str], dict[str, int]] = dict_input[str_indices_in_file]
 
-                                if key_subst not in dict_subst:
-                                    list_error_lines.append(f"{num}, {line} ({str_indices_in_file})")
-                                else:
-                                    val_from_dict: str = dict_subst[key_subst]
+                        dict_subst: dict[str, str] = tup[0]
 
-                                    val_subst = val_subst.replace(".", "")
+                        dict_subst[key_subst] = val_subst
 
-                                    if val_subst != val_from_dict:
-                                        list_error_lines.append(f"{num}, {line} ({str_indices_in_file} should be {val_from_dict})")
+                    if "indices:" in line:
+                        str_ind = line.replace("indices:", "").strip()
 
-            if len(list_error_lines) > 0:
-                error_file_path = file_path.replace(".txt", ".err.txt")
+                        arr: list[str] = str_ind.split(",")
 
+                        if isinstance(arr, list) and len(arr) > 0:
+                            for ind in arr:
+                                ind = ind.strip()
+
+                                if str_indices_in_file not in dict_input:
+                                    dict_input[str_indices_in_file] = ({}, {}, file_path)
+
+                                tup: tuple[dict[str, str], dict[str, int]] = dict_input[str_indices_in_file]
+
+                                dict_starting_indices: dict[str, int] = tup[1]
+
+                                dict_starting_indices[ind] = 1
+
+    if len(dict_output) > 0:
+        for str_indices_in_file in dict_input.keys():
+            tup_output: tuple[dict[str, str], dict[str, int], str] = dict_output[str_indices_in_file]
+
+            dict_subst_output: dict[str, str] = tup_output[0]
+
+            str_indices_file: str = tup_output[2]
+
+            for key_subst in dict_subst_output.keys():
+                val_subst_output: str = dict_subst_output[key_subst]
+
+                if str_indices_in_file not in dict_input:
+                    add_error_line(dict_error_lines, str_indices_file, f"{num}, {line} ({str_indices_in_file} not found)")
+                else:
+                    tup: tuple[dict[str, str], dict[str, int]] = dict_input[str_indices_in_file]
+
+                    dict_subst_input: dict[str, str] = tup[0]
+
+                    if key_subst not in dict_subst_input:
+                        add_error_line(dict_error_lines, str_indices_file, f"{num}, {line} ({key_subst} not found in {str_indices_in_file})")
+                    else:
+                        val_from_dict_input: str = dict_subst_input[key_subst]
+
+                        val_from_dict_input = val_from_dict_input.replace(".", "")
+
+                        if val_from_dict_input != val_subst_output:
+                            add_error_line(dict_error_lines, str_indices_file, f"{num}, {line} (should be {val_subst_output} in {str_indices_in_file})")
+
+            dict_starting_indices_output: dict[str, int] = tup_output[1]
+
+            for ind in dict_starting_indices_output.keys():
+                int_index_output: int = dict_starting_indices_output[ind]
+
+                if str_indices_in_file not in dict_input:
+                    add_error_line(dict_error_lines, str_indices_file, f"{num}, {line} ({str_indices_in_file} not found)")
+                else:
+                    tup: tuple[dict[str, str], dict[str, int]] = dict_input[str_indices_in_file]
+
+                    dict_starting_indices_input: dict[str, int] = tup[1]
+
+                    if ind not in dict_starting_indices_input:
+                        if int_index_output == 1:
+                            add_error_line(dict_error_lines, str_indices_file, f"{num}, {line} ({ind} not found in {str_indices_in_file})")
+                    else:
+                        int_index_input: int = dict_starting_indices_input[ind]
+
+                        if int_index_output != int_index_input:
+                            add_error_line(dict_error_lines, str_indices_file, f"{num}, {line} (should be {int_index_output} in {str_indices_in_file})")
+
+    if len(dict_error_lines) > 0:
+        for key in dict_error_lines.keys():
+            list_error_lines: list[str] = dict_error_lines[key]
+
+            if isinstance(list_error_lines, list) and len(list_error_lines) > 0:
+                error_file_path = os.path.join(input_folder, f"{key}.err.txt")
                 with open(error_file_path, 'w') as ef:
                     for error in list_error_lines:
                         ef.write(f"{error}\r\n")
-
-
-
-
-
-
-        #finish_collecting_case_information(information_collection=information_collection, input_folder=input_folder)

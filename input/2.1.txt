@@ -53,6 +53,6 @@ substitution: v_2=a
 substitution: v_3=a+b
 substitution: v_4=2.a+b+c
 
-indices: c
+indices: b,c
 
 run

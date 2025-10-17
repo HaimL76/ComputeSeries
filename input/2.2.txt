@@ -20,7 +20,7 @@ substitution: v_2=b+c+d
 substitution: v_3=a+b+c+d
 substitution: v_4=a+2.b+c+d
 
-indices: a,d
+indices: a,b,d
 
 run
 
