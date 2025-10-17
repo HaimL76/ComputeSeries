@@ -215,7 +215,7 @@ def check_input_files(input_folder: str, dict_output: dict[str,dict[str, (dict[s
                         inner_dict = dict_input[str_indices_file]
 
                         if str_indices_in_file not in inner_dict:
-                            inner_dict[str_indices_in_file] = ({}, {}, file_path)
+                            inner_dict[str_indices_in_file] = ({}, {}, str_indices_file)
 
                         tup: tuple[dict[str, str], dict[str, int]] = inner_dict[str_indices_in_file]
 
@@ -238,7 +238,7 @@ def check_input_files(input_folder: str, dict_output: dict[str,dict[str, (dict[s
                                 inner_dict = dict_input[str_indices_file]
 
                                 if str_indices_in_file not in inner_dict:
-                                    inner_dict[str_indices_in_file] = ({}, {}, file_path)
+                                    inner_dict[str_indices_in_file] = ({}, {}, str_indices_file)
 
                                 tup: tuple[dict[str, str], dict[str, int]] = inner_dict[str_indices_in_file]
 
@@ -277,26 +277,27 @@ def compare_dictionaries(dict_input: dict[str,dict[str, (dict[str, str], dict[st
                     val_subst_output: str = dict_subst_output[key_subst]
 
                     if str_indices_in_file not in dict_input:
-                        add_error_line(dict_error_lines, str_indices_file, f"{str_indices_in_file} not found")
+                        add_error_line(dict_error_lines, str_indices_file, f"{str_indices} not found")
                     else:
                         inner_dict_input = dict_input[str_indices_in_file]
 
                         if str_indices not in inner_dict_input:
-                            add_error_line(dict_error_lines, str_indices_file, f"{str_indices} not found in {str_indices_in_file}")
+                            add_error_line(dict_error_lines, str_indices_file, f"{str_indices} not found in {str_indices}")
                         else:
                             tup_input: tuple[dict[str, str], dict[str, int]] = inner_dict_input[str_indices]
 
                             dict_subst_input: dict[str, str] = tup_input[0]
 
                             if key_subst not in dict_subst_input:
-                                add_error_line(dict_error_lines, str_indices_file, f"{key_subst} not found in {str_indices_in_file}")
+                                add_error_line(dict_error_lines, str_indices_file, f"{key_subst} not found in {str_indices}")
                             else:
                                 val_from_dict_input: str = dict_subst_input[key_subst]
 
                                 val_from_dict_input = val_from_dict_input.replace(".", "")
+                                val_subst_output = val_subst_output.replace(".", "")
 
                                 if val_from_dict_input != val_subst_output:
-                                    add_error_line(dict_error_lines, str_indices_file, f"should be {val_subst_output} in {str_indices_in_file}")
+                                    add_error_line(dict_error_lines, str_indices_file, f"should be {val_subst_output} in {str_indices}")
 
                 dict_starting_indices_output: dict[str, int] = tup_output[1]
 
@@ -309,7 +310,7 @@ def compare_dictionaries(dict_input: dict[str,dict[str, (dict[str, str], dict[st
                         inner_dict_input = dict_input[str_indices_in_file]
 
                         if str_indices not in inner_dict_input:
-                            add_error_line(dict_error_lines, str_indices_file, f"{str_indices} not found in {str_indices_in_file}")
+                            add_error_line(dict_error_lines, str_indices_file, f"{str_indices} not found in {str_indices}")
                         else:
                             tup: tuple[dict[str, str], dict[str, int]] = inner_dict_input[str_indices]
 
@@ -317,10 +318,10 @@ def compare_dictionaries(dict_input: dict[str,dict[str, (dict[str, str], dict[st
 
                             if ind not in dict_starting_indices_input:
                                 if int_index_output == 1:
-                                    add_error_line(dict_error_lines, str_indices_file, f"{ind} not found in {str_indices_in_file}")
+                                    add_error_line(dict_error_lines, str_indices_file, f"{ind} not found in {str_indices}")
                             else:
                                 int_index_input: int = dict_starting_indices_input[ind]
 
                                 if int_index_output != int_index_input:
-                                    add_error_line(dict_error_lines, str_indices_file, f"should be {int_index_output} in {str_indices_in_file})")
+                                    add_error_line(dict_error_lines, str_indices_file, f"should be {int_index_output} in {str_indices})")
 
