@@ -18,8 +18,6 @@ coeff: str = const_coefficient
 def main():
     parse_cases(".\\input\\cases.tex", ".\\input\\")
 
-    return
-
     pf: ProcessFolder = ProcessFolder(".\\input\\", ".\\output\\")
 
     pf.process_folder(".txt$")
