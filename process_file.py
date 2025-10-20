@@ -483,6 +483,20 @@ class ProcessFile:
                     if general_debug_writer is not None:
                         general_debug_writer.write(str_to_print)
 
+                    total_sum0 = copy.deepcopy(total_sum)
+
+                    sum_of_pols0, list0, dict_by_powers = total_sum0.multiply()
+
+                    str_to_print: str = f"{total_sum}"
+                    debug_write.write(str_to_print)
+
+                    if general_debug_writer is not None:
+                        general_debug_writer.write(str_to_print)
+
+                    for pol0 in list0:
+                        str_to_print = f"\\[{pol0}\\]"
+                        debug_write.write(str_to_print)
+
                 _ = 0
 
             self.substitution = None
