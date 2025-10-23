@@ -118,7 +118,7 @@ class ProcessFolder:
             for rational_polynomial in list_rational_polynomials:
                 rational_polynomial0 = copy.deepcopy(rational_polynomial)
 
-                rational_polynomial_sum += rational_polynomial0
+                _ = 0#rational_polynomial_sum += rational_polynomial0
 
             cases: int = 0
 

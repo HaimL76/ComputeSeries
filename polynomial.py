@@ -33,6 +33,9 @@ class Polynomial:
 
         for monom_self in self.monomials:
             for monom_other in other.monomials:
+                if monom_self is None or monom_other is None:
+                    _ = 0
+
                 m = monom_self * monom_other
 
                 found: bool = False
