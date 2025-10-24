@@ -581,6 +581,29 @@ class PolynomialProduct:
         # if self.list_polynomials is None or len(self.list_polynomials) < 1:
         #   self.list_polynomials = [Polynomial.create_one()]
 
+    def convert_constant_coefficients(self):
+        if isinstance(self.const_coefficients, dict) and len(self.const_coefficients) > 0:
+            for key in self.const_coefficients.keys():
+                const_coeff = self.const_coefficients[key]
+
+                one: Monomial = Monomial(coeff=Rational(1))
+                p_inverse: Monomial = Monomial(elems={"p": Element(symb="p", pow=-1)}, minus=True)
+
+                polynomial: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(1))])
+
+                if const_coeff.power > 1:
+                    _ = 0
+
+                for i in range(const_coeff.power):
+                    poly: Polynomial = Polynomial(monoms=[one, p_inverse])
+                    polynomial *= poly
+
+                polynomial.in_polynomial_product = True
+
+                self.list_polynomials.append(polynomial)
+
+            self.const_coefficients.clear()
+
     def __iter__(self):
         for polynomial in self.list_polynomials:
             yield polynomial

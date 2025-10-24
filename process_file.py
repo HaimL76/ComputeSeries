@@ -6,7 +6,7 @@ from debug_write import DebugWrite
 from element import Element
 from exponential import ExponentialProduct
 from monomial import Monomial
-from polynomial import Polynomial
+from polynomial import Polynomial, PolynomialProduct
 from polynomial_rational import PolynomialSummationRational, PolynomialProductRational, PolynomialRational
 from rational import Rational
 from series import SeriesProduct
@@ -471,6 +471,12 @@ class ProcessFile:
                     ser_prod1 = copy.deepcopy(ser_prod0)
 
                     sum_product: PolynomialProductRational = ser_prod0.sum()
+
+                    numerator: PolynomialProduct = sum_product.numerator
+
+                    numerator.convert_constant_coefficients()
+
+                    aaa = numerator.get_ltx_str()
 
                     for pol in sum_product.denominator.list_polynomials:
                         if pol.power == Rational(4):
