@@ -8,6 +8,18 @@ from rational import Rational
 
 
 class Polynomial:
+    @staticmethod
+    def create_zero_polynomial():
+        return Polynomial.create_constant_polynomial(0)
+
+    @staticmethod
+    def create_one_polynomial():
+        return Polynomial.create_constant_polynomial(1)
+
+    @staticmethod
+    def create_constant_polynomial(constant: int):
+        return Polynomial(monoms=[Monomial(coeff=Rational(constant))])
+
     def __init__(self, monoms: list = [], nm: str = "", pow0: Rational = Rational(1), in_product: bool = False):
         self.monomials: list = copy.deepcopy(monoms)
         self.name: str = nm

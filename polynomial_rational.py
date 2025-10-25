@@ -152,29 +152,27 @@ class PolynomialProductRational:
 
 class PolynomialSummationRational:
     def multiply(self):
-        dict0: dict[(int, int), list[Monomial]] = {}
-
-        ##dict0: dict[(int, int), int] = {}
+        dict_monomials_by_powers: dict[(int, int), list[Monomial]] = {}
 
         index: int = 0
-        sum1 = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
-        list_pols0: list[Polynomial] = []
+        sum_polynomials = Polynomial.create_zero_polynomial()
+
+        list_polynomials: list[Polynomial] = []
 
         num_monoms: int = 0
 
         for product in self.numerator:
-            if not product.is_minus:
-                _ = 0  # continue
             product0: PolynomialProduct = copy.deepcopy(product)
 
-            product1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
+            product1 = Polynomial.create_one_polynomial()
 
             index0: int = 0
 
             for pol in product0.list_polynomials:
                 print(f"product {index} of {len(self.numerator)},"
-                      f" polynomial {index0} of {len(product0.list_polynomials)}, pol={len(pol.monomials)}, product={len(product1.monomials)}")
+                      f" polynomial {index0} of {len(product0.list_polynomials)},"
+                      f" pol={len(pol.monomials)}, product={len(product1.monomials)}")
                 index0 += 1
 
                 pol1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
@@ -194,8 +192,6 @@ class PolynomialSummationRational:
 
                 product1 *= pol1
 
-            # list_pols0.append(f"{product}={product1}")
-
             coeff = copy.deepcopy(product.coefficient)
             const_coeffs = copy.deepcopy(product.const_coefficients)
 
@@ -214,23 +210,23 @@ class PolynomialSummationRational:
 
                     key0 = (pow_p.power.numerator, pow_t.power.numerator)
 
-                    if key0 not in dict0:
-                        print(f"[{len(dict0)}], p={pow_p.power.numerator}, t={pow_t.power.numerator}")
-                        dict0[key0] = []
+                    if key0 not in dict_monomials_by_powers:
+                        print(f"[{len(dict_monomials_by_powers)}], p={pow_p.power.numerator}, t={pow_t.power.numerator}")
+                        dict_monomials_by_powers[key0] = []
 
-                    dict0[key0].append(mon0)
+                    dict_monomials_by_powers[key0].append(mon0)
 
             num_monoms += len(product1.monomials)
 
-            list_pols0.append(product1)
+            list_polynomials.append(product1)
 
-            sum1 += product1
+            sum_polynomials += product1
 
             index += 1
 
         dict1: dict[(int, int), list[Monomial]] = {}
 
-        for mon1 in sum1.monomials:
+        for mon1 in sum_polynomials.monomials:
             if isinstance(mon1.elements, dict) and 'p' in mon1.elements and 't' in mon1.elements:
                 pow_p: Element = mon1.elements['p']
                 pow_t: Element = mon1.elements['t']
@@ -243,9 +239,9 @@ class PolynomialSummationRational:
 
                 dict1[key1].append(mon1)
 
-        print(f"num monoms={num_monoms}, [{len(dict0)}], [{len(dict1)}]")
+        print(f"num monoms={num_monoms}, [{len(dict_monomials_by_powers)}], [{len(dict1)}]")
 
-        return sum1, list_pols0, dict0
+        return sum_polynomials, list_polynomials, dict_monomials_by_powers
 
     def __init__(self):
         self.numerator: list[PolynomialProduct] = []

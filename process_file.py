@@ -476,19 +476,15 @@ class ProcessFile:
 
                     numerator.convert_constant_coefficients()
 
-                    aaa = numerator.get_ltx_str()
-
-                    for pol in sum_product.denominator.list_polynomials:
-                        if pol.power == Rational(4):
-                            aaa = ser_prod1.sum()
-
                     sum_product0: PolynomialProductRational = copy.deepcopy(sum_product)
 
                     sum_product1: PolynomialProductRational = copy.deepcopy(sum_product0)
 
                     sum_product2: PolynomialProductRational = copy.deepcopy(sum_product1)
 
-                    debug_write.write(f"\\[{ser_prod}={sum_product}\\]", 1)
+                    str_to_print: str = f"\\[{ser_prod}={sum_product}\\]"
+
+                    debug_write.write(str_to_print, 1)
 
                     debug_sums.append(copy.deepcopy(sum_product0))
 
@@ -496,8 +492,8 @@ class ProcessFile:
 
                     total_total_sum.add_polynomial_rational(sum_product2)
 
-                store_by_indices(list_rationals=list_rationals, total_sum=total_sum,
-                            case_indices=self.case_indices)
+                ##store_by_indices(list_rationals=list_rationals, total_sum=total_sum,
+                  ##          case_indices=self.case_indices)
 
                 debug_write: DebugWrite = DebugWrite.get_instance()
 
@@ -514,7 +510,7 @@ class ProcessFile:
                     #   str_to_print: str = f"\\[{sum_product}\\]"
                     #  debug_write.write(str_to_print)
 
-                    str_to_print: str = f"{total_sum}"
+                    str_to_print = f"{total_sum}"
                     debug_write.write(str_to_print)
 
                     if general_debug_writer is not None:
