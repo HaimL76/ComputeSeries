@@ -163,47 +163,44 @@ class PolynomialSummationRational:
         num_monoms: int = 0
 
         for product in self.numerator:
-            product0: PolynomialProduct = copy.deepcopy(product)
+            product_copy: PolynomialProduct = copy.deepcopy(product)
 
-            product1 = Polynomial.create_one_polynomial()
+            product_polynomial: Polynomial = Polynomial.create_one_polynomial()
 
             index0: int = 0
 
-            for pol in product0.list_polynomials:
+            for pol_factor in product_copy.list_polynomials:
                 print(f"product {index} of {len(self.numerator)},"
-                      f" polynomial {index0} of {len(product0.list_polynomials)},"
-                      f" pol={len(pol.monomials)}, product={len(product1.monomials)}")
+                      f" polynomial {index0} of {len(product_copy.list_polynomials)},"
+                      f" pol={len(pol_factor.monomials)}, product={len(product_polynomial.monomials)}")
                 index0 += 1
 
-                pol1 = Polynomial(monoms=[Monomial(coeff=Rational(1))])
+                pol_powers: Polynomial = Polynomial.create_one_polynomial()
 
-                pol0 = copy.deepcopy(pol)
+                pol_factor_copy: Polynomial = copy.deepcopy(pol_factor)
 
                 pow0: int = 1
 
-                if pol0.power is not None:
-                    pow0 = pol0.power.numerator
+                if pol_factor_copy.power is not None:
+                    pow0 = pol_factor_copy.power.numerator
 
                 if pow0 > 1:
-                    pol0.power = Rational(1)
+                    pol_factor_copy.power = Rational(1)
 
                 for i in range(pow0):
-                    pol1 *= pol0
+                    pol_powers *= pol_factor_copy
 
-                product1 *= pol1
+                product_polynomial *= pol_powers
 
             coeff = copy.deepcopy(product.coefficient)
             const_coeffs = copy.deepcopy(product.const_coefficients)
 
             if coeff != Rational(1) or (isinstance(const_coeffs, dict) and len(const_coeffs) > 0) or product.is_minus:
-                if product.is_minus:
-                    _ = 0
-
                 pol_coeff: Polynomial = Polynomial(monoms=[Monomial(coeff=coeff, const_coeffs=const_coeffs, minus=product.is_minus)])
 
-                product1 *= pol_coeff
+                product_polynomial *= pol_coeff
 
-            for mon0 in product1.monomials:
+            for mon0 in product_polynomial.monomials:
                 if isinstance(mon0.elements, dict) and 'p' in mon0.elements and 't' in mon0.elements:
                     pow_p: Element = mon0.elements['p']
                     pow_t: Element = mon0.elements['t']
@@ -216,11 +213,11 @@ class PolynomialSummationRational:
 
                     dict_monomials_by_powers[key0].append(mon0)
 
-            num_monoms += len(product1.monomials)
+            num_monoms += len(product_polynomial.monomials)
 
-            list_polynomials.append(product1)
+            list_polynomials.append(product_polynomial)
 
-            sum_polynomials += product1
+            sum_polynomials += product_polynomial
 
             index += 1
 
