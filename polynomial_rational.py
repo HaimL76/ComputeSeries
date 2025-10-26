@@ -154,11 +154,11 @@ class PolynomialSummationRational:
     def multiply(self):
         dict_monomials_by_powers: dict[(int, int), list[Monomial]] = {}
 
-        index: int = 0
+        index_products: int = 0
 
         sum_polynomials = Polynomial.create_zero_polynomial()
 
-        list_polynomials: list[Polynomial] = []
+        list_polynomials: list[(PolynomialProduct, Polynomial)] = []
 
         num_monoms: int = 0
 
@@ -167,27 +167,27 @@ class PolynomialSummationRational:
 
             product_polynomial: Polynomial = Polynomial.create_one_polynomial()
 
-            index0: int = 0
+            index_polynomials: int = 0
 
             for pol_factor in product_copy.list_polynomials:
-                print(f"product {index} of {len(self.numerator)},"
-                      f" polynomial {index0} of {len(product_copy.list_polynomials)},"
+                print(f"product {index_products} of {len(self.numerator)},"
+                      f" polynomial {index_polynomials} of {len(product_copy.list_polynomials)},"
                       f" pol={len(pol_factor.monomials)}, product={len(product_polynomial.monomials)}")
-                index0 += 1
+                index_polynomials += 1
 
                 pol_powers: Polynomial = Polynomial.create_one_polynomial()
 
                 pol_factor_copy: Polynomial = copy.deepcopy(pol_factor)
 
-                pow0: int = 1
+                factor_power: int = 1
 
                 if pol_factor_copy.power is not None:
-                    pow0 = pol_factor_copy.power.numerator
+                    factor_power = pol_factor_copy.power.numerator
 
-                if pow0 > 1:
+                if factor_power > 1:
                     pol_factor_copy.power = Rational(1)
 
-                for i in range(pow0):
+                for i in range(factor_power):
                     pol_powers *= pol_factor_copy
 
                 product_polynomial *= pol_powers
@@ -200,43 +200,26 @@ class PolynomialSummationRational:
 
                 product_polynomial *= pol_coeff
 
-            for mon0 in product_polynomial.monomials:
-                if isinstance(mon0.elements, dict) and 'p' in mon0.elements and 't' in mon0.elements:
-                    pow_p: Element = mon0.elements['p']
-                    pow_t: Element = mon0.elements['t']
+            for monomial in product_polynomial.monomials:
+                if isinstance(monomial.elements, dict) and 'p' in monomial.elements and 't' in monomial.elements:
+                    pow_p: Element = monomial.elements['p']
+                    pow_t: Element = monomial.elements['t']
 
-                    key0 = (pow_p.power.numerator, pow_t.power.numerator)
+                    key_p_t = (pow_p.power.numerator, pow_t.power.numerator)
 
-                    if key0 not in dict_monomials_by_powers:
-                        print(f"[{len(dict_monomials_by_powers)}], p={pow_p.power.numerator}, t={pow_t.power.numerator}")
-                        dict_monomials_by_powers[key0] = []
+                    if key_p_t not in dict_monomials_by_powers:
+                        ##print(f"[{len(dict_monomials_by_powers)}], p={pow_p.power.numerator}, t={pow_t.power.numerator}")
+                        dict_monomials_by_powers[key_p_t] = []
 
-                    dict_monomials_by_powers[key0].append(mon0)
+                    dict_monomials_by_powers[key_p_t].append(monomial)
 
             num_monoms += len(product_polynomial.monomials)
 
-            list_polynomials.append(product_polynomial)
+            list_polynomials.append((product_copy, product_polynomial))
 
             sum_polynomials += product_polynomial
 
-            index += 1
-
-        dict1: dict[(int, int), list[Monomial]] = {}
-
-        for mon1 in sum_polynomials.monomials:
-            if isinstance(mon1.elements, dict) and 'p' in mon1.elements and 't' in mon1.elements:
-                pow_p: Element = mon1.elements['p']
-                pow_t: Element = mon1.elements['t']
-
-                key1 = (pow_p.power.numerator, pow_t.power.numerator)
-
-                if key1 not in dict1:
-                    print(f"[{len(dict1)}], p={pow_p.power.numerator}, t={pow_t.power.numerator}")
-                    dict1[key1] = []
-
-                dict1[key1].append(mon1)
-
-        print(f"num monoms={num_monoms}, [{len(dict_monomials_by_powers)}], [{len(dict1)}]")
+            index_products += 1
 
         return sum_polynomials, list_polynomials, dict_monomials_by_powers
 
@@ -322,10 +305,6 @@ class PolynomialSummationRational:
                             product.mul_polynomial(polynomial_denominator_input)
                     else:
                         self.numerator = [PolynomialProduct(polynoms=[polynomial_denominator_input])]
-
-            for pol in self.denominator.list_polynomials:
-                if pol.power == Rational(4):
-                    _ = 0
 
             self.numerator.append(input_numerator)
 

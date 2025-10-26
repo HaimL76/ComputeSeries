@@ -96,29 +96,19 @@ class ProcessFolder:
                         proc_file.process_file(conversion_table=self.conversion_table,
                                                reverse_conversion_table=self.reverse_conversion_table,
                                                general_debug_writer=debug_write, list_rationals=dict_rationals,
-                                               total_total_sum=rational_sum_of_all_products,
+                                               total_sum=rational_sum_of_all_products,
                                                list_denominators=list_denominators)
 
             list_rational_polynomials: list = []
 
             for denominator in list_denominators:
-                denominator0 = copy.deepcopy(denominator)
+                denominator_copy = copy.deepcopy(denominator)
 
                 numerator: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(1))])
 
-                rational_polynomial: PolynomialRational = PolynomialRational(numer=numerator, denom=denominator0)
+                rational_polynomial: PolynomialRational = PolynomialRational(numer=numerator, denom=denominator_copy)
 
                 list_rational_polynomials.append(rational_polynomial)
-
-            rational_polynomial_sum: PolynomialRational = PolynomialRational(
-                numer=Polynomial(monoms=[Monomial(coeff=Rational(0))]),
-                denom=Polynomial(monoms=[Monomial(coeff=Rational(1))])
-            )
-
-            for rational_polynomial in list_rational_polynomials:
-                rational_polynomial0 = copy.deepcopy(rational_polynomial)
-
-                _ = 0#rational_polynomial_sum += rational_polynomial0
 
             cases: int = 0
 
@@ -128,17 +118,6 @@ class ProcessFolder:
                 cases += len(l)
 
             Element.reverse_conversion_table = self.reverse_conversion_table
-
-            total = PolynomialSummationRational()
-
-            for key in dict_rationals:
-                l: list = dict_rationals[key]
-
-                total0 = PolynomialSummationRational()
-
-                for tup in l:
-                    pol_sum_rational: PolynomialSummationRational = tup[0]
-                _ = 0
 
             debug_write.write("\\tiny{")
 
@@ -175,9 +154,9 @@ class ProcessFolder:
                 fw_numerator_polynomials.write("\\tiny{")
                 fw_sum_numerator.write("\\tiny{")
 
-                total_total_sum0: PolynomialSummationRational = copy.deepcopy(rational_sum_of_all_products)
+                total_sum0: PolynomialSummationRational = copy.deepcopy(rational_sum_of_all_products)
 
-                sum1, list_pols0, dict_numerator = total_total_sum0.multiply()
+                sum1, list_pols0, dict_numerator = total_sum0.multiply()
 
                 sum_numerator: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
@@ -239,7 +218,7 @@ class ProcessFile:
 
     def process_file(self, conversion_table: dict, reverse_conversion_table: dict,
                      general_debug_writer: DebugWrite,
-                     list_rationals: dict, total_total_sum: PolynomialSummationRational,
+                     list_rationals: dict, total_sum: PolynomialSummationRational,
                      list_denominators: list):
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
@@ -268,7 +247,7 @@ class ProcessFile:
                         self.process_line(line, conversion_table=conversion_table,
                                           reverse_conversion_table=reverse_conversion_table,
                                           general_debug_writer=general_debug_writer, list_rationals=list_rationals,
-                                          total_total_sum=total_total_sum,
+                                          total_sum=total_sum,
                                           list_denominators=list_denominators)
 
                 for key in conversion_table.keys():
@@ -284,8 +263,10 @@ class ProcessFile:
 
     def process_line(self, text: str, conversion_table: dict, reverse_conversion_table: dict,
                      general_debug_writer: DebugWrite,
-                     list_rationals: dict, total_total_sum: PolynomialSummationRational,
+                     list_rationals: dict, total_sum: PolynomialSummationRational,
                      list_denominators: list):
+        debug_write: DebugWrite = DebugWrite.get_instance()
+
         is_polynomial: bool = False
         is_substitution: bool = False
         is_index: bool = False
@@ -368,8 +349,6 @@ class ProcessFile:
 
                         self.polynomials.append(p)
 
-                        is_polynomial = True
-
         prefix = "substitution: "
 
         if text.startswith(prefix):
@@ -379,8 +358,6 @@ class ProcessFile:
                 text = text.strip()
 
             if text:
-                is_substitution = True
-
                 self.substitution = VariableSubstitution.parse(text, list_const_coeffs=list_const_coeffs,
                                                                substitution=self.substitution)
 
@@ -403,8 +380,6 @@ class ProcessFile:
                         arr_index: list[str] = s.split(">=")
 
                         if isinstance(arr_index, list) and len(arr_index) > 0:
-                            is_index = True
-
                             s0 = arr_index[0]
 
                             index = 1
@@ -420,7 +395,6 @@ class ProcessFile:
                             self.start_index[s0] = index
 
         if text == "run":
-
             str_case_indices: str = ".".join([str(index) for index in self.case_indices])
             str_case_indices = f"Case {str_case_indices}"
 
@@ -441,14 +415,13 @@ class ProcessFile:
 
                 debug_write.write(f"\\[{converted_polynomial}\\]", 1)
 
-                converted_pt_product: ExponentialProduct = \
-                    self.substitution.substitude_exponential_product(self.pt_product)
+                converted_pt_product: ExponentialProduct = self.substitution.substitude_exponential_product(self.pt_product)
 
-                series_product = SeriesProduct.from_exponential_product(converted_pt_product, conversion_table,
+                series_product = SeriesProduct.from_exponential_product(converted_pt_product,
+                                                                        conversion_table,
                                                                         reverse_conversion_table)
 
-                if isinstance(series_product, SeriesProduct) and isinstance(self.start_index, dict) \
-                        and len(self.start_index) > 0:
+                if isinstance(series_product, SeriesProduct) and isinstance(self.start_index, dict) and len(self.start_index) > 0:
                     for key in self.start_index.keys():
                         if key:
                             val: int = self.start_index[key]
@@ -456,52 +429,36 @@ class ProcessFile:
                             if isinstance(val, int):
                                 series_product.add_start_index(key, val)
 
-                list_series: list = series_product.multiply_by_polynomial(converted_polynomial)
+                list_series_products: list = series_product.multiply_by_polynomial(converted_polynomial)
 
-                total_sum: PolynomialSummationRational = PolynomialSummationRational()
-
-                debug_sums: list = []
+                sum_item: PolynomialSummationRational = PolynomialSummationRational()
 
                 debug_write.write("All series and their sums")
 
-                sum0 = Polynomial(monoms=[Monomial(coeff=Rational(0))])
+                for ser_prod in list_series_products:
+                    ser_prod_copy = copy.deepcopy(ser_prod)
 
-                for ser_prod in list_series:
-                    ser_prod0 = copy.deepcopy(ser_prod)
-                    ser_prod1 = copy.deepcopy(ser_prod0)
-
-                    sum_product: PolynomialProductRational = ser_prod0.sum()
+                    sum_product: PolynomialProductRational = ser_prod_copy.sum()
 
                     numerator: PolynomialProduct = sum_product.numerator
 
                     numerator.convert_constant_coefficients()
 
-                    sum_product0: PolynomialProductRational = copy.deepcopy(sum_product)
-
-                    sum_product1: PolynomialProductRational = copy.deepcopy(sum_product0)
-
-                    sum_product2: PolynomialProductRational = copy.deepcopy(sum_product1)
-
                     str_to_print: str = f"\\[{ser_prod}={sum_product}\\]"
 
                     debug_write.write(str_to_print, 1)
 
-                    debug_sums.append(copy.deepcopy(sum_product0))
+                    sum_product_copy: PolynomialProductRational = copy.deepcopy(sum_product)
+                    sum_product_copy_2: PolynomialProductRational = copy.deepcopy(sum_product)
 
-                    total_sum.add_polynomial_rational(sum_product1)
+                    if debug_write is not None:
+                        sum_item.add_polynomial_rational(sum_product_copy)
 
-                    total_total_sum.add_polynomial_rational(sum_product2)
+                    total_sum.add_polynomial_rational(sum_product_copy_2)
 
-                ##store_by_indices(list_rationals=list_rationals, total_sum=total_sum,
-                  ##          case_indices=self.case_indices)
+                debug_write.write("\r\nItem Sum\r\n")
 
-                debug_write: DebugWrite = DebugWrite.get_instance()
-
-                debug_write.write("\nTotal sum\n")
-
-                #total_sum.multiply(sum0)
-
-                denominator0 = copy.deepcopy(total_sum.denominator)
+                denominator0 = copy.deepcopy(sum_item.denominator)
 
                 list_denominators.append(denominator0)
 
@@ -509,22 +466,26 @@ class ProcessFile:
                     # for sum_product in debug_sums:
                     #   str_to_print: str = f"\\[{sum_product}\\]"
                     #  debug_write.write(str_to_print)
-
-                    str_to_print = f"{total_sum}"
+                    str_to_print = f"{sum_item}"
                     debug_write.write(str_to_print)
 
                     if general_debug_writer is not None:
                         general_debug_writer.write(str_to_print)
 
-                    total_sum0 = copy.deepcopy(total_sum)
+                    sum_item_copy = copy.deepcopy(sum_item)
 
-                    sum_of_pols0, list0, dict_by_powers = total_sum0.multiply()
+                    sum_polynomials, list_polynomials, dict_monomials_by_powers = sum_item_copy.multiply()
 
                     if general_debug_writer is not None:
                         general_debug_writer.write(str_to_print)
 
-                    for pol0 in list0:
-                        str_to_print = f"\\[{pol0}\\]"
+                    debug_write.write("Polynomial sums\r\n")
+
+                    index: int = 0
+
+                    for tup in list_polynomials:
+                        index += 1
+                        str_to_print = f"Polynomial {index}\r\n\r\n\\[{tup[0]}=\\]\\[={tup[1]}\\]"
                         debug_write.write(str_to_print)
 
                 _ = 0
