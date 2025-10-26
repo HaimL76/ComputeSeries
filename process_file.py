@@ -154,14 +154,14 @@ class ProcessFolder:
                 fw_numerator_polynomials.write("\\tiny{")
                 fw_sum_numerator.write("\\tiny{")
 
-                total_sum0: PolynomialSummationRational = copy.deepcopy(rational_sum_of_all_products)
+                total_sum_copy: PolynomialSummationRational = copy.deepcopy(rational_sum_of_all_products)
 
-                sum1, list_pols0, dict_numerator = total_sum0.multiply()
+                sum_all, list_all_polynomials, dict_by_powers = total_sum_copy.multiply()
 
                 sum_numerator: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
-                for key in dict_numerator:
-                    list_monomials = dict_numerator[key]
+                for key in dict_by_powers:
+                    list_monomials = dict_by_powers[key]
 
                     sum_monomials: Polynomial = Polynomial(monoms=[Monomial(coeff=Rational(0))])
 
