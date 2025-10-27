@@ -442,9 +442,17 @@ class ProcessFile:
 
                     numerator: PolynomialProduct = sum_product.numerator
 
+                    str_to_print: str = f"\\[{ser_prod}={sum_product}\\]"
+
+                    debug_write.write("\r\nBefore Conversion\r\n", 1)
+
+                    debug_write.write(str_to_print, 1)
+
                     numerator.convert_constant_coefficients()
 
                     str_to_print: str = f"\\[{ser_prod}={sum_product}\\]"
+
+                    debug_write.write("\r\nAfter Conversion\r\n", 1)
 
                     debug_write.write(str_to_print, 1)
 
