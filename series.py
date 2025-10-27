@@ -1,7 +1,5 @@
 import copy
 
-from colorama import Fore, Style
-
 from debug_write import DebugWrite
 from element import Element
 from exponential import ExponentialProduct

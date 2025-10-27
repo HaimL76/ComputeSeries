@@ -463,9 +463,6 @@ class ProcessFile:
                 list_denominators.append(denominator0)
 
                 if debug_write is not None:
-                    # for sum_product in debug_sums:
-                    #   str_to_print: str = f"\\[{sum_product}\\]"
-                    #  debug_write.write(str_to_print)
                     str_to_print = f"{sum_item}"
                     debug_write.write(str_to_print)
 

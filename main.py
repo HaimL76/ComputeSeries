@@ -9,8 +9,6 @@ from process_file import ProcessFile, ProcessFolder
 from series import SeriesProduct, SeriesProductSum
 from substitution import VariableSubstitution
 
-import matplotlib.pyplot as plt
-
 const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 

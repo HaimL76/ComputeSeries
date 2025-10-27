@@ -1,7 +1,5 @@
 import copy
 
-from colorama import Fore, Style
-
 from element import Element
 from monomial import Monomial
 from polynomial import Polynomial, PolynomialProduct
