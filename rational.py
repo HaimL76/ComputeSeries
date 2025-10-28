@@ -105,6 +105,14 @@ class Rational:
     def __str__(self):
         return self.get_ltx_str()
 
+    def get_sage_str(self):
+        output: str = f"{self.numerator}"
+
+        if self.denominator != 1:
+            output = f"{output}/{self.denominator}"
+
+        return output
+
     def get_ltx_str(self):
         s: str = f"{self.numerator}"
 

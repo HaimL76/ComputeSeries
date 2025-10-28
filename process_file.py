@@ -448,11 +448,23 @@ class ProcessFile:
 
                     debug_write.write(str_to_print, 1)
 
+                    str_to_print = f"{ser_prod.get_sage_str()}={sum_product.get_sage_str()}"
+
+                    debug_write.write("\r\nSage Before Conversion\r\n", 1)
+
+                    debug_write.write(str_to_print, 1)
+
                     numerator.convert_constant_coefficients()
 
-                    str_to_print: str = f"\\[{ser_prod}={sum_product}\\]"
+                    str_to_print = f"\\[{ser_prod}={sum_product}\\]"
 
                     debug_write.write("\r\nAfter Conversion\r\n", 1)
+
+                    debug_write.write(str_to_print, 1)
+
+                    str_to_print = f"{ser_prod.get_sage_str()}={sum_product.get_sage_str()}"
+
+                    debug_write.write("\r\nSage After Conversion\r\n", 1)
 
                     debug_write.write(str_to_print, 1)
 

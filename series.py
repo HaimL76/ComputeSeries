@@ -69,6 +69,9 @@ class Series:
 
         return s
 
+    def get_sage_str(self):
+        return ""
+
     def get_ltx_str(self):
         s: str = ""
 
@@ -293,6 +296,9 @@ class SeriesProduct:
         s = f"{s}{s0}"
 
         return s
+
+    def get_sage_str(self):
+        return ""
 
     def get_ltx_str(self):
         str_output: str = ""

@@ -548,6 +548,31 @@ class Polynomial:
 
         return s
 
+    def get_sage_str(self):
+        str_polynomial: str = ""
+
+        monoms: list[Monomial] = [monom for monom in self.monomials if monom.coefficient != Rational(0)]
+
+        index: int = 0
+
+        for monom in monoms:
+            print_sign = Monomial.Print_Sign_Anyway if index > 0 else Monomial.Print_Sign_If_Minus
+
+            str_monomial: str = monom.get_sage_str(print_sign=print_sign)
+            index += 1
+
+            str_polynomial = f"{str_polynomial}{str_monomial}"
+
+        if self.in_polynomial_product or self.power != Rational(1):
+            str_polynomial = f"({str_polynomial})"
+
+        color = "red"
+
+        if self.power != Rational(1):
+            str_polynomial = f"{str_polynomial}^{self.power}"
+
+        return str_polynomial
+
     def get_ltx_str(self):
         str_polynomial: str = ""
 
@@ -634,6 +659,23 @@ class PolynomialProduct:
 
     def __str__(self):
         return self.get_ltx_str()
+
+    def get_sage_str(self):
+        list_polynoms: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.list_polynomials))
+
+        if len(list_polynoms) < 1:
+            list_polynoms = self.list_polynomials[0:1]
+
+        str_output: str = "".join(f"{polynom.get_sage_str()}" for polynom in list_polynoms)
+
+        if len(self.const_coefficients) > 0:
+            for const_coefficient in self.const_coefficients.values():
+                str_output = f"{const_coefficient.get_sage_str(with_parentheses=Element.WithParenthesesByLength)}{str_output}"
+
+        if self.coefficient != Rational(1):
+            str_output = f"{self.coefficient.get_sage_str()}{str_output}"
+
+        return str_output
 
     def get_ltx_str(self):
         list_polynoms: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.list_polynomials))

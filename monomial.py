@@ -268,6 +268,57 @@ class Monomial:
     Print_Sign_If_Minus = 1
     Print_Sign_Anyway = 2
 
+    def get_sage_str(self, print_sign: int = Disable_Print_Sign):
+        str_output: str = ""
+
+        counter: int = 0
+
+        if self.coefficient != Rational(1) or (len(self.elements) < 1 and len(self.const_coefficients) < 1):
+            str_output = f"{self.coefficient.get_sage_str()}"
+            counter += 1
+
+        const_coeffs: dict = self.const_coefficients
+
+        if isinstance(const_coeffs, dict) and len(const_coeffs) > 0:
+            for key in const_coeffs.keys():
+                const_coeff: Element = const_coeffs[key]
+
+                if counter > 0:
+                    str_output = f"{str_output}"
+
+                str_const_coefficient = const_coeff.symbol
+
+                if len(const_coeff.symbol) > 1:
+                    str_const_coefficient = f"({str_const_coefficient})"
+
+                str_output = f"{str_output}{str_const_coefficient}"
+
+                if const_coeff.power != 1:
+                    str_output = f"{str_output}^{const_coeff.power}"
+
+                counter += 1
+
+        if isinstance(self.elements, dict) and len(self.elements) > 0:
+            s0: str = ""
+
+            if len(self.elements) > 0:
+                s0 = "*".join(f"{elem.get_sage_str()}" for elem in self.elements.values())
+
+            if len(s0) > 0:
+                if len(str_output) > 0:
+                    str_output = f"{str_output}"
+
+                str_output = f"{str_output}{s0}"
+                counter += 1
+
+        if print_sign != Monomial.Disable_Print_Sign:
+            if print_sign == Monomial.Print_Sign_Anyway or self.is_minus:
+                sign = "-" if self.is_minus else "+"
+
+                str_output = f"{sign}{str_output}"
+
+        return str_output
+
     def get_ltx_str(self, print_sign: int = Disable_Print_Sign):
         str_output: str = ""
 

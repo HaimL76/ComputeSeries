@@ -61,6 +61,9 @@ class PolynomialRational:
 
         return s
 
+    def get_sage_str(self):
+        return f"{self.numerator.get_sage_str()}/{self.denominator.get_sage_str()}"
+
     def get_ltx_str(self):
         s: str = f"{self.numerator}"
 
@@ -108,6 +111,39 @@ class PolynomialProductRational:
         if len(denominator0):
             s0 = "*".join([f"({polynom})" for polynom in denominator0])
             s = f"[{s}]/[{s0}]"
+
+        return s
+
+    def get_sage_str(self):
+        numerator0: list = list(filter(lambda p: not p.is_one(), self.numerator))
+
+        s: str = "1"
+
+        if len(numerator0) > 0:
+            s = "".join([f"{polynom.get_sage_str()}" for polynom in numerator0])
+
+        if len(self.numerator.const_coefficients) > 0:
+            s1 = "".join([f"({self.numerator.const_coefficients[const_coeff].get_sage_str()})" for const_coeff in
+                          self.numerator.const_coefficients.keys()])
+
+            s = f"{s1}{s}"
+
+        if self.numerator.coefficient != Rational(1):
+            s = f"{self.numerator.coefficient.get_sage_str()}{s}"
+
+        denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
+
+        s0: str = "1"
+
+        if self.denominator.coefficient != Rational(1):
+            s = f"{self.denominator.coefficient.get_sage_str()}{s}"
+
+        if len(denominator0):
+            s0 = "".join([f"{polynom}" for polynom in denominator0])
+            s = f"{s}/{s0}"
+
+            if self.is_minus:
+                s = f"-{s}"
 
         return s
 
@@ -308,6 +344,15 @@ class PolynomialSummationRational:
 
     def __str__(self):
         return self.get_ltx_str()
+
+    def get_sage_str(self):
+        s: str = ""
+
+        for product in self.numerator:
+            sign = "-" if product.is_minus else "+"
+            s += f"\\[{sign}\\frac{{{product}}}{{{self.denominator}}}\\]"
+
+        return s
 
     def get_ltx_str(self):
         # s: str = "".join(f"\\[+\\frac{{{product}}}{{{self.denominator}}}+\\]" for product in self.numerator)
