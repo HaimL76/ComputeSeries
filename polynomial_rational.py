@@ -99,27 +99,29 @@ class PolynomialProductRational:
         delimiter: str = "" if is_latex else "*"
 
         if len(numerator0) > 0:
-            s = delimiter.join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in numerator0])
+            s = "".join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in numerator0])
 
         if len(self.numerator.const_coefficients) > 0:
-            s1 = "".join([f"({self.numerator.const_coefficients[const_coeff]})" for const_coeff in
+            s1 = delimiter.join([f"({self.numerator.const_coefficients[const_coeff].get_str(is_latex=is_latex)})" for const_coeff in
                           self.numerator.const_coefficients.keys()])
 
-            s = f"{s1}{s}"
+            delimiter = delimiter if s1 and s else ""
+
+            s = f"{s1}{delimiter}{s}"
 
         if self.numerator.coefficient != Rational(1):
-            s = f"{self.numerator.coefficient}{s}"
+            s = f"{self.numerator.coefficient.get_str(is_latex=is_latex)}{s}"
 
         denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
 
         s0: str = "1"
 
         if self.denominator.coefficient != Rational(1):
-            s = f"{self.denominator.coefficient}{s}"
+            s = f"{self.denominator.coefficient.get_str(is_latex=is_latex)}{s}"
 
         if len(denominator0):
-            s0 = "".join([f"{polynom}" for polynom in denominator0])
-            s = f"\\frac{{{s}}}{{{s0}}}"
+            s0 = "".join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in denominator0])
+            s = f"\\frac{{{s}}}{{{s0}}}" if is_latex else f"{s}/{s0}"
 
             if self.is_minus:
                 s = f"-{s}"

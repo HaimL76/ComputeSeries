@@ -404,22 +404,22 @@ class ProcessFile:
                 general_debug_writer.write(f"\n{str_case_indices}\n")
 
             for polynomial in self.polynomials:
-                #debug_write.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
+                debug_write.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
 
-                #debug_write.write(f"\\[{polynomial.get_sage_str()}\\]\r\n", 1)
+                debug_write.write(f"\\[{polynomial.get_sage_str()}\\]\r\n", 1)
 
                 self.substitution_counter += 1
-                #debug_write.write(f"Substitution no. {self.substitution_counter}\r\n")
+                debug_write.write(f"Substitution no. {self.substitution_counter}\r\n")
 
-                #debug_write.write(f"{self.substitution.get_ltx_str()}\r\n")
+                debug_write.write(f"{self.substitution.get_ltx_str()}\r\n")
 
-                #debug_write.write(f"{self.substitution.get_sage_str()}\r\n")
+                debug_write.write(f"{self.substitution.get_sage_str()}\r\n")
 
                 converted_polynomial: Polynomial = self.substitution.substitude_polynomial(polynomial)
 
-                #debug_write.write(f"\\[{converted_polynomial.get_ltx_str()}\\]\r\n", 1)
+                debug_write.write(f"\\[{converted_polynomial.get_ltx_str()}\\]\r\n", 1)
 
-                debug_write.write(f"\\[{converted_polynomial.get_sage_str()}\\]\r\n", 1)
+                debug_write.write(f"{converted_polynomial.get_sage_str()}\r\n", 1)
 
                 converted_pt_product: ExponentialProduct = self.substitution.substitude_exponential_product(self.pt_product)
 
@@ -454,7 +454,7 @@ class ProcessFile:
 
                     debug_write.write(str_to_print, 1)
 
-                    str_to_print = f"{ser_prod.get_sage_str()}={sum_product.get_sage_str()}"
+                    str_to_print = f"\\[{ser_prod.get_ltx_str()}\\]={sum_product.get_sage_str()}"
 
                     debug_write.write("\r\nSage Before Conversion\r\n", 1)
 
@@ -468,7 +468,7 @@ class ProcessFile:
 
                     debug_write.write(str_to_print, 1)
 
-                    str_to_print = f"{ser_prod.get_sage_str()}={sum_product.get_sage_str()}"
+                    str_to_print = f"\\[{ser_prod.get_ltx_str()}\\]={sum_product.get_sage_str()}"
 
                     debug_write.write("\r\nSage After Conversion\r\n", 1)
 
