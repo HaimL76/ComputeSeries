@@ -103,28 +103,18 @@ class Rational:
         return self.numerator == other.numerator and self.denominator == other.denominator
 
     def __str__(self):
-        return self.get_ltx_str()
-
-    def get_sage_str(self):
-        output: str = f"{self.numerator}"
-
-        if self.denominator != 1:
-            output = f"{output}/{self.denominator}"
-
-        return output
+        return self.get_str()
 
     def get_ltx_str(self):
+        return self.get_str(is_latex=True)
+
+    def get_sage_str(self):
+        return self.get_str(is_latex=False)
+
+    def get_str(self, is_latex: bool = True):
         s: str = f"{self.numerator}"
 
         if self.denominator != 1:
-            s = f"\\frac{{{s}}}{{{self.denominator}}}"
-
-        return s
-
-    def get_str(self):
-        s: str = f"{self.numerator}"
-
-        if self.denominator != 1:
-            s = f"{s}/{self.denominator}"
+            s = f"\\frac{{{s}}}{{{self.denominator}}}" if is_latex else f"{s}/{self.denominator}"
 
         return s
