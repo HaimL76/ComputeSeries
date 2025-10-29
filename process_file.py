@@ -404,20 +404,20 @@ class ProcessFile:
                 general_debug_writer.write(f"\n{str_case_indices}\n")
 
             for polynomial in self.polynomials:
-                debug_write.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
+                #debug_write.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
 
-                debug_write.write(f"\\[{polynomial.get_sage_str()}\\]\r\n", 1)
+                #debug_write.write(f"\\[{polynomial.get_sage_str()}\\]\r\n", 1)
 
                 self.substitution_counter += 1
-                debug_write.write(f"Substitution no. {self.substitution_counter}\r\n")
+                #debug_write.write(f"Substitution no. {self.substitution_counter}\r\n")
 
-                debug_write.write(f"{self.substitution.get_ltx_str()}\r\n")
+                #debug_write.write(f"{self.substitution.get_ltx_str()}\r\n")
 
-                debug_write.write(f"{self.substitution.get_sage_str()}\r\n")
+                #debug_write.write(f"{self.substitution.get_sage_str()}\r\n")
 
                 converted_polynomial: Polynomial = self.substitution.substitude_polynomial(polynomial)
 
-                debug_write.write(f"\\[{converted_polynomial.get_ltx_str()}\\]\r\n", 1)
+                #debug_write.write(f"\\[{converted_polynomial.get_ltx_str()}\\]\r\n", 1)
 
                 debug_write.write(f"\\[{converted_polynomial.get_sage_str()}\\]\r\n", 1)
 

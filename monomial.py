@@ -297,7 +297,12 @@ class Monomial:
                 if len(const_coeff.symbol) > 1:
                     str_const_coefficient = f"({str_const_coefficient})"
 
-                str_output = f"{str_output}{str_const_coefficient}"
+                delimiter: str = ""
+
+                if not is_latex and str_output and str_const_coefficient:
+                    delimiter = "*"
+
+                str_output = f"{str_output}{delimiter}{str_const_coefficient}"
 
                 if const_coeff.power != 1:
                     str_output = f"{str_output}^{const_coeff.power}"
@@ -310,13 +315,18 @@ class Monomial:
             delimiter: str = "" if is_latex else "*"
 
             if len(self.elements) > 0:
-                s0 = delimiter.join(f"{elem}" for elem in self.elements.values())
+                s0 = delimiter.join(f"{elem.get_str(is_latex=is_latex)}" for elem in self.elements.values())
 
             if len(s0) > 0:
                 if len(str_output) > 0:
                     str_output = f"{str_output}"
 
-                str_output = f"{str_output}{s0}"
+                delimiter = ""
+
+                if not is_latex and str_output and s0:
+                    delimiter = "*"
+
+                str_output = f"{str_output}{delimiter}{s0}"
                 counter += 1
 
         if print_sign != Monomial.Disable_Print_Sign:
