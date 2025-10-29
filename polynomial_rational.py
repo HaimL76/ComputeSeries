@@ -99,7 +99,7 @@ class PolynomialProductRational:
         delimiter: str = "" if is_latex else "*"
 
         if len(numerator0) > 0:
-            s = "".join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in numerator0])
+            s = delimiter.join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in numerator0])
 
         if len(self.numerator.const_coefficients) > 0:
             s1 = delimiter.join([f"({self.numerator.const_coefficients[const_coeff].get_str(is_latex=is_latex)})" for const_coeff in
@@ -120,7 +120,7 @@ class PolynomialProductRational:
             s = f"{self.denominator.coefficient.get_str(is_latex=is_latex)}{s}"
 
         if len(denominator0):
-            s0 = "".join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in denominator0])
+            s0 = delimiter.join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in denominator0])
             s = f"\\frac{{{s}}}{{{s0}}}" if is_latex else f"{s}/{s0}"
 
             if self.is_minus:

@@ -223,16 +223,19 @@ class ProcessFile:
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
 
-            out_file_path: str = file_name.replace(".txt", ".tex")
+            out_file_path_ltx: str = file_name.replace(".txt", ".tex")
 
             if not os.path.exists(self.output_directory_path):
                 os.makedirs(self.output_directory_path)
 
-            out_file_path = os.path.join(self.output_directory_path, out_file_path)
+            out_file_path_ltx = os.path.join(self.output_directory_path, out_file_path_ltx)
 
-            with open(out_file_path, "w") as fw:
-                debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
-                debug_write.write(r"""
+            out_file_path_sage = out_file_path_ltx.replace(".tex", "_sage.txt")
+
+            with open(out_file_path_ltx, "w") as fw_ltx, open(out_file_path_sage, "w") as fw_sage:
+                debug_write_ltx: DebugWrite = DebugWrite.get_instance(fw=fw_ltx)
+                debug_write_sage: DebugWrite = DebugWrite.get_instance(fw=fw_sage)
+                debug_write_ltx.write(r"""
                 \documentclass{article}
                 \usepackage{graphicx} % Required for inserting images
                 \usepackage{xcolor}
@@ -246,9 +249,12 @@ class ProcessFile:
                     if line and line[0] != "#":
                         self.process_line(line, conversion_table=conversion_table,
                                           reverse_conversion_table=reverse_conversion_table,
-                                          general_debug_writer=general_debug_writer, list_rationals=list_rationals,
+                                          general_debug_writer=general_debug_writer,
+                                          list_rationals=list_rationals,
                                           total_sum=total_sum,
-                                          list_denominators=list_denominators)
+                                          list_denominators=list_denominators,
+                                          debug_write_ltx=debug_write_ltx,
+                                          debug_write_sage=debug_write_sage)
 
                 for key in conversion_table.keys():
                     index: int = conversion_table[key]
@@ -257,22 +263,18 @@ class ProcessFile:
 
                     s = f"\\[{s}\\rightarrow{{p^{{{key[0]}}}t^{{{key[1]}}}}}\\]"
 
-                    debug_write.write(s)
+                    debug_write_ltx.write(s)
 
-                debug_write.write("\\end{document}")
+                debug_write_ltx.write("\\end{document}")
 
-    def process_line(self, text: str, conversion_table: dict, reverse_conversion_table: dict,
+    def process_line(self, text: str, conversion_table: dict,
+                     reverse_conversion_table: dict,
                      general_debug_writer: DebugWrite,
-                     list_rationals: dict, total_sum: PolynomialSummationRational,
-                     list_denominators: list):
-        debug_write: DebugWrite = DebugWrite.get_instance()
-
-        is_polynomial: bool = False
-        is_substitution: bool = False
-        is_index: bool = False
-
-        debug_write: DebugWrite = DebugWrite.get_instance()
-
+                     list_rationals: dict,
+                     total_sum: PolynomialSummationRational,
+                     list_denominators: list,
+                     debug_write_ltx: DebugWrite,
+                     debug_write_sage: DebugWrite):
         if text:
             text = text.strip()
 
@@ -398,28 +400,35 @@ class ProcessFile:
             str_case_indices: str = ".".join([str(index) for index in self.case_indices])
             str_case_indices = f"Case {str_case_indices}"
 
-            debug_write.write(f"\n{str_case_indices}\n")
+            str_to_print: str = f"\r\n{str_case_indices}\r\n"
+
+            debug_write_ltx.write(str_to_print)
+            debug_write_ltx.write(str_to_print)
 
             if general_debug_writer is not None:
                 general_debug_writer.write(f"\n{str_case_indices}\n")
 
             for polynomial in self.polynomials:
-                debug_write.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
+                debug_write_ltx.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
 
-                debug_write.write(f"\\[{polynomial.get_sage_str()}\\]\r\n", 1)
+                debug_write_sage.write(f"{polynomial.get_sage_str()}\r\n", 1)
 
                 self.substitution_counter += 1
-                debug_write.write(f"Substitution no. {self.substitution_counter}\r\n")
 
-                debug_write.write(f"{self.substitution.get_ltx_str()}\r\n")
+                str_to_print = f"Substitution no. {self.substitution_counter}\r\n"
 
-                debug_write.write(f"{self.substitution.get_sage_str()}\r\n")
+                debug_write_ltx.write(str_to_print)
+                debug_write_sage.write(str_to_print)
+
+                debug_write_ltx.write(f"\\[{self.substitution.get_ltx_str()}\\]")
+
+                debug_write_sage.write(f"{self.substitution.get_sage_str()}\r\n")
 
                 converted_polynomial: Polynomial = self.substitution.substitude_polynomial(polynomial)
 
-                debug_write.write(f"\\[{converted_polynomial.get_ltx_str()}\\]\r\n", 1)
+                debug_write_ltx.write(f"\\[{converted_polynomial.get_ltx_str()}\\]\r\n", 1)
 
-                debug_write.write(f"{converted_polynomial.get_sage_str()}\r\n", 1)
+                debug_write_sage.write(f"{converted_polynomial.get_sage_str()}\r\n", 1)
 
                 converted_pt_product: ExponentialProduct = self.substitution.substitude_exponential_product(self.pt_product)
 
@@ -439,7 +448,10 @@ class ProcessFile:
 
                 sum_item: PolynomialSummationRational = PolynomialSummationRational()
 
-                debug_write.write("All series and their sums")
+                str_to_print = "All series and their sums\r\n"
+
+                debug_write_ltx.write(str_to_print)
+                debug_write_sage.write(str_to_print)
 
                 for ser_prod in list_series_products:
                     ser_prod_copy = copy.deepcopy(ser_prod)
@@ -448,49 +460,55 @@ class ProcessFile:
 
                     numerator: PolynomialProduct = sum_product.numerator
 
-                    str_to_print: str = f"\\[{ser_prod.get_ltx_str()}={sum_product.get_ltx_str()}\\]"
+                    str_to_print = f"\\[{ser_prod.get_ltx_str()}={sum_product.get_ltx_str()}\\]"
 
-                    debug_write.write("\r\nLatex Before Conversion\r\n", 1)
+                    debug_write_ltx.write("\r\nBefore Conversion\r\n", 1)
 
-                    debug_write.write(str_to_print, 1)
+                    debug_write_ltx.write(str_to_print, 1)
 
                     str_to_print = f"\\[{ser_prod.get_ltx_str()}\\]={sum_product.get_sage_str()}"
 
-                    debug_write.write("\r\nSage Before Conversion\r\n", 1)
+                    debug_write_sage.write("\r\nSage Before Conversion\r\n", 1)
 
-                    debug_write.write(str_to_print, 1)
+                    debug_write_sage.write(str_to_print, 1)
 
                     numerator.convert_constant_coefficients()
 
                     str_to_print = f"\\[{ser_prod}={sum_product}\\]"
 
-                    debug_write.write("\r\nLatex After Conversion\r\n", 1)
+                    debug_write_ltx.write("\r\nAfter Conversion\r\n", 1)
 
-                    debug_write.write(str_to_print, 1)
+                    debug_write_ltx.write(str_to_print, 1)
 
                     str_to_print = f"\\[{ser_prod.get_ltx_str()}\\]={sum_product.get_sage_str()}"
 
-                    debug_write.write("\r\nSage After Conversion\r\n", 1)
+                    debug_write_sage.write("\r\nAfter Conversion\r\n", 1)
 
-                    debug_write.write(str_to_print, 1)
+                    debug_write_sage.write(str_to_print, 1)
 
                     sum_product_copy: PolynomialProductRational = copy.deepcopy(sum_product)
                     sum_product_copy_2: PolynomialProductRational = copy.deepcopy(sum_product)
 
-                    if debug_write is not None:
+                    if debug_write_ltx is not None:
                         sum_item.add_polynomial_rational(sum_product_copy)
 
                     total_sum.add_polynomial_rational(sum_product_copy_2)
 
-                debug_write.write("\r\nItem Sum\r\n")
+                str_to_print = "\r\nItem Sum\r\n"
+
+                debug_write_ltx.write(str_to_print)
+                debug_write_sage.write(str_to_print)
 
                 denominator0 = copy.deepcopy(sum_item.denominator)
 
                 list_denominators.append(denominator0)
 
-                if debug_write is not None:
-                    str_to_print = f"{sum_item}"
-                    debug_write.write(str_to_print)
+                if debug_write_ltx is not None:
+                    str_to_print = f"{sum_item.get_ltx_str()}"
+                    debug_write_ltx.write(str_to_print)
+
+                    str_to_print = f"{sum_item.get_sage_str()}"
+                    debug_write_sage.write(str_to_print)
 
                     if general_debug_writer is not None:
                         general_debug_writer.write(str_to_print)
@@ -502,14 +520,17 @@ class ProcessFile:
                     if general_debug_writer is not None:
                         general_debug_writer.write(str_to_print)
 
-                    debug_write.write("Polynomial sums\r\n")
+                    str_to_print = "Polynomial sums\r\n"
+
+                    debug_write_ltx.write(str_to_print)
+                    debug_write_sage.write(str_to_print)
 
                     index: int = 0
 
                     for tup in list_polynomials:
                         index += 1
                         str_to_print = f"Polynomial {index}\r\n\r\n\\[{tup[0]}=\\]\\[={tup[1]}\\]"
-                        debug_write.write(str_to_print)
+                        debug_write_ltx.write(str_to_print)
 
                 _ = 0
 
