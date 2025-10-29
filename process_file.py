@@ -404,16 +404,22 @@ class ProcessFile:
                 general_debug_writer.write(f"\n{str_case_indices}\n")
 
             for polynomial in self.polynomials:
-                debug_write.write(f"\\[{polynomial}\\]", 1)
+                debug_write.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
+
+                debug_write.write(f"\\[{polynomial.get_sage_str()}\\]\r\n", 1)
 
                 self.substitution_counter += 1
-                debug_write.write(f"Substitution no. {self.substitution_counter}")
+                debug_write.write(f"Substitution no. {self.substitution_counter}\r\n")
 
-                debug_write.write(f"{self.substitution}")
+                debug_write.write(f"{self.substitution.get_ltx_str()}\r\n")
+
+                debug_write.write(f"{self.substitution.get_sage_str()}\r\n")
 
                 converted_polynomial: Polynomial = self.substitution.substitude_polynomial(polynomial)
 
-                debug_write.write(f"\\[{converted_polynomial}\\]", 1)
+                debug_write.write(f"\\[{converted_polynomial.get_ltx_str()}\\]\r\n", 1)
+
+                debug_write.write(f"\\[{converted_polynomial.get_sage_str()}\\]\r\n", 1)
 
                 converted_pt_product: ExponentialProduct = self.substitution.substitude_exponential_product(self.pt_product)
 
@@ -429,7 +435,7 @@ class ProcessFile:
                             if isinstance(val, int):
                                 series_product.add_start_index(key, val)
 
-                list_series_products: list = series_product.multiply_by_polynomial(converted_polynomial)
+                list_series_products: list[SeriesProduct] = series_product.multiply_by_polynomial(converted_polynomial)
 
                 sum_item: PolynomialSummationRational = PolynomialSummationRational()
 
@@ -442,9 +448,9 @@ class ProcessFile:
 
                     numerator: PolynomialProduct = sum_product.numerator
 
-                    str_to_print: str = f"\\[{ser_prod}={sum_product}\\]"
+                    str_to_print: str = f"\\[{ser_prod.get_ltx_str()}={sum_product.get_ltx_str()}\\]"
 
-                    debug_write.write("\r\nBefore Conversion\r\n", 1)
+                    debug_write.write("\r\nLatex Before Conversion\r\n", 1)
 
                     debug_write.write(str_to_print, 1)
 
@@ -458,7 +464,7 @@ class ProcessFile:
 
                     str_to_print = f"\\[{ser_prod}={sum_product}\\]"
 
-                    debug_write.write("\r\nAfter Conversion\r\n", 1)
+                    debug_write.write("\r\nLatex After Conversion\r\n", 1)
 
                     debug_write.write(str_to_print, 1)
 

@@ -85,75 +85,21 @@ class PolynomialProductRational:
     def __eq__(self, other):
         return self.numerator == other.numerator and self.denominator == other.denominator
 
-    def get_str(self):
-        numerator0: list = list(filter(lambda p: not p.is_one(), self.numerator))
-
-        s: str = "1"
-
-        if len(numerator0) > 0:
-            s = "*".join([f"({polynom})" for polynom in numerator0])
-
-        if len(self.numerator.const_coefficients) > 0:
-            s1 = "*".join([f"({const_coeff})" for const_coeff in self.numerator.const_coefficients])
-
-            s = f"{Fore.RED}{s1}{Style.RESET_ALL}*{s}"
-
-        if self.numerator.coefficient != Rational(1):
-            s = f"{Fore.LIGHTMAGENTA_EX}{self.numerator.coefficient}{Style.RESET_ALL}*{s}"
-
-        denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
-
-        s0: str = "1"
-
-        if self.denominator.coefficient != Rational(1):
-            s = f"{Fore.LIGHTMAGENTA_EX}{self.denominator.coefficient}{Style.RESET_ALL}*{s}"
-
-        if len(denominator0):
-            s0 = "*".join([f"({polynom})" for polynom in denominator0])
-            s = f"[{s}]/[{s0}]"
-
-        return s
+    def get_ltx_str(self):
+        return self.get_str(is_latex=True)
 
     def get_sage_str(self):
-        numerator0: list = list(filter(lambda p: not p.is_one(), self.numerator))
+        return self.get_str(is_latex=False)
+
+    def get_str(self, is_latex: bool = True):
+        numerator0: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.numerator))
 
         s: str = "1"
 
-        if len(numerator0) > 0:
-            s = "".join([f"{polynom.get_sage_str()}" for polynom in numerator0])
-
-        if len(self.numerator.const_coefficients) > 0:
-            s1 = "".join([f"({self.numerator.const_coefficients[const_coeff].get_sage_str()})" for const_coeff in
-                          self.numerator.const_coefficients.keys()])
-
-            s = f"{s1}{s}"
-
-        if self.numerator.coefficient != Rational(1):
-            s = f"{self.numerator.coefficient.get_sage_str()}{s}"
-
-        denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
-
-        s0: str = "1"
-
-        if self.denominator.coefficient != Rational(1):
-            s = f"{self.denominator.coefficient.get_sage_str()}{s}"
-
-        if len(denominator0):
-            s0 = "".join([f"{polynom}" for polynom in denominator0])
-            s = f"{s}/{s0}"
-
-            if self.is_minus:
-                s = f"-{s}"
-
-        return s
-
-    def get_ltx_str(self):
-        numerator0: list = list(filter(lambda p: not p.is_one(), self.numerator))
-
-        s: str = "1"
+        delimiter: str = "" if is_latex else "*"
 
         if len(numerator0) > 0:
-            s = "".join([f"{polynom}" for polynom in numerator0])
+            s = delimiter.join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in numerator0])
 
         if len(self.numerator.const_coefficients) > 0:
             s1 = "".join([f"({self.numerator.const_coefficients[const_coeff]})" for const_coeff in

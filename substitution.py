@@ -104,9 +104,13 @@ class VariableSubstitution:
         return exponential_product
 
     def __str__(self):
-        return self.get_ltx_str()
+        return self.get_str()
 
     def get_ltx_str(self):
-        return "".join(f"\\[{key}\\rightarrow{{{self.substitution[key]}}}\\]" for key in self.substitution)
-    def get_str(self):
-        return "\n".join(f"{key}->{self.substitution[key]}" for key in self.substitution)
+        return self.get_str(is_latex=True)
+
+    def get_sage_str(self):
+        return self.get_str(is_latex=False)
+
+    def get_str(self, is_latex: bool = True):
+        return "".join(f"\\[{key}\\rightarrow{{{self.substitution[key].get_str(is_latex=is_latex)}}}\\]" for key in self.substitution)

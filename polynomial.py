@@ -529,49 +529,7 @@ class Polynomial:
         return self + other0
 
     def __str__(self):
-        return self.get_ltx_str()
-
-    def get_str(self):
-        s: str = ""
-
-        if self.name:
-            s = f"{self.name} = "
-
-        s0: str = " + ".join(f"{monom}" for monom in self.monomials)
-
-        s0 = f"({s0})"
-
-        if self.power != Rational(1):
-            s0 = f"{s0}^{Fore.LIGHTYELLOW_EX}{self.power}{Style.RESET_ALL}"
-
-        s = f"{s}{s0}"
-
-        return s
-
-    def get_sage_str(self):
-        str_polynomial: str = ""
-
-        monoms: list[Monomial] = [monom for monom in self.monomials if monom.coefficient != Rational(0)]
-
-        index: int = 0
-
-        for monom in monoms:
-            print_sign = Monomial.Print_Sign_Anyway if index > 0 else Monomial.Print_Sign_If_Minus
-
-            str_monomial: str = monom.get_sage_str(print_sign=print_sign)
-            index += 1
-
-            str_polynomial = f"{str_polynomial}{str_monomial}"
-
-        if self.in_polynomial_product or self.power != Rational(1):
-            str_polynomial = f"({str_polynomial})"
-
-        color = "red"
-
-        if self.power != Rational(1):
-            str_polynomial = f"{str_polynomial}^{self.power}"
-
-        return str_polynomial
+        return self.get_str()
 
     def get_ltx_str(self):
         return self.get_str(is_latex=True)

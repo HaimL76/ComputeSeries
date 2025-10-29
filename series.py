@@ -57,22 +57,13 @@ class Series:
 
         return polynomial_rational
 
-    def get_str(self):
-        s: str = ""
-
-        if self.coefficient is not None and not self.coefficient.is_one():
-            s = f"{Fore.LIGHTGREEN_EX}{self.coefficient}{Style.RESET_ALL}"
-
-        s = rf"\sum_{{{self.power}={self.start_index}}}{s}({self.monomial})"
-
-        s = f"{s}^{Fore.LIGHTCYAN_EX}{self.power}{Style.RESET_ALL}"
-
-        return s
+    def get_ltx_str(self):
+        return self.get_str(is_latex=True)
 
     def get_sage_str(self):
-        return ""
+        return self.get_str(is_latex=False)
 
-    def get_ltx_str(self):
+    def get_str(self, is_latex: bool = True):
         s: str = ""
 
         color = "red"
@@ -277,30 +268,13 @@ class SeriesProduct:
 
         return SeriesProduct(sers=d0)
 
-    def get_str(self):
-        s: str = ""
-
-        if self.coefficient is not None and self.coefficient != Rational(1):
-            s = f"{Fore.LIGHTMAGENTA_EX}{self.coefficient}{Style.RESET_ALL}"
-
-        if self.const_coefficients:
-            if s:
-                s = f"{s}*"
-
-            s1: str = "*".join([f"({const_coeff})" for const_coeff in self.const_coefficients.values()])
-
-            s = f"{s}{Fore.RED}{s1}{Style.RESET_ALL}"
-
-        s0: str = "*".join(f"[{ser}]" for ser in self.dict_series.values())
-
-        s = f"{s}{s0}"
-
-        return s
-
     def get_sage_str(self):
-        return ""
+        return self.get_str(is_latex=False)
 
     def get_ltx_str(self):
+        return self.get_str(is_latex=True)
+
+    def get_str(self, is_latex: bool = True):
         str_output: str = ""
 
         if self.is_minus:
@@ -313,9 +287,11 @@ class SeriesProduct:
             for key in self.const_coefficients:
                 val: Element = self.const_coefficients[key]
 
-                str_output = f"{str_output}{val.get_ltx_str(with_parentheses=Element.WithParenthesesByLength)}"
+                str_output = f"{str_output}{val.get_str(with_parentheses=Element.WithParenthesesByLength, is_latex=is_latex)}"
 
-        str_series: str = "".join(f"{ser}" for ser in self.dict_series.values())
+        delimiter: str = "" if is_latex else "*"
+
+        str_series: str = delimiter.join(f"{ser.get_str(is_latex=is_latex)}" for ser in self.dict_series.values())
 
         str_output = f"{str_output}{str_series}"
 
