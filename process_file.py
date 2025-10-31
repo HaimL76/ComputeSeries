@@ -136,8 +136,11 @@ class ProcessFolder:
         _ = list_sage_rationals
 
         with open(out_file_path_sage, "w") as fw_sage:
-            for str_to_write in list_sage_rationals:
-                fw_sage.write(str_to_write)
+            fw_sage.write(f"p = var('p')\n")#{os.linesep}")
+            fw_sage.write(f"t = var('t')\n")#{os.linesep}")
+
+            for sum_product_sage in list_sage_rationals:
+                fw_sage.write(f"{sum_product_sage}\n")#{os.linesep}")
 
         finished: bool = False
 
@@ -509,9 +512,9 @@ class ProcessFile:
 
                     debug_write_sage.write(str_to_print, 1)
 
-                    str_to_print = f"\r\n{sum_product_sage}\r\n"
+                    sum_product_sage = sum_product.get_sage_str(with_plus_sign=True)
 
-                    list_sage_rationals.append(str_to_print)
+                    list_sage_rationals.append(sum_product_sage)
 
                     sum_product_copy: PolynomialProductRational = copy.deepcopy(sum_product)
                     sum_product_copy_2: PolynomialProductRational = copy.deepcopy(sum_product)

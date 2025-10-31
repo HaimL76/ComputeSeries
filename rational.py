@@ -115,6 +115,9 @@ class Rational:
         s: str = f"{self.numerator}"
 
         if self.denominator != 1:
+            if not is_latex:
+                _ = 0
+
             s = f"\\frac{{{s}}}{{{self.denominator}}}" if is_latex else f"{s}/{self.denominator}"
 
         return s

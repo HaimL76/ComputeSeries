@@ -88,10 +88,10 @@ class PolynomialProductRational:
     def get_ltx_str(self):
         return self.get_str(is_latex=True)
 
-    def get_sage_str(self):
-        return self.get_str(is_latex=False)
+    def get_sage_str(self, with_plus_sign: bool = False):
+        return self.get_str(is_latex=False, with_plus_sign=with_plus_sign)
 
-    def get_str(self, is_latex: bool = True):
+    def get_str(self, is_latex: bool = True, with_plus_sign: bool = False):
         numerator0: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.numerator))
 
         s: str = "1"
@@ -105,12 +105,16 @@ class PolynomialProductRational:
             s1 = delimiter.join([f"({self.numerator.const_coefficients[const_coeff].get_str(is_latex=is_latex)})" for const_coeff in
                           self.numerator.const_coefficients.keys()])
 
-            delimiter = delimiter if s1 and s else ""
+            current_delimiter: str = delimiter if s1 and s else ""
 
-            s = f"{s1}{delimiter}{s}"
+            s = f"{s1}{current_delimiter}{s}"
 
         if self.numerator.coefficient != Rational(1):
-            s = f"{self.numerator.coefficient.get_str(is_latex=is_latex)}{s}"
+            s1 = self.numerator.coefficient.get_str(is_latex=is_latex)
+
+            current_delimiter: str = delimiter if s1 and s else ""
+
+            s = f"{s1}{current_delimiter}{s}"
 
         denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
 
@@ -123,6 +127,8 @@ class PolynomialProductRational:
 
             if self.is_minus:
                 s = f"-{s}"
+            elif with_plus_sign:
+                s = f"+{s}"
 
         return s
 
