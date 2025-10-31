@@ -68,7 +68,12 @@ class ProcessFolder:
 
         list_denominators: list = []
 
-        with open(out_file_path_rational_sum_all, "w") as fw:
+        out_file_path_sage = os.path.join(output_full_path, "output_sage.txt")
+
+        list_sage_rationals: [str] = []
+
+        with (open(out_file_path_rational_sum_all, "w") as fw,
+              open(out_file_path_sage, "w") as fw_sage):
             debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
             debug_write.write(ProcessFolder.file_prefix)
 
@@ -97,7 +102,8 @@ class ProcessFolder:
                                                reverse_conversion_table=self.reverse_conversion_table,
                                                general_debug_writer=debug_write, list_rationals=dict_rationals,
                                                total_sum=rational_sum_of_all_products,
-                                               list_denominators=list_denominators)
+                                               list_denominators=list_denominators,
+                                               list_sage_rationals=list_sage_rationals)
 
             list_rational_polynomials: list = []
 
@@ -126,6 +132,12 @@ class ProcessFolder:
             debug_write.write("}")
 
             debug_write.write("\\end{document}")
+
+        _ = list_sage_rationals
+
+        with open(out_file_path_sage, "w") as fw_sage:
+            for str_to_write in list_sage_rationals:
+                fw_sage.write(str_to_write)
 
         finished: bool = False
 
@@ -219,7 +231,10 @@ class ProcessFile:
     def process_file(self, conversion_table: dict, reverse_conversion_table: dict,
                      general_debug_writer: DebugWrite,
                      list_rationals: dict, total_sum: PolynomialSummationRational,
-                     list_denominators: list):
+                     list_denominators: list,
+                     list_sage_rationals=None):
+        if list_sage_rationals is None:
+            list_sage_rationals = []
         with open(self.file_path, 'r') as file:
             file_name: str = os.path.basename(self.file_path)
 
@@ -254,7 +269,8 @@ class ProcessFile:
                                           total_sum=total_sum,
                                           list_denominators=list_denominators,
                                           debug_write_ltx=debug_write_ltx,
-                                          debug_write_sage=debug_write_sage)
+                                          debug_write_sage=debug_write_sage,
+                                          list_sage_rationals=list_sage_rationals)
 
                 for key in conversion_table.keys():
                     index: int = conversion_table[key]
@@ -274,7 +290,10 @@ class ProcessFile:
                      total_sum: PolynomialSummationRational,
                      list_denominators: list,
                      debug_write_ltx: DebugWrite,
-                     debug_write_sage: DebugWrite):
+                     debug_write_sage: DebugWrite,
+                     list_sage_rationals=None):
+        if list_sage_rationals is None:
+            list_sage_rationals = []
         if text:
             text = text.strip()
 
@@ -466,9 +485,11 @@ class ProcessFile:
 
                     debug_write_ltx.write(str_to_print, 1)
 
-                    str_to_print = f"\\[{ser_prod.get_ltx_str()}\\]={sum_product.get_sage_str()}"
+                    sum_product_sage: str = sum_product.get_sage_str()
 
-                    debug_write_sage.write("\r\nSage Before Conversion\r\n", 1)
+                    str_to_print = f"\\[{ser_prod.get_ltx_str()}\\]={sum_product_sage}"
+
+                    debug_write_sage.write("\r\nBefore Conversion\r\n", 1)
 
                     debug_write_sage.write(str_to_print, 1)
 
@@ -480,11 +501,17 @@ class ProcessFile:
 
                     debug_write_ltx.write(str_to_print, 1)
 
-                    str_to_print = f"\\[{ser_prod.get_ltx_str()}\\]={sum_product.get_sage_str()}"
+                    sum_product_sage = sum_product.get_sage_str()
+
+                    str_to_print = f"\\[{ser_prod.get_ltx_str()}\\]={sum_product_sage}"
 
                     debug_write_sage.write("\r\nAfter Conversion\r\n", 1)
 
                     debug_write_sage.write(str_to_print, 1)
+
+                    str_to_print = f"\r\n{sum_product_sage}\r\n"
+
+                    list_sage_rationals.append(str_to_print)
 
                     sum_product_copy: PolynomialProductRational = copy.deepcopy(sum_product)
                     sum_product_copy_2: PolynomialProductRational = copy.deepcopy(sum_product)
@@ -571,8 +598,6 @@ def store_by_indices(list_rationals: dict, total_sum, case_indices):
 
         list0: list[str] = [""] * len(list_indices)
 
-        index: int = 0
-
         for index in range(0, len(list_indices)):
             ind: int = list_indices[index]
             power: int = indices[ind]
@@ -590,5 +615,3 @@ def store_by_indices(list_rationals: dict, total_sum, case_indices):
             list_rationals[key] = []
 
         list_rationals[key].append((total_sum, case_indices))
-
-    _ = 0

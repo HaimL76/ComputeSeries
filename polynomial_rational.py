@@ -114,14 +114,12 @@ class PolynomialProductRational:
 
         denominator0: list = list(filter(lambda p: not p.is_one(), self.denominator))
 
-        s0: str = "1"
-
         if self.denominator.coefficient != Rational(1):
             s = f"{self.denominator.coefficient.get_str(is_latex=is_latex)}{s}"
 
         if len(denominator0):
             s0 = delimiter.join([f"{polynom.get_str(is_latex=is_latex)}" for polynom in denominator0])
-            s = f"\\frac{{{s}}}{{{s0}}}" if is_latex else f"{s}/{s0}"
+            s = f"\\frac{{{s}}}{{{s0}}}" if is_latex else f"({s})/({s0})"
 
             if self.is_minus:
                 s = f"-{s}"
