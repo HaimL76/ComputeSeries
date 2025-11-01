@@ -88,10 +88,13 @@ class PolynomialProductRational:
     def get_ltx_str(self):
         return self.get_str(is_latex=True)
 
-    def get_sage_str(self, with_plus_sign: bool = False):
-        return self.get_str(is_latex=False, with_plus_sign=with_plus_sign)
+    def get_sage_str(self, with_plus_sign: bool = False,
+                     with_minus_sign=False):
+        return self.get_str(is_latex=False, with_plus_sign=with_plus_sign,
+                            with_minus_sign=with_minus_sign)
 
-    def get_str(self, is_latex: bool = True, with_plus_sign: bool = False):
+    def get_str(self, is_latex: bool = True, with_plus_sign: bool = False,
+                with_minus_sign=True):
         numerator0: list[Polynomial] = list(filter(lambda p: not p.is_one(), self.numerator))
 
         s: str = "1"
@@ -126,9 +129,11 @@ class PolynomialProductRational:
             s = f"\\frac{{{s}}}{{{s0}}}" if is_latex else f"({s})/({s0})"
 
             if self.is_minus:
-                s = f"-{s}"
-            elif with_plus_sign:
-                s = f"+{s}"
+                if with_minus_sign:
+                    s = f"-{s}"
+            else:
+                if with_plus_sign:
+                    s = f"+{s}"
 
         return s
 

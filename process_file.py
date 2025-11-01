@@ -70,7 +70,7 @@ class ProcessFolder:
 
         out_file_path_sage = os.path.join(output_full_path, "output_sage.txt")
 
-        list_sage_rationals: [str] = []
+        list_sage_rationals: [PolynomialProductRational] = []
 
         with (open(out_file_path_rational_sum_all, "w") as fw,
               open(out_file_path_sage, "w") as fw_sage):
@@ -136,11 +136,19 @@ class ProcessFolder:
         _ = list_sage_rationals
 
         with open(out_file_path_sage, "w") as fw_sage:
-            fw_sage.write(f"p = var('p')\n")#{os.linesep}")
-            fw_sage.write(f"t = var('t')\n")#{os.linesep}")
+            fw_sage.write("# Define the polynomial ring\n")
+            fw_sage.write("R.<p,t> = PolynomialRing(QQ)\n")
+            fw_sage.write("f = QQ.zero()\n")
 
-            for sum_product_sage in list_sage_rationals:
-                fw_sage.write(f"{sum_product_sage}\n")#{os.linesep}")
+            for sum_product in list_sage_rationals:
+                sum_product_sage: str = sum_product.get_sage_str(with_plus_sign=False,
+                                                            with_minus_sign=False)
+
+                sign: str = "-" if sum_product.is_minus else "+"
+
+                fw_sage.write(f"f{sign}={sum_product_sage}\n")
+
+            fw_sage.write("print(f)\n")
 
         finished: bool = False
 
@@ -512,9 +520,7 @@ class ProcessFile:
 
                     debug_write_sage.write(str_to_print, 1)
 
-                    sum_product_sage = sum_product.get_sage_str(with_plus_sign=True)
-
-                    list_sage_rationals.append(sum_product_sage)
+                    list_sage_rationals.append(copy.deepcopy(sum_product))
 
                     sum_product_copy: PolynomialProductRational = copy.deepcopy(sum_product)
                     sum_product_copy_2: PolynomialProductRational = copy.deepcopy(sum_product)
