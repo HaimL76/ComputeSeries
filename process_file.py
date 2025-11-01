@@ -87,6 +87,8 @@ class ProcessFolder:
                 if 0 < debug_num_files <= debug_files_counter:
                     break
 
+                out_file_path_sage_rationals: str = path.replace(".txt", "_sage_rationals.txt")
+
                 debug_files_counter += 1
 
                 if pattern:
@@ -98,12 +100,35 @@ class ProcessFolder:
                         print(path)
                         proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
 
+                        list_file_sage_rationals: [PolynomialProductRational] = []
+
                         proc_file.process_file(conversion_table=self.conversion_table,
                                                reverse_conversion_table=self.reverse_conversion_table,
                                                general_debug_writer=debug_write, list_rationals=dict_rationals,
                                                total_sum=rational_sum_of_all_products,
                                                list_denominators=list_denominators,
-                                               list_sage_rationals=list_sage_rationals)
+                                               list_sage_rationals=list_sage_rationals,
+                                               list_file_sage_rationals=list_file_sage_rationals)
+
+                        out_file_path_sage_rationals = os.path.join(proc_file.output_directory_path, out_file_path_sage_rationals)
+
+                        if not os.path.exists(proc_file.output_directory_path):
+                            os.makedirs(proc_file.output_directory_path)
+
+                        with open(out_file_path_sage_rationals, "w") as fw_file_sage:
+                            fw_file_sage.write("# Define the polynomial ring\n")
+                            fw_file_sage.write("R.<p,t> = PolynomialRing(QQ)\n")
+                            fw_file_sage.write("f = QQ.zero()\n")
+
+                            for sum_product in list_sage_rationals:
+                                sum_product_sage: str = sum_product.get_sage_str(with_plus_sign=False,
+                                                                                 with_minus_sign=False)
+
+                                sign: str = "-" if sum_product.is_minus else "+"
+
+                                fw_file_sage.write(f"f{sign}={sum_product_sage}\n")
+
+                            fw_file_sage.write("print(f)\n")
 
             list_rational_polynomials: list = []
 
@@ -243,7 +268,8 @@ class ProcessFile:
                      general_debug_writer: DebugWrite,
                      list_rationals: dict, total_sum: PolynomialSummationRational,
                      list_denominators: list,
-                     list_sage_rationals=None):
+                     list_sage_rationals=None,
+                     list_file_sage_rationals=None):
         if list_sage_rationals is None:
             list_sage_rationals = []
         with open(self.file_path, 'r') as file:
@@ -281,7 +307,8 @@ class ProcessFile:
                                           list_denominators=list_denominators,
                                           debug_write_ltx=debug_write_ltx,
                                           debug_write_sage=debug_write_sage,
-                                          list_sage_rationals=list_sage_rationals)
+                                          list_sage_rationals=list_sage_rationals,
+                                          list_file_sage_rationals=list_file_sage_rationals)
 
                 for key in conversion_table.keys():
                     index: int = conversion_table[key]
@@ -302,7 +329,8 @@ class ProcessFile:
                      list_denominators: list,
                      debug_write_ltx: DebugWrite,
                      debug_write_sage: DebugWrite,
-                     list_sage_rationals=None):
+                     list_sage_rationals=None,
+                     list_file_sage_rationals=None):
         if list_sage_rationals is None:
             list_sage_rationals = []
         if text:
@@ -519,6 +547,8 @@ class ProcessFile:
                     debug_write_sage.write("\r\nAfter Conversion\r\n", 1)
 
                     debug_write_sage.write(str_to_print, 1)
+
+                    list_file_sage_rationals.append(copy.deepcopy(sum_product))
 
                     list_sage_rationals.append(copy.deepcopy(sum_product))
 
