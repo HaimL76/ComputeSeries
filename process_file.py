@@ -70,7 +70,7 @@ class ProcessFolder:
 
         out_file_path_sage = os.path.join(output_full_path, "output_sage.txt")
 
-        list_sage_rationals: [PolynomialProductRational] = []
+        list_sage_rationals: [(PolynomialProductRational, str)] = []
 
         with (open(out_file_path_rational_sum_all, "w") as fw,
               open(out_file_path_sage, "w") as fw_sage):
@@ -120,7 +120,7 @@ class ProcessFolder:
                             fw_file_sage.write("R.<p,t> = PolynomialRing(QQ)\n")
                             fw_file_sage.write("f = QQ.zero()\n")
 
-                            for sum_product in list_sage_rationals:
+                            for sum_product in list_file_sage_rationals:
                                 sum_product_sage: str = sum_product.get_sage_str(with_plus_sign=False,
                                                                                  with_minus_sign=False)
 
@@ -165,7 +165,17 @@ class ProcessFolder:
             fw_sage.write("R.<p,t> = PolynomialRing(QQ)\n")
             fw_sage.write("f = QQ.zero()\n")
 
-            for sum_product in list_sage_rationals:
+            str_case_indices: str = ""
+
+            for tup in list_sage_rationals:
+                sum_product: PolynomialProductRational = tup[0]
+                str_case_indices_from_tuple: str = tup[1]
+
+                if str_case_indices != str_case_indices_from_tuple:
+                    str_case_indices = str_case_indices_from_tuple
+
+                    fw_sage.write(f"#{str_case_indices}\n")
+
                 sum_product_sage: str = sum_product.get_sage_str(with_plus_sign=False,
                                                             with_minus_sign=False)
 
@@ -550,7 +560,7 @@ class ProcessFile:
 
                     list_file_sage_rationals.append(copy.deepcopy(sum_product))
 
-                    list_sage_rationals.append(copy.deepcopy(sum_product))
+                    list_sage_rationals.append((copy.deepcopy(sum_product), str_case_indices))
 
                     sum_product_copy: PolynomialProductRational = copy.deepcopy(sum_product)
                     sum_product_copy_2: PolynomialProductRational = copy.deepcopy(sum_product)
