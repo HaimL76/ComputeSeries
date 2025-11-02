@@ -46,7 +46,7 @@ class Series:
                 numer = Polynomial([self.monomial], in_product=True)
                 denom.power = Rational(2)
             elif elem.power == 2:
-                numer = Polynomial([self.monomial*self.monomial, self.monomial], in_product=True)
+                numer = Polynomial([self.monomial * self.monomial, self.monomial], in_product=True)
                 denom.power = Rational(3)
 
         polynomial_rational: PolynomialRational = PolynomialRational(numer, denom)
@@ -79,6 +79,7 @@ class Series:
 
     def __str__(self):
         return self.get_ltx_str()
+
 
 class SeriesProduct:
     def __init__(self, sers: dict = {}, coeff: Rational = Rational(1), const_coeffs: dict[str, Element] = {},
@@ -126,9 +127,8 @@ class SeriesProduct:
                             if s and s.isnumeric():
                                 ser.start_index = int(s)
 
-
-
-    def sum(self):
+    def sum(self, dict_series_sums: dict[str, list[PolynomialRational]] = None,
+            str_case_indices: str = ""):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
 
@@ -136,6 +136,16 @@ class SeriesProduct:
             series: Series = self.dict_series[key]
 
             single_series_sum: PolynomialRational = series.sum()
+
+            if isinstance(dict_series_sums, dict):
+                str_case_indices = str_case_indices or "all"
+
+                if str_case_indices not in dict_series_sums:
+                    dict_series_sums[str_case_indices] = []
+
+                list_series_sums: list[PolynomialRational] = dict_series_sums[str_case_indices]
+
+                list_series_sums.append(single_series_sum)
 
             single_series_sum_numerator: Polynomial = single_series_sum.numerator
             single_series_sum_denominator: Polynomial = single_series_sum.denominator
@@ -190,7 +200,6 @@ class SeriesProduct:
 
         return "x", index
 
-
     @staticmethod
     def from_exponential_product(exponential_product: ExponentialProduct, conversion_table: dict,
                                  reverse_conversion_table: dict):
@@ -237,7 +246,7 @@ class SeriesProduct:
 
             monomial: Monomial = Monomial(elems=elements)
 
-            key0: tuple[int, int] = 0,0
+            key0: tuple[int, int] = 0, 0
 
             if "p" in elements and "t" in elements:
                 elem = elements["p"]
@@ -245,11 +254,11 @@ class SeriesProduct:
                 elem = elements["t"]
                 t_power = elem.power.numerator
 
-                key0 = p_power,t_power
+                key0 = p_power, t_power
 
             new_symbol, new_index = SeriesProduct.check_and_store_new_index(conversion_table=conversion_table, key=key0)
 
-            #rkey: str = f"{new_symbol}_{new_index}"
+            # rkey: str = f"{new_symbol}_{new_index}"
             rkey = new_index
 
             reverse_conversion_table[rkey] = key0
@@ -260,7 +269,7 @@ class SeriesProduct:
 
             new_elements: dict = {key: elem}
 
-            #monomial.elements = new_elements
+            # monomial.elements = new_elements
 
             series: Series = Series(monom=monomial, pow=symb)
 
@@ -345,6 +354,7 @@ class SeriesProduct:
             l.append(new_series_product)
 
         return l
+
 
 class SeriesProductSum:
     def __init__(self, ser_prods: list = []):

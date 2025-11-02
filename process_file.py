@@ -62,15 +62,15 @@ class ProcessFolder:
 
         out_file_path_rational_sum_all: str = out_file_path.replace(".tex", "_rational_sum_all.tex")
 
-        list_rationals: list = []
-
         rational_sum_of_all_products: PolynomialSummationRational = PolynomialSummationRational()
 
         list_denominators: list = []
 
         out_file_path_sage = os.path.join(output_full_path, "output_sage.txt")
 
-        list_sage_rationals: [(PolynomialProductRational, str)] = []
+        dict_sage_rationals: dict[str, list[PolynomialProductRational]] = {}
+
+        dict_series_sums: dict[str, list[PolynomialRational]] = {}
 
         with (open(out_file_path_rational_sum_all, "w") as fw,
               open(out_file_path_sage, "w") as fw_sage):
@@ -107,10 +107,11 @@ class ProcessFolder:
                                                general_debug_writer=debug_write, list_rationals=dict_rationals,
                                                total_sum=rational_sum_of_all_products,
                                                list_denominators=list_denominators,
-                                               list_sage_rationals=list_sage_rationals,
-                                               list_file_sage_rationals=list_file_sage_rationals)
+                                               dict_sage_rationals=dict_sage_rationals,
+                                               dict_series_sums=dict_series_sums)
 
-                        out_file_path_sage_rationals = os.path.join(proc_file.output_directory_path, out_file_path_sage_rationals)
+                        out_file_path_sage_rationals = os.path.join(proc_file.output_directory_path,
+                                                                    out_file_path_sage_rationals)
 
                         if not os.path.exists(proc_file.output_directory_path):
                             os.makedirs(proc_file.output_directory_path)
@@ -158,8 +159,6 @@ class ProcessFolder:
 
             debug_write.write("\\end{document}")
 
-        _ = list_sage_rationals
-
         with open(out_file_path_sage, "w") as fw_sage:
             fw_sage.write("# Define the polynomial ring\n")
             fw_sage.write("R.<p,t> = PolynomialRing(QQ)\n")
@@ -167,21 +166,19 @@ class ProcessFolder:
 
             str_case_indices: str = ""
 
-            for tup in list_sage_rationals:
-                sum_product: PolynomialProductRational = tup[0]
-                str_case_indices_from_tuple: str = tup[1]
+            for key in dict_sage_rationals.keys():
+                list_sum_products: list[PolynomialProductRational] = dict_sage_rationals[key]
 
-                if str_case_indices != str_case_indices_from_tuple:
-                    str_case_indices = str_case_indices_from_tuple
+                if isinstance(list_sum_products, list) and len(list_sum_products) > 0:
+                    fw_sage.write(f"#{key}\n")
 
-                    fw_sage.write(f"#{str_case_indices}\n")
+                    for sum_product in list_sum_products:
+                        sum_product_sage: str = sum_product.get_sage_str(with_plus_sign=False,
+                                                                         with_minus_sign=False)
 
-                sum_product_sage: str = sum_product.get_sage_str(with_plus_sign=False,
-                                                            with_minus_sign=False)
+                        sign: str = "-" if sum_product.is_minus else "+"
 
-                sign: str = "-" if sum_product.is_minus else "+"
-
-                fw_sage.write(f"f{sign}={sum_product_sage}\n")
+                        fw_sage.write(f"f{sign}={sum_product_sage}\n")
 
             fw_sage.write("print(f)\n")
 
@@ -235,7 +232,8 @@ class ProcessFolder:
                         else:
                             fw_numerator_polynomials.write(",")
 
-                        fw_numerator_polynomials.write(f"{monomial_copy.get_ltx_str(print_sign=Monomial.Print_Sign_If_Minus)}")
+                        fw_numerator_polynomials.write(
+                            f"{monomial_copy.get_ltx_str(print_sign=Monomial.Print_Sign_If_Minus)}")
 
                         monomials_counter += 1
                         line_monomials_counter += 1
@@ -279,7 +277,8 @@ class ProcessFile:
                      list_rationals: dict, total_sum: PolynomialSummationRational,
                      list_denominators: list,
                      list_sage_rationals=None,
-                     list_file_sage_rationals=None):
+                     dict_sage_rationals: dict[str, list[PolynomialProductRational]] = None,
+                     dict_series_sums: dict[str, list[PolynomialRational]] = None):
         if list_sage_rationals is None:
             list_sage_rationals = []
         with open(self.file_path, 'r') as file:
@@ -317,8 +316,8 @@ class ProcessFile:
                                           list_denominators=list_denominators,
                                           debug_write_ltx=debug_write_ltx,
                                           debug_write_sage=debug_write_sage,
-                                          list_sage_rationals=list_sage_rationals,
-                                          list_file_sage_rationals=list_file_sage_rationals)
+                                          dict_sage_rationals=dict_sage_rationals,
+                                          dict_series_sums=dict_series_sums)
 
                 for key in conversion_table.keys():
                     index: int = conversion_table[key]
@@ -339,10 +338,8 @@ class ProcessFile:
                      list_denominators: list,
                      debug_write_ltx: DebugWrite,
                      debug_write_sage: DebugWrite,
-                     list_sage_rationals=None,
-                     list_file_sage_rationals=None):
-        if list_sage_rationals is None:
-            list_sage_rationals = []
+                     dict_sage_rationals: dict[str, list[PolynomialProductRational]] = None,
+                     dict_series_sums: dict[str, list[PolynomialRational]] = None):
         if text:
             text = text.strip()
 
@@ -498,13 +495,15 @@ class ProcessFile:
 
                 debug_write_sage.write(f"{converted_polynomial.get_sage_str()}\r\n", 1)
 
-                converted_pt_product: ExponentialProduct = self.substitution.substitude_exponential_product(self.pt_product)
+                converted_pt_product: ExponentialProduct = self.substitution.substitude_exponential_product(
+                    self.pt_product)
 
                 series_product = SeriesProduct.from_exponential_product(converted_pt_product,
                                                                         conversion_table,
                                                                         reverse_conversion_table)
 
-                if isinstance(series_product, SeriesProduct) and isinstance(self.start_index, dict) and len(self.start_index) > 0:
+                if isinstance(series_product, SeriesProduct) and isinstance(self.start_index, dict) and len(
+                        self.start_index) > 0:
                     for key in self.start_index.keys():
                         if key:
                             val: int = self.start_index[key]
@@ -524,7 +523,8 @@ class ProcessFile:
                 for ser_prod in list_series_products:
                     ser_prod_copy = copy.deepcopy(ser_prod)
 
-                    sum_product: PolynomialProductRational = ser_prod_copy.sum()
+                    sum_product: PolynomialProductRational = ser_prod_copy.sum(dict_series_sums=dict_series_sums,
+                                                                               str_case_indices=str_case_indices)
 
                     numerator: PolynomialProduct = sum_product.numerator
 
@@ -558,9 +558,14 @@ class ProcessFile:
 
                     debug_write_sage.write(str_to_print, 1)
 
-                    list_file_sage_rationals.append(copy.deepcopy(sum_product))
+                    if isinstance(dict_sage_rationals, dict):
+                        if str_case_indices not in dict_sage_rationals:
+                            dict_sage_rationals[str_case_indices] = []
 
-                    list_sage_rationals.append((copy.deepcopy(sum_product), str_case_indices))
+                        list_sage_rationals: list[PolynomialProductRational] = dict_sage_rationals[str_case_indices]
+
+                        if isinstance(list_sage_rationals, list):
+                            list_sage_rationals.append(sum_product)
 
                     sum_product_copy: PolynomialProductRational = copy.deepcopy(sum_product)
                     sum_product_copy_2: PolynomialProductRational = copy.deepcopy(sum_product)
@@ -639,7 +644,7 @@ def store_by_indices(list_rationals: dict, total_sum, case_indices):
                                 power: int = indices[ind]
 
                                 if power != pol.power:
-                                    _ = 0 #debug
+                                    _ = 0  # debug
 
                             indices[ind] = pol.power
 
