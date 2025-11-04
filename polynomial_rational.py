@@ -62,7 +62,7 @@ class PolynomialRational:
         return s
 
     def get_sage_str(self):
-        return f"{self.numerator.get_sage_str()}/{self.denominator.get_sage_str()}"
+        return f"({self.numerator.get_sage_str()})/({self.denominator.get_sage_str()})"
 
     def get_ltx_str(self):
         s: str = f"{self.numerator}"
