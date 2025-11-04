@@ -70,7 +70,7 @@ class ProcessFolder:
 
         dict_sage_rationals: dict[str, list[PolynomialProductRational]] = {}
 
-        dict_series_sums: dict[str, list[dict[str, tuple[int, PolynomialRational]]]] = {}
+        dict_series_sums: dict[str, tuple[bool, list[dict[str, tuple[int, PolynomialRational]]]]] = {}
 
         with (open(out_file_path_rational_sum_all, "w") as fw,
               open(out_file_path_sage, "w") as fw_sage):
@@ -301,7 +301,7 @@ class ProcessFile:
                      list_denominators: list,
                      list_sage_rationals=None,
                      dict_sage_rationals: dict[str, list[PolynomialProductRational]] = None,
-                     dict_series_sums: dict[str, list[dict[str, PolynomialRational]]] = None):
+                     dict_series_sums: dict[str, tuple[bool, list[dict[str, tuple[str, PolynomialRational]]]]] = None):
         if list_sage_rationals is None:
             list_sage_rationals = []
         with open(self.file_path, 'r') as file:
@@ -362,7 +362,7 @@ class ProcessFile:
                      debug_write_ltx: DebugWrite,
                      debug_write_sage: DebugWrite,
                      dict_sage_rationals: dict[str, list[PolynomialProductRational]] = None,
-                     dict_series_sums: dict[str, list[dict[str, PolynomialRational]]] = None):
+                     dict_series_sums: dict[str, tuple[bool, list[dict[str, tuple[str, PolynomialRational]]]]] = None):
         if text:
             text = text.strip()
 

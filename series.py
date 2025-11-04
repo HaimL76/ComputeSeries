@@ -127,7 +127,7 @@ class SeriesProduct:
                             if s and s.isnumeric():
                                 ser.start_index = int(s)
 
-    def sum(self, dict_series_sums: dict[str, list[dict[str, tuple[int, PolynomialRational]]]] = None,
+    def sum(self, dict_series_sums: dict[str, list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]]] = None,
             str_case_indices: str = ""):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
@@ -143,19 +143,21 @@ class SeriesProduct:
                 if str_case_indices not in dict_series_sums:
                     dict_series_sums[str_case_indices] = []
 
-                list_series_sums: list[dict[str, tuple[int, PolynomialRational]]] = dict_series_sums[str_case_indices]
+                list_series_sums: list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[str_case_indices]
 
                 dict_series_sums_powers: dict[str, tuple[int, PolynomialRational]] = {}
 
                 if len(list_series_sums) < 1:
-                    list_series_sums.append(dict_series_sums_powers)
+                    list_series_sums.append((self.is_minus, dict_series_sums_powers))
 
-                dict_series_sums_powers = list_series_sums[-1]
+                tup: tuple[bool, dict[str, tuple[int, PolynomialRational]]] = list_series_sums[-1]
+
+                dict_series_sums_powers = tup[1]
 
                 if series.power in dict_series_sums_powers:
                     dict_series_sums_powers = {}
 
-                    list_series_sums.append(dict_series_sums_powers)
+                    list_series_sums.append((self.is_minus, dict_series_sums_powers))
 
                 dict_series_sums_powers[series.power] = series.start_index, single_series_sum
 
