@@ -147,19 +147,27 @@ class ProcessFolder:
 
                         fw_sage_series_sums.write("g = QQ.one()\n")
 
-                        is_minus: bool = tup[0]
+                        product: SeriesProduct = tup[0]
+
+                        is_minus: bool = product.is_minus
 
                         if is_minus:
                             fw_sage_series_sums.write("g *= -1\n")
 
+                        coefficient = product.coefficient
+
+                        str_coefficient: str = coefficient.get_sage_str()
+
+                        fw_sage_series_sums.write(f"g *= ({str_coefficient})\n")
+
                         for power in dict_series_product.keys():
                             start_index, rational = dict_series_product[power]
 
-                            fw_sage_series_sums.write(f"g*={rational.get_sage_str()} # {power}>={start_index}\n")
+                            fw_sage_series_sums.write(f"g *= {rational.get_sage_str()} # {power}>={start_index}\n")
 
                         fw_sage_series_sums.write("print(f\"g={g}\")\n")
 
-                        fw_sage_series_sums.write(f"f+=g\n")
+                        fw_sage_series_sums.write(f"f += g\n")
 
                 fw_sage_series_sums.write("print(f)\n")
 

@@ -127,7 +127,7 @@ class SeriesProduct:
                             if s and s.isnumeric():
                                 ser.start_index = int(s)
 
-    def sum(self, dict_series_sums: dict[str, list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]]] = None,
+    def sum(self, dict_series_sums: dict[str, list[tuple[SeriesProduct, dict[str, tuple[int, PolynomialRational]]]]] = None,
             str_case_indices: str = ""):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
@@ -176,7 +176,7 @@ class SeriesProduct:
             list_series_sums: list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[
                 str_case_indices]
 
-            list_series_sums.append((self.is_minus, dict_series_product))
+            list_series_sums.append((self, dict_series_product))
 
         result_numerator.coefficient = self.coefficient
 
