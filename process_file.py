@@ -70,7 +70,7 @@ class ProcessFolder:
 
         dict_sage_rationals: dict[str, list[PolynomialProductRational]] = {}
 
-        dict_series_sums: dict[str, tuple[bool, list[dict[str, tuple[int, PolynomialRational]]]]] = {}
+        dict_series_sums: dict[str, list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]]] = {}
 
         with (open(out_file_path_rational_sum_all, "w") as fw,
               open(out_file_path_sage, "w") as fw_sage):
@@ -139,12 +139,21 @@ class ProcessFolder:
                 fw_sage_series_sums.write("f = QQ.zero()\n")
 
                 for str_case_indices in dict_series_sums.keys():
-                    list_series_sums: list[dict[str, tuple[int, PolynomialRational]]] = dict_series_sums[str_case_indices]
+                    list_series_sums: list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[
+                        str_case_indices]
 
-                    for dict_series_sums_powers in list_series_sums:
+                    for tup in list_series_sums:
+                        dict_series_product: dict[str, tuple[int, PolynomialRational]] = tup[1]
+
                         fw_sage_series_sums.write("g = QQ.one()\n")
-                        for power in dict_series_sums_powers.keys():
-                            start_index, rational = dict_series_sums_powers[power]
+
+                        is_minus: bool = tup[0]
+
+                        if is_minus:
+                            fw_sage_series_sums.write("g *= -1\n")
+
+                        for power in dict_series_product.keys():
+                            start_index, rational = dict_series_product[power]
 
                             fw_sage_series_sums.write(f"g*={rational.get_sage_str()} # {power}>={start_index}\n")
 
@@ -301,7 +310,7 @@ class ProcessFile:
                      list_denominators: list,
                      list_sage_rationals=None,
                      dict_sage_rationals: dict[str, list[PolynomialProductRational]] = None,
-                     dict_series_sums: dict[str, tuple[bool, list[dict[str, tuple[str, PolynomialRational]]]]] = None):
+                     dict_series_sums: dict[str, list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]]] = None):
         if list_sage_rationals is None:
             list_sage_rationals = []
         with open(self.file_path, 'r') as file:
@@ -635,8 +644,6 @@ class ProcessFile:
                         index += 1
                         str_to_print = f"Polynomial {index}\r\n\r\n\\[{tup[0]}=\\]\\[={tup[1]}\\]"
                         debug_write_ltx.write(str_to_print)
-
-                _ = 0
 
             self.substitution = None
             self.start_index = None
