@@ -132,34 +132,15 @@ class SeriesProduct:
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
 
+        dict_series_product: dict[str, tuple[int, PolynomialRational]] = {}
+
         for key in self.dict_series.keys():
             series: Series = self.dict_series[key]
 
             single_series_sum: PolynomialRational = series.sum()
 
             if isinstance(dict_series_sums, dict):
-                str_case_indices = str_case_indices or "all"
-
-                if str_case_indices not in dict_series_sums:
-                    dict_series_sums[str_case_indices] = []
-
-                list_series_sums: list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[str_case_indices]
-
-                dict_series_sums_powers: dict[str, tuple[int, PolynomialRational]] = {}
-
-                if len(list_series_sums) < 1:
-                    list_series_sums.append((self.is_minus, dict_series_sums_powers))
-
-                tup: tuple[bool, dict[str, tuple[int, PolynomialRational]]] = list_series_sums[-1]
-
-                dict_series_sums_powers = tup[1]
-
-                if series.power in dict_series_sums_powers:
-                    dict_series_sums_powers = {}
-
-                    list_series_sums.append((self.is_minus, dict_series_sums_powers))
-
-                dict_series_sums_powers[series.power] = series.start_index, single_series_sum
+                dict_series_product[series.power] = series.start_index, single_series_sum
 
             single_series_sum_numerator: Polynomial = single_series_sum.numerator
             single_series_sum_denominator: Polynomial = single_series_sum.denominator
@@ -185,6 +166,17 @@ class SeriesProduct:
 
             if not flag:
                 result_denominator.list_polynomials.append(single_series_sum_denominator)
+
+        if isinstance(dict_series_sums, dict):
+            str_case_indices = str_case_indices or "all"
+
+            if str_case_indices not in dict_series_sums:
+                dict_series_sums[str_case_indices] = []
+
+            list_series_sums: list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[
+                str_case_indices]
+
+            list_series_sums.append((self.is_minus, dict_series_product))
 
         result_numerator.coefficient = self.coefficient
 
