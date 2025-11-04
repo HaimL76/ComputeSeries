@@ -146,7 +146,9 @@ class ProcessFolder:
                         for power in dict_series_sums_powers.keys():
                             start_index, rational = dict_series_sums_powers[power]
 
-                            fw_sage_series_sums.write(f"g*={rational.get_sage_str()} # power={power}\n")
+                            fw_sage_series_sums.write(f"g*={rational.get_sage_str()} # power={power}>={start_index}\n")
+
+                        fw_sage_series_sums.write(f"print(\"g\"+g)\n")
 
                         fw_sage_series_sums.write(f"f+=g\n")
 
