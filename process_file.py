@@ -160,6 +160,12 @@ class ProcessFolder:
 
                         fw_sage_series_sums.write(f"g *= ({str_coefficient})\n")
 
+                        if len(product.const_coefficients) > 0:
+                            for key in product.const_coefficients.keys():
+                                val = product.const_coefficients[key]
+
+                                _ = 0
+
                         for power in dict_series_product.keys():
                             start_index, rational = dict_series_product[power]
 
