@@ -144,6 +144,8 @@ class ProcessFolder:
 
                     fw_sage_series_sums.write(f"########## {str_case_indices}\n")
 
+                    fw_sage_series_sums.write("h = QQ.zero()\n")
+
                     counter: int = 0
 
                     for tup in list_series_sums:
@@ -188,7 +190,11 @@ class ProcessFolder:
 
                         fw_sage_series_sums.write(f"print(f\"g={{g}} #### {str_full_case_indices}\")\n")
 
-                        fw_sage_series_sums.write(f"f += g\n")
+                        fw_sage_series_sums.write("h += g\n")
+
+                    fw_sage_series_sums.write(f"print(f\"h={{h}} #### {str_case_indices}\")\n")
+
+                    fw_sage_series_sums.write("f += h\n")
 
                 fw_sage_series_sums.write("print(f)\n")
 
