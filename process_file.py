@@ -196,6 +196,8 @@ class ProcessFolder:
 
                     fw_sage_series_sums.write("f += h\n")
 
+                fw_sage_series_sums.write("print(\"########## Final Result ##########\")\n")
+
                 fw_sage_series_sums.write("print(f)\n")
 
             list_rational_polynomials: list = []
