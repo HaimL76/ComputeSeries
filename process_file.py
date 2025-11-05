@@ -142,12 +142,20 @@ class ProcessFolder:
                     list_series_sums: list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[
                         str_case_indices]
 
+                    fw_sage_series_sums.write(f"########## {str_case_indices}\n")
+
+                    counter: int = 0
+
                     for tup in list_series_sums:
-                        dict_series_product: dict[str, tuple[int, PolynomialRational]] = tup[1]
+                        dict_series_product: dict[str, tuple[int, PolynomialRational]] = tup[2]
+
+                        counter += 1
+
+                        fw_sage_series_sums.write(f"##### {counter}\n")
 
                         fw_sage_series_sums.write("g = QQ.one()\n")
 
-                        product: SeriesProduct = tup[0]
+                        product: SeriesProduct = tup[1]
 
                         is_minus: bool = product.is_minus
 
@@ -162,16 +170,23 @@ class ProcessFolder:
 
                         if len(product.const_coefficients) > 0:
                             for key in product.const_coefficients.keys():
-                                val = product.const_coefficients[key]
+                                val: Element = product.const_coefficients[key]
 
-                                _ = 0
+                                if isinstance(val, Element):
+                                    for i in range(val.power):
+                                        fw_sage_series_sums.write(f"g *= (1-(p^(-1)))\n")
 
                         for power in dict_series_product.keys():
                             start_index, rational = dict_series_product[power]
 
                             fw_sage_series_sums.write(f"g *= {rational.get_sage_str()} # {power}>={start_index}\n")
 
-                        fw_sage_series_sums.write("print(f\"g={g}\")\n")
+                            if len(list_series_sums) > 1:
+                                counter: int = tup[0]
+
+                                str_full_case_indices: str = f"{str_case_indices}, product {counter}"
+
+                        fw_sage_series_sums.write(f"print(f\"g={{g}} #### {str_full_case_indices}\")\n")
 
                         fw_sage_series_sums.write(f"f += g\n")
 
@@ -566,11 +581,15 @@ class ProcessFile:
                 debug_write_ltx.write(str_to_print)
                 debug_write_sage.write(str_to_print)
 
+                counter: int = 0
+
                 for ser_prod in list_series_products:
+                    counter += 1
                     ser_prod_copy = copy.deepcopy(ser_prod)
 
                     sum_product: PolynomialProductRational = ser_prod_copy.sum(dict_series_sums=dict_series_sums,
-                                                                               str_case_indices=str_case_indices)
+                                                                               str_case_indices=str_case_indices,
+                                                                               counter=counter)
 
                     numerator: PolynomialProduct = sum_product.numerator
 

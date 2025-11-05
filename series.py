@@ -127,8 +127,8 @@ class SeriesProduct:
                             if s and s.isnumeric():
                                 ser.start_index = int(s)
 
-    def sum(self, dict_series_sums: dict[str, list[tuple[SeriesProduct, dict[str, tuple[int, PolynomialRational]]]]] = None,
-            str_case_indices: str = ""):
+    def sum(self, dict_series_sums: dict[str, list[tuple[int, SeriesProduct, dict[str, tuple[int, PolynomialRational]]]]] = None,
+            str_case_indices: str = "", counter: int = 0):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
 
@@ -176,7 +176,7 @@ class SeriesProduct:
             list_series_sums: list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[
                 str_case_indices]
 
-            list_series_sums.append((self, dict_series_product))
+            list_series_sums.append((counter, self, dict_series_product))
 
         result_numerator.coefficient = self.coefficient
 
@@ -264,18 +264,9 @@ class SeriesProduct:
 
             new_symbol, new_index = SeriesProduct.check_and_store_new_index(conversion_table=conversion_table, key=key0)
 
-            # rkey: str = f"{new_symbol}_{new_index}"
             rkey = new_index
 
             reverse_conversion_table[rkey] = key0
-
-            elem: Element = Element(symb=new_symbol, ind=new_index)
-
-            key: str = f"{elem.symbol}_{elem.index}"
-
-            new_elements: dict = {key: elem}
-
-            # monomial.elements = new_elements
 
             series: Series = Series(monom=monomial, pow=symb)
 
