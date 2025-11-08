@@ -58,7 +58,7 @@ substitution: v_2=a+2.b+2.c+d
 substitution: v_3=b+c
 substitution: v_4=a+b+c
 
-indices: a,c
+indices: a,c,d
 
 run
 
