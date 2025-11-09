@@ -1,4 +1,5 @@
 import copy
+from typing import Any
 
 from debug_write import DebugWrite
 from element import Element
@@ -127,7 +128,7 @@ class SeriesProduct:
                             if s and s.isnumeric():
                                 ser.start_index = int(s)
 
-    def sum(self, dict_series_sums: dict[str, list[tuple[int, SeriesProduct, dict[str, tuple[int, PolynomialRational]]]]] = None,
+    def sum(self, dict_series_sums: dict[str, list[tuple[int, Any, dict[str, tuple[int, PolynomialRational]]]]] = None,
             str_case_indices: str = "", counter: int = 0):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()

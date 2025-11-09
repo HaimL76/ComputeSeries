@@ -32,7 +32,8 @@ class ProcessFolder:
     pt_product_4: ExponentialProduct = ExponentialProduct.parse(str_pt_product_4,
                                                                 list_const_coeffs=list_const_coeffs)
 
-    def __init__(self, input_path: str, output_path: str = None):
+    def __init__(self, input_path: str, output_path: str = None, debug: bool = False):
+        self.print_debug: bool = debug
         self.conversion_table: dict = {}
         self.reverse_conversion_table: dict = {}
 
@@ -70,7 +71,7 @@ class ProcessFolder:
 
         dict_sage_rationals: dict[str, list[PolynomialProductRational]] = {}
 
-        dict_series_sums: dict[str, list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]]] = {}
+        dict_series_sums: dict[str, list[tuple[bool, SeriesProduct, dict[str, tuple[int, PolynomialRational]]]]] = {}
 
         with (open(out_file_path_rational_sum_all, "w") as fw,
               open(out_file_path_sage, "w") as fw_sage):
@@ -133,13 +134,23 @@ class ProcessFolder:
 
             out_file_path_sage_series_sums: str = os.path.join(output_full_path, "output_sage_series_sums.txt")
 
+            num_series_products: int = 0
+
+            for key in dict_series_sums.keys():
+                val_dict = dict_series_sums[key]
+
+                if isinstance(val_dict, list):
+                    length: int = len(val_dict)
+
+                    num_series_products += length
+
             with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums:
                 fw_sage_series_sums.write("# Define the polynomial ring\n")
                 fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
                 fw_sage_series_sums.write("f = QQ.zero()\n")
 
                 for str_case_indices in dict_series_sums.keys():
-                    list_series_sums: list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[
+                    list_series_sums: list[tuple[bool, SeriesProduct, dict[str, tuple[int, PolynomialRational]]]] = dict_series_sums[
                         str_case_indices]
 
                     fw_sage_series_sums.write(f"########## {str_case_indices}\n")
@@ -148,6 +159,8 @@ class ProcessFolder:
 
                     counter: int = 0
 
+                    str_debug: str = ""
+
                     for tup in list_series_sums:
                         dict_series_product: dict[str, tuple[int, PolynomialRational]] = tup[2]
 
@@ -155,20 +168,32 @@ class ProcessFolder:
 
                         fw_sage_series_sums.write(f"##### {counter}\n")
 
-                        fw_sage_series_sums.write("g = QQ.one()\n")
+                        str_print: str = "g = QQ.one()\n"
+
+                        str_debug += str_print
+
+                        fw_sage_series_sums.write(str_debug)
 
                         product: SeriesProduct = tup[1]
 
                         is_minus: bool = product.is_minus
 
                         if is_minus:
-                            fw_sage_series_sums.write("g *= -1\n")
+                            str_print = "g *= -1\n"
+
+                            str_debug += str_print
+
+                            fw_sage_series_sums.write(str_debug)
 
                         coefficient = product.coefficient
 
                         str_coefficient: str = coefficient.get_sage_str()
 
-                        fw_sage_series_sums.write(f"g *= ({str_coefficient})\n")
+                        str_print = f"g *= ({str_coefficient})\n"
+
+                        str_debug += str_print
+
+                        fw_sage_series_sums.write(str_debug)
 
                         if len(product.const_coefficients) > 0:
                             for key in product.const_coefficients.keys():
@@ -176,27 +201,38 @@ class ProcessFolder:
 
                                 if isinstance(val, Element):
                                     for i in range(val.power):
-                                        fw_sage_series_sums.write(f"g *= (1-(p^(-1)))\n")
+                                        str_print = f"g *= (1-(p^(-1)))\n"
+
+                                        str_debug += str_print
+
+                                        fw_sage_series_sums.write(str_print)
 
                         for power in dict_series_product.keys():
                             start_index, rational = dict_series_product[power]
 
-                            fw_sage_series_sums.write(f"g *= {rational.get_sage_str()} # {power}>={start_index}\n")
+                            str_print = f"g *= {rational.get_sage_str()} # {power}>={start_index}\n"
+
+                            str_debug += str_print
+
+                            fw_sage_series_sums.write(str_print)
 
                             if len(list_series_sums) > 1:
                                 counter: int = tup[0]
 
                                 str_full_case_indices: str = f"{str_case_indices}, product {counter}"
 
-                        fw_sage_series_sums.write(f"print(f\"g={{g}} #### {str_full_case_indices}\")\n")
+                        if self.print_debug:
+                            fw_sage_series_sums.write(f"print(f\"g={{g}} #### {str_full_case_indices}\")\n")
 
                         fw_sage_series_sums.write("h += g\n")
 
-                    fw_sage_series_sums.write(f"print(f\"h={{h}} #### {str_case_indices}\")\n")
+                    if self.print_debug:
+                        fw_sage_series_sums.write(f"print(f\"h={{h}} #### {str_case_indices}\")\n")
 
                     fw_sage_series_sums.write("f += h\n")
 
-                fw_sage_series_sums.write("print(\"########## Final Output ##########\")\n")
+                if self.print_debug:
+                    fw_sage_series_sums.write("print(\"########## Final Output ##########\")\n")
 
                 fw_sage_series_sums.write("print(f)\n")
 
