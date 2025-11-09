@@ -1,5 +1,6 @@
 import copy
 import os
+import random
 import re
 
 from debug_write import DebugWrite
@@ -143,6 +144,15 @@ class ProcessFolder:
                     length: int = len(val_dict)
 
                     num_series_products += length
+
+            dict_random_numbers: dict[int, int]
+
+            num_random_numbers: int = 10
+
+            while len(dict_random_numbers) < num_random_numbers:
+                random_number = int(random.random() * num_series_products)
+
+                dict_random_numbers[random_number] = 0
 
             with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums:
                 fw_sage_series_sums.write("# Define the polynomial ring\n")
