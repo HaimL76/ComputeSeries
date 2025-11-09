@@ -393,7 +393,7 @@ class ProcessFile:
                      list_denominators: list,
                      list_sage_rationals=None,
                      dict_sage_rationals: dict[str, list[PolynomialProductRational]] = None,
-                     dict_series_sums: dict[str, list[tuple[bool, dict[str, tuple[int, PolynomialRational]]]]] = None):
+                     dict_series_sums: dict[str, list[tuple[bool, SeriesProduct, dict[str, tuple[int, PolynomialRational]]]]] = None):
         if list_sage_rationals is None:
             list_sage_rationals = []
         with open(self.file_path, 'r') as file:
