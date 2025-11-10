@@ -45,6 +45,25 @@ class ProcessFolder:
         if not self.output_folder_path:
             self.output_folder_path = self.input_folder_path
 
+    @staticmethod
+    def write_case_sage_rationals(list_file_sage_rationals: list,
+                                  out_file_path_sage_rationals: str,
+                                  ):
+        with open(out_file_path_sage_rationals, "w") as fw_file_sage:
+            fw_file_sage.write("# Define the polynomial ring\n")
+            fw_file_sage.write("R.<p,t> = PolynomialRing(QQ)\n")
+            fw_file_sage.write("f = QQ.zero()\n")
+
+            for sum_product in list_file_sage_rationals:
+                sum_product_sage: str = sum_product.get_sage_str(with_plus_sign=False,
+                                                                 with_minus_sign=False)
+
+                sign: str = "-" if sum_product.is_minus else "+"
+
+                fw_file_sage.write(f"f{sign}={sum_product_sage}\n")
+
+            fw_file_sage.write("print(f)\n")
+
     def process_folder(self, pattern=None):
         input_file_paths: list = os.listdir(self.input_folder_path)
 
@@ -118,20 +137,8 @@ class ProcessFolder:
                         if not os.path.exists(proc_file.output_directory_path):
                             os.makedirs(proc_file.output_directory_path)
 
-                        with open(out_file_path_sage_rationals, "w") as fw_file_sage:
-                            fw_file_sage.write("# Define the polynomial ring\n")
-                            fw_file_sage.write("R.<p,t> = PolynomialRing(QQ)\n")
-                            fw_file_sage.write("f = QQ.zero()\n")
-
-                            for sum_product in list_file_sage_rationals:
-                                sum_product_sage: str = sum_product.get_sage_str(with_plus_sign=False,
-                                                                                 with_minus_sign=False)
-
-                                sign: str = "-" if sum_product.is_minus else "+"
-
-                                fw_file_sage.write(f"f{sign}={sum_product_sage}\n")
-
-                            fw_file_sage.write("print(f)\n")
+                        ProcessFolder.write_case_sage_rationals(list_file_sage_rationals,
+                                                       out_file_path_sage_rationals)
 
             out_file_path_sage_series_sums: str = os.path.join(output_full_path, "output_sage_series_sums.txt")
 
