@@ -74,7 +74,8 @@ class ProcessFolder:
 
         with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums:
             fw_sage_series_sums.write("# Define the polynomial ring\n")
-            fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
+            #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
+            fw_sage_series_sums.write("var(\"p,t,a,b,c,d\")")
             fw_sage_series_sums.write("f = QQ.zero()\n")
 
             for str_case_indices in dict_series_sums.keys():
@@ -101,7 +102,7 @@ class ProcessFolder:
 
                     str_debug += str_print
 
-                    fw_sage_series_sums.write(str_debug)
+                    fw_sage_series_sums.write(str_print)
 
                     product: SeriesProduct = tup[1]
 
@@ -139,7 +140,7 @@ class ProcessFolder:
                     for power in dict_series_product.keys():
                         start_index, rational, str_sage = dict_series_product[power]
 
-                        str_print = f"g *= {rational.get_sage_str()} # {power}>={start_index}\n"
+                        str_print = f"g *= {str_sage} # {power}>={start_index}\n"
 
                         str_debug += str_print
 

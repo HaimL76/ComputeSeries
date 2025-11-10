@@ -23,7 +23,7 @@ class Series:
 
         str_sage_sum = f"({str_sage_sum})^{self.power}"
 
-        str_sage_sum = f"sum({str_sage_sum}, {self.power}, {self.start_index}, oo, algorithm=\"giac\")\n"
+        str_sage_sum = f"sum({str_sage_sum}, {self.power}, {self.start_index}, oo, algorithm=\"giac\")"
 
         return str_sage_sum
 
