@@ -18,6 +18,15 @@ class Series:
         self.monomial: Monomial = monom
         self.power: str = pow
 
+    def sage_sum(self) -> str:
+        str_sage_sum: str = "*".join([f"{elem.symbol}^{elem.power}" for elem in self.monomial.elements.values()])
+
+        str_sage_sum = f"({str_sage_sum})^{self.power}"
+
+        str_sage_sum = f"sum({str_sage_sum}, {self.power}, {self.start_index}, oo, algorithm=\"giac\")\n"
+
+        return str_sage_sum
+
     def sum(self):
         numer: Polynomial = Polynomial.parse_single("1", list_const_coeffs=[])
 
@@ -128,20 +137,22 @@ class SeriesProduct:
                             if s and s.isnumeric():
                                 ser.start_index = int(s)
 
-    def sum(self, dict_series_sums: dict[str, list[tuple[int, Any, dict[str, tuple[int, PolynomialRational]]]]] = None,
+    def sum(self, dict_series_sums: dict[str, list[tuple[int, Any, dict[str, tuple[int, PolynomialRational, str]]]]] = None,
             str_case_indices: str = "", counter: int = 0):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
 
-        dict_series_product: dict[str, tuple[int, PolynomialRational]] = {}
+        dict_series_product: dict[str, tuple[int, PolynomialRational, str]] = {}
 
         for key in self.dict_series.keys():
             series: Series = self.dict_series[key]
 
             single_series_sum: PolynomialRational = series.sum()
 
+            str_sage_sum: str = series.sage_sum()
+
             if isinstance(dict_series_sums, dict):
-                dict_series_product[series.power] = series.start_index, single_series_sum
+                dict_series_product[series.power] = series.start_index, single_series_sum, str_sage_sum
 
             single_series_sum_numerator: Polynomial = single_series_sum.numerator
             single_series_sum_denominator: Polynomial = single_series_sum.denominator
