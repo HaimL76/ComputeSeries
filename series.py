@@ -23,6 +23,30 @@ class Series:
 
         str_sage_sum = f"({str_sage_sum})^{self.power}"
 
+        if isinstance(self.coefficient, Monomial):
+            elements: dict[Element] = self.coefficient.elements
+
+            list_coefficients: list[str] = []
+
+            if isinstance(elements, dict) and len(elements) > 0:
+                for key in elements.keys():
+                    elem: Element = elements[key]
+
+                    str_element: str = elem.symbol
+
+                    if elem.power > 1:
+                        str_element = f"{str_element}^{elem.power}"
+
+                    list_coefficients.append(str_element)
+
+            if isinstance(list_coefficients, list) and len(list_coefficients) > 0:
+                str_coefficients: str = "*".join([str_coefficient for str_coefficient in list_coefficients])
+
+                if len(list_coefficients) > 1:
+                    str_coefficients = f"({str_coefficients})"
+
+                str_sage_sum = f"{str_coefficients}*{str_sage_sum}"
+
         str_sage_sum = f"sum({str_sage_sum}, {self.power}, {self.start_index}, oo, algorithm=\"giac\")"
 
         return str_sage_sum

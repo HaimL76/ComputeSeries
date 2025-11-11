@@ -75,7 +75,7 @@ class ProcessFolder:
         with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums:
             fw_sage_series_sums.write("# Define the polynomial ring\n")
             #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
-            fw_sage_series_sums.write("var(\"p,t,a,b,c,d\")")
+            fw_sage_series_sums.write("var(\"p,t,a,b,c,d\")\n")
             fw_sage_series_sums.write("f = QQ.zero()\n")
 
             for str_case_indices in dict_series_sums.keys():
