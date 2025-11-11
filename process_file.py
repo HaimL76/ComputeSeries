@@ -113,7 +113,7 @@ class ProcessFolder:
 
                         str_debug += str_print
 
-                        fw_sage_series_sums.write(str_debug)
+                        fw_sage_series_sums.write(str_print)
 
                     coefficient = product.coefficient
 
@@ -123,7 +123,7 @@ class ProcessFolder:
 
                     str_debug += str_print
 
-                    fw_sage_series_sums.write(str_debug)
+                    fw_sage_series_sums.write(str_print)
 
                     if len(product.const_coefficients) > 0:
                         for key in product.const_coefficients.keys():
@@ -230,7 +230,7 @@ class ProcessFolder:
 
                     str_debug += str_print
 
-                    fw_sage_series_sums.write(str_debug)
+                    fw_sage_series_sums.write(str_print)
 
                     product: SeriesProduct = tup[1]
 
@@ -241,7 +241,7 @@ class ProcessFolder:
 
                         str_debug += str_print
 
-                        fw_sage_series_sums.write(str_debug)
+                        fw_sage_series_sums.write(str_print)
 
                     coefficient = product.coefficient
 
@@ -251,7 +251,7 @@ class ProcessFolder:
 
                     str_debug += str_print
 
-                    fw_sage_series_sums.write(str_debug)
+                    fw_sage_series_sums.write(str_print)
 
                     if len(product.const_coefficients) > 0:
                         for key in product.const_coefficients.keys():
