@@ -118,9 +118,14 @@ class ProcessFolder:
                     coefficient = product.coefficient
 
                     if coefficient != Rational(1):
+                        is_integer: bool = coefficient.denominator == 1
+
                         str_coefficient: str = coefficient.get_sage_str()
 
-                        str_print = f"g *= ({str_coefficient})\n"
+                        if not is_integer:
+                            str_coefficient = f"({str_coefficient})"
+
+                        str_print = f"g *= {str_coefficient}\n"
 
                         str_debug += str_print
 
