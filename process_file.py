@@ -73,7 +73,7 @@ class ProcessFolder:
         list_debug_data: list[str] = []
 
         with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums:
-            fw_sage_series_sums.write("# Define the polynomial ring\n")
+            #fw_sage_series_sums.write("# Define the polynomial ring\n")
             #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
             fw_sage_series_sums.write("var(\"p,t,a,b,c,d\")\n")
             fw_sage_series_sums.write("f = QQ.zero()\n")
