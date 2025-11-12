@@ -117,13 +117,14 @@ class ProcessFolder:
 
                     coefficient = product.coefficient
 
-                    str_coefficient: str = coefficient.get_sage_str()
+                    if coefficient != Rational(1):
+                        str_coefficient: str = coefficient.get_sage_str()
 
-                    str_print = f"g *= ({str_coefficient})\n"
+                        str_print = f"g *= ({str_coefficient})\n"
 
-                    str_debug += str_print
+                        str_debug += str_print
 
-                    fw_sage_series_sums.write(str_print)
+                        fw_sage_series_sums.write(str_print)
 
                     if len(product.const_coefficients) > 0:
                         for key in product.const_coefficients.keys():
