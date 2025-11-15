@@ -357,6 +357,8 @@ class ProcessFolder:
         dict_series_sums: dict[
             str, list[tuple[bool, SeriesProduct, dict[str, tuple[int, PolynomialRational, str]]]]] = {}
 
+        dict_polynomials_data: dict = {}
+
         with (open(out_file_path_rational_sum_all, "w") as fw,
               open(out_file_path_sage, "w") as fw_sage):
             debug_write: DebugWrite = DebugWrite.get_instance(fw=fw)
@@ -393,7 +395,8 @@ class ProcessFolder:
                                                total_sum=rational_sum_of_all_products,
                                                list_denominators=list_denominators,
                                                dict_sage_rationals=dict_sage_rationals,
-                                               dict_series_sums=dict_series_sums)
+                                               dict_series_sums=dict_series_sums,
+                                               dict_polynomials_data=dict_polynomials_data)
 
                         out_file_path_sage_rationals = os.path.join(proc_file.output_directory_path,
                                                                     out_file_path_sage_rationals)
@@ -557,7 +560,8 @@ class ProcessFile:
                      list_sage_rationals=None,
                      dict_sage_rationals: dict[str, list[PolynomialProductRational]] = None,
                      dict_series_sums: dict[
-                         str, list[tuple[bool, SeriesProduct, dict[str, tuple[int, PolynomialRational, str]]]]] = None):
+                         str, list[tuple[bool, SeriesProduct, dict[str, tuple[int, PolynomialRational, str]]]]] = None,
+                     dict_polynomials_data: dict = None):
         if list_sage_rationals is None:
             list_sage_rationals = []
         with open(self.file_path, 'r') as file:
@@ -596,7 +600,8 @@ class ProcessFile:
                                           debug_write_ltx=debug_write_ltx,
                                           debug_write_sage=debug_write_sage,
                                           dict_sage_rationals=dict_sage_rationals,
-                                          dict_series_sums=dict_series_sums)
+                                          dict_series_sums=dict_series_sums,
+                                          dict_polynomials_data=dict_polynomials_data)
 
                 for key in conversion_table.keys():
                     index: int = conversion_table[key]
@@ -619,7 +624,8 @@ class ProcessFile:
                      debug_write_sage: DebugWrite,
                      dict_sage_rationals: dict[str, list[PolynomialProductRational]] = None,
                      dict_series_sums: dict[
-                         str, tuple[bool, list[dict[str, tuple[str, PolynomialRational, str]]]]] = None):
+                         str, tuple[bool, list[dict[str, tuple[str, PolynomialRational, str]]]]] = None,
+                     dict_polynomials_data: dict = None):
         if text:
             text = text.strip()
 
@@ -754,6 +760,13 @@ class ProcessFile:
                 general_debug_writer.write(f"\n{str_case_indices}\n")
 
             for polynomial in self.polynomials:
+                if polynomial not in dict_polynomials_data:
+                    dict_polynomials_data[polynomial] = []
+
+                list_ = dict_polynomials_data[polynomial]
+
+                list_.append(self.substitution)
+
                 debug_write_ltx.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
 
                 debug_write_sage.write(f"{polynomial.get_sage_str()}\r\n", 1)
