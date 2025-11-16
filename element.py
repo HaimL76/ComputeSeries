@@ -72,16 +72,19 @@ class Element:
     WithParenthesesByLength: int = 2
     WithParenthesesByForPowerByLength: int = 3
 
-    def get_sage_str(self, with_parentheses: int = WithParenthesesByLength):
-        return self.get_str(with_parentheses=with_parentheses, is_latex=False)
+    def get_sage_str(self, with_parentheses: int = WithParenthesesByLength, remove_underscore: bool = False):
+        return self.get_str(with_parentheses=with_parentheses, is_latex=False, remove_underscore=remove_underscore)
 
     def get_ltx_str(self, with_parentheses: int = WithParenthesesByLength):
         return self.get_str(with_parentheses=with_parentheses, is_latex=True)
 
-    def get_str(self, with_parentheses: int = WithParenthesesByLength, is_latex: bool = True):
+    def get_str(self, with_parentheses: int = WithParenthesesByLength, is_latex: bool = True, remove_underscore: bool = False):
         converted: bool = False
 
         str_output: str = self.symbol
+
+        if remove_underscore:
+            str_output = str_output.replace("_", "")
 
         if self.index is not None:
             s = f"{str_output}_{{{self.index}}}"
@@ -109,7 +112,8 @@ class Element:
         for_power_by_length = with_parentheses == Element.WithParenthesesByForPowerByLength and length_more_than_1 and self.power != 1
 
         if anyway or by_length or for_power_by_length:
-            str_output = f"\\left({str_output}\\right)"
+            if is_latex:
+                str_output = f"\\left({str_output}\\right)"
 
         if self.power != 1:
             str_output = f"{str_output}^{{{self.power}}}" if is_latex else f"{str_output}^{self.power}"

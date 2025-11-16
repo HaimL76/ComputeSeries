@@ -281,6 +281,10 @@ class Monomial:
 
         if self.coefficient != Rational(1) or (len(self.elements) < 1 and len(self.const_coefficients) < 1):
             str_output = f"{self.coefficient.get_str(is_latex=is_latex)}"
+
+            if self.coefficient.denominator != Rational(1):
+                str_output = f"({str_output})"
+
             counter += 1
 
         const_coeffs: dict = self.const_coefficients
@@ -315,7 +319,7 @@ class Monomial:
             delimiter: str = "" if is_latex else "*"
 
             if len(self.elements) > 0:
-                s0 = delimiter.join(f"{elem.get_str(is_latex=is_latex)}" for elem in self.elements.values())
+                s0 = delimiter.join(f"{elem.get_str(is_latex=is_latex, remove_underscore=True)}" for elem in self.elements.values())
 
             if len(s0) > 0:
                 if len(str_output) > 0:

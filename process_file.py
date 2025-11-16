@@ -407,6 +407,18 @@ class ProcessFolder:
                         ProcessFolder.write_case_sage_rationals(list_file_sage_rationals,
                                                                 out_file_path_sage_rationals)
 
+            out_file_path_sage_polynomials: str = os.path.join(output_full_path, "output_sage_polynomials.txt")
+
+            with open(out_file_path_sage_polynomials, "w") as fw_sage_polynomials:
+                fw_sage_polynomials.write("var(\"v1,v2,v3,v4,a,b,c,d\")\n")
+                for polynomial in dict_polynomials_data.keys():
+                    list_: list = dict_polynomials_data[polynomial]
+
+                    for tup in list_:
+                        s: str = polynomial.get_sage_str()
+                        print(s)
+                        fw_sage_polynomials.write(f"f={s}\n")
+
             out_file_path_sage_series_sums: str = os.path.join(output_full_path, "output_sage_series_sums.txt")
 
             list_rational_polynomials: list = []
@@ -765,7 +777,9 @@ class ProcessFile:
 
                 list_ = dict_polynomials_data[polynomial]
 
-                list_.append(self.substitution)
+                polynomial_data: tuple = self.substitution, self.start_index
+
+                list_.append(polynomial_data)
 
                 debug_write_ltx.write(f"\\[{polynomial.get_ltx_str()}\\]\r\n", 1)
 
