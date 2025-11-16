@@ -418,6 +418,18 @@ class ProcessFolder:
                         s: str = polynomial.get_sage_str()
                         print(s)
                         fw_sage_polynomials.write(f"f={s}\n")
+                        substitution: dict[str, Polynomial] = tup[0].substitution
+
+                        for symb in substitution.keys():
+                            polynomial: Polynomial = substitution[symb]
+
+                            symb = symb.replace("_", "")
+
+                            str_polynomial: str = polynomial.get_sage_str()
+
+                            fw_sage_polynomials.write(f"{symb}={str_polynomial}\n")
+
+                        fw_sage_polynomials.write(f"print(f)\n")
 
             out_file_path_sage_series_sums: str = os.path.join(output_full_path, "output_sage_series_sums.txt")
 

@@ -282,7 +282,7 @@ class Monomial:
         if self.coefficient != Rational(1) or (len(self.elements) < 1 and len(self.const_coefficients) < 1):
             str_output = f"{self.coefficient.get_str(is_latex=is_latex)}"
 
-            if self.coefficient.denominator != Rational(1):
+            if not is_latex and self.coefficient.denominator != Rational(1):
                 str_output = f"({str_output})"
 
             counter += 1
@@ -300,6 +300,13 @@ class Monomial:
 
                 if len(const_coeff.symbol) > 1:
                     str_const_coefficient = f"({str_const_coefficient})"
+                else:
+                    if not is_latex:
+                        if str_const_coefficient == "A":
+                            str_const_coefficient = "(1-p^-1)"
+
+                            if const_coeff.power > 1:
+                                str_const_coefficient = f"{str_const_coefficient}^{const_coeff.power}"
 
                 delimiter: str = ""
 
@@ -308,7 +315,7 @@ class Monomial:
 
                 str_output = f"{str_output}{delimiter}{str_const_coefficient}"
 
-                if const_coeff.power != 1:
+                if is_latex and const_coeff.power != 1:
                     str_output = f"{str_output}^{const_coeff.power}"
 
                 counter += 1
