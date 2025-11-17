@@ -1,3 +1,5 @@
+from fontTools.ttLib.tables.otTables import DeltaSetIndexMap
+
 from element import Element
 from exponential import Exponential, ExponentialProduct
 from monomial import Monomial
@@ -113,4 +115,11 @@ class VariableSubstitution:
         return self.get_str(is_latex=False)
 
     def get_str(self, is_latex: bool = True):
-        return "".join(f"\\[{key}\\rightarrow{{{self.substitution[key].get_str(is_latex=is_latex)}}}\\]" for key in self.substitution)
+        str_substitution: str = ""
+
+        if is_latex:
+            str_substitution = "".join(f"\\[{key}\\rightarrow{{{self.substitution[key].get_str(is_latex=is_latex)}}}\\]" for key in self.substitution)
+        else:
+            str_substitution = ",".join(f"{key}={self.substitution[key].get_str(is_latex=is_latex)}" for key in self.substitution)
+
+        return str_substitution
