@@ -63,7 +63,7 @@ class ProcessFolder:
 
         series_product_counter: int = 0
 
-        while len(dict_random_numbers) < num_random_numbers:
+        while False:# len(dict_random_numbers) < num_random_numbers:
             random_number = int(random.random() * num_series_products)
 
             dict_random_numbers[random_number] = 0
@@ -79,11 +79,17 @@ class ProcessFolder:
             fw_sage_series_sums.write("f = QQ.zero()\n")
 
             for str_case_indices in dict_series_sums.keys():
-                list_series_sums: list[tuple[bool, SeriesProduct, dict[str, tuple[int, PolynomialRational, str]]]] = \
-                    dict_series_sums[
-                        str_case_indices]
+                tup_val: tuple = dict_series_sums[str_case_indices]
+                list_series_sums: list = tup_val[2]
+                original_polynomial: Polynomial = tup_val[0]
+                converted_polynomial: Polynomial = tup_val[1]
+
+                str_original_polynomial: str = original_polynomial.get_sage_str()
+                str_converted_polynomial: str = converted_polynomial.get_sage_str()
 
                 fw_sage_series_sums.write(f"########## {str_case_indices}\n")
+                fw_sage_series_sums.write(f"########## {str_original_polynomial}\n")
+                fw_sage_series_sums.write(f"########## {str_converted_polynomial}\n")
 
                 fw_sage_series_sums.write("h = QQ.zero()\n")
 
@@ -92,7 +98,7 @@ class ProcessFolder:
                 str_debug: str = ""
 
                 for tup in list_series_sums:
-                    dict_series_product: dict[str, tuple[int, PolynomialRational, str]] = tup[2]
+                    dict_series_product: dict = tup[2]
 
                     counter += 1
 
@@ -410,7 +416,7 @@ class ProcessFolder:
             out_file_path_sage_polynomials: str = os.path.join(output_full_path, "output_sage_polynomials.txt")
 
             with open(out_file_path_sage_polynomials, "w") as fw_sage_polynomials:
-                fw_sage_polynomials.write("var(\"v1,v2,v3,v4,a,b,c,d\")\n")
+                fw_sage_polynomials.write("var(\"v1,v2,v3,v4,a,b,c,d,p\")\n")
                 for polynomial in dict_polynomials_data.keys():
                     list_: list = dict_polynomials_data[polynomial]
 
@@ -847,7 +853,8 @@ class ProcessFile:
 
                     sum_product: PolynomialProductRational = ser_prod_copy.sum(dict_series_sums=dict_series_sums,
                                                                                str_case_indices=str_case_indices,
-                                                                               counter=counter)
+                                                                               counter=counter, original_polynomial=polynomial,
+                                                                               converted_polynomial=converted_polynomial)
 
                     numerator: PolynomialProduct = sum_product.numerator
 
