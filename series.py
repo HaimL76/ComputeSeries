@@ -8,6 +8,7 @@ from monomial import Monomial
 from polynomial import Polynomial, PolynomialProduct
 from rational import Rational
 from polynomial_rational import PolynomialRational, PolynomialProductRational
+from substitution import VariableSubstitution
 
 
 class Series:
@@ -164,11 +165,12 @@ class SeriesProduct:
     def sum(self,
             dict_series_sums: dict = None, str_case_indices: str = "",
             counter: int = 0, original_polynomial: Polynomial = None,
-            converted_polynomial: Polynomial = None):
+            converted_polynomial: Polynomial = None,
+            substitution: VariableSubstitution = None):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
 
-        dict_series_product: dict[str, tuple[int, PolynomialRational, str]] = {}
+        dict_series_product: dict = {}
 
         for key in self.dict_series.keys():
             series: Series = self.dict_series[key]
@@ -209,11 +211,11 @@ class SeriesProduct:
             str_case_indices = str_case_indices or "all"
 
             if str_case_indices not in dict_series_sums:
-                dict_series_sums[str_case_indices] = original_polynomial, converted_polynomial, []
+                dict_series_sums[str_case_indices] = original_polynomial, converted_polynomial, substitution, []
 
             tup: tuple = dict_series_sums[str_case_indices]
 
-            list_series_sums: list = tup[2]
+            list_series_sums: list = tup[-1]
 
             list_series_sums.append((counter, self, dict_series_product))
 

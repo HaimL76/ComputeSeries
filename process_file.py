@@ -80,15 +80,18 @@ class ProcessFolder:
 
             for str_case_indices in dict_series_sums.keys():
                 tup_val: tuple = dict_series_sums[str_case_indices]
-                list_series_sums: list = tup_val[2]
+                list_series_sums: list = tup_val[-1]
                 original_polynomial: Polynomial = tup_val[0]
                 converted_polynomial: Polynomial = tup_val[1]
+                substitution: VariableSubstitution = tup_val[2]
 
                 str_original_polynomial: str = original_polynomial.get_sage_str()
                 str_converted_polynomial: str = converted_polynomial.get_sage_str()
+                str_substitution: str = substitution.get_sage_str()
 
                 fw_sage_series_sums.write(f"########## {str_case_indices}\n")
                 fw_sage_series_sums.write(f"########## {str_original_polynomial}\n")
+                fw_sage_series_sums.write(f"########## {str_substitution}\n")
                 fw_sage_series_sums.write(f"########## {str_converted_polynomial}\n")
 
                 fw_sage_series_sums.write("h = QQ.zero()\n")
@@ -854,7 +857,8 @@ class ProcessFile:
                     sum_product: PolynomialProductRational = ser_prod_copy.sum(dict_series_sums=dict_series_sums,
                                                                                str_case_indices=str_case_indices,
                                                                                counter=counter, original_polynomial=polynomial,
-                                                                               converted_polynomial=converted_polynomial)
+                                                                               converted_polynomial=converted_polynomial,
+                                                                               substitution=self.substitution)
 
                     numerator: PolynomialProduct = sum_product.numerator
 
