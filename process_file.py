@@ -89,10 +89,16 @@ class ProcessFolder:
                 str_converted_polynomial: str = converted_polynomial.get_sage_str()
                 str_substitution: str = substitution.get_sage_str()
 
-                fw_sage_series_sums.write(f"########## {str_case_indices}\n")
-                fw_sage_series_sums.write(f"########## {str_original_polynomial}\n")
-                fw_sage_series_sums.write(f"########## {str_substitution}\n")
-                fw_sage_series_sums.write(f"########## {str_converted_polynomial}\n")
+                comments: list[str] = []
+
+                sharps: str = "##########"
+
+                comments.append(f"{sharps} {str_case_indices}")
+                comments.append(f"{sharps} {str_original_polynomial}")
+                comments.append(f"{sharps} {str_substitution}")
+                comments.append(f"{sharps} {str_converted_polynomial}")
+
+                str_comments: str = "\n".join(comments)
 
                 fw_sage_series_sums.write("h = QQ.zero()\n")
 
@@ -105,6 +111,7 @@ class ProcessFolder:
 
                     counter += 1
 
+                    fw_sage_series_sums.write(f"{str_comments}\n")
                     fw_sage_series_sums.write(f"##### {counter}\n")
 
                     str_print: str = "g = QQ.one()\n"
