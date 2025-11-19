@@ -85,6 +85,9 @@ class ProcessFolder:
                 converted_polynomial: Polynomial = tup_val[1]
                 substitution: VariableSubstitution = tup_val[2]
 
+                original_number_of_monomials: int = len(original_polynomial.monomials)
+                converted_number_of_monomials: int = len(converted_polynomial.monomials)
+
                 str_original_polynomial: str = original_polynomial.get_sage_str()
                 str_converted_polynomial: str = converted_polynomial.get_sage_str()
                 str_substitution: str = substitution.get_sage_str()
@@ -109,10 +112,14 @@ class ProcessFolder:
                 for tup in list_series_sums:
                     dict_series_product: dict = tup[2]
 
+                    monomial: Monomial = converted_polynomial.monomials[counter]
+
+                    str_monomial: str = monomial.get_sage_str()
+
                     counter += 1
 
                     fw_sage_series_sums.write(f"{str_comments}\n")
-                    fw_sage_series_sums.write(f"##### {counter}\n")
+                    fw_sage_series_sums.write(f"{sharps} {str_monomial}\n")# monomial {counter}/{converted_number_of_monomials}\n")
 
                     str_print: str = "g = QQ.one()\n"
 

@@ -120,6 +120,6 @@ class VariableSubstitution:
         if is_latex:
             str_substitution = "".join(f"\\[{key}\\rightarrow{{{self.substitution[key].get_str(is_latex=is_latex)}}}\\]" for key in self.substitution)
         else:
-            str_substitution = ",".join(f"{key}={self.substitution[key].get_str(is_latex=is_latex)}" for key in self.substitution)
+            str_substitution = ",".join(f"{key.replace("_", "")}={self.substitution[key].get_str(is_latex=is_latex)}" for key in self.substitution)
 
         return str_substitution
