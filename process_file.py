@@ -96,14 +96,13 @@ class ProcessFolder:
 
                 sharps: str = "##########"
 
-                comments.append(f"{sharps} {str_case_indices}")
-                comments.append(f"{sharps} {str_original_polynomial}")
-                comments.append(f"{sharps} {str_substitution}")
-                comments.append(f"{sharps} {str_converted_polynomial}")
+                prefix: str = f"{sharps} [{str_case_indices}]"
+
+                comments.append(f"{prefix} {str_original_polynomial}")
+                comments.append(f"{prefix} {str_substitution}")
+                comments.append(f"{prefix} {str_converted_polynomial}")
 
                 str_comments: str = "\n".join(comments)
-
-                fw_sage_series_sums.write("h = QQ.zero()\n")
 
                 counter: int = 0
 
@@ -119,7 +118,10 @@ class ProcessFolder:
                     counter += 1
 
                     fw_sage_series_sums.write(f"{str_comments}\n")
-                    fw_sage_series_sums.write(f"{sharps} {str_monomial}\n")# monomial {counter}/{converted_number_of_monomials}\n")
+
+                    fw_sage_series_sums.write("h = QQ.zero()\n")
+
+                    fw_sage_series_sums.write(f"{prefix} [monomial {counter}/{converted_number_of_monomials}] {str_monomial}\n")# monomial {counter}/{converted_number_of_monomials}\n")
 
                     str_print: str = "g = QQ.one()\n"
 
