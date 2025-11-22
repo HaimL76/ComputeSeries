@@ -2,6 +2,7 @@ import copy
 import os
 import random
 import re
+from idlelib.replace import replace
 
 from debug_write import DebugWrite
 from element import Element
@@ -75,10 +76,14 @@ class ProcessFolder:
         with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums:
             #fw_sage_series_sums.write("# Define the polynomial ring\n")
             #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
+            #fw_sage_series_sums.write("F = R.fraction_field()\n")
+            #fw_sage_series_sums.write("psi = F.hom([1/p, 1/t], F)\n")
             fw_sage_series_sums.write("var(\"p,t,a,b,c,d\")\n")
             fw_sage_series_sums.write("f = QQ.zero()\n")
 
             for str_case_indices in dict_series_sums.keys():
+                if str_case_indices != "Case 4.2.2":
+                    _ = 0#continue
                 tup_val: tuple = dict_series_sums[str_case_indices]
                 list_series_sums: list = tup_val[-1]
                 original_polynomial: Polynomial = tup_val[0]
@@ -98,15 +103,23 @@ class ProcessFolder:
 
                 prefix: str = f"{sharps} [{str_case_indices}]"
 
-                comments.append(f"{prefix} {str_original_polynomial}")
-                comments.append(f"{prefix} {str_substitution}")
-                comments.append(f"{prefix} {str_converted_polynomial}")
+                #comments.append(f"{prefix} {str_original_polynomial}")
+                #comments.append(f"{prefix} {str_substitution}")
+                #comments.append(f"{prefix} {str_converted_polynomial}")
 
                 str_comments: str = "\n".join(comments)
 
                 counter: int = 0
 
                 str_debug: str = ""
+
+                str_case_indices0: str = str_case_indices.replace("Case", "")
+                str_case_indices0 = str_case_indices0.replace(".", "_")
+                str_case_indices0 = str_case_indices0.strip()
+
+                var_h: str = f"h_{str_case_indices0}"
+
+                fw_sage_series_sums.write(f"{var_h} = QQ.zero()\n")
 
                 for tup in list_series_sums:
                     dict_series_product: dict = tup[2]
@@ -119,11 +132,11 @@ class ProcessFolder:
 
                     fw_sage_series_sums.write(f"{str_comments}\n")
 
-                    fw_sage_series_sums.write("h = QQ.zero()\n")
-
                     fw_sage_series_sums.write(f"{prefix} [monomial {counter}/{converted_number_of_monomials}] {str_monomial}\n")# monomial {counter}/{converted_number_of_monomials}\n")
 
-                    str_print: str = "g = QQ.one()\n"
+                    var_g: str = f"g_{str_case_indices0}__{counter}"
+
+                    str_print: str = f"{var_g} = QQ.one()\n"
 
                     str_debug += str_print
 
@@ -134,7 +147,7 @@ class ProcessFolder:
                     is_minus: bool = product.is_minus
 
                     if is_minus:
-                        str_print = "g *= -1\n"
+                        str_print = f"{var_g} *= -1\n"
 
                         str_debug += str_print
 
@@ -150,7 +163,7 @@ class ProcessFolder:
                         if not is_integer:
                             str_coefficient = f"({str_coefficient})"
 
-                        str_print = f"g *= {str_coefficient}\n"
+                        str_print = f"{var_g} *= {str_coefficient}\n"
 
                         str_debug += str_print
 
@@ -162,7 +175,7 @@ class ProcessFolder:
 
                             if isinstance(val, Element):
                                 for i in range(val.power):
-                                    str_print = f"g *= (1-(p^(-1)))\n"
+                                    str_print = f"{var_g} *= (1-(p^(-1)))\n"
 
                                     str_debug += str_print
 
@@ -171,7 +184,7 @@ class ProcessFolder:
                     for power in dict_series_product.keys():
                         start_index, rational, str_sage = dict_series_product[power]
 
-                        str_print = f"g *= {str_sage} # {power}>={start_index}\n"
+                        str_print = f"{var_g} *= {str_sage} # {power}>={start_index}\n"
 
                         str_debug += str_print
 
@@ -182,10 +195,12 @@ class ProcessFolder:
 
                             str_full_case_indices: str = f"{str_case_indices}, product {counter}"
 
-                    if self.print_debug:
-                        fw_sage_series_sums.write(f"print(f\"g={{g}} #### {str_full_case_indices}\")\n")
+                    fw_sage_series_sums.write(f"print(f\"{var_g}={{{var_g}}} #### {str_full_case_indices}\")\n")
 
-                    fw_sage_series_sums.write("h += g\n")
+                    #fw_sage_series_sums.write("sf=psi(g)/g\n")
+                    #fw_sage_series_sums.write(f"print(f\"sf(g[{counter}])={{sf}}\")\n")
+
+                    fw_sage_series_sums.write(f"{var_h} += {var_g}\n")
 
                     if series_product_counter in dict_random_numbers:
                         list_debug_data.append(str_debug)
@@ -193,12 +208,12 @@ class ProcessFolder:
                 if self.print_debug:
                     fw_sage_series_sums.write(f"print(f\"h={{h}} #### {str_case_indices}\")\n")
 
-                fw_sage_series_sums.write("f += h\n")
+                fw_sage_series_sums.write(f"f += {var_h}\n")
 
             if self.print_debug:
                 fw_sage_series_sums.write("print(\"########## Final Output ##########\")\n")
 
-            fw_sage_series_sums.write("print(f)\n")
+            #fw_sage_series_sums.write("print(f)\n")
 
         if isinstance(list_debug_data, list) and len(list_debug_data) > 0:
             with open(out_file_path_sage_series_sums_debug, "w") as fw_sage_series_sums_debug:
