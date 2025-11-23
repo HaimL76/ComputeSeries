@@ -195,7 +195,7 @@ class ProcessFolder:
 
                             str_full_case_indices: str = f"{str_case_indices}, product {counter}"
 
-                    fw_sage_series_sums.write(f"print(f\"{var_g}={{{var_g}}} #### {str_full_case_indices}\")\n")
+                    fw_sage_series_sums.write(f"print(f\"{var_g}={{{var_g}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
 
                     #fw_sage_series_sums.write("sf=psi(g)/g\n")
                     #fw_sage_series_sums.write(f"print(f\"sf(g[{counter}])={{sf}}\")\n")
