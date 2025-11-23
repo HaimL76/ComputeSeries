@@ -205,6 +205,9 @@ class ProcessFolder:
                     if series_product_counter in dict_random_numbers:
                         list_debug_data.append(str_debug)
 
+                fw_sage_series_sums.write(
+                    f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
+
                 fw_sage_series_sums.write(f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices} [substitution:{str_substitution}]\")\n")
 
                 fw_sage_series_sums.write(f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")
