@@ -130,9 +130,9 @@ class ProcessFolder:
 
                     counter += 1
 
-                    fw_sage_series_sums.write(f"{str_comments}\n")
+                    ##fw_sage_series_sums.write(f"{str_comments}\n")
 
-                    fw_sage_series_sums.write(f"{prefix} [monomial {counter}/{converted_number_of_monomials}] {str_monomial}\n")# monomial {counter}/{converted_number_of_monomials}\n")
+                    ##fw_sage_series_sums.write(f"{prefix} [monomial {counter}/{converted_number_of_monomials}] {str_monomial}\n")# monomial {counter}/{converted_number_of_monomials}\n")
 
                     var_g: str = f"g_{str_case_indices0}__{counter}"
 
@@ -205,8 +205,7 @@ class ProcessFolder:
                     if series_product_counter in dict_random_numbers:
                         list_debug_data.append(str_debug)
 
-                if self.print_debug:
-                    fw_sage_series_sums.write(f"print(f\"h={{h}} #### {str_case_indices}\")\n")
+                fw_sage_series_sums.write(f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")
 
                 fw_sage_series_sums.write(f"f += {var_h}\n")
 
