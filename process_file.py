@@ -230,8 +230,7 @@ class ProcessFolder:
 
                 fw_sage_series_sums.write(f"f += {var_h}\n")
 
-            if self.print_debug:
-                fw_sage_series_sums.write("print(\"########## Final Output ##########\")\n")
+            fw_sage_series_sums.write("print(f\"f={f}\")\n")
 
             #fw_sage_series_sums.write("print(f)\n")
 
