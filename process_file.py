@@ -121,7 +121,7 @@ class ProcessFolder:
 
                 fw_sage_series_sums.write(f"{var_h} = QQ.zero()\n")
 
-                list_start_index: list[str] = []
+                dict_start_index: dict[str, str] = {}
 
                 for tup in list_series_sums:
                     dict_series_product: dict = tup[2]
@@ -131,9 +131,9 @@ class ProcessFolder:
 
                         str_start_index: str = f"{power}>={start_index}"
 
-                        list_start_index.append(str_start_index)
+                        dict_start_index[power] = str_start_index
 
-                str_start_index: str = ",".join(list_start_index)
+                str_start_index = ",".join(dict_start_index.values())
 
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [substitution:{str_substitution}]\")\n")
