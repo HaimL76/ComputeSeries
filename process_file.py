@@ -121,6 +121,25 @@ class ProcessFolder:
 
                 fw_sage_series_sums.write(f"{var_h} = QQ.zero()\n")
 
+                list_start_index: list[str] = []
+
+                for tup in list_series_sums:
+                    dict_series_product: dict = tup[2]
+
+                    for power in dict_series_product.keys():
+                        start_index, rational, str_sage = dict_series_product[power]
+
+                        str_start_index: str = f"{power}>={start_index}"
+
+                        list_start_index.append(str_start_index)
+
+                str_start_index: str = ",".join(list_start_index)
+
+                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
+                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [substitution:{str_substitution}]\")\n")
+                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")
+                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [start index:{str_start_index}]\")\n")
+
                 for tup in list_series_sums:
                     dict_series_product: dict = tup[2]
 
@@ -181,14 +200,10 @@ class ProcessFolder:
 
                                     fw_sage_series_sums.write(str_print)
 
-                    list_start_index: list[str] = []
-
                     for power in dict_series_product.keys():
                         start_index, rational, str_sage = dict_series_product[power]
 
                         str_start_index: str = f"{power}>={start_index}"
-
-                        list_start_index.append(str_start_index)
 
                         str_print = f"{var_g} *= {str_sage} # {str_start_index}\n"
 
@@ -211,14 +226,7 @@ class ProcessFolder:
                     if series_product_counter in dict_random_numbers:
                         list_debug_data.append(str_debug)
 
-                fw_sage_series_sums.write(f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices}\n")
-
-                str_start_index: str = ",".join(list_start_index)
-
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [substitution:{str_substitution}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [start index:{str_start_index}]\")\n")
+                fw_sage_series_sums.write(f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices}\")\n")
 
                 fw_sage_series_sums.write(f"f += {var_h}\n")
 
