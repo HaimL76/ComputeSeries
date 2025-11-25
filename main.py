@@ -47,17 +47,17 @@ def create_symmetry_factors_program(level: int = 1):
             for str_indices in hs.keys():
                 list_vars: list[str] = hs[str_indices]
 
-                sf_var_name = f"sf_{str_indices}"
-
                 var_h = f"h_{str_indices}"
+
+                sf_var_name = f"sf_{var_h}"
 
                 fw.write(f"{var_h} = QQ.zero()\n")
 
                 for str_var in list_vars:
                     fw.write(f"{var_h}+={str_var}\n")
 
-            fw.write(f"{sf_var_name}=psi({var_h})/{var_h}\n")
-            fw.write(f"print(f\"{sf_var_name}={{{sf_var_name}}}\")\n")
+                fw.write(f"{sf_var_name}=psi({var_h})/{var_h}\n")
+                fw.write(f"print(f\"{sf_var_name}={{{sf_var_name}}}\")\n")
 
 def main():
     create_symmetry_factors_program()
