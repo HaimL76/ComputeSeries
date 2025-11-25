@@ -1,6 +1,6 @@
 pt-product: v_4
 
-polynomial: 1+A.v_4+A.v_3+A^2.v_3.v_4
+polynomial: 1 + A.v_4 + A.v_3 + A^2.v_3.v_4
 
 ==== 8.1.1 ====
 substitution: v_1=2.a+b+c+d
