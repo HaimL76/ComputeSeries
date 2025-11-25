@@ -13,7 +13,7 @@ const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 def create_symmetry_factors_program():
-    with open(".\\saved_output\\output_sage.txt", "r") as fr:
+    with open(".\\saved_output\\intermediates.txt", "r") as fr:
         with open(".\\saved_output\\compute_symmetry_factors.txt", "w") as fw:
             fw.write("# Define the polynomial ring\n")
             fw.write("R.<p,t> = PolynomialRing(QQ)\n")
@@ -22,7 +22,7 @@ def create_symmetry_factors_program():
             fw.write("psi = F.hom([1/p, 1/t], F)\n")
 
             for line in fr:
-                if line.startswith("g_") or line.startswith("h_"):
+                if line.startswith("h_"):
                     arr: list[str] = line.split("=")
                     if isinstance(arr, list) and len(arr) > 1:
                         var_name = arr[0]
