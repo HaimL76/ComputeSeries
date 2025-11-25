@@ -36,7 +36,7 @@ def create_symmetry_factors_program():
 
 def main():
     create_symmetry_factors_program()
-    return
+
     parse_cases(".\\input\\cases.tex", ".\\input\\")
 
     pf: ProcessFolder = ProcessFolder(".\\input\\", ".\\output\\")

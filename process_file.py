@@ -91,7 +91,14 @@ class ProcessFolder:
                 substitution: VariableSubstitution = tup_val[2]
 
                 original_number_of_monomials: int = len(original_polynomial.monomials)
-                converted_number_of_monomials: int = len(converted_polynomial.monomials)
+
+                converted_number_of_monomials: int = 0
+
+                if isinstance(converted_polynomial, Polynomial):
+                    list_monomials: list[Monomial] = converted_polynomial.monomials
+
+                    if isinstance(list_monomials, list) and len(list_monomials) > 0:
+                        converted_number_of_monomials = len([monomial for monomial in list_monomials if monomial.coefficient != Rational(0)])
 
                 str_original_polynomial: str = original_polynomial.get_sage_str()
                 str_converted_polynomial: str = converted_polynomial.get_sage_str()
@@ -145,7 +152,7 @@ class ProcessFolder:
 
                     monomial: Monomial = converted_polynomial.monomials[counter]
 
-                    str_monomial: str = monomial.get_sage_str()
+                    str_monomial: str = monomial.get_sage_str(print_sign=Monomial.Print_Sign_Anyway)
 
                     counter += 1
 
