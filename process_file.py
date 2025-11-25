@@ -90,7 +90,7 @@ class ProcessFolder:
                 converted_polynomial: Polynomial = tup_val[1]
                 substitution: VariableSubstitution = tup_val[2]
 
-                original_number_of_monomials: int = len(original_polynomial.monomials)
+                original_number_of_monomials: int = len(list_series_sums)
 
                 converted_number_of_monomials: int = 0
 
@@ -150,7 +150,7 @@ class ProcessFolder:
                 for tup in list_series_sums:
                     dict_series_product: dict = tup[2]
 
-                    monomial: Monomial = converted_polynomial.monomials[counter]
+                    monomial: Monomial = tup[3]
 
                     str_monomial: str = monomial.get_sage_str(print_sign=Monomial.Print_Sign_Anyway)
 
@@ -293,6 +293,8 @@ class ProcessFolder:
 
                 for tup in list_series_sums:
                     dict_series_product: dict[str, tuple[int, PolynomialRational, str]] = tup[2]
+
+                    monomial: Monomial = tup[3]
 
                     counter += 1
 
@@ -896,7 +898,7 @@ class ProcessFile:
                             if isinstance(val, int):
                                 series_product.add_start_index(key, val)
 
-                list_series_products: list[SeriesProduct] = series_product.multiply_by_polynomial(converted_polynomial)
+                list_series_products: list[tuple] = series_product.multiply_by_polynomial(converted_polynomial)
 
                 sum_item: PolynomialSummationRational = PolynomialSummationRational()
 
@@ -907,7 +909,9 @@ class ProcessFile:
 
                 counter: int = 0
 
-                for ser_prod in list_series_products:
+                for tup in list_series_products:
+                    ser_prod: SeriesProduct = tup[0]
+                    monomial: Monomial = tup[1]
                     counter += 1
                     ser_prod_copy = copy.deepcopy(ser_prod)
 
@@ -915,7 +919,8 @@ class ProcessFile:
                                                                                str_case_indices=str_case_indices,
                                                                                counter=counter, original_polynomial=polynomial,
                                                                                converted_polynomial=converted_polynomial,
-                                                                               substitution=self.substitution)
+                                                                               substitution=self.substitution,
+                                                                               monomial=monomial)
 
                     numerator: PolynomialProduct = sum_product.numerator
 

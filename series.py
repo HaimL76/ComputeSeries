@@ -166,7 +166,8 @@ class SeriesProduct:
             dict_series_sums: dict = None, str_case_indices: str = "",
             counter: int = 0, original_polynomial: Polynomial = None,
             converted_polynomial: Polynomial = None,
-            substitution: VariableSubstitution = None):
+            substitution: VariableSubstitution = None,
+            monomial: Monomial = None):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
 
@@ -217,7 +218,7 @@ class SeriesProduct:
 
             list_series_sums: list = tup[-1]
 
-            list_series_sums.append((counter, self, dict_series_product))
+            list_series_sums.append((counter, self, dict_series_product, monomial))
 
         result_numerator.coefficient = self.coefficient
 
@@ -389,7 +390,9 @@ class SeriesProduct:
                                                               const_coeffs=monom.const_coefficients,
                                                               minus=monom.is_minus)
 
-            l.append(new_series_product)
+            tup: tuple = new_series_product, monom
+
+            l.append(tup)
 
         return l
 
