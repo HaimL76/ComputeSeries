@@ -27,6 +27,7 @@ def create_symmetry_factors_program(level: int = 1):
                 if line.startswith("h_"):
                     arr: list[str] = line.split("=")
                     if isinstance(arr, list) and len(arr) > 1:
+                        fw.write(line)
                         var_name = arr[0]
 
                         arr_indices: list[int] = [int(str_index) for str_index in var_name.split("_") if str_index.isnumeric()]
