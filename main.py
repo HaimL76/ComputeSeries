@@ -48,7 +48,7 @@ def create_symmetry_factors_program(level: int = 1):
             for str_indices in hs.keys():
                 list_vars: list[str] = hs[str_indices]
 
-                var_h = f"h_{str_indices}"
+                var_h = f"hh_{str_indices}"
 
                 sf_var_name = f"sf_{var_h}"
 
