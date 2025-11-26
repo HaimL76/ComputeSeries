@@ -24,7 +24,7 @@ def create_symmetry_factors_program(level: int = 1):
             hs: dict[str, list[str]] = {}
 
             list_hs: list[list[str]] = [
-                ["7.1"]
+                ["2.1.1", "2.2.1"]
             ]
 
             counter: int = 0
