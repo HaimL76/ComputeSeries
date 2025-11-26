@@ -21,7 +21,27 @@ def create_symmetry_factors_program(level: int = 1):
             fw.write("F = R.fraction_field()\n")
             fw.write("psi = F.hom([1/p, 1/t], F)\n")
 
-            hs: dict[str, list] = {}
+            hs: dict[str, list[str]] = {}
+
+            list_hs: list[list[str]] = [
+                ["7.1"]
+            ]
+
+            counter: int = 0
+
+            for elem_hs in list_hs:
+                elem_hs_converted: list[str] = []
+
+                for var_name in elem_hs:
+                    var_name = var_name.replace(".", "_")
+                    var_name = f"h_{var_name}"
+
+                    elem_hs_converted.append(var_name)
+
+                hs[str(counter)] = elem_hs_converted
+                counter += 1
+
+            hs_already_initialized: bool = not not hs
 
             for line in fr:
                 if line.startswith("h_"):
@@ -40,10 +60,11 @@ def create_symmetry_factors_program(level: int = 1):
 
                         str_indices: str = "_".join([str(i) for i in list_indices])
 
-                        if str_indices not in hs.keys():
-                            hs[str_indices] = []
+                        if not hs_already_initialized:
+                            if str_indices not in hs.keys():
+                                hs[str_indices] = []
 
-                        hs[str_indices].append(var_name)
+                            hs[str_indices].append(var_name)
 
             for str_indices in hs.keys():
                 list_vars: list[str] = hs[str_indices]
