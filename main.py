@@ -23,28 +23,29 @@ def create_symmetry_factors_program(level: int = 1):
 
             hs: dict[str, list[str]] = {}
 
-            list_hs: list[list[str]] = [
-                ["2.1.1", "2.2.1"]
-            ]
+            list_hs: list[list[str]] = None #[
+                    #["2.1.1", "2.2.1"]
+            #]
 
             counter: int = 0
 
-            for elem_hs in list_hs:
-                elem_hs_converted: list[str] = []
+            if isinstance(list_hs, list) and len(list_hs) > 0:
+                for elem_hs in list_hs:
+                    elem_hs_converted: list[str] = []
 
-                for var_name in elem_hs:
-                    var_name = var_name.replace(".", "_")
-                    var_name = f"h_{var_name}"
+                    for var_name in elem_hs:
+                        var_name = var_name.replace(".", "_")
+                        var_name = f"h_{var_name}"
 
-                    elem_hs_converted.append(var_name)
+                        elem_hs_converted.append(var_name)
 
-                hs[str(counter)] = elem_hs_converted
-                counter += 1
+                    hs[str(counter)] = elem_hs_converted
+                    counter += 1
 
             hs_already_initialized: bool = not not hs
 
             for line in fr:
-                if line.startswith("h_"):
+                if True:# line.startswith("h_"):
                     arr: list[str] = line.split("=")
                     if isinstance(arr, list) and len(arr) > 1:
                         fw.write(line)
@@ -59,6 +60,8 @@ def create_symmetry_factors_program(level: int = 1):
                                 list_indices.append(arr_indices[i])
 
                         str_indices: str = "_".join([str(i) for i in list_indices])
+
+                        str_indices = var_name
 
                         if not hs_already_initialized:
                             if str_indices not in hs.keys():
