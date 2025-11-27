@@ -75,7 +75,9 @@ class VariableSubstitution:
     def substitude_polynomial(self, original_polynom: Polynomial):
         list_tuples: list[tuple] = []
 
-        result_polynomial: Polynomial = Polynomial()
+        #result_polynomial: Polynomial = Polynomial()
+
+        list_monomials_total: list[Monomial] = []
 
         for monomial in original_polynom:
             str_monomial: str = monomial.get_sage_str(print_sign=Monomial.Print_Sign_Anyway)
@@ -89,12 +91,29 @@ class VariableSubstitution:
                     str_monomials: str = monom.get_sage_str(print_sign=Monomial.Print_Sign_Anyway)
 
                     list_monomials.append(str_monomials)
+                    list_monomials_total.append(monom)
 
-                    result_polynomial.add_monomial(monom)
+                    #result_polynomial.add_monomial(monom)
 
             tup: tuple = str_monomial, list_monomials
 
             list_tuples.append(tup)
+
+        list0: list[str] = []
+
+        for tup in list_tuples:
+            str0: str = "".join(tup[1])
+
+            list0.append(f"{tup[0]}->{str0}")
+
+        str1: str = "\n".join(list0)
+
+        list_monomials_total = [monom for monom in list_monomials_total if monom.coefficient != Rational(0)]
+
+        result_polynomial: Polynomial = Polynomial()
+
+        for monom in list_monomials_total:
+            result_polynomial.add_monomial(monom)
 
         return result_polynomial, list_tuples
 

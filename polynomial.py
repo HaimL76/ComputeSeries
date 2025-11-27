@@ -95,9 +95,12 @@ class Polynomial:
 
                 sum_coefficients = monom_coefficient + monomial_coefficient
 
-                if sum_coefficients < Rational(0):
+                is_minus: bool = sum_coefficients < Rational(0)
+
+                if is_minus:
                     sum_coefficients *= -1
-                    monom.is_minus = True
+
+                monom.is_minus = is_minus
 
                 monom.coefficient = sum_coefficients
 
