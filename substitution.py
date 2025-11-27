@@ -73,21 +73,37 @@ class VariableSubstitution:
 
 
     def substitude_polynomial(self, original_polynom: Polynomial):
+        list_tuples: list[tuple] = []
+
         result_polynomial: Polynomial = Polynomial()
 
         for monomial in original_polynom:
+            str_monomial: str = monomial.get_sage_str(print_sign=Monomial.Print_Sign_Anyway)
+
+            list_monomials: list[str] = []
+
             monomials: list = self.substitute_monomial(monomial)
 
             if isinstance(monomials, list) and len(monomials) > 0:
                 for monom in monomials:
+                    str_monomials: str = monom.get_sage_str(print_sign=Monomial.Print_Sign_Anyway)
+
+                    list_monomials.append(str_monomials)
+
                     result_polynomial.add_monomial(monom)
 
-        return result_polynomial
+            tup: tuple = str_monomial, list_monomials
+
+            list_tuples.append(tup)
+
+        return result_polynomial, list_tuples
 
     def substitude_exponential(self, original_exponential: Exponential):
         polynomial: Polynomial = original_exponential.exponent
 
-        polynomial = self.substitude_polynomial(polynomial)
+        tup: tuple = self.substitude_polynomial(polynomial)
+
+        polynomial = tup[0]
 
         return Exponential(symb=original_exponential.symbol, exp=polynomial)
 

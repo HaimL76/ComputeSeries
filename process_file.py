@@ -876,7 +876,12 @@ class ProcessFile:
 
                 debug_write_sage.write(f"{self.substitution.get_sage_str()}\r\n")
 
-                converted_polynomial: Polynomial = self.substitution.substitude_polynomial(polynomial)
+                if "3.2.1" in str_case_indices:
+                    _ = 0
+
+                tup_substitution: tuple = self.substitution.substitude_polynomial(polynomial)
+
+                converted_polynomial: Polynomial = tup_substitution[0]
 
                 debug_write_ltx.write(f"\\[{converted_polynomial.get_ltx_str()}\\]\r\n", 1)
 
