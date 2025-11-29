@@ -198,12 +198,17 @@ class ProcessFolder:
                             val: Element = product.const_coefficients[key]
 
                             if isinstance(val, Element):
-                                for i in range(val.power):
-                                    str_print = f"{var_g} *= (1-(p^(-1)))\n"
+                                #for i in range(val.power):
+                                str_coeff: str = "(1-(p^-1))"
 
-                                    str_debug += str_print
+                                if val.power != 1:
+                                    str_coeff = f"{str_coeff}^{val.power}"
 
-                                    fw_sage_series_sums.write(str_print)
+                                str_print = f"{var_g} *= {str_coeff}\n"
+
+                                str_debug += str_print
+
+                                fw_sage_series_sums.write(str_print)
 
                     for power in dict_series_product.keys():
                         start_index, rational, str_sage = dict_series_product[power]
