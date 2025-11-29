@@ -1,3 +1,4 @@
+import re
 import webbrowser
 
 from debug_write import DebugWrite
@@ -12,6 +13,48 @@ from substitution import VariableSubstitution
 const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
+def check_covering():
+    dict_order: dict = {}
+
+    regex_overset: str = r"\\overset\{[a-z]\}"
+    regex_var: str = r"v_\d"
+    regex_var_start: str = rf"^{regex_var}"
+
+    regex_geq: str = r"\\geq"
+    regex_geq_start: str = rf"^{regex_geq}"
+
+    with open(".\\input\\cases.tex") as fr:
+        for line in fr:
+            list_vars: list = []
+
+            while len(line) > 0:
+                offset: int = 1
+
+                finds = re.findall(regex_var_start, line)
+
+                if isinstance(finds, list) and len(finds) > 0:
+                    str_var: str = finds[0]
+
+                    offset = len(str_var)
+
+                    list_vars.append(str_var)
+                else:
+                    str0: str = line[:1]
+
+                    if str0 == ">":
+                        list_vars.append(str0)
+                    else:
+                        finds = re.findall(regex_geq_start, line)
+
+                        if isinstance(finds, list) and len(finds) > 0:
+                            str_geq: str = finds[0]
+
+                            offset = len(str_geq)
+
+                            list_vars.append(str_geq)
+
+                line: str = line[offset:]
+            print(list_vars)
 
 def create_symmetry_factors_program(level: int = 1):
     with open(".\\saved_output\\intermediates.txt", "r") as fr:
@@ -41,6 +84,8 @@ def create_symmetry_factors_program(level: int = 1):
 
 
 def main():
+    check_covering()
+    return
     create_symmetry_factors_program()
 
     parse_cases(".\\input\\cases.tex", ".\\input\\")
