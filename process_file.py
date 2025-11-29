@@ -82,8 +82,6 @@ class ProcessFolder:
             fw_sage_series_sums.write("f = QQ.zero()\n")
 
             for str_case_indices in dict_series_sums.keys():
-                if str_case_indices != "Case 4.2.2":
-                    _ = 0#continue
                 tup_val: tuple = dict_series_sums[str_case_indices]
                 list_series_sums: list = tup_val[-1]
                 original_polynomial: Polynomial = tup_val[0]
