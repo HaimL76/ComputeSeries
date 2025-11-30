@@ -86,11 +86,52 @@ def check_covering():
                 if index < len(list_vars) - 1:
                     next_symbol = list_vars[index + 1]
 
-                if "+" not in [prev_symbol, curr_symbol, next_symbol]:
+                sum_of_vars: bool = "+" in [prev_symbol, curr_symbol, next_symbol]
+
+                if not sum_of_vars:
                     list_vars0.append(curr_symbol)
 
-            print(f"{list_vars} {line0}")
-            print(f"{list_vars0} {line0}")
+            list_vars = list_vars0
+            list_vars0 = []
+
+            for index in range(len(list_vars)):
+                prev_symbol: str = ""
+                next_symbol: str = ""
+                curr_symbol: str = list_vars[index]
+
+                if index > 0:
+                    prev_symbol = list_vars[index - 1]
+
+                if index < len(list_vars) - 1:
+                    next_symbol = list_vars[index + 1]
+
+                remove: bool = curr_symbol == prev_symbol
+
+                if not remove:
+                    list_vars0.append(curr_symbol)
+
+            list_vars = list_vars0
+            list_vars0 = []
+
+            for index in range(len(list_vars)):
+                prev_symbol: str = ""
+                next_symbol: str = ""
+                curr_symbol: str = list_vars[index]
+
+                if index > 0:
+                    prev_symbol = list_vars[index - 1]
+
+                if index < len(list_vars) - 1:
+                    next_symbol = list_vars[index + 1]
+
+                remove: bool = curr_symbol in [">", r"\geq"] and ">" in [prev_symbol, next_symbol]
+
+                if not remove:
+                    list_vars0.append(curr_symbol)
+
+            if "overset" in line0:
+                print(f"{list_vars} {line0}")
+                print(f"{list_vars0} {line0}")
 
 
 def create_symmetry_factors_program(level: int = 1):
