@@ -194,12 +194,13 @@ def check_covering():
             index = 0
 
             if "overset" in line0:
-                build_order(list_vars, 0, stack=Stack(), list_strs=list_strs)
+                build_order(list_vars0, 0, stack=Stack(), list_strs=list_strs)
                 #print(f"{list_vars0} {line0}")
                 list_symbols.append(list_vars0)
 
-    _ = 0
-
+    with open(".\\saved_output\\orders.txt", "w") as fw:
+        for order in list_strs:
+            fw.write(f"{order}\n")
 
 def create_symmetry_factors_program(level: int = 1):
     with open(".\\saved_output\\intermediates.txt", "r") as fr:
