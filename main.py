@@ -23,8 +23,11 @@ def check_covering():
     regex_geq: str = r"\\geq"
     regex_geq_start: str = rf"^{regex_geq}"
 
+    arr_order: list[tuple] = [()] * 3
+
     with open(".\\input\\cases.tex") as fr:
         for line in fr:
+            line0: str = line
             list_vars: list = []
 
             while len(line) > 0:
@@ -41,7 +44,7 @@ def check_covering():
                 else:
                     str0: str = line[:1]
 
-                    if str0 == ">":
+                    if str0 in [">", "<", "+", "0"]:
                         list_vars.append(str0)
                     else:
                         finds = re.findall(regex_geq_start, line)
@@ -54,7 +57,41 @@ def check_covering():
                             list_vars.append(str_geq)
 
                 line: str = line[offset:]
-            print(list_vars)
+
+
+
+            index: int = 0
+
+            var_index: int = 0
+
+            operator1: int = 0
+            operator2: int = 1
+
+            for symbol in list_vars:
+                arr0: list[str] = symbol.split("_")
+
+                if isinstance(arr0, list) and len(arr0) == 2 and arr0[1].isnumeric():
+                    var_index: int = int(arr0[1])
+
+            list_vars0: list[str] = []
+
+            for index in range(len(list_vars)):
+                prev_symbol: str = ""
+                next_symbol: str = ""
+                curr_symbol: str = list_vars[index]
+
+                if index > 0:
+                    prev_symbol = list_vars[index - 1]
+
+                if index < len(list_vars) - 1:
+                    next_symbol = list_vars[index + 1]
+
+                if "+" not in [prev_symbol, curr_symbol, next_symbol]:
+                    list_vars0.append(curr_symbol)
+
+            print(f"{list_vars} {line0}")
+            print(f"{list_vars0} {line0}")
+
 
 def create_symmetry_factors_program(level: int = 1):
     with open(".\\saved_output\\intermediates.txt", "r") as fr:
