@@ -70,6 +70,8 @@ def check_covering():
 
     list_strs: list[(str, str)] = []
 
+    list_symbols: list[list[str]] = []
+
     with open(".\\input\\cases.tex") as fr:
         for line in fr:
             line0: str = line
@@ -126,7 +128,7 @@ def check_covering():
                 if index > 0:
                     prev_symbol = list_vars[index - 1]
 
-                if index < len(list_vars) - 1:
+                if index < (len(list_vars) - 1):
                     next_symbol = list_vars[index + 1]
 
                 sum_of_vars: bool = "+" in [prev_symbol, curr_symbol, next_symbol]
@@ -134,24 +136,31 @@ def check_covering():
                 if not sum_of_vars:
                     list_vars0.append(curr_symbol)
 
-            list_vars = list_vars0
-            list_vars0 = []
+            cleaned_doubles: bool = False
 
-            for index in range(len(list_vars)):
-                prev_symbol: str = ""
-                next_symbol: str = ""
-                curr_symbol: str = list_vars[index]
+            while not cleaned_doubles:
+                list_vars = list_vars0
+                list_vars0 = []
 
-                if index > 0:
-                    prev_symbol = list_vars[index - 1]
+                doubles_counter: int = 0
 
-                if index < len(list_vars) - 1:
-                    next_symbol = list_vars[index + 1]
+                for index in range(len(list_vars)):
+                    prev_symbol: str = ""
+                    curr_symbol: str = list_vars[index]
 
-                remove: bool = curr_symbol == prev_symbol
+                    if index > 0:
+                        prev_symbol = list_vars[index - 1]
 
-                if not remove:
-                    list_vars0.append(curr_symbol)
+                    double_found: bool = curr_symbol == prev_symbol
+
+                    if double_found:
+                        doubles_counter += 1
+
+                    if not double_found:
+                        list_vars0.append(curr_symbol)
+
+                if doubles_counter < 1:
+                    cleaned_doubles = True
 
             list_vars = list_vars0
             list_vars0 = []
@@ -172,6 +181,12 @@ def check_covering():
                 if not remove:
                     list_vars0.append(curr_symbol)
 
+            if len(list_vars0) > 0 and list_vars0[0] in [">", r"\geq"]:
+                list_vars0 = list_vars0[1:]
+
+            if len(list_vars0) > 1 and list_vars0[-1] == "0" and list_vars0[-2]:
+                list_vars0 = list_vars0[:-2]
+
             order_: list[tuple] = [()] * 3
 
             curr_var: int = 0
@@ -180,8 +195,8 @@ def check_covering():
 
             if "overset" in line0:
                 build_order(list_vars, 0, stack=Stack(), list_strs=list_strs)
-                print(f"{list_vars} {line0}")
-                print(f"{list_vars0} {line0}")
+                #print(f"{list_vars0} {line0}")
+                list_symbols.append(list_vars0)
 
     _ = 0
 
