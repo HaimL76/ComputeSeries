@@ -8,10 +8,53 @@ from polynomial import Polynomial
 from polynomial_rational import PolynomialProductRational, PolynomialSummationRational
 from process_file import ProcessFile, ProcessFolder
 from series import SeriesProduct, SeriesProductSum
+from stack import Stack
 from substitution import VariableSubstitution
 
 const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
+
+
+def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(str, str)]):
+    if index >= len(symbols):
+        str0: str = "".join([str(obj) for obj in stack])
+        str1: str = ",".join(symbols)
+
+        tup: tuple[str, str] = str0, str1
+
+        list_strs.append(tup)
+    else:
+        symbol: str = symbols[index]
+
+        arr: list[str] = symbol.split("_")
+
+        if isinstance(arr, list) and len(arr) == 2 and arr[1].isnumeric():
+            var_index: int = int(arr[1])
+
+            stack.push(var_index)
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            _ = stack.pop()
+
+        if symbol == ">":
+            stack.push(symbol)
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            _ = stack.pop()
+
+        if symbol == r"\geq":
+            stack.push(">")
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            _ = stack.pop()
+
+            stack.push("=")
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            _ = stack.pop()
+
+        if symbol == "0":
+            stack.push(symbol)
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            _ = stack.pop()
+
+
 
 def check_covering():
     dict_order: dict = {}
@@ -23,7 +66,9 @@ def check_covering():
     regex_geq: str = r"\\geq"
     regex_geq_start: str = rf"^{regex_geq}"
 
-    arr_order: list[tuple] = [()] * 3
+    arr_order: list[list[tuple]] = []
+
+    list_strs: list[(str, str)] = []
 
     with open(".\\input\\cases.tex") as fr:
         for line in fr:
@@ -57,8 +102,6 @@ def check_covering():
                             list_vars.append(str_geq)
 
                 line: str = line[offset:]
-
-
 
             index: int = 0
 
@@ -129,9 +172,18 @@ def check_covering():
                 if not remove:
                     list_vars0.append(curr_symbol)
 
+            order_: list[tuple] = [()] * 3
+
+            curr_var: int = 0
+
+            index = 0
+
             if "overset" in line0:
+                build_order(list_vars, 0, stack=Stack(), list_strs=list_strs)
                 print(f"{list_vars} {line0}")
                 print(f"{list_vars0} {line0}")
+
+    _ = 0
 
 
 def create_symmetry_factors_program(level: int = 1):
@@ -171,5 +223,6 @@ def main():
     pf: ProcessFolder = ProcessFolder(".\\input\\", ".\\output\\")
 
     pf.process_folder(".txt$")
+
 
 main()
