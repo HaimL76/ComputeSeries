@@ -76,8 +76,8 @@ def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(l
 
 
 def check_covering():
-    #check_all_orders(0, Stack())
-    #return
+    check_all_orders(0, Stack())
+    return
     dict_order: dict = {}
 
     regex_overset: str = r"\\overset\{[a-z]\}"
@@ -237,31 +237,45 @@ def compare_lists(tup1: tuple[list, list], tup2: tuple[list, list]):
 
     return comp
 
+def push_operator(index: int, stack: Stack):
+    if list_collected(stack):
+        return
+
+    for str0 in [">", "="]:
+        stack.push(str0)
+        check_all_orders(index=index + 1, stack=stack)
+        _ = stack.pop()
+
 def check_all_orders(index: int, stack: Stack):
-    if index >= 7:
-        str0: str = convert_order_to_str(list(stack))
+    if list_collected(stack):
+        return
+
+    for i in range(4):
+        var_index: int = i + 1
+
+        if var_index not in stack:
+            stack.push(var_index)
+            push_operator(index, stack=stack)
+            _ = stack.pop()
+
+def list_collected(stack: Stack):
+    is_collected: bool = False
+
+    count: int = 0
+
+    for i in range(4):
+        var_index: int = i + 1
+
+        if var_index in stack:
+            count += 1
+
+    if count >= 4:
+        str0: str = ",".join([str(element) for element in stack])
 
         print(str0)
 
-        return
+        is_collected = True
 
-    even: bool = index % 2 == 0
-
-    if even:
-        for i in range(4):
-            var_index: int = i + 1
-
-            stack.push(var_index)
-            check_all_orders(index + 1, stack=stack)
-            _ = stack.pop()
-
-    else:
-        stack.push(">")
-        check_all_orders(index + 1, stack=stack)
-        _ = stack.pop()
-
-        stack.push("=")
-        check_all_orders(index + 1, stack=stack)
-        _ = stack.pop()
+    return is_collected
 
 
