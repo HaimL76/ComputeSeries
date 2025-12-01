@@ -201,11 +201,11 @@ def check_covering():
                 if not remove:
                     list_vars0.append(curr_symbol)
 
-            if len(list_vars0) > 0 and list_vars0[0] in [">", r"\geq"]:
-                list_vars0 = list_vars0[1:]
+            #if len(list_vars0) > 0 and list_vars0[0] in [">", r"\geq"]:
+             #   list_vars0 = list_vars0[1:]
 
-            if len(list_vars0) > 1 and list_vars0[-1] == "0" and list_vars0[-2]:
-                list_vars0 = list_vars0[:-2]
+            #if len(list_vars0) > 1 and list_vars0[-1] == "0" and list_vars0[-2]:
+             #   list_vars0 = list_vars0[:-2]
 
             if "overset" in line0:
                 build_order(list_vars0, 0, stack=Stack(), list_strs=list_strs,
@@ -215,14 +215,42 @@ def check_covering():
     if isinstance(list_strs, list) and len(list_strs) > 0:
         list_strs.sort(key=cmp_to_key(lambda list1, list2: compare_lists(list1, list2)))
 
+    dict_orders: dict[str, list[str]] = {}
+
+    for tup in list_strs:
+        str0: str = convert_order_to_str(tup[0])
+        str1: str = convert_line_to_str(tup[1])
+
+        if str1 not in dict_orders.keys():
+            dict_orders[str1] = []
+
+        list_orders: list[str] = dict_orders[str1]
+
+        list_orders.append(str0)
+
     with open(".\\saved_output\\orders.txt", "w") as fw:
         counter: int = 0
 
-        for tup in list_strs:
-            str0: str = convert_order_to_str(tup[0])
-            str1: str = convert_line_to_str(tup[1])
-            fw.write(f"order[{counter}]: {str0}, original: {str1}\n")
+        for key in dict_orders.keys():
             counter += 1
+            fw.write(f"original[{counter}]: {key}\n")
+
+            list_orders: list[str] = dict_orders[key]
+
+            counter0: int = 0
+
+            for val in list_orders:
+                counter0 += 1
+
+                fw.write(f"\torder[{counter}][{counter0}]: {val}\n")
+
+            fw.write(f"========================================\n")
+
+        #for tup in list_strs:
+         #   str0: str = convert_order_to_str(tup[0])
+          #  str1: str = convert_line_to_str(tup[1])
+           # fw.write(f"order[{counter}]: {str0}, original: {str1}\n")
+            #counter += 1
 
 
 def compare_lists(tup1: tuple[list, list], tup2: tuple[list, list]):
