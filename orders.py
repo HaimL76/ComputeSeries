@@ -1,38 +1,47 @@
 import re
+from functools import cmp_to_key
 
 from stack import Stack
 
 
-def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(str, str)],
+def convert_order_to_str(order: list[str]):
+    str0: str = ""  # .join([str(obj) for obj in stack])
+
+    for obj in order:
+        str_element: str = str(obj)
+
+        if isinstance(obj, int):
+            str_element: str = f"v_{obj}"
+
+        if str0:
+            str0 = f"{str0} "
+
+        str0 = f"{str0}{str_element}"
+
+    return str0
+
+
+def convert_line_to_str(line: list[str]):
+    str1: str = ""
+
+    for element in line:
+        str_element: str = element
+
+        if str_element == r"\geq":
+            str_element = ">="
+
+        if str1:
+            str1 = f"{str1} "
+
+        str1 = f"{str1}{str_element}"
+
+    return str1
+
+
+def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(list, list)],
                 list_original: list[str]):
     if index >= len(symbols):
-        str0: str = ""#.join([str(obj) for obj in stack])
-
-        for obj in stack:
-            str_element: str = str(obj)
-
-            if isinstance(obj, int):
-                str_element: str = f"v_{obj}"
-
-            if str0:
-                str0 = f"{str0} "
-
-            str0 = f"{str0}{str_element}"
-
-        str1: str = ""
-
-        for element in list_original:
-            str_element: str = element
-
-            if str_element == r"\geq":
-                str_element = ">="
-
-            if str1:
-                str1 = f"{str1} "
-
-            str1 = f"{str1}{str_element}"
-
-        tup: tuple[str, str] = str0, str1
+        tup: tuple = list(stack), list_original
 
         list_strs.append(tup)
     else:
@@ -70,7 +79,6 @@ def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(s
             build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
                         list_original=list_original)
             _ = stack.pop()
-
 
 
 def check_covering():
@@ -198,6 +206,37 @@ def check_covering():
                             list_original=list_vars_original)
                 list_symbols.append(list_vars0)
 
+    if isinstance(list_strs, list) and len(list_strs) > 0:
+        list_strs.sort(key=cmp_to_key(lambda list1, list2: compare_lists(list1, list2)))
+
     with open(".\\saved_output\\orders.txt", "w") as fw:
-        for order in list_strs:
-            fw.write(f"{order}\n")
+        counter: int = 0
+
+        for tup in list_strs:
+            str0: str = convert_order_to_str(tup[0])
+            str1: str = convert_line_to_str(tup[1])
+            fw.write(f"order[{counter}]: {str0}, original: {str1}\n")
+            counter += 1
+
+
+def compare_lists(tup1: tuple[list, list], tup2: tuple[list, list]):
+    list1: list = tup1[0]
+    list2: list = tup2[0]
+
+    index: int = 0
+
+    comp: int = 0
+
+    while comp == 0 and index < len(list1) and index < len(list2):
+        obj1 = list1[index]
+        obj2 = list2[index]
+
+        index += 1
+
+        if obj1 != obj2:
+            if isinstance(obj1, int) and isinstance(obj2, int):
+                comp = obj1 - obj2
+            else:
+                comp = 1 if obj2 == ">" else -1
+
+    return comp
