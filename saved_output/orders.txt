@@ -1,159 +1,256 @@
-order[0]: v_1 > v_2 > v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
-order[1]: v_1 > v_2 > v_3 > v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
-order[2]: v_1 > v_2 > v_3 > v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
-order[3]: v_1 > v_2 > v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
-order[4]: v_1 > v_2 > v_3 = v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
-order[5]: v_1 > v_2 > v_3 = v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
-order[6]: v_1 > v_2 > v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
-order[7]: v_1 > v_2 > v_4 > v_3, original: v_1 >= v_2 > v_3 + v_4 >= v_4 > v_3 >= 0
-order[8]: v_1 > v_2 > v_4 > v_3, original: v_3 + v_4 > v_1 >= v_2 >= v_4 > v_3 >= 0
-order[9]: v_1 > v_2 = v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
-order[10]: v_1 > v_2 = v_3 > v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
-order[11]: v_1 > v_2 = v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
-order[12]: v_1 > v_2 = v_3 = v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
-order[13]: v_1 > v_2 = v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
-order[14]: v_1 > v_2 = v_4 > v_3, original: v_3 + v_4 > v_1 >= v_2 >= v_4 > v_3 >= 0
-order[15]: v_1 > v_3 > v_2 > v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
-order[16]: v_1 > v_3 > v_2 > v_4, original: v_3 + v_4 > v_1 >= v_3 > v_2 >= v_4 >= 0
-order[17]: v_1 > v_3 > v_2 = v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
-order[18]: v_1 > v_3 > v_2 = v_4, original: v_3 + v_4 > v_1 >= v_3 > v_2 >= v_4 >= 0
-order[19]: v_1 > v_3 > v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
-order[20]: v_1 > v_3 > v_4 > v_2, original: v_2 + v_3 > v_1 >= v_3 >= v_4 > v_2 >= 0
-order[21]: v_1 > v_3 = v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
-order[22]: v_1 > v_3 = v_4 > v_2, original: v_2 + v_3 > v_1 >= v_3 >= v_4 > v_2 >= 0
-order[23]: v_1 > v_4 > v_2 > v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
-order[24]: v_1 > v_4 > v_2 > v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
-order[25]: v_1 > v_4 > v_2 > v_3, original: v_2 + v_3 > v_1 >= v_4 > v_2 >= v_3 >= 0
-order[26]: v_1 > v_4 > v_2 = v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
-order[27]: v_1 > v_4 > v_2 = v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
-order[28]: v_1 > v_4 > v_2 = v_3, original: v_2 + v_3 > v_1 >= v_4 > v_2 >= v_3 >= 0
-order[29]: v_1 > v_4 > v_3 > v_2, original: v_1 >= v_2 + v_3 >= v_4 > v_3 > v_2 >= 0
-order[30]: v_1 > v_4 > v_3 > v_2, original: v_1 >= v_4 > v_2 + v_3 >= v_3 > v_2 >= 0
-order[31]: v_1 > v_4 > v_3 > v_2, original: v_2 + v_3 > v_1 >= v_4 > v_3 > v_2 >= 0
-order[32]: v_1 = v_2 > v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
-order[33]: v_1 = v_2 > v_3 > v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
-order[34]: v_1 = v_2 > v_3 > v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
-order[35]: v_1 = v_2 > v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
-order[36]: v_1 = v_2 > v_3 = v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
-order[37]: v_1 = v_2 > v_3 = v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
-order[38]: v_1 = v_2 > v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
-order[39]: v_1 = v_2 > v_4 > v_3, original: v_1 >= v_2 > v_3 + v_4 >= v_4 > v_3 >= 0
-order[40]: v_1 = v_2 > v_4 > v_3, original: v_3 + v_4 > v_1 >= v_2 >= v_4 > v_3 >= 0
-order[41]: v_1 = v_2 = v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
-order[42]: v_1 = v_2 = v_3 > v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
-order[43]: v_1 = v_2 = v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
-order[44]: v_1 = v_2 = v_3 = v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
-order[45]: v_1 = v_2 = v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
-order[46]: v_1 = v_2 = v_4 > v_3, original: v_3 + v_4 > v_1 >= v_2 >= v_4 > v_3 >= 0
-order[47]: v_1 = v_3 > v_2 > v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
-order[48]: v_1 = v_3 > v_2 > v_4, original: v_3 + v_4 > v_1 >= v_3 > v_2 >= v_4 >= 0
-order[49]: v_1 = v_3 > v_2 = v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
-order[50]: v_1 = v_3 > v_2 = v_4, original: v_3 + v_4 > v_1 >= v_3 > v_2 >= v_4 >= 0
-order[51]: v_1 = v_3 > v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
-order[52]: v_1 = v_3 > v_4 > v_2, original: v_2 + v_3 > v_1 >= v_3 >= v_4 > v_2 >= 0
-order[53]: v_1 = v_3 = v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
-order[54]: v_1 = v_3 = v_4 > v_2, original: v_2 + v_3 > v_1 >= v_3 >= v_4 > v_2 >= 0
-order[55]: v_1 = v_4 > v_2 > v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
-order[56]: v_1 = v_4 > v_2 > v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
-order[57]: v_1 = v_4 > v_2 > v_3, original: v_2 + v_3 > v_1 >= v_4 > v_2 >= v_3 >= 0
-order[58]: v_1 = v_4 > v_2 = v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
-order[59]: v_1 = v_4 > v_2 = v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
-order[60]: v_1 = v_4 > v_2 = v_3, original: v_2 + v_3 > v_1 >= v_4 > v_2 >= v_3 >= 0
-order[61]: v_1 = v_4 > v_3 > v_2, original: v_1 >= v_2 + v_3 >= v_4 > v_3 > v_2 >= 0
-order[62]: v_1 = v_4 > v_3 > v_2, original: v_1 >= v_4 > v_2 + v_3 >= v_3 > v_2 >= 0
-order[63]: v_1 = v_4 > v_3 > v_2, original: v_2 + v_3 > v_1 >= v_4 > v_3 > v_2 >= 0
-order[64]: v_2 > v_1 > v_3 > v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
-order[65]: v_2 > v_1 > v_3 > v_4, original: v_3 + v_4 > v_2 > v_1 >= v_3 >= v_4 >= 0
-order[66]: v_2 > v_1 > v_3 > v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
-order[67]: v_2 > v_1 > v_3 = v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
-order[68]: v_2 > v_1 > v_3 = v_4, original: v_3 + v_4 > v_2 > v_1 >= v_3 >= v_4 >= 0
-order[69]: v_2 > v_1 > v_3 = v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
-order[70]: v_2 > v_1 > v_4 > v_3, original: v_2 > v_1 >= v_3 + v_4 >= v_4 > v_3 >= 0
-order[71]: v_2 > v_1 > v_4 > v_3, original: v_3 + v_4 >= v_2 > v_1 >= v_4 > v_3 >= 0
-order[72]: v_2 > v_1 > v_4 > v_3, original: v_2 > v_3 + v_4 > v_1 >= v_4 > v_3 >= 0
-order[73]: v_2 > v_1 = v_3 > v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
-order[74]: v_2 > v_1 = v_3 > v_4, original: v_3 + v_4 > v_2 > v_1 >= v_3 >= v_4 >= 0
-order[75]: v_2 > v_1 = v_3 > v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
-order[76]: v_2 > v_1 = v_3 = v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
-order[77]: v_2 > v_1 = v_3 = v_4, original: v_3 + v_4 > v_2 > v_1 >= v_3 >= v_4 >= 0
-order[78]: v_2 > v_1 = v_3 = v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
-order[79]: v_2 > v_1 = v_4 > v_3, original: v_2 > v_1 >= v_3 + v_4 >= v_4 > v_3 >= 0
-order[80]: v_2 > v_1 = v_4 > v_3, original: v_3 + v_4 >= v_2 > v_1 >= v_4 > v_3 >= 0
-order[81]: v_2 > v_1 = v_4 > v_3, original: v_2 > v_3 + v_4 > v_1 >= v_4 > v_3 >= 0
-order[82]: v_2 > v_3 > v_1 > v_4, original: v_2 >= v_3 > v_1 >= v_4 >= 0
-order[83]: v_2 > v_3 > v_1 = v_4, original: v_2 >= v_3 > v_1 >= v_4 >= 0
-order[84]: v_2 > v_3 > v_4 > v_1, original: v_2 >= v_3 >= v_4 > v_1 >= 0
-order[85]: v_2 > v_3 = v_4 > v_1, original: v_2 >= v_3 >= v_4 > v_1 >= 0
-order[86]: v_2 > v_4 > v_1 > v_3, original: v_2 >= v_4 > v_1 >= v_3 >= 0
-order[87]: v_2 > v_4 > v_1 = v_3, original: v_2 >= v_4 > v_1 >= v_3 >= 0
-order[88]: v_2 > v_4 > v_3 > v_1, original: v_2 >= v_4 > v_3 > v_1 >= 0
-order[89]: v_2 = v_3 > v_1 > v_4, original: v_2 >= v_3 > v_1 >= v_4 >= 0
-order[90]: v_2 = v_3 > v_1 = v_4, original: v_2 >= v_3 > v_1 >= v_4 >= 0
-order[91]: v_2 = v_3 > v_4 > v_1, original: v_2 >= v_3 >= v_4 > v_1 >= 0
-order[92]: v_2 = v_3 = v_4 > v_1, original: v_2 >= v_3 >= v_4 > v_1 >= 0
-order[93]: v_2 = v_4 > v_1 > v_3, original: v_2 >= v_4 > v_1 >= v_3 >= 0
-order[94]: v_2 = v_4 > v_1 = v_3, original: v_2 >= v_4 > v_1 >= v_3 >= 0
-order[95]: v_2 = v_4 > v_3 > v_1, original: v_2 >= v_4 > v_3 > v_1 >= 0
-order[96]: v_3 > v_1 > v_2 > v_4, original: v_3 > v_1 >= v_2 >= v_4 >= 0
-order[97]: v_3 > v_1 > v_2 = v_4, original: v_3 > v_1 >= v_2 >= v_4 >= 0
-order[98]: v_3 > v_1 > v_4 > v_2, original: v_3 > v_1 >= v_4 > v_2 >= 0
-order[99]: v_3 > v_1 = v_2 > v_4, original: v_3 > v_1 >= v_2 >= v_4 >= 0
-order[100]: v_3 > v_1 = v_2 = v_4, original: v_3 > v_1 >= v_2 >= v_4 >= 0
-order[101]: v_3 > v_1 = v_4 > v_2, original: v_3 > v_1 >= v_4 > v_2 >= 0
-order[102]: v_3 > v_2 > v_1 > v_4, original: v_3 > v_2 > v_1 >= v_4 >= 0
-order[103]: v_3 > v_2 > v_1 = v_4, original: v_3 > v_2 > v_1 >= v_4 >= 0
-order[104]: v_3 > v_2 > v_4 > v_1, original: v_3 > v_2 >= v_4 > v_1 >= 0
-order[105]: v_3 > v_2 = v_4 > v_1, original: v_3 > v_2 >= v_4 > v_1 >= 0
-order[106]: v_3 > v_4 > v_1 > v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
-order[107]: v_3 > v_4 > v_1 > v_2, original: v_1 + v_2 > v_3 >= v_4 > v_1 >= v_2 >= 0
-order[108]: v_3 > v_4 > v_1 > v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
-order[109]: v_3 > v_4 > v_1 = v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
-order[110]: v_3 > v_4 > v_1 = v_2, original: v_1 + v_2 > v_3 >= v_4 > v_1 >= v_2 >= 0
-order[111]: v_3 > v_4 > v_1 = v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
-order[112]: v_3 > v_4 > v_2 > v_1, original: v_3 >= v_4 > v_1 + v_2 >= v_2 > v_1 >= 0
-order[113]: v_3 > v_4 > v_2 > v_1, original: v_1 + v_2 > v_3 >= v_4 > v_2 > v_1 >= 0
-order[114]: v_3 > v_4 > v_2 > v_1, original: v_3 >= v_1 + v_2 >= v_4 > v_2 > v_1 >= 0
-order[115]: v_3 = v_4 > v_1 > v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
-order[116]: v_3 = v_4 > v_1 > v_2, original: v_1 + v_2 > v_3 >= v_4 > v_1 >= v_2 >= 0
-order[117]: v_3 = v_4 > v_1 > v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
-order[118]: v_3 = v_4 > v_1 = v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
-order[119]: v_3 = v_4 > v_1 = v_2, original: v_1 + v_2 > v_3 >= v_4 > v_1 >= v_2 >= 0
-order[120]: v_3 = v_4 > v_1 = v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
-order[121]: v_3 = v_4 > v_2 > v_1, original: v_3 >= v_4 > v_1 + v_2 >= v_2 > v_1 >= 0
-order[122]: v_3 = v_4 > v_2 > v_1, original: v_1 + v_2 > v_3 >= v_4 > v_2 > v_1 >= 0
-order[123]: v_3 = v_4 > v_2 > v_1, original: v_3 >= v_1 + v_2 >= v_4 > v_2 > v_1 >= 0
-order[124]: v_4 > v_1 > v_2 > v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
-order[125]: v_4 > v_1 > v_2 > v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
-order[126]: v_4 > v_1 > v_2 > v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
-order[127]: v_4 > v_1 > v_2 = v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
-order[128]: v_4 > v_1 > v_2 = v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
-order[129]: v_4 > v_1 > v_2 = v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
-order[130]: v_4 > v_1 > v_3 > v_2, original: v_4 > v_2 + v_3 >= v_1 >= v_3 > v_2 >= 0
-order[131]: v_4 > v_1 > v_3 > v_2, original: v_4 > v_1 >= v_2 + v_3 >= v_3 > v_2 >= 0
-order[132]: v_4 > v_1 > v_3 > v_2, original: v_2 + v_3 >= v_4 > v_1 >= v_3 > v_2 >= 0
-order[133]: v_4 > v_1 = v_2 > v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
-order[134]: v_4 > v_1 = v_2 > v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
-order[135]: v_4 > v_1 = v_2 > v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
-order[136]: v_4 > v_1 = v_2 = v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
-order[137]: v_4 > v_1 = v_2 = v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
-order[138]: v_4 > v_1 = v_2 = v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
-order[139]: v_4 > v_1 = v_3 > v_2, original: v_4 > v_2 + v_3 >= v_1 >= v_3 > v_2 >= 0
-order[140]: v_4 > v_1 = v_3 > v_2, original: v_4 > v_1 >= v_2 + v_3 >= v_3 > v_2 >= 0
-order[141]: v_4 > v_1 = v_3 > v_2, original: v_2 + v_3 >= v_4 > v_1 >= v_3 > v_2 >= 0
-order[142]: v_4 > v_2 > v_1 > v_3, original: v_4 > v_2 + v_3 >= v_2 > v_1 >= v_3 >= 0
-order[143]: v_4 > v_2 > v_1 > v_3, original: v_2 + v_3 >= v_4 > v_2 > v_1 >= v_3 >= 0
-order[144]: v_4 > v_2 > v_1 = v_3, original: v_4 > v_2 + v_3 >= v_2 > v_1 >= v_3 >= 0
-order[145]: v_4 > v_2 > v_1 = v_3, original: v_2 + v_3 >= v_4 > v_2 > v_1 >= v_3 >= 0
-order[146]: v_4 > v_2 > v_3 > v_1, original: v_4 > v_1 + v_2 >= v_2 >= v_3 > v_1 >= 0
-order[147]: v_4 > v_2 > v_3 > v_1, original: v_1 + v_2 >= v_4 > v_2 >= v_3 > v_1 >= 0
-order[148]: v_4 > v_2 = v_3 > v_1, original: v_4 > v_1 + v_2 >= v_2 >= v_3 > v_1 >= 0
-order[149]: v_4 > v_2 = v_3 > v_1, original: v_1 + v_2 >= v_4 > v_2 >= v_3 > v_1 >= 0
-order[150]: v_4 > v_3 > v_1 > v_2, original: v_4 > v_1 + v_2 >= v_3 > v_1 >= v_2 >= 0
-order[151]: v_4 > v_3 > v_1 > v_2, original: v_4 > v_3 > v_1 + v_2 >= v_1 >= v_2 >= 0
-order[152]: v_4 > v_3 > v_1 > v_2, original: v_1 + v_2 >= v_4 > v_3 > v_1 >= v_2 >= 0
-order[153]: v_4 > v_3 > v_1 = v_2, original: v_4 > v_1 + v_2 >= v_3 > v_1 >= v_2 >= 0
-order[154]: v_4 > v_3 > v_1 = v_2, original: v_4 > v_3 > v_1 + v_2 >= v_1 >= v_2 >= 0
-order[155]: v_4 > v_3 > v_1 = v_2, original: v_1 + v_2 >= v_4 > v_3 > v_1 >= v_2 >= 0
-order[156]: v_4 > v_3 > v_2 > v_1, original: v_4 > v_1 + v_2 >= v_3 > v_2 > v_1 >= 0
-order[157]: v_4 > v_3 > v_2 > v_1, original: v_4 > v_3 > v_1 + v_2 >= v_2 > v_1 >= 0
-order[158]: v_4 > v_3 > v_2 > v_1, original: v_1 + v_2 >= v_4 > v_3 > v_2 > v_1 >= 0
+order[0]: v_1 > v_2 > v_3 + v_4 > v_3 > v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
+order[1]: v_1 > v_2 > v_3 + v_4 > v_3 = v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
+order[2]: v_1 > v_2 > v_3 + v_4 > v_4 > v_3, original: v_1 >= v_2 > v_3 + v_4 >= v_4 > v_3 >= 0
+order[3]: v_1 > v_2 > v_3 + v_4 = v_3 > v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
+order[4]: v_1 > v_2 > v_3 + v_4 = v_3 = v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
+order[5]: v_1 > v_2 > v_3 + v_4 = v_4 > v_3, original: v_1 >= v_2 > v_3 + v_4 >= v_4 > v_3 >= 0
+order[6]: v_1 > v_2 + v_3 > v_3 > v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
+order[7]: v_1 > v_2 + v_3 > v_3 = v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
+order[8]: v_1 > v_2 + v_3 > v_4 > v_2 > v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
+order[9]: v_1 > v_2 + v_3 > v_4 > v_2 = v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
+order[10]: v_1 > v_2 + v_3 > v_4 > v_3 > v_2, original: v_1 >= v_2 + v_3 >= v_4 > v_3 > v_2 >= 0
+order[11]: v_1 > v_2 + v_3 = v_3 > v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
+order[12]: v_1 > v_2 + v_3 = v_3 = v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
+order[13]: v_1 > v_2 + v_3 = v_4 > v_2 > v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
+order[14]: v_1 > v_2 + v_3 = v_4 > v_2 = v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
+order[15]: v_1 > v_2 + v_3 = v_4 > v_3 > v_2, original: v_1 >= v_2 + v_3 >= v_4 > v_3 > v_2 >= 0
+order[16]: v_1 > v_3 + v_4 > v_2 > v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[17]: v_1 > v_3 + v_4 > v_2 > v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[18]: v_1 > v_3 + v_4 > v_2 > v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
+order[19]: v_1 > v_3 + v_4 > v_2 = v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[20]: v_1 > v_3 + v_4 > v_2 = v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[21]: v_1 > v_3 + v_4 > v_2 = v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
+order[22]: v_1 > v_3 + v_4 > v_3 > v_2 > v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
+order[23]: v_1 > v_3 + v_4 > v_3 > v_2 = v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
+order[24]: v_1 > v_3 + v_4 = v_2 > v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[25]: v_1 > v_3 + v_4 = v_2 > v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[26]: v_1 > v_3 + v_4 = v_2 > v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
+order[27]: v_1 > v_3 + v_4 = v_2 = v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[28]: v_1 > v_3 + v_4 = v_2 = v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[29]: v_1 > v_3 + v_4 = v_2 = v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
+order[30]: v_1 > v_3 + v_4 = v_3 > v_2 > v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
+order[31]: v_1 > v_3 + v_4 = v_3 > v_2 = v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
+order[32]: v_1 > v_4 > v_2 + v_3 > v_2 > v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
+order[33]: v_1 > v_4 > v_2 + v_3 > v_2 = v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
+order[34]: v_1 > v_4 > v_2 + v_3 > v_3 > v_2, original: v_1 >= v_4 > v_2 + v_3 >= v_3 > v_2 >= 0
+order[35]: v_1 > v_4 > v_2 + v_3 = v_2 > v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
+order[36]: v_1 > v_4 > v_2 + v_3 = v_2 = v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
+order[37]: v_1 > v_4 > v_2 + v_3 = v_3 > v_2, original: v_1 >= v_4 > v_2 + v_3 >= v_3 > v_2 >= 0
+order[38]: v_1 = v_2 > v_3 + v_4 > v_3 > v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
+order[39]: v_1 = v_2 > v_3 + v_4 > v_3 = v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
+order[40]: v_1 = v_2 > v_3 + v_4 > v_4 > v_3, original: v_1 >= v_2 > v_3 + v_4 >= v_4 > v_3 >= 0
+order[41]: v_1 = v_2 > v_3 + v_4 = v_3 > v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
+order[42]: v_1 = v_2 > v_3 + v_4 = v_3 = v_4, original: v_1 >= v_2 > v_3 + v_4 >= v_3 >= v_4 >= 0
+order[43]: v_1 = v_2 > v_3 + v_4 = v_4 > v_3, original: v_1 >= v_2 > v_3 + v_4 >= v_4 > v_3 >= 0
+order[44]: v_1 = v_3 + v_4 > v_2 > v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[45]: v_1 = v_3 + v_4 > v_2 > v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[46]: v_1 = v_3 + v_4 > v_2 > v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
+order[47]: v_1 = v_3 + v_4 > v_2 = v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[48]: v_1 = v_3 + v_4 > v_2 = v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[49]: v_1 = v_3 + v_4 > v_2 = v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
+order[50]: v_1 = v_3 + v_4 > v_3 > v_2 > v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
+order[51]: v_1 = v_3 + v_4 > v_3 > v_2 = v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
+order[52]: v_1 = v_3 + v_4 = v_2 > v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[53]: v_1 = v_3 + v_4 = v_2 > v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[54]: v_1 = v_3 + v_4 = v_2 > v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
+order[55]: v_1 = v_3 + v_4 = v_2 = v_3 > v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[56]: v_1 = v_3 + v_4 = v_2 = v_3 = v_4, original: v_1 >= v_3 + v_4 >= v_2 >= v_3 >= v_4 >= 0
+order[57]: v_1 = v_3 + v_4 = v_2 = v_4 > v_3, original: v_1 >= v_3 + v_4 >= v_2 >= v_4 > v_3 >= 0
+order[58]: v_1 = v_3 + v_4 = v_3 > v_2 > v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
+order[59]: v_1 = v_3 + v_4 = v_3 > v_2 = v_4, original: v_1 >= v_3 + v_4 >= v_3 > v_2 >= v_4 >= 0
+order[60]: v_1 + v_2 > v_3 > v_4 > v_1 > v_2, original: v_1 + v_2 > v_3 >= v_4 > v_1 >= v_2 >= 0
+order[61]: v_1 + v_2 > v_3 > v_4 > v_1 = v_2, original: v_1 + v_2 > v_3 >= v_4 > v_1 >= v_2 >= 0
+order[62]: v_1 + v_2 > v_3 > v_4 > v_2 > v_1, original: v_1 + v_2 > v_3 >= v_4 > v_2 > v_1 >= 0
+order[63]: v_1 + v_2 > v_3 = v_4 > v_1 > v_2, original: v_1 + v_2 > v_3 >= v_4 > v_1 >= v_2 >= 0
+order[64]: v_1 + v_2 > v_3 = v_4 > v_1 = v_2, original: v_1 + v_2 > v_3 >= v_4 > v_1 >= v_2 >= 0
+order[65]: v_1 + v_2 > v_3 = v_4 > v_2 > v_1, original: v_1 + v_2 > v_3 >= v_4 > v_2 > v_1 >= 0
+order[66]: v_1 + v_2 > v_4 > v_2 > v_3 > v_1, original: v_1 + v_2 >= v_4 > v_2 >= v_3 > v_1 >= 0
+order[67]: v_1 + v_2 > v_4 > v_2 = v_3 > v_1, original: v_1 + v_2 >= v_4 > v_2 >= v_3 > v_1 >= 0
+order[68]: v_1 + v_2 > v_4 > v_3 > v_1 > v_2, original: v_1 + v_2 >= v_4 > v_3 > v_1 >= v_2 >= 0
+order[69]: v_1 + v_2 > v_4 > v_3 > v_1 = v_2, original: v_1 + v_2 >= v_4 > v_3 > v_1 >= v_2 >= 0
+order[70]: v_1 + v_2 > v_4 > v_3 > v_2 > v_1, original: v_1 + v_2 >= v_4 > v_3 > v_2 > v_1 >= 0
+order[71]: v_1 + v_2 = v_4 > v_2 > v_3 > v_1, original: v_1 + v_2 >= v_4 > v_2 >= v_3 > v_1 >= 0
+order[72]: v_1 + v_2 = v_4 > v_2 = v_3 > v_1, original: v_1 + v_2 >= v_4 > v_2 >= v_3 > v_1 >= 0
+order[73]: v_1 + v_2 = v_4 > v_3 > v_1 > v_2, original: v_1 + v_2 >= v_4 > v_3 > v_1 >= v_2 >= 0
+order[74]: v_1 + v_2 = v_4 > v_3 > v_1 = v_2, original: v_1 + v_2 >= v_4 > v_3 > v_1 >= v_2 >= 0
+order[75]: v_1 + v_2 = v_4 > v_3 > v_2 > v_1, original: v_1 + v_2 >= v_4 > v_3 > v_2 > v_1 >= 0
+order[76]: v_1 = v_2 + v_3 > v_3 > v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
+order[77]: v_1 = v_2 + v_3 > v_3 = v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
+order[78]: v_1 = v_2 + v_3 > v_4 > v_2 > v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
+order[79]: v_1 = v_2 + v_3 > v_4 > v_2 = v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
+order[80]: v_1 = v_2 + v_3 > v_4 > v_3 > v_2, original: v_1 >= v_2 + v_3 >= v_4 > v_3 > v_2 >= 0
+order[81]: v_1 = v_2 + v_3 = v_3 > v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
+order[82]: v_1 = v_2 + v_3 = v_3 = v_4 > v_2, original: v_1 >= v_2 + v_3 >= v_3 >= v_4 > v_2 >= 0
+order[83]: v_1 = v_2 + v_3 = v_4 > v_2 > v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
+order[84]: v_1 = v_2 + v_3 = v_4 > v_2 = v_3, original: v_1 >= v_2 + v_3 >= v_4 > v_2 >= v_3 >= 0
+order[85]: v_1 = v_2 + v_3 = v_4 > v_3 > v_2, original: v_1 >= v_2 + v_3 >= v_4 > v_3 > v_2 >= 0
+order[86]: v_1 = v_4 > v_2 + v_3 > v_2 > v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
+order[87]: v_1 = v_4 > v_2 + v_3 > v_2 = v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
+order[88]: v_1 = v_4 > v_2 + v_3 > v_3 > v_2, original: v_1 >= v_4 > v_2 + v_3 >= v_3 > v_2 >= 0
+order[89]: v_1 = v_4 > v_2 + v_3 = v_2 > v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
+order[90]: v_1 = v_4 > v_2 + v_3 = v_2 = v_3, original: v_1 >= v_4 > v_2 + v_3 >= v_2 >= v_3 >= 0
+order[91]: v_1 = v_4 > v_2 + v_3 = v_3 > v_2, original: v_1 >= v_4 > v_2 + v_3 >= v_3 > v_2 >= 0
+order[92]: v_2 > v_1 > v_3 + v_4 > v_3 > v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
+order[93]: v_2 > v_1 > v_3 + v_4 > v_3 = v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
+order[94]: v_2 > v_1 > v_3 + v_4 > v_4 > v_3, original: v_2 > v_1 >= v_3 + v_4 >= v_4 > v_3 >= 0
+order[95]: v_2 > v_1 > v_3 + v_4 = v_3 > v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
+order[96]: v_2 > v_1 > v_3 + v_4 = v_3 = v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
+order[97]: v_2 > v_1 > v_3 + v_4 = v_4 > v_3, original: v_2 > v_1 >= v_3 + v_4 >= v_4 > v_3 >= 0
+order[98]: v_2 > v_1 = v_3 + v_4 > v_3 > v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
+order[99]: v_2 > v_1 = v_3 + v_4 > v_3 = v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
+order[100]: v_2 > v_1 = v_3 + v_4 > v_4 > v_3, original: v_2 > v_1 >= v_3 + v_4 >= v_4 > v_3 >= 0
+order[101]: v_2 > v_1 = v_3 + v_4 = v_3 > v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
+order[102]: v_2 > v_1 = v_3 + v_4 = v_3 = v_4, original: v_2 > v_1 >= v_3 + v_4 >= v_3 >= v_4 >= 0
+order[103]: v_2 > v_1 = v_3 + v_4 = v_4 > v_3, original: v_2 > v_1 >= v_3 + v_4 >= v_4 > v_3 >= 0
+order[104]: v_2 > v_3 > v_1 > v_4, original: v_2 >= v_3 > v_1 >= v_4 >= 0
+order[105]: v_2 > v_3 > v_1 = v_4, original: v_2 >= v_3 > v_1 >= v_4 >= 0
+order[106]: v_2 > v_3 > v_4 > v_1, original: v_2 >= v_3 >= v_4 > v_1 >= 0
+order[107]: v_2 > v_3 + v_4 > v_1 > v_3 > v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
+order[108]: v_2 > v_3 + v_4 > v_1 > v_3 = v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
+order[109]: v_2 > v_3 + v_4 > v_1 > v_4 > v_3, original: v_2 > v_3 + v_4 > v_1 >= v_4 > v_3 >= 0
+order[110]: v_2 > v_3 + v_4 > v_1 = v_3 > v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
+order[111]: v_2 > v_3 + v_4 > v_1 = v_3 = v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
+order[112]: v_2 > v_3 + v_4 > v_1 = v_4 > v_3, original: v_2 > v_3 + v_4 > v_1 >= v_4 > v_3 >= 0
+order[113]: v_2 > v_3 = v_4 > v_1, original: v_2 >= v_3 >= v_4 > v_1 >= 0
+order[114]: v_2 > v_4 > v_1 > v_3, original: v_2 >= v_4 > v_1 >= v_3 >= 0
+order[115]: v_2 > v_4 > v_1 = v_3, original: v_2 >= v_4 > v_1 >= v_3 >= 0
+order[116]: v_2 > v_4 > v_3 > v_1, original: v_2 >= v_4 > v_3 > v_1 >= 0
+order[117]: v_2 = v_3 > v_1 > v_4, original: v_2 >= v_3 > v_1 >= v_4 >= 0
+order[118]: v_2 = v_3 > v_1 = v_4, original: v_2 >= v_3 > v_1 >= v_4 >= 0
+order[119]: v_2 = v_3 > v_4 > v_1, original: v_2 >= v_3 >= v_4 > v_1 >= 0
+order[120]: v_2 = v_3 + v_4 > v_1 > v_3 > v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
+order[121]: v_2 = v_3 + v_4 > v_1 > v_3 = v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
+order[122]: v_2 = v_3 + v_4 > v_1 = v_3 > v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
+order[123]: v_2 = v_3 + v_4 > v_1 = v_3 = v_4, original: v_2 >= v_3 + v_4 > v_1 >= v_3 >= v_4 >= 0
+order[124]: v_2 = v_3 = v_4 > v_1, original: v_2 >= v_3 >= v_4 > v_1 >= 0
+order[125]: v_2 = v_4 > v_1 > v_3, original: v_2 >= v_4 > v_1 >= v_3 >= 0
+order[126]: v_2 = v_4 > v_1 = v_3, original: v_2 >= v_4 > v_1 >= v_3 >= 0
+order[127]: v_2 = v_4 > v_3 > v_1, original: v_2 >= v_4 > v_3 > v_1 >= 0
+order[128]: v_2 + v_3 > v_1 > v_3 > v_4 > v_2, original: v_2 + v_3 > v_1 >= v_3 >= v_4 > v_2 >= 0
+order[129]: v_2 + v_3 > v_1 > v_3 = v_4 > v_2, original: v_2 + v_3 > v_1 >= v_3 >= v_4 > v_2 >= 0
+order[130]: v_2 + v_3 > v_1 > v_4 > v_2 > v_3, original: v_2 + v_3 > v_1 >= v_4 > v_2 >= v_3 >= 0
+order[131]: v_2 + v_3 > v_1 > v_4 > v_2 = v_3, original: v_2 + v_3 > v_1 >= v_4 > v_2 >= v_3 >= 0
+order[132]: v_2 + v_3 > v_1 > v_4 > v_3 > v_2, original: v_2 + v_3 > v_1 >= v_4 > v_3 > v_2 >= 0
+order[133]: v_2 + v_3 > v_1 = v_3 > v_4 > v_2, original: v_2 + v_3 > v_1 >= v_3 >= v_4 > v_2 >= 0
+order[134]: v_2 + v_3 > v_1 = v_3 = v_4 > v_2, original: v_2 + v_3 > v_1 >= v_3 >= v_4 > v_2 >= 0
+order[135]: v_2 + v_3 > v_1 = v_4 > v_2 > v_3, original: v_2 + v_3 > v_1 >= v_4 > v_2 >= v_3 >= 0
+order[136]: v_2 + v_3 > v_1 = v_4 > v_2 = v_3, original: v_2 + v_3 > v_1 >= v_4 > v_2 >= v_3 >= 0
+order[137]: v_2 + v_3 > v_1 = v_4 > v_3 > v_2, original: v_2 + v_3 > v_1 >= v_4 > v_3 > v_2 >= 0
+order[138]: v_2 + v_3 > v_4 > v_1 > v_2 > v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
+order[139]: v_2 + v_3 > v_4 > v_1 > v_2 = v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
+order[140]: v_2 + v_3 > v_4 > v_1 > v_3 > v_2, original: v_2 + v_3 >= v_4 > v_1 >= v_3 > v_2 >= 0
+order[141]: v_2 + v_3 > v_4 > v_1 = v_2 > v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
+order[142]: v_2 + v_3 > v_4 > v_1 = v_2 = v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
+order[143]: v_2 + v_3 > v_4 > v_1 = v_3 > v_2, original: v_2 + v_3 >= v_4 > v_1 >= v_3 > v_2 >= 0
+order[144]: v_2 + v_3 > v_4 > v_2 > v_1 > v_3, original: v_2 + v_3 >= v_4 > v_2 > v_1 >= v_3 >= 0
+order[145]: v_2 + v_3 > v_4 > v_2 > v_1 = v_3, original: v_2 + v_3 >= v_4 > v_2 > v_1 >= v_3 >= 0
+order[146]: v_2 + v_3 = v_4 > v_1 > v_2 > v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
+order[147]: v_2 + v_3 = v_4 > v_1 > v_2 = v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
+order[148]: v_2 + v_3 = v_4 > v_1 > v_3 > v_2, original: v_2 + v_3 >= v_4 > v_1 >= v_3 > v_2 >= 0
+order[149]: v_2 + v_3 = v_4 > v_1 = v_2 > v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
+order[150]: v_2 + v_3 = v_4 > v_1 = v_2 = v_3, original: v_2 + v_3 >= v_4 > v_1 >= v_2 >= v_3 >= 0
+order[151]: v_2 + v_3 = v_4 > v_1 = v_3 > v_2, original: v_2 + v_3 >= v_4 > v_1 >= v_3 > v_2 >= 0
+order[152]: v_2 + v_3 = v_4 > v_2 > v_1 > v_3, original: v_2 + v_3 >= v_4 > v_2 > v_1 >= v_3 >= 0
+order[153]: v_2 + v_3 = v_4 > v_2 > v_1 = v_3, original: v_2 + v_3 >= v_4 > v_2 > v_1 >= v_3 >= 0
+order[154]: v_3 > v_1 > v_2 > v_4, original: v_3 > v_1 >= v_2 >= v_4 >= 0
+order[155]: v_3 > v_1 > v_2 = v_4, original: v_3 > v_1 >= v_2 >= v_4 >= 0
+order[156]: v_3 > v_1 > v_4 > v_2, original: v_3 > v_1 >= v_4 > v_2 >= 0
+order[157]: v_3 > v_1 = v_2 > v_4, original: v_3 > v_1 >= v_2 >= v_4 >= 0
+order[158]: v_3 > v_1 = v_2 = v_4, original: v_3 > v_1 >= v_2 >= v_4 >= 0
+order[159]: v_3 > v_1 + v_2 > v_4 > v_1 > v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
+order[160]: v_3 > v_1 + v_2 > v_4 > v_1 = v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
+order[161]: v_3 > v_1 + v_2 > v_4 > v_2 > v_1, original: v_3 >= v_1 + v_2 >= v_4 > v_2 > v_1 >= 0
+order[162]: v_3 > v_1 + v_2 = v_4 > v_1 > v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
+order[163]: v_3 > v_1 + v_2 = v_4 > v_1 = v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
+order[164]: v_3 > v_1 + v_2 = v_4 > v_2 > v_1, original: v_3 >= v_1 + v_2 >= v_4 > v_2 > v_1 >= 0
+order[165]: v_3 > v_1 = v_4 > v_2, original: v_3 > v_1 >= v_4 > v_2 >= 0
+order[166]: v_3 > v_2 > v_1 > v_4, original: v_3 > v_2 > v_1 >= v_4 >= 0
+order[167]: v_3 > v_2 > v_1 = v_4, original: v_3 > v_2 > v_1 >= v_4 >= 0
+order[168]: v_3 > v_2 > v_4 > v_1, original: v_3 > v_2 >= v_4 > v_1 >= 0
+order[169]: v_3 > v_2 = v_4 > v_1, original: v_3 > v_2 >= v_4 > v_1 >= 0
+order[170]: v_3 > v_4 > v_1 + v_2 > v_1 > v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[171]: v_3 > v_4 > v_1 + v_2 > v_1 = v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[172]: v_3 > v_4 > v_1 + v_2 > v_2 > v_1, original: v_3 >= v_4 > v_1 + v_2 >= v_2 > v_1 >= 0
+order[173]: v_3 > v_4 > v_1 + v_2 = v_1 > v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[174]: v_3 > v_4 > v_1 + v_2 = v_1 = v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[175]: v_3 > v_4 > v_1 + v_2 = v_2 > v_1, original: v_3 >= v_4 > v_1 + v_2 >= v_2 > v_1 >= 0
+order[176]: v_3 + v_4 > v_1 > v_2 > v_3 > v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
+order[177]: v_3 + v_4 > v_1 > v_2 > v_3 = v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
+order[178]: v_3 + v_4 > v_1 > v_2 > v_4 > v_3, original: v_3 + v_4 > v_1 >= v_2 >= v_4 > v_3 >= 0
+order[179]: v_3 + v_4 > v_1 > v_2 = v_3 > v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
+order[180]: v_3 + v_4 > v_1 > v_2 = v_3 = v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
+order[181]: v_3 + v_4 > v_1 > v_2 = v_4 > v_3, original: v_3 + v_4 > v_1 >= v_2 >= v_4 > v_3 >= 0
+order[182]: v_3 + v_4 > v_1 > v_3 > v_2 > v_4, original: v_3 + v_4 > v_1 >= v_3 > v_2 >= v_4 >= 0
+order[183]: v_3 + v_4 > v_1 > v_3 > v_2 = v_4, original: v_3 + v_4 > v_1 >= v_3 > v_2 >= v_4 >= 0
+order[184]: v_3 + v_4 > v_1 = v_2 > v_3 > v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
+order[185]: v_3 + v_4 > v_1 = v_2 > v_3 = v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
+order[186]: v_3 + v_4 > v_1 = v_2 > v_4 > v_3, original: v_3 + v_4 > v_1 >= v_2 >= v_4 > v_3 >= 0
+order[187]: v_3 + v_4 > v_1 = v_2 = v_3 > v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
+order[188]: v_3 + v_4 > v_1 = v_2 = v_3 = v_4, original: v_3 + v_4 > v_1 >= v_2 >= v_3 >= v_4 >= 0
+order[189]: v_3 + v_4 > v_1 = v_2 = v_4 > v_3, original: v_3 + v_4 > v_1 >= v_2 >= v_4 > v_3 >= 0
+order[190]: v_3 + v_4 > v_1 = v_3 > v_2 > v_4, original: v_3 + v_4 > v_1 >= v_3 > v_2 >= v_4 >= 0
+order[191]: v_3 + v_4 > v_1 = v_3 > v_2 = v_4, original: v_3 + v_4 > v_1 >= v_3 > v_2 >= v_4 >= 0
+order[192]: v_3 + v_4 > v_2 > v_1 > v_3 > v_4, original: v_3 + v_4 > v_2 > v_1 >= v_3 >= v_4 >= 0
+order[193]: v_3 + v_4 > v_2 > v_1 > v_3 = v_4, original: v_3 + v_4 > v_2 > v_1 >= v_3 >= v_4 >= 0
+order[194]: v_3 + v_4 > v_2 > v_1 > v_4 > v_3, original: v_3 + v_4 >= v_2 > v_1 >= v_4 > v_3 >= 0
+order[195]: v_3 + v_4 > v_2 > v_1 = v_3 > v_4, original: v_3 + v_4 > v_2 > v_1 >= v_3 >= v_4 >= 0
+order[196]: v_3 + v_4 > v_2 > v_1 = v_3 = v_4, original: v_3 + v_4 > v_2 > v_1 >= v_3 >= v_4 >= 0
+order[197]: v_3 + v_4 > v_2 > v_1 = v_4 > v_3, original: v_3 + v_4 >= v_2 > v_1 >= v_4 > v_3 >= 0
+order[198]: v_3 + v_4 = v_2 > v_1 > v_4 > v_3, original: v_3 + v_4 >= v_2 > v_1 >= v_4 > v_3 >= 0
+order[199]: v_3 + v_4 = v_2 > v_1 = v_4 > v_3, original: v_3 + v_4 >= v_2 > v_1 >= v_4 > v_3 >= 0
+order[200]: v_3 = v_1 + v_2 > v_4 > v_1 > v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
+order[201]: v_3 = v_1 + v_2 > v_4 > v_1 = v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
+order[202]: v_3 = v_1 + v_2 > v_4 > v_2 > v_1, original: v_3 >= v_1 + v_2 >= v_4 > v_2 > v_1 >= 0
+order[203]: v_3 = v_1 + v_2 = v_4 > v_1 > v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
+order[204]: v_3 = v_1 + v_2 = v_4 > v_1 = v_2, original: v_3 >= v_1 + v_2 >= v_4 > v_1 >= v_2 >= 0
+order[205]: v_3 = v_1 + v_2 = v_4 > v_2 > v_1, original: v_3 >= v_1 + v_2 >= v_4 > v_2 > v_1 >= 0
+order[206]: v_3 = v_4 > v_1 + v_2 > v_1 > v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[207]: v_3 = v_4 > v_1 + v_2 > v_1 = v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[208]: v_3 = v_4 > v_1 + v_2 > v_2 > v_1, original: v_3 >= v_4 > v_1 + v_2 >= v_2 > v_1 >= 0
+order[209]: v_3 = v_4 > v_1 + v_2 = v_1 > v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[210]: v_3 = v_4 > v_1 + v_2 = v_1 = v_2, original: v_3 >= v_4 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[211]: v_3 = v_4 > v_1 + v_2 = v_2 > v_1, original: v_3 >= v_4 > v_1 + v_2 >= v_2 > v_1 >= 0
+order[212]: v_4 > v_1 > v_2 + v_3 > v_2 > v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
+order[213]: v_4 > v_1 > v_2 + v_3 > v_2 = v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
+order[214]: v_4 > v_1 > v_2 + v_3 > v_3 > v_2, original: v_4 > v_1 >= v_2 + v_3 >= v_3 > v_2 >= 0
+order[215]: v_4 > v_1 > v_2 + v_3 = v_2 > v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
+order[216]: v_4 > v_1 > v_2 + v_3 = v_2 = v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
+order[217]: v_4 > v_1 > v_2 + v_3 = v_3 > v_2, original: v_4 > v_1 >= v_2 + v_3 >= v_3 > v_2 >= 0
+order[218]: v_4 > v_1 = v_2 + v_3 > v_2 > v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
+order[219]: v_4 > v_1 = v_2 + v_3 > v_2 = v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
+order[220]: v_4 > v_1 = v_2 + v_3 > v_3 > v_2, original: v_4 > v_1 >= v_2 + v_3 >= v_3 > v_2 >= 0
+order[221]: v_4 > v_1 = v_2 + v_3 = v_2 > v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
+order[222]: v_4 > v_1 = v_2 + v_3 = v_2 = v_3, original: v_4 > v_1 >= v_2 + v_3 >= v_2 >= v_3 >= 0
+order[223]: v_4 > v_1 = v_2 + v_3 = v_3 > v_2, original: v_4 > v_1 >= v_2 + v_3 >= v_3 > v_2 >= 0
+order[224]: v_4 > v_1 + v_2 > v_2 > v_3 > v_1, original: v_4 > v_1 + v_2 >= v_2 >= v_3 > v_1 >= 0
+order[225]: v_4 > v_1 + v_2 > v_2 = v_3 > v_1, original: v_4 > v_1 + v_2 >= v_2 >= v_3 > v_1 >= 0
+order[226]: v_4 > v_1 + v_2 > v_3 > v_1 > v_2, original: v_4 > v_1 + v_2 >= v_3 > v_1 >= v_2 >= 0
+order[227]: v_4 > v_1 + v_2 > v_3 > v_1 = v_2, original: v_4 > v_1 + v_2 >= v_3 > v_1 >= v_2 >= 0
+order[228]: v_4 > v_1 + v_2 > v_3 > v_2 > v_1, original: v_4 > v_1 + v_2 >= v_3 > v_2 > v_1 >= 0
+order[229]: v_4 > v_1 + v_2 = v_2 > v_3 > v_1, original: v_4 > v_1 + v_2 >= v_2 >= v_3 > v_1 >= 0
+order[230]: v_4 > v_1 + v_2 = v_2 = v_3 > v_1, original: v_4 > v_1 + v_2 >= v_2 >= v_3 > v_1 >= 0
+order[231]: v_4 > v_1 + v_2 = v_3 > v_1 > v_2, original: v_4 > v_1 + v_2 >= v_3 > v_1 >= v_2 >= 0
+order[232]: v_4 > v_1 + v_2 = v_3 > v_1 = v_2, original: v_4 > v_1 + v_2 >= v_3 > v_1 >= v_2 >= 0
+order[233]: v_4 > v_1 + v_2 = v_3 > v_2 > v_1, original: v_4 > v_1 + v_2 >= v_3 > v_2 > v_1 >= 0
+order[234]: v_4 > v_2 + v_3 > v_1 > v_2 > v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
+order[235]: v_4 > v_2 + v_3 > v_1 > v_2 = v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
+order[236]: v_4 > v_2 + v_3 > v_1 > v_3 > v_2, original: v_4 > v_2 + v_3 >= v_1 >= v_3 > v_2 >= 0
+order[237]: v_4 > v_2 + v_3 > v_1 = v_2 > v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
+order[238]: v_4 > v_2 + v_3 > v_1 = v_2 = v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
+order[239]: v_4 > v_2 + v_3 > v_1 = v_3 > v_2, original: v_4 > v_2 + v_3 >= v_1 >= v_3 > v_2 >= 0
+order[240]: v_4 > v_2 + v_3 > v_2 > v_1 > v_3, original: v_4 > v_2 + v_3 >= v_2 > v_1 >= v_3 >= 0
+order[241]: v_4 > v_2 + v_3 > v_2 > v_1 = v_3, original: v_4 > v_2 + v_3 >= v_2 > v_1 >= v_3 >= 0
+order[242]: v_4 > v_2 + v_3 = v_1 > v_2 > v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
+order[243]: v_4 > v_2 + v_3 = v_1 > v_2 = v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
+order[244]: v_4 > v_2 + v_3 = v_1 > v_3 > v_2, original: v_4 > v_2 + v_3 >= v_1 >= v_3 > v_2 >= 0
+order[245]: v_4 > v_2 + v_3 = v_1 = v_2 > v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
+order[246]: v_4 > v_2 + v_3 = v_1 = v_2 = v_3, original: v_4 > v_2 + v_3 >= v_1 >= v_2 >= v_3 >= 0
+order[247]: v_4 > v_2 + v_3 = v_1 = v_3 > v_2, original: v_4 > v_2 + v_3 >= v_1 >= v_3 > v_2 >= 0
+order[248]: v_4 > v_2 + v_3 = v_2 > v_1 > v_3, original: v_4 > v_2 + v_3 >= v_2 > v_1 >= v_3 >= 0
+order[249]: v_4 > v_2 + v_3 = v_2 > v_1 = v_3, original: v_4 > v_2 + v_3 >= v_2 > v_1 >= v_3 >= 0
+order[250]: v_4 > v_3 > v_1 + v_2 > v_1 > v_2, original: v_4 > v_3 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[251]: v_4 > v_3 > v_1 + v_2 > v_1 = v_2, original: v_4 > v_3 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[252]: v_4 > v_3 > v_1 + v_2 > v_2 > v_1, original: v_4 > v_3 > v_1 + v_2 >= v_2 > v_1 >= 0
+order[253]: v_4 > v_3 > v_1 + v_2 = v_1 > v_2, original: v_4 > v_3 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[254]: v_4 > v_3 > v_1 + v_2 = v_1 = v_2, original: v_4 > v_3 > v_1 + v_2 >= v_1 >= v_2 >= 0
+order[255]: v_4 > v_3 > v_1 + v_2 = v_2 > v_1, original: v_4 > v_3 > v_1 + v_2 >= v_2 > v_1 >= 0

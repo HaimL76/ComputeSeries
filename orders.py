@@ -85,7 +85,7 @@ def check_covering():
     for str0 in list_strs:
         print(f"order[{counter}]: {str0}")
         counter += 1
-    return
+    #return
     dict_order: dict = {}
 
     regex_overset: str = r"\\overset\{[a-z]\}"
@@ -153,6 +153,8 @@ def check_covering():
 
                 if not sum_of_vars:
                     list_vars0.append(curr_symbol)
+
+            list_vars0 = list_vars
 
             cleaned_doubles: bool = False
 
