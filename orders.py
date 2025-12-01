@@ -57,13 +57,7 @@ def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(l
                         list_original=list_original)
             _ = stack.pop()
 
-        if symbol == ">":
-            stack.push(symbol)
-            build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
-                        list_original=list_original)
-            _ = stack.pop()
-
-        if symbol == r"\geq":
+        elif symbol == r"\geq":
             stack.push(">")
             build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
                         list_original=list_original)
@@ -74,7 +68,7 @@ def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(l
                         list_original=list_original)
             _ = stack.pop()
 
-        if symbol == "0":
+        else:
             stack.push(symbol)
             build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
                         list_original=list_original)
@@ -82,6 +76,8 @@ def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(l
 
 
 def check_covering():
+    #check_all_orders(0, Stack())
+    #return
     dict_order: dict = {}
 
     regex_overset: str = r"\\overset\{[a-z]\}"
@@ -240,3 +236,32 @@ def compare_lists(tup1: tuple[list, list], tup2: tuple[list, list]):
                 comp = 1 if obj2 == ">" else -1
 
     return comp
+
+def check_all_orders(index: int, stack: Stack):
+    if index >= 7:
+        str0: str = convert_order_to_str(list(stack))
+
+        print(str0)
+
+        return
+
+    even: bool = index % 2 == 0
+
+    if even:
+        for i in range(4):
+            var_index: int = i + 1
+
+            stack.push(var_index)
+            check_all_orders(index + 1, stack=stack)
+            _ = stack.pop()
+
+    else:
+        stack.push(">")
+        check_all_orders(index + 1, stack=stack)
+        _ = stack.pop()
+
+        stack.push("=")
+        check_all_orders(index + 1, stack=stack)
+        _ = stack.pop()
+
+
