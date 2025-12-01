@@ -15,10 +15,34 @@ const_coefficient: str = "(1-p^{-1})"
 coeff: str = const_coefficient
 
 
-def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(str, str)]):
+def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(str, str)],
+                list_original: list[str]):
     if index >= len(symbols):
-        str0: str = "".join([str(obj) for obj in stack])
-        str1: str = ",".join(symbols)
+        str0: str = ""#.join([str(obj) for obj in stack])
+
+        for obj in stack:
+            str_element: str = str(obj)
+
+            if isinstance(obj, int):
+                str_element: str = f"v_{obj}"
+
+            if str0:
+                str0 = f"{str0} "
+
+            str0 = f"{str0}{str_element}"
+
+        str1: str = ""
+
+        for element in list_original:
+            str_element: str = element
+
+            if str_element == r"\geq":
+                str_element = ">="
+
+            if str1:
+                str1 = f"{str1} "
+
+            str1 = f"{str1}{str_element}"
 
         tup: tuple[str, str] = str0, str1
 
@@ -32,26 +56,31 @@ def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(s
             var_index: int = int(arr[1])
 
             stack.push(var_index)
-            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
+                        list_original=list_original)
             _ = stack.pop()
 
         if symbol == ">":
             stack.push(symbol)
-            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
+                        list_original=list_original)
             _ = stack.pop()
 
         if symbol == r"\geq":
             stack.push(">")
-            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
+                        list_original=list_original)
             _ = stack.pop()
 
             stack.push("=")
-            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
+                        list_original=list_original)
             _ = stack.pop()
 
         if symbol == "0":
             stack.push(symbol)
-            build_order(symbols, index + 1, stack=stack, list_strs=list_strs)
+            build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
+                        list_original=list_original)
             _ = stack.pop()
 
 
@@ -105,20 +134,9 @@ def check_covering():
 
                 line: str = line[offset:]
 
-            index: int = 0
-
-            var_index: int = 0
-
-            operator1: int = 0
-            operator2: int = 1
-
-            for symbol in list_vars:
-                arr0: list[str] = symbol.split("_")
-
-                if isinstance(arr0, list) and len(arr0) == 2 and arr0[1].isnumeric():
-                    var_index: int = int(arr0[1])
-
             list_vars0: list[str] = []
+
+            list_vars_original: list[str] = list_vars
 
             for index in range(len(list_vars)):
                 prev_symbol: str = ""
@@ -187,15 +205,9 @@ def check_covering():
             if len(list_vars0) > 1 and list_vars0[-1] == "0" and list_vars0[-2]:
                 list_vars0 = list_vars0[:-2]
 
-            order_: list[tuple] = [()] * 3
-
-            curr_var: int = 0
-
-            index = 0
-
             if "overset" in line0:
-                build_order(list_vars0, 0, stack=Stack(), list_strs=list_strs)
-                #print(f"{list_vars0} {line0}")
+                build_order(list_vars0, 0, stack=Stack(), list_strs=list_strs,
+                            list_original=list_vars_original)
                 list_symbols.append(list_vars0)
 
     with open(".\\saved_output\\orders.txt", "w") as fw:
