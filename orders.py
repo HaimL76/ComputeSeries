@@ -13,6 +13,9 @@ def convert_order_to_str(order: list[str]):
         if isinstance(obj, int):
             str_element: str = f"v_{obj}"
 
+        if str_element == r"\geq":
+            str_element = ">="
+
         if str0:
             str0 = f"{str0} "
 
@@ -57,7 +60,7 @@ def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(l
                         list_original=list_original)
             _ = stack.pop()
 
-        elif symbol == r"\geq":
+        elif symbol == r"\geq" and index < len(symbols) - 2:
             stack.push(">")
             build_order(symbols, index + 1, stack=stack, list_strs=list_strs,
                         list_original=list_original)
