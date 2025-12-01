@@ -76,7 +76,15 @@ def build_order(symbols: list[str], index: int, stack: Stack, list_strs: list[(l
 
 
 def check_covering():
-    check_all_orders(0, Stack())
+    list_strs: list[str] = []
+
+    check_all_orders(0, Stack(), lisr_strs=list_strs)
+
+    counter: int = 0
+
+    for str0 in list_strs:
+        print(f"order[{counter}]: {str0}")
+        counter += 1
     return
     dict_order: dict = {}
 
@@ -237,6 +245,7 @@ def compare_lists(tup1: tuple[list, list], tup2: tuple[list, list]):
 
     return comp
 
+
 def push_operator(index: int, stack: Stack):
     if list_collected(stack):
         return
@@ -246,7 +255,8 @@ def push_operator(index: int, stack: Stack):
         check_all_orders(index=index + 1, stack=stack)
         _ = stack.pop()
 
-def check_all_orders(index: int, stack: Stack):
+
+def check_all_orders_backup(index: int, stack: Stack):
     if list_collected(stack):
         return
 
@@ -257,6 +267,40 @@ def check_all_orders(index: int, stack: Stack):
             stack.push(var_index)
             push_operator(index, stack=stack)
             _ = stack.pop()
+
+
+def check_all_orders(index: int, stack: Stack, lisr_strs: list[str]):
+    list_operators: list[str] = list(stack)
+
+    if isinstance(list_operators, list) and len(list_operators) >= 3:
+        str0: str = ""
+
+        index: int = 0
+
+        len_list_operators = len(list_operators)
+
+        var_index: int = 0
+
+        for i in range(len_list_operators):
+            var_index = i + 1
+
+            str_op: str = list_operators[i]
+
+            str0 = f"{str0}v_{var_index}{str_op}"
+
+        var_index = len_list_operators + 1
+
+        str0 = f"{str0}v_{var_index}"
+
+        lisr_strs.append(str0)
+
+        return
+
+    for op in [">", "<", "="]:
+        stack.push(op)
+        check_all_orders(index=index, stack=stack, lisr_strs=lisr_strs)
+        _ = stack.pop()
+
 
 def list_collected(stack: Stack):
     is_collected: bool = False
@@ -277,5 +321,3 @@ def list_collected(stack: Stack):
         is_collected = True
 
     return is_collected
-
-
