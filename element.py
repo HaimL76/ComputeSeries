@@ -116,7 +116,7 @@ class Element:
                 str_output = f"\\left({str_output}\\right)"
 
         if self.power != 1:
-            str_output = f"{str_output}^{{{self.power}}}" if is_latex else f"{str_output}^{self.power}"
+            str_output = f"{str_output}^{{{self.power}}}" if is_latex else f"({str_output}**{self.power})"
 
         return str_output
 

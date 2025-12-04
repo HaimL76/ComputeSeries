@@ -44,7 +44,7 @@ def create_symmetry_factors_program(level: int = 1):
 
 def main():
     check_covering()
-    return
+    #return
     create_symmetry_factors_program()
 
     parse_cases(".\\input\\cases.tex", ".\\input\\")

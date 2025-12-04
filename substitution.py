@@ -1,4 +1,6 @@
+import sympy
 from fontTools.ttLib.tables.otTables import DeltaSetIndexMap
+from sympy import symbols
 
 from element import Element
 from exponential import Exponential, ExponentialProduct
@@ -29,6 +31,22 @@ class VariableSubstitution:
                     substitution.add_mapping(symb=name, polynom=polynomial)
 
         return substitution
+
+    def subs_monomial(self, original_monomial: Monomial):
+        str_monomial: str = original_monomial.get_sage_str()
+
+        monom = sympy.parsing.parse_expr(str_monomial)
+
+        subs_v1 = sympy.parsing.parse_expr(self.substitution["v_1"].get_sage_str())
+        subs_v2 = sympy.parsing.parse_expr(self.substitution["v_2"].get_sage_str())
+        subs_v3 = sympy.parsing.parse_expr(self.substitution["v_3"].get_sage_str())
+        subs_v4 = sympy.parsing.parse_expr(self.substitution["v_4"].get_sage_str())
+
+        v1, v2, v3, v4, a, b, c, d = symbols('v1 v2 v3 v4 a b c d')
+
+        converted_monom = monom.subs(v1, subs_v1).subs(v2, subs_v2).subs(v3, subs_v3).subs(v4, subs_v4)
+
+        _ = 0
 
     def substitute_monomial(self, original_monomial: Monomial):
         is_minus: bool = original_monomial.is_minus
@@ -85,6 +103,8 @@ class VariableSubstitution:
             list_monomials: list[str] = []
 
             monomials: list = self.substitute_monomial(monomial)
+
+            self.subs_monomial(monomial)
 
             if isinstance(monomials, list) and len(monomials) > 0:
                 for monom in monomials:
