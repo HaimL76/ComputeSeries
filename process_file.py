@@ -90,6 +90,8 @@ class ProcessFolder:
                 original_polynomial: Polynomial = tup_val[0]
                 converted_polynomial: Polynomial = tup_val[1]
                 substitution: VariableSubstitution = tup_val[2]
+                original_exponent = tup_val[3]
+                converted_exponent: VariableSubstitution = tup_val[4]
 
                 original_number_of_monomials: int = len(list_series_sums)
 
@@ -143,6 +145,12 @@ class ProcessFolder:
 
                 str_start_index = ",".join(dict_start_index.values())
 
+                str_original_exponent: str = original_exponent.get_sage_str()
+
+                str_converted_exponent: str = converted_exponent.get_sage_str()
+
+                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [exponent={str_original_exponent}]\")\n")
+                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [exponent={str_converted_exponent}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [substitution:{str_substitution}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")
@@ -958,6 +966,8 @@ class ProcessFile:
                                                                                counter=counter, original_polynomial=polynomial,
                                                                                converted_polynomial=converted_polynomial,
                                                                                substitution=self.substitution,
+                                                                               original_exponent=self.pt_product,
+                                                                               converted_exponent=converted_pt_product,
                                                                                monomial=monomial)
 
                     numerator: PolynomialProduct = sum_product.numerator

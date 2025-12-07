@@ -13,11 +13,14 @@ class Exponential:
     def __str__(self):
         return self.get_ltx_str()
 
-    def get_str(self):
-        return f"{self.symbol}^({self.exponent})"
+    def get_str(self, is_latex: bool = True):
+        return f"{self.symbol}^({self.exponent.get_ltx_str()})" if is_latex else f"({self.symbol}**({self.exponent.get_sage_str()}))"
 
     def get_ltx_str(self):
-        return f"{self.symbol}^{{{self.exponent}}}"
+        return self.get_str(is_latex=True)
+
+    def get_sage_str(self):
+        return self.get_str(is_latex=False)
 
     @staticmethod
     def parse(text: str, list_const_coeffs: list[str]):
@@ -88,8 +91,13 @@ class ExponentialProduct:
     def __str__(self):
         return self.get_ltx_str()
 
-    def get_str(self):
-        return "*".join(f"{exp}" for exp in self.exponentials.values())
+    def get_str(self, is_latex: bool = True):
+        separator: str = "" if is_latex else "*"
+
+        return separator.join(f"{exp.get_str(is_latex=is_latex)}" for exp in self.exponentials.values())
 
     def get_ltx_str(self):
-        return "".join(f"{exp}" for exp in self.exponentials.values())
+        return self.get_str(is_latex=True)
+
+    def get_sage_str(self):
+        return self.get_str(is_latex=False)

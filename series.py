@@ -167,6 +167,8 @@ class SeriesProduct:
             counter: int = 0, original_polynomial: Polynomial = None,
             converted_polynomial: Polynomial = None,
             substitution: VariableSubstitution = None,
+            original_exponent=None,
+            converted_exponent = None,
             monomial: Monomial = None):
         result_numerator: PolynomialProduct = PolynomialProduct()
         result_denominator: PolynomialProduct = PolynomialProduct()
@@ -212,7 +214,7 @@ class SeriesProduct:
             str_case_indices = str_case_indices or "all"
 
             if str_case_indices not in dict_series_sums:
-                dict_series_sums[str_case_indices] = original_polynomial, converted_polynomial, substitution, []
+                dict_series_sums[str_case_indices] = original_polynomial, converted_polynomial, substitution, original_exponent, converted_exponent, []
 
             tup: tuple = dict_series_sums[str_case_indices]
 
