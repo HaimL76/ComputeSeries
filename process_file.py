@@ -4,6 +4,9 @@ import random
 import re
 from idlelib.replace import replace
 
+from sympy import Mul, Symbol, Add, Pow
+from sympy.core.numbers import Half
+
 from debug_write import DebugWrite
 from element import Element
 from exponential import ExponentialProduct
@@ -709,6 +712,32 @@ class ProcessFile:
 
                 debug_write_ltx.write("\\end{document}")
 
+    def collect_elements(self, arg):
+        tup: tuple = None, None, None
+
+        for inner_arg in arg.args:
+            if isinstance(inner_arg, Symbol):
+                tup = inner_arg, tup[1], tup[2]
+            elif isinstance(inner_arg, Add):
+                tup = tup[0], tup[1], inner_arg
+            elif isinstance(inner_arg, Half):
+                _ = 0
+            elif isinstance(inner_arg, Pow):
+                _ = 0
+            else:
+                _ = 0
+
+    def collect_sympy_polynomial(self, sympy_polynomial):
+        list_tuples: list[tuple] = []
+
+        for arg in sympy_polynomial.args:
+            args: tuple = arg.args
+
+            if len(args) > 0:
+                self.collect_elements(arg)
+            else:
+                _ = 0
+
     def process_line(self, text: str, conversion_table: dict,
                      reverse_conversion_table: dict,
                      general_debug_writer: DebugWrite,
@@ -880,6 +909,10 @@ class ProcessFile:
                 debug_write_sage.write(f"{self.substitution.get_sage_str()}\r\n")
 
                 tup_substitution: tuple = self.substitution.substitude_polynomial(polynomial)
+
+                sympy_polynomial = tup_substitution[2]
+
+                self.collect_sympy_polynomial(sympy_polynomial=sympy_polynomial)
 
                 converted_polynomial: Polynomial = tup_substitution[0]
 

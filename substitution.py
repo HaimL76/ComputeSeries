@@ -46,7 +46,7 @@ class VariableSubstitution:
 
         converted_monom = monom.subs(v1, subs_v1).subs(v2, subs_v2).subs(v3, subs_v3).subs(v4, subs_v4)
 
-        _ = 0
+        return converted_monom
 
     def substitute_monomial(self, original_monomial: Monomial):
         is_minus: bool = original_monomial.is_minus
@@ -91,6 +91,8 @@ class VariableSubstitution:
 
 
     def substitude_polynomial(self, original_polynom: Polynomial):
+        sympy_polynomial = 0
+
         list_tuples: list[tuple] = []
 
         #result_polynomial: Polynomial = Polynomial()
@@ -104,7 +106,11 @@ class VariableSubstitution:
 
             monomials: list = self.substitute_monomial(monomial)
 
-            self.subs_monomial(monomial)
+            sympy_converted_monom = self.subs_monomial(monomial)
+
+            sympy_polynomial += sympy_converted_monom
+
+            result = sympy.expand(sympy_converted_monom)
 
             if isinstance(monomials, list) and len(monomials) > 0:
                 for monom in monomials:
@@ -135,7 +141,7 @@ class VariableSubstitution:
         for monom in list_monomials_total:
             result_polynomial.add_monomial(monom)
 
-        return result_polynomial, list_tuples
+        return result_polynomial, list_tuples, sympy_polynomial
 
     def substitude_exponential(self, original_exponential: Exponential):
         polynomial: Polynomial = original_exponential.exponent
