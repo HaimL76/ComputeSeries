@@ -128,6 +128,7 @@ class ProcessFolder:
                 str_case_indices0 = str_case_indices0.strip()
 
                 var_h: str = f"h_{str_case_indices0}"
+                var_denom_h: str = f"denom_h_{str_case_indices0}"
 
                 fw_sage_series_sums.write(f"{var_h} = QQ.zero()\n")
 
@@ -254,6 +255,10 @@ class ProcessFolder:
                         list_debug_data.append(str_debug)
 
                 fw_sage_series_sums.write(f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices}\")\n")
+
+                fw_sage_series_sums.write(f"{var_denom_h}={var_h}.denominator()\n")
+
+                fw_sage_series_sums.write(f"print(f\"{var_denom_h}={{{var_denom_h}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
 
                 fw_sage_series_sums.write(f"f += {var_h}\n")
 
