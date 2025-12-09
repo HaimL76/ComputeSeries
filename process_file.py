@@ -149,10 +149,10 @@ class ProcessFolder:
 
                 str_original_exponent: str = original_exponent.get_sage_str()
 
-                str_converted_exponent: str = converted_exponent.get_sage_str()
+                str_converted_exponent: str = converted_exponent.get_sage_pt_str()
 
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [exponent={str_original_exponent}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [exponent={str_converted_exponent}]\")\n")
+                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original exponent={str_original_exponent}]\")\n")
+                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted exponent={str_converted_exponent}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [substitution:{str_substitution}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")

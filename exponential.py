@@ -101,3 +101,54 @@ class ExponentialProduct:
 
     def get_sage_str(self):
         return self.get_str(is_latex=False)
+
+    def get_ltx_pt_str(self):
+        return self.get_pt_str(is_latex=True)
+
+    def get_sage_pt_str(self):
+        return self.get_pt_str(is_latex=False)
+
+    def get_pt_str(self, is_latex: bool = True):
+        exp_dict: dict = {}
+
+        for exp in self.exponentials:
+            exponential: Polynomial = self.exponentials[exp]
+
+            exp_symb: str = exponential.symbol
+
+            exponent: Polynomial = exponential.exponent
+
+            for monomial in exponent.monomials:
+                coeff = monomial.coefficient
+
+                for elem in monomial.elements:
+                    element: Element = monomial.elements[elem]
+
+                    if element.symbol not in exp_dict:
+                        exp_dict[element.symbol] = {}
+
+                    inner_dict: dict = exp_dict[element.symbol]
+
+                    inner_dict[exp_symb] = coeff
+
+        list_exponents: list[tuple[str, dict[str, int]]] = [(key, exp_dict[key]) for key in list(exp_dict.keys())]
+
+        len_list_exponents: int = len(list_exponents)
+
+        list_str: list[str] = [""] * len_list_exponents
+
+        for index in range(len_list_exponents):
+            tup: tuple[str, dict[str, int]] = list_exponents[index]
+
+            exp: dict[str, int] = tup[1]
+
+            p: int = exp["p"]
+            t: int = exp["t"]
+            
+            exponent: str = tup[0]
+
+            str_exp: str = f"(p^{p}*t^{t})^{exponent}"
+
+            list_str[index] = str_exp
+
+        return "*".join([s_exp for s_exp in list_str])
