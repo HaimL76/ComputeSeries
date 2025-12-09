@@ -14,7 +14,7 @@ class Exponential:
         return self.get_ltx_str()
 
     def get_str(self, is_latex: bool = True):
-        return f"{self.symbol}^({self.exponent.get_ltx_str()})" if is_latex else f"({self.symbol}**({self.exponent.get_sage_str()}))"
+        return f"{self.symbol}^({self.exponent.get_ltx_str()})" if is_latex else f"({self.symbol}^({self.exponent.get_sage_str()}))"
 
     def get_ltx_str(self):
         return self.get_str(is_latex=True)

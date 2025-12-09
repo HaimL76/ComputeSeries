@@ -106,11 +106,11 @@ class VariableSubstitution:
 
             monomials: list = self.substitute_monomial(monomial)
 
-            sympy_converted_monom = self.subs_monomial(monomial)
+            #######sympy_converted_monom = self.subs_monomial(monomial)
 
-            sympy_polynomial += sympy_converted_monom
+            #######sympy_polynomial += sympy_converted_monom
 
-            result = sympy.expand(sympy_converted_monom)
+            #######result = sympy.expand(sympy_converted_monom)
 
             if isinstance(monomials, list) and len(monomials) > 0:
                 for monom in monomials:

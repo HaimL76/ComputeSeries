@@ -303,10 +303,10 @@ class Monomial:
                 else:
                     if not is_latex:
                         if str_const_coefficient == "A":
-                            str_const_coefficient = "(1-p^{-1})" if is_latex else "(1-(p**-1))"
+                            str_const_coefficient = "(1-p^{-1})" if is_latex else "(1-(p^-1))"
 
                             if const_coeff.power > 1:
-                                str_const_coefficient = f"{str_const_coefficient}^{const_coeff.power}" if is_latex else f"({str_const_coefficient}**{const_coeff.power})"
+                                str_const_coefficient = f"{str_const_coefficient}^{const_coeff.power}" if is_latex else f"({str_const_coefficient}^{const_coeff.power})"
 
                 delimiter: str = ""
 
