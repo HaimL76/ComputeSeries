@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{ComputeIntegral}
+\author{haiml76 }
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+In all the following, we denote by $v=v_p$ the $p$-adic Haar measure.
+\section{Computation of $c_1,c_2,c_3,c_4$}
+The elements $c_1,c_2,c_3,c_4$ are located in block $N_{14}$, hence they appear in the following product matrix elements:
+\begin{flalign*}
+m_{1,10}=c_1\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\Rightarrow{v(c_1\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_1)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&\\
+m_{2,10}=c_2\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\Rightarrow{v(c_2\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_2)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&\\
+m_{3,10}=c_3\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\Rightarrow{v(c_3\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_3)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&\\
+m_{4,10}=c_4\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\Rightarrow{v(c_4\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_4)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&
+\end{flalign*}
+We denote $v_i=v(\lambda_i).$ From the constraints above we obtain:
+\[
+v(c_1),v(c_2),v(c_3),v(c_4)\geq-(v_1+v_2+v_3+v_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{v_1+v_2+v_3+v_4}.\]
+
+
+
+
+
+Assume $|a|\neq|b|,$ and assume wlog $|a|<|b|$
+
+The absolute value is non-Archimedean, that is:
+\[|a+b|\leq\max\{|a|,|b|\}=|b|.\]
+
+But then:
+
+$|b|=|a+b-a|=|(a+b)+(-a)|\leq\max\{|a+b|,|-a|\}=\max\{|a+b|,|a|\}.$
+
+We assumed $|a|<|b|$, so $|b|\leq\max\{|a+b|,|a|\}$ only if $|b|\leq|a+b|$.
+
+But then:
+\[|b|\leq|a+b|\]
+\[|a+b|\leq|b|\]
+\[\Rightarrow|a+b|=|b|.\]
+\end{document}
