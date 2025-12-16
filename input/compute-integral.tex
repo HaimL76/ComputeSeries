@@ -10,7 +10,17 @@
 
 \maketitle
 In all the following, we denote by $v=v_p$ the $p$-adic Haar measure.
-\section{Computation of $c_1,c_2,c_3,c_4$}
+
+\section{Computation of the integral}
+We want to integrate the function $|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
+We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
+
+We denote by $t=p^{-s}$, where $s$ is the complex parameter of our zeta-function.
+
+Thus, $|\lambda_1\lambda_2\lambda_3\lambda_4|_p^s=|\lambda_1|_p^s|\lambda_2|_p^s|\lambda_3|_p^s|\lambda_4|_p^s=(p^{-v_1})^s(p^{-v_2})^s(p^{-v_3})^s(p^{-v_4})^s=(p^{-s})^{v_1}(p^{-s})^{v_2}(p^{-s})^{v_3}(p^{-s})^{v_4}=t^{v_1}t^{v_2}t^{v_3}t^{v_4}$.
+
+Now we need to define our domain of integration, and calculate its Haar measure. Since we are computing a $p$-adic integral, we multiply the function to integrate by the domain measure, the result being our desired integral. 
+\subsection{Computation of $c_1,c_2,c_3,c_4$}
 The elements $c_1,c_2,c_3,c_4$ are located in block $N_{14}$, hence they appear in the following product matrix elements:
 \begin{flalign*}
 m_{1,10}=c_1\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\Rightarrow{v(c_1\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_1)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&\\
@@ -23,12 +33,14 @@ We denote $v_i=v(\lambda_i).$ From the constraints above we obtain:
 v(c_1),v(c_2),v(c_3),v(c_4)\geq-(v_1+v_2+v_3+v_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{v_1+v_2+v_3+v_4}.\]
 Hence our integral is
 \[
-\int_{\underline\lambda,\underline{a},\underline{b}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4_v2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b})
+\int_{\underline\lambda,\underline{a},\underline{b}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b})
 \]
-
-
-
-
+\subsection{}
+\begin{flalign*}
+m_{18}=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}.&&\\
+m_{19}=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}.&&\\
+m_{29}=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}.&&\\
+\end{flalign*}
 Assume $|a|\neq|b|,$ and assume wlog $|a|<|b|$
 
 The absolute value is non-Archimedean, that is:
