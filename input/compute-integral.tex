@@ -50,8 +50,38 @@ $m_{49}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_{p}.$
 
 Hence we have:
 \begin{flalign*}
-b_{11}\in{p^{-(v_1+v_2+v3)}}.\\
+b_{11}\in{p^{-(v_1+v_2+v_3)}}.\\
 a_{11}a_{22}-b_{11}\in{p^{-(v_2+v_3+v_4)}}\Rightarrow{b_{11}\in{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}}.
 \end{flalign*}
-Which means that $b_{11}\in{p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}\mathbb{Z}_p}$
+Which means that $b_{11}\in{p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}\mathbb{Z}_p}$.
+
+We compute $\mu(p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}\mathbb{Z}_p)$, the Haar measure of the intersection.
+
+Denote:
+
+$a=a_{11}a_{22}$.
+
+$\alpha=v_1+v_2+v_3$.
+
+$\beta=v_2+v_3+v_4$.
+
+We have several cases.
+\begin{enumerate}
+    \item $\alpha>\beta$ and $\alpha\geq-v_p(a)$.
+
+If $b_{11}\in{a+p^{-\beta}\mathbb{Z}_p}$, then $b_{11}=a+b$, such that $v_p(b)\geq-\beta$, which means that $v_p(b_{11})\geq\min\{v_p(a),v_p(b)\}=\min\{v_p(a),-\beta\}$.
+
+We assumes that $v_p(a)$
+
+$\alpha>\beta\iff-\beta>-\alpha\iff{p^{-\beta}\mathbb{Z}_p\subset{p^{-\alpha}\mathbb{Z}_p}}$.
+
+
+But we assumed also $\alpha\geq-v_a\iff{v_a\geq-\alpha}$, hence $\min\{v_a,-\beta\}\geq\min\{-\alpha,-\beta\}=-\alpha$, and hence:
+
+$b_{11}\in{a+p^{-\beta}\mathbb{Z}_p}\Rightarrow{b_{11}\in{p^{-\alpha}\mathbb{Z}_p}}$, which means that $a+p^{-\beta}\mathbb{Z}_p\subset{p^{-\alpha}\mathbb{Z}_p}$, 
+
+
+
+but also $b_{11}\in{p^{-\alpha}\mathbb{Z}_p}$, hence $b_{11}\in{p^{-\beta}\mathbb{Z}_p}$
+\end{enumerate}
 \end{document}
