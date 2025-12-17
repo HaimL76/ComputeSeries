@@ -33,27 +33,30 @@ We denote $v_i=v(\lambda_i).$ From the constraints above we obtain:
 v(c_1),v(c_2),v(c_3),v(c_4)\geq-(v_1+v_2+v_3+v_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{v_1+v_2+v_3+v_4}.\]
 Hence our integral is
 \[
-\int_{\underline\lambda,\underline{a},\underline{b}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b})
+\int_{\underline\lambda,\underline{a},\underline{b}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
 \]
+\subsection{Computation of the elements in $N_{23}.$}
+We have the following constraints:
+\begin{equation}
+m_{58}=a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(a_{22})\geq-(v_1+v_2+v_3)}.\\
+\end{equation}
+\begin{equation}
+m_{68}=a_{21}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(a_{21})\geq-(v_1+v_2+v_3)}.\\
+\end{equation}
+\begin{equation}
+m_{69}=a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(a_{33})\geq-(v_2+v_3+v_4)}.\\
+\end{equation}
+\begin{equation}
+m_{79}=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(-a_{11})=v(a_{11})\geq-(v_2+v_3+v_4)}.
+\end{equation}
+We observe that all the elements in this block appear also in block $N_{12}$, but the constraints on them obtained from block $N_{12}$ are contained in the constraints obtained from block $N_{23}.$
 \subsection{}
 \begin{flalign*}
 m_{18}=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}.&&\\
 m_{19}=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}.&&\\
 m_{29}=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}.&&\\
+m_{38}=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_2+v_3+v_4)}.&&\\
+m_{48}=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_2+v_3+v_4)}.&&\\
 \end{flalign*}
-Assume $|a|\neq|b|,$ and assume wlog $|a|<|b|$
 
-The absolute value is non-Archimedean, that is:
-\[|a+b|\leq\max\{|a|,|b|\}=|b|.\]
-
-But then:
-
-$|b|=|a+b-a|=|(a+b)+(-a)|\leq\max\{|a+b|,|-a|\}=\max\{|a+b|,|a|\}.$
-
-We assumed $|a|<|b|$, so $|b|\leq\max\{|a+b|,|a|\}$ only if $|b|\leq|a+b|$.
-
-But then:
-\[|b|\leq|a+b|\]
-\[|a+b|\leq|b|\]
-\[\Rightarrow|a+b|=|b|.\]
 \end{document}
