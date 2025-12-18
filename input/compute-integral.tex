@@ -73,7 +73,7 @@ We have the following cases:
 
 Let $x\in{\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}}$ be some element in the intersection, but if $x\in{a+p^{-\beta}\mathbb{Z}_p}$ then $x=a+b$, where $b\in{p^{-\beta}\mathbb{Z}_p}\iff{v_p(b)\geq{-\beta}}$, but then $v_p(x)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$.
 
-But $\alpha\geq-v_p(a)\iff{v_p(a)\geq-\beta}\Rightarrow\min\{v_p(a),-\beta\}\geq\min\{-\alpha,-\beta\}$,
+But $\alpha\geq-v_p(a)\iff{v_p(a)\geq-\alpha}\Rightarrow\min\{v_p(a),-\beta\}\geq\min\{-\alpha,-\beta\}$,
 
 and $\alpha\geq\beta\iff-\beta\geq-\alpha\Rightarrow{v_p(x)\geq\min\{-\alpha,-\beta\}=-\alpha}\Rightarrow{x\in{p^{-\alpha}\mathbb{Z}_p}}$.
 
@@ -81,12 +81,23 @@ But all this shows that $\left(a+p^{-\beta}\mathbb{Z}_p\right)\subseteq{p^{-\alp
 
 $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=\left(a+p^{-\beta}\mathbb{Z}_p\right)$.
 
-Hence $\mu(b_{11})\geq\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\right)=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{v_2+v_3+v_4}$.
+Hence $\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}\right)=\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\right)=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{v_2+v_3+v_4}$.
 \item $\alpha\geq\beta$ and $\alpha<-v_p(a)$.
 Let $x=a+b$ be an element in the intersection as before, hence $v_p(x)=v_p(a+b)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$ and $v_p(x)\geq-\alpha$.
 
 But $\alpha<-v_p(a)\iff{v_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $v_p(x)\geq\min\{v_p(a),-\beta\}\geq\min\{v_p(a),-\alpha\}=v_p(a)$. But $v_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $v_p(x)=\min\{v_p(a),-\alpha\}=v_p(a)$.
 
 But all this shows that $x$ cannot be both in $p^{-\alpha}\mathbb{Z}_p$ and in $\left(a+p^{-\beta}\mathbb{Z}_p\right)$, hence $p^{-\alpha}\mathbb{Z}_p\cap\left(a+p^{-\beta}\mathbb{Z}_p\right)=\phi$.
+\item $\alpha<\beta$ and $\alpha\geq{-v_p(a)}$.
+
+Let $x=a+b$ as before. 
+
+$v_p(x)\geq\min\{v(a),v(b)\}\geq\min\{v(a),-\beta\}\geq\min\{-\alpha,-\beta\}$.
+
+But $-\beta<-\alpha$ is a strong inequality, thus $v(x)=\min\{-\alpha,-\beta\}=-\beta$.
+
+On the other hand, $v(x)\geq-\alpha>-\beta$, which is a contradiction, hence $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=\phi$.
+\item $\alpha<\beta$ and $\alpha<-v_p(a)$.
+
 \end{enumerate}
 \end{document}
