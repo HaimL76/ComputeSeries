@@ -53,9 +53,9 @@ Hence we have:
 b_{11}\in{p^{-(v_1+v_2+v_3)}}.\\
 a_{11}a_{22}-b_{11}\in{p^{-(v_2+v_3+v_4)}}\Rightarrow{b_{11}\in{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}}.
 \end{flalign*}
-Which means that $b_{11}\in{p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}\mathbb{Z}_p}$.
+Which means that $b_{11}\in{p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap[{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}\mathbb{Z}_p]}$.
 
-We compute $\mu(p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}\mathbb{Z}_p)$, the Haar measure of the intersection.
+We compute $\mu(p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap{[a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}\mathbb{Z}_p])$, the Haar measure of the intersection.
 
 Denote:
 
@@ -65,23 +65,28 @@ $\alpha=v_1+v_2+v_3$.
 
 $\beta=v_2+v_3+v_4$.
 
-We have several cases.
+We have the following cases:
 \begin{enumerate}
-    \item $\alpha>\beta$ and $\alpha\geq-v_p(a)$.
+    \item $\alpha\geq\beta$ and $\alpha\geq-v_p(a)$.
 
-If $b_{11}\in{a+p^{-\beta}\mathbb{Z}_p}$, then $b_{11}=a+b$, such that $v_p(b)\geq-\beta$, which means that $v_p(b_{11})\geq\min\{v_p(a),v_p(b)\}=\min\{v_p(a),-\beta\}$.
+Let $x\in{[a+p^{-\beta}\mathbb{Z}_p]\cap{p^{-\alpha}\mathbb{Z}_p}}$ be some element in the intersection, but if $x\in{a+p^{-\beta}\mathbb{Z}_p}$ then $x=a+b$, where $b\in{p^{-\beta}\mathbb{Z}_p}$.
 
-We assumes that $v_p(a)$
+Hence $v_p(b)\geq-\beta$, but then $v_p(x)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$.
 
-$\alpha>\beta\iff-\beta>-\alpha\iff{p^{-\beta}\mathbb{Z}_p\subset{p^{-\alpha}\mathbb{Z}_p}}$.
+But $\alpha\geq-v_p(a)\iff{v_p(a)\geq-\beta}\Rightarrow\min\{v_p(a),-\beta\}\geq\min\{-\alpha,-\beta\}$,
 
+and $\alpha\geq\beta\iff-\beta\geq-\alpha\Rightarrow{v_p(x)\geq\min\{-\alpha,-\beta\}=-\alpha}\Rightarrow{x\in{p^{-\alpha}\mathbb{Z}_p}}$.
 
-But we assumed also $\alpha\geq-v_a\iff{v_a\geq-\alpha}$, hence $\min\{v_a,-\beta\}\geq\min\{-\alpha,-\beta\}=-\alpha$, and hence:
+But all this shows that $[a+p^{-\beta}\mathbb{Z}_p]\subseteq{p^{-\alpha}\mathbb{Z}_p}$, which means that 
 
-$b_{11}\in{a+p^{-\beta}\mathbb{Z}_p}\Rightarrow{b_{11}\in{p^{-\alpha}\mathbb{Z}_p}}$, which means that $a+p^{-\beta}\mathbb{Z}_p\subset{p^{-\alpha}\mathbb{Z}_p}$, 
+$[a+p^{-\beta}\mathbb{Z}_p]\cap{p^{-\alpha}\mathbb{Z}_p}=[a+p^{-\beta}\mathbb{Z}_p]$.
 
+Hence $\mu(b_{11})\geq\mu([a+p^{-\beta}\mathbb{Z}_p])=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{v_2+v_3+v_4}$.
+\item $\alpha\geq\beta$ and $\alpha<-v_p(a)$.
+Let $x=a+b$ be an element in the intersection as before, hence $v_p(x)=v_p(a+b)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$ and $v_p(x)\geq-\alpha$.
 
+But $\alpha<-v_p(a)\iff{v_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $v_p(x)\geq\min\{v_p(a),-\beta\}\geq\min\{v_p(a),-\alpha\}=v_p(a)$. But $v_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $v_p(x)=\min\{v_p(a),-\alpha\}=v_p(a)$.
 
-but also $b_{11}\in{p^{-\alpha}\mathbb{Z}_p}$, hence $b_{11}\in{p^{-\beta}\mathbb{Z}_p}$
+But all this shows that $x$ cannot be both in $p^{-\alpha}\mathbb{Z}_p$ and in $[a+p^{-\beta}\mathbb{Z}_p]$, hence $p^{-\alpha}\mathbb{Z}_p\cap[a+p^{-\beta}\mathbb{Z}_p]=\phi$.
 \end{enumerate}
 \end{document}
