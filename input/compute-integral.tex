@@ -35,7 +35,7 @@ Hence our integral is
 \[
 \int_{\underline\lambda,\underline{a},\underline{b}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
 \]
-\subsection{Computation of constraints on the $a,b$ elements}
+\subsection{Computation of constraints on the $b$ elements}
 We consider the following product matrix elements:
 \begin{flalign*}
 m_{18}=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}.&&\\
@@ -118,4 +118,34 @@ Thus, our integral is now:
 \[
 \int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}p^{v_2+v_3+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+9v_3+6v_4+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}).
 \]
+\subsection{Computation of constraints on the $a$ elements}
+We have the following constraints:
+\begin{flalign*}
+m_{15}=a_{11}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{11})}\geq-(v_1+v_2)\\
+m_{25}=a_{21}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{21}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{21})}\geq-(v_1+v_2)\\
+m_{26}=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{22})}\geq-(v_2+v_3)\\
+m_{36}=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{11})}\geq-(v_2+v_3)\\
+m_{37}=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}v_1v_2)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)\\
+m_{47}=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{22})}\geq-(v_3+v_4)\\
+\end{flalign*}
+We observe that there are more constraints coming from products of $a$ and $\lambda$ elements, but they are contained in the constraints we listed above.
+In addition, we have the following constraints:
+\begin{flalign*}
+m_{28}=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{22})+v_p(a_{21})}\geq-(v_1+v_2+v_3)\\
+m_{39}=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{11})+v_p(a_{33})}\geq-(v_2+v_3+v_4)\\
+m_{6,10}=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4)\\
+\end{flalign*}
+The two constraints on $a_{33}$ are not contained in each other, because 
+
+$v_p(a_{33})\geq-v_p(a_{11})-v_2-v_3-v_4$, hence:
+
+$-v_p(a_{11})-v_2-v_3-v_4\geq{-v_3-v_4}\iff{-v_p(a_{11})-v_2}\geq{0}\iff{v_p(a_{11})\leq-v_2\leq{0}}$.
+
+$-v_p(a_{11})-v_2-v_3-v_4<{-v_3-v_4}\iff{-v_p(a_{11})-v_2}<{0}\iff{v_p(a_{11})>-v_2}$.
+
+And hence, $v_{33}\geq-(v_3+v_4)-\min\{0,v_2+v_p(a_{11})\}$.
+
+By considering the two constraints on $a_{21}$ exactly the same way, we conclude that $v_p(a_{21})\geq-(v_1+v_2)-\min\{0,v_3+v_p(a_{22})\}$.
+
+
 \end{document}
