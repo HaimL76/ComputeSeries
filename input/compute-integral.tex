@@ -41,10 +41,18 @@ We consider the following product matrix elements:
 m_{18}=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}.&&\\
 m_{19}=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}.&&\\
 m_{29}=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}.&&\\
-m_{38}=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_2+v_3+v_4)}.&&\\
-m_{48}=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_2+v_3+v_4)}.&&\\
+m_{38}=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3)}.&&\\
+m_{48}=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_1+v_2+v_3)}.&&\\
 \end{flalign*}
-But $b_{11}$ appears also in the following expression:
+We can observe also that:
+
+\begin{flalign*}
+m_{5,10}=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_1+v_2+v_3+v_4)}.&&\\
+m_{7,10}=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3+v_4)}.&&\\
+\end{flalign*}
+But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence $m_{5,10},m_{7,10}$ do not add new constraints on $b_{22},b_{31}$.
+
+We observe that $b_{11}$ appears also in the following expression:
 
 $m_{49}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_{p}.$
 
@@ -88,150 +96,26 @@ Let $x=a+b$ be an element in the intersection as before, hence $v_p(x)=v_p(a+b)\
 But $\alpha<-v_p(a)\iff{v_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $v_p(x)\geq\min\{v_p(a),-\beta\}\geq\min\{v_p(a),-\alpha\}=v_p(a)$. But $v_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $v_p(x)=\min\{v_p(a),-\alpha\}=v_p(a)$.
 
 But all this shows that $x$ cannot be both in $p^{-\alpha}\mathbb{Z}_p$ and in $\left(a+p^{-\beta}\mathbb{Z}_p\right)$, hence $p^{-\alpha}\mathbb{Z}_p\cap\left(a+p^{-\beta}\mathbb{Z}_p\right)=\phi$.
-\item $\alpha<\beta$ and $\alpha\geq{-v_p(a)}$.
-
-Let $x=a+b$ as before. 
-
-$v_p(x)\geq\min\{v(a),v(b)\}\geq\min\{v(a),-\beta\}\geq\min\{-\alpha,-\beta\}$.
-
-But $-\beta<-\alpha$ is a strong inequality, thus $v(x)=\min\{-\alpha,-\beta\}=-\beta$.
-
-On the other hand, $v(x)\geq-\alpha>-\beta$, which is a contradiction, hence $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=\phi$.
-\item $\alpha<\beta$ and $\alpha<-v_p(a)$.
-
-Let $x=a+b$ as before. 
-
-$v_p(x)\geq\min\{v(a),v(b)\}\geq\min\{v(a),-\beta\}$.
-
-If $v_p(a)=-\beta$, then $v_p(x)\geq-\beta$, but also $v_p(x)\geq-\alpha>-\beta\Rightarrow{x\in{p^{-\alpha}\mathbb{Z}_p}}$, but all this shows that $p^{-\alpha}\mathbb{Z}_p\subseteq\left(a+p^{-\beta}\mathbb{Z}_p\right)\Rightarrow\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=p^{-\alpha}\mathbb{Z}_p$.
-
-If $v_p(a)<-\beta$ then $v_p(x)=v_p(a)<-\alpha$, but that is a contradiction to $v_p(x)\geq-\alpha$.
-
-If $v_p(a)>-\beta$ then $v(x)=-\beta<-\alpha$, which also contradicts $v_p(x)\geq-\alpha$.
-
-Thus we have two particular cases where the intersection is not and empty set:
-
-$\mu(b_{11})=p^{\beta}$, when $v_p(a)\geq-\alpha$ and $\alpha\geq\beta$.
-
-$\mu(b_{11})=p^{\alpha}$, when $v_p(a)=-\beta<-\alpha\iff\alpha<\beta$.
 \end{enumerate}
-\newpage
-Let $x=a+b\in{a}+p^{-\beta}\mathbb{Z}_p$, where $a=a_{11}a_{22}$, and $b\in{p^{-\beta}\mathbb{Z}_p}\iff{v(b)\geq-\beta}$.
+The above is symmetrical to $\beta\geq\alpha\iff-\alpha\geq-\beta$, because if $\beta\geq-v_p(a)\iff{v_p(a)}\geq-\beta$, then $v_p(x)\geq\min\{v_p(a),-\beta\}=-\beta$, but $x\in{p}^{-\alpha}\mathbb{Z}_p\iff{v(x)}\geq-\alpha\geq-\beta\implies{p}^{}$
 
-Then $x\in{a+p^{-\beta}\mathbb{Z}_p}\iff{v(x)}\geq\min\{v(a),v(b)\}\geq\min\{v(a),-\beta\}$.
+Thus, we claim that:
+\[\mu(b_{11})=
+\begin{cases}
+p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,v(a)\geq-\max\{\alpha,\beta\}. \\
+0,&\text{if}\,\,\,\,v(a)<-\max\{\alpha,\beta\}.
+\end{cases}
+\]
+Hence, the Haar measure on $b_{11}$ adds the factor:
 
-\begin{enumerate}
-    \item case 1
-    
-Assume $\alpha\geq\beta\iff-\beta\geq-\alpha$.
+$p^{\min\{\alpha,\beta\}}=p^{\min\{v_1+v_2+v_3,v_2+v_3+v_4\}}=p^{v_2+v_3+\min\{v_1+v_4\}}$.
 
-Assume also $-v(a)\geq\alpha\iff-\alpha\geq{v(a)}$.
+The measures on $b_{12},b_{22},b_{31},b_{41}$ altogether add the factor: 
 
-So, in total, $-\beta\geq-\alpha\geq{v(a)}$.
+$p^{2v_1}p^{4v_2}p^{4v_3}p^{2v_4}=p^{2v_1+4v_2+4v_3+2v_4}$.
 
-We have several options:
-\begin{enumerate}
-    \item $-\beta=-\alpha=v(a)$.
-
-Then $v(x)\geq\min\{v(a),-\beta\}=v(a)=-\beta=-\alpha$, which aligns with the fact that $x\in{p^{-\alpha}\mathbb{Z}_p}$.
-
-In conclusion, $a+p^{-\beta}\mathbb{Z}_p=p^{-\alpha}\mathbb{Z}_p$, which means that 
-
-$\mu(\cap)=p^{\alpha}=p^{\beta}$.
-    \item $-\beta\geq-\alpha>v(a)$.
-
-Then $v(x)=\min\{v(a),-\beta\}=v(a)$.
-
-But that is a contradiction, because $v(x)\geq-\alpha>v(a)$ (and same for $v(x)\geq-\beta\geq-\alpha>v(a)$.
-
-\item $-\beta>-\alpha=v(a)$.
-
-Then $v(x)=\min\{v(a),-\beta\}=v(a)=-\alpha$.
-
-But $v(x)=v(a)=-\alpha\Rightarrow{a}+p^{-\beta}=p^{-\alpha}\mathbb{Z}_p\smallsetminus{p^{-(\alpha-1)}\mathbb{Z}_p}$ (which aligns with $v(x)\geq-\alpha\iff{x\in{p^{-\alpha}\mathbb{Z}_p}}$ only at $v(x)=-\alpha$).
-
-So, in conclusion: 
-
-$\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=p^{-\alpha}\mathbb{Z}_p\smallsetminus{p^{-(\alpha-1)}\mathbb{Z}_p}$, which means that 
-
-$\mu(\cap)=p^{\alpha}-p^{\alpha-1}$.
-\end{enumerate}
-\item case 2
-
-Assume $\alpha\geq\beta\iff-\beta\geq-\alpha$.
-
-Assume also $-v(a)<\alpha\iff-\alpha<{v(a)}$.
-
-We have several options:
-\begin{enumerate}
-    \item $v(a)>-\beta\geq-\alpha$.
-
-Then $v(x)=\min\{v(a),-\beta\}=-\beta\geq-\alpha$, hence
-
-$a+p^{-\beta}\mathbb{Z}_p={p^{-\beta}\mathbb{Z}_p\smallsetminus{p^{-(\beta-1)}\mathbb{Z}_p}}\subset{p^{\beta}\mathbb{Z}_p}$, which aligns with 
-
-$v(x)\geq-\alpha\iff{x\in{p}^{-\alpha}\mathbb{Z}_p}$ (because $-\beta\geq-\alpha$).
-
-Hence, our intersection is between the two subsets $p^{-\alpha}\mathbb{Z}_p\smallsetminus{p}^{-(\beta-1)}\mathbb{Z}_p$ and $p^{-\beta}\mathbb{Z}_p\smallsetminus{p}^{-(\beta-1)}\mathbb{Z}_p$.
-
-Hence $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}={p^{-\beta}\mathbb{Z}_p\smallsetminus{p^{-(\beta-1)}\mathbb{Z}_p}}$, which means that $\mu(\cap)=p^{\beta}-p^{\beta-1}$.
-
-    \item $-\beta\geq{v(a)}>-\alpha$.
-
-Then $v(x)\geq\min\{v(a),-\beta\}=v(a)>-\alpha$, which also means that 
-
-$x\in{p^{-(\alpha-1)}\mathbb{Z}_p}$ (because $v(x)>-\alpha$ is a strong inequality).
-
-In conclusion, $a+p^{-\beta}\mathbb{Z}_p\subset{p^{-(\alpha-1)}\mathbb{Z}_p}$ 
-
-Hence $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}}\mathbb{Z}_p=\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-(\alpha-1)}}\mathbb{Z}_p=\left(a+p^{-\beta}\mathbb{Z}_p\right)$, which means that $\mu(\cap)=p^{\beta}$.
-\end{enumerate}
-\item case 3
-
-Assume $\beta>\alpha\iff-\alpha>-\beta$.
-
-Assume also $-v(a)\geq\alpha\iff-\alpha\geq{v(a)}$.
-
-We have several options:
-\begin{enumerate}
-    \item $-\alpha\geq{v(a)}>-\beta$.
-
-Then $v(x)=\min\{v(a),-\beta\}=-\beta$, which is a contradiction to the fact that $x\in{p^{-\alpha}}\mathbb{Z}_p\iff{v(x)}\geq-\alpha>-\beta$.
-
-    \item $-\alpha>{v(a)}\geq-\beta$.
-
-Then $v(x)\geq\min\{v(a),-\beta\}=-\beta$, which aligns with the fact that ${x}\in{p^{-\alpha}}\iff{v(x)}\geq-\alpha>-\beta$.
-
-Hence $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p}^{-\alpha}\mathbb{Z}_p={p}^{-\alpha}\mathbb{Z}_p$, which means that $\mu(\cap)=p^{\alpha}$.
-
-\item $-\alpha>-\beta\geq{v(a)}$.
-
-Then $v(x)\geq\min\{v(a),-\beta\}=v(a)$, which aligns with the fact that $x\in{p^{-\alpha}\mathbb{Z}_p}\iff{v(x)}\geq-\alpha>v(a)$.
-
-Hence $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p}^{-\alpha}\mathbb{Z}_p={p}^{-\alpha}\mathbb{Z}_p$, which means that $\mu(\cap)=p^{\alpha}$.
-\end{enumerate}
-\item case 4
-
-Assume $\beta>\alpha\iff-\alpha>-\beta$.
-
-Assume also $-v(a)<\alpha\iff-\alpha<{v(a)}$.
-
-So, in total, $v(a)>-\alpha>-\beta$.
-
-Then $v(x)=\min\{v(a),-\beta\}=-\beta$, but this is a contradiction to the fact that $x\in{p^{-\alpha}\mathbb{Z}_p}\iff{v(x)}\geq-\alpha>-\beta$.
-
-\end{enumerate}
-So, in conclusion:
-
-$\mu(\cap)=$
-
-$p^{\beta}=p^{\alpha}$, if $\alpha=\beta=v(a)$.
-
-$p^{\beta}\neq{p^{\alpha}}$, if $-\beta\geq{v(a)}>-\alpha$.
-
-$p^{\alpha}-p^{\alpha-1}$, if $-\beta>-\alpha=v(a)$.
-
-$p^{\beta}-p^{\beta-1}$, if $v(a)>-\beta\geq-\alpha$.
-
-$p^{\alpha}\neq{p^{\beta}}$, $-\alpha>-\beta\geq{v(a)}$.
+Thus, our integral is now:
+\[
+\int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}p^{v_2+v_3+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+9v_3+6v_4+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}).
+\]
 \end{document}
