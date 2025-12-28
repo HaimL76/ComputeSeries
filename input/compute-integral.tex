@@ -106,9 +106,9 @@ p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,v(a)\geq-\max\{\alpha,\beta\}. \\
 0,&\text{if}\,\,\,\,v(a)<-\max\{\alpha,\beta\}.
 \end{cases}
 \]
-Hence, the Haar measure on $b_{11}$ adds the factor:
+But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence, the Haar measure on $b_{11}$ adds the factor:
 
-$p^{\min\{\alpha,\beta\}}=p^{\min\{v_1+v_2+v_3,v_2+v_3+v_4\}}=p^{v_2+v_3+\min\{v_1+v_4\}}$.
+$p^{\min\{\alpha,\beta\}}=p^{\min\{v_1+v_2+v_3,v_2+v_3+v_4\}}=p^{v_2+v_3+\min\{v_1+v_4\}}$, but also the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
 
 The measures on $b_{12},b_{22},b_{31},b_{41}$ altogether add the factor: 
 
@@ -116,7 +116,7 @@ $p^{2v_1}p^{4v_2}p^{4v_3}p^{2v_4}=p^{2v_1+4v_2+4v_3+2v_4}$.
 
 Thus, our integral is now:
 \[
-\int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}p^{v_2+v_3+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+9v_3+6v_4+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}).
+\underset{v_p(a_{11}a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})}{\int_{\underline\lambda,\underline{a}}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}p^{v_2+v_3+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\underset{v_p(a_{11}a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})}{\int_{\underline\lambda,\underline{a}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+9v_3+6v_4+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}).
 \]
 \subsection{Computation of constraints on the $a$ elements}
 We have the following constraints:
@@ -130,19 +130,21 @@ m_{4,7}=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lam
 \end{flalign*}
 There are more constraints on the $a$ elements, coming from the product elements $m_{5,8},m_{6,8},m_{6,9},m_{7,9},m_{8,10},m_{9,10}$, but they are already implied by the constraints listed above.
 
-The constraints coming from $m_{1,5},m_{3,6}$ suggest that: 
+Also the constraint coming from the product matrix element \[m_{6,10}=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies\]\[\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4),\]
+is already implied by the constraints on $a_{21},a_{33}$.
 
-$v(a_{11})\geq\max\{-(v_1+v_2),-(v_2,v_3)\}\geq-v_2-\min\{v_1,v_3\}$.
+The constraints coming from $m_{1,5},m_{3,6}$ imply that: 
 
-The constraints coming from $m_{2,6},m_{4,7}$ suggest that: 
+$v(a_{11})\geq\max\{-(v_1+v_2),-(v_2+v_3)\}\geq-v_2-\min\{v_1,v_3\}$.
 
-$v(a_{22})\geq\max\{-(v_2+v_3),-(v_3,v_4)\}\geq-v_3-\min\{v_2,v_4\}$.
+The constraints coming from $m_{2,6},m_{4,7}$ imply that: 
+
+$v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-v_3-\min\{v_2,v_4\}$.
 
 We also have mutual dependencies between the $a$ elements:
 \begin{flalign*}
 m_{2,8}=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{22})+v_p(a_{21})}\geq-(v_1+v_2+v_3)\\
 m_{3,9}=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{11})+v_p(a_{33})}\geq-(v_2+v_3+v_4)\\
-m_{6,10}=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4)\\
 \end{flalign*}
 
 We integrate by $a_{33}$ considering $a_{11}$ as a constant. We have the following constraints:
@@ -170,4 +172,6 @@ And hence, $v_p(a_{22})\geq-(v_1+v_2)-\min\{0,v_3+v_p(a_{22})\}$.
 Thus, our integral is multiplied by $\mu(a_{33})=p^{v_3+v_4+\min\{0,v_2+v_p(a_{11})\}}$ and $\mu(a_{21})=p^{v_1+v_2+\min\{0,v_3+v_p(a_{22})\}}$, and it is now:
 \[\int_{\underline\lambda,a_{11},a_{22}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+10v_2+10v_3+6v_4+\min\{v_1+v_4\}+\min\{0,v_2+v_p(a_{11})\}+\min\{0,v_3+v_p(a_{22})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).
 \]
+
+As seen above, we have the dependency $m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\geq{0}\implies{v_p(a_{11})}+v_p(a_{22})\geq$, which implies, after previous computation, that $a_()$
 \end{document}
