@@ -122,4 +122,68 @@ v_{11}={-(v_2+v_1)}&p^{\min\{0,v_2-(v_2+v_1)\}}=p^{-v_1}&\alpha=\min\{v_2,v_2-(v
 $p^{v_2}(1+v_2A+v_4A-v_2A+v_4v_2A^2-v_2^2A^2+v_2A+v_1A-v_4A-\frac{v_2^2}{2}A^2-\frac{v_4^2}{2}A^2+v_4v_1A^2-\frac{v_1^2}{2}A^2-\frac{v_2}{2}A^2-\frac{v_1}{2}A^2+\frac{v_4}{2}A^2)=$
 
 $=p^{v_2}(1+v_4v_2A^2-\frac{v_2^2}{2}A^2+v_2A+v_1A-\frac{v_4^2}{2}A^2+v_4v_1A^2-\frac{v_1^2}{2}A^2-\frac{v_2}{2}A^2-\frac{v_1}{2}A^2+\frac{v_4}{2}A^2)$.
+\section{}
+$v_4>v_1\geq{v_3}\geq{0}$
+
+$v_4>v_2\geq{0}$
+
+$\Rightarrow{v_{11}}\geq{-v_2-v_3}$
+
+$\Rightarrow\alpha:=\min\{v_2,v_2+v_{11}+v_4\}=\begin{cases}
+       v_2, & v_{11}\geq{-v_4}\\
+       v_2-1,v_2-2,\dots, & v_{11}<{-v_4}\\
+     \end{cases}$
+
+     $\Rightarrow{f(p,t)=p^{7v_1+10v_2+11v_3+7v_4+v_1}t^{4v_1+6v_2+6v_3+4v_4}=p^{8v_1+10v_2+11v_3+7v_4}t^{4v_1+6v_2+6v_3+4v_4}}$
+\subsection{$-v_4<-v_2-v_3\Rightarrow{v_4>v_2+v_3}$}
+\[\begin{matrix}
+v_{11}\geq{-v_2}&p^{\min\{0,\geq({v_2}-v_2)\}}=p^0=1&\alpha=\min\{v_2,\geq{v_4}\}=v_2&\mu(a_{11})=p^{v_2}\\
+v_{11}={-(v_2+1)}&p^{\min\{0,v_2-(v_2+1)\}}=p^{-1}&\alpha=\min\{v_2,v_4-1\}=v_2&\mu(a_{11})=p^{v_2+1}-p^{v_2}=p^{v_2+1}(1-p^{-1})\\
+v_{11}={-(v_2+2)}&p^{\min\{0,v_2-(v_2+2)\}}=p^{-2}&\alpha=\min\{v_2,v_4-2\}=v_2&\mu(a_{11})=p^{v_2+1}-p^{v_2}=p^{v_2+2}(1-p^{-1})\\
+\vdots&\vdots&\vdots&\vdots\\
+v_{11}={-(v_2+v_3)}&p^{\min\{0,v_2-(v_2+v_3)\}}=p^{-v_1}&\alpha=\min\{v_2,v_4-v_3\}=v_2&\mu(a_{11})=p^{v_2+v_3}-p^{v_2}=p^{v_2+v_3}(1-p^{-1})\\
+\end{matrix}\]
+
+\begin{enumerate}
+    \item $p^{v_2}(1+v_2A)$
+    \item $p^{v_2}A(1+v_2A)v_3=p^{v_2}(A+v_2A^2)v_3=p^{v_2}(v_3A+v_3v_2A^2)$.
+\end{enumerate}
+
+Thus, our polynomial is:
+
+$p^{v_2}(1+v_2A+v_3A+v_3v_2A^2)$.
+\subsection{$-v_4\geq-v_2-v_3\Rightarrow{v_2+v_3\geq{v_4}}$}
+\[\begin{matrix}
+v_{11}\geq{-v_2}&p^{\min\{0,\geq({v_2}-v_2)\}}=p^0=1&\alpha=\min\{v_2,\geq{v_4}\}=v_2&\mu(a_{11})=p^{v_2}\\
+v_{11}={-(v_2+1)}&p^{\min\{0,v_2-(v_2+1)\}}=p^{-1}&\alpha=\min\{v_2,v_4-1\}=v_2&\mu(a_{11})=p^{v_2+1}-p^{v_2}=p^{v_2+1}(1-p^{-1})\\
+v_{11}={-(v_2+2)}&p^{\min\{0,v_2-(v_2+2)\}}=p^{-2}&\alpha=\min\{v_2,v_4-2\}=v_2&\mu(a_{11})=p^{v_2+2}-p^{v_2}=p^{v_2+2}(1-p^{-1})\\
+\vdots&\vdots&\vdots&\vdots\\
+v_{11}={-v_4}&p^{\min\{0,v_2-v_4\}}=p^{v_2-v_4}&\alpha=\min\{v_2,v_2-v_4+v_4\}=v_2&\mu(a_{11})=p^{v_4}-p^{v_4-1}=p^{v_4}(1-p^{-1})\\
+v_{11}={-(v_4+1)}&p^{\min\{0,v_2-(v_4+1)\}}=p^{v_2-(v_4+1)}&\alpha=\min\{v_2,v_2-(v_4+1)+v_4\}=v_2-1&\mu(a_{11})=p^{v_4+1}-p^{v_4}=p^{v_4+1}(1-p^{-1})\\
+v_{11}={-(v_4+2)}&p^{\min\{0,v_2-(v_4+2)\}}=p^{v_2-(v_4+2)}&\alpha=\min\{v_2,v_2-(v_4+2)+v_4\}=v_2-2&\mu(a_{11})=p^{v_4+2}-p^{v_4+1}=p^{v_4+2}(1-p^{-1})\\
+\vdots&\vdots&\vdots&\vdots\\
+v_{11}={-(v_2+v_3)}&p^{\min\{0,v_2-(v_2+v_3)\}}=p^{-v_3}&\alpha=\min\{v_2,v_2-(v_2+v_3)+v_4\}=v_4-v_3&\mu(a_{11})=p^{v_2+v_3}-p^{v_2+v_3-1}=p^{v_2+v_3}(1-p^{-1})\\
+\end{matrix}\]
+\begin{enumerate}
+    \item $p^{v_2}(1+v_2A)$.
+    \item $\sum_{-v_{11}=v_2+1}^{v_4}p^{v_2}A(1+v_2A)=(v_4-v_2)(A+v_2A^2)=(v_4-v_2)p^{v_2}(A+v_2A^2)=p^{v_2}(v_4A-v_2A+v_4v_2A^2-v_2^2A^2)$.
+    \item $\sum_{-v_{11}=v_4+1}^{v_2+v_3}p^{v_2}A(1+(v_4+v_2+v_{11})A)=\sum_{i=1}^{v_2+v_3-v_4}p^{v_2}A(1+(v_2-i)A)=\sum_{i=1}^{v_2+v_3-v_4}p^{v_2}A+\sum_{i=1}^{v_2+v_3-v_4}p^{v_2}A((v_2-i)A)=$
+
+    $=\sum_{i=1}^{v_2+v_3-v_4}p^{v_2}A+\sum_{i=1}^{v_2+v_3-v_4}p^{v_2}A(v_2A-iA)=\sum_{i=1}^{v_2+v_3-v_4}p^{v_2}A+\sum_{i=1}^{v_2+v_3-v_4}p^{v_2}A^2v_2-\sum_{i=1}^{v_2+v_3-v_4}p^{v_2}A^2i=$
+
+    $=(v_2+v_3-v_4)p^{v_2}A+(v_2+v_3-v_4)p^{v_2}A^2v_2-\frac{(v_2+v_3-v_4)(v_2+v_3-v_4+1)}{2}p^{v_2}A^2=$
+    
+    $=p^{v_2}(v_2A+v_3A-v_4A+v_2^2A^2+v_3v_2A^2-v_4v_2A^2-A^2(\frac{v_2^2}{2}+\frac{v_2v_3}{2}-\frac{v_2v_4}{2}+\frac{v_3v_2}{2}+\frac{v_3^2}{2}-\frac{v_3v_4}{2}-\frac{v_4v_2}{2}-\frac{v_4v_3}{2}+\frac{v_4^2}{2}+$
+
+    $+\frac{v_2}{2}+\frac{v_3}{2}-\frac{v_4}{2})=p^{v_2}(v_2A+v_3A-v_4A+v_2^2A^2+v_3v_2A^2-v_4v_2A^2-A^2(\frac{v_2^2}{2}+v_2v_3-v_2v_4+\frac{v_4^2}{2}-v_4v_3+\frac{v_3^2}{2}+\frac{v_2}{2}+\frac{v_3}{2}-\frac{v_4}{2})=$
+
+    $=p^{v_2}(v_2A+v_3A-v_4A+v_2^2A^2+v_3v_2A^2-v_4v_2A^2-\frac{v_2^2}{2}A^2-v_2v_3A^2+v_2v_4A^2-\frac{v_4^2}{2}A^2+v_4v_3A^2-\frac{v_3^2}{2}A^2-\frac{v_2}{2}A^2-\frac{v_3}{2}A^2+\frac{v_4}{2}A^2)=$
+    
+    $=p^{v_2}(v_2A+v_3A-v_4A+\frac{v_2^2}{2}A^2-\frac{v_4^2}{2}A^2+v_4v_3A^2-\frac{v_3^2}{2}A^2-\frac{v_2}{2}A^2-\frac{v_3}{2}A^2+\frac{v_4}{2}A^2).$
+    \end{enumerate}
+    Thus, our polynomial is
+
+$p^{v_2}(1+v_2A+v_4A-v_2A+v_4v_2A^2-v_2^2A^2+v_2A+v_3A-v_4A+\frac{v_2^2}{2}A^2-\frac{v_4^2}{2}A^2+v_4v_3A^2-\frac{v_3^2}{2}A^2-\frac{v_2}{2}A^2-\frac{v_3}{2}A^2+\frac{v_4}{2}A^2)=$
+
+$=p^{v_2}(1+v_4v_2A^2-\frac{v_2^2}{2}A^2+v_2A+v_3A-\frac{v_4^2}{2}A^2+v_4v_3A^2-\frac{v_3^2}{2}A^2-\frac{v_2}{2}A^2-\frac{v_3}{2}A^2+\frac{v_4}{2}A^2)$.
 \end{document}
