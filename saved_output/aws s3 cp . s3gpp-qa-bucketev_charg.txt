@@ -1,0 +1,1 @@
+aws s3 cp . s3://gpp-qa-bucket/ev_charging_ocpi_server/   --exclude '.git/*'   --exclude '__pycache__/*'   --exclude '*.pyc'   --exclude '.venv/*'   --exclude 'venv/*'   --exclude 'data/*'   --exclude 'logs/*'   --exclude 'debug_data/*'  --exclude '.pytest_cache/*' --recursive
