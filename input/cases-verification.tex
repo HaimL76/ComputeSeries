@@ -232,23 +232,29 @@ $\Rightarrow\alpha:=\min\{v_4,v_2+v_{11}+v_1\}=\begin{cases}
        v_4, & v_{11}\geq{v_4-v_1-v_2}\\
        v_4-1,v_4-2,\dots, & v_{11}<{v_4-v_1-v_2}\\
      \end{cases}$
-
 \[\begin{matrix}
-v_{11}\geq{-v_2}&p^{\min\{0,\geq{v_2}-v_2\}}=p^0=1&\alpha=\min\{v_2,\geq{v_1}\}=v_2&\mu(a_{11})=p^{v_2}\\
+v_{11}\geq{-v_2}&p^{\min\{0,\geq{v_2}-v_2\}}=p^0=1&\alpha=\min\{v_4,\geq{v_1}\}=v_2&\mu(a_{11})=p^{v_2}\\
 v_{11}={-(v_2+1)}&p^{\min\{0,v_2-(v_2+1)\}}=p^{-1}&\alpha=\min\{v_4,v_2-(v_2+1)+v_1\}=v_4&\mu(a_{11})=p^{v_2+1}-p^{v_2}=p^{v_2+1}(1-p^{-1})\\
 v_{11}={-(v_2+2)}&p^{\min\{0,v_2-(v_2+2)\}}=p^{-2}&\alpha=\min\{v_4,v_2-
 (v_2+2)+v_1\}=v_4&\mu(a_{11})=p^{v_2+2}-p^{v_2+1}=p^{v_2+2}(1-p^{-1})\\
 \vdots&\vdots&\vdots&\vdots\\
 v_{11}=-(v_2+v_1-v_4)&p^{\min\{0,v_2-(v_2+v_1-v_4)\}}=p^{v_4-v_1}&\alpha=\min\{v_4,v_2-(v_2+v_1-v_4)+v_1\}=v_4&\mu(a_{11})=p^{v_2+v_1-v_4}-p^{v_2+v_1-v_4-1}=p^{v_2+v_1-v_4}(1-p^{-1})\\
+v_{11}=-(v_2+v_1-v_4+1)&p^{\min\{0,v_2-(v_2+v_1-v_4+1)\}}=p^{v_4-v_1-1}&\alpha=\min\{v_4,v_2-(v_2+v_1-v_4+1)+v_1\}=v_4-1&\mu(a_{11})=p^{v_2+v_1-v_4+1}-p^{v_2+v_1-v_4}=p^{v_2+v_1-v_4+1}(1-p^{-1})\\
+v_{11}=-(v_2+v_1-v_4+2)&p^{\min\{0,v_2-(v_2+v_1-v_4+2)\}}=p^{v_4-v_1-2}&\alpha=\min\{v_4,v_2-(v_2+v_1-v_4+2)+v_1\}=0&\mu(a_{11})=p^{v_2+v_1-v_4+2}-p^{v_2+v_1-v_4+1}=p^{v_2+v_1-v_4+2}(1-p^{-1})\\
+\vdots&\vdots&\vdots&\vdots\\
+v_{11}=-(v_2+v_1)&p^{\min\{0,v_2-(v_2+v_1)\}}=p^{-v_1}&\alpha=\min\{v_4,v_2-(v_2+v_1)+v_1\}=0&\mu(a_{11})=p^{v_2+v_1}-p^{v_2+v_1-1}=p^{v_2+v_1}(1-p^{-1})\\
 \end{matrix}\]
 \begin{enumerate}
     \item $p^{v_2}(1+v_4A)$.
-    \item $\sum_{-v_{11}=v_2+1}^{v_2+v_1-v_4}p^{v_2}A(1+v_4A)=(v_1-v_4)(A+v_4A^2)=(v_1-v_4)p^{v_2}(A+v_4A^2)=p^{v_2}(v_1A-v_4A+v_1v_4A^2-v_4^2A^2)$.
+    \item $\sum_{-v_{11}=v_2+1}^{v_2+v_1-v_4}p^{v_2}A(1+v_4A)=(v_1-v_4)p^{v_2}A(1+v_4A)=(v_1-v_4)p^{v_2}(A+v_4A^2)=p^{v_2}(v_1A-v_4A+v_1v_4A^2-v_4^2A^2)$.
+    \item $\sum_{-v_{11}=v_2+v_1-v_4+1}^{v_2+v_1}p^{v_2}A(1+(v_2+v_{11}+v_1)A)=\sum_{i=1}^{v_4}p^{v_2}A(1+(v_4-i)A)=\sum_{i=1}^{v_4}p^{v_2}(A+(v_4-i)A^2)=\sum_{i=1}^{v_4}p^{v_2}(A+v_4A^2-iA^2)=\sum_{i=1}^{v_4}p^{v_2}A+\sum_{i=1}^{v_4}p^{v_2}v_4A^2-\sum_{i=1}^{v_4}p^{v_2}iA^2=$
+    
+    $=p^{v_2}(v_4A+v_4^2A^2-A^2\frac{v_4(v_4+1)}{2})=p^{v_2}(v_4A+v_4^2A^2-A^2\frac{v_4^2+v_4}{2})=p^{v_2}(v_4A+v_4^2A^2-A^2(\frac{v_4^2}{2}+\frac{v_4}{2}))=p^{v_2}(v_4A+v_4^2A^2-\frac{v_4^2}{2}A^2-\frac{v_4}{2}A^2)=p^{v_2}(v_4A+\frac{v_4^2}{2}A^2-\frac{v_4}{2}A^2-\frac{v_4}{2}A^2)$.
     \end{enumerate}
 
     Thus, our polynomial is:
 
-    $p^{v_2}(1+v_4A+v_1A-v_4A+v_1v_4A^2-v_4^2A^2)$.
+    $p^{v_2}(1+v_4A+v_1A-v_4A+v_1v_4A^2-v_4^2A^2+v_4A+\frac{v_2^2}{2}A^2-\frac{v_4}{2}A^2)=p^{v_2}(1+v_4A+v_1A+v_1v_4A^2-\frac{v_2^2}{2}A^2)$.
 \section{}$v_2\geq{v_4}\geq{0}$
 
 $v_1\geq{v_4}\geq{0}$
