@@ -52,7 +52,20 @@ v_2-1,v_2-2,\dots,&v_{11}<{-v_1}\\
     \end{cases}$
 
      $v_1\geq{v_4}>v_2\geq{0}\Rightarrow{f(p,t)=p^{7v_1+10v_2+11v_3+7v_4+v_4}t^{4v_1+6v_2+6v_3+4v_4}=p^{7v_1+10v_2+11v_3+8v_4}t^{4v_1+6v_2+6v_3+4v_4}}$
-\subsection{}
+\subsection{$-v_2-v_3\geq{-v_1}\iff{v_1\geq{v_2+v_3}}\iff{v_1-v_3\geq{v_2}}$}.
+\[\begin{matrix}
+v_{11}\geq{-v_2}&p^{\min\{0,\geq{v_2}-v_2\}}=p^0=1&\alpha=\min\{v_2,\geq{v_1}\}=v_2&\mu(a_{11})=p^{v_2}\\
+v_{11}={-(v_2+1)}&p^{\min\{0,v_2-(v_2+1)\}}=p^{-1}&\alpha=\min\{v_2,v_1-1\}=v_2&\mu(a_{11})=p^{v_2+1}-p^{v_2}=p^{v_2+1}(1-p^{-1})\\
+v_{11}={-(v_2+1)}&p^{\min\{0,v_2-(v_2+2)\}}=p^{-2}&\alpha=\min\{v_2,v_1-2\}=v_2&\mu(a_{11})=p^{v_2+2}-p^{v_2+1}=p^{v_2+2}(1-p^{-1})\\
+\vdots&\vdots&\vdots&\vdots\\
+v_{11}=-(v_2+v_3)&p^{\min\{0,v_2-(v_2+v_3)\}}=p^{-v_3}&\alpha=\min\{v_2,v_2-(v_2+v_3)+v_1\}=\min\{v_2,v_1-v_3\}=v_2&\mu(a_{11})=p^{v_2+v_3}-p^{v_2+v_3-1}=p^{v_2+v_3}(1-p^{-1}).\\
+\end{matrix}\]
+\begin{enumerate}
+    \item $p^{v_2}(1+v_2A)$.
+    \item $\sum_{-v_{11}=v_2+1}^{v_2+v_3}p^{v_2}A(1+v_2A)=v_3p^{v_2}(A+v_2A^2)=p^{v_2}(v_3A+v_2v_3A^2)$.
+    \end{enumerate}
+    Thus, our polynomial is:
+    $p^{v_2}(1+v_2A+v_3A+v_2v_3A^2)$.
 \subsection{$-v_2-v_3<{-v_1}<-v_2\Rightarrow{v_1<{v_2+v_3}}$}
 \[\begin{matrix}
 v_{11}\geq{-v_2}&p^{\min\{0,\geq{v_2}-v_2\}}=p^0=1&\alpha=\min\{v_2,\geq{v_1}\}=v_2&\mu(a_{11})=p^{v_2}\\
