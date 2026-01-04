@@ -260,7 +260,7 @@ class ProcessFolder:
                 fw_sage_series_sums.write(f"{var_denom_h}={var_h}.denominator()\n")
 
                 #####################fw_sage_series_sums.write(f"print(f\"{var_denom_h}={{{var_denom_h}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
-
+                fw_sage_series_sums.write(f"print(f\"{var_denom_h}={{{var_denom_h}}}) #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
                 fw_sage_series_sums.write(f"{var_factor_denom_h}=factor({var_denom_h})\n")
 
                 fw_sage_series_sums.write(f"print(f\"{var_factor_denom_h}={{{var_factor_denom_h}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
