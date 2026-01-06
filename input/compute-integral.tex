@@ -225,18 +225,24 @@ Denote $\beta=\min\{0,v_3+v_p(a_{22})\}$, thus
 \[
 \beta=\begin{cases}
     0,&v_3+v_p(a_{22})\geq{0}\iff{v_p}(a_{22})\geq{-v_3}\iff\alpha\geq{0}\\
-    v_3+v_p(a_{22}),&\alpha<0
+    v_3+v_p(a_{22}),&v_3+v_p(a_{22})<{0}\iff{v_p}(a_{22})<{-v_3}\iff\alpha<{0}
 \end{cases}
 \]
 
 Hence $p^{v_3+(-(v_3+\alpha))}=p^{-\alpha}\leq{p}^{\beta}\leq{p}^0=1$.
 
-We compute all possible values for $p^{\beta}$ and $\mu(a_{22})$:
+We denote $v_{22}=v_p(a_{22})$ and compute all the possible values for $p^{\beta}$ and $\mu(a_{22})$:
 
+\[\begin{matrix}
+v_{22}\geq{-v_3}&p^{\beta}=p^{\min\{0,\geq({v_3}-v_3)\}}=p^0=1&\mu(a_{22})=p^{v_3}\\
+v_{22}={-(v_3+1)}&p^{\beta}=p^{\min\{0,v_3-(v_3+1)\}}=p^{-1}&\mu(a_{22})=p^{v_3+1}-p^{v_3}=p^{v_3+1}(1-p^{-1})\\
+v_{22}={-(v_3+2)}&p^{\beta}=p^{\min\{0,v_3-(v_3+2)\}}=p^{-2}&\mu(a_{22})=p^{v_3+2}-p^{v_3}=p^{v_3+2}(1-p^{-2})\\
+\vdots&\vdots&\vdots&\vdots\\
+v_{11}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(a_{22})=p^{v_3+\alpha}-p^{v_3+\alpha-1}=p^{v_3+\alpha}(1-p^{-1})\\
+\end{matrix}\]
+All this yields the polynomial: 
 
-\subsubsection{Computation of constraints on $a_{22}$}
-
-The constraints $m_{1,5}$ and $m_{3,6}$ together imply that 
-
-$v(a_{11})\geq\max\{-(v_1+v_2),-(v_2+v_3)\}\geq-(v_2+\min\{v_1,v_3\})$, and it is readily seen that the constraint $m_{7,9}$ is already implied by the constraint $m_{3,6}$.
+$p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$, thus our integral is now:
+\[\int_{\underline\lambda,a_{11}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+10v_2+11v_3+6v_4+\min\{v_1+v_4\}+\min\{0,v_2+v_p(a_{11})\}}(1+\alpha(1-p^{-1}))\]\[d\mu(\underline\lambda)d\mu(a_{11}).
+\]
 \end{document}
