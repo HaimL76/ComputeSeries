@@ -9,8 +9,6 @@
 \begin{document}
 
 \maketitle
-In all the following, we denote by $v=v_p$ the $p$-adic Haar measure.
-
 \section{Computation of the integral}
 We want to integrate the function $|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
@@ -20,6 +18,8 @@ We denote by $t=p^{-s}$, where $s$ is the complex parameter of our zeta-function
 Thus, $|\lambda_1\lambda_2\lambda_3\lambda_4|_p^s=|\lambda_1|_p^s|\lambda_2|_p^s|\lambda_3|_p^s|\lambda_4|_p^s=(p^{-v_1})^s(p^{-v_2})^s(p^{-v_3})^s(p^{-v_4})^s=(p^{-s})^{v_1}(p^{-s})^{v_2}(p^{-s})^{v_3}(p^{-s})^{v_4}=t^{v_1}t^{v_2}t^{v_3}t^{v_4}$.
 
 Now we need to define our domain of integration, and calculate its Haar measure. Since we are computing a $p$-adic integral, we multiply the function to integrate by the domain measure, the result being our desired integral. 
+
+In the all following, we may write \textbf{constraint $m_{i,j}$} to denote a constraint implied by the matrix element $m_{i,j}$.
 \subsection{Computation of constraints on $c_1,c_2,c_3,c_4$}
 We compute the constraints on $c_1,c_2,c_3,c_4$ by considering the following product matrix elements:
 \begin{flalign*}
@@ -127,19 +127,21 @@ m_{2,6}=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_2\lamb
 m_{3,6}=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{11})}\geq-(v_2+v_3)\\
 m_{3,7}=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)\\
 m_{4,7}=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{22})}\geq-(v_3+v_4)\\
+m_{7,9}=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_p(a_{11})\geq-(v_2+v_3+v_4)
 \end{flalign*}
-There are more constraints on the $a$ elements, coming from the product elements $m_{5,8},m_{6,8},m_{6,9},m_{7,9},m_{8,10},m_{9,10}$, but they are already implied by the constraints listed above.
+\subsubsection{Computation of constraints on $a_{11}$}
+The constraints $m_{1,5}$ and $m_{3,6}$ together imply that 
 
-Also the constraint coming from the product matrix element \[m_{6,10}=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies\]\[\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4),\]
-is already implied by the constraints on $a_{21},a_{33}$.
-
-The constraints coming from $m_{1,5},m_{3,6}$ imply that: 
-
-$v(a_{11})\geq\max\{-(v_1+v_2),-(v_2+v_3)\}\geq-v_2-\min\{v_1,v_3\}$.
-
-The constraints coming from $m_{2,6},m_{4,7}$ imply that: 
+$v(a_{11})\geq\max\{-(v_1+v_2),-(v_2+v_3)\}\geq-v_2-\min\{v_1,v_3\}$, and it is readily seen that the constraint $m_{7,9}$ is already implied by the constraint $m_{3,6}$.
+\subsubsection{Computation of constraints on $a_{22}$}
+The constraints $m_{2,6}$ and $m_{4,7}$ together imply that
 
 $v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-v_3-\min\{v_2,v_4\}$.
+
+Also the constraint \[m_{6,10}=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies\]\[\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4),\]
+is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
+
+
 
 We also have mutual dependencies between the $a$ elements:
 \begin{flalign*}
@@ -174,4 +176,9 @@ Thus, our integral is multiplied by $\mu(a_{33})=p^{v_3+v_4+\min\{0,v_2+v_p(a_{1
 \]
 
 As seen above, we have the dependency $m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\geq{0}\implies{v_p(a_{11})}+v_p(a_{22})\geq$, which implies, after previous computation, that $a_()$
+
+
+
+
+There are more constraints on the $a$ elements, coming from the product elements $m_{5,8},m_{6,8},m_{6,9},m_{7,9},m_{8,10},m_{9,10}$, but they are already implied by the constraints listed above.
 \end{document}
