@@ -23,10 +23,10 @@ In the all following, we may write \textbf{constraint $m_{i,j}$} to denote a con
 \subsection{Computation of constraints on $c_1,c_2,c_3,c_4$}
 We compute the constraints on $c_1,c_2,c_3,c_4$ by considering the following product matrix elements:
 \begin{flalign*}
-m_{1,10}=c_1\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_1\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_1)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&\\
-m_{2,10}=c_2\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_2\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_2)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&\\
-m_{3,10}=c_3\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_3\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_3)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&\\
-m_{4,10}=c_4\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_4\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_4)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}.&&
+m_{1,10}&=c_1\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_1\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_1)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{2,10}&=c_2\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_2\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_2)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{3,10}&=c_3\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_3\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_3)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{4,10}&=c_4\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_4\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_4)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&
 \end{flalign*}
 Hence we obtain the following constraints:
 \[
@@ -38,17 +38,17 @@ Hence our integral is
 \subsection{Computation of constraints on the $b$ elements}
 We consider the following product matrix elements:
 \begin{flalign*}
-m_{18}=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}.&&\\
-m_{19}=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}.&&\\
-m_{29}=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}.&&\\
-m_{38}=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3)}.&&\\
-m_{48}=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_1+v_2+v_3)}.&&\\
+m_{18}&=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}&\\
+m_{19}&=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}&\\
+m_{29}&=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}&\\
+m_{38}&=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3)}&\\
+m_{48}&=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_1+v_2+v_3)}&\\
 \end{flalign*}
 We can observe also that:
 
 \begin{flalign*}
-m_{5,10}=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_1+v_2+v_3+v_4)}.&&\\
-m_{7,10}=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3+v_4)}.&&\\
+m_{5,10}&=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_1+v_2+v_3+v_4)}&\\
+m_{7,10}&=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3+v_4)}&\\
 \end{flalign*}
 But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence $m_{5,10},m_{7,10}$ do not add new constraints on $b_{22},b_{31}$.
 
@@ -58,8 +58,8 @@ $m_{49}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_{p}.$
 
 Hence we have:
 \begin{flalign*}
-b_{11}\in{p^{-(v_1+v_2+v_3)}}.\\
-a_{11}a_{22}-b_{11}\in{p^{-(v_2+v_3+v_4)}}\Rightarrow{b_{11}\in{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}}.
+b_{11}&\in{p^{-(v_1+v_2+v_3)}}&\\
+a_{11}a_{22}-b_{11}&\in{p^{-(v_2+v_3+v_4)}}\Rightarrow{b_{11}\in{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}}&
 \end{flalign*}
 Which means that $b_{11}\in{p^{-(v_1+v_2+v_3)}\mathbb{Z}_p}\cap\left(a_{11}a_{22}+p^{-(v_2+v_3+v_4)}\mathbb{Z}_p\right)$.
 
@@ -121,13 +121,13 @@ Thus, our integral is now:
 \subsection{Computation of constraints on the $a$ elements}
 We have the following constraints:
 \begin{flalign*}
-m_{1,5}=a_{11}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{11})}\geq-(v_1+v_2)\\
-m_{2,5}=a_{21}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{21}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{21})}\geq-(v_1+v_2)\\
-m_{2,6}=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{22})}\geq-(v_2+v_3)\\
-m_{3,6}=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{11})}\geq-(v_2+v_3)\\
-m_{3,7}=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)\\
-m_{4,7}=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{22})}\geq-(v_3+v_4)\\
-m_{7,9}=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_p(a_{11})\geq-(v_2+v_3+v_4)
+m_{1,5}&=a_{11}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{11})}\geq-(v_1+v_2)&\\
+m_{2,5}&=a_{21}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{21}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{21})}\geq-(v_1+v_2)&\\
+m_{2,6}&=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{22})}\geq-(v_2+v_3)&\\
+m_{3,6}&=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{11})}\geq-(v_2+v_3)&\\
+m_{3,7}&=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)&\\
+m_{4,7}&=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{22})}\geq-(v_3+v_4)&\\
+m_{7,9}&=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_p(a_{11})\geq-(v_2+v_3+v_4)&
 \end{flalign*}
 \subsubsection{Computation of constraints on $a_{11}$}
 The constraints $m_{1,5}$ and $m_{3,6}$ together imply that 
@@ -145,8 +145,8 @@ is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
 
 We also have mutual dependencies between the $a$ elements:
 \begin{flalign*}
-m_{2,8}=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{22})+v_p(a_{21})}\geq-(v_1+v_2+v_3)\\
-m_{3,9}=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{11})+v_p(a_{33})}\geq-(v_2+v_3+v_4)\\
+m_{2,8}&=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{22})+v_p(a_{21})}\geq-(v_1+v_2+v_3)&\\
+m_{3,9}&=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{11})+v_p(a_{33})}\geq-(v_2+v_3+v_4)&\\
 \end{flalign*}
 
 We integrate by $a_{33}$ considering $a_{11}$ as a constant. We have the following constraints:
