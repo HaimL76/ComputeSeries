@@ -144,19 +144,13 @@ m_{3,6}&=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_2\la
 m_{3,7}&=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)&\\
 m_{4,7}&=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{22})}\geq-(v_3+v_4)&\\
 m_{7,9}&=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_p(a_{11})\geq-(v_2+v_3+v_4)&\\
-m_{5,8}&=a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_1\lambda_2\lambda_3)}\geq{0}\implies{v_p}(a_{22})\geq-(v_1+v_2+v_3)&
-\end{flalign*}
-\subsubsection{Computation of constraints on $a_{21}$ and $a_{33}$}
-The constraint \[m_{6,10}=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies\]\[\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4),\]
-is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
-
-We also have the following constraints:
-\begin{flalign*}
+m_{5,8}&=a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_1\lambda_2\lambda_3)}\geq{0}\implies{v_p}(a_{22})\geq-(v_1+v_2+v_3)&\\
+m_{6,10}&=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4)\\
 m_{2,8}&=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{22})+v_p(a_{21})}\geq-(v_1+v_2+v_3)&\\
 m_{3,9}&=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{11})+v_p(a_{33})}\geq-(v_2+v_3+v_4)&\\
 \end{flalign*}
-
-Hence, to compute the integral we consider $a_{11}$ and $a_{22}$ as constants, and we integrate first by $a_{33}$ and $a_{21}$.
+We notice that the constraint $m_{6,10}$ is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
+\subsubsection{Computation of constraints on $a_{21}$ and $a_{33}$}
 
 \subsubsubsection{Integration by $a_{33}$}
 We integrate by $a_{33}$ considering $a_{11}$ as a constant. We have the following constraints:
@@ -237,7 +231,7 @@ We denote $v_{22}=v_p(a_{22})$ and compute all the possible values for $p^{\beta
 v_{22}\geq{-v_3}&p^{\beta}=p^{\min\{0,\geq({v_3}-v_3)\}}=p^0=1&\mu(a_{22})=p^{v_3}\\
 v_{22}={-(v_3+1)}&p^{\beta}=p^{\min\{0,v_3-(v_3+1)\}}=p^{-1}&\mu(a_{22})=p^{v_3+1}-p^{v_3}=p^{v_3+1}(1-p^{-1})\\
 v_{22}={-(v_3+2)}&p^{\beta}=p^{\min\{0,v_3-(v_3+2)\}}=p^{-2}&\mu(a_{22})=p^{v_3+2}-p^{v_3}=p^{v_3+2}(1-p^{-2})\\
-\vdots&\vdots&\vdots&\vdots\\
+\vdots&\vdots&\vdots\\
 v_{11}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(a_{22})=p^{v_3+\alpha}-p^{v_3+\alpha-1}=p^{v_3+\alpha}(1-p^{-1})\\
 \end{matrix}\]
 All this yields the polynomial: 
