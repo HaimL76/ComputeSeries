@@ -97,6 +97,11 @@ class VariableSubstitution:
 
         #result_polynomial: Polynomial = Polynomial()
 
+        str_sage_polynomial: str = original_polynom.get_sage_str()
+        
+        # Use sympy to parse the sage polynomial string
+        parsed_sympy_polynomial = sympy.sympify(str_sage_polynomial)
+
         list_monomials_total: list[Monomial] = []
 
         for monomial in original_polynom:
