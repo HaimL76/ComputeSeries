@@ -2,6 +2,22 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{titlesec} % For \subsubsubsection
+
+% Define \subsubsubsection (4th level heading)
+\setcounter{secnumdepth}{4} % Enable numbering for 4 levels
+\setcounter{tocdepth}{4}    % Include in table of contents if needed
+
+\makeatletter
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\makeatother
+
 \title{ComputeIntegral}
 \author{haiml76 }
 \date{December 2025}
@@ -127,28 +143,22 @@ m_{2,6}&=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_2\lam
 m_{3,6}&=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{11})}\geq-(v_2+v_3)&\\
 m_{3,7}&=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)&\\
 m_{4,7}&=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{22})}\geq-(v_3+v_4)&\\
-m_{7,9}&=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_p(a_{11})\geq-(v_2+v_3+v_4)&
+m_{7,9}&=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_p(a_{11})\geq-(v_2+v_3+v_4)&\\
+m_{5,8}&=a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_1\lambda_2\lambda_3)}\geq{0}\implies{v_p}(a_{22})\geq-(v_1+v_2+v_3)&
 \end{flalign*}
-\subsubsection{Computation of constraints on $a_{11}$}
-The constraints $m_{1,5}$ and $m_{3,6}$ together imply that 
-
-$v(a_{11})\geq\max\{-(v_1+v_2),-(v_2+v_3)\}\geq-v_2-\min\{v_1,v_3\}$, and it is readily seen that the constraint $m_{7,9}$ is already implied by the constraint $m_{3,6}$.
-\subsubsection{Computation of constraints on $a_{22}$}
-The constraints $m_{2,6}$ and $m_{4,7}$ together imply that
-
-$v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-v_3-\min\{v_2,v_4\}$.
-
-Also the constraint \[m_{6,10}=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies\]\[\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4),\]
+\subsubsection{Computation of constraints on $a_{21}$ and $a_{33}$}
+The constraint \[m_{6,10}=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies\]\[\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4),\]
 is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
 
-
-
-We also have mutual dependencies between the $a$ elements:
+We also have the following constraints:
 \begin{flalign*}
 m_{2,8}&=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_p(a_{22})+v_p(a_{21})}\geq-(v_1+v_2+v_3)&\\
 m_{3,9}&=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{11})+v_p(a_{33})}\geq-(v_2+v_3+v_4)&\\
 \end{flalign*}
 
+Hence, to compute the integral we consider $a_{11}$ and $a_{22}$ as constants, and we integrate first by $a_{33}$ and $a_{21}$.
+
+\subsubsubsection{Integration by $a_{33}$}
 We integrate by $a_{33}$ considering $a_{11}$ as a constant. We have the following constraints:
 \begin{enumerate}
     \item $v_p(a_{33})\geq-v_3-v_4$.
@@ -158,9 +168,14 @@ But $-v_p(a_{11})-v_2-v_3-v_4\geq{-v_3-v_4}\iff{-v_p(a_{11})-v_2}\geq{0}\iff{v_p
 
 And $-v_p(a_{11})-v_2-v_3-v_4<{-v_3-v_4}\iff{-v_p(a_{11})-v_2}<{0}\iff{v_p(a_{11})>-v_2}$.
 
-And hence, $v_p(a_{33})\geq-(v_3+v_4)-\min\{0,v_2+v_p(a_{11})\}$.
+Hence, $v_p(a_{33})\geq-(v_3+v_4)-\min\{0,v_2+v_p(a_{11})\}$.
 
-Now we integrate by $a_{21}$ considering $a_{22}$ as a constant. We have the following constraints:
+Thus, our integral is now:
+
+\[\int_{\underline\lambda,a_{11},a_{22},a_{21}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+10v_3+7v_4+\min\{v_1+v_4\}+\min\{0,v_2+v_p(a_{11})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
+\]
+\subsubsubsection{Integration by $a_{21}$}
+We integrate by $a_{21}$ considering $a_{22}$ as a constant. We have the following constraints:
 \begin{enumerate}
 \item $v_p(a_{21})\geq-v_1-v_2$.
     \item $v_p(a_{21})\geq-v_p(a_{22})-v_1-v_2-v_3$.
@@ -174,11 +189,54 @@ And hence, $v_p(a_{22})\geq-(v_1+v_2)-\min\{0,v_3+v_p(a_{22})\}$.
 Thus, our integral is multiplied by $\mu(a_{33})=p^{v_3+v_4+\min\{0,v_2+v_p(a_{11})\}}$ and $\mu(a_{21})=p^{v_1+v_2+\min\{0,v_3+v_p(a_{22})\}}$, and it is now:
 \[\int_{\underline\lambda,a_{11},a_{22}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+10v_2+10v_3+6v_4+\min\{v_1+v_4\}+\min\{0,v_2+v_p(a_{11})\}+\min\{0,v_3+v_p(a_{22})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).
 \]
+\subsubsection{Computation of constraints on $a_{11}$ and $a_{22}$}
+As seen above, we have the constraint 
+$m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p$, which implies after previous computation that 
 
-As seen above, we have the dependency $m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\geq{0}\implies{v_p(a_{11})}+v_p(a_{22})\geq$, which implies, after previous computation, that $a_()$
+$v_p(a_{11}a_{22}-b_{11})\geq-(v_2+v_3+\min\{v_1,v_4\})$ if 
+
+$v_p({a_{11})+v_p(a_{22}})\geq-(v_2+v_3+\max\{v_1,v_4\})\implies$
+
+$\implies{v_p}(a_{22})\geq-(v_p(a_{11})+v_2+v_3+\max\{v_1,v_4\})$.
+
+Hence, to compute the integral we consider $a_{11}$ as constant, and we integrate by $a_{22}$.
+\subsubsubsection{Integration by $a_{22}$}
+The constraints $m_{2,6}$ and $m_{4,7}$ together imply that
+
+$v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-(v_3+\min\{v_2,v_4\})$, and it is readily seen that the constraint $m_{5,8}$ is already implied by the constraint $m_{2,6}$.
+
+hence, we have the following constraints:
+\begin{enumerate}
+    \item $v_p(a_{22})\geq-(v_p(v_{11}+v_2+v_3+\max\{v_1,v_4\})$
+    \item $v_p(a_{22})\geq-(v_3+\min\{v_2,v_4\})$
+\end{enumerate}
+
+Hence, $v_p(a_{22})\geq-(v_3+\min\{\min\{v_2,v_4\},v_{11}+v_2+\max\{v_1,v_4\}\})=$
+
+$=-(v_3+\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\})$.
+
+We denote $\alpha=\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\}$, and we integrate the expression that is dependent on $a_{22}$ found above, i.e., the measure 
+
+$\mu(a_{21})=p^{\min\{0,v_3+v_p(a_{22})\}}$:
+
+\[\int_{v_p(a_{22})\geq-(v_3+\alpha)}p^{\min\{0,v_3+v_p(a_{22})\}}.\]
+
+Denote $\beta=\min\{0,v_3+v_p(a_{22})\}$, thus
+\[
+\beta=\begin{cases}
+    0,&v_3+v_p(a_{22})\geq{0}\iff{v_p}(a_{22})\geq{-v_3}\iff\alpha\geq{0}\\
+    v_3+v_p(a_{22}),&\alpha<0
+\end{cases}
+\]
+
+Hence $p^{v_3+(-(v_3+\alpha))}=p^{-\alpha}\leq{p}^{\beta}\leq{p}^0=1$.
+
+We compute all possible values for $p^{\beta}$ and $\mu(a_{22})$:
 
 
+\subsubsection{Computation of constraints on $a_{22}$}
 
+The constraints $m_{1,5}$ and $m_{3,6}$ together imply that 
 
-There are more constraints on the $a$ elements, coming from the product elements $m_{5,8},m_{6,8},m_{6,9},m_{7,9},m_{8,10},m_{9,10}$, but they are already implied by the constraints listed above.
+$v(a_{11})\geq\max\{-(v_1+v_2),-(v_2+v_3)\}\geq-(v_2+\min\{v_1,v_3\})$, and it is readily seen that the constraint $m_{7,9}$ is already implied by the constraint $m_{3,6}$.
 \end{document}
