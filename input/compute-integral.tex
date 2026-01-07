@@ -54,21 +54,17 @@ Hence our integral is
 \subsection{Computation of constraints on the $b$ elements}
 We consider the following product matrix elements:
 \begin{flalign*}
-m_{18}&=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}&\\
-m_{19}&=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}&\\
-m_{29}&=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}&\\
-m_{38}&=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3)}&\\
-m_{48}&=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_1+v_2+v_3)}&\\
-\end{flalign*}
-We can observe also that:
-
-\begin{flalign*}
+m_{1,8}&=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}&\\
+m_{1,9}&=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}&\\
+m_{2,9}&=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}&\\
+m_{3,8}&=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3)}&\\
+m_{4,8}&=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_1+v_2+v_3)}&\\
 m_{5,10}&=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_1+v_2+v_3+v_4)}&\\
 m_{7,10}&=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3+v_4)}&\\
 \end{flalign*}
-But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence $m_{5,10},m_{7,10}$ do not add new constraints on $b_{22},b_{31}$.
+But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence the constraint $m_{2,9}$ implies the constraint $m_{5,10}$, and the constraint $m_{3,8}$ implies the constraint $m_{7,10}$.
 
-We observe that $b_{11}$ appears also in the following expression:
+We observe that $b_{11}$ appears also in the following product matrix element:
 
 $m_{49}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_{p}.$
 
