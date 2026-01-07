@@ -33,8 +33,7 @@ We denote by $t=p^{-s}$, where $s$ is the complex parameter of our zeta-function
 
 Thus, $|\lambda_1\lambda_2\lambda_3\lambda_4|_p^s=|\lambda_1|_p^s|\lambda_2|_p^s|\lambda_3|_p^s|\lambda_4|_p^s=(p^{-v_1})^s(p^{-v_2})^s(p^{-v_3})^s(p^{-v_4})^s=(p^{-s})^{v_1}(p^{-s})^{v_2}(p^{-s})^{v_3}(p^{-s})^{v_4}=t^{v_1}t^{v_2}t^{v_3}t^{v_4}$.
 
-Now we need to define our domain of integration, and calculate its Haar measure. Since we are computing a $p$-adic integral, we multiply the function to integrate by the domain measure, the result being our desired integral. 
-
+Now we need to define our domain of integration, and calculate its Haar measure. Since we are computing a $p$-adic integral, we multiply the function to integrate by the domain measure, the result being our desired integral.\\ 
 In the all following, we may write \textbf{constraint $m_{i,j}$} to denote a constraint implied by the matrix element $m_{i,j}$.
 \subsection{Computation of constraints on $c_1,c_2,c_3,c_4$}
 We compute the constraints on $c_1,c_2,c_3,c_4$ by considering the following product matrix elements:
@@ -97,20 +96,17 @@ But $\alpha\geq-v_p(a)\iff{v_p(a)\geq-\alpha}\Rightarrow\min\{v_p(a),-\beta\}\ge
 
 and $\alpha\geq\beta\iff-\beta\geq-\alpha\Rightarrow{v_p(x)\geq\min\{-\alpha,-\beta\}=-\alpha}\Rightarrow{x\in{p^{-\alpha}\mathbb{Z}_p}}$.
 
-But all this shows that $\left(a+p^{-\beta}\mathbb{Z}_p\right)\subseteq{p^{-\alpha}\mathbb{Z}_p}$, which means that 
-
+But all this shows that $\left(a+p^{-\beta}\mathbb{Z}_p\right)\subseteq{p^{-\alpha}\mathbb{Z}_p}$, which means that \\
 $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=\left(a+p^{-\beta}\mathbb{Z}_p\right)$.
 
-Hence $\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}\right)=\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\right)=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{v_2+v_3+v_4}$.
+Hence $\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}\right)=\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\right)=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{v_2+v_3+v_4}$.\\
 \item $\alpha\geq\beta$ and $\alpha<-v_p(a)$.
 Let $x=a+b$ be an element in the intersection as before, hence $v_p(x)=v_p(a+b)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$ and $v_p(x)\geq-\alpha$.
 
-But $\alpha<-v_p(a)\iff{v_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $v_p(x)\geq\min\{v_p(a),-\beta\}\geq\min\{v_p(a),-\alpha\}=v_p(a)$. But $v_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $v_p(x)=\min\{v_p(a),-\alpha\}=v_p(a)$.
-
+But $\alpha<-v_p(a)\iff{v_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $v_p(x)\geq\min\{v_p(a),-\beta\}\geq\min\{v_p(a),-\alpha\}=v_p(a)$. But $v_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $v_p(x)=\min\{v_p(a),-\alpha\}=v_p(a)$.\\
 But all this shows that $x$ cannot be both in $p^{-\alpha}\mathbb{Z}_p$ and in $\left(a+p^{-\beta}\mathbb{Z}_p\right)$, hence $p^{-\alpha}\mathbb{Z}_p\cap\left(a+p^{-\beta}\mathbb{Z}_p\right)=\phi$.
 \end{enumerate}
-The above is symmetrical to $\beta\geq\alpha\iff-\alpha\geq-\beta$, because if $\beta\geq-v_p(a)\iff{v_p(a)}\geq-\beta$, then $v_p(x)\geq\min\{v_p(a),-\beta\}=-\beta$, but $x\in{p}^{-\alpha}\mathbb{Z}_p\iff{v(x)}\geq-\alpha\geq-\beta\implies{p}^{}$
-
+The above is symmetrical to $\beta\geq\alpha\iff-\alpha\geq-\beta$, because if $\beta\geq-v_p(a)\iff{v_p(a)}\geq-\beta$, then $v_p(x)\geq\min\{v_p(a),-\beta\}=-\beta$, but $x\in{p}^{-\alpha}\mathbb{Z}_p\iff{v(x)}\geq-\alpha\geq-\beta\implies{p}^{}$.\\
 Thus, we claim that:
 \[\mu(b_{11})=
 \begin{cases}
@@ -118,12 +114,10 @@ p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,v(a)\geq-\max\{\alpha,\beta\}. \\
 0,&\text{if}\,\,\,\,v(a)<-\max\{\alpha,\beta\}.
 \end{cases}
 \]
-But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence, the Haar measure on $b_{11}$ adds the factor:
-
+But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence, the Haar measure on $b_{11}$ adds the factor:\\
 $p^{\min\{\alpha,\beta\}}=p^{\min\{v_1+v_2+v_3,v_2+v_3+v_4\}}=p^{v_2+v_3+\min\{v_1+v_4\}}$, but also the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
 
-The measures on $b_{12},b_{22},b_{31},b_{41}$ altogether add the factor: 
-
+The measures on $b_{12},b_{22},b_{31},b_{41}$ altogether add the factor:\\
 $p^{2v_1}p^{4v_2}p^{4v_3}p^{2v_4}=p^{2v_1+4v_2+4v_3+2v_4}$.
 
 Thus, our integral is now:
@@ -181,18 +175,14 @@ Thus, our integral is multiplied by $\mu(a_{33})=p^{v_3+v_4+\min\{0,v_2+v_p(a_{1
 \]
 \subsubsection{Computation of constraints on $a_{11}$ and $a_{22}$}
 As seen above, we have the constraint 
-$m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p$, which implies after previous computation that 
-
-$v_p(a_{11}a_{22}-b_{11})\geq-(v_2+v_3+\min\{v_1,v_4\})$ if 
-
-$v_p({a_{11})+v_p(a_{22}})\geq-(v_2+v_3+\max\{v_1,v_4\})\implies$
-
+$m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p$, which implies after previous computation that \\
+$v_p(a_{11}a_{22}-b_{11})\geq-(v_2+v_3+\min\{v_1,v_4\})$ if \\
+$v_p({a_{11})+v_p(a_{22}})\geq-(v_2+v_3+\max\{v_1,v_4\})\implies$ \\
 $\implies{v_p}(a_{22})\geq-(v_p(a_{11})+v_2+v_3+\max\{v_1,v_4\})$.
 
 Hence, to compute the integral we consider $a_{11}$ as constant, and we integrate by $a_{22}$.
 \subsubsubsection{Integration by $a_{22}$}
-The constraints $m_{2,6}$ and $m_{4,7}$ together imply that
-
+The constraints $m_{2,6}$ and $m_{4,7}$ together imply that\\
 $v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-(v_3+\min\{v_2,v_4\})$, and it is readily seen that the constraint $m_{5,8}$ is already implied by the constraint $m_{2,6}$.
 
 hence, we have the following constraints:
@@ -200,13 +190,10 @@ hence, we have the following constraints:
     \item $v_p(a_{22})\geq-(v_p(v_{11}+v_2+v_3+\max\{v_1,v_4\})$
     \item $v_p(a_{22})\geq-(v_3+\min\{v_2,v_4\})$
 \end{enumerate}
-
-Hence, $v_p(a_{22})\geq-(v_3+\min\{\min\{v_2,v_4\},v_{11}+v_2+\max\{v_1,v_4\}\})=$
-
+Hence, $v_p(a_{22})\geq-(v_3+\min\{\min\{v_2,v_4\},v_{11}+v_2+\max\{v_1,v_4\}\})=$ \\
 $=-(v_3+\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\})$.
 
-We denote $\alpha=\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\}$, and we integrate the expression that is dependent on $a_{22}$ found above, i.e., the measure 
-
+We denote $\alpha=\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\}$, and we integrate the expression that is dependent on $a_{22}$ found above, i.e., the measure \\
 $\mu(a_{21})=p^{\min\{0,v_3+v_p(a_{22})\}}$:
 
 \[\int_{v_p(a_{22})\geq-(v_3+\alpha)}p^{\min\{0,v_3+v_p(a_{22})\}}.\]
@@ -230,8 +217,7 @@ v_{22}={-(v_3+2)}&p^{\beta}=p^{\min\{0,v_3-(v_3+2)\}}=p^{-2}&\mu(a_{22})=p^{v_3+
 \vdots&\vdots&\vdots\\
 v_{11}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(a_{22})=p^{v_3+\alpha}-p^{v_3+\alpha-1}=p^{v_3+\alpha}(1-p^{-1})\\
 \end{matrix}\]
-All this yields the polynomial: 
-
+All this yields the polynomial: \\
 $p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$, thus our integral is now:
 \[\int_{\underline\lambda,a_{11}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+10v_2+11v_3+6v_4+\min\{v_1+v_4\}+\min\{0,v_2+v_p(a_{11})\}}(1+\alpha(1-p^{-1}))\]\[d\mu(\underline\lambda)d\mu(a_{11}).
 \]
