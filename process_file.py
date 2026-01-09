@@ -50,7 +50,8 @@ class ProcessFolder:
             self.output_folder_path = self.input_folder_path
 
     def write_sage_program(self, dict_series_sums: dict,
-                           out_file_path_sage_series_sums: str):
+                           out_file_path_sage_series_sums: str,
+                           out_file_path_sage_substitutions: str = None):
         num_series_products: int = 0
 
         for key in dict_series_sums.keys():
@@ -76,13 +77,16 @@ class ProcessFolder:
 
         list_debug_data: list[str] = []
 
-        with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums:
+        with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums, open(out_file_path_sage_substitutions, "w") as fw_sage_substitutions:
             #fw_sage_series_sums.write("# Define the polynomial ring\n")
             #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
             #fw_sage_series_sums.write("F = R.fraction_field()\n")
             #fw_sage_series_sums.write("psi = F.hom([1/p, 1/t], F)\n")
             fw_sage_series_sums.write("var(\"p,t,a,b,c,d\")\n")
             fw_sage_series_sums.write("f = QQ.zero()\n")
+
+            fw_sage_substitutions.write("R.<v1,v2,v3,v4,a,b,c,d,p> = PolynomialRing(QQ)\n")
+            fw_sage_substitutions.write("F = R.fraction_field()\n")
 
             for str_case_indices in dict_series_sums.keys():
                 tup_val: tuple = dict_series_sums[str_case_indices]
@@ -107,6 +111,29 @@ class ProcessFolder:
                 str_converted_polynomial: str = converted_polynomial.get_sage_str()
                 str_substitution: str = substitution.get_sage_str()
 
+                converted_v_1: tuple[str, Polynomial] = ("v1", substitution.get_substitution_for_variable("v_1"))
+                converted_v_2: tuple[str, Polynomial] = ("v2", substitution.get_substitution_for_variable("v_2"))
+                converted_v_3: tuple[str, Polynomial] = ("v3", substitution.get_substitution_for_variable("v_3"))
+                converted_v_4: tuple[str, Polynomial] = ("v4", substitution.get_substitution_for_variable("v_4"))
+
+                print(f"converted_v_1={converted_v_1[1]}")
+                print(f"converted_v_2={converted_v_2[1]}")
+                print(f"converted_v_3={converted_v_3[1]}")
+                print(f"converted_v_4={converted_v_4[1]}")
+
+                list_converstions: list[str] = [""] * 9
+                list_converstions[0] = f"{converted_v_1[1].get_sage_str()}"
+                list_converstions[1] = f"{converted_v_2[1].get_sage_str()}"
+                list_converstions[2] = f"{converted_v_3[1].get_sage_str()}"
+                list_converstions[3] = f"{converted_v_4[1].get_sage_str()}"
+                list_converstions[4] = f"a"
+                list_converstions[5] = f"b"
+                list_converstions[6] = f"c"
+                list_converstions[7] = f"d"
+                list_converstions[8] = f"p"
+
+                str_conversion: str = ",".join(list_converstions)
+
                 comments: list[str] = []
 
                 sharps: str = "##########"
@@ -126,6 +153,26 @@ class ProcessFolder:
                 str_case_indices0: str = str_case_indices.replace("Case", "")
                 str_case_indices0 = str_case_indices0.replace(".", "_")
                 str_case_indices0 = str_case_indices0.strip()
+
+                str_psi: str = f"psi_{str_case_indices0}"
+
+                str_conversion = f"{str_psi} = F.hom([{str_conversion}], F)\n"
+
+                fw_sage_substitutions.write(str_conversion)
+
+                str_original_name: str = f"h_original_{str_case_indices0}"
+
+                converted_polynomial_from_my_conversion_name = f"h_converted_my_conversion_{str_case_indices0}"
+
+                fw_sage_substitutions.write(f"{str_original_name}={str_original_polynomial}\n")
+                converted_polynomial_name: str = f"h_converted_{str_case_indices0}"
+                fw_sage_substitutions.write(f"{converted_polynomial_name}={str_psi}({str_original_name})\n")
+                fw_sage_substitutions.write(f"print(f\"{converted_polynomial_name}={{{converted_polynomial_name}}}\")\n") #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
+                fw_sage_substitutions.write(f"{converted_polynomial_from_my_conversion_name}={str_converted_polynomial}\n")
+                fw_sage_substitutions.write(f"print(f\"{converted_polynomial_from_my_conversion_name}={{{converted_polynomial_from_my_conversion_name}}}\")\n") #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
+                str_diff_name: str = f"diff_{str_case_indices0}"
+                fw_sage_substitutions.write(f"{str_diff_name}={converted_polynomial_name}-{converted_polynomial_from_my_conversion_name}\n")
+                fw_sage_substitutions.write(f"print(f\"{str_diff_name}={{{str_diff_name}}}\")\n")
 
                 var_h: str = f"h_{str_case_indices0}"
                 var_denom_h: str = f"denom_h_{str_case_indices0}"
@@ -530,6 +577,7 @@ class ProcessFolder:
                         fw_sage_polynomials.write(f"print(f)\n")
 
             out_file_path_sage_series_sums: str = os.path.join(output_full_path, "output_sage_series_sums.txt")
+            out_file_path_sage_substitutions: str = os.path.join(output_full_path, "output_sage_substitutions.txt")
 
             list_rational_polynomials: list = []
 
@@ -589,7 +637,8 @@ class ProcessFolder:
         take: int = 0
 
         self.write_sage_program(dict_series_sums=dict_series_sums,
-                                out_file_path_sage_series_sums=out_file_path_sage_series_sums)
+                                out_file_path_sage_series_sums=out_file_path_sage_series_sums,
+                                out_file_path_sage_substitutions=out_file_path_sage_substitutions)
 
         while not finished:
             out_file_path_numerator_polynmomials: str = out_file_path.replace(".tex", f"_numerator_polynomials.tex")

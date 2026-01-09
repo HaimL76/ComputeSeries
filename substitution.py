@@ -31,6 +31,15 @@ class VariableSubstitution:
                     substitution.add_mapping(symb=name, polynom=polynomial)
 
         return substitution
+    
+    def get_substitution_for_variable(self, var_name: str):
+        output: Polynomial = None
+        
+        if var_name in self.substitution:
+            output = self.substitution[var_name]
+        
+        return output
+
 
     def subs_monomial(self, original_monomial: Monomial):
         str_monomial: str = original_monomial.get_sage_str()
