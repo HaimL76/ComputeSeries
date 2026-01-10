@@ -88,6 +88,8 @@ class ProcessFolder:
             fw_sage_substitutions.write("R.<v1,v2,v3,v4,a,b,c,d,p> = PolynomialRing(QQ)\n")
             fw_sage_substitutions.write("F = R.fraction_field()\n")
 
+            fw_sage_substitutions.write("acc_diff=0\n")
+
             for str_case_indices in dict_series_sums.keys():
                 tup_val: tuple = dict_series_sums[str_case_indices]
                 list_series_sums: list = tup_val[-1]
@@ -166,6 +168,8 @@ class ProcessFolder:
 
                 fw_sage_substitutions.write(f"{str_original_name}={str_original_polynomial}\n")
                 converted_polynomial_name: str = f"h_converted_{str_case_indices0}"
+                
+                fw_sage_substitutions.write(f"print(f\"{str_original_name}={{{str_original_name}}}\")\n") #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
                 fw_sage_substitutions.write(f"{converted_polynomial_name}={str_psi}({str_original_name})\n")
                 fw_sage_substitutions.write(f"print(f\"{converted_polynomial_name}={{{converted_polynomial_name}}}\")\n") #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
                 fw_sage_substitutions.write(f"{converted_polynomial_from_my_conversion_name}={str_converted_polynomial}\n")
@@ -173,6 +177,7 @@ class ProcessFolder:
                 str_diff_name: str = f"diff_{str_case_indices0}"
                 fw_sage_substitutions.write(f"{str_diff_name}={converted_polynomial_name}-{converted_polynomial_from_my_conversion_name}\n")
                 fw_sage_substitutions.write(f"print(f\"{str_diff_name}={{{str_diff_name}}}\")\n")
+                fw_sage_substitutions.write(f"acc_diff += {str_diff_name}\n")
 
                 var_h: str = f"h_{str_case_indices0}"
                 var_denom_h: str = f"denom_h_{str_case_indices0}"
@@ -315,6 +320,8 @@ class ProcessFolder:
                 fw_sage_series_sums.write(f"f += {var_h}\n")
 
             fw_sage_series_sums.write("print(f\"f={f}\")\n")
+
+            fw_sage_substitutions.write("print(f\"acc_diff={acc_diff}\")\n")
 
             #fw_sage_series_sums.write("print(f)\n")
 

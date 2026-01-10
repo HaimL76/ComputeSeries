@@ -155,6 +155,8 @@ class VariableSubstitution:
         for monom in list_monomials_total:
             result_polynomial.add_monomial(monom)
 
+        str_result_polynomial: str = result_polynomial.get_sage_str()
+
         return result_polynomial, list_tuples, sympy_polynomial
 
     def substitude_exponential(self, original_exponential: Exponential):
