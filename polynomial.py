@@ -550,7 +550,7 @@ class Polynomial:
         for monom in monoms:
             print_sign = Monomial.Print_Sign_Anyway if index > 0 else Monomial.Print_Sign_If_Minus
 
-            str_monomial: str = monom.get_str(print_sign=True, is_latex=is_latex)
+            str_monomial: str = monom.get_str(print_sign=print_sign, is_latex=is_latex)
             index += 1
 
             str_polynomial = f"{str_polynomial}{str_monomial}"
