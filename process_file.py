@@ -51,7 +51,9 @@ class ProcessFolder:
 
     def write_sage_program(self, dict_series_sums: dict,
                            out_file_path_sage_series_sums: str,
-                           out_file_path_sage_substitutions: str = None):
+                           out_file_path_sage_substitutions: str,
+                           out_file_path_sage_substitutions_exponent: str,
+                           out_file_path_sage_subs_and_lims: str):
         num_series_products: int = 0
 
         for key in dict_series_sums.keys():
@@ -77,7 +79,10 @@ class ProcessFolder:
 
         list_debug_data: list[str] = []
 
-        with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums, open(out_file_path_sage_substitutions, "w") as fw_sage_substitutions:
+        with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums,\
+            open(out_file_path_sage_substitutions, "w") as fw_sage_substitutions,\
+            open(out_file_path_sage_substitutions_exponent, "w") as fw_sage_substitutions_exponent, \
+            open(out_file_path_sage_subs_and_lims, "w") as fw_sage_subs_and_lims:
             #fw_sage_series_sums.write("# Define the polynomial ring\n")
             #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
             #fw_sage_series_sums.write("F = R.fraction_field()\n")
@@ -87,6 +92,8 @@ class ProcessFolder:
 
             fw_sage_substitutions.write("R.<v1,v2,v3,v4,a,b,c,d,p> = PolynomialRing(QQ)\n")
             fw_sage_substitutions.write("F = R.fraction_field()\n")
+
+            fw_sage_substitutions_exponent.write("R.<p,t,v1,v2,v3,v4,a,b,c,d> = PowerSeriesRing(QQ)\n")
 
             fw_sage_substitutions.write("acc_diff=0\n")
 
@@ -112,6 +119,10 @@ class ProcessFolder:
                 str_original_polynomial: str = original_polynomial.get_sage_str()
                 str_converted_polynomial: str = converted_polynomial.get_sage_str()
                 str_substitution: str = substitution.get_sage_str()
+
+                str_original_exponent: str = original_exponent.get_sage_str()
+
+                str_converted_exponent: str = converted_exponent.get_sage_pt_str()
 
                 converted_v_1: tuple[str, Polynomial] = ("v1", substitution.get_substitution_for_variable("v_1"))
                 converted_v_2: tuple[str, Polynomial] = ("v2", substitution.get_substitution_for_variable("v_2"))
@@ -163,11 +174,17 @@ class ProcessFolder:
                 fw_sage_substitutions.write(str_conversion)
 
                 str_original_name: str = f"h_original_{str_case_indices0}"
+                
+                str_original_exponent_name: str = f"original_exponent_{str_case_indices0}"
+                str_converted_exponent_name: str = f"converted_exponent_{str_case_indices0}"
 
                 converted_polynomial_from_my_conversion_name = f"h_converted_my_conversion_{str_case_indices0}"
+                converted_exponent_from_my_conversion_name = f"h_converted_exponent_my_conversion_{str_case_indices0}"
 
                 fw_sage_substitutions.write(f"{str_original_name}={str_original_polynomial}\n")
                 converted_polynomial_name: str = f"h_converted_{str_case_indices0}"
+
+                converted_exponent_polynomial_name: str = f"h_converted_exponent_{str_case_indices0}"
                 
                 fw_sage_substitutions.write(f"print(f\"{str_original_name}={{{str_original_name}}}\")\n") #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
                 fw_sage_substitutions.write(f"{converted_polynomial_name}={str_psi}({str_original_name})\n")
@@ -178,6 +195,10 @@ class ProcessFolder:
                 fw_sage_substitutions.write(f"{str_diff_name}={converted_polynomial_name}-{converted_polynomial_from_my_conversion_name}\n")
                 fw_sage_substitutions.write(f"print(f\"{str_diff_name}={{{str_diff_name}}}\")\n")
                 fw_sage_substitutions.write(f"acc_diff += {str_diff_name}\n")
+                fw_sage_substitutions_exponent.write(f"{str_original_exponent_name}={str_original_exponent}\n")
+                fw_sage_substitutions_exponent.write(f"{converted_exponent_from_my_conversion_name}={str_converted_exponent}\n")
+
+                fw_sage_substitutions_exponent.write(f"{converted_exponent_polynomial_name}={str_psi}({str_original_exponent})\n")
 
                 var_h: str = f"h_{str_case_indices0}"
                 var_denom_h: str = f"denom_h_{str_case_indices0}"
@@ -199,16 +220,16 @@ class ProcessFolder:
 
                 str_start_index = ",".join(dict_start_index.values())
 
-                str_original_exponent: str = original_exponent.get_sage_str()
-
-                str_converted_exponent: str = converted_exponent.get_sage_pt_str()
-
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original exponent={str_original_exponent}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted exponent={str_converted_exponent}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [substitution:{str_substitution}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")
                 fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [start index:{str_start_index}]\")\n")
+
+                str_h_case_indices: str = f"h_{str_case_indices0}"
+
+                fw_sage_subs_and_lims.write(f"substitutions: {str_substitution}\tlimits: {str_start_index}\n")
 
                 for tup in list_series_sums:
                     dict_series_product: dict = tup[2]
@@ -585,6 +606,8 @@ class ProcessFolder:
 
             out_file_path_sage_series_sums: str = os.path.join(output_full_path, "output_sage_series_sums.txt")
             out_file_path_sage_substitutions: str = os.path.join(output_full_path, "output_sage_substitutions.txt")
+            out_file_path_sage_substitutions_exponent: str = os.path.join(output_full_path, "output_sage_substitutions_exponent.txt")
+            out_file_path_sage_subs_and_lims: str = os.path.join(output_full_path, "output_sage_subs_and_lims.txt")
 
             list_rational_polynomials: list = []
 
@@ -645,7 +668,9 @@ class ProcessFolder:
 
         self.write_sage_program(dict_series_sums=dict_series_sums,
                                 out_file_path_sage_series_sums=out_file_path_sage_series_sums,
-                                out_file_path_sage_substitutions=out_file_path_sage_substitutions)
+                                out_file_path_sage_substitutions=out_file_path_sage_substitutions,
+                                out_file_path_sage_substitutions_exponent=out_file_path_sage_substitutions_exponent,
+                                out_file_path_sage_subs_and_lims=out_file_path_sage_subs_and_lims)
 
         while not finished:
             out_file_path_numerator_polynmomials: str = out_file_path.replace(".tex", f"_numerator_polynomials.tex")
