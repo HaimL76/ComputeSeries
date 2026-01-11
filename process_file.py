@@ -211,7 +211,11 @@ class ProcessFolder:
                 for tup in list_series_sums:
                     dict_series_product: dict = tup[2]
 
-                    for power in dict_series_product.keys():
+                    sorted_powers = sorted(dict_series_product.keys())
+
+                    for i in range(len(sorted_powers)):
+                        power: str = sorted_powers[i]
+
                         start_index, rational, str_sage = dict_series_product[power]
 
                         str_start_index: str = f"{power}>={start_index}"
