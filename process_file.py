@@ -229,7 +229,7 @@ class ProcessFolder:
 
                 str_h_case_indices: str = f"h_{str_case_indices0}"
 
-                fw_sage_subs_and_lims.write(f"substitutions: {str_substitution}\tlimits: {str_start_index}\n")
+                fw_sage_subs_and_lims.write(f"case: {str_h_case_indices},\tsubstitutions: {str_substitution},\tlimits: {str_start_index}\n")
 
                 for tup in list_series_sums:
                     dict_series_product: dict = tup[2]
