@@ -205,6 +205,22 @@ class ProcessFolder:
 
                 fw_sage_integral_summand.write(f"{var_h}=({str_converted_polynomial})*({str_converted_exponent})\n")
 
+                fw_sage_integral_summand.write(f"x={var_h}\n")
+
+                tup = list_series_sums[0]
+                dict_series_product: dict = tup[2]
+
+                sorted_powers = sorted(dict_series_product.keys())
+                
+                for i in range(len(sorted_powers)):
+                    power: str = sorted_powers[i]
+
+                    start_index, rational, str_sage = dict_series_product[power]
+
+                    str_sage_sum = f"x = sum(x, {power}, {start_index}, oo, algorithm=\"giac\")"
+
+                    fw_sage_integral_summand.write(f"{str_sage_sum}\n")
+
                 var_denom_h: str = f"denom_h_{str_case_indices0}"
                 var_factor_denom_h: str = f"factor_denom_h_{str_case_indices0}"
 
