@@ -4,8 +4,8 @@ import random
 import re
 from idlelib.replace import replace
 
-from sympy import Mul, Symbol, Add, Pow
-from sympy.core.numbers import Half
+#from sympy import Mul, Symbol, Add, Pow
+#from sympy.core.numbers import Half
 
 from debug_write import DebugWrite
 from element import Element
@@ -52,7 +52,7 @@ class ProcessFolder:
     def write_sage_program(self, dict_series_sums: dict,
                            out_file_path_sage_series_sums: str,
                            out_file_path_sage_substitutions: str,
-                           out_file_path_sage_substitutions_exponent: str,
+                           out_file_path_sage_integral_summand: str,
                            out_file_path_sage_subs_and_lims: str):
         num_series_products: int = 0
 
@@ -81,7 +81,7 @@ class ProcessFolder:
 
         with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums,\
             open(out_file_path_sage_substitutions, "w") as fw_sage_substitutions,\
-            open(out_file_path_sage_substitutions_exponent, "w") as fw_sage_substitutions_exponent, \
+            open(out_file_path_sage_integral_summand, "w") as fw_sage_integral_summand, \
             open(out_file_path_sage_subs_and_lims, "w") as fw_sage_subs_and_lims:
             #fw_sage_series_sums.write("# Define the polynomial ring\n")
             #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
@@ -93,7 +93,7 @@ class ProcessFolder:
             fw_sage_substitutions.write("R.<v1,v2,v3,v4,a,b,c,d,p> = PolynomialRing(QQ)\n")
             fw_sage_substitutions.write("F = R.fraction_field()\n")
 
-            fw_sage_substitutions_exponent.write("R.<p,t,v1,v2,v3,v4,a,b,c,d> = PowerSeriesRing(QQ)\n")
+            fw_sage_integral_summand.write("var(\"p,t,v1,v2,v3,v4,a,b,c,d\")\n")
 
             fw_sage_substitutions.write("acc_diff=0\n")
 
@@ -195,12 +195,16 @@ class ProcessFolder:
                 fw_sage_substitutions.write(f"{str_diff_name}={converted_polynomial_name}-{converted_polynomial_from_my_conversion_name}\n")
                 fw_sage_substitutions.write(f"print(f\"{str_diff_name}={{{str_diff_name}}}\")\n")
                 fw_sage_substitutions.write(f"acc_diff += {str_diff_name}\n")
-                fw_sage_substitutions_exponent.write(f"{str_original_exponent_name}={str_original_exponent}\n")
-                fw_sage_substitutions_exponent.write(f"{converted_exponent_from_my_conversion_name}={str_converted_exponent}\n")
 
-                fw_sage_substitutions_exponent.write(f"{converted_exponent_polynomial_name}={str_psi}({str_original_exponent})\n")
+                #fw_sage_integral_summand.write(f"{str_original_exponent_name}={str_original_exponent}\n")
+                #fw_sage_integral_summand.write(f"{converted_exponent_from_my_conversion_name}={str_converted_exponent}\n")
+
+                #fw_sage_integral_summand.write(f"{converted_exponent_polynomial_name}={str_psi}({str_original_exponent})\n")
 
                 var_h: str = f"h_{str_case_indices0}"
+
+                fw_sage_integral_summand.write(f"{var_h}=({str_converted_polynomial})*({str_converted_exponent})\n")
+
                 var_denom_h: str = f"denom_h_{str_case_indices0}"
                 var_factor_denom_h: str = f"factor_denom_h_{str_case_indices0}"
 
@@ -610,7 +614,7 @@ class ProcessFolder:
 
             out_file_path_sage_series_sums: str = os.path.join(output_full_path, "output_sage_series_sums.txt")
             out_file_path_sage_substitutions: str = os.path.join(output_full_path, "output_sage_substitutions.txt")
-            out_file_path_sage_substitutions_exponent: str = os.path.join(output_full_path, "output_sage_substitutions_exponent.txt")
+            out_file_path_sage_integral_summand: str = os.path.join(output_full_path, "output_sage_integral_summand.txt")
             out_file_path_sage_subs_and_lims: str = os.path.join(output_full_path, "output_sage_subs_and_lims.txt")
 
             list_rational_polynomials: list = []
@@ -673,7 +677,7 @@ class ProcessFolder:
         self.write_sage_program(dict_series_sums=dict_series_sums,
                                 out_file_path_sage_series_sums=out_file_path_sage_series_sums,
                                 out_file_path_sage_substitutions=out_file_path_sage_substitutions,
-                                out_file_path_sage_substitutions_exponent=out_file_path_sage_substitutions_exponent,
+                                out_file_path_sage_integral_summand=out_file_path_sage_integral_summand,
                                 out_file_path_sage_subs_and_lims=out_file_path_sage_subs_and_lims)
 
         while not finished:

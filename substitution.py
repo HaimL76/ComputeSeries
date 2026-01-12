@@ -1,6 +1,6 @@
-import sympy
+#import sympy
 from fontTools.ttLib.tables.otTables import DeltaSetIndexMap
-from sympy import symbols
+#from sympy import symbols
 
 from element import Element
 from exponential import Exponential, ExponentialProduct
@@ -109,7 +109,7 @@ class VariableSubstitution:
         str_sage_polynomial: str = original_polynom.get_sage_str()
         
         # Use sympy to parse the sage polynomial string
-        parsed_sympy_polynomial = sympy.sympify(str_sage_polynomial)
+        #parsed_sympy_polynomial = sympy.sympify(str_sage_polynomial)
 
         list_monomials_total: list[Monomial] = []
 
