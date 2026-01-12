@@ -203,23 +203,31 @@ class ProcessFolder:
 
                 var_h: str = f"h_{str_case_indices0}"
 
-                fw_sage_integral_summand.write(f"{var_h}=({str_converted_polynomial})*({str_converted_exponent})\n")
+                var_x: str = f"x_{str_case_indices0}"
 
-                fw_sage_integral_summand.write(f"x={var_h}\n")
+                fw_sage_integral_summand.write(f"{var_x}=({str_converted_polynomial})*({str_converted_exponent})\n")
 
                 tup = list_series_sums[0]
                 dict_series_product: dict = tup[2]
 
                 sorted_powers = sorted(dict_series_product.keys())
+
+                prev_var: str = var_x
                 
                 for i in range(len(sorted_powers)):
                     power: str = sorted_powers[i]
 
                     start_index, rational, str_sage = dict_series_product[power]
 
-                    str_sage_sum = f"x = sum(x, {power}, {start_index}, oo, algorithm=\"giac\")"
+                    curr_var: str = f"{var_x}_{power}"
+
+                    str_sage_sum = f"{curr_var} = sum({prev_var}, {power}, {start_index}, oo, algorithm=\"giac\")"
 
                     fw_sage_integral_summand.write(f"{str_sage_sum}\n")
+
+                    fw_sage_integral_summand.write(f"print(f\"{curr_var}={{{curr_var}}}\")\n")
+
+                    prev_var = curr_var
 
                 var_denom_h: str = f"denom_h_{str_case_indices0}"
                 var_factor_denom_h: str = f"factor_denom_h_{str_case_indices0}"
