@@ -94,6 +94,7 @@ class ProcessFolder:
             fw_sage_substitutions.write("F = R.fraction_field()\n")
 
             fw_sage_integral_summand.write("var(\"p,t,v1,v2,v3,v4,a,b,c,d\")\n")
+            fw_sage_integral_summand.write("x = QQ.zero()\n")
 
             fw_sage_substitutions.write("acc_diff=0\n")
 
@@ -212,12 +213,14 @@ class ProcessFolder:
 
                 sorted_powers = sorted(dict_series_product.keys())
 
-                prev_var: str = var_x
+                curr_var: str = var_x
                 
                 for i in range(len(sorted_powers)):
                     power: str = sorted_powers[i]
 
                     start_index, rational, str_sage = dict_series_product[power]
+
+                    prev_var: str = curr_var
 
                     curr_var: str = f"{var_x}_{power}"
 
@@ -227,7 +230,7 @@ class ProcessFolder:
 
                     fw_sage_integral_summand.write(f"print(f\"{curr_var}={{{curr_var}}}\")\n")
 
-                    prev_var = curr_var
+                fw_sage_integral_summand.write(f"x += {curr_var}\n")
 
                 var_denom_h: str = f"denom_h_{str_case_indices0}"
                 var_factor_denom_h: str = f"factor_denom_h_{str_case_indices0}"
@@ -373,6 +376,8 @@ class ProcessFolder:
                 fw_sage_series_sums.write(f"f += {var_h}\n")
 
             fw_sage_series_sums.write("print(f\"f={f}\")\n")
+
+            fw_sage_integral_summand.write("print(f\"x={x}\")\n")
 
             fw_sage_substitutions.write("print(f\"acc_diff={acc_diff}\")\n")
 
