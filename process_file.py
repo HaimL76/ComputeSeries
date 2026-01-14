@@ -220,7 +220,8 @@ class ProcessFolder:
 
                 self.aaa(
                     fw_sage_check_cover, substitution,
-                    dict_series_product, sorted_powers, 0, vector)
+                    dict_series_product, sorted_powers, 0, 
+                    vector, str_indices=str_case_indices0)
 
                 curr_var: str = var_x
                 
@@ -399,7 +400,7 @@ class ProcessFolder:
 
     def aaa(self, fw_sage_check_cover, substitution: VariableSubstitution,
         dict_series_product: dict, list_keys: list[str], index: int,
-        vector: list[int] = None):
+        vector: list[int] = None, str_indices: str = ""):
 
         if index >= len(list_keys):
             for i in range(len(vector)):
@@ -416,7 +417,7 @@ class ProcessFolder:
 
                 fw_sage_check_cover.write(f"v{ind}={str_pol}\n")
 
-            fw_sage_check_cover.write("print(\"({v1},{v2},{v3},{v4})\")\n")
+            fw_sage_check_cover.write(f"print(f\"({{v1}},{{v2}},{{v3}},{{v4}})#{str_indices}\")\n")
         else:
             power = list_keys[index]
 
@@ -428,13 +429,13 @@ class ProcessFolder:
 
             print(f"power={power}")
 
-            for i in range(start_index, max(start_index, 1) + 1):
+            for i in range(start_index, start_index + 1):# max(start_index, 1) + 1):
                 vector[index] = power,i
 
                 self.aaa(
                     fw_sage_check_cover, substitution,
                     dict_series_product, list_keys, index + 1,
-                    vector)
+                    vector, str_indices=str_indices)
 
     def write_sage_program_backup(self, dict_series_sums: dict,
                                   out_file_path_sage_series_sums: str):
