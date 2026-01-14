@@ -1,4 +1,5 @@
 import copy
+import math
 import os
 import random
 import re
@@ -53,7 +54,8 @@ class ProcessFolder:
                            out_file_path_sage_series_sums: str,
                            out_file_path_sage_substitutions: str,
                            out_file_path_sage_integral_summand: str,
-                           out_file_path_sage_subs_and_lims: str):
+                           out_file_path_sage_subs_and_lims: str,
+                           out_file_path_sage_check_cover: str):
         num_series_products: int = 0
 
         for key in dict_series_sums.keys():
@@ -82,7 +84,8 @@ class ProcessFolder:
         with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums,\
             open(out_file_path_sage_substitutions, "w") as fw_sage_substitutions,\
             open(out_file_path_sage_integral_summand, "w") as fw_sage_integral_summand, \
-            open(out_file_path_sage_subs_and_lims, "w") as fw_sage_subs_and_lims:
+            open(out_file_path_sage_subs_and_lims, "w") as fw_sage_subs_and_lims, \
+            open(out_file_path_sage_check_cover, "w") as fw_sage_check_cover:
             #fw_sage_series_sums.write("# Define the polynomial ring\n")
             #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
             #fw_sage_series_sums.write("F = R.fraction_field()\n")
@@ -212,6 +215,12 @@ class ProcessFolder:
                 dict_series_product: dict = tup[2]
 
                 sorted_powers = sorted(dict_series_product.keys())
+                
+                vector: list[int] = [None] * 4
+
+                self.aaa(
+                    fw_sage_check_cover, substitution,
+                    dict_series_product, sorted_powers, 0, vector)
 
                 curr_var: str = var_x
                 
@@ -387,6 +396,45 @@ class ProcessFolder:
             with open(out_file_path_sage_series_sums_debug, "w") as fw_sage_series_sums_debug:
                 for debug_data in list_debug_data:
                     fw_sage_series_sums_debug.write(f"{debug_data}\n")
+
+    def aaa(self, fw_sage_check_cover, substitution: VariableSubstitution,
+        dict_series_product: dict, list_keys: list[str], index: int,
+        vector: list[int] = None):
+
+        if index >= len(list_keys):
+            for i in range(len(vector)):
+                power = vector[i]
+
+                fw_sage_check_cover.write(f"{power[0]}={power[1]}\n")
+
+            for i in range(0, 4):
+                ind: int = i + 1
+
+                pol: Polynomial = substitution.get_substitution_for_variable(f"v_{ind}")
+                
+                str_pol: str = pol.get_sage_str()
+
+                fw_sage_check_cover.write(f"v{ind}={str_pol}\n")
+
+            fw_sage_check_cover.write("print(\"({v1},{v2},{v3},{v4})\")\n")
+        else:
+            power = list_keys[index]
+
+            vector[index] = power
+
+            tup = dict_series_product[power]
+
+            start_index: int = tup[0]
+
+            print(f"power={power}")
+
+            for i in range(start_index, max(start_index, 1) + 1):
+                vector[index] = power,i
+
+                self.aaa(
+                    fw_sage_check_cover, substitution,
+                    dict_series_product, list_keys, index + 1,
+                    vector)
 
     def write_sage_program_backup(self, dict_series_sums: dict,
                                   out_file_path_sage_series_sums: str):
@@ -645,6 +693,7 @@ class ProcessFolder:
             out_file_path_sage_substitutions: str = os.path.join(output_full_path, "output_sage_substitutions.txt")
             out_file_path_sage_integral_summand: str = os.path.join(output_full_path, "output_sage_integral_summand.txt")
             out_file_path_sage_subs_and_lims: str = os.path.join(output_full_path, "output_sage_subs_and_lims.txt")
+            out_file_path_sage_check_cover: str = os.path.join(output_full_path, "output_sage_check_cover.txt")
 
             list_rational_polynomials: list = []
 
@@ -707,7 +756,8 @@ class ProcessFolder:
                                 out_file_path_sage_series_sums=out_file_path_sage_series_sums,
                                 out_file_path_sage_substitutions=out_file_path_sage_substitutions,
                                 out_file_path_sage_integral_summand=out_file_path_sage_integral_summand,
-                                out_file_path_sage_subs_and_lims=out_file_path_sage_subs_and_lims)
+                                out_file_path_sage_subs_and_lims=out_file_path_sage_subs_and_lims,
+                                out_file_path_sage_check_cover=out_file_path_sage_check_cover)
 
         while not finished:
             out_file_path_numerator_polynmomials: str = out_file_path.replace(".tex", f"_numerator_polynomials.tex")
