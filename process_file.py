@@ -86,10 +86,11 @@ class ProcessFolder:
             open(out_file_path_sage_integral_summand, "w") as fw_sage_integral_summand, \
             open(out_file_path_sage_subs_and_lims, "w") as fw_sage_subs_and_lims, \
             open(out_file_path_sage_check_cover, "w") as fw_sage_check_cover:
-            #fw_sage_series_sums.write("# Define the polynomial ring\n")
-            #fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
-            #fw_sage_series_sums.write("F = R.fraction_field()\n")
-            #fw_sage_series_sums.write("psi = F.hom([1/p, 1/t], F)\n")
+
+            fw_sage_series_sums.write("# Define the polynomial ring\n")
+            fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
+            fw_sage_series_sums.write("F = R.fraction_field()\n")
+            fw_sage_series_sums.write("psi = F.hom([1/p, 1/t], F)\n")
             fw_sage_series_sums.write("var(\"p,t,a,b,c,d\")\n")
             fw_sage_series_sums.write("f = QQ.zero()\n")
 
