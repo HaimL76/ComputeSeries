@@ -81,6 +81,10 @@ class ProcessFolder:
 
         list_debug_data: list[str] = []
 
+        list_var_h_subsets: list[list[str]] = [
+            ["h_7_1", "h_6_2", "h_5", "h_6_1", "h_7_3", "h_1", "h_7_2", "h_6_3"]
+        ]
+
         with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums,\
             open(out_file_path_sage_substitutions, "w") as fw_sage_substitutions,\
             open(out_file_path_sage_integral_summand, "w") as fw_sage_integral_summand, \
@@ -387,6 +391,21 @@ class ProcessFolder:
                 fw_sage_series_sums.write(f"f += {var_h}\n")
 
             fw_sage_series_sums.write("print(f\"f={f}\")\n")
+
+            for i in range(len(list_var_h_subsets)):
+                list_var_h: list[str] = list_var_h_subsets[i]
+
+                str_hh: str = "+".join(list_var_h)
+
+                str_hh_i: str = f"hh_{i}"
+
+                fw_sage_series_sums.write(f"{str_hh_i}={str_hh}\n")
+
+                sf_var_h = f"sf_hh_{i}"
+
+                fw_sage_series_sums.write(f"{sf_var_h}=psi({str_hh_i})/{str_hh_i}\n")
+
+                fw_sage_series_sums.write(f"print(\"{sf_var_h}={{{sf_var_h}}}\")\n")
 
             fw_sage_integral_summand.write("print(f\"x={x}\")\n")
 
