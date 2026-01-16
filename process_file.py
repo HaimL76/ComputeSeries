@@ -405,7 +405,7 @@ class ProcessFolder:
 
                 fw_sage_series_sums.write(f"{sf_var_h}=psi({str_hh_i})/{str_hh_i}\n")
 
-                fw_sage_series_sums.write(f"print(\"{sf_var_h}={{{sf_var_h}}}\")\n")
+                fw_sage_series_sums.write(f"print(f\"{sf_var_h}={{{sf_var_h}}}\")\n")
 
             fw_sage_integral_summand.write("print(f\"x={x}\")\n")
 
