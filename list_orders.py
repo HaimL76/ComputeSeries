@@ -106,15 +106,28 @@ def check_vector(order: tuple[list[int], list[bool]], vector: list[int]) -> bool
 
     dict_var_values[var_index] = var_value
 
-    while index <= len(list_vars):
+    while index <= (len(list_vars) - 1):
         rel = list_rels[len(list_rels) - index - 1]
 
-        var_index_next: int = list_vars[len(list_vars) - index - 1][0]
+        list_var_indices: list[int] = list_vars[len(list_vars) - index - 1]
+
+        if len(list_var_indices) > 1:
+            index += 1
+            continue
+
+        var_index_next: int = list_var_indices[0]
 
         var_value_next: int = vector[var_index_next - 1]
 
+        dict_var_values[var_index_next] = var_value_next
+
+        if var_value_next < var_value:
+            return False
+
         if var_value_next == var_value and rel:
             return False
+        
+        var_value = var_value_next
             
         index += 1
 

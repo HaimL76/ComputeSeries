@@ -84,7 +84,7 @@ def main():
 
     list0 = list_orders(".\\input\\cases.tex")#, ".\\input\\")
 
-    aaa = find_vector(list0, [1,2,3,4])
+    aaa = find_vector(list0, [4,1,3,2])
 
     if isinstance(aaa, list) and len(aaa) > 0:
         index: int = 0
