@@ -3,7 +3,7 @@ import webbrowser
 
 from debug_write import DebugWrite
 from exponential import Exponential, ExponentialProduct
-from list_orders import list_orders
+from list_orders import check_vector, find_vector, list_orders
 from list_orders import list_orders
 from orders import check_covering
 from parse_cases import parse_cases
@@ -82,8 +82,16 @@ def main():
     #return
     create_symmetry_factors_program()
 
-    list_orders(".\\input\\cases.tex")#, ".\\input\\")
+    list0 = list_orders(".\\input\\cases.tex")#, ".\\input\\")
 
+    aaa = find_vector(list0, [1,2,3,4])
+
+    if isinstance(aaa, list) and len(aaa) > 0:
+        index: int = 0
+
+        for item in aaa:
+            print(f"{index}, {item}")
+            index += 1
     return
 
     parse_cases(".\\input\\cases.tex", ".\\input\\")

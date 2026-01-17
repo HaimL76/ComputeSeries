@@ -1,8 +1,9 @@
 import re
 
 
-def list_orders(file_path: str) -> list[int]:
-    orders: list[int] = []
+def list_orders(file_path: str) -> list[tuple[list[int], list[bool]]]:
+    list_orders: list[tuple[list[int], list[bool]]] = []
+
     with open(file_path, "r") as f:
         for line in f:
             line = line.strip()
@@ -59,15 +60,62 @@ def list_orders(file_path: str) -> list[int]:
                     else:
                         line = line[1:]
 
-                list_strs: list[str] = []
+                order: tuple[list[int], list[bool]] = list_vars, list_rels
 
-                for i in range(len(list_vars)):
-                    list_index = list_vars[i]
-                    str_vars: str = "+".join([f"v_{index}" for index in list_index])
+                list_orders.append(order)
 
-                    list_strs.append(str_vars)
+                str_order: str = print_order(order)
 
-                    list_strs.append(">" if list_rels[i] else ">=")
+                print(str_order)
+    return list_orders
 
-                print(" ".join(list_strs))
-    return orders
+def print_order(order: tuple[list[int], list[bool]]):
+    list_vars, list_rels = order
+
+    list_strs: list[str] = []
+
+    for i in range(len(list_vars)):
+        list_index = list_vars[i]
+        str_vars: str = "+".join([f"v_{index}" for index in list_index])
+
+        list_strs.append(str_vars)
+
+        list_strs.append(">" if list_rels[i] else ">=")
+
+    return " ".join(list_strs)
+
+def find_vector(orders: list[tuple[list[int], list[bool]]], vector: list[int]) -> bool:
+    list_orders: list[tuple[list[int], list[bool]]] = []
+    
+    for order in orders:
+        if check_vector(order, vector):
+            list_orders.append(order)
+
+    return list_orders
+
+def check_vector(order: tuple[list[int], list[bool]], vector: list[int]) -> bool:
+    list_vars, list_rels = order
+
+    index: int = 1
+
+    var_index: int = list_vars[len(list_vars) - index][0]
+
+    var_value: int = vector[var_index - 1]
+
+    dict_var_values: dict[int, int] = {}
+
+    dict_var_values[var_index] = var_value
+
+    while index <= len(list_vars):
+        rel = list_rels[len(list_rels) - index - 1]
+
+        var_index_next: int = list_vars[len(list_vars) - index - 1][0]
+
+        var_value_next: int = vector[var_index_next - 1]
+
+        if var_value_next == var_value and rel:
+            return False
+            
+        index += 1
+
+    return True
