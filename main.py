@@ -3,6 +3,8 @@ import webbrowser
 
 from debug_write import DebugWrite
 from exponential import Exponential, ExponentialProduct
+from list_orders import list_orders
+from list_orders import list_orders
 from orders import check_covering
 from parse_cases import parse_cases
 from polynomial import Polynomial
@@ -79,6 +81,10 @@ def main():
     check_covering()
     #return
     create_symmetry_factors_program()
+
+    list_orders(".\\input\\cases.tex")#, ".\\input\\")
+
+    return
 
     parse_cases(".\\input\\cases.tex", ".\\input\\")
 
