@@ -2631,3 +2631,6 @@ print(f"sf_hh_8_2={sf_hh_8_2}")
 hh_01=hh_3_2+hh_8_2
 sf_hh_01=psi(hh_01)/hh_01
 print(f"sf_hh_01={sf_hh_01}")
+hh_02=hh_3_1+hh_8_1
+sf_hh_02=psi(hh_02)/hh_02
+print(f"sf_hh_02={sf_hh_02}")
