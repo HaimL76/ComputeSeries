@@ -61,12 +61,57 @@ def list_orders(file_path: str) -> list[tuple[list[int], list[bool]]]:
                         line = line[1:]
 
                 order: tuple[list[int], list[bool]] = list_vars, list_rels
+                
+                found: bool = False
+                index: int = 0
 
-                list_orders.append(order)
+                while not found and index < len(list_orders):
+                    existing_order = list_orders[index]
 
-                str_order: str = print_order(order)
+                    inner_index: int = 0
+                    different: bool = False
 
-                print(str_order)
+                    while not different and inner_index < len(order[0]):
+                        list_vars = sorted(order[0][inner_index])
+                        existing_list_vars = sorted(existing_order[0][inner_index])
+
+                        if len(list_vars) != len(existing_list_vars):
+                            different = True
+
+                        list_vars_index: int = 0
+
+                        while not different and list_vars_index < len(list_vars):
+                            if list_vars[list_vars_index] != existing_list_vars[list_vars_index]:
+                                different = True
+
+                            list_vars_index += 1
+
+                        if not different and inner_index < len(order[1]):
+                            rel = order[1][inner_index]
+                            existing_rel = existing_order[1][inner_index]
+                            if rel != existing_rel:
+                                different = True
+
+                        inner_index += 1
+
+                    if not different:
+                        found = True
+
+                    index += 1
+
+                if not found:
+                    list_orders.append(order)
+
+                #str_order: str = print_order(order)
+
+                #print(str_order)
+
+        for i in range(len(list_orders)):
+            order = list_orders[i]
+
+            str_order: str = print_order(order)
+
+            print(f"Order {i+1}: {str_order}")
     return list_orders
 
 def print_order(order: tuple[list[int], list[bool]]):
