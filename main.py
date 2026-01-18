@@ -84,10 +84,12 @@ def check_vectors(list0: list[tuple[tuple[list[int], list[bool]],str]],
 
     check_vector_found: bool = find_vector(list0, vector)
 
-    if isinstance(check_vector_found, list) and len(check_vector_found) > 1:
-        for item in check_vector_found:
-            print(f"{vector} Matching order: {print_order(item)}")
-    elif check_vector_found is None or len(check_vector_found) == 0:
+    if isinstance(check_vector_found, list):
+        if len(check_vector_found) > 0:
+            for item in check_vector_found:
+                print(f"{vector} Matching order{" overlap" if len(check_vector_found) > 1 else ""}: {print_order(item)}")
+
+    if check_vector_found is None or len(check_vector_found) == 0:
         print(f"{vector} No matching order found.")
 
     if index < len(vector):
@@ -107,7 +109,7 @@ def main():
 
     list0 = list_orders(".\\input\\cases.tex")#, ".\\input\\")
 
-    check_vectors(list0, [0,0,0,0], 0, 4, 0)
+    check_vectors(list0, [0,0,0,0], 0, 8, 0)
 
     return
 
