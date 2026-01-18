@@ -111,7 +111,7 @@ def main():
 
     check_vectors(list0, [0,0,0,0], 0, 8, 0)
 
-    return
+    #return
 
     parse_cases(".\\input\\cases.tex", ".\\input\\")
 
