@@ -3,7 +3,7 @@ import webbrowser
 
 from debug_write import DebugWrite
 from exponential import Exponential, ExponentialProduct
-from list_orders import check_vector, find_vector, list_orders
+from list_orders import check_vector, find_vector, list_orders, print_order
 from list_orders import list_orders
 from orders import check_covering
 from parse_cases import parse_cases
@@ -76,6 +76,29 @@ def create_symmetry_factors_program(level: int = 1):
 
     return
 
+def check_vectors(list0: list[tuple[tuple[list[int], list[bool]],str]],
+        vector: list[int], min0: int = 0, max0: int = 0, index: int = 0, counter: int = 0) -> int:
+    vector = vector or [0,0,0,0]
+
+    #print(f"{counter}, {vector}")
+
+    check_vector_found: bool = find_vector(list0, vector)
+
+    if isinstance(check_vector_found, list) and len(check_vector_found) > 1:
+        for item in check_vector_found:
+            print(f"{vector} Matching order: {print_order(item)}")
+    elif check_vector_found is None or len(check_vector_found) == 0:
+        print(f"{vector} No matching order found.")
+
+    if index < len(vector):
+        for i in range(min0, max0 + 1):
+            vector[index] = i
+
+            counter = check_vectors(list0, vector, min0, max0, index + 1, counter=counter + 1)
+
+    return counter
+
+
 
 def main():
     check_covering()
@@ -83,6 +106,8 @@ def main():
     create_symmetry_factors_program()
 
     list0 = list_orders(".\\input\\cases.tex")#, ".\\input\\")
+
+    check_vectors(list0, [0,0,0,0], 0, 4, 0)
 
     aaa = find_vector(list0, [4,1,3,2])
 

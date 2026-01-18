@@ -1,7 +1,9 @@
 import re
 
 
-def list_orders(file_path: str) -> list[tuple[list[int], list[bool]]]:
+def list_orders(file_path: str) -> list[
+        tuple[tuple[list[int], list[bool]],str]
+        ]:
     list_orders: list[
         tuple[tuple[list[int], list[bool]],str]
         ] = []
