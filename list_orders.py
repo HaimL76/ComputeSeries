@@ -2,13 +2,23 @@ import re
 
 
 def list_orders(file_path: str) -> list[tuple[list[int], list[bool]]]:
-    list_orders: list[tuple[list[int], list[bool]]] = []
+    list_orders: list[
+        tuple[tuple[list[int], list[bool]],str]
+        ] = []
 
     with open(file_path, "r") as f:
         for line in f:
+            line0: str = str(line)
+
             line = line.strip()
 
-            line = line.replace("{", "").replace("}", "")
+            if re.search(r'\(.*\)$', line):
+                continue
+
+            if line.startswith(r"\item"):
+                continue
+
+            line = line.replace("{", "").replace("}", "").replace(r"\item", "").replace(r"$", "")
 
             line = re.sub(r'\\overset[abcde]', '', line)
 
@@ -66,7 +76,7 @@ def list_orders(file_path: str) -> list[tuple[list[int], list[bool]]]:
                 index: int = 0
 
                 while not found and index < len(list_orders):
-                    existing_order = list_orders[index]
+                    existing_order = list_orders[index][0]
 
                     inner_index: int = 0
                     different: bool = False
@@ -100,18 +110,19 @@ def list_orders(file_path: str) -> list[tuple[list[int], list[bool]]]:
                     index += 1
 
                 if not found:
-                    list_orders.append(order)
+                    list_orders.append((order, line0))
 
                 #str_order: str = print_order(order)
 
                 #print(str_order)
 
         for i in range(len(list_orders)):
-            order = list_orders[i]
+            order = list_orders[i][0]
+            line0 = list_orders[i][1]
 
             str_order: str = print_order(order)
 
-            print(f"Order {i+1}: {str_order}")
+            print(f"Order {i+1}: {str_order}, {line0}")
     return list_orders
 
 def print_order(order: tuple[list[int], list[bool]]):
@@ -129,12 +140,14 @@ def print_order(order: tuple[list[int], list[bool]]):
 
     return " ".join(list_strs)
 
-def find_vector(orders: list[tuple[list[int], list[bool]]], vector: list[int]) -> bool:
+def find_vector(orders: list[
+    tuple[tuple[list[int], list[bool]], str]
+    ], vector: list[int]) -> bool:
     list_orders: list[tuple[list[int], list[bool]]] = []
     
     for order in orders:
-        if check_vector(order, vector):
-            list_orders.append(order)
+        if check_vector(order[0], vector):
+            list_orders.append(order[0])
 
     return list_orders
 
