@@ -109,14 +109,6 @@ def main():
 
     check_vectors(list0, [0,0,0,0], 0, 4, 0)
 
-    aaa = find_vector(list0, [4,1,3,2])
-
-    if isinstance(aaa, list) and len(aaa) > 0:
-        index: int = 0
-
-        for item in aaa:
-            print(f"{index}, {item}")
-            index += 1
     return
 
     parse_cases(".\\input\\cases.tex", ".\\input\\")
