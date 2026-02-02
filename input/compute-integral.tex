@@ -46,7 +46,7 @@ m_{4,10}&=c_4\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_4\lambd
 Hence we obtain the following constraints:
 \[
 v(c_1),v(c_2),v(c_3),v(c_4)\geq-(v_1+v_2+v_3+v_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{v_1+v_2+v_3+v_4}.\]
-Hence our integral is
+Hence we multiply our integral $4$ times by the same measure $p^{v_1+v_2+v_3+v_4}$, to obtain:
 \[
 \int_{\underline\lambda,\underline{a},\underline{b}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
 \]
@@ -61,8 +61,20 @@ m_{4,8}&=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\g
 m_{5,10}&=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_1+v_2+v_3+v_4)}&\\
 m_{7,10}&=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3+v_4)}&\\
 \end{flalign*}
-But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence the constraint $m_{2,9}$ implies the constraint $m_{5,10}$, and the constraint $m_{3,8}$ implies the constraint $m_{7,10}$.
-
+But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence $m_{5,10}$ is implied by $m_{2,9}$ and $m_{7,10}$ is implied by $m_{3,8}$.
+\subsubsection{Integration by $b_{12},b_{22},b_{31},b_{41}$}
+By the listed constraints we obtain the measures:
+\begin{flalign*}
+\mu(b_{12})&=p^{v_2+v_3+v_4}.&\\
+\mu(b_{22})&=p^{v_2+v_3+v_4}.&\\
+\mu(b_{31})&=p^{v_1+v_2+v_3}.&\\
+\mu(b_{41})&=p^{v_1+v_2+v_3}.&\\
+\end{flalign*}
+Hence we multiply our integral by these measures, to obtain:
+\[
+\int_{\underline\lambda,\underline{a},b_{11}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11})=\]\[=\int_{\underline\lambda,\underline{a},b_{11}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+8v_2+8v_3+6v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11}).
+\]
+\subsubsection{Integration by $b_{11}$}
 We observe that $b_{11}$ appears also in the following product matrix element:
 
 $m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_{p}.$
@@ -114,16 +126,11 @@ p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,v(a)\geq-\max\{\alpha,\beta\}. \\
 0,&\text{if}\,\,\,\,v(a)<-\max\{\alpha,\beta\}.
 \end{cases}
 \]
-But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence, the Haar measure on $b_{11}$ adds the factor:\\
-$p^{\min\{\alpha,\beta\}}=p^{\min\{v_1+v_2+v_3,v_2+v_3+v_4\}}=p^{v_2+v_3+\min\{v_1+v_4\}}$, but also the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
-
-The measures on $b_{12},b_{22},b_{31},b_{41}$ altogether add the factor:\\
-$p^{2v_1}p^{4v_2}p^{4v_3}p^{2v_4}=p^{2v_1+4v_2+4v_3+2v_4}$.
-
-Thus, our integral is now:
+But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence with multiply our integral by the measure on $b_{11}$, to obtain:
 \[
-\underset{v_p(a_{11}a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})}{\int_{\underline\lambda,\underline{a}}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}p^{v_2+v_3+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\underset{v_p(a_{11}a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})}{\int_{\underline\lambda,\underline{a}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+9v_3+6v_4+\min\{v_1+v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}).
+\int_{\underline\lambda,\underline{a},b_{12},b_{22},b_{31},b_{41}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+5v_2+5v_3+4v_4+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{12},b_{22},b_{31},b_{41}),
 \]
+with the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
 \subsection{Computation of constraints on the $a$ elements}
 We have the following constraints:
 \begin{flalign*}

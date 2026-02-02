@@ -82,7 +82,10 @@ class ProcessFolder:
         list_debug_data: list[str] = []
 
         list_var_h_subsets: list[list[str]] = [
-            ["h_7_1", "h_6_2", "h_5", "h_6_1", "h_7_3", "h_1", "h_7_2", "h_6_3"]
+            ["h_1", "h_5"], 
+            ["h_6_1", "h_6_2"], 
+            ["h_7_1", "h_7_2"], 
+            ["h_7_3", "h_6_3"]
         ]
 
         with open(out_file_path_sage_series_sums, "w") as fw_sage_series_sums,\
@@ -405,21 +408,24 @@ class ProcessFolder:
 
                 fw_sage_series_sums.write(f"{sf_var_h}=psi({str_hh_i})/{str_hh_i}\n")
 
+                #fw_sage_series_sums.write(f"print(f\"{sf_var_h}={{{sf_var_h}}}\")\n")
+
                 sf_var_h_simplified = f"sf_hh_{i}_simplified"
 
                 fw_sage_series_sums.write(f"{sf_var_h_simplified}={sf_var_h}.simplify_full()\n")
 
-                fw_sage_series_sums.write(f"print(f\"{sf_var_h}={{{sf_var_h}}}\")\n")
+                #fw_sage_series_sums.write(f"print(f\"{sf_var_h}={{{sf_var_h}}}\")\n")
+                fw_sage_series_sums.write(f"print(f\"{sf_var_h_simplified}={{{sf_var_h_simplified}}}\")\n")
 
-                sf_f = f"sf_f"
+                #sf_f = f"sf_f"
 
-                fw_sage_series_sums.write(f"{sf_f}=psi(f)/f\n")
+                #fw_sage_series_sums.write(f"{sf_f}=psi(f)/f\n")
 
-                sf_f_simplified = f"sf_f_simplified"
+                #sf_f_simplified = f"sf_f_simplified"
 
-                fw_sage_series_sums.write(f"{sf_f_simplified}={sf_f}.simplify_full()\n")
+                #fw_sage_series_sums.write(f"{sf_f_simplified}={sf_f}.simplify_full()\n")
 
-                fw_sage_series_sums.write(f"print(f\"{sf_f_simplified}={{{sf_f_simplified}}}\")\n")
+                #fw_sage_series_sums.write(f"print(f\"{sf_f_simplified}={{{sf_f_simplified}}}\")\n")
 
             fw_sage_integral_summand.write("print(f\"x={x}\")\n")
 
