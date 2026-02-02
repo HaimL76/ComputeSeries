@@ -131,6 +131,7 @@ But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\
 \int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+8v_2+8v_3+6v_4+v_2+v_3+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+9v_3+6v_4+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}),
 \]
 with the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
+We denote: $\delta=\min\{v_1,v_4\}$.
 \subsection{Computation of constraints on the $a$ elements}
 We have the following constraints:
 \begin{flalign*}
@@ -160,8 +161,9 @@ But $-v_p(a_{11})-v_2-v_3-v_4\geq{-v_3-v_4}\iff{-v_p(a_{11})-v_2}\geq{0}\iff{v_p
 And $-v_p(a_{11})-v_2-v_3-v_4<{-v_3-v_4}\iff{-v_p(a_{11})-v_2}<{0}\iff{v_p(a_{11})>-v_2}$.
 
 Hence, $v_p(a_{33})\geq-(v_3+v_4)-\min\{0,v_2+v_p(a_{11})\}$ and we multiply out integral by $\mu(a_{33})$, to obtain:
-\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\min\{v_1,v_4\})}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+6v_3+6v_4+\min\{v_1+v_4\}+v_3+v_4+\min\{0,v_2+v_p(a_{11})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\min\{v_1,v_4\})}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+10v_3+7v_4+\min\{v_1+v_4\}+\min\{0,v_2+v_p(a_{11})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+6v_3+6v_4+\delta+v_3+v_4+\min\{0,v_2+v_p(a_{11})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+10v_3+7v_4+\delta+\min\{0,v_2+v_p(a_{11})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
 \]
+We denote: $A_2=\min\{0,v_2+v_p(a_{11})$.
 \subsubsubsection{Integration by $a_{21}$}
 We integrate by $a_{21}$ considering $a_{22}$ as a constant. We have the following constraints:
 \begin{enumerate}
@@ -172,11 +174,9 @@ But $-v_p(a_{22})-v_1-v_2-v_3\geq{-v_1-v_2}\iff{-v_p(a_{22})-v_3}\geq{0}\iff{v_p
 
 And $-v_p(a_{22})-v_1-v_2-v_3<{-v_1-v_2}\iff{-v_p(a_{22})-v_3}<{0}\iff{v_p(a_{22})>-v_3}$.
 
-And hence, $v_p(a_{22})\geq-(v_1+v_2)-\min\{0,v_3+v_p(a_{22})\}$.
-
-Thus, our integral is multiplied by $\mu(a_{33})=p^{v_3+v_4+\min\{0,v_2+v_p(a_{11})\}}$ and $\mu(a_{21})=p^{v_1+v_2+\min\{0,v_3+v_p(a_{22})\}}$, and it is now:
-\[\int_{\underline\lambda,a_{11},a_{22}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+10v_2+10v_3+6v_4+\min\{v_1+v_4\}+\min\{0,v_2+v_p(a_{11})\}+\min\{0,v_3+v_p(a_{22})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).
-\]
+And hence, $v_p(a_{21})\geq-(v_1+v_2)-\min\{0,v_3+v_p(a_{22})\}$ and we multiply our integral by $\mu(a_{21})$, to obtain:
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+10v_3+7v_4+\delta+\gamma+v_1+v_2+\min\{0,v_3+v_p(a_{22})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}t^{4v_1+6v_2+6v_3+4v_4}p^{7v_1+10v_2+10v_3+7v_4+\delta+\gamma+\min\{0,v_3+v_p(a_{22})\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).\]
+We denote: $\beta=\min\{0,v_3+v_p(a_{22})\}$.
 \subsubsection{Computation of constraints on $a_{11}$ and $a_{22}$}
 As seen above, we have the constraint 
 $m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p$, which implies after previous computation that \\
@@ -202,7 +202,6 @@ $\mu(a_{21})=p^{\min\{0,v_3+v_p(a_{22})\}}$:
 
 \[\int_{v_p(a_{22})\geq-(v_3+\alpha)}p^{\min\{0,v_3+v_p(a_{22})\}}.\]
 
-Denote $\beta=\min\{0,v_3+v_p(a_{22})\}$, thus
 \[
 \beta=\begin{cases}
     0,&v_3+v_p(a_{22})\geq{0}\iff{v_p}(a_{22})\geq{-v_3}\iff\alpha\geq{0}\\
