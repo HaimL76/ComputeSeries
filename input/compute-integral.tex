@@ -26,12 +26,12 @@
 
 \maketitle
 \section{Computation of the integral}
-We want to integrate the function $|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
+We want to integrate the function $\varphi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
 
 We denote by $t=p^{-s}$, where $s$ is the complex parameter of our zeta-function.
 
-Thus, $|\lambda_1\lambda_2\lambda_3\lambda_4|_p^s=|\lambda_1|_p^s|\lambda_2|_p^s|\lambda_3|_p^s|\lambda_4|_p^s=(p^{-v_1})^s(p^{-v_2})^s(p^{-v_3})^s(p^{-v_4})^s=(p^{-s})^{v_1}(p^{-s})^{v_2}(p^{-s})^{v_3}(p^{-s})^{v_4}=t^{v_1}t^{v_2}t^{v_3}t^{v_4}$.
+Thus, $\varphi=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^s=(|\lambda_1|_p^4|\lambda_2|_p^6|\lambda_3|_p^6|\lambda_4|_p^4)^s=(p^{-v_1})^{4s}(p^{-v_2})^{6s}(p^{-v_3})^{6s}(p^{-v_4})^{4s}=(p^{-s})^{4v_1}(p^{-s})^{6v_2}(p^{-s})^{6v_3}(p^{-s})^{4v_4}=t^{4v_1}t^{6v_2}t^{6v_3}t^{4v_4}$.
 
 Now we need to define our domain of integration, and calculate its Haar measure. Since we are computing a $p$-adic integral, we multiply the function to integrate by the domain measure, the result being our desired integral.\\ 
 In the all following, we may write \textbf{constraint $m_{i,j}$} to denote a constraint implied by the matrix element $m_{i,j}$.
@@ -48,7 +48,7 @@ Hence we obtain the following constraints:
 v(c_1),v(c_2),v(c_3),v(c_4)\geq-(v_1+v_2+v_3+v_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{v_1+v_2+v_3+v_4}.\]
 Hence we multiply our integral $4$ times by the same measure $p^{v_1+v_2+v_3+v_4}$, to obtain:
 \[
-\int_{\underline\lambda,\underline{a},\underline{b}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
+\int_{\underline\lambda,\underline{a},\underline{b}}\varphi{p}^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
 \]
 \subsection{Computation of constraints on the $b$ elements}
 We consider the following product matrix elements:
@@ -72,7 +72,7 @@ By the listed constraints we obtain the measures:
 \end{flalign*}
 Hence we multiply our integral by these measures, to obtain:
 \[
-\int_{\underline\lambda,\underline{a},b_{11}}t^{4v_1+6v_2+6v_3+4v_4}p^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11})=\]\[=\int_{\underline\lambda,\underline{a},b_{11}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+8v_2+8v_3+6v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11}).
+\int_{\underline\lambda,\underline{a},b_{11}}\varphi{p}^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11})=\]\[=\int_{\underline\lambda,\underline{a},b_{11}}\varphi{p}^{6v_1+8v_2+8v_3+6v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11}).
 \]
 \subsubsection{Integration by $b_{11}$}
 We observe that $b_{11}$ appears also in the following product matrix element:
@@ -128,7 +128,7 @@ p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,v_p(a)\geq-\max\{\alpha,\beta\}. \\
 \]
 But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence with multiply our integral by $\mu(b_{11})$, to obtain:
 \[
-\int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+8v_2+8v_3+6v_4}p^{v_2+v_3+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+9v_3+6v_4+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}),
+\int_{\underline\lambda,\underline{a}}\varphi{p}^{6v_1+8v_2+8v_3+6v_4}p^{v_2+v_3+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}\varphi{p}^{6v_1+9v_2+9v_3+6v_4+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}),
 \]
 with the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
 We denote: $v_{11}=v_p(a_{11})$, $v_{22}=v_p(a_{22})$ and $\delta=\min\{v_1,v_4\}$.
@@ -161,7 +161,7 @@ But $-v_{11}-v_2-v_3-v_4\geq{-v_3-v_4}\iff{-v_{11}-v_2}\geq{0}\iff{v_{11}\leq-v_
 And $-v_{11}-v_2-v_3-v_4<{-v_3-v_4}\iff{-v_{11}-v_2}<{0}\iff{v_{11}>-v_2}$.
 
 Hence, $v_p(a_{33})\geq-(v_3+v_4)-\min\{0,v_2+v_{11}\}$ and we multiply out integral by $\mu(a_{33})$, to obtain:
-\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+6v_3+6v_4+\delta}p^{v_3+v_4}p^{\min\{0,v_2+v_{11}\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+10v_3+7v_4+\delta}p^{\min\{0,v_2+v_{11}\}}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\varphi{p}^{6v_1+9v_2+6v_3+6v_4+\delta}p^{v_3+v_4}p^{\min\{0,v_2+v_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\varphi{p}^{6v_1+9v_2+10v_3+7v_4+\delta}p^{\min\{0,v_2+v_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
 \]
 We denote: $\gamma=\min\{0,v_2+v_{11}\}$.
 \subsubsubsection{Integration by $a_{21}$}
@@ -175,7 +175,7 @@ But $-v_{22}-v_1-v_2-v_3\geq{-v_1-v_2}\iff{-v_{22}-v_3}\geq{0}\iff{v_{22}\leq-v_
 And $-v_{22}-v_1-v_2-v_3<{-v_1-v_2}\iff{-v_{22}-v_3}<{0}\iff{v_{22}>-v_3}$.
 
 And hence, $v_p(a_{21})\geq-(v_1+v_2)-\min\{0,v_3+v_{22}\}$ and we multiply our integral by $\mu(a_{21})$, to obtain:
-\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}t^{4v_1+6v_2+6v_3+4v_4}p^{6v_1+9v_2+10v_3+7v_4+\delta}p^{v_1+v_2+\min\{0,v_3+v_{22}\}}p^{\gamma}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}t^{4v_1+6v_2+6v_3+4v_4}p^{7v_1+10v_2+10v_3+7v_4+\delta+\min\{0,v_3+v_{22}\}}p^{\gamma}\]\[d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).\]
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\varphi{p}^{6v_1+9v_2+10v_3+7v_4+\delta}p^{v_1+v_2+\min\{0,v_3+v_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\varphi{p}^{7v_1+10v_2+10v_3+7v_4+\delta+\min\{0,v_3+v_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).\]
 We denote: $\beta=\min\{0,v_3+v_{22}\}$.
 \subsubsection{Computation of constraints on $a_{11}$ and $a_{22}$}
 As seen above, we have the constraint 
@@ -203,8 +203,8 @@ $\mu(a_{21})=p^{\min\{0,v_3+v_{22}\}}$:
 
 \[
 \beta=\begin{cases}
-    0,&v_3+v_{22}\geq{0}\iff{v_p}(a_{22})\geq{-v_3}\iff\alpha\geq{0}\\
-    v_3+v_{22},&v_3+v_{22}<{0}\iff{v_p}(a_{22})<{-v_3}\iff\alpha<{0}
+    0,&v_3+v_{22}\geq{0}\iff{v_{22}}\geq{-v_3}\iff\alpha\geq{0}\\
+    v_3+v_{22},&v_3+v_{22}<{0}\iff{v_{22}}<{-v_3}\iff\alpha<{0}
 \end{cases}
 \]
 
@@ -220,10 +220,6 @@ v_{22}={-(v_3+2)}&p^{\beta}=p^{\min\{0,v_3-(v_3+2)\}}=p^{-2}&\mu(a_{22})=p^{v_3+
 v_{22}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(a_{22})=p^{v_3+\alpha}-p^{v_3+\alpha-1}=p^{v_3+\alpha}(1-p^{-1})\\
 \end{matrix}\]
 All this yields the polynomial: \\
-$p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$.
-Also, since $0$
-
-
-hence we multiply our integral by $\mu(a_{22})$, to obtain:
-\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}t^{4v_1+6v_2+6v_3+4v_4}p^{7v_1+10v_2+10v_3+7v_4+\delta}p^{\gamma}p^{v_3}(1+\alpha(1-p^{-1}))\]\[d\mu(\underline\lambda)d\mu(a_{11})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}t^{4v_1+6v_2+6v_3+4v_4}p^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))\]\[d\mu(\underline\lambda)d\mu(a_{11}).\]
+$p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$, hence we multiply our integral by $\mu(a_{22})$, to obtain:
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\varphi{p}^{7v_1+10v_2+10v_3+7v_4+\delta}p^{\gamma}p^{v_3}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\varphi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
 \end{document}
