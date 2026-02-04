@@ -232,8 +232,8 @@ Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(\ma
     \item $\beta=\min\{v_1,v_3\}$
     \item $\alpha=\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\}=
     \begin{cases}
-    0\\
-    1
+    \min\{v_2,v_{11}+v_2+\max\{v_1,v_4\}\}&v_2\leq{v_4}\\
+    \min\{v_4,v_{11}+v_2+\max\{v_1,v_4\}\}&v_2>{v_4}
     \end{cases}$
 \end{enumerate}
 \end{document}
