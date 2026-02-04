@@ -222,4 +222,7 @@ v_{22}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(
 All this yields the polynomial: \\
 $p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$, hence we multiply our integral by $\mu(a_{22})$, to obtain:
 \[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+10v_3+7v_4+\delta}p^{\gamma}p^{v_3}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
+\subsubsubsection{Integration by $a_{11}$}
+Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Considering the constraint $v_{11}+v_{22}\geq-(v_2+v_3+\delta)$, we check that this is already implied by $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Thus, we integrate by $v_{11}$ under this constraint, where $v_{11}$ depends on $v_1,v_2,v_3,v_4$, to obtain:
+\[\underset{v_{11}\geq-(v_2+\min\{v_1,v_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11}).\]
 \end{document}
