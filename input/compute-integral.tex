@@ -225,16 +225,17 @@ $p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^
 \subsubsubsection{Integration by $a_{11}$}
 Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Considering the constraint $v_{11}+v_{22}\geq-(v_2+v_3+\delta)$, we check that this is already implied by $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Thus, we integrate by $v_{11}$ under this constraint, where $v_{11}$ depends on $v_1,v_2,v_3,v_4$, to obtain:
 \[\underset{v_{11}\geq-(v_2+\min\{v_1,v_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
-We denote $\beta=\min\{v_1,v_3\}$, $\tilde\delta=\max\{v_1,v_4\}$ and $\varphi=1-p^{-1}$.\\
+We denote $\beta=\min\{v_1,v_3\}$, $\tilde\delta=\max\{v_1,v_4\}$, $\epsilon=\min\{v_2,v_4\}$ and $\varphi=1-p^{-1}$.\\
 Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(\mathbb{Q}_p)$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depend on $3$ choices between pairs of $\lambda$ elements, namely:
 \begin{enumerate}
-    \item $\delta=\min\{v_1,v_4\}$
-    \item $\beta=\min\{v_1,v_3\}$
+    \item $\delta=\min\{v_1,v_4\}$.
+    \item $\beta=\min\{v_1,v_3\}$.
     \item $\alpha=\min\{v_2,v_4,v_{11}+v_2+\tilde\delta\}=
     \begin{cases}
-    \min\{v_2,v_{11}+v_2+\tilde\delta\},&v_2\leq{v_4}\\
-    \min\{v_4,v_{11}+v_2+\tilde\delta\},&v_2>{v_4}
-    \end{cases}$
+    \min\{v_2,v_{11}+v_2+\tilde\delta\},&\epsilon=v_2\\
+    \min\{v_4,v_{11}+v_2+\tilde\delta\},&\epsilon=v_4
+    \end{cases}$.
 \end{enumerate}
 Hence we need to break the orthant into $8$ separate cones, created by the $2^3$ different choices for these pairs of elements.
+But $\alpha$ depends on $v_{11}$ hence on both $\beta$ and $\epsilon$, which suggests that we may need to break several cones into smaller cones, and we show hereby.
 \end{document}
