@@ -230,12 +230,13 @@ Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(\ma
 \begin{enumerate}
     \item $\delta=\min\{v_1,v_4\}$.
     \item $\beta=\min\{v_1,v_3\}$.
-    \item $\alpha=\min\{v_2,v_4,v_{11}+v_2+\tilde\delta\}=
-    \begin{cases}
-    \min\{v_2,v_{11}+v_2+\tilde\delta\},&\epsilon=v_2\\
-    \min\{v_4,v_{11}+v_2+\tilde\delta\},&\epsilon=v_4
-    \end{cases}$.
+    \item $\alpha=\min\{\epsilon,v_{11}+v_2+\tilde\delta\}=\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\}$.
 \end{enumerate}
 Hence we need to break the orthant into $8$ separate cones, created by the $2^3$ different choices for these pairs of elements.
-But $\alpha$ depends on $v_{11}$ hence on $\beta$, and also depends on $\epsilon$, which suggests that we may need to break several cones into smaller cones, as we show hereby. 
+For each of the $8$ orthants we have $\alpha=
+\begin{cases}
+\epsilon,&\epsilon\leq{v_2+v_{11}+\tilde\delta}\iff{v_{11}}\geq{\epsilon-(v_2+\tilde\delta)}\\
+v_2+v_{11}+\tilde\delta,&\epsilon>{v_2+v_{11}+\tilde\delta}\iff{v_{11}}<{\epsilon-(v_2+\tilde\delta)}\\
+\end{cases}$,
+hence the point $v_{11}=\epsilon-(v_2+\tilde\delta)$ forms a phase transition of $\alpha$ from the fixed value $\epsilon$ into the descending arithmetic sequence $\epsilon-1,\epsilon-2,\dots,v_2-(v_2+\beta)+\tilde\delta=\tilde\delta-\beta$. However, if the $-v_2-\beta>\epsilon-v_2-\tilde\delta\iff-\beta>\epsilon-\tilde\delta\iff\tilde\delta>\epsilon+\beta$, the point of phase transition is out of range. This implies that when both $\tilde\delta\neq\epsilon$ and $\tilde\delta\neq\beta$, we need to break the orthant into two distinct cones, for $\tilde\delta\leq\epsilon+\beta$ and for $\tilde\delta>\epsilon+\beta$. But in case of either $\tilde\delta=\epsilon$ or $\tilde\delta=\beta$, then $\tilde\delta\leq\epsilon+\beta$ (because $\tilde\delta,\epsilon,\beta\geq{0}$), hence there is no phase transition for $\alpha$.
 \end{document}
