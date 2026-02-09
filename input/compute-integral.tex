@@ -258,10 +258,18 @@ Also, $p^{7v_1+10v_2+11v_3+7v_4+\delta}=p^{7v_1+10v_2+11v_3+8v_4}$.\\
 We notice that $v_1\geq{v_4}>v_2\implies{v_1}>v_2\iff-v_2>-v_1$, and also that $v_2\geq{0}\iff-v_2\geq-v_2-v_1$, hence we break the integral into three:
 \begin{enumerate}
     \item $v_{11}\geq-v_2>-v_1$\\
-    $p^{\gamma}=p^{\min\{v_{11}+v_2,0\}}=p^0=1$.\\
-    $\alpha=\min\{v_2,v_2+v_{11}+v_1\}=\min\{v_2,\xi\}$, where $\xi\geq{v_2-v_2+v_1}\geq{v_1}>v_2\implies\alpha=v_2$.\\
+    $p^{\gamma}=p^{\min\{v_{11}+v_2,0\}}=p^{\min\{\xi,0\}}$, where $\xi\geq{v_2-v_2=0}\implies{p^{\gamma}}=p^0=1$.\\
+    $\alpha=\min\{v_2,v_2+v_{11}+v_1\}=\min\{v_2,\xi\}$, where $\xi\geq{v_2-v_2+v_1=v_1}>v_2\implies\alpha=v_2$.\\
     $\mu(v_{11})=\mu(p^{-v_2}\mathbb{Z}_p)=p^{-v_2}$.\\
     Putting all the above together yields the following integral:
 \[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(1+v_2\varphi)=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(1+v_2\varphi).\]
+\item $-v_1\leq{v_{11}}\leq-v_2-1$\\
+This means $v_{11}=-(v_2+i)$, where $1\leq{i}\leq{v_1}-v_2$.\\
+$p^{\gamma}=p^{\min\{v_2-(v_2+i),0\}}=p^{\min\{-i,0\}}$, but $i\geq{1}\implies{p^{\gamma}}=p^{-i}$, where $i$ is in the said range.\\
+$\alpha=\min\{v_2,v_2-(v_2+i)+v_1\}=\min\{v_2,v_1-i\}$, but $i\leq{v_1-v_2}\implies\alpha=\min\{v_2,\xi\}$, where $\xi\geq{v_1}-(v_1-v_2)=v_2\implies\alpha=v_2$.\\
+The measure $\mu(v_{11}=-(v_2+i))=\mu(p^{-(v_2+i)}\mathbb{Z}_p)-\mu(p^{-(v_2+i-1)}\mathbb{Z}_p)=p^{v_2+i}-p^{v_2+i-1}=p^{v_2+i}(1-p^{-1})=p^{v_2+i}\varphi$, hence
+\[p^{\gamma}\mu(v_{11})=\sum_{i=1}^{v_1-v_2}p^{-i}p^{v_2+i}\varphi=\sum_{i=1}^{v_1-v_2}p^{v_2}\varphi=(v_1-v_2)p^{v_2}\varphi.\]
+Thus, we have the following integral:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(v_1-v_2)\varphi(1+v_2\varphi)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(v_1-v_2)(\varphi+v_2\varphi^2).\]
 \end{enumerate}
 \end{document}
