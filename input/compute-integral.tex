@@ -265,7 +265,7 @@ We notice that $v_1\geq{v_4}>v_2\implies{v_1}>v_2\iff-v_2>-v_1$, and also that $
 \[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(1+v_2\varphi)=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(1+v_2\varphi).\]
 \item $-v_1\leq{v_{11}}\leq-v_2-1$\\
 This means $v_{11}=-(v_2+i)$, where $1\leq{i}\leq{v_1}-v_2$.\\
-$p^{\gamma}=p^{\min\{v_2-(v_2+i),0\}}=p^{\min\{-i,0\}}$, but $i\geq{1}\implies{p^{\gamma}}=p^{-i}$, where $i$ is in the said range.\\
+$p^{\gamma}=p^{\min\{v_2-(v_2+i),0\}}=p^{\min\{-i,0\}}$, but $i\geq{1}\iff-i\leq-1\implies{p^{\gamma}}=p^{-i}$, where $i$ is in the said range.\\
 $\alpha=\min\{v_2,v_2-(v_2+i)+v_1\}=\min\{v_2,v_1-i\}$, but $i\leq{v_1-v_2}\implies\alpha=\min\{v_2,\xi\}$, where $\xi\geq{v_1}-(v_1-v_2)=v_2\implies\alpha=v_2$.\\
 The measure $\mu(v_{11}=-(v_2+i))=\mu(p^{-(v_2+i)}\mathbb{Z}_p)-\mu(p^{-(v_2+i-1)}\mathbb{Z}_p)=p^{v_2+i}-p^{v_2+i-1}=p^{v_2+i}(1-p^{-1})=p^{v_2+i}\varphi$, hence
 \[p^{\gamma}\mu(v_{11})=\sum_{i=1}^{v_1-v_2}p^{-i}p^{v_2+i}\varphi=\sum_{i=1}^{v_1-v_2}p^{v_2}\varphi=(v_1-v_2)p^{v_2}\varphi.\]
@@ -278,8 +278,11 @@ $\mu(v_{11})=p^{v_1+i}-p^{v_1+i-1}=p^{v_1+i}(1-p^{-1})$.
 $\alpha=\min\{v_2,v_2-(v_1+i)+v_1\}=\min\{v_2,v_2-i\}$, but $i\geq{1}\implies\alpha=v_2-i$, where $i$ is in the said range. This means that at $v_{11}=-v_1-1$ we have a phase transition for $\alpha$.\\
 All the above yields the integral:
 \[\int_{v_3>v_1\geq{v_4}>v_2}\left[\psi{p}^{7v_1+10v_2+11v_3+8v_4}\sum_{i=1}^{v_2}p^{v_2-(v_1+i)}p^{v_1+i}\varphi(1+(v_2-i)\varphi)\right]=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\left[\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}\varphi\sum_{i=1}^{v_2}(1+(v_2-i)\varphi)\right]=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}\varphi(v_2+v_2^2\varphi-\sum_{i=1}^{v_2}i\varphi)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2).\]
-Thus, our integral for case $1$ is the sum of the above three integrals.
 \end{enumerate}
+Thus, our integral for case $1$ is the sum of the above three integrals.\\
+We denote $\omega_1=p^{8v_1+11v_2+11v_3+7v_4}$ and $\omega_4=p^{7v_1+11v_2+11v_3+8v_4}$.\\
+Thus, out integral for this case is:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi-v_2\varphi+v_1v_2\varphi^2-v_2^2\varphi^2+v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right).\]
 To compute the integral, we need to compute the infinite sum over the subdomain $v_3>v_1\geq{v_4}>v_2$.\\
 $\psi{p}^{7v_1+11v_2+11v_3+8v_4}=t^{4v_1+6v_2+6v_3+4v_4}{p}^{7v_1+11v_2+11v_3+8v_4}=$\\
 $(t^4p^7)^{v_1}(t^6p^{11})^{v_2}(t^6p^{11})^{v_3}(t^4p^8)^{v_4}$.
