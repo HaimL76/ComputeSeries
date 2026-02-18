@@ -283,7 +283,19 @@ Thus, our integral for case $1$ is the sum of the above three integrals.\\
 We denote $\omega_1=p^{8v_1+11v_2+11v_3+7v_4}$ and $\omega_4=p^{7v_1+11v_2+11v_3+8v_4}$.\\
 Thus, out integral for this case is:
 \[\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi-v_2\varphi+v_1v_2\varphi^2-v_2^2\varphi^2+v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right).\]
-To compute the integral, we need to compute the infinite sum over the subdomain $v_3>v_1\geq{v_4}>v_2$.\\
-$\psi{p}^{7v_1+11v_2+11v_3+8v_4}=t^{4v_1+6v_2+6v_3+4v_4}{p}^{7v_1+11v_2+11v_3+8v_4}=$\\
-$(t^4p^7)^{v_1}(t^6p^{11})^{v_2}(t^6p^{11})^{v_3}(t^4p^8)^{v_4}$.
+We denote $\varphi_1=\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right)$.\\
+To compute the integral, we need to compute the infinite sum over the subdomain $v_3>v_1\geq{v_4}>v_2$, but we cannot determine the boundaries of the variables $v_1,v_2,v_3,v_4$ in order to compute the sum directly.\\ Instead, we perform a change of variables by noticing first that $v_2\geq{0}$ is the only constraint on the minimal variable $v_2$, so we denote the difference $a=v_2-0=v_2\geq{0}$.\\
+We denote the other differences this way:\\
+$b=v_4-v_2=v_4-a\geq{1}$.\\
+$c=v_1-v_4=v_1-(a+b)\geq{0}$.\\
+$d=v_3-v_1=v_3-(a+b+c)\geq{1}$.\\
+Thus, we obtain the following change of variables:\\
+$v_1=a+b+c$.\\
+$v_2=a$.\\
+$v_3=a+b+c+d$.\\
+$v_4=a+b$.\\
+We use this change of variables for both $\psi\omega_4$ and $\varphi_1$:\\
+$\psi\omega_4=t^{4v_1+6v_2+6v_3+4v_4}{p}^{7v_1+11v_2+11v_3+8v_4}=
+(t^{4v_1}p^{7v_1})(t^{6v_2}p^{11v_2})(t^{6v_3}p^{11v_3})(t^{4v_4}p^{8v_4})=$\\$=(t^4p^7)^{v_1}(t^6p^{11})^{v_2}(t^6p^{11})^{v_3}(t^4p^8)^{v_4}=(t^4p^7)^{a+b+c}(t^6p^{11})^{a}(t^6p^{11})^{a+b+c+d}(t^4p^8)^{a+b}=$\\
+$=(t^{20a}p^{37a})(t^{14a}p^{26b})(t^{10c}p^{18c})(t^{6d}p^{11d})=(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d$.\\
 \end{document}
