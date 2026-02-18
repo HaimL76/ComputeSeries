@@ -305,6 +305,16 @@ $=1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\
 Thus, our integral assumes its final form:
 \begin{align*}
 &\int\limits_{\substack{a,c\geq0 \\ b,d\geq1}}\psi\omega_4\xi{d}\mu(a,b,c,d)= \\
-&=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})\left(1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2\right).
+&=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d\left(1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2\right).
 \end{align*}
+Denote 
+\[\sigma=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d,\]
+thus we break our integral in the following way:
+\[\sigma\left(1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2\right)=\]\[=\sigma+2\varphi(a\sigma)+\varphi(b\sigma)+\varphi(c\sigma)-\frac{\varphi^2}{2}(a^2\sigma)+\varphi^2(ab\sigma)+\varphi^2(ac\sigma)-\frac{\varphi^2}{2}(a\sigma).
+\]
+To compute an expression of the form $a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\sigma$,\\
+where $\rho_a,\rho_b,\rho_c,\rho_d\in\{0,1,2\}$, we use Fubini's theorem for infinite sums, which says that:
+\[\sigma=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d\]\[=\sum_{a\geq{0}}(t^{20}p^{37})^a\sum_{b\geq{1}}(t^{14}p^{26})^b\sum_{c\geq{0}}(t^{10}p^{18})^c\sum_{d\geq{1}}(t^{6}p^{11})^d,\]
+hence
+\[a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\sigma=\]\[=\left(a^{\rho_a}\sum_{a\geq{0}}(t^{20}p^{37})^a\right)\left(b^{\rho_b}\sum_{b\geq{1}}(t^{14}p^{26})^b\right)\left(c^{\rho_c}\sum_{c\geq{0}}(t^{10}p^{18})^c\right)\left(d^{\rho_d}\sum_{d\geq{1}}(t^{6}p^{11})^d\right)=\]\[=\left(\sum_{a\geq{0}}a^{\rho_a}(t^{20}p^{37})^a\right)\left(\sum_{b\geq{1}}b^{\rho_b}(t^{14}p^{26})^b\right)\left(\sum_{c\geq{0}}c^{\rho_c}(t^{10}p^{18})^c\right)\left(\sum_{d\geq{1}}d^{\rho_d}(t^{6}p^{11})^d\right).\]
 \end{document}
