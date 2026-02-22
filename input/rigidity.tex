@@ -14,8 +14,8 @@
 
 \section{Criteria for rigidity}
 \subsection{The $\mathcal{X}$ criterion}
-Let $k$ be a field, and let $L$ be a $k$-algebra over the field $k$.\\
-Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)={k}x+\gamma_2L\}$, we need to verify that $L=\span{0}$\\
+Let $k=\mathbb{Q}_p$, and let $L=\mathcal{L}_{n,p}$ be our usual algebra over $\mathbb{Q}_p$.\\
+Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)={k}x+\gamma_2L\}$, we need to verify that $L=\text{span}(\mathcal{X})$.\\
 Let $x\in{L}\setminus\gamma_2{L}$, that is  $x=a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{n-1,n}$ where $a_i\neq{0}$.\\
 Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)$, that is $y=b_1e_{1,2}+b_2e_{2,3}+\cdots+b_{n-1}e_{n-1,n}$ where $b_i\neq{0}$, such that $[x,y]+\gamma_3L=0$.\\
 But
@@ -29,5 +29,5 @@ for every $1\leq{i}\leq{n}-1$, must vanish. but\\
 a_i&a_{i+1}\\
 b_i&b_{i+1}
 \end{pmatrix}=0\iff{b_i}e_{i,i+1}+b_{i+1}e_{i+1,i+2}=c(a_ie_{i,i+1}+a_{i+1}e_{i+1,i+2}),\]
-which implies that $y=cx+\gamma_2L$ for some $c\in{k}$.
+which implies that $y=cx+\gamma_2L$ for some $c\in{k}$, but this is true for every $c\in\mathbb{Q}_p$, which means that $y=kx+\gamma_2L$ for every $x\in{L}\implies\mathcal{X}=L\setminus\gamma_2L$.
 \end{document}
