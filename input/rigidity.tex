@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{xfrac} % For \sfrac command
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{rigidity}
+\author{haiml76 }
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Criteria for rigidity}
+\subsection{The $\mathcal{X}$ criterion}
+Let $k$ be a field, and let $L$ be a $k$-algebra over the field $k$.\\
+Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)={k}x+\gamma_2L\}$, we need to verify that $L=\span{0}$\\
+Let $x\in{L}\setminus\gamma_2{L}$, that is  $x=a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{n-1,n}$ where $a_i\neq{0}$.\\
+Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)$, that is $y=b_1e_{1,2}+b_2e_{2,3}+\cdots+b_{n-1}e_{n-1,n}$ where $b_i\neq{0}$, such that $[x,y]+\gamma_3L=0$.\\
+But
+\[
+[x,y]=\sum_{i=1}^{n-1}\left(a_ib_{i+1}-a_{i+1}b_i\right)[e_{i,i+1},e_{i+1,i+2}]
+,\]
+because any other combination $a_ib_j[e_{i,i+1},e_{j,j+k}]$ is either zero or in $\gamma_3L$.\\
+Hence, to obtain $[x,y]=0+\gamma_3L$ all combinations of the form $a_ib_{i+1}-a_{i+1}b_i$,
+for every $1\leq{i}\leq{n}-1$, must vanish. but\\
+\[a_{i}b_{i+1}=a_{i+1}b_i\iff\det\begin{pmatrix}
+a_i&a_{i+1}\\
+b_i&b_{i+1}
+\end{pmatrix}=0\iff{b_i}e_{i,i+1}+b_{i+1}e_{i+1,i+2}=c(a_ie_{i,i+1}+a_{i+1}e_{i+1,i+2}),\]
+which implies that $y=cx+\gamma_2L$ for some $c\in{k}$.
+\end{document}
