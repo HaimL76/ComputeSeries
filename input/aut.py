@@ -5,8 +5,10 @@ def main():
 
     b1, b2, b3, b4 = sympy.symbols('b1 b2 b3 b4')
     b13, b24, b35 = sympy.symbols('b13 b24 b35')
+    b14, b25, b15 = sympy.symbols('b14 b25 b15')
 
     b13=b24=b35=0
+    b14=b25=b15=0
 
     a1, a2, a3, a4 = sympy.symbols('a1 a2 a3 a4')
     a13, a24, a35 = sympy.symbols('a13 a24 a35')
@@ -19,14 +21,17 @@ def main():
     a24=a13*b3/b1
     a35=a13*(b4*b3)/(b2*b1)
 
+    a25=a14*b4/b1
+
     z13=b1*a2-b2*a1
     z24=b2*a3-b3*a2
     z35=b3*a4-b4*a3
     z14=b1*a24-b24*a1+b13*a3-b3*a13
     z25=b2*a35-b35*a2+b24*a4-b4*a24
+    z15=b1*a25-b25*a1+b13*a35-b35*a13+b14*a4-b4*a14
 
-    print(f"a2={a2}, a3={a3}, a4={a4}, a24={a24}, a35={a35}")
-    print(f"z13={z13}, z24={z24}, z35={z35}, z14={z14}, z25={z25}")
+    print(f"a2={a2}, a3={a3}, a4={a4}, a24={a24}, a35={a35}, a25={a25}")
+    print(f"z13={z13}, z24={z24}, z35={z35}, z14={z14}, z25={z25}, z15={z15}")
 
     return
 
