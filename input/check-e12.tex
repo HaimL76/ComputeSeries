@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+
+\title{Check $e_{12}$}
+\author{haiml76 }
+\date{March 2026}
+
+\begin{document}
+
+Let $x=a_1e_{12}\in{L}$, and $y=b_1e_{12}+\dots+b_4e_{45}+b_{13}e_{13}+\dots+b_{25}e_{25}\in{C}_L(x)$.\\
+We get the following constraints\\
+\begin{align*}
+a_1b_2-a_2b_1=0\\
+a_2b_3-a_3b_2=0\\
+a_3b_4-a_4b_3=0\\
+a_1b_{24}-a_{24}b_1+a_{13}b_3-a_3b_{13}=0\\
+a_2b_{35}-a_{35}b_2+a_{24}b_4-a_4b_{24}=0\\
+a_1b_{25}-a_{25}b_1+a_{13}b_{35}-a_{35}a_{13}+a_{14}b_4-a_4b_{14}=0\\
+\end{align*}
+But $a_2=0\implies{a_2b_1=0}$, which implies that $b_1$ can be anything.\\
+Also,
+$a_2b_1=0\implies{a_1b_2=0}\implies{b_2=0}$, since $a_1$ can be anything.\\
+Also,
+$a_2=0\implies{a_2b_3=0}$, which implies that $b_3$ can be anything.\\
+Also, 
+$a_3=0\implies{a_3b_4=0}$, which implies that $b_4$ can be anything.\\
+Also,
+$a_3=0\implies{
+a_3b_{13}}=0$, which implies that $b_{13}$ can be anything.\\
+Also,
+$a_3=a_{13}=a_{24}=0\implies{a_3b_{13}=a_{13}b_3=a_{24}b_1=0}\implies\\\implies{a_1b_{24}=0}\implies{b_{24}=0}$, since $a_1$ can be anything.\\
+Also,
+$a_2=0\implies{a_2b_{35}=0}$, which implies that $b_{35}$ can be anything.\\
+Also,
+$a_4=0\implies{a_4b_{14}=0}$, which implies that $b_{14}$ can be anything.\\
+Also,
+$a_4=a_{13}=a_{35}=a_{14}=a_{25}=0\implies\\\implies{a_{25}b_1=a_{13}b_{35}=a_{35}a_{13}=a_{14}b_4=a_4b_{14}=0}\implies{a_1b_{25}=0}$, which implies that $b_{25}=0$, since $a_1$ can be anything.\\
+Hence, a generic $y\in{C}_L(x)$ is of the form\\
+$b_1e_{12}+b_3e_{34}+b_4e_{45}+b_{13}e_{13}+a_{35}e_{35}+b_{14}e_{14}$, where all the coefficients are not identically zero, without any relations between them.
+\end{document}
