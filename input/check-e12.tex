@@ -38,7 +38,7 @@ $a_4=0\implies{a_4b_{14}=0}$, which implies that $b_{14}$ can be anything.\\
 Also,
 $a_4=a_{13}=a_{35}=a_{14}=a_{25}=0\implies\\\implies{a_{25}b_1=a_{13}b_{35}=a_{35}a_{13}=a_{14}b_4=a_4b_{14}=0}\implies{a_1b_{25}=0}$, which implies that $b_{25}=0$, since $a_1$ can be anything.\\
 Hence, a generic $y\in{C}_L(x)$ is of the form\\
-$b_1e_{12}+b_3e_{34}+b_4e_{45}+b_{13}e_{13}+a_{35}e_{35}+b_{14}e_{14}$, where all the coefficients are not identically zero, without any relations between them.\\
+$b_1e_{12}+b_3e_{34}+b_4e_{45}+b_{13}e_{13}+b_{35}e_{35}+b_{14}e_{14}$, where all the coefficients are not identically zero, without any relations between them.\\
 Let $z=d_1e_{12}+\cdots+d_{25}e_{25}\in{C}_L(y)$.\\
 But,
 $b_2=0\implies{d_1b_2=0}$, which implies that $d_1$ can be anything.\\
@@ -48,11 +48,13 @@ Also, $d_2=0\implies{d_2b_3=0}\implies{d_3b_2}$, which implies that $d_3$ can be
 Also,
 $d_3b_4-d_4b_3=0\implies{\frac{d_4}{b_4}=\frac{d_3}{b_3}=c}$ for any $c\in\mathbb{Q}_p$, since $b_3$, $b_4$ and $d_3$ can be anything.\\
 Also,
-$b_{24}=0\implies{d_1b_{24}=0}\implies-d_{24}b_1+d_{13}b_3-d_3b_{13}=0\implies{d_{24}=\frac{d_{13}b_3-d_3b_{13}}{b_1}}$.\\
-Also,
 $b_2=0\implies{d_{35}b_2=0}$, which implies that $d_{35}$ can be anything.\\
 Also,
 $d_2=b_{24}=0\implies{d_{35}b_2=d_2b_{35}=d_4b_{24}}=0\implies{d_{24}b_4=0}\implies{d_{24}=0}$, since $b_4$ can be anything.\\
 Also,
-$b_{25}=0\implies{d_1b_{25}=0}\implies-d_{25}b_1+d_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}=0\implies{d_{25}=\frac{d_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}}{b_1}}$.
+$b_{24}=d_{24}=0\implies{d_{13}b_3-d_3b_{13}}=0\implies\frac{d_{13}}{b_{13}}=\frac{d_3}{b_3}=c$.\\
+Also,
+$b_{25}=d_{25}=0\implies{d_1b_{25}=d_{25}b_1=0}\implies-d_{25}b_1+d_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}=0\implies{d_{25}=\frac{d_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}}{b_1}}$.\\
+Hence, a generic element $z\in{C}_L(y)$ is of the form\\
+$z=d_1e_{12}+cb_3e_{34}+cb_4e_{45}+cb_{13}e_{13}+d_{35}e_{35}+d_{14}e_{14}+\frac{cb_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}}{b_1}e_{25}$, for any $c\in\mathbb{Q}_p$.
 \end{document}
