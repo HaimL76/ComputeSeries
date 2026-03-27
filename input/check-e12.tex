@@ -56,5 +56,23 @@ $b_{24}=d_{24}=0\implies{d_{13}b_3-d_3b_{13}}=0\implies\frac{d_{13}}{b_{13}}=\fr
 Also,
 $b_{25}=d_{25}=0\implies{d_1b_{25}=d_{25}b_1=0}\implies-d_{25}b_1+d_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}=0\implies{d_{25}=\frac{d_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}}{b_1}}$.\\
 Hence, a generic element $z\in{C}_L(y)$ is of the form\\
-$z=d_1e_{12}+cb_3e_{34}+cb_4e_{45}+cb_{13}e_{13}+d_{35}e_{35}+d_{14}e_{14}+\frac{cb_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}}{b_1}e_{25}$, for any $c\in\mathbb{Q}_p$.
+$z=d_1e_{12}+cb_3e_{34}+cb_4e_{45}+cb_{13}e_{13}+d_{35}e_{35}+d_{14}e_{14}+\frac{cb_{13}b_{35}-d_{35}b_{13}+d_{14}b_1-d_1b_{14}}{b_1}e_{25}$, for any $c\in\mathbb{Q}_p$.\\
+Since all the coefficients in $y$ are arbitrary and have no relation between them, consider\\
+$y_1=b_1e_{12}+b_3e_{34}+b_{13}e_{13}+b_{35}e_{35}+b_{14}e_{14}\in{C}_L(x)$, where $b_3\neq{0}$.\\
+$y_2=b_1e_{12}+b_4e_{45}+b_{13}e_{13}+b_{35}e_{35}+b_{14}e_{14}\in{C}_L(x)$, where $b_4\neq{0}$.\\
+But $[y_1,z]=0\implies{d_3b_4-d_4b_3=0}\implies{d_4b_3=0}\implies{d_4=0}$.\\
+And $[y_2,z]=0\implies{d_3b_4-d_4b_3=0}\implies{d_3b_4=0}\implies{d_3=0}$.\\
+Hence, any $z\in{C}_L(\{y_1,y_2\})$ must have $d_3=d_4=0$.\\
+Also consider\\
+$y_3=b_1e_{12}+b_3e_{34}+b_4e_{45}+b_{35}e_{35}+b_{14}e_{14}\in{C}_L(x)$, where $b_3,b_4\neq{0}$.\\
+But $[y_3,z]=0\implies{d_1b_{24}-d_{24}b_1+d_{13}b_3-d_3b_{13}}=0\implies\\\implies{d_{13}b_3=0}\implies{d_{13}=0}$.\\
+Hence, any $z\in{C}_L(\{y_1,y_2,y_3\})$ must have $d_3=d_4=d_{13}=0$.\\
+Also consider\\
+$y_4=b_1e_{12}+b_3e_{34}+b_{13}e_{13}\in{C}_L(x)$, where $b_{13}\neq{0}$.\\
+But $[y_4,z]=0\implies{d_1b_{25}-d_{25}b_1+d_{13}b_{35}-d_{35}b_{13}+d_{14}b_4-d_4b_{25}=0}\implies\\\implies{d_{35}b_{13}=0}\implies{d_{35}=0}$, since $b_{13}\neq{0}$.\\
+Hence, any $z\in{C}_L(\{y_1,y_2,y_3,y_4\})$ must have $d_3=d_4=d_{13}=d_{35}=0$.\\
+Also consider\\
+$y_5=b_1e_{12}+b_3e_{34}+b_4e_{45}\in{C}_L(x)$, where $b_4\neq{0}$.\\
+But $[y_5,z]=0\implies{d_1b_{25}-d_{25}b_1+d_{13}b_{35}-d_{35}b_{13}+d_{14}b_4-d_4b_{25}=0}\implies\\\implies{d_{14}b_4=0}\implies{d_{14}=0}$, since $b_4\neq{0}$.\\
+Hence, any $z\in{C}_L(\{y_1,y_2,y_3,y_4,y_5\})$ must have $d_3=d_4=d_{13}=\\=d_{35}=d_{14}=0$.\\
 \end{document}
