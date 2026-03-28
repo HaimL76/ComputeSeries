@@ -2,69 +2,8 @@ import sympy
 
 def main():
     sympy.init_printing(use_latex=True)
-
-    b1, b2, b3, b4 = sympy.symbols('b1 b2 b3 b4')
-    b13, b24, b35 = sympy.symbols('b13 b24 b35')
-    b14, b25, b15 = sympy.symbols('b14 b25 b15')
-
-    b13=b24=b35=0
-    b14=b25=b15=0
-
-    a1, a2, a3, a4 = sympy.symbols('a1 a2 a3 a4')
-    a13, a24, a35 = sympy.symbols('a13 a24 a35')
-    a14, a25, a15 = sympy.symbols('a14 a25 a15')
-
-    a2 = a1*b2/b1
-    a3 = a1*b3/b1
-    a4 = a1*b4/b1
-
-    a13=0
-    a14=0
-
-    a24=a13*b3/b1
-    a35=a13*(b4*b3)/(b2*b1)
-
-    a25=a14*b4/b1
-
-    z13=b1*a2-b2*a1
-    z24=b2*a3-b3*a2
-    z35=b3*a4-b4*a3
-    z14=b1*a24-b24*a1+b13*a3-b3*a13
-    z25=b2*a35-b35*a2+b24*a4-b4*a24
-    z15=b1*a25-b25*a1+b13*a35-b35*a13+b14*a4-b4*a14
-
-    print(f"a2={a2}, a3={a3}, a4={a4}, a24={a24}, a35={a35}, a25={a25}")
-    print(f"z13={z13}, z24={z24}, z35={z35}, z14={z14}, z25={z25}, z15={z15}")
-
-    return
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     a11, a21, a22, a33 = sympy.symbols('a11 a21 a22 a33')
+    b11, b12, b21, b22, b31, b41 = sympy.symbols('b11 b12 b21 b22 b31 b41')
     
     c1, c2, c3, c4 = sympy.symbols('c1 c2 c3 c4')
     g1, g2, g3, g4 = sympy.symbols('g1 g2 g3 g4')
@@ -73,6 +12,13 @@ def main():
     e1, e2, e3, e4 = sympy.symbols('e1 e2 e3 e4')
     e13, e24, e35, e14, e25, e15 = sympy.symbols('e13 e24 e35 e14 e25 e15')
 
+    X1,X2,X3,X4 = sympy.symbols('X1 X2 X3 X4')
+    X13,X24,X35 = sympy.symbols('X13 X24 X35')
+    X14,X25,X15 = sympy.symbols('X14 X25 X15')
+
+    Y1,Y2,Y3,Y4 = sympy.symbols('Y1 Y2 Y3 Y4')
+    Y13,Y24,Y35 = sympy.symbols('Y13 Y24 Y35')
+    Y14,Y25,Y15 = sympy.symbols('Y14 Y25 Y15')
 
 
     a1, a2, a3, a4 = sympy.symbols('a1 a2 a3 a4')
@@ -87,7 +33,7 @@ def main():
     z13, z24, z35 = sympy.symbols('z13 z24 z35')
     z14, z25, z15 = sympy.symbols('z14 z25 z15')
     #b2 = c*a2
-
+    alpha = sympy.symbols('alpha')
 
     #sympy.solve(eq13, b1, b2)
 
@@ -95,7 +41,7 @@ def main():
 
     #return
 
-    A1=sympy.Matrix(
+    N=sympy.Matrix(
         [
             [1, 0, 0, 0, a11,   0,      0,      b11,        b12,            c1],
             [0, 1, 0, 0, a21,   a22,    0,      a21*a22,    b22,            c2],
@@ -109,7 +55,7 @@ def main():
             [0, 0, 0, 0, 0,     0,      0,      0,          0,              1],
         ])
 
-    A2=sympy.Matrix(
+    H=sympy.Matrix(
         [
             [g1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, g2, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -125,73 +71,27 @@ def main():
     
     #x=sympy.Matrix([d1*e1, d2*e2, d3*e3, d4*e4, d13*e13, d24*e24, d35*e35, d14*e14, d25*e25, d15*e15])
 
-    A=A1*A2
-    #sympy.pprint(f"A={A}")
+    M=N*H
+    sympy.pprint(f"M={M}")
 
-    B=A.inv()
+    return
 
-    C1=A*B
-    C2=B*A
-    #print(C1)
-    #print(C2)
+    x=sympy.Matrix([[X1, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
 
-    #print(B)
+    x=sympy.transpose(x)
 
-    x=sympy.Matrix([[d1, d2, d3, d4, d13, d24, d35, d14, d25, d15]])
+    print(f"x={x}")
 
-    x0 = x*A
+    return
 
-    #print(x0)
+    for i in range(10):
+        Mx = M*x
+        print(f"Mx[{i}]={Mx}")
+        x = Mx
 
-    x1=x0*B
+    y=sympy.Matrix([[Y1, 0, Y3, Y4, Y13, 0, Y35, Y14, 0, 0]])
 
-    #x0 = x0.transpose()
-
-    #sympy.pprint(x0)
-    #sympy.pprint(f"x0={x0}")
-
-    eq13 = a1*b2-a2*b1
-    eq24 = a2*b3-a3*b2
-    eq35 = a3*b4-a4*b3
-    eq14 = a1*b24-a24*b1+a13*b3-a3*b13
-    eq25 = a2*b35-a35*b2+a24*b4-a4*b24
-    eq15 = a1*b25-a25*b1+a13*b35-a35*b13+a14*b4-a4*b14
-
-    k = sympy.symbols('k')
-
-    z1 = k * z1
-    z2 = k * z2
-    z3 = k * z3
-    z4 = k * z4
-    z13 = k * z13
-    z24 = k * z24
-    z35 = k * z35
-    z14 = k * z14
-    z25 = k * z25
-    z15 = k * z15
-
-    eqq13 = b1*z2-b2*z1
-    eqq24 = b2*z3-b3*z2
-    eqq35 = b3*z4-b4*z3
-    eqq14 = b1*z24-b24*z1+b13*z3-b3*z13
-    eqq25 = b2*z35-b35*z2+b24*z4-b4*z24
-    eqq15 = b1*z25-b25*z1+b13*z35-b35*z13+b14*z4-b4*z14
-
-    eeq1 = z2 - k*a2
-    eeq2 = z24 - k*a24
-    eeq3 = z25 - k*a25
-
-    eqs = [eq13, eq24, eq35, 
-           eqq13, eqq24, eqq35]
-
-    solution = sympy.solve(eqs)#, [b1, b2, b3, b4])
-
-    print(f"solution={solution}")
-
-    #print(A.shape)
-    #print(x.shape)
-    #print(x0.shape)
-    #print(x1.shape)
+    
 
 if __name__ == "__main__":    
     main()
