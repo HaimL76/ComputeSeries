@@ -69,6 +69,35 @@ $d_2=d_3=\cdots=d_{n-1}=0$.\\
 And in general, every constraint of the form \[\sum_{k=1}^{r-2}b_{i,i+k}d_{i+k,i+r}-b_{i+k,i+r}d_{i,i+k}=0,\]
 for all $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$, implies that if we set an element $b_{i,i+k}\neq{0}$, while all other $b$ coefficients are zero, then we must have $d_{i+k,i+r}=0$, and the same applies also for $d_{i,i+k}$ if we set $b_{i+k,i+r}\neq{0}$. But this implies that if $z\in{C}_L(C_L(x))$ then $d_2=\cdots=d_{n-1}=d_{13}=\cdots=d_{n-2,n}=\cdots=d_{1,n-1}=d_{2,n}=0$.\\
 Looking at the expression $b_{2,2+r}d_1$, for all $1\leq{r}\leq{n-2}$, we observe that since $b_{2,2+r}=0$, then there is no constraint on $d_1$, which means that $d_1$ can be any nonzero element in $\mathbb{Q}_p$, thus we conclude that if $z\in{C}_L(C_L(x))$ then $z=d_1e_{12}=cx$, where $c=\frac{d_1}{a_1}$.\\
+\subsubsection{The element $e_{23}$}
+Let $x=a_2e_{23}$ and $y\in{C}_L(x)$. We have the set of constraints $a_2b_{3,3+r}=0\iff{b}_{3,3+r}=0$, for all $1\leq{r}\leq{n-3}$, and the constraint $b_1a_2=0\iff{b_1}=0$.\\
+Hence, a generic $y\in{C}_L(x)$ is of the form\\
+$b_2e_{23}+b_4e_{45}+\cdots+b_{n-1}e_{n-1,n}+b_{13}e_{13}+b_{24}e_{24}+b_{46}e_{46}+\cdots+b_{2,n-2}e_{2,n-2}$.\\
+We use the same considerations as for $a_1e_{12}$ to determine that if $z\in{C}_L(C_L(x))$ then $z$ must have $d_3=d_4=\cdots=d_{n-1}=d_{13}=\cdots=d_{2,n-2}=0$.\\
+Let $y_1\in{C}_L(x)$ be an element of the same form of $y$ with $b_2\neq{0}$, then we have the constraint $b_2d_1=0\iff{d}_1=0$.\\
+Looking at the expression $d_2b_{3,3+r}=0$, since $b_{3,3+r}=0$ for $1\leq{r}\leq{n-3}$, then this expression does not imply any constraint on $d_2$. Also, since $b_1=0$ then the expression $b_1d_2=0$ does not imply any constraint either, so we conclude that $d_2$ can be any nonzero element in $\mathbb{Q}_p$, hence $z=cx$, where $c=\frac{d_2}{a_2}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 For $n=5$.\\
 Let $x\in{L}\setminus\gamma_2L$, and assume that $a_i\neq{0}$ for every $1\leq{i}\leq{4}$.\\
 Let $y\in{C}_L(x)$, we already know that $b_i=ca_i$, for some $c\in\mathbb{Q}_p$. We look at $(a_1b_{24}-a_{24}b_1+a_{13}b_3-a_3b_{13})e_{14}=\\
