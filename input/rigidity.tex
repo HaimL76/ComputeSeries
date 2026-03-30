@@ -56,8 +56,18 @@ But $b_{i+1}=c_ia_{i+1}=c_{i+1}a_{i+1}$ for every $1\leq{i}\leq{n-1}$, hence \\
 $c_1=c_2=\cdots=c_{n-1}=c$, which implies that $y=cx+\gamma_2L$ for some $c\in\mathbb{Q}_p$, but this is true for every $c\in\mathbb{Q}_p$, which means that $y\in\mathbb{Q}_px+\gamma_2L$ for every $x\in{L}$, but we assumed that $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$, hence $x\in\mathcal{X}$ has all the elements $e_{i,i+1}$ for $1\leq{i}\leq{n-1}$, thus it generates the entire algebra $L$.\\ 
 Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for every $j\neq{i}$, then $a_ib_{i+1}-a_{i+1}b_i=-a_{i+1}b_i=0$ and $a_{i-1}b_i-a_ib_{i-1}=a_{i-1}b_i=0$ if and only if $b_i=0$. But then $\frac{b_1}{a_1}=\frac{b_2}{a_2}=\cdots=\frac{b_{i-1}}{a_{i-1}}=c_1$ and $\frac{b_{i+1}}{a_{i+1}}=\frac{b_{i+2}}{a_{i+2}}=\cdots=\frac{b_{n-1}}{a_{n-1}}=c_2$, for $c_1,c_2\in\mathbb{Q}_p$, hence $y=c_1(a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{i-1,i})+c_2(a_{i+1}e_{i+1,i+2}+a_{i+2}e_{i+2,i+3}+\cdots+a_{n-1}e_{n-1,n})+\gamma_2L\notin\mathbb{Q}_px+\gamma_2L\implies{x}\notin\mathcal{X}$, which is an example for an element whose centralizers are not necessarily in $\mathbb{Q}_px+\gamma_2L$.
 \subsection{The $\mathcal{Y}$ criterion}
-\subsubsection{The element $e_{12}$}
-Let $x=a_1e_{12}$, for some nonzero $a_1\in\mathbb{Q}_p$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in\mathbb{Q}_p$ not all zero.\\
+Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in\mathbb{Q}_p$ not all zero.\\
+But \[[x,y]=0\iff\sum_{k=1}^{r-1}a_{j,j+k}b_{j+k,j+r}-a_{j+r,j+k}b_{j,j+k}=0,\]
+for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
+But every summand of the form $a_{jk}b_{kl}$ vanishes, unless $j=i$ and $k=i+1$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
+Hence, a generic $y\in{C}_L(x)$ has the form
+\[
+y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}+b_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}\right]
+\]
+
+
+
+
 We have the set of constraints of the form\\ $a_1b_{2,2+r}=0\iff{b}_{2,2+r}=0$, for all $1\leq{r}\leq{n-2}$, which implies that a generic $y\in{C}_L(x)$ is of the form\\
 $y=b_1e_{12}+b_3e_{34}+\cdots+b_{n-1}e_{n-1,n}+b_{13}e_{13}+b_{35}e_{35}+\cdots+b_{n-2,n}e_{n-2,n}+\cdots+b_{1,n-2}e_{1,n-2}+b_{1,n-1}e_{1,n-1}$.\\
 Let $y_i$ be an element of the generic form of $y$, where $b_i=0$ and $b_{i+1}\neq{0}$ for some $2\leq{i}\leq{n-2}$, and let $z=d_1e_{12}+\cdots+d_{1,n-1}e_{1,n-1}\in{C}_L(y_i)$.\\
