@@ -62,102 +62,12 @@ for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
 But every summand of the form $a_{jk}b_{kl}$ vanishes, unless $j=i$ and $k=i+1$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
 Hence, a generic $y\in{C}_L(x)$ has the form
 \[
-y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}+b_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}\right]
+y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}+b_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}\right],
 \]
-
-
-
-
-We have the set of constraints of the form\\ $a_1b_{2,2+r}=0\iff{b}_{2,2+r}=0$, for all $1\leq{r}\leq{n-2}$, which implies that a generic $y\in{C}_L(x)$ is of the form\\
-$y=b_1e_{12}+b_3e_{34}+\cdots+b_{n-1}e_{n-1,n}+b_{13}e_{13}+b_{35}e_{35}+\cdots+b_{n-2,n}e_{n-2,n}+\cdots+b_{1,n-2}e_{1,n-2}+b_{1,n-1}e_{1,n-1}$.\\
-Let $y_i$ be an element of the generic form of $y$, where $b_i=0$ and $b_{i+1}\neq{0}$ for some $2\leq{i}\leq{n-2}$, and let $z=d_1e_{12}+\cdots+d_{1,n-1}e_{1,n-1}\in{C}_L(y_i)$.\\
-We have the constraint $b_{i+1}d_i=0\iff{d_i}=0$, since $b_{i+1}\neq{0}$.\\
-Let $y_{n-1}$ be of the generic form of $y$, where $b_{n-1}=0$ and $b_{n-2}\neq{0}$, hence 
-$b_{n-2}d_{n-1}=0\iff{d_{n-1}}=0$.\\
-But all this implies that if $z\in{C}_L(\{y_2,y_3,\dots,y_{n-1}\})$ then $z$ must have\\
-$d_2=d_3=\cdots=d_{n-1}=0$.\\
-And in general, every constraint of the form \[\sum_{k=1}^{r-2}b_{i,i+k}d_{i+k,i+r}-b_{i+k,i+r}d_{i,i+k}=0,\]
-for all $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$, implies that if we set an element $b_{i,i+k}\neq{0}$, while all other $b$ coefficients are zero, then we must have $d_{i+k,i+r}=0$, and the same applies also for $d_{i,i+k}$ if we set $b_{i+k,i+r}\neq{0}$. But this implies that if $z\in{C}_L(C_L(x))$ then $d_2=\cdots=d_{n-1}=d_{13}=\cdots=d_{n-2,n}=\cdots=d_{1,n-1}=d_{2,n}=0$.\\
-Looking at the expression $b_{2,2+r}d_1$, for all $1\leq{r}\leq{n-2}$, we observe that since $b_{2,2+r}=0$, then there is no constraint on $d_1$, which means that $d_1$ can be any nonzero element in $\mathbb{Q}_p$, thus we conclude that if $z\in{C}_L(C_L(x))$ then $z=d_1e_{12}=cx$, where $c=\frac{d_1}{a_1}$.\\
-\subsubsection{The element $e_{23}$}
-Let $x=a_2e_{23}$ and $y\in{C}_L(x)$. We have the set of constraints $a_2b_{3,3+r}=0\iff{b}_{3,3+r}=0$, for all $1\leq{r}\leq{n-3}$, and the constraint $b_1a_2=0\iff{b_1}=0$.\\
-Hence, a generic $y\in{C}_L(x)$ is of the form\\
-$b_2e_{23}+b_4e_{45}+\cdots+b_{n-1}e_{n-1,n}+b_{13}e_{13}+b_{24}e_{24}+b_{46}e_{46}+\cdots+b_{2,n-2}e_{2,n-2}$.\\
-We use the same considerations as for $a_1e_{12}$ to determine that if $z\in{C}_L(C_L(x))$ then $z$ must have $d_3=d_4=\cdots=d_{n-1}=d_{13}=\cdots=d_{2,n-2}=0$.\\
-Let $y_1\in{C}_L(x)$ be an element of the same form of $y$ with $b_2\neq{0}$, then we have the constraint $b_2d_1=0\iff{d}_1=0$.\\
-Looking at the expression $d_2b_{3,3+r}=0$, since $b_{3,3+r}=0$ for $1\leq{r}\leq{n-3}$, then this expression does not imply any constraint on $d_2$. Also, since $b_1=0$ then the expression $b_1d_2=0$ does not imply any constraint either, so we conclude that $d_2$ can be any nonzero element in $\mathbb{Q}_p$, hence $z=cx$, where $c=\frac{d_2}{a_2}$.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-For $n=5$.\\
-Let $x\in{L}\setminus\gamma_2L$, and assume that $a_i\neq{0}$ for every $1\leq{i}\leq{4}$.\\
-Let $y\in{C}_L(x)$, we already know that $b_i=ca_i$, for some $c\in\mathbb{Q}_p$. We look at $(a_1b_{24}-a_{24}b_1+a_{13}b_3-a_3b_{13})e_{14}=\\
-=(a_1b_{24}-a_{24}ca_1+a_{13}ca_3-a_3b_{13})e_{14}=0$.\\
-Assume $a_{24}\neq{0}$ and denote $d=\frac{b_{24}}{a_{24}}$, then $a_1(b_{24}-ca_{24})+a_3(ca_{13}-b_{13})=\\a_1a_{24}(d-c)+a_3(ca_{13}-b_{13})=0\implies{b}_{13}=\frac{a_1a_{24}
-(d-c)}{a_3}+ca_{13}$.\\
-Also, $(a_2b_{35}-a_{35}b_2+a_{24}b_4-a_4b_{24})e_{25}=\\
-=(a_2b_{35}-a_{35}ca_2+a_{24}ca_4-a_4da_{24})e_{25}=0\implies$\\$\implies{b}_{35}=\frac{a_{24}a_4(d-c)}{a_2}+ca_{35}$.\\
-Hence, $b_{13}=ca_{13}$ and $b_{35}=ca_{35}$ if and only if $d=c\iff{b}_{24}=ca_{24}$.
-Now we look at $(a_1b_{25}-a_{25}b_1+a_{13}b_{35}-a_{35}b_{13}+a_{14}b_4-a_4b_{14})e_{15}=\\
-=(a_1b_{25}-a_{25}ca_1+a_{13}(\frac{a_{24}a_4(d-c)}{a_2}+ca_{35})-a_{35}(\frac{a_1a_{24}(d-c)}{a_3}+ca_{13})+ca_{14}a_4-a_4b_{14})e_{15}=0$.\\
-Assume $a_{14}\neq{0}$ and denote $r=\frac{b_{14}}{a_{14}}$, then $b_{25}=\frac{1}{a_1}(ca_1a_{25}-a_{13}a_3a_{24}a_4(d-c)+\\+a_1a_{24}a_2a_{35}(d-c)-a_{14}a_4(c-r))$.\\
-Thus, for an arbitrary element $x\in{L}\setminus\gamma_2$, any $y\in{C}_L(x)$ must be of the form
-\begin{align*}
-&y=ca_1e_{12}+ca_2e_{23}+ca_3e_{34}+ca_4e_{45}+\\
-&+\left[\frac{a_1a_{24}(d-c)}{a_3}+ca_{13}\right]e_{13}+da_{24}e_{24}+\\
-&+\left[\frac{a_4a_{24}(d-c)}{a_2}+ca_{35}\right]e_{35}+ra_{14}e_{14}+\\
-&+\left[ca_{25}-\frac{a_{13}a_3a_{24}a_4(d-c)}{a_1}+a_{24}a_2a_{35}(d-c)-\frac{a_{14}a_4(c-r)}{a_1}\right]e_{25}\\
-&+b_{15}e_{15},
-\end{align*}
-for some $c,d,r,b_{15}\in\mathbb{Q}_p$.\\
-Let $z\in{C}_L(y)$. We assumed that $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$, which implied that $b_i=ca_i$, but $b_iz_{i+1}-b_{i+1}z_i=c(a_iz_{i+1}-a_{i+1}z_i)=0$ hence there exists $\tilde{c}\in\mathbb{Q}_p$ such that $\begin{pmatrix}
-    z_1&z_2&\dots&z_{n-1}
-\end{pmatrix}=\tilde{c}\begin{pmatrix}
-    a_1&a_2&\dots&a_{n-1}
-\end{pmatrix}$.\\
-Now we look at $(b_1z_{24}-b_{24}z_2+b_{13}z_3-b_3z_{13})e_{14}=\\
-=\left[ca_1z_{24}-da_{24}\tilde{c}a_1+\left(\frac{a_1a_{24}(d-c)}{a_3}+ca_{13}\right)\tilde{c}a_3-ca_3z_{13}\right]e_{14}=0$.\\
-We assumed $a_{24}\neq{0}$, so we denote $\tilde{d}=\frac{z_{24}}{a_{24}}$, then
-\begin{align*}
-&z_{13}=\frac{1}{ca_3}\left[a_1a_{24}(c\tilde{d}-\tilde{c}d)+(a_1a_{24}(d-c)+ca_{13}a_3)\tilde{c}\right]=\\
-&=\frac{1}{ca_3}\left[a_1a_{24}(c\tilde{d}-\tilde{c}d+\tilde{c}d-c\tilde{c})+c\tilde{c}a_{13}a_3\right]=\frac{1}{ca_3}\left[a_1a_{24}(c\tilde{d}-c\tilde{c})+c\tilde{c}a_{13}a_3\right]=\\
-&=\frac{1}{ca_3}\left[ca_1a_{24}(\tilde{d}-\tilde{c})+c\tilde{c}a_{13}a_3\right]=\frac{1}{a_3}\left[a_1a_{24}(\tilde{d}-\tilde{c})+\tilde{c}a_{13}a_3\right]=\frac{a_1a_{24}(\tilde{d}-\tilde{c})}{a_3}+\tilde{c}a_{13},
-\end{align*} 
-and 
-\[z_{35}=\frac{1}{a_2}\left[a_4a_{24}(\tilde{d}-\tilde{c})+\tilde{c}a_2a_{35}\right]=\frac{a_4a_{24}(\tilde{d}-\tilde{c})}{a_2}+\tilde{c}a_{35},\]\\
-and it is readily seen that $z_{13}=\tilde{c}a_{13}$ and $z_{35}=\tilde{c}a_{35}$ if and only if $\tilde{d}=\tilde{c}$, which implies that for arbitrary values of $\tilde{c},\tilde{d}$, the centralizer element $z\notin\mathbb{Q}_px+Z(L)$.\\
-Assume $a_{24}=0$, then $(a_1b_{24}-b_1a_{24}+a_{13}b_3-a_3b_{13})e_{14}=\\(a_1b_{24}+ca_3a_{13}-a_3b_{13})e_{14}=(a_1b_{24}+a_3(ca_{13}-b_{13}))e_{14}=0$
-
-@@@@@@@@@@@@@@@
-Now we look at $(b_1z_{25}-b_{2,5}z_1+b_{1,3}z_{3,5}-b_{3,5}z_{1,3}+b_{1,4}z_4-b_4z_{1,4})e_{1,5}=\\
-=(ca_1z_{2,5}-\left[\frac{1}{a_1}(ca_1a_{2,5}-a_{1,3}a_3a_{2,4}a_4(d-c)+a_1a_{2,4}a_2a_{3,5}(d-c)-a_{1,4}a_4(c-r)\right]\tilde{c}a_1+\frac{1}{a_2}\left[\frac{a_1a_{2,4}
-(d-c)}{a_3}+ca_{1,3}\right]\left[a_{2,4}a_4(\tilde{d}-\tilde{c})+\tilde{c}a_2a_{3,5}\right]-\frac{1}{a_3}\left[\frac{a_{2,4}a_4(d-c)}{a_2}+ca_{3,5}\right]\left[a_1a_{2,4}(\tilde{d}-\tilde{c})+\tilde{c}a_{1,3}a_3\right]+ra_{1,4}\tilde{c}a_4-ca_4z_{1,4}$.\\
-Denote $\tilde{r}=\frac{z_{1,4}}{a_{1,4}}$, then $z_{2,5}=\frac{1}{a_1}(ca_1a_{2,5}-a_{1,3}a_3a_{2,4}a_4(d-c)+\\+a_1a_{2,4}a_2a_{3,5}(d-c)-a_{1,4}a_4(c-r))$.\\
-It is readily seen that is $r=d=c$ then
-
-
-
-
-
-
-and it is readily seen that if $\tilde{d}=\tilde{c}$ then $z_{1,3}=\tilde{c}a_{1,3}$ and $z_{3,5}=\tilde{c}a_{3,5}$, but if $\tilde{d}\neq\tilde{c}$ then $z_{1,3}$ and $z_{3,5}$ are not necessarily of this form, hence $x\notin\mathcal{Y}$ in this case, which shows that an arbitrary $x\in{L}\setminus\gamma_2L$ is not necessarily in $\mathcal{Y}$.
+such that the $b$ coefficients are not all zero.\\
+Let $y_{rh}=b_{rh}e_{rh}$ such that $r\neq{i+1}$ and $h\neq{i}$, then $y_{rh}\in{C}_L(x)$.\\
+Let $z=d_1e_{12}+\cdots+d_{2,n}e_{2,n}\in{C}_L(y_{rh})$, then all the expressions of the form\\ $d_{kj}b_{jl}$, where $j\neq{r}$ or $l\neq{h}$\\
+$d_{jl}b_{kj}$, where $k\neq{r}$ or $j\neq{h}$\\
+vanish, because $b_{jl}=b_{kj}=0$.
+But all this implies that $d_{kr}b_{rh}=0\iff{d}_{kr}=0$ and $d_{hl}b_{rh}=0\iff{d}_{hl}=0$.\\
 \end{document}
