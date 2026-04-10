@@ -59,7 +59,7 @@ Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for ev
 Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in\mathbb{Q}_p$ not all zero.\\
 But \[[x,y]=0\iff\sum_{k=1}^{r-1}a_{j,j+k}b_{j+k,j+r}-a_{j+r,j+k}b_{j,j+k}=0,\]
 for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
-But every summand of the form $a_{jk}b_{kl}$ vanishes, unless $j=i$ and $k=i+1$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
+But every expression of the form $a_{jk}b_{kl}$ vanishes, because every $a_{jk}=0$ where $(j,k)\neq(i,i+1)$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
 Hence, a generic $y\in{C}_L(x)$ has the form
 \[
 y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}e_{j,j+r}+b_{i,i+r}e_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}e_{j,j+r}\right],
