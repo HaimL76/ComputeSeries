@@ -80,14 +80,14 @@ Let $z=d_1e_{12}+\cdots+d_{2,n}e_{2,n}\in{C}_L(y)$, and denote\\
 \end{flalign*}
 Hence
 \[[z,y]=\sum_{r=2}^{n-1}\sum_{j=1}^{n-r}\varphi_{j,j+r}=0,\]
-which implies that $\varphi_{j,j+r}=0$
+implies that $\varphi_{j,j+r}=0$
 for all $2\leq{r}\leq{n-1}$ and $2\leq{j}\leq{n-r}$.\\
 Let $d_{lh}\in\mathbb{Q}_p$ for some $2\leq{l}\leq{h-1}$, where $(l,h)\neq(i,i+1)$, then for some $1\leq{k}\leq{h-2}$, we have
-\[\varphi_{kh}=\left(\sum_{r=1}^{n-1}b_{k,k+r}d_{k+r,h}-b_{k+r,h}d_{k,k+r}\right)e_{kh},\]
+\[\varphi_{kh}=\sum_{r=1}^{h-k-1}\left(b_{k,k+r}d_{k+r,h}-b_{k+r,h}d_{k,k+r}\right)e_{kh},\]
 where $b_{kl}d_{lh}$ is one of the expressions in the sum. But all other expressions $b_{kq}d_{qh}$, where $q\neq{l}$, vanish because $b_{kq}=0$. But this implies that\\ $\varphi_{kh}=0\iff{b}_{kl}d_{lh}=0\iff{d}_{lh}=0$, which means that if $y_{kl}=b_{kl}e_{kl}$ and $z_{kl}=d_1e_{i,i+1}+\cdots+d_{1n}e_{1n}\in{C}_L(y_{kl})$, then $d_{lh}=0$.\\
 We can also show that $d_{lh}e_{lh}$ must vanish in any $z_{hk}\in{C}_L(y_{hk})$ by considering 
-\[\varphi_{lk}=\left(\sum_{r=1}^{n-1}b_{l,l+r}d_{l+r,k}-b_{l+r,k}d_{l,l+r}\right)e_{lk},\]
-and looking at $b_{hk}d_{lh}$.\\
+\[\varphi_{lk}=\sum_{r=1}^{k-l-1}\left(b_{l,l+r}d_{l+r,k}-b_{l+r,k}d_{l,l+r}\right)e_{lk},\]
+for some $l+2\leq{k}\leq{n}$, and looking at $b_{hk}d_{lh}$.\\
 For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and every $i+1<l\leq{n}$, then $b_{ki}d_i=0$ or $b_{i+1,l}d_i=0$ does not imply that $d_i=0$, so $d_i\in\mathbb{Q}_p$ can be any nonzero element such that
 \begin{flalign*}
 [b_{ki}e_{ki},d_ie_{i,i+1}]&=0.\\ [b_{i+1,l}e_{i+1,l},d_ie_{i,i+1}]&=0.\\
