@@ -62,12 +62,33 @@ for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
 But every summand of the form $a_{jk}b_{kl}$ vanishes, unless $j=i$ and $k=i+1$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
 Hence, a generic $y\in{C}_L(x)$ has the form
 \[
-y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}+b_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}\right],
+y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}e_{j,j+r}+b_{i,i+r}e_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}e_{j,j+r}\right],
 \]
 such that the $b$ coefficients are not all zero.\\
-Let $y_{rh}=b_{rh}e_{rh}$ such that $r\neq{i+1}$ and $h\neq{i}$, then $y_{rh}\in{C}_L(x)$.\\
-Let $z=d_1e_{12}+\cdots+d_{2,n}e_{2,n}\in{C}_L(y_{rh})$, then all the expressions of the form\\ $d_{kj}b_{jl}$, where $j\neq{r}$ or $l\neq{h}$\\
-$d_{jl}b_{kj}$, where $k\neq{r}$ or $j\neq{h}$\\
-vanish, because $b_{jl}=b_{kj}=0$.
-But all this implies that $d_{kr}b_{rh}=0\iff{d}_{kr}=0$ and $d_{hl}b_{rh}=0\iff{d}_{hl}=0$.\\
+Let $z=d_1e_{12}+\cdots+d_{2,n}e_{2,n}\in{C}_L(y)$, and denote\\
+\begin{flalign*}
+\varphi_{13}&=(b_1d_2-b_2d_1)e_{13}.\\
+\varphi_{24}&=(b_2d_3-b_3d_2)e_{24}.\\
+\vdots\\
+\varphi_{n-2,n}&=(b_{n-2}d_{n-1}-b_{n-1}d_{n-2})e_{n-2,n}.\\
+\varphi_{14}&=(b_1d_{24}-b_{24}d_1+b_{13}d_3-b_3d_{13})e_{14}.\\
+\varphi_{25}&=(b_2d_{35}-b_{35}d_2+b_{24}d_4-b_4d_{24})e_{25}.\\
+\vdots\\
+\varphi_{n-3,n}&=(b_{n-3}d_{n-2,n}-b_{n-2,n}d_{n-3}+b_{n-3,n-1}d_{n-1}-b_{n-1}d_{n-3,n-1})e_{n-3,n}.\\
+\vdots\\
+\varphi_{1n}&=(b_1d_{2,n}-b_{2,n}d_1+b_{13}d_{3,n}-b_{3,n}d_{13}+\cdots+b_{1,n-1}d_{n-1}-b_{n-1}d_{1,n-1})e_{1n}.\\
+\end{flalign*}
+Hence
+\[[z,y]=\sum_{r=2}^{n-1}\sum_{j=1}^{n-r}\varphi_{j,j+r}=0,\]
+which implies that $\varphi_{j,j+r}=0$
+for all $2\leq{r}\leq{n-1}$ and $2\leq{j}\leq{n-r}$.\\
+Let $d_{lh}\in\mathbb{Q}_p$ for some $l<h$, where $(l,h)\neq(i,i+1)$, then 
+\[\varphi_{kh}=\left(\sum_{r=1}^{n-1}b_{k,k+r}d_{k+r,h}-b_{k+r,h}d_{k,k+r}\right)e_{kh},\]
+where $b_{kl}d_{lh}$ is one of the expressions in the sum. But all other expressions $b_{kq}d_{qh}$, where $q\neq{l}$, vanish because $b_{kq}=0$. But this implies that $\varphi_{kh}=0\iff{b}_{kq}d_{qh}=0\iff{d}_{qh}=0$.\\
+For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and every $i+1<l\leq{n}$, then $b_{ki}d_i=0$ or $b_{i+1,l}d_i=0$ does not imply that $d_i=0$, so $d_i\in\mathbb{Q}_p$ can be any nonzero element such that
+\begin{flalign*}
+[b_{ki}e_{ki},d_ie_{i,i+1}]&=0.\\ [b_{i+1,l}e_{i+1,l},d_ie_{i,i+1}]&=0.\\
+\end{flalign*}
+But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{i+1}\}$, then any $z\in{C}_L(B)$ must have $d_{lh}=0$ for all $1\leq{l}<h\leq{n}$, unless $(l,h)=(i,i+1)$, but then $z=d_ie_{i,i+1}=ca_ie_{i,i+1}=cx$ for some $c=\frac{d_i}{a_i}\in\mathbb{Q}_p$, and all the computation above is up to the center $Z(L)$, hence $z\in\mathbb{Q}_px+Z(L
+)$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that $L$ is rigid.
 \end{document}
