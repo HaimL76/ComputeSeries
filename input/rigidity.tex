@@ -16,11 +16,11 @@
 Let $L=\mathcal{L}_{n,p}$ be our usual algebra over $\mathbb{Q}_p$.\\
 \subsection{The $\mathcal{X}$ criterion}
 Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=\mathbb{Q}_px+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
-Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
+Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
 where $a_1,a_2,\dots,a_{n-1}$ are not all zero.\\
-Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)$, that is 
-\[y=\sum_{r=1}^{n-1}\sum_{i=1}^{i-r}b_{i,i+r}e_{i,i+r},\] 
-where the $b$ coefficients are not all zero, such that $[x,y]\in\gamma_3L$.\\
+Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)\cap\left(L\setminus\gamma_2L\right)$, that is 
+\[y=b_1e_{12}+b_2e_{23}+\cdots+b_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}b_{i,i+r}e_{i,i+r},\] 
+where $b_1,b_2,\dots,b_{n-1}$ are not all zero, such that $[x,y]\in\gamma_3L$.\\
 But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$. Thus
 \[
 [x,y]=\sum_{i=1}^{n-2}\left(a_ib_{i+1}-a_{i+1}b_i\right)e_{i,i+2}+\gamma_3L
