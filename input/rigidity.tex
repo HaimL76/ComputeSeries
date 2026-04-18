@@ -62,6 +62,11 @@ for nonzero elements $c_1,c_2,\dots,c_{n-2}\in\mathbb{Q}_p$.\\
 But then $c_{i+1}=\frac{b_{i+2}}{a_{i+2}}=\frac{b_{i+1}}{a_{i+1}}$ and $c_{i}=\frac{b_{i+1}}{a_{i+1}}=\frac{b_i}{a_i}$, for every $1\leq{i}\leq{n-2}$, which implies that $c_1=c_2=\cdots=c_{n-2}=c$ for some nonzero element $c\in\mathbb{Q}_p$, hence \[y=\sum_{i=1}^{n-1}b_ie_{i,i+1}+\gamma_2L=\sum_{i=1}^{n-1}ca_ie_{i,i+1}+\gamma_2L=c\sum_{i=1}^{n-1}a_ie_{i,i+1}+\gamma_2L=cx+\gamma_2L,\]
 which means that $y\in\mathbb{Q}_px+\gamma_2L$ for every $x\in{L}$, because the above is true for every $c\in\mathbb{Q}_p$.
 But we assumed that $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$, hence every $x=a_1e_{12}+\cdots+a_{n-1}e_{n-1,n}$, where all the $a$ coefficients are nonzero elements in $\mathbb{Q}_p$, is in $\mathcal{X}$.\\ 
+Hence, we choose $n-1$ linearly-independent vectors of the form \[x_j=\sum_{i=1}^{n-1}a_{ji}e_{i,i+1}\in\mathcal{X},\]
+where $a_{ji}\neq{0}$ for every $1\leq{i,j}\leq{n-1}$, and thus
+\[e_{i,i+1}=\sum_{j=1}^{n-1}a_{ij}x_j,\]
+for all $1\leq{i}\leq{n-1}$, which shows that $\langle
+{x}_1,x_2,\dots,x_{n-1}\rangle=\langle{e}_{12},e_{23},\dots,e_{n-1,n}\rangle$.\\
 Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for every $j\neq{i}$, then $a_ib_{i+1}-a_{i+1}b_i=-a_{i+1}b_i=0$ and $a_{i-1}b_i-a_ib_{i-1}=a_{i-1}b_i=0$ if and only if $b_i=0$. But then $\frac{b_1}{a_1}=\frac{b_2}{a_2}=\cdots=\frac{b_{i-1}}{a_{i-1}}=c_1$ and $\frac{b_{i+1}}{a_{i+1}}=\frac{b_{i+2}}{a_{i+2}}=\cdots=\frac{b_{n-1}}{a_{n-1}}=c_2$, for $c_1,c_2\in\mathbb{Q}_p$, hence $y=c_1(a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{i-1,i})+c_2(a_{i+1}e_{i+1,i+2}+a_{i+2}e_{i+2,i+3}+\cdots+a_{n-1}e_{n-1,n})+\gamma_2L\notin\mathbb{Q}_px+\gamma_2L\implies{x}\notin\mathcal{X}$, which is an example for an element whose centralizers are not necessarily in $\mathbb{Q}_px+\gamma_2L$.
 \subsection{The $\mathcal{Y}$ criterion}
 Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in\mathbb{Q}_p$ not all zero.\\
