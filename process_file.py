@@ -395,6 +395,16 @@ class ProcessFolder:
 
             fw_sage_series_sums.write("print(f\"f={f}\")\n")
 
+            fw_sage_series_sums.write("print(\"place holder\")\n")
+
+            fw_sage_series_sums.write(f"sf_f=psi(f)/f\n")
+
+            fw_sage_series_sums.write(f"sf_f_simplified=sf_f.simplify_full()\n")
+
+            fw_sage_series_sums.write("print(f\"sf_f_simplified={sf_f_simplified}\")\n")
+
+            list_var_h_subsets = []
+
             for i in range(len(list_var_h_subsets)):
                 list_var_h: list[str] = list_var_h_subsets[i]
 
