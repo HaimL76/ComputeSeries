@@ -227,7 +227,7 @@ $p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^
 Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Considering the constraint $v_{11}+v_{22}\geq-(v_2+v_3+\delta)$, we check that this is already implied by $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Thus, we integrate by $v_{11}$ under this constraint, where $v_{11}$ depends on $v_1,v_2,v_3,v_4$, to obtain:
 \[\underset{v_{11}\geq-(v_2+\min\{v_1,v_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
 We denote $\beta=\min\{v_1,v_3\}$, $\tilde\delta=\max\{v_1,v_4\}$, $\epsilon=\min\{v_2,v_4\}$ and $\varphi=1-p^{-1}$.\\
-Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(\mathbb{Q}_p)$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depend on $3$ choices between pairs of $\lambda$ elements, namely:
+Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(\mathbb{Q}_p)$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depends on $3$ choices between pairs of $\lambda$ elements, namely:
 \begin{enumerate}
     \item $\delta=\min\{v_1,v_4\},\tilde\delta=\max\{v_1,v_4\}$.
     \item $\beta=\min\{v_1,v_3\}$.
@@ -309,7 +309,7 @@ Thus, our integral assumes its final form:
 \end{align*}
 Denote 
 \[\sigma=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d,\]
-thus we break our integral in the following way:
+hence we break our integral in the following way:
 \[\sigma\left(1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2\right)=\]\[=\sigma+2\varphi(a\sigma)+\varphi(b\sigma)+\varphi(c\sigma)-\frac{\varphi^2}{2}(a^2\sigma)+\varphi^2(ab\sigma)+\varphi^2(ac\sigma)-\frac{\varphi^2}{2}(a\sigma).
 \]
 To compute an expression of the form $a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\sigma$,\\
@@ -337,4 +337,39 @@ which gives the two remaining rules:
 &\sum_{a\geq{0}}a^2x^a=\frac{x^2+x}{(1-x)^3}.\\
 &\sum_{a\geq{1}}a^2x^a=\frac{x^2+x}{(1-x)^3}-0^2x^0=\frac{x^2+x}{(1-x)^3}.\\
 \end{align*}
+We code the product of series into Sage, to obtain the following rational function:\\
+\[s_1=\frac{-1t^{20}p^{36}(p^{18}t^{10}+1)(p^{82}t^{44}-2p^{81}t^{44}+p^{63}t^{34}+p^{55}t^{30}+p^{44}t^{24}-p^{38}t^{20}-p^{27}t^{14}-p^{19}t^{10}+2p-1)}{(p^9t^5-1)(p^9t^5+1)(p^{11}t^6-1)(p^{13}t^7-1)^2(p^{13}t^7+1)^2(p^{37}t^{20}-1)^3}.\]
+\subsubsubsection{Case 2: $\tilde\delta=v_1,\beta=v_3,\epsilon=v_2$}
+Thus we have the following order relations\\
+$v_1\geq{v_3}$.\\
+$v_1\geq{v_4}>v_2$.\\
+We observe that since $\beta\neq\tilde\delta$, we need to break this case into two sub cases
+\begin{enumerate}
+    \item Sub case 2.1: $v_1\geq{v}_2+v_3\iff-v_2-v_3\geq-v_1$\\
+    We do no have a phase transition in this sub case, hence our integral breaks into a sum of two integrals in the general form of the first two integrals of case 1, namely\\
+    \[\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2\right)+\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(\varphi+v_3\varphi+v_2v_3\varphi^2\right)=\]\[=\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2+\varphi+v_3\varphi+v_2v_3\varphi^2\right)\]
+    But this integral breaks again into the sum of the integrals on all the different cones that are subsets of the cone defined by our order relations $v_1\geq{v_3}$, ${v_1\geq{v_4}>v_2}$ and $v_1\geq{v_2}+v_3$, namely\\
+    $v_1\geq{v_2+v_3}\geq{v}_3\geq{v_4}>v_2$\\
+$v_1\geq{v_2+v_3}\geq{v}_4>{v_3}>v_2$\\
+$v_1\geq{v_2+v_3}\geq{v}_4>{v_2}\geq{v}_3$\\
+$v_1\geq{v_4}>v_2+v_3\geq{v_2}\geq{v}_3$\\
+$v_1\geq{v_4}>v_2+v_3\geq{v_3}>v_2$\\
+    \item Sub case 2.2\\
+\end{enumerate}
+This choice necessarily interprets as $v_3\geq{v_1}\geq{v_4}\geq{v_2}$, but we break the domain of integration into distinct parts, hence we use the convention where
+$\min\{v_i,v_j\}=v_i\iff\begin{cases}
+    v_j>v_i,&j>i\\
+    v_j\geq{v_i},&j<i\\
+\end{cases}$.\\
+Thus, for case $1$ we consider the subdomain where $v_3>v_1\geq{v_4}>v_2$. We observe that $\tilde\delta=\beta$, hence we do not break this subdomain into two cones in the way described above.\\
+We compute $\gamma=\min\{v_{11}+v_2,0\}=\begin{cases}
+    0,&v_{11}\geq-v_2\\
+    v_{11}+v_2<0,&v_{11}<-v_2
+\end{cases}$.\\
+We also compute $\alpha=\min\{\epsilon,v_{11}+v_2+\tilde\delta\}=\begin{cases}
+    v_2,&v_{11}\geq-v_1\\
+    v_2-1,v_2-2,\dots,&-v_1-v_2\leq{v_{11}}<-v_1.
+\end{cases}$.\\
+Also, $p^{7v_1+10v_2+11v_3+7v_4+\delta}=p^{7v_1+10v_2+11v_3+8v_4}$.\\
+We notice that $v_1\geq{v_4}>v_2\implies{v_1}>v_2\iff-v_2>-v_1$, and also that $v_2\geq{0}\iff-v_2\geq-v_2-v_1$, hence we break the integral into three:
 \end{document}
