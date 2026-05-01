@@ -696,7 +696,7 @@ class ProcessFolder:
                         print(path)
                         proc_file: ProcessFile = ProcessFile(path, output_directory=output_full_path)
 
-                        list_file_sage_rationals: [PolynomialProductRational] = []
+                        list_file_sage_rationals: list[PolynomialProductRational] = []
 
                         proc_file.process_file(conversion_table=self.conversion_table,
                                                reverse_conversion_table=self.reverse_conversion_table,
