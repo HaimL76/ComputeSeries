@@ -434,6 +434,12 @@ class ProcessFolder:
 
                     fw_sage_series_sums.write(f"print(f\"{h_subcase}={{{h_subcase}}}\")\n")
 
+                    h_num: str = f"{h_subcase}_numer"
+                    h_den: str = f"{h_subcase}_denom"
+
+                    fw_sage_series_sums.write(f"{h_num}={h_subcase}.numerator()\n")
+                    fw_sage_series_sums.write(f"{h_den}={h_subcase}.denominator()\n")
+
             list_var_h_subsets = []
 
             for i in range(len(list_var_h_subsets)):
