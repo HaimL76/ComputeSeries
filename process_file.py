@@ -279,7 +279,7 @@ class ProcessFolder:
 
                 print_debug: bool = False
 
-                if True:
+                if print_debug:
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original exponent={str_original_exponent}]\")\n")
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted exponent={str_converted_exponent}]\")\n")
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
@@ -432,13 +432,15 @@ class ProcessFolder:
 
                     fw_sage_series_sums.write(f"{h_subcase}={str_h_nms}\n")
 
-                    fw_sage_series_sums.write(f"print(f\"{h_subcase}={{{h_subcase}}}\")\n")
-
                     h_num: str = f"{h_subcase}_numer"
                     h_den: str = f"{h_subcase}_denom"
 
                     fw_sage_series_sums.write(f"{h_num}={h_subcase}.numerator()\n")
                     fw_sage_series_sums.write(f"{h_den}={h_subcase}.denominator()\n")
+
+                    fw_sage_series_sums.write(f"print(f\"{h_subcase}={{{h_subcase}}}\")\n")
+                    fw_sage_series_sums.write(f"print(f\"{h_num}={{{h_num}}}\")\n")
+                    fw_sage_series_sums.write(f"print(f\"{h_den}={{{h_den}}}\")\n")
 
             list_var_h_subsets = []
 
