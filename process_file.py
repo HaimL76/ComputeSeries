@@ -58,6 +58,8 @@ class ProcessFolder:
                            out_file_path_sage_check_cover: str):
         num_series_products: int = 0
 
+        list_h_names: list[str] = []
+
         for key in dict_series_sums.keys():
             val_dict = dict_series_sums[key]
 
@@ -215,6 +217,8 @@ class ProcessFolder:
 
                 var_h: str = f"h_{str_case_indices0}"
 
+                list_h_names.append(var_h)
+
                 var_x: str = f"x_{str_case_indices0}"
 
                 fw_sage_integral_summand.write(f"{var_x}=({str_converted_polynomial})*({str_converted_exponent})\n")
@@ -273,12 +277,15 @@ class ProcessFolder:
 
                 str_start_index = ",".join(dict_start_index.values())
 
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original exponent={str_original_exponent}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted exponent={str_converted_exponent}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [substitution:{str_substitution}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [start index:{str_start_index}]\")\n")
+                print_debug: bool = False
+
+                if True:
+                    fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original exponent={str_original_exponent}]\")\n")
+                    fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted exponent={str_converted_exponent}]\")\n")
+                    fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
+                    fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [substitution:{str_substitution}]\")\n")
+                    fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted polynomial={str_converted_polynomial}]\")\n")
+                    fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [start index:{str_start_index}]\")\n")
 
                 str_h_case_indices: str = f"h_{str_case_indices0}"
 
@@ -397,11 +404,35 @@ class ProcessFolder:
 
             fw_sage_series_sums.write("print(\"place holder\")\n")
 
-            fw_sage_series_sums.write(f"sf_f=psi(f)/f\n")
+            if print_debug:
+                fw_sage_series_sums.write(f"sf_f=psi(f)/f\n")
 
-            fw_sage_series_sums.write(f"sf_f_simplified=sf_f.simplify_full()\n")
+                fw_sage_series_sums.write(f"sf_f_simplified=sf_f.simplify_full()\n")
 
-            fw_sage_series_sums.write("print(f\"sf_f_simplified={sf_f_simplified}\")\n")
+                fw_sage_series_sums.write("print(f\"sf_f_simplified={sf_f_simplified}\")\n")
+
+            list_h_subcases: list[str] = ["h_1", "h_2_1", "h_2_2", "h_3_1", "h_3_2",
+                                  "h_4_1", "h_4_2",
+                                  "h_5", "h_6", "h_7",
+                                    "h_8_1", "h_8_2"]
+            
+            for i in range(len(list_h_subcases)):
+                h_subcase: str = list_h_subcases[i]
+
+                list_h_nms: list[str] = []
+
+                for j in range(len(list_h_names)):
+                    h_name: str = list_h_names[j]
+
+                    if h_name.startswith(h_subcase):
+                        list_h_nms.append(h_name)
+
+                if len(list_h_nms) > 0:
+                    str_h_nms: str = "+".join(list_h_nms)
+
+                    fw_sage_series_sums.write(f"{h_subcase}={str_h_nms}\n")
+
+                    fw_sage_series_sums.write(f"print(f\"{h_subcase}={{{h_subcase}}}\")\n")
 
             list_var_h_subsets = []
 
