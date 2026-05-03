@@ -374,7 +374,8 @@ class ProcessFolder:
 
                             str_full_case_indices: str = f"{str_case_indices}, product {counter}"
 
-                    fw_sage_series_sums.write(f"print(f\"{var_g}={{{var_g}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
+                    if True:# print_debug:
+                        fw_sage_series_sums.write(f"print(f\"{var_g}={{{var_g}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
 
                     ###################fw_sage_series_sums.write(f"{var_denom_g}={var_g}.denominator()\n")
 
@@ -432,15 +433,23 @@ class ProcessFolder:
 
                     fw_sage_series_sums.write(f"{h_subcase}={str_h_nms}\n")
 
-                    h_num: str = f"{h_subcase}_numer"
-                    h_den: str = f"{h_subcase}_denom"
+                    h_subcase_simp: str = f"{h_subcase}_simp"
 
-                    fw_sage_series_sums.write(f"{h_num}={h_subcase}.numerator()\n")
-                    fw_sage_series_sums.write(f"{h_den}={h_subcase}.denominator()\n")
+                    #fw_sage_series_sums.write(f"{h_subcase_simp}={h_subcase}.simplify_full()\n")
+
+                    h_numer: str = f"{h_subcase}_numer"
+                    h_denom: str = f"{h_subcase}_denom"
+
+                    #fw_sage_series_sums.write(f"{h_numer}={h_subcase_simp}.numerator().simplify_full()\n")
+                    #fw_sage_series_sums.write(f"{h_denom}={h_subcase_simp}.denominator().simplify_full()\n")
 
                     fw_sage_series_sums.write(f"print(f\"{h_subcase}={{{h_subcase}}}\")\n")
-                    fw_sage_series_sums.write(f"print(f\"{h_num}={{{h_num}}}\")\n")
-                    fw_sage_series_sums.write(f"print(f\"{h_den}={{{h_den}}}\")\n")
+
+                    #fw_sage_series_sums.write(f"print(f\"{h_subcase_simp}={{{h_subcase_simp}}}\")\n")
+                    #fw_sage_series_sums.write(f"print(f\"{h_numer}={{{h_numer}}}\")\n")
+                    #fw_sage_series_sums.write(f"print(f\"{h_denom}={{{h_denom}}}\")\n")
+
+            fw_sage_series_sums.write("print(\"place holder\")\n")
 
             list_var_h_subsets = []
 
