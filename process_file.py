@@ -23,6 +23,20 @@ list_const_coeffs: list[str] = ["A"]
 str_pt_product_1: str = "p^{8.v_1+11.v_2+11.v_3+7.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
 str_pt_product_4: str = "p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
 
+str_pt_product_1 = "p^{4.v_1+7.v_2+7.v_3+3.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
+str_pt_product_4 = "p^{3.v_1+7.v_2+7.v_3+4.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
+
+str_pt_product_1 = "p^{4.v_1+7.v_2+7.v_3+3.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{v_1+v_2+v_3+v_4}"
+str_pt_product_4 = "p^{3.v_1+7.v_2+7.v_3+4.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{v_1+v_2+v_3+v_4}"
+
+str_pt_product_1 = "p^{4.v_1+7.v_2+7.v_3+3.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{3.v_1+3.v_2+3.v_3+3.v_4}"
+str_pt_product_4 = "p^{3.v_1+7.v_2+7.v_3+4.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{3.v_1+3.v_2+3.v_3+3.v_4}"
+
+str_pt_product_1 = "p^{4.v_1+7.v_2+7.v_3+3.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{1.v_1+2.v_2+3.v_3+4.v_4}"
+str_pt_product_4 = "p^{3.v_1+7.v_2+7.v_3+4.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{1.v_1+2.v_2+3.v_3+4.v_4}"
+
+str_pt_product_1 = "p^{8.v_1+11.v_2+11.v_3+7.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
+str_pt_product_4 = "p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
 
 class ProcessFolder:
     file_prefix: str = r"""
@@ -97,10 +111,10 @@ class ProcessFolder:
             open(out_file_path_sage_check_cover, "w") as fw_sage_check_cover:
 
             fw_sage_series_sums.write("# Define the polynomial ring\n")
-            fw_sage_series_sums.write("R.<p,t> = PolynomialRing(QQ)\n")
+            fw_sage_series_sums.write("R.<p,t,r> = PolynomialRing(QQ)\n")
             fw_sage_series_sums.write("F = R.fraction_field()\n")
-            fw_sage_series_sums.write("psi = F.hom([1/p, 1/t], F)\n")
-            fw_sage_series_sums.write("var(\"p,t,a,b,c,d\")\n")
+            fw_sage_series_sums.write("psi = F.hom([1/p, 1/t, 1/r], F)\n")
+            fw_sage_series_sums.write("var(\"p,t,r,a,b,c,d\")\n")
             fw_sage_series_sums.write("f = QQ.zero()\n")
 
             fw_sage_substitutions.write("R.<v1,v2,v3,v4,a,b,c,d,p> = PolynomialRing(QQ)\n")
