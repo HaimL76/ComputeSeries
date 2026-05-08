@@ -294,7 +294,7 @@ class ProcessFolder:
 
                 print_debug: bool = False
 
-                if print_debug:
+                if True:# print_debug:
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original exponent={str_original_exponent}]\")\n")
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted exponent={str_converted_exponent}]\")\n")
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
@@ -657,7 +657,7 @@ class ProcessFolder:
 
                             str_full_case_indices: str = f"{str_case_indices}, product {counter}"
 
-                    if self.print_debug:
+                    if True:# self.print_debug:
                         fw_sage_series_sums.write(f"print(f\"g={{g}} #### {str_full_case_indices}\")\n")
 
                     fw_sage_series_sums.write("h += g\n")
@@ -665,12 +665,12 @@ class ProcessFolder:
                     if series_product_counter in dict_random_numbers:
                         list_debug_data.append(str_debug)
 
-                if self.print_debug:
+                if True:# self.print_debug:
                     fw_sage_series_sums.write(f"print(f\"h={{h}} #### {str_case_indices}\")\n")
 
                 fw_sage_series_sums.write("f += h\n")
 
-            if self.print_debug:
+            if True:# self.print_debug:
                 fw_sage_series_sums.write("print(\"########## Final Output ##########\")\n")
 
             fw_sage_series_sums.write("print(f)\n")

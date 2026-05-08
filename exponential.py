@@ -144,10 +144,11 @@ class ExponentialProduct:
 
             p: int = exp["p"]
             t: int = exp["t"]
+            r: int = exp["r"]
             
             exponent: str = tup[0]
 
-            str_exp: str = f"(p^{p}*t^{t})^{exponent}"
+            str_exp: str = f"(p^{p}*t^{t}*r^{r})^{exponent}"
 
             list_str[index] = str_exp
 
