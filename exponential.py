@@ -142,13 +142,22 @@ class ExponentialProduct:
 
             exp: dict[str, int] = tup[1]
 
-            p: int = exp["p"]
-            t: int = exp["t"]
-            r: int = exp["r"]
+            #p: int = exp["p"]
+            #t: int = exp["t"]
+            #r: int = exp["r"]
             
             exponent: str = tup[0]
 
-            str_exp: str = f"(p^{p}*t^{t}*r^{r})^{exponent}"
+            list_strs: list[str] = []
+            
+            for key in exp.keys():
+                exp_val: str = exp[key]
+                list_strs.append(f"{key}^{exp_val}")
+
+            if len(list_strs) > 0:
+                str_exp: str = "*".join(list_strs)
+
+                str_exp = f"({str_exp})^{exponent}"
 
             list_str[index] = str_exp
 
