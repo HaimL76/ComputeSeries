@@ -365,7 +365,7 @@ class ProcessFolder:
 
                             if isinstance(val, Element):
                                 #for i in range(val.power):
-                                str_coeff: str = "(1-(p^-1))"
+                                str_coeff: str = "k"# "(1-(p^-1))"
 
                                 if val.power != 1:
                                     str_coeff = f"{str_coeff}^{val.power}"
