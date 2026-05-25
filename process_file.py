@@ -23,8 +23,8 @@ list_const_coeffs: list[str] = ["A"]
 str_pt_product_1: str = "p^{8.v_1+11.v_2+11.v_3+7.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
 str_pt_product_4: str = "p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
 
-str_pt_product_1 = "p^{4.v_1+7.v_2+7.v_3+3.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
-str_pt_product_4 = "p^{3.v_1+7.v_2+7.v_3+4.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
+#str_pt_product_1 = "p^{4.v_1+7.v_2+7.v_3+3.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
+#str_pt_product_4 = "p^{3.v_1+7.v_2+7.v_3+4.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
 
 #str_pt_product_1: str = "p^{8.v_1+11.v_2+11.v_3+7.v_4}*t^{5.v_1+7.v_2+7.v_3+5.v_4}"
 #str_pt_product_4: str = "p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{5.v_1+7.v_2+7.v_3+5.v_4}"
@@ -365,7 +365,7 @@ class ProcessFolder:
 
                             if isinstance(val, Element):
                                 #for i in range(val.power):
-                                str_coeff: str = "k"# "(1-(p^-1))"
+                                str_coeff: str = "(1-(p^-1))"
 
                                 if val.power != 1:
                                     str_coeff = f"{str_coeff}^{val.power}"
