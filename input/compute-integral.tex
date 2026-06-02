@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{titlesec} % For \subsubsubsection
+\usepackage{xfrac} % For \sfrac
 
 % Define \subsubsubsection (4th level heading)
 \setcounter{secnumdepth}{4} % Enable numbering for 4 levels
@@ -26,6 +27,20 @@
 \begin{document}
 
 \maketitle
+
+\section{The Group of Automorphisms}
+Let $a\in\mathbb{Q}_p$, we define an automorphism $\varphi_{r,k}(a)\in\text{Aut}(\mathcal{L}_{n,p})$, it is enough to define $\varphi$ on $\sfrac{\mathcal{L}_{n,p}}{\gamma_2}$ as following:
+\[
+    \varphi_{r,k}(a)(e_{i,i+1})=\begin{cases}
+        e_{k,k+1}+a{e_{k,k+r}} & : i=k\\
+        e_{k+r,k+r+1}-a{e_{k+1,k+r+1}} & : i=k+r\\
+        e_{i,i+1} & : i\notin\{k,k+r\}
+    \end{cases}
+\]
+Suppose that $i=k$ and $j=k+r$, then\\ 
+$[\varphi_{r,k}(a)(e_i),\varphi_{r,k}(a)(e_j)]=[e_k+ae_{k,k+r},e_{k+r}-ae_{k+1,k+r+1}]=\\=[e_k,e_{k+r}]-a[e_k,e_{k+1,k+r+1}]+a[e_{k,k+r},e_{k+r}]-a^2[e_{k,k+r},e_{k+1,k+r+1}]=\\=(a-a)e_{k,k+r+1}=0=\varphi_{r,k}(a)[e_k,e_{k+r}]$.\\
+Further verification shows that if $e_i,e_j$ commute, then $\varphi_{r,k}(a)(e_i),\varphi_{r,k}(a)(e_j)$ commute.
+
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
