@@ -29,18 +29,43 @@
 \maketitle
 
 \section{The Group of Automorphisms}
+\subsection{The Abelian Automorphisms}
 Let $a\in\mathbb{Q}_p$, we define an automorphism $\varphi_{r,k}(a)\in\text{Aut}(\mathcal{L}_{n,p})$, it is enough to define $\varphi$ on $\sfrac{\mathcal{L}_{n,p}}{\gamma_2}$ as following:
 \[
     \varphi_{r,k}(a)(e_{i,i+1})=\begin{cases}
         e_{k,k+1}+a{e_{k,k+r}} & : i=k\\
         e_{k+r,k+r+1}-a{e_{k+1,k+r+1}} & : i=k+r\\
         e_{i,i+1} & : i\notin\{k,k+r\}
-    \end{cases}
+    \end{cases},
 \]
+for some $2\leq{r}\leq{n-2}$ and $0\leq{k}\leq{n-r}$.\\
 Suppose that $i=k$ and $j=k+r$, then\\ 
-$[\varphi_{r,k}(a)(e_i),\varphi_{r,k}(a)(e_j)]=[e_k+ae_{k,k+r},e_{k+r}-ae_{k+1,k+r+1}]=\\=[e_k,e_{k+r}]-a[e_k,e_{k+1,k+r+1}]+a[e_{k,k+r},e_{k+r}]-a^2[e_{k,k+r},e_{k+1,k+r+1}]=\\=(a-a)e_{k,k+r+1}=0=\varphi_{r,k}(a)[e_k,e_{k+r}]$.\\
-Further verification shows that if $e_i,e_j$ commute, then $\varphi_{r,k}(a)(e_i),\varphi_{r,k}(a)(e_j)$ commute.
+$[\varphi_{r,k}(a)(e_i),\varphi_{r,k}(a)(e_j)]=[e_k+ae_{k,k+r},e_{k+r}-ae_{k+1,k+r+1}]=\\=[e_k,e_{k+r}]-a[e_k,e_{k+1,k+r+1}]+a[e_{k,k+r},e_{k+r}]-a^2[e_{k,k+r},e_{k+1,k+r+1}]=\\=(a-a)e_{k,k+r+1}=0=\varphi_{r,k}(a)[e_k,e_{k+r}]$, since $k+r>k+1$.\\
+Further verification shows that for any $i$ and $j$, if $e_i$ and $e_j$ commute then $\varphi_{r,k}(a)(e_i)$ and $\varphi_{r,k}(a)(e_j)$ commute as well. This, along with a few other basic verifications, shows that $\varphi_{r,k}(a)$ is indeed an $\mathcal{L}_{n,p}$-automorphism.\\
+For the structure of $\varphi_{r,k}$ as a matrix $M$, we consider $M_{1,r}$ the block in row $1$ and column $r$ of the blocks of $M$. The index $i$ is the row index of the block, which is also the row index of the whole matrix. The column index is $k$. which means that if we denote the matrix of $\varphi_{r,k}(a)$ by $N_{r,k}(a)$, then it forms as
+\[N_{r,k}(a):=\begin{bmatrix}
+    I_{n-1} &  & M_{1,r} & & \\
+     & I_{n-2} &  & & \\
+     & & \ddots &  & \\
+          & & & I_2 & \\
+               & & & & 1\\
+\end{bmatrix},\]
+where
+\[
+M_{1,r}=(m_{ij}):=\begin{bmatrix}
+    & & &\\
+    & a & &\\
+    & & &\\
+    & & -a &\\
+    & & &\\
+\end{bmatrix},
+\]
+that is, $m_{k,k}=a$ and $m_{k+r,k+1}=-a$.
 
+Proposition:\\
+Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{Q}_p\}$, then $\langle{N_{r,k}}\rangle$ is an abelian group.
+Proof:\\
+Let $a,b\in\mathbb{Q}_p$ be two elements in $\mathbb{Q}_p$, then $N_{r,k}(a)N_{r,k}(b)$ has $1$ on the main diagonal and the block $M_{1,r}=(m_{ij})$ with $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus taking $N_{r,k}(-a)$ yields $N_{r,k}^{-1}(a)$.  
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
