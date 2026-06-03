@@ -3,9 +3,26 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
+\usepackage{amsthm}
 \usepackage{titlesec} % For \subsubsubsection
 \usepackage{xfrac} % For \sfrac
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notations}[theorem]{Notations}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
 
+\newtheorem{theorem2}{Theorem}[section]
+\newtheorem{proposition2}[theorem2]{Proposition}
+\newtheorem{corollary2}[theorem2]{Corollary}
+\newtheorem{lemma2}[theorem2]{Lemma}
+\newtheorem{notations2}[theorem2]{Notations}
+\newtheorem{definition2}[theorem2]{Definition}
+\newtheorem{example2}[theorem2]{Example}
+\newtheorem{remark2}[theorem2]{Remark}
 % Define \subsubsubsection (4th level heading)
 \setcounter{secnumdepth}{4} % Enable numbering for 4 levels
 \setcounter{tocdepth}{4}    % Include in table of contents if needed
@@ -62,10 +79,12 @@ M_{1,r}=(m_{ij}):=\begin{bmatrix}
 \]
 that is, $m_{k,k}=a$ and $m_{k+r,k+1}=-a$.
 
-Proposition:\\
+\begin{proposition}
 Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{Q}_p\}$, then $\langle{N_{r,k}}\rangle$ is an abelian group.
-Proof:\\
-Let $a,b\in\mathbb{Q}_p$ be two elements in $\mathbb{Q}_p$, then $N_{r,k}(a)N_{r,k}(b)$ has $1$ on the main diagonal and the block $M_{1,r}=(m_{ij})$ with $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus taking $N_{r,k}(-a)$ yields $N_{r,k}^{-1}(a)$.  
+\end{proposition}
+\begin{proof}
+Let $a,b\in\mathbb{Q}_p$ be two elements in $\mathbb{Q}_p$, then $N_{r,k}(a)N_{r,k}(b)$ has $1$ on the main diagonal and the block $M_{1,r}=(m_{ij})$ with $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus taking $N_{r,k}(-a)$ yields $N_{r,k}^{-1}(a)$, and it is readily seen that $N_{r,k}(a)$ and $N_{r,k}(b)$ commute.  
+\end{proof}
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
