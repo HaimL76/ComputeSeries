@@ -297,7 +297,7 @@ class ProcessFolder:
 
                 print_debug: bool = False
 
-                if True:# print_debug:
+                if print_debug:
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original exponent={str_original_exponent}]\")\n")
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [converted exponent={str_converted_exponent}]\")\n")
                     fw_sage_series_sums.write(f"print(f\"#### {str_case_indices} [original polynomial={str_original_polynomial}]\")\n")
@@ -392,7 +392,7 @@ class ProcessFolder:
 
                             str_full_case_indices: str = f"{str_case_indices}, product {counter}"
 
-                    if True:# print_debug:
+                    if print_debug:
                         fw_sage_series_sums.write(f"print(f\"{var_g}={{{var_g}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
 
                     ###################fw_sage_series_sums.write(f"{var_denom_g}={var_g}.denominator()\n")
@@ -409,13 +409,18 @@ class ProcessFolder:
 
                 fw_sage_series_sums.write(f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices}\")\n")
 
-                fw_sage_series_sums.write(f"{var_denom_h}={var_h}.denominator()\n")
+                fw_sage_series_sums.write(f"sf_{var_h}=psi({var_h})/{var_h}\n")
+                fw_sage_series_sums.write(f"sf_{var_h}=sf_{var_h}.simplify_full()\n")
+
+                fw_sage_series_sums.write(f"print(f\"sf_{var_h}={{sf_{var_h}}} #### {str_case_indices}\")\n")
+
+                #fw_sage_series_sums.write(f"{var_denom_h}={var_h}.denominator()\n")
 
                 #####################fw_sage_series_sums.write(f"print(f\"{var_denom_h}={{{var_denom_h}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
-                fw_sage_series_sums.write(f"print(f\"{var_denom_h}={{{var_denom_h}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
-                fw_sage_series_sums.write(f"{var_factor_denom_h}=factor({var_denom_h})\n")
+                #fw_sage_series_sums.write(f"print(f\"{var_denom_h}={{{var_denom_h}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
+                #fw_sage_series_sums.write(f"{var_factor_denom_h}=factor({var_denom_h})\n")
 
-                fw_sage_series_sums.write(f"print(f\"{var_factor_denom_h}={{{var_factor_denom_h}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
+                #fw_sage_series_sums.write(f"print(f\"{var_factor_denom_h}={{{var_factor_denom_h}}} #### {str_case_indices}, [monomial {counter}/{converted_number_of_monomials}={str_monomial}]\")\n")
 
                 fw_sage_series_sums.write(f"f += {var_h}\n")
 
@@ -451,6 +456,9 @@ class ProcessFolder:
 
                     fw_sage_series_sums.write(f"{h_subcase}={str_h_nms}\n")
 
+                    fw_sage_series_sums.write(f"sf_{h_subcase}=psi({h_subcase})/{h_subcase}\n")
+                    fw_sage_series_sums.write(f"sf_{h_subcase}=sf_{h_subcase}.simplify_full()\n")
+
                     h_subcase_simp: str = f"{h_subcase}_simp"
 
                     #fw_sage_series_sums.write(f"{h_subcase_simp}={h_subcase}.simplify_full()\n")
@@ -462,6 +470,7 @@ class ProcessFolder:
                     #fw_sage_series_sums.write(f"{h_denom}={h_subcase_simp}.denominator().simplify_full()\n")
 
                     fw_sage_series_sums.write(f"print(f\"{h_subcase}={{{h_subcase}}}\")\n")
+                    fw_sage_series_sums.write(f"print(f\"sf_{h_subcase}={{sf_{h_subcase}}}\")\n")
 
                     #fw_sage_series_sums.write(f"print(f\"{h_subcase_simp}={{{h_subcase_simp}}}\")\n")
                     #fw_sage_series_sums.write(f"print(f\"{h_numer}={{{h_numer}}}\")\n")
