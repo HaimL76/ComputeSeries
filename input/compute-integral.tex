@@ -69,8 +69,8 @@ $\psi(e_{14})=[\psi(e_1),\psi(e_{24})]=[e_1+ae_{13},e_{24}]=e_{14}=-[e_{24},e_1+
 But we also have\\
 $\psi(e_{14})=[\psi(e_{13}),\psi(e_3)]=[e_{13},e_3-ae_{24}]=e_{14}=-[e_3-ae_{24},e_{13}]=-[\psi(e_3),\psi(e_{13})]$,\\
 which shows that the extended $\varphi_{21}(a)$ is well-defined.\\
-For $n>4$, we consider the injection $\iota:\mathcal{L}_{n-1,p}\rightarrow\mathcal{L}_{n,p}$, defined by abuse of notation as the identity $\iota(e_i)=e_i$, for all $1\leq{i}\leq{n-2}$, hence we have also $\varphi_{r,k}(a)(\iota(e_i))=\varphi_{r,k}(a)(e_i)$, and hence the extension $\varphi_{r,k}(a)(\iota(e_{i,j}))=\varphi_{r,k}(a)(\iota(e_{i,j}))$, for all $1\leq{i}<j\leq{n-1}$.
-
+For $n>4$, we consider the injection $\iota:\mathcal{L}_{n-1,p}\rightarrow\mathcal{L}_{n,p}$, defined by abuse of notation as the identity $\iota(e_i)=e_i$ which implies that $\varphi_{r,k}(a)(\iota(e_i))=\varphi_{r,k}(a)(e_i)$, for all $1\leq{i}\leq{n-2}$, because $\varphi_{r,k}(a)$ does not depend on $n$, and therefore we have also $\varphi_{r,k}(a)(\iota(e_{i,j}))=\varphi_{r,k}(a)(e_{i,j})$, for all $1\leq{i}<j\leq{n-1}$.\\
+Consider an element $e_{i,n}$, for some $1\leq{i}\leq{n-1}$. We define the image of this element by $\varphi_{r,k}(a)(e_{i,n})=\varphi_{r,k}(a)([e_{i,n-1},e_{n-1}])=[\varphi_{r,k}(a)(e_{i,n-1}),\varphi_{r,k}(a)(e_{n-1})]$, but $\varphi_{r,k}(a)(e_{i,n-1})$ is well-defined by the assumption on $n-1$, and a simple check concludes that the product is also well-defined. 
 \end{proof}
 Thus, the structure of $\varphi_{r,k}$ as a block matrix $M$ is having the identity matrices $I_{n-1},I_{n-2},\dots,1$ on the main blocks diagonal, and the block $M_{1,r}$ in row $1$ and column $r$ of the blocks of $M$. The index $i$ is the row index of the block, which is also the row index of the whole matrix. The column index is $k$. which means that if we denote the matrix of $\varphi_{r,k}(a)$ by $N_{r,k}(a)$, then it forms as
 \[N_{r,k}(a):=\begin{bmatrix}
