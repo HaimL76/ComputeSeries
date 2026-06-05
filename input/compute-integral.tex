@@ -60,13 +60,17 @@ for some $2\leq{r}\leq{n-2}$ and $0\leq{k}\leq{n-r}$.\\
 $\varphi_{r,k}(a)$ extends to an $\mathcal{L}_{n,p}$-automorphism.
 \end{proposition}
 \begin{proof}
-We need to define the image $\varphi_{r,k}(a)(e_{ij})$ for any element $e_{ij}\in\mathcal{L}_{n,p}$, and show that it is compliant as an automorphism on $\mathcal{L}_{n,p}$.\\
+We need to define the image $\varphi_{r,k}(a)(e_{ij})$ for any element $e_{ij}\in\mathcal{L}_{n,p}$, and show that it is compliant as an automorphism on $\mathcal{L}_{n,p}$. We do this by induction.\\
 For $n=4$ we define the extension explicitly as follows:\\
-$\varphi_{21}(a)(e_{13})=[\varphi_{21}(a)(e_1),\varphi_{21}(a)(e_2)]=[e_1+ae_{13},e_2]=e_{13}$.\\
-$\varphi_{21}(a)(e_{24})=[\varphi_{21}(a)(e_2),\varphi_{21}(a)(e_3)]=[e_2,e_3-ae_{24}]=e_{24}$.\\
-$\varphi_{21}(a)(e_{14})=[\varphi_{21}(a)(e_1),\varphi_{21}(a)(e_{24})]=[e_1+ae_{13},e_{24}]=e_{14}=$\\
-$=[e_{13},e_3-ae_{24}]=[\varphi_{21}(a)e_{13},\varphi_{21}(a)(e_3)]$,\\
+(denote $\psi=\varphi_{21}(a)$ for simplicity)\\
+$\psi(e_{13})=[\psi(e_1),\psi(e_2)]=[e_1+ae_{13},e_2]=e_{13}=-[e_2,e_1+ae_{13}]=-[\psi(e_2),\psi(e_1)]$.\\
+$\psi(e_{24})=[\psi(e_2),\psi(e_3)]=[e_2,e_3-ae_{24}]=e_{24}=-[e_3-ae_{24},e_2]=-[\psi(e_3),\psi(e_2)]$.\\
+$\psi(e_{14})=[\psi(e_1),\psi(e_{24})]=[e_1+ae_{13},e_{24}]=e_{14}=-[e_{24},e_1+ae_{13}]=-[\psi(e_3),\psi(e_{13})]$.\\
+But we also have\\
+$\psi(e_{14})=[\psi(e_{13}),\psi(e_3)]=[e_{13},e_3-ae_{24}]=e_{14}=-[e_3-ae_{24},e_{13}]=-[\psi(e_3),\psi(e_{13})]$,\\
 which shows that the extended $\varphi_{21}(a)$ is well-defined.\\
+For $n>4$, we consider the injection $\iota:\mathcal{L}_{n-1,p}\rightarrow\mathcal{L}_{n,p}$, defined by abuse of notation as the identity $\iota(e_i)=e_i$, for all $1\leq{i}\leq{n-2}$, hence we have also $\varphi_{r,k}(a)(\iota(e_i))=\varphi_{r,k}(a)(e_i)$, and hence the extension $\varphi_{r,k}(a)(\iota(e_{i,j}))=\varphi_{r,k}(a)(\iota(e_{i,j}))$, for all $1\leq{i}<j\leq{n-1}$.
+
 \end{proof}
 Thus, the structure of $\varphi_{r,k}$ as a block matrix $M$ is having the identity matrices $I_{n-1},I_{n-2},\dots,1$ on the main blocks diagonal, and the block $M_{1,r}$ in row $1$ and column $r$ of the blocks of $M$. The index $i$ is the row index of the block, which is also the row index of the whole matrix. The column index is $k$. which means that if we denote the matrix of $\varphi_{r,k}(a)$ by $N_{r,k}(a)$, then it forms as
 \[N_{r,k}(a):=\begin{bmatrix}
