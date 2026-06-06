@@ -99,6 +99,13 @@ Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{Q}_p\}$, then $N_{
 Let $a,b\in\mathbb{Q}_p$ be two elements in $\mathbb{Q}_p$, then $N_{r,k}(a)N_{r,k}(b)$ has $1$ on the main diagonal and the block $M_{1,r}=(m_{ij})$ with $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus taking $N_{r,k}(-a)$ yields $N_{r,k}^{-1}(a)$, and it is readily seen that $N_{r,k}(a)$ and $N_{r,k}(b)$ commute. The isomorphism $N_{r,k}\cong\mathbb{Q}_p$ is immediate. 
 \end{proof}
 Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $N_r:=\ker\pi_r$. Then $N_r$ is the set of all $(n-1)\times(n-1)$ block matrices with the identity matrices $I_{n-1},I_{n-2},\dots,1$ on the main blocks diagonal, and $M_{1,j}=0$ for all the blocks in the first row of blocks, where $1\leq{j}<r$.
+\[N_r:=\begin{bmatrix}
+    I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
+     & I_{n-2} &  & & \\
+     & & \ddots &  & \\
+          & & & I_2 & \\
+               & & & & 1\\
+\end{bmatrix},\]
 \begin{proposition}
 Fix $r$, and let $N_r:=\{N_{r,k}(a) : a\in\mathbb{Q}_p,\,0\leq{k}\leq{n-r}\}$, then $\langle{N_r}\rangle$ is an abelian group.
 \begin{proof}
