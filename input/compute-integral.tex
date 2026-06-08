@@ -46,6 +46,22 @@
 \maketitle
 
 \section{The Group of Automorphisms}
+\subsection{The General Form of the $\mathcal{L}$-automorphisms}
+\subsubsection{The Matrix Structure}
+Let $\varphi\in\text{Aut}_{\mathbb{Q}_p}(\mathcal{L})$, then $\varphi$ is an $m\times{m}$ matrix $M\in{M}_m(\mathbb{Q}_p)$, where $m=\binom{n}{2}$. The matrix $M$ is partitioned into $(n-1)\times(n-1)$ blocks, each block $M_{i,j}$ is an $(n-i)\times(n-j)$ matrix.
+
+\subsubsection{The Diagonal of $\varphi$}
+As explained above, we are working with $G_n^0(\mathbb{Q}_p)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
+Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\in\mathbb{Q}_p$, for every $1\leq{i}\leq{n-1}$.
+\begin{proposition}
+For every $1\leq{i}<j\leq{n}$, $\varphi$ must satisfy $\varphi(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$, where $d=j-i$.
+\end{proposition}
+\begin{proof}
+$\varphi(e_{ij})=\varphi([e_{i},[e_{i+1},[\cdots[e_{j-1},e_j]]]])=[\varphi(e_i),[\varphi(e_{i+1}),[\cdots,[\varphi(e_{j-1}),\varphi(e_j)]]]]=[\lambda_i{e}_i+\gamma_2\mathcal{L},[\lambda_{i+1}e_{i+1}+\gamma_2\mathcal{L},[\cdots,[\lambda_{j-1}e_{j-1}+\gamma_2\mathcal{L},\lambda_j{e}_j+\gamma_2\mathcal{L}]]]]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$.
+\end{proof}
+
+
+
 \subsection{The Abelian Automorphisms}
 \subsubsection{The Automorphism $\varphi_{r,k}(a)$}
 Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}_{n,p}}{\gamma_2}\rightarrow\mathcal{L}_{n,p}$ in the following way:
@@ -142,6 +158,7 @@ The set $H(\mathbb{Q}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)$.
 \begin{proof}
 Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
 \end{proof}
+A simple check would show that $H(\mathbb{Q}_p)$ is not normal in $G_n^0(\mathbb{Q}_p)$.
 \subsubsection{The Unipotent Radical}
 Let $u\in{G}_n^0(\mathbb{Q}_p)$ be an $m\times{m}$ unitriangular matrix.
 
