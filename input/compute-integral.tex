@@ -95,11 +95,11 @@ M_{1,r}=(m_{ij}):=\begin{bmatrix}
 that is, $m_{k,k}=a$ and $m_{k+r,k+1}=-a$.
 
 \begin{proposition}
-Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{Q}_p\}$, then $N_{r,k}$ is an abelian group isomorphic to $\mathbb{Q}_p$.
+Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{Q}_p\}$, then $N_{r,k}$ is an abelian subgroup of $G_n^0(\mathbb{Q}_p)$ isomorphic to $\mathbb{Q}_p$.
 \end{proposition}
 \begin{proof}
 Define a map $\psi:\mathbb{Q}_p\rightarrow{N}_{r,k}$ by $\psi(a):=N_{r,k}(a)$ for all $a\in\mathbb{Q}_p$.
-Let $a,b\in\mathbb{Q}_p$, then $\psi(a)\psi(b)=N_{r,k}(a)N_{r,k}(b)$ has $1$ on the main diagonal and the block $M_{1,r}=(m_{ij})$ with $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
+Let $a,b\in\mathbb{Q}_p$, then $\psi(a)\psi(b)=N_{r,k}(a)N_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
 \end{proof}
 
 \subsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
@@ -114,7 +114,7 @@ $\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which ope
 The proof here is similar to the proof for $\varphi_{r,k}(a)$.\\
 We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$.\\
 \subsubsection{The Automorphism $\varphi_r$}
-Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $N_r:=\ker\pi_r$. Then $N_r$ is the set of all $m\times{m}$ matrices of $(n-1)\times(n-1)$ blocks, with the identity matrices $I_{n-1},I_{n-2},\dots,1$ on the main blocks diagonal, and $M_{1,j}=0$ for all the blocks in the first row of blocks, where $1\leq{j}<r$.
+Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $N_r:=\ker\pi_r$, which forms as the set of all $m\times{m}$ matrices with $M_{i,i}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1,j}=0$ for all $j<r$.
 \[N_r:=\begin{bmatrix}
     I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
      & I_{n-2} &  & & \\
@@ -123,7 +123,9 @@ Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightar
                & & & & 1\\
 \end{bmatrix}.\]
 We observe that $M_{n-1}$ is an $(n-1)\times{1}$ block with values in $\mathbb{Q}_p$, lying in the rightmost column of $M$, thus $N_{n-1}\cong\mathbb{Q}_p^{n-1}$ and $\varphi_{n-1}(e_{ij})=e_{ij}+Z(\mathcal{L}_{n,p})$, for any $1\leq{i}<j\leq{n}$.\\
-For an arbitrary $r$, we have the general assertion that $N_r$ is a group, not necessarily abelian.
+
+\subsubsection{The Unipotent Radical}
+Let $u\in{G}_n^0(\mathbb{Q}_p)$ be an $m\times{m}$ unitriangular matrix.
 
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
