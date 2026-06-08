@@ -114,15 +114,17 @@ $\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which ope
 The proof here is similar to the proof for $\varphi_{r,k}(a)$.\\
 We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$.\\
 \subsubsection{The Automorphism $\varphi_r$}
-Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $N_r:=\ker\pi_r$, which forms as the set of all $m\times{m}$ matrices with $M_{i,i}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1,j}=0$ for all $j<r$.
-\[N_r:=\begin{bmatrix}
+Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $m\times{m}$ matrices with $M_{i,i}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1,j}=0$ for all $j<r$.
+\[N_r=(a_{ij}):=\begin{bmatrix}
     I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
      & I_{n-2} &  & & \\
      & & \ddots &  & \\
           & & & I_2 & \\
                & & & & 1\\
 \end{bmatrix}.\]
-We observe that $M_{n-1}$ is an $(n-1)\times{1}$ block with values in $\mathbb{Q}_p$, lying in the rightmost column of $M$, thus $N_{n-1}\cong\mathbb{Q}_p^{n-1}$ and $\varphi_{n-1}(e_{ij})=e_{ij}+Z(\mathcal{L}_{n,p})$, for any $1\leq{i}<j\leq{n}$.\\
+We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\end{bmatrix}^T$, then $N_{n-1}\cong\mathbb{Q}_p^{n-1}$. Indeed, the product of any two matrices $A=(a_{ij})$ and $B=(b_{ij})$ in $N_{n-1}$ is a unitriangular matrix with the block $M_{1,n-1}=\begin{bmatrix}
+    c_{1m}&c_{2m}&\dots&c_{n-1,m}
+\end{bmatrix}^T$ where $c_{im}=a_{im}+b_{im}$.
 
 \subsubsection{The Unipotent Radical}
 Let $u\in{G}_n^0(\mathbb{Q}_p)$ be an $m\times{m}$ unitriangular matrix.
