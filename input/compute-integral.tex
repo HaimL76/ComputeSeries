@@ -102,14 +102,15 @@ Let $a,b\in\mathbb{Q}_p$ be two elements in $\mathbb{Q}_p$, then $N_{r,k}(a)N_{r
 \subsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
 For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\in\mathbb{Q}_p$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
 $\varphi_{n-2,k,l}(a)(e_i):=\begin{cases}
-e_i+ae_{l,l+r},&i=k\\
+e_k+ae_{l,l+r},&i=k\\
 e_i,&i\neq{k}\\
 \end{cases}$
 \begin{proposition}
 $\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which operates diagonally on $\gamma_2\mathcal{L}_{n,p}$.
 \end{proposition}
-Proof is similar to the proof for $\varphi_{r,k}(a)$.\\
+The proof here is similar to the proof for $\varphi_{r,k}(a)$.\\
 We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$.\\
+\subsubsection{The Automorphism $\varphi_r$}
 Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $N_r:=\ker\pi_r$. Then $N_r$ is the set of all $m\times{m}$ matrices of $(n-1)\times(n-1)$ blocks, with the identity matrices $I_{n-1},I_{n-2},\dots,1$ on the main blocks diagonal, and $M_{1,j}=0$ for all the blocks in the first row of blocks, where $1\leq{j}<r$.
 \[N_r:=\begin{bmatrix}
     I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
@@ -117,7 +118,8 @@ Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightar
      & & \ddots &  & \\
           & & & I_2 & \\
                & & & & 1\\
-\end{bmatrix},\]
+\end{bmatrix}.\]
+We observe that $M_{n-1}$ is an $(n-1)\times{1}$ block with values in $\mathbb{Q}_p$, lying in the rightmost column of $M$, thus $N_{n-1}\cong\mathbb{Q}_p^{n-1}$ and $\varphi_{n-1}(e_{ij})=e_{ij}+Z(\mathcal{L}_{n,p})$, for any $1\leq{i}<j\leq{n}$.
 \begin{proposition}
 Fix $r$, and let $N_r:=\{N_{r,k}(a) : a\in\mathbb{Q}_p,\,0\leq{k}\leq{n-r}\}$, then $\langle{N_r}\rangle$ is an abelian group.
 \begin{proof}
