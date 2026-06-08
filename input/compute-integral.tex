@@ -47,6 +47,7 @@
 
 \section{The Group of Automorphisms}
 \subsection{The Abelian Automorphisms}
+\subsubsection{The Automorphism $\varphi_{r,k}(a)$}
 Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}_{n,p}}{\gamma_2}\rightarrow\mathcal{L}_{n,p}$ in the following way:
 \[
     \varphi_{r,k}(a)(e_i)=\begin{cases}
@@ -98,7 +99,18 @@ Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{Q}_p\}$, then $N_{
 \begin{proof}
 Let $a,b\in\mathbb{Q}_p$ be two elements in $\mathbb{Q}_p$, then $N_{r,k}(a)N_{r,k}(b)$ has $1$ on the main diagonal and the block $M_{1,r}=(m_{ij})$ with $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus taking $N_{r,k}(-a)$ yields $N_{r,k}^{-1}(a)$, and it is readily seen that $N_{r,k}(a)$ and $N_{r,k}(b)$ commute. The isomorphism $N_{r,k}\cong\mathbb{Q}_p$ is immediate. 
 \end{proof}
-Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $N_r:=\ker\pi_r$. Then $N_r$ is the set of all $(n-1)\times(n-1)$ block matrices with the identity matrices $I_{n-1},I_{n-2},\dots,1$ on the main blocks diagonal, and $M_{1,j}=0$ for all the blocks in the first row of blocks, where $1\leq{j}<r$.
+\subsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
+For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\in\mathbb{Q}_p$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
+$\varphi_{n-2,k,l}(a)(e_i):=\begin{cases}
+e_i+ae_{l,l+r},&i=k\\
+e_i,&i\neq{k}\\
+\end{cases}$
+\begin{proposition}
+$\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which operates diagonally on $\gamma_2\mathcal{L}_{n,p}$.
+\end{proposition}
+Proof is similar to the proof for $\varphi_{r,k}(a)$.\\
+We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$.\\
+Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $N_r:=\ker\pi_r$. Then $N_r$ is the set of all $m\times{m}$ matrices of $(n-1)\times(n-1)$ blocks, with the identity matrices $I_{n-1},I_{n-2},\dots,1$ on the main blocks diagonal, and $M_{1,j}=0$ for all the blocks in the first row of blocks, where $1\leq{j}<r$.
 \[N_r:=\begin{bmatrix}
     I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
      & I_{n-2} &  & & \\
