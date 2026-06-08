@@ -125,7 +125,23 @@ Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightar
 We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\end{bmatrix}^T$, then $N_{n-1}\cong\mathbb{Q}_p^{n-1}$. Indeed, the product of any two matrices $A=(a_{ij})$ and $B=(b_{ij})$ in $N_{n-1}$ is a unitriangular matrix with the block $M_{1,n-1}=\begin{bmatrix}
     c_{1m}&c_{2m}&\dots&c_{n-1,m}
 \end{bmatrix}^T$ where $c_{im}=a_{im}+b_{im}$.
-
+\subsubsection{The Reductive subgroup}
+Let $h\in{G}_n^0(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism defined on $\sfrac{\mathcal{L}}{\gamma_2}$ by $h(e_i)=\lambda_i{e}_i$, where $\lambda_i\in\mathbb{Q}_p$, for every $1\leq{i}\leq{n-1}$.
+\begin{proposition}
+For every $1\leq{i}<j\leq{n}$, $h$ must satisfy $h(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}$.
+\end{proposition}
+\begin{proof}
+$h(e_{ij})=h([e_{i},[e_{i+1},[\cdots[e_{j-1},e_j]]]])=[h(e_i),[h(e_{i+1}),[\cdots,[h(e_{j-1}),h(e_j)]]]]=[\lambda_i{e}_i,[\lambda_{i+1}e_{i+1},[\cdots,[\lambda_{j-1}e_{j-1},\lambda_j{e}_j]]]]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}$.
+\end{proof}
+We conclude that $h$ is the $m\times{m}$ diagonal matrix 
+\[h=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1},\lambda_1\lambda_2,\dots,\lambda_2\lambda_3,\dots,\lambda_{n-2}\lambda_{n-1},\lambda_1\lambda_2\lambda_3,\dots,\lambda_1\lambda_2\cdots\lambda_{n-2}\lambda_{n-1}).\]
+Denote by $H(\mathbb{Q}_p):=\{h\in{G}_n^0(\mathbb{Q}_p)\}$ the set of all diagonal $\mathcal{L}$-automorphisms.
+\begin{proposition}
+The set $H(\mathbb{Q}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)$.
+\end{proposition}
+\begin{proof}
+Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
+\end{proof}
 \subsubsection{The Unipotent Radical}
 Let $u\in{G}_n^0(\mathbb{Q}_p)$ be an $m\times{m}$ unitriangular matrix.
 
