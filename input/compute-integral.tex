@@ -161,9 +161,22 @@ The set $H(\mathbb{Q}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)$.
 Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\in\mathbb{Q}_p$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
 \end{proof}
 A simple check would show that $H(\mathbb{Q}_p)$ is not normal in $G_n^0(\mathbb{Q}_p)$.
-\subsubsection{The Unipotent Radical}
-Let $u\in{G}_n^0(\mathbb{Q}_p)$ be an $d\times{d}$ unitriangular matrix.
 
+\subsubsection{The Unipotent Radical}
+Let $a$ and $h$ be an arbitrary automorphism and a diagonal automorphism, respectively, and let $u=h^{-1}a$, then $a=uh$.
+\begin{proposition}
+The matrix $u=(u_{ij})$ is unitriangular.
+\end{proposition}
+\begin{proof}
+$h=\mathrm{diag}(a_{11},a_{22},\dots)$, which implies that $h^{-1}=\mathrm{diag}(a_{11}^{-1},a_{22}^{-1},\dots)$, thus $u=h^{-1}a$ has $u_{ii}=a_{ii}^{-1}a_{ii}=1$, for all $1\leq{i}\leq{d}$.
+\end{proof}
+From the construction, it is immediate to assert that every $\varphi\in{G}_n^0(\mathbb{Q}_p)$ has the unique factorization $\varphi=uh$, an we denote the set $N_n(\mathbb{Q}_p):=\{u\in{G}_n^0(\mathbb{Q}_p)\}$, the set of all unitriangular $\mathcal{L}$-automorphisms.
+\begin{proposition}
+The set $N_n(\mathbb{Q}_p)$ is a normal subgroup of $G_n^0(\mathbb{Q}_p)$.
+\end{proposition}
+\begin{proof}
+The product of two unitriangular matrices is itself a triangular matrix. Let $w\in{G}_n^0(\mathbb{Q}_p)$ a unitriangular $\mathcal{L}$-automorphism. For any $a\in{G}_n^0$, we have the unique factorization $a=uh$, for some $u\in{N}_n(\mathbb{Q}_p)$ and $h\in{H}_n(\mathbb{Q}_p)$, thus $awa^{-1}=(uh)w(uh)^{-1}=u(hwh^{-1})u^{-1}$, but then $b=hwh^{-1}=(b_{ij})$ has $b_{ii}=h_{ii}\cdot{1}\cdot{h}_{ii}^{-1}=1$, for all $1\leq{i}\leq{d}$, hence $b$ and therefore $ubu^{-1}$ also belong to $N_n(\mathbb{Q}_p)$.
+\end{proof}
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
