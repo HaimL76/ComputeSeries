@@ -46,9 +46,18 @@
 \maketitle
 
 \section{The Group of Automorphisms}
+In all the following we denote, for abbreviation:\\
+$d=\dim\mathcal{L}_{n,p}=\binom{n}{2}$.\\
+$\mathcal{L}=\mathcal{L}_{n,p}$.\\
+$\gamma_i=\gamma_i\mathcal{L}$.\\
+$e_i=e_{i,i+1}$.\\
 \subsection{The General Form of the $\mathcal{L}$-automorphisms}
 \subsubsection{The Matrix Structure}
-Let $\varphi\in\text{Aut}_{\mathbb{Q}_p}(\mathcal{L})$, then $\varphi$ is an $m\times{m}$ matrix $M\in{M}_m(\mathbb{Q}_p)$, where $m=\binom{n}{2}$. The matrix $M$ is partitioned into $(n-1)\times(n-1)$ blocks, each block $M_{i,j}$ is an $(n-i)\times(n-j)$ matrix.
+Let $\varphi\in\text{Aut}_{\mathbb{Q}_p}(\mathcal{L})$, then $\varphi$ is an $d\times{d}$ matrix $A=(a_{ij})\in{M}_d(\mathbb{Q}_p)$, where the row $\begin{bmatrix}
+    a_{i,1}&a_{i,2}&\dots&a_{i,d}
+\end{bmatrix}$
+is the image $\varphi(b_i)$ of the $i$th basis element with respect to the natural order $e_1,e_2,\dots,e_{n-1},e_{13},e_{24},\dots,e_{n-2,n},e_{14},\dots,e_{1n}$.\\
+The matrix $A$ is partitioned into $(n-1)\times(n-1)$ blocks, each block $A_{ij}$ is an $(n-i)\times(n-j)$ matrix, forming the map $\varphi_{ij}:\sfrac{\gamma_i}{\gamma_{i+1}}\rightarrow\sfrac{\gamma_j}{\gamma_{j+1}}$.
 
 \subsubsection{The Diagonal of $\varphi$}
 As explained above, we are working with $G_n^0(\mathbb{Q}_p)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
@@ -130,7 +139,7 @@ $\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which ope
 The proof here is similar to the proof for $\varphi_{r,k}(a)$.\\
 We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$.\\
 \subsubsection{The Automorphism $\varphi_r$}
-Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $m\times{m}$ matrices with $M_{i,i}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1,j}=0$ for all $j<r$.
+Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $d\times{d}$ matrices with $M_{i,i}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1,j}=0$ for all $j<r$.
 \[N_r=(a_{ij}):=\begin{bmatrix}
     I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
      & I_{n-2} &  & & \\
@@ -142,25 +151,18 @@ We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\en
     c_{1m}&c_{2m}&\dots&c_{n-1,m}
 \end{bmatrix}^T$ where $c_{im}=a_{im}+b_{im}$.
 \subsubsection{The Reductive subgroup}
-Let $h\in{G}_n^0(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism defined on $\sfrac{\mathcal{L}}{\gamma_2}$ by $h(e_i)=\lambda_i{e}_i$, where $\lambda_i\in\mathbb{Q}_p$, for every $1\leq{i}\leq{n-1}$.
-\begin{proposition}
-For every $1\leq{i}<j\leq{n}$, $h$ must satisfy $h(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}$.
-\end{proposition}
-\begin{proof}
-$h(e_{ij})=h([e_{i},[e_{i+1},[\cdots[e_{j-1},e_j]]]])=[h(e_i),[h(e_{i+1}),[\cdots,[h(e_{j-1}),h(e_j)]]]]=[\lambda_i{e}_i,[\lambda_{i+1}e_{i+1},[\cdots,[\lambda_{j-1}e_{j-1},\lambda_j{e}_j]]]]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}$.
-\end{proof}
-We conclude that $h$ is the $m\times{m}$ diagonal matrix 
-\[h=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1},\lambda_1\lambda_2,\dots,\lambda_2\lambda_3,\dots,\lambda_{n-2}\lambda_{n-1},\lambda_1\lambda_2\lambda_3,\dots,\lambda_1\lambda_2\cdots\lambda_{n-2}\lambda_{n-1}).\]
+Let $\varphi\in{G}_n^0(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
+and it is readily seen that $h$ itself is an $\mathcal{L}$-automorphism.\\
 Denote by $H(\mathbb{Q}_p):=\{h\in{G}_n^0(\mathbb{Q}_p)\}$ the set of all diagonal $\mathcal{L}$-automorphisms.
 \begin{proposition}
 The set $H(\mathbb{Q}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)$.
 \end{proposition}
 \begin{proof}
-Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
+Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\in\mathbb{Q}_p$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
 \end{proof}
 A simple check would show that $H(\mathbb{Q}_p)$ is not normal in $G_n^0(\mathbb{Q}_p)$.
 \subsubsection{The Unipotent Radical}
-Let $u\in{G}_n^0(\mathbb{Q}_p)$ be an $m\times{m}$ unitriangular matrix.
+Let $u\in{G}_n^0(\mathbb{Q}_p)$ be an $d\times{d}$ unitriangular matrix.
 
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
