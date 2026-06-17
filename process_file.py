@@ -23,8 +23,8 @@ list_const_coeffs: list[str] = ["A"]
 str_pt_product_1: str = "p^{8.v_1+11.v_2+11.v_3+7.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
 str_pt_product_4: str = "p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}"
 
-#str_pt_product_1 = "p^{4.v_1+7.v_2+7.v_3+3.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
-#str_pt_product_4 = "p^{3.v_1+7.v_2+7.v_3+4.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
+str_pt_product_1 = "p^{4.v_1+7.v_2+7.v_3+3.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
+str_pt_product_4 = "p^{3.v_1+7.v_2+7.v_3+4.v_4}*t^{4.v_1+6.v_2+6.v_3+4.v_4}*r^{4.v_1+4.v_2+4.v_3+4.v_4}"
 
 #str_pt_product_1: str = "p^{8.v_1+11.v_2+11.v_3+7.v_4}*t^{5.v_1+7.v_2+7.v_3+5.v_4}"
 #str_pt_product_4: str = "p^{7.v_1+11.v_2+11.v_3+8.v_4}*t^{5.v_1+7.v_2+7.v_3+5.v_4}"
@@ -409,10 +409,10 @@ class ProcessFolder:
 
                 fw_sage_series_sums.write(f"print(f\"{var_h}={{{var_h}}} #### {str_case_indices}\")\n")
 
-                fw_sage_series_sums.write(f"sf_{var_h}=psi({var_h})/{var_h}\n")
-                fw_sage_series_sums.write(f"sf_{var_h}=sf_{var_h}.simplify_full()\n")
+                #fw_sage_series_sums.write(f"sf_{var_h}=psi({var_h})/{var_h}\n")
+                #fw_sage_series_sums.write(f"sf_{var_h}=sf_{var_h}.simplify_full()\n")
 
-                fw_sage_series_sums.write(f"print(f\"sf_{var_h}={{sf_{var_h}}} #### {str_case_indices}\")\n")
+                #fw_sage_series_sums.write(f"print(f\"sf_{var_h}={{sf_{var_h}}} #### {str_case_indices}\")\n")
 
                 #fw_sage_series_sums.write(f"{var_denom_h}={var_h}.denominator()\n")
 
