@@ -117,16 +117,22 @@ We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\en
 
 
 \begin{proposition}
-Let $\varphi_{n-2}$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1,n-2}=(m_{ij})$. Then the only nonzero elements in $M_{1,n-2}$ are 
+Let $\varphi_{n-2}$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1,n-2}=(m_{ij})$. Then the only nonzero elements in $M_{1,n-2}$ are $m_{11}$, $m_{12}$, $m_{22}$, $m_{n-2,1}$, $m_{n-1,1}$ and $m_{n-1,2}$, and in addition $m_{n-1,2}=-m_{11}$.
 \end{proposition}
+$M_{1,n-2}=\begin{bmatrix}
+m_{11}&m_{12}\\
+&m_{22}\\
+\vdots&\vdots\\
+m_{n-2,1}&\\
+m_{n-1,1}&-m_{11}\\
+\end{bmatrix}$
 \begin{proof}
 We have the following constraints\\
-$\varphi_{n-2}([e_1,e_{1+k}])=[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{1+k})]=m_{1+k,2}[e_1,e_{2,n}]$, but $[e_1,e_{1+k}]=0$ for all $2\leq{k}\leq{n-1}$, which implies that $m_{1+k,2}=0$.\\
-$\varphi_{n-2}([e_{n-1-k},e_{n-1}])=[\varphi_{n-2}(e_{n-1-k}),\varphi_{n-2}(e_{n-1})]=m_{n-1-k,1}[e_{1,n-1},e_{n-1}]$, but $[e_{n-1-k},e_{n-1}]=0$ for all $2\leq{k}\leq{n-1}$, which implies that $m_{n-1-k,1}=0$.\\
+$\varphi_{n-2}([e_1,e_{1+k}])=[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{1+k})]=m_{1+k,2}[e_1,e_{2,n}]$, but $[e_1,e_{1+k}]=0$ for all $2\leq{k}\leq{n-3}$, which implies that $m_{1+k,2}=0$.\\
+$\varphi_{n-2}([e_{n-1-k},e_{n-1}])=[\varphi_{n-2}(e_{n-1-k}),\varphi_{n-2}(e_{n-1})]=m_{n-1-k,1}[e_{1,n-1},e_{n-1}]$, but $[e_{n-1-k},e_{n-1}]=0$ for all $2\leq{k}\leq{n-3}$, which implies that $m_{n-1-k,1}=0$.
+From this it is clear that the only elements that are not affected by these constraints are the ones listed above.\\
+Also, since $[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{n-1})]=[e_1,m_{n-1,2}e_{2,n}]+[m_{11}e_{1,n-1}e_{n-1}]=\\=(m_{n-1,2}+m_{11})e_{1,n}=0$, we conclude that $m_{n-1,2}=-m_{11}$.
 \end{proof}
-
-
-
 \begin{proposition}
 Let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$.
 \end{proposition}
