@@ -134,17 +134,16 @@ From this it is clear that the only elements that are not affected by these cons
 Also, since $[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{n-1})]=[e_1,m_{n-1,2}e_{2,n}]+[m_{11}e_{1,n-1}e_{n-1}]=\\=(m_{n-1,2}+m_{11})e_{1,n}=0$, we conclude that $m_{n-1,2}=-m_{11}$.
 \end{proof}
 \begin{proposition}
-Let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$.
+For $2\leq{r}\leq{n-2}$, let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$, and in addition $m_{i+r,i+1}=-m_{ii}$.
 \end{proposition}
 \begin{proof}
-We show explicitly for $n=4$.\\
-For $i\in\{0,1\}$ denote\\
-\begin{flalign*}
-&\varphi_r(e_i)&=&a_ie_i+m_{i,1}e_{13}+m_{i,2}e_{24}+Z(\mathcal{L})\\
-&\varphi_r(e_{i+2})&=&a_{i+2}e_{i+2}+m_{i+2,1}e_{13}+m_{i+2,2}e_{24}+Z(\mathcal{L}),
-\end{flalign*}
-where $a_i,a_{i+2}\in\mathbb{Q}_p$\\
-But $[\varphi_r(e_i),\varphi_r(e_{i+1})]=0$, thus $(a_ie_i)$.
+We show this for $n=5$ and $r=n-3=2$. Denote $M_{1,n-2}=(q_{ij})$.\\
+Consider\\
+$[\varphi_2(e_i),\varphi_2(e_{i+2})]=[e_i+m_{i,1}e_{13}+m_{i,2}e_{24}+m_{i,3}e_{35}+q_{i,1}e_{14}+q_{i,2}e_{25},
+e_{i+2}+m_{i+2,1}e_{13}+m_{i+2,2}e_{24}+m_{i+2,3}e_{35}+q_{i+2,1}e_{14}+q_{i+2,2}e_{25}]=0$.\\
+We observe that\\
+$[e_i,q_{i+r,2}e_{25}]+[m_{i,1}e_{13},m_{i+r,3}e_{35}]-[m_{i,3}e_{35},m_{i+r,1}e_{13}]+[q_{11}e_{14},e_{i+r}]=0$
+But if $i=1$ then $q_{11}[e_{14},e_3]=0$ and $q_{32}[e_1,e_{25}]=0$, which implies that $m_{11}m_{33}-m_{13}m_31$
 \end{proof}
 \begin{proposition}
 Let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then $m_{i+r,i+1}=-m_{ii}$.
