@@ -103,8 +103,8 @@ The group of diagonal $\mathcal{L}$-automorphisms has a basic decomposition $G_n
 This is an immediate result, because $N_n(\mathbb{Q}_p)\cap{H}_n(\mathbb{Q}_p)=\{I_d\}$.
 \subsection{Full Decomposition of $\mathcal{L}$-automorphisms}
 \subsubsection{The Automorphism $\varphi_r$}
-Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $d\times{d}$ matrices with $M_{i,i}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1,j}=0$ for all $j<r$.
-\[N_r=(a_{ij}):=\begin{bmatrix}
+Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $d\times{d}$ matrices with $M_{ii}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1j}=0$ for all $j<r$.
+\[\varphi_r=(a_{ij}):=\begin{bmatrix}
     I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
      & I_{n-2} &  & & \\
      & & \ddots &  & \\
@@ -115,9 +115,12 @@ We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\en
     c_{1m}&c_{2m}&\dots&c_{n-1,m}
 \end{bmatrix}^T$ where $c_{im}=a_{im}+b_{im}$.
 
+%%
+% The structure of \varphi_{n-2}
+%%
 
 \begin{proposition}
-Let $\varphi_{n-2}$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1,n-2}=(m_{ij})$. Then the only nonzero elements in $M_{1,n-2}$ are $m_{11}$, $m_{12}$, $m_{22}$, $m_{n-2,1}$, $m_{n-1,1}$ and $m_{n-1,2}$, and in addition $m_{n-1,2}=-m_{11}$.
+Let $r=n-2$, and denote the $(1,n-2)$ block of $\varphi_{n-2}$ by $M_{1,n-2}=(m_{ij})$. Then the only nonzero elements in $M_{1,n-2}$ are $m_{11}$, $m_{12}$, $m_{22}$, $m_{n-2,1}$, $m_{n-1,1}$ and $m_{n-1,2}$, and in addition $m_{n-1,2}=-m_{11}$.
 \end{proposition}
 $M_{1,n-2}=\begin{bmatrix}
 m_{11}&m_{12}\\
@@ -133,17 +136,20 @@ $\varphi_{n-2}([e_{n-1-k},e_{n-1}])=[\varphi_{n-2}(e_{n-1-k}),\varphi_{n-2}(e_{n
 From this it is clear that the only elements that are not affected by these constraints are the ones listed above.\\
 Also, since $[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{n-1})]=[e_1,m_{n-1,2}e_{2,n}]+[m_{11}e_{1,n-1}e_{n-1}]=\\=(m_{n-1,2}+m_{11})e_{1,n}=0$, we conclude that $m_{n-1,2}=-m_{11}$.
 \end{proof}
+
+%%
+% The structure of \varphi_r for r < n-2
+%%
+
 \begin{proposition}
-For $2\leq{r}\leq{n-2}$, let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$, and in addition $m_{i+r,i+1}=-m_{ii}$.
+For $2\leq{r}<n-2$, let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$, and in addition $m_{i+r,i+1}=-m_{ii}$.
 \end{proposition}
 \begin{proof}
-We show this for $n=5$ and $r=n-3=2$. Denote $M_{1,n-2}=(q_{ij})$.\\
-Consider\\
-$[\varphi_2(e_i),\varphi_2(e_{i+2})]=[e_i+m_{i,1}e_{13}+m_{i,2}e_{24}+m_{i,3}e_{35}+q_{i,1}e_{14}+q_{i,2}e_{25},
-e_{i+2}+m_{i+2,1}e_{13}+m_{i+2,2}e_{24}+m_{i+2,3}e_{35}+q_{i+2,1}e_{14}+q_{i+2,2}e_{25}]=0$.\\
-We observe that\\
-$[e_i,q_{i+r,2}e_{25}]+[m_{i,1}e_{13},m_{i+r,3}e_{35}]-[m_{i,3}e_{35},m_{i+r,1}e_{13}]+[q_{11}e_{14},e_{i+r}]=0$
-But if $i=1$ then $q_{11}[e_{14},e_3]=0$ and $q_{32}[e_1,e_{25}]=0$, which implies that $m_{11}m_{33}-m_{13}m_31$
+We show this in the same way as for $r=n-2$. We need to show also that $m_{1,n-r}=0$ and $m_{n-1,1}=0$, unlike $\varphi_{n-2}$.\\
+We observe that 
+
+The product $[\varphi_r(e_1),\varphi_r(e_{n-1})]$ has the summand $m_{12}[e_{2,2+r},e_{2+r}]=m_{12}e_{2,r+3}$, since $\varphi_r$ has that every $a_{ij}e_{ij}=0$, where $1<j-i<r$. But $[\varphi_r(e_1),\varphi_r(e_{n-1})]=0$, which implies that $m_{12}=0$.\\
+Same applies for $[\varphi_r(e_{n-1}),\varphi_r(e_{n-r-2})]=m_{n-1,1}[e_{1,1+r},e_{1+r}]=0$.
 \end{proof}
 \begin{proposition}
 Let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then $m_{i+r,i+1}=-m_{ii}$.
