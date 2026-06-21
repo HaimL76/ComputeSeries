@@ -144,27 +144,25 @@ Also, since $[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{n-1})]=[e_1,m_{n-1,2}e_{2,n}]+
 \begin{proposition}
 For $2\leq{r}<n-2$, let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$, and in addition $m_{i+r,i+1}=-m_{ii}$.
 \end{proposition}
+$M_{1r}=\begin{bmatrix}
+m_{11}&&&\\
+&m_{22}&&\\
+&&\ddots&\\
+&&&m_{n-r,n-r}\\
+\vdots&\vdots&\vdots\\
+m_{1+r,1}&&&\\
+&m_{2+r,2}&&\\
+&&\ddots&\\
+&&&m_{n-1,n-r}\\
+\end{bmatrix}$
 \begin{proof}
-We show this in the same way as for $r=n-2$. We need to show also that $m_{1,n-r}=0$ and $m_{n-1,1}=0$, unlike $\varphi_{n-2}$.\\
-We observe that 
+We show this in the same way as for $r=n-2$. We need to show also that $m_{12}=0$ and $m_{}$, unlike $\varphi_{n-2}$.\\
+The product $[\varphi_r(e_1),\varphi_r(e_{n-1})]$ has the summand $m_{12}[e_{2,2+r},e_{2+r}]=m_{12}e_{2,r+3}$, since $\varphi_r$ has that every $a_{ij}e_{ij}=0$, where $1<j-i<r$.\\
+But $[\varphi_r(e_1),\varphi_r(e_{n-1})]=0$, which implies that $m_{12}=0$.\\
+Same applies for $[\varphi_r(e_{n-r-2}),\varphi_r(e_{n-1})]$ and the summand $m_{n-1,n-r-1}[e_{n-r-2},e_{n-r-1,n-1}]$.
+\end{proof}
 
-The product $[\varphi_r(e_1),\varphi_r(e_{n-1})]$ has the summand $m_{12}[e_{2,2+r},e_{2+r}]=m_{12}e_{2,r+3}$, since $\varphi_r$ has that every $a_{ij}e_{ij}=0$, where $1<j-i<r$. But $[\varphi_r(e_1),\varphi_r(e_{n-1})]=0$, which implies that $m_{12}=0$.\\
-Same applies for $[\varphi_r(e_{n-1}),\varphi_r(e_{n-r-2})]=m_{n-1,1}[e_{1,1+r},e_{1+r}]=0$.
-\end{proof}
-\begin{proposition}
-Let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then $m_{i+r,i+1}=-m_{ii}$.
-\end{proposition}
-\begin{proof}
-We show explicitly for $n=5$ and $r=2$.\\
-For $i\in\{1,2\}$ denote
-\begin{flalign*}
-&\varphi_2(e_i)&=&e_i+m_{i,1}e_{13}+m_{i,2}e_{24}+m_{i,3}e_{35}+Z(\mathcal{L}).\\
-&\varphi_r(e_{i+2})&=&e_j+m_{i+2,1}e_{13}+m_{i+2,2}e_{24}+m_{i+2,3}e_{35}+Z(\mathcal{L}).
-\end{flalign*}
-But $[\varphi_r(e_i),\varphi_r(e_{i+2})]=0$, thus\\
-$[e_i,m_{i+2,i+1}e_{i+1,i+3}]+[m_{ii}e_{i,i+2},e_{i+2}]=(m_{i+2,i+1}+m_{ii})e_{i,i+3}=0$, which asserts the assumption.
-\end{proof}
-\subsubsection{The Abelian Automorphisms}
+\subsubsection{The Abelian Components}
 \subsubsubsection{The Automorphism $\varphi_{r,k}(a)$}
 Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}_{n,p}}{\gamma_2}\rightarrow\mathcal{L}_{n,p}$ in the following way:
 \[
