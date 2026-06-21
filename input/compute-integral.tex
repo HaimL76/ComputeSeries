@@ -149,7 +149,7 @@ m_{11}&&&\\
 &m_{22}&&\\
 &&\ddots&\\
 &&&m_{n-r,n-r}\\
-\vdots&\vdots&\vdots\\
+\vdots&\vdots&\vdots&\vdots\\
 m_{1+r,1}&&&\\
 &m_{2+r,2}&&\\
 &&\ddots&\\
@@ -234,17 +234,26 @@ We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\va
 \label{prop:psi.automorphism}
 Let $r<n-2$ and let $\varphi_r\in{N}_r$, and denote $M_{1r}=(m_{ij})$. \\
 Let $\psi\in{G}_n^0(\mathbb{Q}_p)$ be the $\mathcal{L}$-automorphism defined in the following way:
-\[\psi:=\varphi_r\circ\varphi_{r,n-r}(-m_{n-r,n-r})\circ\cdots\circ\varphi_{r,1}(-m_{11})\circ\varphi_{r,0}(-m_{r+1,1}).\]
-Then $\psi\in{N_{r+1}}$.
+\[\psi_r:=\varphi_r\circ\varphi_{r,n-r}(-m_{n-r,n-r})\circ\cdots\circ\varphi_{r,1}(-m_{11})\circ\varphi_{r,0}(-m_{r+1,1}).\]
+Then $\psi_r\in{N_{r+1}}$.
 \end{proposition}
 \begin{proof}
-
-\[\varphi_r=\varphi_{r,0}(m_{r+1,1})\circ\cdots\circ\varphi_{r,1}(m_{11})\circ\varphi_{r,n-r}(m_{n-r,n-r})\]
+Denote the $(1,r)$ block in $\varphi$ by $M_{1r}=(m_{ij})$ and the $(1,r)$ block in $\varphi_{r,k}(m_{k+r,k+1})$ by $B_{1r}=(b_{ij})$, and denote the $(1,r)$ block in the product matrix $C=MB$ by $C_{1r}=(c_{ij})$, then $c_{kk}=m_{kk}b_{kk}=m_{kk}+(-m_{kk})$ and $m_{k+r,k+1}b_{k+r,k+1}=m_{k+r,k+1}+(-m_{k+r,k+1})$, which means that $M_{1r}$ and $B_{1r}$ commute and $B_{1r}$ destroys $m_{kk}$ and $m_{k+r,k+1}$ in $M_{1r}$, but then composing all $\varphi_{r,k}$ for $1\leq{r}\leq{n-r}$ on $\varphi_r$ destroys all the nonzero elements in $M_{1r}$, thus $\psi_r\in{N}_{n+1}$.
 \end{proof}
 \begin{proposition}
-If $r=n-2$, denote by $\psi_{n-2}$ the automorphism \[\psi_{n-2}:=\varphi\circ\varphi'_{n-2}(-a_{12})\circ\varphi''_{n-2}(-a_{n-1,1})\circ\]\[\circ\varphi_{n-2,2}(-a_{n-2,2})\circ\varphi_{n-2,1}(-a_{n-2,1})\circ\varphi_{n-2,0}(-a_{n-2,0}).\]
+Let $r=n-2$, and denote by $\psi_{n-2}$ the $\mathcal{L}$-automorphism \[\psi_{n-2}:=\varphi_{n-2}\circ\varphi'_{n-2}(-a_{12})\circ\varphi''_{n-2}(-a_{n-1,1})\circ\]\[\circ\varphi_{n-2,2}(-a_{n-2,2})\circ\varphi_{n-2,1}(-a_{n-2,1})\circ\varphi_{n-2,0}(-a_{n-2,0}).\]
 Then $\psi_{n-2}\in{N_{n-1}}$.
 \end{proposition}
+Proof is the same as for the previous proposition, with proper adjustments.
+\begin{corollary}
+\label{cor:Nr.decomposition}
+As subgroups of $G_n^0(\mathbb{Q}_p)$, we have the following decompositions:\\
+For all $2\leq{r}<{n-2}$:\\ 
+\[N_{r}=N_{r+1}\rtimes(N_{r,0}\rtimes(\cdots(N_{r,n-r-1}\rtimes{N_{r,n-r}})\cdots)).\]
+For $r=n-2$:\\ 
+\[N_{n-2}=N_{n-1}\rtimes({N_{n-2,0}}\rtimes(N_{n-2,1}\rtimes(N_{n-2,2}\rtimes(N''_{n-2}\rtimes{N'_{n-2}})))).\]
+We conclude that $N_n(\mathbb{Q}_p)=N_2(\mathbb{Q}_p)$ has the decomposition $N=N_3$
+\end{corollary}
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
