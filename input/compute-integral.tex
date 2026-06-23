@@ -164,7 +164,7 @@ Same applies for $[\varphi_r(e_{n-r-2}),\varphi_r(e_{n-1})]$ and the summand $m_
 
 \subsubsection{The Abelian Components}
 \subsubsubsection{The Automorphism $\varphi_{r,k}(a)$}
-Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}_{n,p}}{\gamma_2}\rightarrow\mathcal{L}_{n,p}$ in the following way:
+Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\mathcal{L}$ in the following way:
 \[
     \varphi_{r,k}(a)(e_i)=\begin{cases}
         e_{k,k+1}+a{e_{k,k+r}} & : i=k\\
@@ -173,26 +173,12 @@ Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}_{n,
     \end{cases},
 \]
 for some $2\leq{r}\leq{n-2}$ and $0\leq{k}\leq{n-r}$.\\
-Note that we include also the case $k=0$ where the index $i=k=0$ does not exist, and the case $k=n-r$ where the index $i=k+r=n$ does not exist.
-\begin{proposition}
-$\varphi_{r,k}(a)$ extends to an $\mathcal{L}_{n,p}$-automorphism which operates diagonally on $\gamma_2\mathcal{L}_{n,p}$.
-\end{proposition}
-\begin{proof}
-We need to define the image $\varphi_{r,k}(a)(e_{ij})$ for any element $e_{ij}\in\mathcal{L}_{n,p}$, and show that it is compliant as an automorphism on $\mathcal{L}_{n,p}$. We do this by induction.\\
-For $n=4$ we define the extension explicitly as follows:\\
-(denote $\psi=\varphi_{21}(a)$ for simplicity)\\
-$\psi(e_{13})=[\psi(e_1),\psi(e_2)]=[e_1+ae_{13},e_2]=e_{13}=-[e_2,e_1+ae_{13}]=-[\psi(e_2),\psi(e_1)]$.\\
-$\psi(e_{24})=[\psi(e_2),\psi(e_3)]=[e_2,e_3-ae_{24}]=e_{24}=-[e_3-ae_{24},e_2]=-[\psi(e_3),\psi(e_2)]$.\\
-$\psi(e_{14})=[\psi(e_1),\psi(e_{24})]=[e_1+ae_{13},e_{24}]=e_{14}=-[e_{24},e_1+ae_{13}]=-[\psi(e_3),\psi(e_{13})]$.\\
-But we also have\\
-$\psi(e_{14})=[\psi(e_{13}),\psi(e_3)]=[e_{13},e_3-ae_{24}]=e_{14}=-[e_3-ae_{24},e_{13}]=-[\psi(e_3),\psi(e_{13})]$,\\
-which shows that the extended $\varphi_{21}(a)$ is well-defined and $\varphi_{21}(e_{ij})=e_{ij}$ for $(i,j)\in\{(1,3),(2,4),(1,4)\}$.\\
-For $n>4$, we consider the injection $\iota:\mathcal{L}_{n-1,p}\rightarrow\mathcal{L}_{n,p}$, defined by abuse of notation as the identity $\iota(e_i)=e_i$ which implies that $\varphi_{r,k}(a)(\iota(e_i))=\varphi_{r,k}(a)(e_i)$, for all $1\leq{i}\leq{n-2}$, because $\varphi_{r,k}(a)$ does not depend on $n$, and therefore we have also $\varphi_{r,k}(a)(\iota(e_{i,j}))=\varphi_{r,k}(a)(e_{i,j})$, for all $1\leq{i}<j\leq{n-1}$.\\
-Consider an element $e_{i,n}$, for some $1\leq{i}\leq{n-1}$. We define the image of this element by $\varphi_{r,k}(a)(e_{i,n})=\varphi_{r,k}(a)([e_{i,n-1},e_{n-1}])=[\varphi_{r,k}(a)(e_{i,n-1}),\varphi_{r,k}(a)(e_{n-1})]=\\=[\varphi_{r,k}(a)(\iota(e_{i,n-1})),\varphi_{r,k}(a)(e_{n-1})]=[e_{i,n-1},\varphi_{r,k}(a)(e_{n-1})]=[e_{i,n-1},e_{n-1}]=e_{i,n}=-[e_{n-1},e_{i,n-1}]=-[\varphi_{r,k}(a)(e_{n-1}),\varphi_{r,k}(a)(e_{i,n-1})]$.
-\end{proof}
-Thus, the structure of $\varphi_{r,k}$ as a block matrix $M$ is having the identity matrices $I_{n-1},I_{n-2},\dots,1$ on the main blocks diagonal, and the block $M_{1,r}$ in row $1$ and column $r$ of the blocks of $M$. The index $i$ is the row index of the block, which is also the row index of the whole matrix. The column index is $k$. which means that if we denote the matrix of $\varphi_{r,k}(a)$ by $N_{r,k}(a)$, then it forms as
+Note that we include also the case $k=0$ where the index $i=k=0$ does not exist, and the case $k=n-r$ where the index $i=k+r=n$ does not exist.\\
+We observe that $\varphi_{r,k}(a)$ naturally extends to an $\mathcal{L}$-automorphism by the identity $[\varphi_{r,k}(a)(e_{ij})]:=[\varphi_{r,k}(a)(e_i),[\varphi_{r,k}(a)(e_{i+1}),[\cdots,\varphi_{r,k}(a)(e_{j-1})]\cdots]]$, for every $1\leq{i}<j\leq{n}-1$.
+
+Thus, $\varphi_{r,k}$ has the identity matrices $I_{n-1},I_{n-2},\dots,1$ on its main diagonal, the $(1,r)$ block $M_{1r}=(m_{ij})$ where $m_{kk}$ and $m_{k+r,k+1}$ are the only nonzero elements
 \[N_{r,k}(a):=\begin{bmatrix}
-    I_{n-1} &  & M_{1,r} & & \\
+    I_{n-1} &  & M_{1r} & & \\
      & I_{n-2} &  & & \\
      & & \ddots &  & \\
           & & & I_2 & \\
@@ -266,27 +252,27 @@ Denote the $(1,3)$ block of $\varphi_{3,0}$, $\varphi_{3,1}$, $\varphi_{3,2}$, $
 Denote the $(1,2)$ block of $\varphi_{2,0}$, $\varphi_{2,1}$, $\varphi_{2,2}$ and $\varphi_{2,3}$ by $A_{12}=(a_{ij})$.\\
 We multiply all the factors of $\varphi_{2,k}$:
 \[
-  \varphi_{2,0}(a_{21})\circ\varphi_{2,2}(a_{22})\circ\varphi_{2,1}(a_{11})\circ\varphi_{2,3}(a_{33})=\begin{bmatrix}
+  M_2=\varphi_{2,1}(a_{11})\circ\varphi_{2,2}(a_{22})\circ\varphi_{2,0}(a_{21})\circ\varphi_{2,3}(a_{33})=\]\[\begin{bmatrix}
     1 & 0 & 0 & 0 & a_{11} & 0 & 0 & 0 & 0 & 0 \\
-    & 1 & 0 & 0 & a_{21} & a_{22} & 0 & 0 & 0 & 0 \\
-    & & 1 & 0 & 0 & -a_{11} & a_{33} & 0 & 0 & 0 \\
-    & & & 1 & 0 & 0 & -a_{22} & 0 & 0 & 0 \\
-    & & & & 1 & 0 & 0 & 0 & 0 & 0 \\
-    & & & & & 1 & 0 & 0 & 0 & 0\\
-    & & & & & & 1 & 0 & 0 & 0 \\
-    & & & & & & & 1 & 0 & 0 \\
-    & & & & & & & & 1 & 0 \\
+    & 1 & 0 & 0 & a_{21} & a_{22} & 0 & a_{21}a_{22} & 0 & 0 \\
+    & & 1 & 0 & 0 & -a_{11} & a_{33} & 0 & -a_{11}a_{33} & 0 \\
+    & & & 1 & 0 & 0 & -a_{22} & 0 & a_{11}a_{22} & 0 \\
+    & & & & 1 & 0 & 0 & a_{22} & 0 & 0 \\
+    & & & & & 1 & 0 & a_{21} & a_{33} & 0\\
+    & & & & & & 1 & 0 & -a_{11} & 0 \\
+    & & & & & & & 1 & 0 & a_{33} \\
+    & & & & & & & & 1 & a_{21} \\
     & & & & & & & & & 1 \\
   \end{bmatrix}
 \]
 
 We multiply the following factors of $\varphi_{3,k}$:
 \[
-  N_{2,0}N_{2,2}N_{2,1}N_{2,3}=\begin{bmatrix}
-    1 & 0 & 0 & 0 & a_{11} & 0 & 0 & 0 & 0 & 0 \\
-    & 1 & 0 & 0 & a_{21} & a_{22} & 0 & 0 & 0 & 0 \\
-    & & 1 & 0 & 0 & -a_{11} & a_{33} & 0 & 0 & 0 \\
-    & & & 1 & 0 & 0 & -a_{22} & 0 & 0 & 0 \\
+  \varphi_{3,0}(b_{31})\circ\varphi_{3,2}(b_{22})\circ\varphi''_3(b_{41})\circ\varphi'_3(b_{12})=\begin{bmatrix}
+    1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & b_{12} & 0 \\
+    & 1 & 0 & 0 & 0 & 0 & 0 & 0 & b_{22} & 0 \\
+    & & 1 & 0 & 0 & 0 & 0 & b_{31} & 0 & 0 \\
+    & & & 1 & 0 & 0 & 0 & b_{41} & -b_{11} & 0 \\
     & & & & 1 & 0 & 0 & 0 & 0 & 0 \\
     & & & & & 1 & 0 & 0 & 0 & 0\\
     & & & & & & 1 & 0 & 0 & 0 \\
