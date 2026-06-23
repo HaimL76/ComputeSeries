@@ -164,7 +164,7 @@ Same applies for $[\varphi_r(e_{n-r-2}),\varphi_r(e_{n-1})]$ and the summand $m_
 
 \subsubsection{The Abelian Components}
 \subsubsubsection{The Automorphism $\varphi_{r,k}(a)$}
-Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\mathcal{L}$ in the following way:
+Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ in the following way:
 \[
     \varphi_{r,k}(a)(e_i)=\begin{cases}
         e_{k,k+1}+a{e_{k,k+r}} & : i=k\\
@@ -174,8 +174,26 @@ Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\g
 \]
 for some $2\leq{r}\leq{n-2}$ and $0\leq{k}\leq{n-r}$.\\
 Note that we include also the case $k=0$ where the index $i=k=0$ does not exist, and the case $k=n-r$ where the index $i=k+r=n$ does not exist.\\
-We observe that $\varphi_{r,k}(a)$ naturally extends to an $\mathcal{L}$-automorphism by the identity $[\varphi_{r,k}(a)(e_{ij})]:=[\varphi_{r,k}(a)(e_i),[\varphi_{r,k}(a)(e_{i+1}),[\cdots,\varphi_{r,k}(a)(e_{j-1})]\cdots]]$, for every $1\leq{i}<j\leq{n}-1$.
-
+\begin{proposition}
+The $\varphi_{r,k}(a)$ extends naturally to an $\mathcal{L}$-automorphism defined inthe following way:
+\[
+    \varphi_{r,k}(a)(e_{ij})=\begin{cases}
+        e_{ij}+a{e_{k,k+r}} & : i=k\\
+        e_{k+r,k+r+1}-a{e_{k+1,k+r+1}} & : i=k+r\\
+        e_{i,i+1} & : i\notin\{k,k+r\}
+    \end{cases},
+\]
+\end{proposition}
+\begin{proof}
+The extension is defined by the identity:\\ $[\varphi_{r,k}(a)(e_{ij})]:=[\varphi_{r,k}(a)(e_i),[\varphi_{r,k}(a)(e_{i+1}),[\cdots,\varphi_{r,k}(a)(e_{j-1})]\cdots]]=\\=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k+ae_{k,k+r},e_{k+1},\dots,e_{k+r}-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_{j-1},e_j]=$
+\begin{flalign*}
+&=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j],
+\end{flalign*}
+for every $1\leq{i}<j\leq{n}-1$.
+\end{proof}
 Thus, $\varphi_{r,k}$ has the identity matrices $I_{n-1},I_{n-2},\dots,1$ on its main diagonal, the $(1,r)$ block $M_{1r}=(m_{ij})$ where $m_{kk}$ and $m_{k+r,k+1}$ are the only nonzero elements
 \[N_{r,k}(a):=\begin{bmatrix}
     I_{n-1} &  & M_{1r} & & \\
