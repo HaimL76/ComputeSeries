@@ -196,16 +196,16 @@ for every $1\leq{i}<j\leq{n}-1$.\\
 But $ae_{k,k+r}$ commutes with $e_{k+1}$, thus $s_2=0$ unless $j-1=k\iff{j=k+1}$. Also in the same way, $-ae_{k+1,k+1+r}$ commutes with $e_{k+r}$, thus $s_3=0$ unless $i=k+r$, and it is readily seen that both conditions are not met together, thus $[\varphi_{r,k}(a)(e_{ij})]$ is either $s_1$, or $s_1+s_2$ or $s_1+s_3$, as defined.
 \end{proof}
 Thus, $\varphi_{r,k}$ has the identity matrices $I_{n-1},I_{n-2},\dots,1$ on its main diagonal, the $(1,r)$ block $M_{1r}=(m_{ij})$ where $m_{kk}$ and $m_{k+r,k+1}$ are the only nonzero elements
-\[N_{r,k}(a):=\begin{bmatrix}
+\[\varphi_{r,k}(a):=\begin{bmatrix}
     I_{n-1} &  & M_{1r} & & \\
-     & I_{n-2} &  & & \\
-     & & \ddots &  & \\
+     & I_{n-2} &  & M_{2,r+1} & \\
+     & & \ddots & & \ddots \\
           & & & I_2 & \\
                & & & & 1\\
 \end{bmatrix},\]
 where
 \[
-M_{1,r}=(m_{ij}):=\begin{bmatrix}
+M_{1r}=(m_{ij}):=\begin{bmatrix}
     & & &\\
     & a & &\\
     & & &\\
@@ -214,13 +214,13 @@ M_{1,r}=(m_{ij}):=\begin{bmatrix}
 \end{bmatrix},
 \]
 that is, $m_{k,k}=a$ and $m_{k+r,k+1}=-a$.
-
+And the lower blocks $M_{2,r+1},M_{3,r+2},\dots,M_{n-2,n-1}$ may have an element with the value $a$ or $-a$, according to the definition of the extended $\mathcal{L}$-automoprhism.
 \begin{proposition}
 Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{Q}_p\}$, then $N_{r,k}<G_n^0(\mathbb{Q}_p)$ and $N_{r,k}\cong\mathbb{Q}_p$.
 \end{proposition}
 \begin{proof}
-Define a map $\psi:\mathbb{Q}_p\rightarrow{N}_{r,k}$ by $\psi(a):=N_{r,k}(a)$ for all $a\in\mathbb{Q}_p$.
-Let $a,b\in\mathbb{Q}_p$, then $\psi(a)\psi(b)=N_{r,k}(a)N_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
+Define a map $\psi:\mathbb{Q}_p\rightarrow{N}_{r,k}$ by $\psi(a):=\varphi_{r,k}(a)$ for all $a\in\mathbb{Q}_p$.
+Let $a,b\in\mathbb{Q}_p$, then $\psi(a)\circ\psi(b)=\varphi_{r,k}(a)\circ\varphi_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\circ\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
 \end{proof}
 
 \subsubsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
@@ -264,14 +264,14 @@ $=N_{n-1}\rtimes({N_{n-2,0}}\rtimes(N_{n-2,1}\rtimes(N_{n-2,2}\rtimes(N''_{n-2}\
 and this decomposition is unique up to the order of the abelian factors, that is, different orders yield different groups of $\mathcal{L}$-automorphisms that are isomorphic to each other.
 \end{corollary}
 \begin{example}
-Let $n=5$, we have the structure of $G_5^0(\mathbb{Q}_p)$ as described in berman
-
+Let $n=5$.
 Denote the $(1,4)$ block of $\varphi_4$ by $C_{14}=(c_{ij})$, and denote $c_{i1}=c_i$ where $c_i\in\mathbb{Q}_p$, for every $i\in\{1,2,3,4\}$.\\
 Denote the $(1,3)$ block of $\varphi_{3,0}$, $\varphi_{3,1}$, $\varphi_{3,2}$, $\varphi'_3$ and $\varphi''_3$ by $B_{13}=(b_{ij})$.\\
 Denote the $(1,2)$ block of $\varphi_{2,0}$, $\varphi_{2,1}$, $\varphi_{2,2}$ and $\varphi_{2,3}$ by $A_{12}=(a_{ij})$.\\
-We multiply all the factors of $\varphi_{2,k}$:
+
+We compose all the factors of $\varphi_{2,k}$ on each other in the following order:
 \[
-  M_2=\varphi_{2,1}(a_{11})\circ\varphi_{2,2}(a_{22})\circ\varphi_{2,0}(a_{21})\circ\varphi_{2,3}(a_{33})=\]\[\begin{bmatrix}
+  \varphi_a=\varphi_{2,1}(a_{11})\circ\varphi_{2,2}(a_{22})\circ\varphi_{2,0}(a_{21})\circ\varphi_{2,3}(a_{33})=\]\[=\begin{bmatrix}
     1 & 0 & 0 & 0 & a_{11} & 0 & 0 & 0 & 0 & 0 \\
     & 1 & 0 & 0 & a_{21} & a_{22} & 0 & a_{21}a_{22} & 0 & 0 \\
     & & 1 & 0 & 0 & -a_{11} & a_{33} & 0 & -a_{11}a_{33} & 0 \\
@@ -285,9 +285,9 @@ We multiply all the factors of $\varphi_{2,k}$:
   \end{bmatrix}
 \]
 
-We multiply the following factors of $\varphi_{3,k}$:
+We compose the following factors of $\varphi_{3,k}$ on each other in the following order:
 \[
-  \varphi_{3,0}(b_{31})\circ\varphi_{3,2}(b_{22})\circ\varphi''_3(b_{41})\circ\varphi'_3(b_{12})=\begin{bmatrix}
+  \varphi_b=\varphi'_3(b_{12})\circ\varphi''_3(b_{41})\circ\varphi_{3,2}(b_{22})\circ\varphi_{3,0}(b_{31})=\]\[=\begin{bmatrix}
     1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & b_{12} & 0 \\
     & 1 & 0 & 0 & 0 & 0 & 0 & 0 & b_{22} & 0 \\
     & & 1 & 0 & 0 & 0 & 0 & b_{31} & 0 & 0 \\
@@ -301,21 +301,28 @@ We multiply the following factors of $\varphi_{3,k}$:
   \end{bmatrix}
 \]
 
-\[
-N_{3,0}N_{3,2}N''_3N'_3N_{2,0}N_{2,2}N_{2,1}N_{2,3}N_{3,1}N_{4}=\]\[
+Now we compose $\varphi_c=\varphi_a\circ\varphi_b$, and we compose:\\
+$M=(m_{ij})=\varphi=\varphi_4\circ\varphi_{3,1}(b_{11})\circ\varphi_c$=\[=
   \begin{bmatrix}
-    1 & 0 & 0 & 0 & a_1^{(2)} & 0 & 0 & a_1^{(3)} & a' & a'a_0^{(2)}+b_{1} \\
-    0 & 1 & 0 & 0 & a_0^{(2)} & a_2^{(2)} & 0 & a_0^{(2)}a_2^{(2)} & a_2^{(3)} & a_2^{(3)}a_0^{(2)}+b_{2} \\
-    0 & 0 & 1 & 0 & 0 & -a_1^{(2)} & a_3^{(2)} & a_0^{(3)} & -a_1^{(2)}a_3^{(2)} & a_0^{(3)}a_3^{(2)}+b_{3} \\
-    0 & 0 & 0 & 1 & 0 & 0 & -a_2^{(2)} & a'' & a_1^{(2)}a_2^{(2)}-a_1^{(3)} & a''a_3^{(2)}+b_{4} \\
-    & & & & 1 & 0 & 0 & a_2^{(2)} & 0 & a_2^{(3)} \\
-    & & & & 0 & 1 & 0 & a_0^{(2)} & a_3^{(2)} & a_0^{(2)}a_3^{(2)}\\
-    & & & & 0 & 0 & 1 & 0 & -a_1^{(2)} & a_0^{(3)} \\
-    & & & & & & & 1 & 0 & a_3^{(2)} \\
-    & & & & & & & 0 & 1 & a_0^{(2)} \\
+    1 & 0 & 0 & 0 & a_{11} & 0 & 0 & b_{11} & b_{12} & b_{12}a_{21}+c_1 \\
+     & 1 & 0 & 0 & a_{21} & a_{22} & 0 & a_{21}a_{22} & b_{22} & b_{22}a_{21}+c_2 \\
+    & & 1 & 0 & 0 & -a_{11} & a_{33} & b_{31} & -a_{11}a_{33} & b_{31}a_{33}+c_3 \\
+    & & & 1 & 0 & 0 & -a_{22} & b_{41} & a_{11}a_{22}-b_{11} & b_{41}a_{33}+c_4 \\
+    & & & & 1 & 0 & 0 & a_{22} & 0 & b_{22} \\
+    & & & & & 1 & 0 & a_{21} & a_{33} & a_{21}a_{33}\\
+    & & & & & & 1 & 0 & -a_{11} & b_{31} \\
+    & & & & & & & 1 & 0 & a_{33} \\
+    & & & & & & & & 1 & a_{21} \\
     & & & & & & & & & 1 \\
-  \end{bmatrix}
+  \end{bmatrix}.
 \]
+But $c_1,c_2,c_3,c_4$ are arbitrary elements in $\mathbb{Q}_p$, thus $m_{i,10}$ where $i\in\{1,2,3,4\}$ are not constrained, hence we can transition them for simplicity:\\
+$b_{12}a_{21}+c_1\rightarrow{c_1}$\\
+$b_{22}a_{21}+c_2\rightarrow{c_2}$\\
+$b_{31}a_{33}+c_3\rightarrow{c_3}$\\
+$b_{41}a_{33}+c_4\rightarrow{c_4}$,\\
+which yields the same form of matrix for $N_n(\mathbb{Q}_p$ computed by Berman 3.3.\\
+Indeed, we chose this particular order of composition to achieve this particular form, while choosing a different order would yield an isomorphic group, as mentioned above.
 \end{example}
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
