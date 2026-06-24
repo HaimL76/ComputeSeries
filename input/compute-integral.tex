@@ -175,12 +175,12 @@ Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\g
 for some $2\leq{r}\leq{n-2}$ and $0\leq{k}\leq{n-r}$.\\
 Note that we include also the case $k=0$ where the index $i=k=0$ does not exist, and the case $k=n-r$ where the index $i=k+r=n$ does not exist.\\
 \begin{proposition}
-The $\varphi_{r,k}(a)$ extends naturally to an $\mathcal{L}$-automorphism defined inthe following way:
+The $\varphi_{r,k}(a)$ extends naturally to an $\mathcal{L}$-automorphism defined in the following way:
 \[
     \varphi_{r,k}(a)(e_{ij})=\begin{cases}
-        e_{ij}+a{e_{k,k+r}} & : i=k\\
-        e_{k+r,k+r+1}-a{e_{k+1,k+r+1}} & : i=k+r\\
-        e_{i,i+1} & : i\notin\{k,k+r\}
+        e_{ij}+a{e_{i,k+r}} & : j=k+1\\
+        e_{ij}-a{e_{k+1,j}} & : i=k+r\\
+        e_{ij} & : \text{otherwise}
     \end{cases},
 \]
 \end{proposition}
