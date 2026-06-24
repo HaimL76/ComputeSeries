@@ -185,14 +185,15 @@ The $\varphi_{r,k}(a)$ extends naturally to an $\mathcal{L}$-automorphism define
 \]
 \end{proposition}
 \begin{proof}
-The extension is defined by the identity:\\ $[\varphi_{r,k}(a)(e_{ij})]:=[\varphi_{r,k}(a)(e_i),[\varphi_{r,k}(a)(e_{i+1}),[\cdots,\varphi_{r,k}(a)(e_{j-1})]\cdots]]=\\=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k+ae_{k,k+r},e_{k+1},\dots,e_{k+r}-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_{j-1},e_j]=$
+The suggested extension is compatible with the identity:\\ $[\varphi_{r,k}(a)(e_{ij})]:=[\varphi_{r,k}(a)(e_i),[\varphi_{r,k}(a)(e_{i+1}),[\cdots,\varphi_{r,k}(a)(e_{j-1})]\cdots]]=\\=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k+ae_{k,k+r},e_{k+1},\dots,e_{k+r}-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_{j-1},e_j]=$
 \begin{flalign*}
-&=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&+\\
-&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&+\\
-&+[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&+\\
-&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j],
+&=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&(s_1)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&(s_2)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&(s_3)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&(s_4)&,
 \end{flalign*}
-for every $1\leq{i}<j\leq{n}-1$.
+for every $1\leq{i}<j\leq{n}-1$.\\
+Since $ae_{k,k+r}$ commutes with $e_{k+1}$, thus $s_2=0$ unless $j-1=k\iff{j=k+1}$. Also in the same way, $-ae_{k+1,k+1+r}$ commutes with $e_{k+r}$, thus $s_3=0$ unless $i=k+r$, and it is readily seen that both conditions are not met together, thus $[\varphi_{r,k}(a)(e_{ij})]$ is either $s_1+s_2$ or $s_1+s_3$, as defined.
 \end{proof}
 Thus, $\varphi_{r,k}$ has the identity matrices $I_{n-1},I_{n-2},\dots,1$ on its main diagonal, the $(1,r)$ block $M_{1r}=(m_{ij})$ where $m_{kk}$ and $m_{k+r,k+1}$ are the only nonzero elements
 \[N_{r,k}(a):=\begin{bmatrix}
