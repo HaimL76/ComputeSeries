@@ -331,9 +331,18 @@ Let $n\geq{4}$, then $G_n^0(\mathbb{Z}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)
 This comes naturally from the fact that \\
 $H_n(\mathbb{Z}_p)=\{\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots,\lambda_1\lambda_2\cdots\lambda_{n-1}) : \lambda_1,\lambda_2,\dots,\lambda_{n-1}\in\mathbb{Z}_p^\ast\}$, and $N_n(\mathbb{Z}_p)=N_n(\mathbb{Q}_p)\cap{G}_n(\mathbb{Z}_p)$, both are subgroups of $G_n^0(\mathbb{Z}_p)$ whose intersection is trivial, with the same structure as $N_n(\mathbb{Q}_p)$ and $H_n(\mathbb{Q}_p)$, respectively.
 \begin{corollary}
-The subgroup $N_n(\mathbb{Z}_p)$ has the decomposition $N=\tilde{N}_{n-1}\rtimes({\tilde{N}_{n-2,0}}\rtimes(\tilde{N}_{n-2,1}\rtimes(\tilde{N}_{n-2,2}\rtimes(\tilde{N}''_{n-2}\rtimes{\tilde{N}'_{n-2}}))))\rtimes(\tilde{N}_{n-3,0}\rtimes\cdots\rtimes(\tilde{N}_{3,0}\rtimes\cdots\rtimes(\tilde{N}_{2,0}\rtimes\cdots\rtimes(\tilde{N}_{2,n-3}\rtimes\tilde{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$, where $\tilde{N}_{r,k}=N_{r,k}(\mathbb{Z}_p)=N_{r,k}(\mathbb{Q}_p)\cap{G}_n^0(\mathbb{Z}_p)$, and this decomposition is unique up to the order of the factors.
+The subgroup $N_n(\mathbb{Z}_p)$ has the decomposition $N=\tilde{N}_{n-1}\rtimes({\tilde{N}_{n-2,0}}\rtimes(\tilde{N}_{n-2,1}\rtimes(\tilde{N}_{n-2,2}\rtimes(\tilde{N}''_{n-2}\rtimes{\tilde{N}'_{n-2}}))))\rtimes(\tilde{N}_{n-3,0}\rtimes\cdots\rtimes(\tilde{N}_{3,0}\rtimes\cdots\rtimes(\tilde{N}_{2,0}\rtimes\cdots\rtimes(\tilde{N}_{2,n-3}\rtimes\tilde{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$, where $\tilde{N}_{r}=N_{r}\cap{N(\mathbb{Z}_{p})}$ and $\tilde{N}_{r,k}=\{\varphi_{r,k}(a) : a\in\mathbb{Z}_{p}\}$, and this decomposition is unique up to the order of the factors.
 \end{corollary}
 \end{proof}
+\section{Full Decomposition of the Zeta-Function}
+We aim at computing $\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}$, which is the product of the function $|det\varphi|_p^s$ by the measure of domain of integration.
+\subsubsection{Computation of the Function Under the Integral}
+\begin{proposition}
+Let $n\geq{4}$, and $\varphi\in{G}_n^0(\mathbb{Z}_p)$ for some prime $p$. As seen above, $\varphi$ has the decomposition $\varphi=uh$, where $u\in{N}_n(\mathbb{Z}_p)$ and $h\in{H}_n(\mathbb{Z}_p)$. Then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$, where $\lambda_i$ are the elements that populate the main diagonal of $h$.
+\begin{proof}
+Since $\det{u}=1$, it follows that $\det\varphi=\det{h}$, which is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ in $h$. This is a simple combinatorial formula that can be proved for $n=4$ by counting the number of $\lambda_1$, $\lambda_2$ and $\lambda_3$, which are $3$, $4$ and $3$, respectively. For $n+1$
+\end{proof}
+\end{proposition}
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{K})$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
