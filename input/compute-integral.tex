@@ -53,15 +53,15 @@ $\gamma_i=\gamma_i\mathcal{L}$.\\
 $e_i=e_{i,i+1}$.\\
 \subsection{The General Form of the $\mathcal{L}$-automorphisms}
 \subsubsection{The Matrix Structure}
-Let $\varphi\in\text{Aut}_{\mathbb{Q}_p}(\mathcal{L})$, then $\varphi$ is an $d\times{d}$ matrix $A=(a_{ij})\in{M}_d(\mathbb{Q}_p)$, where the row $\begin{bmatrix}
+Let $\varphi\in\text{Aut}_{\mathbb{K}}(\mathcal{L})$, then $\varphi$ is an $d\times{d}$ matrix $A=(a_{ij})\in{M}_d(\mathbb{K})$, where the row $\begin{bmatrix}
     a_{i,1}&a_{i,2}&\dots&a_{i,d}
 \end{bmatrix}$
 is the image $\varphi(b_i)$ of the $i$th basis element with respect to the natural order $e_1,e_2,\dots,e_{n-1},e_{13},e_{24},\dots,e_{n-2,n},e_{14},\dots,e_{1n}$.\\
 The matrix $A$ is partitioned into $(n-1)\times(n-1)$ blocks, each block $A_{ij}$ is an $(n-i)\times(n-j)$ matrix, forming the map $\varphi_{ij}:\sfrac{\gamma_i}{\gamma_{i+1}}\rightarrow\sfrac{\gamma_j}{\gamma_{j+1}}$.
 
 \subsubsection{The Diagonal of $\varphi$}
-As explained above, we are working with $G_n^0(\mathbb{Q}_p)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
-Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\in\mathbb{Q}_p$, for every $1\leq{i}\leq{n-1}$.
+As explained above, we are working with $G_n^0(\mathbb{K})$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
+Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\in\mathbb{K}$, for every $1\leq{i}\leq{n-1}$.
 \begin{proposition}
 For every $1\leq{i}<j\leq{n}$, $\varphi$ must satisfy $\varphi(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$, where $d=j-i$.
 \end{proposition}
@@ -70,16 +70,16 @@ $\varphi(e_{ij})=\varphi([e_{i},[e_{i+1},[\cdots[e_{j-1},e_j]]]])=[\varphi(e_i),
 \end{proof}
 
 \subsubsection{The Reductive subgroup}
-Let $\varphi\in{G}_n^0(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
+Let $\varphi\in{G}_n^0(\mathbb{K})$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
 and it is readily seen that $h$ itself is an $\mathcal{L}$-automorphism.\\
-Denote by $H(\mathbb{Q}_p):=\{h\in{G}_n^0(\mathbb{Q}_p)\}$ the set of all diagonal $\mathcal{L}$-automorphisms.
+Denote by $H(\mathbb{K}):=\{h\in{G}_n^0(\mathbb{K})\}$ the set of all diagonal $\mathcal{L}$-automorphisms.
 \begin{proposition}
-The set $H(\mathbb{Q}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)$.
+The set $H(\mathbb{K})$ is a subgroup of $G_n^0(\mathbb{K})$.
 \end{proposition}
 \begin{proof}
-Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\in\mathbb{Q}_p$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
+Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\in\mathbb{K}$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
 \end{proof}
-A simple check would show that $H(\mathbb{Q}_p)$ is not normal in $G_n^0(\mathbb{Q}_p)$.
+A simple check would show that $H(\mathbb{K})$ is not normal in $G_n^0(\mathbb{K})$.
 
 \subsection{Basic Decomposition of $\mathcal{L}$-automorphisms}
 \subsubsection{The Unipotent Radical}
@@ -90,20 +90,20 @@ The matrix $u=(u_{ij})$ is unitriangular.
 \begin{proof}
 $h=\mathrm{diag}(a_{11},a_{22},\dots)$, which implies that $h^{-1}=\mathrm{diag}(a_{11}^{-1},a_{22}^{-1},\dots)$, thus $u=h^{-1}a$ has $u_{ii}=a_{ii}^{-1}a_{ii}=1$, for all $1\leq{i}\leq{d}$.
 \end{proof}
-From the construction, it is immediate to assert that every $\varphi\in{G}_n^0(\mathbb{Q}_p)$ has the unique factorization $\varphi=uh$, an we denote the set $N_n(\mathbb{Q}_p):=\{u\in{G}_n^0(\mathbb{Q}_p)\}$, the set of all unitriangular $\mathcal{L}$-automorphisms.
+From the construction, it is immediate to assert that every $\varphi\in{G}_n^0(\mathbb{K})$ has the unique factorization $\varphi=uh$, an we denote the set $N_n(\mathbb{K}):=\{u\in{G}_n^0(\mathbb{K})\}$, the set of all unitriangular $\mathcal{L}$-automorphisms.
 \begin{proposition}
-The set $N_n(\mathbb{Q}_p)$ is a normal subgroup of $G_n^0(\mathbb{Q}_p)$.
+The set $N_n(\mathbb{K})$ is a normal subgroup of $G_n^0(\mathbb{K})$.
 \end{proposition}
 \begin{proof}
-The product of two unitriangular matrices is itself a triangular matrix. Let $w\in{G}_n^0(\mathbb{Q}_p)$ a unitriangular $\mathcal{L}$-automorphism. For any $a\in{G}_n^0$, we have the unique factorization $a=uh$, for some $u\in{N}_n(\mathbb{Q}_p)$ and $h\in{H}_n(\mathbb{Q}_p)$, thus $awa^{-1}=(uh)w(uh)^{-1}=u(hwh^{-1})u^{-1}$, but then $b=hwh^{-1}=(b_{ij})$ has $b_{ii}=h_{ii}\cdot{1}\cdot{h}_{ii}^{-1}=1$, for all $1\leq{i}\leq{d}$, hence $b$ and therefore $ubu^{-1}$ also belong to $N_n(\mathbb{Q}_p)$.
+The product of two unitriangular matrices is itself a triangular matrix. Let $w\in{G}_n^0(\mathbb{K})$ a unitriangular $\mathcal{L}$-automorphism. For any $a\in{G}_n^0$, we have the unique factorization $a=uh$, for some $u\in{N}_n(\mathbb{K})$ and $h\in{H}_n(\mathbb{K})$, thus $awa^{-1}=(uh)w(uh)^{-1}=u(hwh^{-1})u^{-1}$, but then $b=hwh^{-1}=(b_{ij})$ has $b_{ii}=h_{ii}\cdot{1}\cdot{h}_{ii}^{-1}=1$, for all $1\leq{i}\leq{d}$, hence $b$ and therefore $ubu^{-1}$ also belong to $N_n(\mathbb{K})$.
 \end{proof}
 \begin{corollary}
-The group of diagonal $\mathcal{L}$-automorphisms has a basic decomposition $G_n^0(\mathbb{Q}_p)=N_n(\mathbb{Q}_p)\rtimes{H}_n(\mathbb{Q}_p)$.
+The group of diagonal $\mathcal{L}$-automorphisms has a basic decomposition $G_n^0(\mathbb{K})=N_n(\mathbb{K})\rtimes{H}_n(\mathbb{K})$.
 \end{corollary}
-This is an immediate result, because $N_n(\mathbb{Q}_p)\cap{H}_n(\mathbb{Q}_p)=\{I_d\}$.
+This is an immediate result, because $N_n(\mathbb{K})\cap{H}_n(\mathbb{K})=\{I_d\}$.
 \subsection{Full Decomposition of $\mathcal{L}$-automorphisms}
 \subsubsection{The Automorphism $\varphi_r$}
-Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $d\times{d}$ matrices with $M_{ii}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1j}=0$ for all $j<r$.
+Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{K})\rightarrow\text{Aut}_{\mathbb{K}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $d\times{d}$ matrices with $M_{ii}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1j}=0$ for all $j<r$.
 \[\varphi_r=(a_{ij}):=\begin{bmatrix}
     I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
      & I_{n-2} &  & & \\
@@ -111,7 +111,7 @@ Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(\mathbb{Q}_p)\rightar
           & & & I_2 & \\
                & & & & 1\\
 \end{bmatrix}.\]
-We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\end{bmatrix}^T$, then $N_{n-1}\cong\mathbb{Q}_p^{n-1}$. Indeed, the product of any two matrices $A=(a_{ij})$ and $B=(b_{ij})$ in $N_{n-1}$ is a unitriangular matrix with the block $M_{1,n-1}=\begin{bmatrix}
+We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\end{bmatrix}^T$, then $N_{n-1}\cong\mathbb{K}^{n-1}$. Indeed, the product of any two matrices $A=(a_{ij})$ and $B=(b_{ij})$ in $N_{n-1}$ is a unitriangular matrix with the block $M_{1,n-1}=\begin{bmatrix}
     c_{1m}&c_{2m}&\dots&c_{n-1,m}
 \end{bmatrix}^T$ where $c_{im}=a_{im}+b_{im}$.
 
@@ -164,7 +164,7 @@ Same applies for $[\varphi_r(e_{n-r-2}),\varphi_r(e_{n-1})]$ and the summand $m_
 
 \subsubsection{The Abelian Components}
 \subsubsubsection{The Automorphism $\varphi_{r,k}(a)$}
-Let $a\in\mathbb{Q}_p$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ in the following way:
+Let $a\in\mathbb{K}$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ in the following way:
 \[
     \varphi_{r,k}(a)(e_i)=\begin{cases}
         e_{k,k+1}+a{e_{k,k+r}} & : i=k\\
@@ -192,7 +192,7 @@ The suggested extension is compatible with the identity:\\ $[\varphi_{r,k}(a)(e_
 &+[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&(s_3)&+\\
 &+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&(s_4)&,
 \end{flalign*}
-for every $1\leq{i}<j\leq{n}-1$.\\
+for every $1\leq{i}<j\leq{n}-1$, which comes from the fact that for our algebra the brackets operation commutes, that is $[[e_{ij},e_{jk}],e_{kl}]=[e_{ij},[e_{jk},e_{kl}]]$.\\
 But $ae_{k,k+r}$ commutes with $e_{k+1}$, thus $s_2=0$ unless $j-1=k\iff{j=k+1}$. Also in the same way, $-ae_{k+1,k+1+r}$ commutes with $e_{k+r}$, thus $s_3=0$ unless $i=k+r$, and it is readily seen that both conditions are not met together, thus $[\varphi_{r,k}(a)(e_{ij})]$ is either $s_1$, or $s_1+s_2$ or $s_1+s_3$, as defined.
 \end{proof}
 Thus, $\varphi_{r,k}$ has the identity matrices $I_{n-1},I_{n-2},\dots,1$ on its main diagonal, the $(1,r)$ block $M_{1r}=(m_{ij})$ where $m_{kk}$ and $m_{k+r,k+1}$ are the only nonzero elements
@@ -216,15 +216,15 @@ M_{1r}=(m_{ij}):=\begin{bmatrix}
 that is, $m_{k,k}=a$ and $m_{k+r,k+1}=-a$.
 And the lower blocks $M_{2,r+1},M_{3,r+2},\dots,M_{n-2,n-1}$ may have an element with the value $a$ or $-a$, according to the definition of the extended $\mathcal{L}$-automoprhism.
 \begin{proposition}
-Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{Q}_p\}$, then $N_{r,k}<G_n^0(\mathbb{Q}_p)$ and $N_{r,k}\cong\mathbb{Q}_p$.
+Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in\mathbb{K}\}$, then $N_{r,k}<G_n^0(\mathbb{K})$ and $N_{r,k}\cong\mathbb{K}$.
 \end{proposition}
 \begin{proof}
-Define a map $\psi:\mathbb{Q}_p\rightarrow{N}_{r,k}$ by $\psi(a):=\varphi_{r,k}(a)$ for all $a\in\mathbb{Q}_p$.
-Let $a,b\in\mathbb{Q}_p$, then $\psi(a)\circ\psi(b)=\varphi_{r,k}(a)\circ\varphi_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\circ\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
+Define a map $\psi:\mathbb{K}\rightarrow{N}_{r,k}$ by $\psi(a):=\varphi_{r,k}(a)$ for all $a\in\mathbb{K}$.
+Let $a,b\in\mathbb{K}$, then $\psi(a)\circ\psi(b)=\varphi_{r,k}(a)\circ\varphi_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\circ\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
 \end{proof}
 
 \subsubsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
-For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\in\mathbb{Q}_p$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
+For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\in\mathbb{K}$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
 $\varphi_{n-2,k,l}(a)(e_i):=\begin{cases}
 e_k+ae_{l,l+r},&i=k\\
 e_i,&i\neq{k}\\
@@ -233,12 +233,12 @@ e_i,&i\neq{k}\\
 $\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which operates diagonally on $\gamma_2\mathcal{L}_{n,p}$.
 \end{proposition}
 The proof here is similar to the proof for $\varphi_{r,k}(a)$.\\
-We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$, and it is readily seen that $N'_{n-2}:=\{\varphi'_{n-2}(a) : a\in\mathbb{Q}_p\}$ and $N''_{n-2}:=\{\varphi''_{n-2}(a) : a\in\mathbb{Q}_p\}$ are abelian subgroups of $G_n^0(\mathbb{Q}_p)$.
+We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$, and it is readily seen that $N'_{n-2}:=\{\varphi'_{n-2}(a) : a\in\mathbb{K}\}$ and $N''_{n-2}:=\{\varphi''_{n-2}(a) : a\in\mathbb{K}\}$ are abelian subgroups of $G_n^0(\mathbb{K})$.
 \subsubsection{The Full Decomposition}
 \begin{proposition}
 \label{prop:psi.automorphism}
 Let $r<n-2$ and let $\varphi_r\in{N}_r$, and denote $M_{1r}=(m_{ij})$. \\
-Let $\psi\in{G}_n^0(\mathbb{Q}_p)$ be the $\mathcal{L}$-automorphism defined in the following way:
+Let $\psi\in{G}_n^0(\mathbb{K})$ be the $\mathcal{L}$-automorphism defined in the following way:
 \[\psi_r:=\varphi_r\circ\varphi_{r,n-r}(-m_{n-r,n-r})\circ\cdots\circ\varphi_{r,1}(-m_{11})\circ\varphi_{r,0}(-m_{r+1,1}).\]
 Then $\psi_r\in{N_{r+1}}$.
 \end{proposition}
@@ -252,12 +252,12 @@ Then $\psi_{n-2}\in{N_{n-1}}$.
 Proof is the same as for the previous proposition, with proper adjustments.
 \begin{corollary}
 \label{cor:Nr.decomposition}
-As subgroups of $G_n^0(\mathbb{Q}_p)$, we have the following decompositions:\\
+As subgroups of $G_n^0(\mathbb{K})$, we have the following decompositions:\\
 For all $2\leq{r}<{n-2}$:\\ 
 \[N_{r}=N_{r+1}\rtimes(N_{r,0}\rtimes(\cdots\rtimes(N_{r,n-r-1}\rtimes{N_{r,n-r}})\rtimes\cdots)).\]
 For $r=n-2$:\\ 
 \[N_{n-2}=N_{n-1}\rtimes({N_{n-2,0}}\rtimes(N_{n-2,1}\rtimes(N_{n-2,2}\rtimes(N''_{n-2}\rtimes{N'_{n-2}})))).\]
-We conclude that $N_n(\mathbb{Q}_p)=N_2(\mathbb{Q}_p)$ has the decomposition:\\ $N=N_3\rtimes\left(N_{2,0}\rtimes\cdots\rtimes\left(N_{2,n-3}\rtimes{N}_{2,n-2}\right)\rtimes\cdots\right)=$\\
+We conclude that $N_n(\mathbb{K})=N_2(\mathbb{K})$ has the decomposition:\\ $N=N_3\rtimes\left(N_{2,0}\rtimes\cdots\rtimes\left(N_{2,n-3}\rtimes{N}_{2,n-2}\right)\rtimes\cdots\right)=$\\
 $=N_4\rtimes\left(N_{3,0}\rtimes\cdots\rtimes\left(N_{2,0}\rtimes\cdots\rtimes\left(N_{2,n-3}\rtimes{N}_{2,n-2}\right)\rtimes\cdots\right)\rtimes\cdots\right)=$\\
 $\vdots$\\
 $=N_{n-1}\rtimes({N_{n-2,0}}\rtimes(N_{n-2,1}\rtimes(N_{n-2,2}\rtimes(N''_{n-2}\rtimes{N'_{n-2}}))))\rtimes(N_{n-3,0}\rtimes\cdots\rtimes(N_{3,0}\rtimes\cdots\rtimes(N_{2,0}\rtimes\cdots\rtimes(N_{2,n-3}\rtimes{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$,\\
@@ -265,7 +265,7 @@ and this decomposition is unique up to the order of the abelian factors, that is
 \end{corollary}
 \begin{example}
 Let $n=5$.
-Denote the $(1,4)$ block of $\varphi_4$ by $C_{14}=(c_{ij})$, and denote $c_{i1}=c_i$ where $c_i\in\mathbb{Q}_p$, for every $i\in\{1,2,3,4\}$.\\
+Denote the $(1,4)$ block of $\varphi_4$ by $C_{14}=(c_{ij})$, and denote $c_{i1}=c_i$ where $c_i\in\mathbb{K}$, for every $i\in\{1,2,3,4\}$.\\
 Denote the $(1,3)$ block of $\varphi_{3,0}$, $\varphi_{3,1}$, $\varphi_{3,2}$, $\varphi'_3$ and $\varphi''_3$ by $B_{13}=(b_{ij})$.\\
 Denote the $(1,2)$ block of $\varphi_{2,0}$, $\varphi_{2,1}$, $\varphi_{2,2}$ and $\varphi_{2,3}$ by $A_{12}=(a_{ij})$.\\
 
@@ -316,16 +316,26 @@ $M=(m_{ij})=\varphi=\varphi_4\circ\varphi_{3,1}(b_{11})\circ\varphi_c$=\[=
     & & & & & & & & & 1 \\
   \end{bmatrix}.
 \]
-But $c_1,c_2,c_3,c_4$ are arbitrary elements in $\mathbb{Q}_p$, thus $m_{i,10}$ where $i\in\{1,2,3,4\}$ are not constrained, hence we can transition them for simplicity:\\
+But $c_1,c_2,c_3,c_4$ are arbitrary elements in $\mathbb{K}$, thus $m_{i,10}$ where $i\in\{1,2,3,4\}$ are not constrained, hence we can transition them for simplicity:\\
 $b_{12}a_{21}+c_1\rightarrow{c_1}$\\
 $b_{22}a_{21}+c_2\rightarrow{c_2}$\\
 $b_{31}a_{33}+c_3\rightarrow{c_3}$\\
 $b_{41}a_{33}+c_4\rightarrow{c_4}$,\\
-which yields the same form of matrix for $N_n(\mathbb{Q}_p$ computed by Berman 3.3.\\
+which yields the same form of matrix for $N_n(\mathbb{K}$) computed by Berman 3.3.\\
 Indeed, we chose this particular order of composition to achieve this particular form, while choosing a different order would yield an isomorphic group, as mentioned above.
 \end{example}
+\begin{proposition}
+Let $n\geq{4}$, then $G_n^0(\mathbb{Z}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)$, and $G_n^0(\mathbb{Z}_p)=N_n^0(\mathbb{Z}_p)\rtimes{H}_n^0(\mathbb{Z}_p)$.
+\end{proposition}
+\begin{proof}
+This comes naturally from the fact that \\
+$H_n(\mathbb{Z}_p)=\{\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots,\lambda_1\lambda_2\cdots\lambda_{n-1}) : \lambda_1,\lambda_2,\dots,\lambda_{n-1}\in\mathbb{Z}_p^\ast\}$, and $N_n(\mathbb{Z}_p)=N_n(\mathbb{Q}_p)\cap{G}_n(\mathbb{Z}_p)$, both are subgroups of $G_n^0(\mathbb{Z}_p)$ whose intersection is trivial, with the same structure as $N_n(\mathbb{Q}_p)$ and $H_n(\mathbb{Q}_p)$, respectively.
+\begin{corollary}
+The subgroup $N_n(\mathbb{Z}_p)$ has the decomposition $N=\tilde{N}_{n-1}\rtimes({\tilde{N}_{n-2,0}}\rtimes(\tilde{N}_{n-2,1}\rtimes(\tilde{N}_{n-2,2}\rtimes(\tilde{N}''_{n-2}\rtimes{\tilde{N}'_{n-2}}))))\rtimes(\tilde{N}_{n-3,0}\rtimes\cdots\rtimes(\tilde{N}_{3,0}\rtimes\cdots\rtimes(\tilde{N}_{2,0}\rtimes\cdots\rtimes(\tilde{N}_{2,n-3}\rtimes\tilde{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$, where $\tilde{N}_{r,k}=N_{r,k}(\mathbb{Z}_p)=N_{r,k}(\mathbb{Q}_p)\cap{G}_n^0(\mathbb{Z}_p)$, and this decomposition is unique up to the order of the factors.
+\end{corollary}
+\end{proof}
 \section{Computation of the integral}
-We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{Q}_p)$.
+We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(\mathbb{K})$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
 
 We denote by $t=p^{-s}$, where $s$ is the complex parameter of our zeta-function.
@@ -525,7 +535,7 @@ $p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^
 Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Considering the constraint $v_{11}+v_{22}\geq-(v_2+v_3+\delta)$, we check that this is already implied by $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Thus, we integrate by $v_{11}$ under this constraint, where $v_{11}$ depends on $v_1,v_2,v_3,v_4$, to obtain:
 \[\underset{v_{11}\geq-(v_2+\min\{v_1,v_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
 We denote $\beta=\min\{v_1,v_3\}$, $\tilde\delta=\max\{v_1,v_4\}$, $\epsilon=\min\{v_2,v_4\}$ and $\varphi=1-p^{-1}$.\\
-Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(\mathbb{Q}_p)$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depends on $3$ choices between pairs of $\lambda$ elements, namely:
+Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(\mathbb{K})$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depends on $3$ choices between pairs of $\lambda$ elements, namely:
 \begin{enumerate}
     \item $\delta=\min\{v_1,v_4\},\tilde\delta=\max\{v_1,v_4\}$.
     \item $\beta=\min\{v_1,v_3\}$.
