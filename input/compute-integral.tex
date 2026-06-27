@@ -336,9 +336,9 @@ The subgroup $N_n(\mathbb{Z}_p)$ has the decomposition $N=\tilde{N}_{n-1}\rtimes
 \end{proof}
 \section{Full Decomposition of the Zeta-Function}
 We aim at computing $\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}$, which is the product of the function $|det\varphi|_p^s$ by the measure of domain of integration.
-\subsubsection{Computation of the Function Under the Integral}
+\subsection{Computation of the Function Under the Integral}
 \begin{proposition}
-Let $n\geq{4}$, and $\varphi\in{G}_n^0(\mathbb{Z}_p)$ for some prime $p$. As seen above, $\varphi$ has the decomposition $\varphi=uh$, where $u\in{N}_n(\mathbb{Z}_p)$ and $h\in{H}_n(\mathbb{Z}_p)$. Then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$, where $\lambda_i$ are the elements that populate the main diagonal of $h$.
+Let $n\geq{4}$, and $\varphi\in{G}_n^0(\mathbb{Z}_p)$ for some prime $p$. As seen above, $\varphi$ has the decomposition $\varphi=uh$, where $u\in{N}_n(\mathbb{Z}_p)$ and $h\in{H}_n(\mathbb{Z}_p)$. Then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$, where $\lambda_i=h(e_i)$ for $1\leq{i}\leq{n}-1$.
 \begin{proof}
 Since $\det{u}=1$, it follows that $\det\varphi=\det{h}$, which is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ in $h$, which is $\#\lambda_i(n)=i(n-i)$. This is a simple combinatorial formula that can be proved for $n=5$ by counting the number of $\lambda_1$, $\lambda_2$, $\lambda_3$ and $\lambda_4$, which are $4$, $6$, $6$ and $4$, respectively. For $n+1$, we observe that for each length $l$ we add a new product $\lambda_{n-l+1}\cdots\lambda_{n-1}\lambda_n$, thus we add $i$ times each element $\lambda_i$, which aligns with the formula, because $\#\lambda_i(n+1)=i(n+1-i)=i(n-i)+i=\#\lambda_i(n)+i$.
 \end{proof}
