@@ -879,7 +879,1777 @@ $v_2\geq{v}_3+v_4>v_1\geq{v_3}\geq{v}_4$\\
 \]
 
 
+\[\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{titlesec} % For \subsubsubsection
+\usepackage{xfrac} % For \sfrac
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notations}[theorem]{Notations}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{theorem2}{Theorem}[section]
+\newtheorem{proposition2}[theorem2]{Proposition}
+\newtheorem{corollary2}[theorem2]{Corollary}
+\newtheorem{lemma2}[theorem2]{Lemma}
+\newtheorem{notations2}[theorem2]{Notations}
+\newtheorem{definition2}[theorem2]{Definition}
+\newtheorem{example2}[theorem2]{Example}
+\newtheorem{remark2}[theorem2]{Remark}
+% Define \subsubsubsection (4th level heading)
+\setcounter{secnumdepth}{4} % Enable numbering for 4 levels
+\setcounter{tocdepth}{4}    % Include in table of contents if needed
+
+\makeatletter
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\makeatother
+
+\title{ComputeIntegral}
+\author{haiml76 }
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+In all the following we denote, for abbreviation:\\
+$\mathcal{L}=\mathcal{L}_{n,p}$ or $\mathcal{L}_{n,p}\otimes_{\mathbb{Q}_p}\mathcal{K}$, depending on the context.\\
+$L=L_{n,p}$ or $L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}$, depending on the context.\\
+$d=\binom{n}{2}=\dim\mathcal{L}$ or $\dim{L}$, depending on the context.\\
+$\gamma_i=\gamma_i\mathcal{L}$ or $\gamma_iL$, depending on the context.\\
+$e_i=e_{i,i+1}$.\\
+\section{Rigidity of the Algebra}
+Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X) : \{y\in{L} : [y,X]\subseteq{I}\}$.\\
+Denote by $L=\mathcal{L}_{n,p}$ our usual algebra over $K$.\\
+\subsection{The $\mathcal{X}$ criterion}
+Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Kx+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
+Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
+where $a_1,a_2,\dots,a_{n-1}$ are not all zero.\\
+Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)\cap\left(L\setminus\gamma_2L\right)$, that is 
+\[y=b_1e_{12}+b_2e_{23}+\cdots+b_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}b_{i,i+r}e_{i,i+r},\] 
+where $b_1,b_2,\dots,b_{n-1}$ are not all zero, such that $[x,y]\in\gamma_3L$.\\
+But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$. Thus
 \[
+[x,y]=\sum_{i=1}^{n-2}\left(a_ib_{i+1}-a_{i+1}b_i\right)e_{i,i+2}+\gamma_3L
+,\]
+hence $[x,y]\in\gamma_3L\iff{a}_ib_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
+a_i&a_{i+1}\\
+b_i&b_{i+1}
+\end{pmatrix}=0$, for every $1\leq{i}\leq{n-2}$.\\
+Assume $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$.\\
+consider the case where $b_j=0$ for some $1\leq{j}\leq{n-1}$, then\\ $a_{j-1}b_j-a_jb_{j-1}=0\iff{b}_{j-1}=0$, and $a_{j}b_{j+1}-a_{j+1}b_j=0\iff{b}_{j+1}=0$, because $a_{j-1},a_j,a_{j+1}\neq{0}$, which implies that either $b_i\neq{0}$ for every $1\leq{i}\leq{n-1}$ or $y\in\gamma_3L$. Hence we also assume that $b_1,b_2,\dots,b_{n-1}$ are all nonzero elements in $K$. But then\\
+\[a_{i}b_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
+a_i&a_{i+1}\\
+b_i&b_{i+1}
+\end{pmatrix}=0\iff\begin{pmatrix}
+    b_i&b_{i+1}
+\end{pmatrix}=c_i\begin{pmatrix}
+    a_i&a_{i+1}
+\end{pmatrix},\]
+for some nonzero element $c_i\in{K}$. Thus\\ 
+\begin{align*}
+&a_1b_2-a_2b_1=0&\iff&\begin{pmatrix}
+    b_1&b_2
+\end{pmatrix}=c_1\begin{pmatrix}
+    a_1&a_2
+\end{pmatrix}.\\
+&a_2b_3-a_3b_2=0&\iff&\begin{pmatrix}
+    b_2&b_3
+\end{pmatrix}=c_2\begin{pmatrix}
+    a_2&a_3
+\end{pmatrix}.\\
+&\vdots&\vdots\\
+&a_{n-2}b_{n-1}-a_{n-1}b_{n-2}=0&\iff&\begin{pmatrix}
+    b_{n-2}&b_{n-1}
+\end{pmatrix}=c_{n-2}\begin{pmatrix}
+    a_{n-2}&a_{n-1}
+\end{pmatrix},
+\end{align*}
+for nonzero elements $c_1,c_2,\dots,c_{n-2}\in{K}$.\\
+But then $c_{i+1}=\frac{b_{i+2}}{a_{i+2}}=\frac{b_{i+1}}{a_{i+1}}$ and $c_{i}=\frac{b_{i+1}}{a_{i+1}}=\frac{b_i}{a_i}$, for every $1\leq{i}\leq{n-2}$, which implies that $c_1=c_2=\cdots=c_{n-2}=c$ for some nonzero element $c\in{K}$, hence \[y=\sum_{i=1}^{n-1}b_ie_{i,i+1}+\gamma_2L=\sum_{i=1}^{n-1}ca_ie_{i,i+1}+\gamma_2L=c\sum_{i=1}^{n-1}a_ie_{i,i+1}+\gamma_2L=cx+\gamma_2L,\]
+which means that $y\in{K}x+\gamma_2L$ for every $x\in{L}$, because the above is true for every $c\in{K}$.
+But we assumed that $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$, hence every $x=a_1e_{12}+\cdots+a_{n-1}e_{n-1,n}$, where all the $a$ coefficients are nonzero elements in $K$, is in $\mathcal{X}$.\\ 
+Hence, we choose $n-1$ linearly-independent vectors of the form \[x_j=\sum_{i=1}^{n-1}a_{ji}e_{i,i+1}\in\mathcal{X},\]
+where $a_{ji}\neq{0}$ for every $1\leq{i,j}\leq{n-1}$, and thus
+\[e_{i,i+1}=\sum_{j=1}^{n-1}a_{ij}x_j,\]
+for all $1\leq{i}\leq{n-1}$, which shows that $\langle
+{x}_1,x_2,\dots,x_{n-1}\rangle=\langle{e}_{12},e_{23},\dots,e_{n-1,n}\rangle$.\\
+Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for every $j\neq{i}$, then $a_ib_{i+1}-a_{i+1}b_i=-a_{i+1}b_i=0$ and $a_{i-1}b_i-a_ib_{i-1}=a_{i-1}b_i=0$ if and only if $b_i=0$. But then $\frac{b_1}{a_1}=\frac{b_2}{a_2}=\cdots=\frac{b_{i-1}}{a_{i-1}}=c_1$ and $\frac{b_{i+1}}{a_{i+1}}=\frac{b_{i+2}}{a_{i+2}}=\cdots=\frac{b_{n-1}}{a_{n-1}}=c_2$, for $c_1,c_2\in{K}$, hence $y=c_1(a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{i-1,i})+c_2(a_{i+1}e_{i+1,i+2}+a_{i+2}e_{i+2,i+3}+\cdots+a_{n-1}e_{n-1,n})+\gamma_2L\notin{K}x+\gamma_2L\implies{x}\notin\mathcal{X}$, which is an example for an element whose centralizers are not necessarily in $Kx+\gamma_2L$.
+\subsection{The $\mathcal{Y}$ criterion}
+Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in{K}$ not all zero.\\
+But \[[x,y]=0\iff\sum_{k=1}^{r-1}a_{j,j+k}b_{j+k,j+r}-a_{j+r,j+k}b_{j,j+k}=0,\]
+for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
+But every expression of the form $a_{jk}b_{kl}$ vanishes, because every $a_{jk}=0$ where $(j,k)\neq(i,i+1)$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
+Hence, a generic $y\in{C}_L(x)$ has the form
+\[
+y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}e_{j,j+r}+b_{i,i+r}e_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}e_{j,j+r}\right],
+\]
+such that the $b$ coefficients are not all zero.\\
+Let $z=d_1e_{12}+\cdots+d_{2,n}e_{2,n}\in{C}_L(y)$, and denote\\
+\begin{flalign*}
+\varphi_{13}&=(b_1d_2-b_2d_1)e_{13}.\\
+\varphi_{24}&=(b_2d_3-b_3d_2)e_{24}.\\
+\vdots\\
+\varphi_{n-2,n}&=(b_{n-2}d_{n-1}-b_{n-1}d_{n-2})e_{n-2,n}.\\
+\varphi_{14}&=(b_1d_{24}-b_{24}d_1+b_{13}d_3-b_3d_{13})e_{14}.\\
+\varphi_{25}&=(b_2d_{35}-b_{35}d_2+b_{24}d_4-b_4d_{24})e_{25}.\\
+\vdots\\
+\varphi_{n-3,n}&=(b_{n-3}d_{n-2,n}-b_{n-2,n}d_{n-3}+b_{n-3,n-1}d_{n-1}-b_{n-1}d_{n-3,n-1})e_{n-3,n}.\\
+\vdots\\
+\varphi_{1n}&=(b_1d_{2,n}-b_{2,n}d_1+b_{13}d_{3,n}-b_{3,n}d_{13}+\cdots+b_{1,n-1}d_{n-1}-b_{n-1}d_{1,n-1})e_{1n}.\\
+\end{flalign*}
+Hence
+\[[z,y]=\sum_{r=2}^{n-1}\sum_{j=1}^{n-r}\varphi_{j,j+r}=0,\]
+implies that $\varphi_{j,j+r}=0$
+for all $2\leq{r}\leq{n-1}$ and $2\leq{j}\leq{n-r}$.\\
+Let $d_{lh}\in{K}$ for some $2\leq{l}\leq{h-1}$, where $(l,h)\neq(i,i+1)$, then for some $1\leq{k}\leq{h-2}$, we have
+\[\varphi_{kh}=\sum_{r=1}^{h-k-1}\left(b_{k,k+r}d_{k+r,h}-b_{k+r,h}d_{k,k+r}\right)e_{kh},\]
+where $b_{kl}d_{lh}$ is one of the expressions in the sum. But all other expressions $b_{kq}d_{qh}$, where $q\neq{l}$, vanish because $b_{kq}=0$. But this implies that\\ $\varphi_{kh}=0\iff{b}_{kl}d_{lh}=0\iff{d}_{lh}=0$, which means that if $y_{kl}=b_{kl}e_{kl}$ and $z_{kl}=d_1e_{i,i+1}+\cdots+d_{1n}e_{1n}\in{C}_L(y_{kl})$, then $d_{lh}=0$.\\
+We can also show that $d_{lh}e_{lh}$ must vanish in any $z_{hk}\in{C}_L(y_{hk})$ by considering 
+\[\varphi_{lk}=\sum_{r=1}^{k-l-1}\left(b_{l,l+r}d_{l+r,k}-b_{l+r,k}d_{l,l+r}\right)e_{lk},\]
+for some $l+2\leq{k}\leq{n}$, and looking at $b_{hk}d_{lh}$.\\
+For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and every $i+1<l\leq{n}$, then $b_{ki}d_i=0$ or $b_{i+1,l}d_i=0$ does not imply that $d_i=0$, so $d_i\in{K}$ can be any nonzero element such that
+\begin{flalign*}
+[b_{ki}e_{ki},d_ie_{i,i+1}]&=0.\\ [b_{i+1,l}e_{i+1,l},d_ie_{i,i+1}]&=0.\\
+\end{flalign*}
+But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{i+1}\}$, then any $z\in{C}_L(B)$ must have $d_{lh}=0$ for all $1\leq{l}<h\leq{n}$, unless $(l,h)=(i,i+1)$, but then $z=d_ie_{i,i+1}=ca_ie_{i,i+1}=cx$ for some $c=\frac{d_i}{a_i}\in{K}$, and all the computation above is up to the center $Z(L)$, hence $z\in{K}x+Z(L
+)$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that $L$ is rigid.
+\section{The Group of Automorphisms}
+\subsection{The General Form of the $\mathcal{L}$-automorphisms}
+\subsubsection{The Matrix Structure}
+Let $\varphi\in\text{Aut}_{K}(\mathcal{L})$, then $\varphi$ is an $d\times{d}$ matrix $A=(a_{ij})\in{M}_d(K)$, where the row $\begin{bmatrix}
+    a_{i,1}&a_{i,2}&\dots&a_{i,d}
+\end{bmatrix}$
+is the image $\varphi(b_i)$ of the $i$th basis element with respect to the natural order $e_1,e_2,\dots,e_{n-1},e_{13},e_{24},\dots,e_{n-2,n},e_{14},\dots,e_{1n}$.\\
+The matrix $A$ is partitioned into $(n-1)\times(n-1)$ blocks, each block $A_{ij}$ is an $(n-i)\times(n-j)$ matrix, forming the map $\varphi_{ij}:\sfrac{\gamma_i}{\gamma_{i+1}}\rightarrow\sfrac{\gamma_j}{\gamma_{j+1}}$.
+
+\subsubsection{The Diagonal of $\varphi$}
+As explained above, we are working with $G_n^0(K)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
+Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\inK$, for every $1\leq{i}\leq{n-1}$.
+\begin{proposition}
+For every $1\leq{i}<j\leq{n}$, $\varphi$ must satisfy $\varphi(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$, where $d=j-i$.
+\end{proposition}
+\begin{proof}
+$\varphi(e_{ij})=\varphi([e_{i},[e_{i+1},[\cdots[e_{j-1},e_j]]]])=[\varphi(e_i),[\varphi(e_{i+1}),[\cdots,[\varphi(e_{j-1}),\varphi(e_j)]]]]=[\lambda_i{e}_i+\gamma_2\mathcal{L},[\lambda_{i+1}e_{i+1}+\gamma_2\mathcal{L},[\cdots,[\lambda_{j-1}e_{j-1}+\gamma_2\mathcal{L},\lambda_j{e}_j+\gamma_2\mathcal{L}]]]]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$.
+\end{proof}
+
+\subsubsection{The Reductive subgroup}
+Let $\varphi\in{G}_n^0(K)$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
+and it is readily seen that $h$ itself is an $\mathcal{L}$-automorphism.\\
+Denote by $H(K):=\{h\in{G}_n^0(K)\}$ the set of all diagonal $\mathcal{L}$-automorphisms.
+\begin{proposition}
+The set $H(K)$ is a subgroup of $G_n^0(K)$.
+\end{proposition}
+\begin{proof}
+Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\inK$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
+\end{proof}
+A simple check would show that $H(K)$ is not normal in $G_n^0(K)$.
+
+\subsection{Basic Decomposition of $\mathcal{L}$-automorphisms}
+\subsubsection{The Unipotent Radical}
+Let $a$ and $h$ be an arbitrary automorphism and a diagonal automorphism, respectively, and let $u=h^{-1}a$, then $a=uh$.
+\begin{proposition}
+The matrix $u=(u_{ij})$ is unitriangular.
+\end{proposition}
+\begin{proof}
+$h=\mathrm{diag}(a_{11},a_{22},\dots)$, which implies that $h^{-1}=\mathrm{diag}(a_{11}^{-1},a_{22}^{-1},\dots)$, thus $u=h^{-1}a$ has $u_{ii}=a_{ii}^{-1}a_{ii}=1$, for all $1\leq{i}\leq{d}$.
+\end{proof}
+From the construction, it is immediate to assert that every $\varphi\in{G}_n^0(K)$ has the unique factorization $\varphi=uh$, an we denote the set $N_n(K):=\{u\in{G}_n^0(K)\}$, the set of all unitriangular $\mathcal{L}$-automorphisms.
+\begin{proposition}
+The set $N_n(K)$ is a normal subgroup of $G_n^0(K)$.
+\end{proposition}
+\begin{proof}
+The product of two unitriangular matrices is itself a triangular matrix. Let $w\in{G}_n^0(K)$ a unitriangular $\mathcal{L}$-automorphism. For any $a\in{G}_n^0$, we have the unique factorization $a=uh$, for some $u\in{N}_n(K)$ and $h\in{H}_n(K)$, thus $awa^{-1}=(uh)w(uh)^{-1}=u(hwh^{-1})u^{-1}$, but then $b=hwh^{-1}=(b_{ij})$ has $b_{ii}=h_{ii}\cdot{1}\cdot{h}_{ii}^{-1}=1$, for all $1\leq{i}\leq{d}$, hence $b$ and therefore $ubu^{-1}$ also belong to $N_n(K)$.
+\end{proof}
+\begin{corollary}
+The group of diagonal $\mathcal{L}$-automorphisms has a basic decomposition $G_n^0(K)=N_n(K)\rtimes{H}_n(K)$.
+\end{corollary}
+This is an immediate result, because $N_n(K)\cap{H}_n(K)=\{I_d\}$.
+\subsection{Full Decomposition of $\mathcal{L}$-automorphisms}
+\subsubsection{The Automorphism $\varphi_r$}
+Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(K)\rightarrow\text{Aut}_{K}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $d\times{d}$ matrices with $M_{ii}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1j}=0$ for all $j<r$.
+\[\varphi_r=(a_{ij}):=\begin{bmatrix}
+    I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
+     & I_{n-2} &  & & \\
+     & & \ddots &  & \\
+          & & & I_2 & \\
+               & & & & 1\\
+\end{bmatrix}.\]
+We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\end{bmatrix}^T$, then $N_{n-1}\congK^{n-1}$. Indeed, the product of any two matrices $A=(a_{ij})$ and $B=(b_{ij})$ in $N_{n-1}$ is a unitriangular matrix with the block $M_{1,n-1}=\begin{bmatrix}
+    c_{1m}&c_{2m}&\dots&c_{n-1,m}
+\end{bmatrix}^T$ where $c_{im}=a_{im}+b_{im}$.
+
+%%
+% The structure of \varphi_{n-2}
+%%
+\subsubsubsection{The Structure of $\varphi_{n-2}$}
+\begin{proposition}
+Let $r=n-2$, and denote the $(1,n-2)$ block of $\varphi_{n-2}$ by $M_{1,n-2}=(m_{ij})$. Then the only nonzero elements in $M_{1,n-2}$ are $m_{11}$, $m_{12}$, $m_{22}$, $m_{n-2,1}$, $m_{n-1,1}$ and $m_{n-1,2}$, and in addition $m_{n-1,2}=-m_{11}$.
+\end{proposition}
+$M_{1,n-2}=\begin{bmatrix}
+m_{11}&m_{12}\\
+&m_{22}\\
+\vdots&\vdots\\
+m_{n-2,1}&\\
+m_{n-1,1}&-m_{11}\\
+\end{bmatrix}$
+\begin{proof}
+We have the following constraints\\
+$\varphi_{n-2}([e_1,e_{1+k}])=[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{1+k})]=m_{1+k,2}[e_1,e_{2,n}]$, but $[e_1,e_{1+k}]=0$ for all $2\leq{k}\leq{n-3}$, which implies that $m_{1+k,2}=0$.\\
+$\varphi_{n-2}([e_{n-1-k},e_{n-1}])=[\varphi_{n-2}(e_{n-1-k}),\varphi_{n-2}(e_{n-1})]=m_{n-1-k,1}[e_{1,n-1},e_{n-1}]$, but $[e_{n-1-k},e_{n-1}]=0$ for all $2\leq{k}\leq{n-3}$, which implies that $m_{n-1-k,1}=0$.
+From this it is clear that the only elements that are not affected by these constraints are the ones listed above.\\
+Also, since $[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{n-1})]=[e_1,m_{n-1,2}e_{2,n}]+[m_{11}e_{1,n-1}e_{n-1}]=\\=(m_{n-1,2}+m_{11})e_{1,n}=0$, we conclude that $m_{n-1,2}=-m_{11}$.
+\end{proof}
+
+%%
+% The structure of \varphi_r for r < n-2
+%%
+\subsubsubsection{The Structure of $\varphi_r$ for $2\leq{r}<n-2$}
+\begin{proposition}
+For $2\leq{r}<n-2$, let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$, and in addition $m_{i+r,i+1}=-m_{ii}$.
+\end{proposition}
+$M_{1r}=\begin{bmatrix}
+m_{11}&&&\\
+&m_{22}&&\\
+&&\ddots&\\
+&&&m_{n-r,n-r}\\
+\vdots&\vdots&\vdots&\vdots\\
+m_{1+r,1}&&&\\
+&m_{2+r,2}&&\\
+&&\ddots&\\
+&&&m_{n-1,n-r}\\
+\end{bmatrix}$
+\begin{proof}
+We show this in the same way as for $r=n-2$. We need to show also that $m_{12}=0$ and $m_{}$, unlike $\varphi_{n-2}$.\\
+The product $[\varphi_r(e_1),\varphi_r(e_{n-1})]$ has the summand $m_{12}[e_{2,2+r},e_{2+r}]=m_{12}e_{2,r+3}$, since $\varphi_r$ has that every $a_{ij}e_{ij}=0$, where $1<j-i<r$.\\
+But $[\varphi_r(e_1),\varphi_r(e_{n-1})]=0$, which implies that $m_{12}=0$.\\
+Same applies for $[\varphi_r(e_{n-r-2}),\varphi_r(e_{n-1})]$ and the summand $m_{n-1,n-r-1}[e_{n-r-2},e_{n-r-1,n-1}]$.
+\end{proof}
+
+\subsubsection{The Abelian Components}
+\subsubsubsection{The Automorphism $\varphi_{r,k}(a)$}
+Let $a\inK$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ in the following way:
+\[
+    \varphi_{r,k}(a)(e_i)=\begin{cases}
+        e_{k,k+1}+a{e_{k,k+r}} & : i=k\\
+        e_{k+r,k+r+1}-a{e_{k+1,k+r+1}} & : i=k+r\\
+        e_{i,i+1} & : i\notin\{k,k+r\}
+    \end{cases},
+\]
+for some $2\leq{r}\leq{n-2}$ and $0\leq{k}\leq{n-r}$.\\
+Note that we include also the case $k=0$ where the index $i=k=0$ does not exist, and the case $k=n-r$ where the index $i=k+r=n$ does not exist.\\
+\begin{proposition}
+The $\varphi_{r,k}(a)$ extends naturally to an $\mathcal{L}$-automorphism defined in the following way:
+\[
+    \varphi_{r,k}(a)(e_{ij})=\begin{cases}
+        e_{ij}+a{e_{i,k+r}} & : j=k+1\\
+        e_{ij}-a{e_{k+1,j}} & : i=k+r\\
+        e_{ij} & : \text{otherwise}
+    \end{cases},
+\]
+\end{proposition}
+\begin{proof}
+The suggested extension is compatible with the identity:\\ $[\varphi_{r,k}(a)(e_{ij})]:=[\varphi_{r,k}(a)(e_i),[\varphi_{r,k}(a)(e_{i+1}),[\cdots,\varphi_{r,k}(a)(e_{j-1})]\cdots]]=\\=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k+ae_{k,k+r},e_{k+1},\dots,e_{k+r}-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_{j-1},e_j]=$
+\begin{flalign*}
+&=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&(s_1)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&(s_2)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&(s_3)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&(s_4)&,
+\end{flalign*}
+for every $1\leq{i}<j\leq{n}-1$, which comes from the fact that for our algebra the brackets operation commutes, that is $[[e_{ij},e_{jk}],e_{kl}]=[e_{ij},[e_{jk},e_{kl}]]$.\\
+But $ae_{k,k+r}$ commutes with $e_{k+1}$, thus $s_2=0$ unless $j-1=k\iff{j=k+1}$. Also in the same way, $-ae_{k+1,k+1+r}$ commutes with $e_{k+r}$, thus $s_3=0$ unless $i=k+r$, and it is readily seen that both conditions are not met together, thus $[\varphi_{r,k}(a)(e_{ij})]$ is either $s_1$, or $s_1+s_2$ or $s_1+s_3$, as defined.
+\end{proof}
+Thus, $\varphi_{r,k}$ has the identity matrices $I_{n-1},I_{n-2},\dots,1$ on its main diagonal, the $(1,r)$ block $M_{1r}=(m_{ij})$ where $m_{kk}$ and $m_{k+r,k+1}$ are the only nonzero elements
+\[\varphi_{r,k}(a):=\begin{bmatrix}
+    I_{n-1} &  & M_{1r} & & \\
+     & I_{n-2} &  & M_{2,r+1} & \\
+     & & \ddots & & \ddots \\
+          & & & I_2 & \\
+               & & & & 1\\
+\end{bmatrix},\]
+where
+\[
+M_{1r}=(m_{ij}):=\begin{bmatrix}
+    & & &\\
+    & a & &\\
+    & & &\\
+    & & -a &\\
+    & & &\\
+\end{bmatrix},
+\]
+that is, $m_{k,k}=a$ and $m_{k+r,k+1}=-a$.
+And the lower blocks $M_{2,r+1},M_{3,r+2},\dots,M_{n-2,n-1}$ may have an element with the value $a$ or $-a$, according to the definition of the extended $\mathcal{L}$-automoprhism.
+\begin{proposition}
+Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\inK\}$, then $N_{r,k}<G_n^0(K)$ and $N_{r,k}\congK$.
+\end{proposition}
+\begin{proof}
+Define a map $\psi:K\rightarrow{N}_{r,k}$ by $\psi(a):=\varphi_{r,k}(a)$ for all $a\inK$.
+Let $a,b\inK$, then $\psi(a)\circ\psi(b)=\varphi_{r,k}(a)\circ\varphi_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\circ\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
+\end{proof}
+
+\subsubsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
+For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\inK$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
+$\varphi_{n-2,k,l}(a)(e_i):=\begin{cases}
+e_k+ae_{l,l+r},&i=k\\
+e_i,&i\neq{k}\\
+\end{cases}$
+\begin{proposition}
+$\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which operates diagonally on $\gamma_2\mathcal{L}_{n,p}$.
+\end{proposition}
+The proof here is similar to the proof for $\varphi_{r,k}(a)$.\\
+We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$, and it is readily seen that $N'_{n-2}:=\{\varphi'_{n-2}(a) : a\inK\}$ and $N''_{n-2}:=\{\varphi''_{n-2}(a) : a\inK\}$ are abelian subgroups of $G_n^0(K)$.
+\subsubsection{The Full Decomposition}
+\begin{proposition}
+\label{prop:psi.automorphism}
+Let $r<n-2$ and let $\varphi_r\in{N}_r$, and denote $M_{1r}=(m_{ij})$. \\
+Let $\psi\in{G}_n^0(K)$ be the $\mathcal{L}$-automorphism defined in the following way:
+\[\psi_r:=\varphi_r\circ\varphi_{r,n-r}(-m_{n-r,n-r})\circ\cdots\circ\varphi_{r,1}(-m_{11})\circ\varphi_{r,0}(-m_{r+1,1}).\]
+Then $\psi_r\in{N_{r+1}}$.
+\end{proposition}
+\begin{proof}
+Denote the $(1,r)$ block in $\varphi$ by $M_{1r}=(m_{ij})$ and the $(1,r)$ block in $\varphi_{r,k}(m_{k+r,k+1})$ by $B_{1r}=(b_{ij})$, and denote the $(1,r)$ block in the product matrix $C=MB$ by $C_{1r}=(c_{ij})$, then $c_{kk}=m_{kk}b_{kk}=m_{kk}+(-m_{kk})$ and $m_{k+r,k+1}b_{k+r,k+1}=m_{k+r,k+1}+(-m_{k+r,k+1})$, which means that $M_{1r}$ and $B_{1r}$ commute and $B_{1r}$ destroys $m_{kk}$ and $m_{k+r,k+1}$ in $M_{1r}$, but then composing all $\varphi_{r,k}$ for $1\leq{r}\leq{n-r}$ on $\varphi_r$ destroys all the nonzero elements in $M_{1r}$, thus $\psi_r\in{N}_{n+1}$.
+\end{proof}
+\begin{proposition}
+Let $r=n-2$, and denote by $\psi_{n-2}$ the $\mathcal{L}$-automorphism \[\psi_{n-2}:=\varphi_{n-2}\circ\varphi'_{n-2}(-a_{12})\circ\varphi''_{n-2}(-a_{n-1,1})\circ\]\[\circ\varphi_{n-2,2}(-a_{n-2,2})\circ\varphi_{n-2,1}(-a_{n-2,1})\circ\varphi_{n-2,0}(-a_{n-2,0}).\]
+Then $\psi_{n-2}\in{N_{n-1}}$.
+\end{proposition}
+Proof is the same as for the previous proposition, with proper adjustments.
+\begin{corollary}
+\label{cor:Nr.decomposition}
+As subgroups of $G_n^0(K)$, we have the following decompositions:\\
+For all $2\leq{r}<{n-2}$:\\ 
+\[N_{r}=N_{r+1}\rtimes(N_{r,0}\rtimes(\cdots\rtimes(N_{r,n-r-1}\rtimes{N_{r,n-r}})\rtimes\cdots)).\]
+For $r=n-2$:\\ 
+\[N_{n-2}=N_{n-1}\rtimes({N_{n-2,0}}\rtimes(N_{n-2,1}\rtimes(N_{n-2,2}\rtimes(N''_{n-2}\rtimes{N'_{n-2}})))).\]
+We conclude that $N_n(K)=N_2(K)$ has the decomposition:\\ $N=N_3\rtimes\left(N_{2,0}\rtimes\cdots\rtimes\left(N_{2,n-3}\rtimes{N}_{2,n-2}\right)\rtimes\cdots\right)=$\\
+$=N_4\rtimes\left(N_{3,0}\rtimes\cdots\rtimes\left(N_{2,0}\rtimes\cdots\rtimes\left(N_{2,n-3}\rtimes{N}_{2,n-2}\right)\rtimes\cdots\right)\rtimes\cdots\right)=$\\
+$\vdots$\\
+$=N_{n-1}\rtimes({N_{n-2,0}}\rtimes(N_{n-2,1}\rtimes(N_{n-2,2}\rtimes(N''_{n-2}\rtimes{N'_{n-2}}))))\rtimes(N_{n-3,0}\rtimes\cdots\rtimes(N_{3,0}\rtimes\cdots\rtimes(N_{2,0}\rtimes\cdots\rtimes(N_{2,n-3}\rtimes{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$,\\
+and this decomposition is unique up to the order of the abelian factors, that is, different orders yield different groups of $\mathcal{L}$-automorphisms that are isomorphic to each other.
+\end{corollary}
+\begin{example}
+Let $n=5$.
+Denote the $(1,4)$ block of $\varphi_4$ by $C_{14}=(c_{ij})$, and denote $c_{i1}=c_i$ where $c_i\inK$, for every $i\in\{1,2,3,4\}$.\\
+Denote the $(1,3)$ block of $\varphi_{3,0}$, $\varphi_{3,1}$, $\varphi_{3,2}$, $\varphi'_3$ and $\varphi''_3$ by $B_{13}=(b_{ij})$.\\
+Denote the $(1,2)$ block of $\varphi_{2,0}$, $\varphi_{2,1}$, $\varphi_{2,2}$ and $\varphi_{2,3}$ by $A_{12}=(a_{ij})$.\\
+
+We compose all the factors of $\varphi_{2,k}$ on each other in the following order:
+\[
+  \varphi_a=\varphi_{2,1}(a_{11})\circ\varphi_{2,2}(a_{22})\circ\varphi_{2,0}(a_{21})\circ\varphi_{2,3}(a_{33})=\]\[=\begin{bmatrix}
+    1 & 0 & 0 & 0 & a_{11} & 0 & 0 & 0 & 0 & 0 \\
+    & 1 & 0 & 0 & a_{21} & a_{22} & 0 & a_{21}a_{22} & 0 & 0 \\
+    & & 1 & 0 & 0 & -a_{11} & a_{33} & 0 & -a_{11}a_{33} & 0 \\
+    & & & 1 & 0 & 0 & -a_{22} & 0 & a_{11}a_{22} & 0 \\
+    & & & & 1 & 0 & 0 & a_{22} & 0 & 0 \\
+    & & & & & 1 & 0 & a_{21} & a_{33} & 0\\
+    & & & & & & 1 & 0 & -a_{11} & 0 \\
+    & & & & & & & 1 & 0 & a_{33} \\
+    & & & & & & & & 1 & a_{21} \\
+    & & & & & & & & & 1 \\
+  \end{bmatrix}
+\]
+
+We compose the following factors of $\varphi_{3,k}$ on each other in the following order:
+\[
+  \varphi_b=\varphi'_3(b_{12})\circ\varphi''_3(b_{41})\circ\varphi_{3,2}(b_{22})\circ\varphi_{3,0}(b_{31})=\]\[=\begin{bmatrix}
+    1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & b_{12} & 0 \\
+    & 1 & 0 & 0 & 0 & 0 & 0 & 0 & b_{22} & 0 \\
+    & & 1 & 0 & 0 & 0 & 0 & b_{31} & 0 & 0 \\
+    & & & 1 & 0 & 0 & 0 & b_{41} & -b_{11} & 0 \\
+    & & & & 1 & 0 & 0 & 0 & 0 & 0 \\
+    & & & & & 1 & 0 & 0 & 0 & 0\\
+    & & & & & & 1 & 0 & 0 & 0 \\
+    & & & & & & & 1 & 0 & 0 \\
+    & & & & & & & & 1 & 0 \\
+    & & & & & & & & & 1 \\
+  \end{bmatrix}
+\]
+
+Now we compose $\varphi_c=\varphi_a\circ\varphi_b$, and we compose:\\
+$M=(m_{ij})=\varphi=\varphi_4\circ\varphi_{3,1}(b_{11})\circ\varphi_c$=\[=
+  \begin{bmatrix}
+    1 & 0 & 0 & 0 & a_{11} & 0 & 0 & b_{11} & b_{12} & b_{12}a_{21}+c_1 \\
+     & 1 & 0 & 0 & a_{21} & a_{22} & 0 & a_{21}a_{22} & b_{22} & b_{22}a_{21}+c_2 \\
+    & & 1 & 0 & 0 & -a_{11} & a_{33} & b_{31} & -a_{11}a_{33} & b_{31}a_{33}+c_3 \\
+    & & & 1 & 0 & 0 & -a_{22} & b_{41} & a_{11}a_{22}-b_{11} & b_{41}a_{33}+c_4 \\
+    & & & & 1 & 0 & 0 & a_{22} & 0 & b_{22} \\
+    & & & & & 1 & 0 & a_{21} & a_{33} & a_{21}a_{33}\\
+    & & & & & & 1 & 0 & -a_{11} & b_{31} \\
+    & & & & & & & 1 & 0 & a_{33} \\
+    & & & & & & & & 1 & a_{21} \\
+    & & & & & & & & & 1 \\
+  \end{bmatrix}.
+\]
+But $c_1,c_2,c_3,c_4$ are arbitrary elements in $K$, thus $m_{i,10}$ where $i\in\{1,2,3,4\}$ are not constrained, hence we can transition them for simplicity:\\
+$b_{12}a_{21}+c_1\rightarrow{c_1}$\\
+$b_{22}a_{21}+c_2\rightarrow{c_2}$\\
+$b_{31}a_{33}+c_3\rightarrow{c_3}$\\
+$b_{41}a_{33}+c_4\rightarrow{c_4}$,\\
+which yields the same form of matrix for $N_n(K$) computed by Berman 3.3.\\
+Indeed, we chose this particular order of composition to achieve this particular form, while choosing a different order would yield an isomorphic group, as mentioned above.
+\end{example}
+\begin{proposition}
+Let $n\geq{4}$, then $G_n^0(\mathbb{Z}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)$, and $G_n^0(\mathbb{Z}_p)=N_n^0(\mathbb{Z}_p)\rtimes{H}_n^0(\mathbb{Z}_p)$.
+\end{proposition}
+\begin{proof}
+This comes naturally from the fact that \\
+$H_n(\mathbb{Z}_p)=\{\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots,\lambda_1\lambda_2\cdots\lambda_{n-1}) : \lambda_1,\lambda_2,\dots,\lambda_{n-1}\in\mathbb{Z}_p^\ast\}$, and $N_n(\mathbb{Z}_p)=N_n(\mathbb{Q}_p)\cap{G}_n(\mathbb{Z}_p)$, both are subgroups of $G_n^0(\mathbb{Z}_p)$ whose intersection is trivial, with the same structure as $N_n(\mathbb{Q}_p)$ and $H_n(\mathbb{Q}_p)$, respectively.
+\begin{corollary}
+The subgroup $N_n(\mathbb{Z}_p)$ has the decomposition $N=\tilde{N}_{n-1}\rtimes({\tilde{N}_{n-2,0}}\rtimes(\tilde{N}_{n-2,1}\rtimes(\tilde{N}_{n-2,2}\rtimes(\tilde{N}''_{n-2}\rtimes{\tilde{N}'_{n-2}}))))\rtimes(\tilde{N}_{n-3,0}\rtimes\cdots\rtimes(\tilde{N}_{3,0}\rtimes\cdots\rtimes(\tilde{N}_{2,0}\rtimes\cdots\rtimes(\tilde{N}_{2,n-3}\rtimes\tilde{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$, where $\tilde{N}_{r}=N_{r}\cap{N(\mathbb{Z}_{p})}$ and $\tilde{N}_{r,k}=\{\varphi_{r,k}(a) : a\in\mathbb{Z}_{p}\}$, and this decomposition is unique up to the order of the factors.
+\end{corollary}
+\end{proof}
+\section{Full Decomposition of the Zeta-Function}
+We aim at computing $\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}$, which is the product of the function $|det\varphi|_p^s$ by the measure of domain of integration.
+\subsection{Computation of the Function Under the Integral}
+\begin{proposition}
+Let $n\geq{4}$, and $\varphi\in{G}_n^0(\mathbb{Z}_p)$ for some prime $p$. As seen above, $\varphi$ has the decomposition $\varphi=uh$, where $u\in{N}_n(\mathbb{Z}_p)$ and $h\in{H}_n(\mathbb{Z}_p)$. Then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$, where $\lambda_i=h_{ii}$ for $1\leq{i}\leq{n}-1$.
+\begin{proof}
+Since $\det{u}=1$, it follows that $\det\varphi=\det{h}$, which is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ in $h$, which is $\#\lambda_i(n)=i(n-i)$. This is a simple combinatorial formula that can be proved for $n=5$ by counting the number of $\lambda_1$, $\lambda_2$, $\lambda_3$ and $\lambda_4$, which are $4$, $6$, $6$ and $4$, respectively. For $n+1$, we observe that for each length $l$ we add a new product $\lambda_{n-l+1}\cdots\lambda_{n-1}\lambda_n$, thus we add $i$ times each element $\lambda_i$, which aligns with the formula, because $\#\lambda_i(n+1)=i(n+1-i)=i(n-i)+i=\#\lambda_i(n)+i$.
+\end{proof}
+\end{proposition}
+\subsection{Full Decomposition of the Domain of Integration}
+By applying Fubini's theorem for semidirect products of topological groups \cite[Proposition 28]{Nachbin}, we have that \[\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}=\displaystyle\int_{H^+(\mathbb{Q}_p)}\left(\displaystyle\int_{N_{h}^+}|\det{uh}|_p^sd\mu_{N(\mathbb{Q}_p)}\right)d\mu_{H(\mathbb{Q}_p)},\]
+where \[H^+(\mathbb{Q}_p):=\{\mathrm{diag}(\lambda_{1},\dots,\lambda_{n-1},\lambda_{1}\lambda_{2},\dots,\lambda_{1}\lambda_{2}\cdots\lambda_{n-2}\lambda_{n-1}) : \lambda_{i}\in\mathbb{Z}_{p}\setminus\{0\}\},\]
+that is, $H^+(\mathbb{Q}_p)$ consists of all $h\in{H(\mathbb{Q}_{p})}$ that appear in the decomposition $\varphi=uh$ for some $\varphi\in{G_{n}^{+}(\mathbb{Q}_{p})}$, and, for a given $h\in{H^{+}(\mathbb{Q}_{p})}$, we set $N_{h}^{+}:=\{u\in{N(\mathbb{Q}_{p}) : uh\in{G_{n}^{+}(\mathbb{Q}_{p})}}\}$. The integrand is constant on $N_{h}^{+}$, so computing the inner integral amounts to finding the measure of $N_{h}^+$, which is complicated, but using the decomposition from Corollary \ref{cor:Nr.decomposition}, we can simplify $N_{h}^{+}$ at the price of replacing a single integral by multiple integrals.\\
+Let $\mathcal{N}_{1},\mathcal{N}_{2},\dots,\mathcal{N}_{m}$, where $m=\binom{n}{2}$, be an enumeration of the subgroups
+\[N_{2,n-2},N_{2,n-3},\dots,N_{2,0},N_{3,n-3},\dots,N_{3,0},\dots\]\[\dots,N_{n-2,2},N_{n-2,1},N_{n-2,0},N'_{n-2},N''_{n-2},N_{n-1}.\]
+Every $\varphi\in{G_{n}^{0}(\mathbb{Q}_{p})}$ can be written uniquely as $\varphi=u_{m}\cdots{u_{1}h}$, where $u_{i}\in{\mathcal{N}_{i}}$. Thus, by Fubini \[
+\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{H^{+}}\displaystyle\int_{\mathcal{N}_{1}^{+}(h)}\displaystyle\int_{\mathcal{N}_{2}^{+}(h,u_{1})}\cdots\displaystyle\int_{\mathcal{N}_{m}^{+}(h,u_{1},\dots,u_{m-1})}|\det{h}|_{p}^{s}d\mu_{H}d\mu_{\mathcal{N}_{1}}\cdots{d\mu_{\mathcal{N}_{m}}},\]
+where each $\mu_{\mathcal{N}_{i}}$ is Haar measure on $\mathcal{N}_{i}(\mathbb{Q}_{p})$ normalized so that\\ $\mu_{\mathcal{N}_{i}}(\mathcal{N}_{i}(\mathbb{Z}_{p}))=1$, and \[\mathcal{N}_{i}^{+}(h,u_{1},\dots,u_{i-1}):=\{u_{i}\in\mathcal{N}_{i} : \exists{u_{i+1},\dots,u_{m}}\,\mathrm{such}\,\mathrm{that}\,u_{m}\cdots{u_{1}}h\in{G_{n}^{+}(\mathbb{Q}_{p})}\}.\]
+\section{Computation of the integral}
+We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(K)$.
+We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
+
+We denote by $t=p^{-s}$, where $s$ is the complex parameter of our zeta-function.
+
+Thus, $\psi=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^s=(|\lambda_1|_p^4|\lambda_2|_p^6|\lambda_3|_p^6|\lambda_4|_p^4)^s=(p^{-v_1})^{4s}(p^{-v_2})^{6s}(p^{-v_3})^{6s}(p^{-v_4})^{4s}=(p^{-s})^{4v_1}(p^{-s})^{6v_2}(p^{-s})^{6v_3}(p^{-s})^{4v_4}=t^{4v_1}t^{6v_2}t^{6v_3}t^{4v_4}$.
+
+Now we need to define our domain of integration, and calculate its Haar measure. Since we are computing a $p$-adic integral, we multiply the function to integrate by the domain measure, the result being our desired integral.\\ 
+\subsection{Computation of constraints on $c_1,c_2,c_3,c_4$}
+We compute the constraints on $c_1,c_2,c_3,c_4$ by considering the following product matrix elements:
+\begin{flalign*}
+m_{1,10}&=c_1\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_1\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_1)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{2,10}&=c_2\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_2\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_2)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{3,10}&=c_3\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_3\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_3)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{4,10}&=c_4\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_4\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_4)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&
+\end{flalign*}
+Hence we obtain the following constraints:
+\[
+v(c_1),v(c_2),v(c_3),v(c_4)\geq-(v_1+v_2+v_3+v_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{v_1+v_2+v_3+v_4}.\]
+Hence we multiply our integral $4$ times by the same measure $p^{v_1+v_2+v_3+v_4}$, to obtain:
+\[
+\int_{\underline\lambda,\underline{a},\underline{b}}\psi{p}^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
+\]
+\subsection{Computation of constraints on the $b$ elements}
+We consider the following product matrix elements:
+\begin{flalign*}
+m_{1,8}&=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}&\\
+m_{1,9}&=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}&\\
+m_{2,9}&=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}&\\
+m_{3,8}&=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3)}&\\
+m_{4,8}&=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_1+v_2+v_3)}&\\
+m_{5,10}&=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_1+v_2+v_3+v_4)}&\\
+m_{7,10}&=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3+v_4)}&\\
+\end{flalign*}
+But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence $m_{5,10}$ is implied by $m_{2,9}$ and $m_{7,10}$ is implied by $m_{3,8}$.
+\subsubsection{Integration by $b_{12},b_{22},b_{31},b_{41}$}
+By the listed constraints we obtain the measures:
+\begin{flalign*}
+\mu(b_{12})&=p^{v_2+v_3+v_4}.&\\
+\mu(b_{22})&=p^{v_2+v_3+v_4}.&\\
+\mu(b_{31})&=p^{v_1+v_2+v_3}.&\\
+\mu(b_{41})&=p^{v_1+v_2+v_3}.&\\
+\end{flalign*}
+Hence we multiply our integral by these measures, to obtain:
+\[
+\int_{\underline\lambda,\underline{a},b_{11}}\psi{p}^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11})=\]\[=\int_{\underline\lambda,\underline{a},b_{11}}\psi{p}^{6v_1+8v_2+8v_3+6v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11}).
+\]
+\subsubsection{Integration by $b_{11}$}
+We observe that $b_{11}$ appears also in the following product matrix element:
+
+$m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_{p}.$
+
+Hence we have:
+\begin{flalign*}
+b_{11}&\in{p^{-(v_1+v_2+v_3)}}&\\
+a_{11}a_{22}-b_{11}&\in{p^{-(v_2+v_3+v_4)}}\implies{b_{11}\in{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}}&
+\end{flalign*}
+Which means that $b_{11}\in{p^{-(v_1+v_2+v_3)}\mathbb{Z}_p}\cap\left(a_{11}a_{22}+p^{-(v_2+v_3+v_4)}\mathbb{Z}_p\right)$.
+
+We compute $\mu\left(p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap\left(a_{11}a_{22}+p^{-(v_2+v_3+v_4)}\mathbb{Z}_p\right)\right)$, 
+
+the Haar measure of the intersection.
+
+Denote:
+
+$a=a_{11}a_{22}$.
+
+$\alpha=v_1+v_2+v_3$.
+
+$\beta=v_2+v_3+v_4$.
+
+We have the following cases:
+\begin{enumerate}
+    \item $\alpha\geq\beta$ and $\alpha\geq-v_p(a)$.
+
+Let $x\in{\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}}$ be some element in the intersection, but if $x\in{a+p^{-\beta}\mathbb{Z}_p}$ then $x=a+b$, where $b\in{p^{-\beta}\mathbb{Z}_p}\iff{v_p(b)\geq{-\beta}}$, but then $v_p(x)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$.
+
+But $\alpha\geq-v_p(a)\iff{v_p(a)\geq-\alpha}\Rightarrow\min\{v_p(a),-\beta\}\geq\min\{-\alpha,-\beta\}$,
+
+and $\alpha\geq\beta\iff-\beta\geq-\alpha\Rightarrow{v_p(x)\geq\min\{-\alpha,-\beta\}=-\alpha}\Rightarrow{x\in{p^{-\alpha}\mathbb{Z}_p}}$.
+
+But all this shows that $\left(a+p^{-\beta}\mathbb{Z}_p\right)\subseteq{p^{-\alpha}\mathbb{Z}_p}$, which means that \\
+$\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=\left(a+p^{-\beta}\mathbb{Z}_p\right)$.
+
+Hence $\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}\right)=\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\right)=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{v_2+v_3+v_4}$.\\
+\item $\alpha\geq\beta$ and $\alpha<-v_p(a)$.
+Let $x=a+b$ be an element in the intersection as before, hence $v_p(x)=v_p(a+b)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$ and $v_p(x)\geq-\alpha$.
+
+But $\alpha<-v_p(a)\iff{v_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $v_p(x)\geq\min\{v_p(a),-\beta\}\geq\min\{v_p(a),-\alpha\}=v_p(a)$. But $v_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $v_p(x)=\min\{v_p(a),-\alpha\}=v_p(a)$.\\
+But all this shows that $x$ cannot be both in $p^{-\alpha}\mathbb{Z}_p$ and in $\left(a+p^{-\beta}\mathbb{Z}_p\right)$, hence $p^{-\alpha}\mathbb{Z}_p\cap\left(a+p^{-\beta}\mathbb{Z}_p\right)=\phi$.
+\end{enumerate}
+The above is symmetrical to $\beta\geq\alpha\iff-\alpha\geq-\beta$, because if $\beta\geq-v_p(a)\iff{v_p(a)}\geq-\beta$, then $v_p(x)\geq\min\{v_p(a),-\beta\}=-\beta$, but $x\in{p}^{-\alpha}\mathbb{Z}_p\iff{v(x)}\geq-\alpha\geq-\beta\implies{p}^{}$.\\
+Thus, we claim that:
+\[\mu(b_{11})=
+\begin{cases}
+p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,v_p(a)\geq-\max\{\alpha,\beta\}. \\
+0,&\text{if}\,\,\,\,v_p(a)<-\max\{\alpha,\beta\}.
+\end{cases}
+\]
+But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence with multiply our integral by $\mu(b_{11})$, to obtain:
+\[
+\int_{\underline\lambda,\underline{a}}\psi{p}^{6v_1+8v_2+8v_3+6v_4}p^{v_2+v_3+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}\psi{p}^{6v_1+9v_2+9v_3+6v_4+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}),
+\]
+with the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
+We denote: $v_{11}=v_p(a_{11})$, $v_{22}=v_p(a_{22})$ and $\delta=\min\{v_1,v_4\}$.
+\subsection{Computation of constraints on the $a$ elements}
+We have the following constraints:
+\begin{flalign*}
+m_{1,5}&=a_{11}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_1\lambda_2)\geq{0}}\implies{v_{11}}\geq-(v_1+v_2)&\\
+m_{2,5}&=a_{21}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{21}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{21})}\geq-(v_1+v_2)&\\
+m_{2,6}&=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_2\lambda_3)\geq{0}}\implies{v_{22}}\geq-(v_2+v_3)&\\
+m_{3,6}&=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_2\lambda_3)\geq{0}}\implies{v_{11}}\geq-(v_2+v_3)&\\
+m_{3,7}&=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)&\\
+m_{4,7}&=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{v_{22}}\geq-(v_3+v_4)&\\
+m_{7,9}&=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_{11}\geq-(v_2+v_3+v_4)&\\
+m_{5,8}&=a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_1\lambda_2\lambda_3)}\geq{0}\implies{v_p}(a_{22})\geq-(v_1+v_2+v_3)&\\
+m_{6,10}&=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4)\\
+m_{2,8}&=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_{22}+v_p(a_{21})}\geq-(v_1+v_2+v_3)&\\
+m_{3,9}&=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_{11}+v_p(a_{33})}\geq-(v_2+v_3+v_4)&\\
+\end{flalign*}
+We notice that the constraint $m_{6,10}$ is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
+\subsubsection{Computation of constraints on $a_{21}$ and $a_{33}$}
+
+\subsubsubsection{Integration by $a_{33}$}
+We integrate by $a_{33}$ considering $a_{11}$ as a constant. We have the following constraints:
+\begin{enumerate}
+    \item $v_p(a_{33})\geq-v_3-v_4$.
+\item $v_p(a_{33})\geq-v_{11}-v_2-v_3-v_4$.
+\end{enumerate}
+But $-v_{11}-v_2-v_3-v_4\geq{-v_3-v_4}\iff{-v_{11}-v_2}\geq{0}\iff{v_{11}\leq-v_2\leq{0}}$.
+
+And $-v_{11}-v_2-v_3-v_4<{-v_3-v_4}\iff{-v_{11}-v_2}<{0}\iff{v_{11}>-v_2}$.
+
+Hence, $v_p(a_{33})\geq-(v_3+v_4)-\min\{0,v_2+v_{11}\}$ and we multiply out integral by $\mu(a_{33})$, to obtain:
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6v_1+9v_2+6v_3+6v_4+\delta}p^{v_3+v_4}p^{\min\{0,v_2+v_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6v_1+9v_2+10v_3+7v_4+\delta}p^{\min\{0,v_2+v_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
+\]
+We denote: $\gamma=\min\{0,v_2+v_{11}\}$.
+\subsubsubsection{Integration by $a_{21}$}
+We integrate by $a_{21}$ considering $a_{22}$ as a constant. We have the following constraints:
+\begin{enumerate}
+\item $v_p(a_{21})\geq-v_1-v_2$.
+    \item $v_p(a_{21})\geq-v_{22}-v_1-v_2-v_3$.
+    \end{enumerate}
+But $-v_{22}-v_1-v_2-v_3\geq{-v_1-v_2}\iff{-v_{22}-v_3}\geq{0}\iff{v_{22}\leq-v_3\leq{0}}$.
+
+And $-v_{22}-v_1-v_2-v_3<{-v_1-v_2}\iff{-v_{22}-v_3}<{0}\iff{v_{22}>-v_3}$.
+
+And hence, $v_p(a_{21})\geq-(v_1+v_2)-\min\{0,v_3+v_{22}\}$ and we multiply our integral by $\mu(a_{21})$, to obtain:
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\psi{p}^{6v_1+9v_2+10v_3+7v_4+\delta}p^{v_1+v_2+\min\{0,v_3+v_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\psi{p}^{7v_1+10v_2+10v_3+7v_4+\delta+\min\{0,v_3+v_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).\]
+We denote: $\beta=\min\{0,v_3+v_{22}\}$.
+\subsubsection{Computation of constraints on $a_{11}$ and $a_{22}$}
+As seen above, we have the constraint 
+$m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p$, which implies after previous computation that \\
+$v_p(a_{11}a_{22}-b_{11})\geq-(v_2+v_3+\min\{v_1,v_4\})$ if \\
+$v_p({a_{11})+v_p(a_{22}})\geq-(v_2+v_3+\max\{v_1,v_4\})\implies$ \\
+$\implies{v_p}(a_{22})\geq-(v_{11}+v_2+v_3+\max\{v_1,v_4\})$.
+
+Hence, to compute the integral we consider $a_{11}$ as constant, and we integrate by $a_{22}$.
+\subsubsubsection{Integration by $a_{22}$}
+The constraints $m_{2,6}$ and $m_{4,7}$ together imply that\\
+$v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-(v_3+\min\{v_2,v_4\})$, and it is readily seen that the constraint $m_{5,8}$ is already implied by the constraint $m_{2,6}$.
+
+hence, we have the following constraints:
+\begin{enumerate}
+    \item $v_{22}\geq-(v_p(v_{11}+v_2+v_3+\max\{v_1,v_4\})$
+    \item $v_{22}\geq-(v_3+\min\{v_2,v_4\})$
+\end{enumerate}
+Hence, $v_{22}\geq-(v_3+\min\{\min\{v_2,v_4\},v_{11}+v_2+\max\{v_1,v_4\}\})=$ \\
+$=-(v_3+\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\})$.
+We denote $\alpha=\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\}$, and we integrate the expression that is dependent on $a_{22}$ found above, i.e., the measure \\
+$\mu(a_{21})=p^{\min\{0,v_3+v_{22}\}}$:
+
+\[\int_{v_{22}\geq-(v_3+\alpha)}p^{\min\{0,v_3+v_{22}\}}.\]
+
+\[
+\beta=\begin{cases}
+    0,&v_3+v_{22}\geq{0}\iff{v_{22}}\geq{-v_3}\iff\alpha\geq{0}\\
+    v_3+v_{22},&v_3+v_{22}<{0}\iff{v_{22}}<{-v_3}\iff\alpha<{0}
+\end{cases}
+\]
+
+Hence $p^{v_3+(-(v_3+\alpha))}=p^{-\alpha}\leq{p}^{\beta}\leq{p}^0=1$.
+
+We compute all the possible values for $p^{\beta}$ and $\mu(a_{22})$:
+
+\[\begin{matrix}
+v_{22}\geq{-v_3}&p^{\beta}=p^{\min\{0,\geq({v_3}-v_3)\}}=p^0=1&\mu(a_{22})=p^{v_3}\\
+v_{22}={-(v_3+1)}&p^{\beta}=p^{\min\{0,v_3-(v_3+1)\}}=p^{-1}&\mu(a_{22})=p^{v_3+1}-p^{v_3}=p^{v_3+1}(1-p^{-1})\\
+v_{22}={-(v_3+2)}&p^{\beta}=p^{\min\{0,v_3-(v_3+2)\}}=p^{-2}&\mu(a_{22})=p^{v_3+2}-p^{v_3}=p^{v_3+2}(1-p^{-1})\\
+\vdots&\vdots&\vdots\\
+v_{22}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(a_{22})=p^{v_3+\alpha}-p^{v_3+\alpha-1}=p^{v_3+\alpha}(1-p^{-1})\\
+\end{matrix}\]
+All this yields the polynomial: \\
+$p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$, hence we multiply our integral by $\mu(a_{22})$, to obtain:
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+10v_3+7v_4+\delta}p^{\gamma}p^{v_3}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
+\subsubsubsection{Integration by $a_{11}$}
+Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Considering the constraint $v_{11}+v_{22}\geq-(v_2+v_3+\delta)$, we check that this is already implied by $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Thus, we integrate by $v_{11}$ under this constraint, where $v_{11}$ depends on $v_1,v_2,v_3,v_4$, to obtain:
+\[\underset{v_{11}\geq-(v_2+\min\{v_1,v_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
+We denote $\beta=\min\{v_1,v_3\}$, $\tilde\delta=\max\{v_1,v_4\}$, $\epsilon=\min\{v_2,v_4\}$ and $\varphi=1-p^{-1}$.\\
+Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(K)$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depends on $3$ choices between pairs of $\lambda$ elements, namely:
+\begin{enumerate}
+    \item $\delta=\min\{v_1,v_4\},\tilde\delta=\max\{v_1,v_4\}$.
+    \item $\beta=\min\{v_1,v_3\}$.
+    \item $\epsilon=\min\{v_2,v_4\}$.
+\end{enumerate}
+Hence we need to break the orthant into $8$ separate cones, created by the $2^3$ different choices for these pairs of elements.
+For each of the $8$ orthants we have $\alpha=
+\begin{cases}
+\epsilon,&\epsilon\leq{v_2+v_{11}+\tilde\delta}\iff{v_{11}}\geq{\epsilon-(v_2+\tilde\delta)}\\
+v_2+v_{11}+\tilde\delta,&\epsilon>{v_2+v_{11}+\tilde\delta}\iff{v_{11}}<{\epsilon-(v_2+\tilde\delta)}\\
+\end{cases}$,
+hence the point $v_{11}=\epsilon-(v_2+\tilde\delta)$ forms a phase transition of $\alpha$ from the fixed value $\epsilon$ into the descending arithmetic sequence $\epsilon-1,\epsilon-2,\dots,v_2-(v_2+\beta)+\tilde\delta=\tilde\delta-\beta$. However, if the $-v_2-\beta>\epsilon-v_2-\tilde\delta\iff-\beta>\epsilon-\tilde\delta\iff\tilde\delta>\epsilon+\beta$, the point of phase transition is out of range. This implies that when both $\tilde\delta\neq\epsilon$ and $\tilde\delta\neq\beta$, we need to break the orthant into two distinct cones, for $\tilde\delta\leq\epsilon+\beta$ and for $\tilde\delta>\epsilon+\beta$. But in case of either $\tilde\delta=\epsilon=v_4$ or $\tilde\delta=\beta=v_1$, then $\tilde\delta\leq\epsilon+\beta$ (because $\tilde\delta,\epsilon,\beta\geq{0}$), hence there is no phase transition for $\alpha$.
+\subsubsubsection{Case 1: $\tilde\delta=v_1,\beta=v_1,\epsilon=v_2$}
+This choice necessarily interprets as $v_3\geq{v_1}\geq{v_4}\geq{v_2}$, but we break the domain of integration into distinct parts, hence we use the convention where
+$\min\{v_i,v_j\}=v_i\iff\begin{cases}
+    v_j>v_i,&j>i\\
+    v_j\geq{v_i},&j<i\\
+\end{cases}$.\\
+Thus, for case $1$ we consider the subdomain where $v_3>v_1\geq{v_4}>v_2$. We observe that $\tilde\delta=\beta$, hence we do not break this subdomain into two cones in the way described above.\\
+We compute $\gamma=\min\{v_{11}+v_2,0\}=\begin{cases}
+    0,&v_{11}\geq-v_2\\
+    v_{11}+v_2<0,&v_{11}<-v_2
+\end{cases}$.\\
+We also compute $\alpha=\min\{\epsilon,v_{11}+v_2+\tilde\delta\}=\begin{cases}
+    v_2,&v_{11}\geq-v_1\\
+    v_2-1,v_2-2,\dots,&-v_1-v_2\leq{v_{11}}<-v_1.
+\end{cases}$.\\
+Also, $p^{7v_1+10v_2+11v_3+7v_4+\delta}=p^{7v_1+10v_2+11v_3+8v_4}$.\\
+We notice that $v_1\geq{v_4}>v_2\implies{v_1}>v_2\iff-v_2>-v_1$, and also that $v_2\geq{0}\iff-v_2\geq-v_2-v_1$, hence we break the integral into three:
+\begin{enumerate}
+    \item $v_{11}\geq-v_2>-v_1$\\
+    $p^{\gamma}=p^{\min\{v_{11}+v_2,0\}}=p^{\min\{\xi,0\}}$, where $\xi\geq{v_2-v_2=0}\implies{p^{\gamma}}=p^0=1$.\\
+    $\alpha=\min\{v_2,v_2+v_{11}+v_1\}=\min\{v_2,\xi\}$, where $\xi\geq{v_2-v_2+v_1=v_1}>v_2\implies\alpha=v_2$.\\
+    $\mu(v_{11})=\mu(p^{-v_2}\mathbb{Z}_p)=p^{-v_2}$.\\
+    Putting all the above together yields the following integral:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(1+v_2\varphi)=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(1+v_2\varphi).\]
+\item $-v_1\leq{v_{11}}\leq-v_2-1$\\
+This means $v_{11}=-(v_2+i)$, where $1\leq{i}\leq{v_1}-v_2$.\\
+$p^{\gamma}=p^{\min\{v_2-(v_2+i),0\}}=p^{\min\{-i,0\}}$, but $i\geq{1}\iff-i\leq-1\implies{p^{\gamma}}=p^{-i}$, where $i$ is in the said range.\\
+$\alpha=\min\{v_2,v_2-(v_2+i)+v_1\}=\min\{v_2,v_1-i\}$, but $i\leq{v_1-v_2}\implies\alpha=\min\{v_2,\xi\}$, where $\xi\geq{v_1}-(v_1-v_2)=v_2\implies\alpha=v_2$.\\
+The measure $\mu(v_{11}=-(v_2+i))=\mu(p^{-(v_2+i)}\mathbb{Z}_p)-\mu(p^{-(v_2+i-1)}\mathbb{Z}_p)=p^{v_2+i}-p^{v_2+i-1}=p^{v_2+i}(1-p^{-1})=p^{v_2+i}\varphi$, hence
+\[p^{\gamma}\mu(v_{11})=\sum_{i=1}^{v_1-v_2}p^{-i}p^{v_2+i}\varphi=\sum_{i=1}^{v_1-v_2}p^{v_2}\varphi=(v_1-v_2)p^{v_2}\varphi.\]
+Thus, we have the following integral:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(v_1-v_2)\varphi(1+v_2\varphi)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(v_1-v_2)(\varphi+v_2\varphi^2).\]
+\item $-v_1-v_2\leq{v_{11}}\leq{-v_1-1}$\\
+This means $v_{11}=-(v_1+i)$, where $1\leq{i}\leq{v_2}$.\\
+$v_1>v_2\iff{v_2-v_1<0}$ and $i\geq{1}$ imply that $v_2-(v_1-i)<0\implies{p^{\gamma}}=p^{v_2-(v_1+i)}$, for all $i$ in the said range.\\
+$\mu(v_{11})=p^{v_1+i}-p^{v_1+i-1}=p^{v_1+i}(1-p^{-1})$.
+$\alpha=\min\{v_2,v_2-(v_1+i)+v_1\}=\min\{v_2,v_2-i\}$, but $i\geq{1}\implies\alpha=v_2-i$, where $i$ is in the said range. This means that at $v_{11}=-v_1-1$ we have a phase transition for $\alpha$.\\
+All the above yields the integral:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\left[\psi{p}^{7v_1+10v_2+11v_3+8v_4}\sum_{i=1}^{v_2}p^{v_2-(v_1+i)}p^{v_1+i}\varphi(1+(v_2-i)\varphi)\right]=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\left[\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}\varphi\sum_{i=1}^{v_2}(1+(v_2-i)\varphi)\right]=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}\varphi(v_2+v_2^2\varphi-\sum_{i=1}^{v_2}i\varphi)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2).\]
+\end{enumerate}
+Thus, our integral for case $1$ is the sum of the above three integrals.\\
+We denote $\omega_1=p^{8v_1+11v_2+11v_3+7v_4}$ and $\omega_4=p^{7v_1+11v_2+11v_3+8v_4}$.\\
+Thus, out integral for this case is:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi-v_2\varphi+v_1v_2\varphi^2-v_2^2\varphi^2+v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right).\]
+We denote $\xi=1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2$.\\
+To compute the integral, we need to compute the infinite sum over the subdomain $v_3>v_1\geq{v_4}>v_2$, but we cannot determine the boundaries of the variables $v_1,v_2,v_3,v_4$ in order to compute the sum directly.\\ Instead, we perform a change of variables by noticing first that $v_2\geq{0}$ is the only constraint on the minimal variable $v_2$, so we denote the difference $a=v_2-0=v_2\geq{0}$.\\
+We denote the other differences this way:\\
+$b=v_4-v_2=v_4-a\geq{1}$.\\
+$c=v_1-v_4=v_1-(a+b)\geq{0}$.\\
+$d=v_3-v_1=v_3-(a+b+c)\geq{1}$.\\
+Thus, we obtain the following change of variables:\\
+$v_1=a+b+c$.\\
+$v_2=a$.\\
+$v_3=a+b+c+d$.\\
+$v_4=a+b$.\\
+We use this change of variables for both $\psi\omega_4$ and $\xi$:\\
+$\psi\omega_4=t^{4v_1+6v_2+6v_3+4v_4}{p}^{7v_1+11v_2+11v_3+8v_4}=
+(t^{4v_1}p^{7v_1})(t^{6v_2}p^{11v_2})(t^{6v_3}p^{11v_3})(t^{4v_4}p^{8v_4})=$\\$=(t^4p^7)^{v_1}(t^6p^{11})^{v_2}(t^6p^{11})^{v_3}(t^4p^8)^{v_4}=(t^4p^7)^{a+b+c}(t^6p^{11})^{a}(t^6p^{11})^{a+b+c+d}(t^4p^8)^{a+b}=$\\
+$=(t^{20a}p^{37a})(t^{14a}p^{26b})(t^{10c}p^{18c})(t^{6d}p^{11d})=(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d$.\\
+$\xi=1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2=$\\
+$=1+a\varphi+(a+b+c)\varphi+a(a+b+c)\varphi^2-\frac{a(a+1)}{2}\varphi^2=$\\
+$=1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2$.\\
+Thus, our integral assumes its final form:
+\begin{align*}
+&\int\limits_{\substack{a,c\geq0 \\ b,d\geq1}}\psi\omega_4\xi{d}\mu(a,b,c,d)= \\
+&=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d\left(1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2\right).
+\end{align*}
+Denote 
+\[\sigma=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d,\]
+hence we break our integral in the following way:
+\[\sigma\left(1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2\right)=\]\[=\sigma+2\varphi(a\sigma)+\varphi(b\sigma)+\varphi(c\sigma)-\frac{\varphi^2}{2}(a^2\sigma)+\varphi^2(ab\sigma)+\varphi^2(ac\sigma)-\frac{\varphi^2}{2}(a\sigma).
+\]
+To compute an expression of the form $a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\sigma$,\\
+where $\rho_a,\rho_b,\rho_c,\rho_d\in\{0,1,2\}$, we use Fubini's theorem for infinite sums, which says that:
+\begin{align*}
+&\sigma=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d\\
+&=\sum_{a\geq{0}}(t^{20}p^{37})^a\sum_{b\geq{1}}(t^{14}p^{26})^b\sum_{c\geq{0}}(t^{10}p^{18})^c\sum_{d\geq{1}}(t^{6}p^{11})^d,\\
+\end{align*}
+hence
+\begin{align*}
+&a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\sigma=a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\left(\sum_{a\geq{0}}(t^{20}p^{37})^a\right)\left(\sum_{b\geq{1}}(t^{14}p^{26})^b\right)\left(\sum_{c\geq{0}}(t^{10}p^{18})^c\right)\left(\sum_{d\geq{1}}(t^{6}p^{11})^d\right)=\\
+&=\left(a^{\rho_a}\sum_{a\geq{0}}(t^{20}p^{37})^a\right)\left(b^{\rho_b}\sum_{b\geq{1}}(t^{14}p^{26})^b\right)\left(c^{\rho_c}\sum_{c\geq{0}}(t^{10}p^{18})^c\right)\left(d^{\rho_d}\sum_{d\geq{1}}(t^{6}p^{11})^d\right).\\
+\end{align*}
+We use the following summation rules:
+\begin{align*}
+&\sum_{a\geq{0}}x^a=\frac{1}{1-x}.\\
+&\sum_{a\geq{1}}x^a=\frac{1}{1-x}-x^0=\frac{1-(1-x)}{1-x}=\frac{x}{1-x}.\\
+&\sum_{a\geq{0}}ax^a=x\sum_{a\geq{0}}ax^{a-1}=x\left(\sum_{a\geq{0}}x^a\right)'=x\left(\frac{1}{1-x}\right)'=\frac{x}{(1-x)^2}.\\
+&\sum_{a\geq{1}}ax^a=\sum_{a\geq{0}}ax^a-0x^0=\frac{x}{(1-x)^2}.\\
+\end{align*}
+For the sum $\sum_{a\geq{0}}a^2x^a$, we use the second derivative:
+\[\left(\sum_{a\geq{0}}x^a\right)''=\left(\sum_{a\geq{0}}ax^{a-1}\right)'=\left(\frac{1}{(1-x)^2}\right)'=\frac{2}{(1-x)^3}=\sum_{a\geq{0}}a(a-1)x^{a-2},\]
+which gives the two remaining rules:
+\begin{align*}
+&\sum_{a\geq{0}}a^2x^a=\frac{x^2+x}{(1-x)^3}.\\
+&\sum_{a\geq{1}}a^2x^a=\frac{x^2+x}{(1-x)^3}-0^2x^0=\frac{x^2+x}{(1-x)^3}.\\
+\end{align*}
+We code the product of series into Sage, to obtain the following rational function:\\
+\[s_1=
+-\frac{{\left(p^{82} t^{44} - 2 \, p^{81} t^{44} + p^{63} t^{34} + p^{55} t^{30} + p^{44} t^{24} - p^{38} t^{20} - p^{27} t^{14} - p^{19} t^{10} + 2 \, p - 1\right)} {\left(p^{18} t^{10} + 1\right)} p^{36} t^{20}}{{\left(p^{37} t^{20} - 1\right)}^{3} {\left(p^{13} t^{7} + 1\right)}^{2} {\left(p^{13} t^{7} - 1\right)}^{2} {\left(p^{11} t^{6} - 1\right)} {\left(p^{9} t^{5} + 1\right)} {\left(p^{9} t^{5} - 1\right)}}
+\]
+\subsubsubsection{Case 2: $\tilde\delta=v_1,\beta=v_3,\epsilon=v_2$}
+Thus we have the following order relations\\
+$v_1\geq{v_3}$.\\
+$v_1\geq{v_4}>v_2$.\\
+We observe that since $\beta\neq\tilde\delta$, we need to break this case into two sub cases
+\begin{enumerate}
+    \item Sub case 2.1: $v_1\geq{v}_2+v_3\iff-v_2-v_3\geq-v_1$\\
+    We do not have a phase transition in this sub case, hence our integral breaks into a sum of two integrals in the general form of the first two integrals of case 1, namely\\
+    \[\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2\right)+\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(\varphi+v_3\varphi+v_2v_3\varphi^2\right)=\]\[=\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2+\varphi+v_3\varphi+v_2v_3\varphi^2\right)\]
+    But this integral breaks again into the sum of the integrals on all the different cones that are formed by linear orders that are compliant with our order relations $v_1\geq{v_3}$, ${v_1\geq{v_4}>v_2}$ and $v_1\geq{v_2}+v_3$, namely\\
+    $v_1\geq{v_2+v_3}\geq{v}_3\geq{v_4}>v_2$\\
+$v_1\geq{v_2+v_3}\geq{v}_4>{v_3}>v_2$\\
+$v_1\geq{v_2+v_3}\geq{v}_4>{v_2}\geq{v}_3$\\
+$v_1\geq{v_4}>v_2+v_3\geq{v_2}\geq{v}_3$\\
+$v_1\geq{v_4}>v_2+v_3\geq{v_3}>v_2$\\
+For each cone we compute a different substitution of variables and the series product that is formed by it, taking their sum yields the rational function for this sub-case.\\
+    \item Sub-case 2.2: $v_2+v_3>v_1\iff-v_1>-v_2+v_3$\\
+     \[\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2\varphi+v_3\varphi-\frac{v_2^2}{2}\varphi^2+v_2v_1\varphi^2-\frac{v_3^2}{2}\varphi^2+v_3v_1\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_2}{2}\varphi^2-\frac{v_3}{2}\varphi^2+\frac{v_1}{2}\varphi^2\right)\]
+$v_2+v_3>v_1\geq{v}_3\geq{v}_4>v_2$\\
+$v_2+v_3>v_1\geq{v}_4>v_3>v_2$\\
+$v_2+v_3>v_1\geq{v}_4>v_2\geq{v_3}$\\
+\end{enumerate}
+\subsubsubsection{Case 3}
+$v_3>v_1$\\
+$v_4>v_1$\\
+$v_4>v_2$\\
+\begin{enumerate}
+    \item Sub case 3.1: $-v_2-v_1>-v_4\iff{v_4>v_2+v_1}$\\
+    \[\int_{\substack{v_3>v_1\\v_4>v_1\\v_4>v_2}}\psi\omega_1\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2\right)\]
+    $v_4>v_1+v_2\geq{v}_3>{v_2}>v_1$\\
+$v_4>v_1+v_2\geq{v}_2\geq{v_3}>v_1$\\
+$v_4>v_1+v_2\geq{v}_3>{v_1}\geq{v}_2$\\
+$v_4>v_3>v_1+v_2\geq{v_1}\geq{v}_2$\\
+$v_4>v_3>v_1+v_2\geq{v_2}>v_1$\\
+$v_3\geq{v}_4>v_1+v_2\geq{v_2}>v_1$\\
+$v_3\geq{v}_4>v_1+v_2\geq{v_1}\geq{v}_2$\\
+    \item Sub case 3.2: $-v_4\geq-v_2-v_1\iff{v_2+v_1\geq{v}_4}$\\
+    \[\int_{\substack{v_3>v_1\\v_4>v_1\\v_4>v_2}}\psi\omega_1\left(1+v_1\varphi+v_2\varphi-\frac{v_1^2}{2}\varphi^2+v_4v_1\varphi^2-\frac{v_2^2}{2}\varphi^2+v_4v_2\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2-\frac{v_2}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
+$v_1+v_2\geq{v}_4>v_3>{v_2}>v_1$\\
+$v_1+v_2\geq{v}_4>v_2\geq{v_3}>v_1$\\
+$v_1+v_2\geq{v}_4>v_3>{v_1}\geq{v}_2$\\
+$v_1+v_2>v_3\geq{v}_4>{v_2}>v_1$\\
+$v_1+v_2>v_3\geq{v}_4>{v_1}\geq{v}_2$\\
+$v_3\geq{v}_1+v_2\geq{v}_4>{v_2}>v_1$\\
+$v_3\geq{v}_1+v_2\geq{v}_4>{v_1}\geq{v}_2$\\
+    \end{enumerate}
+    \subsubsubsection{Case 4}
+$v_4>v_1\geq{v_3}$\\
+$v_4>v_2$\\
+\begin{enumerate}
+    \item Sub case 4.1: ${v_4>v_2+v_3}\iff-v_2-v_3>-v_4$\\
+    \[\int_{\substack{v_4>v_1\geq{v_3}\\
+v_4>v_2}}\psi\omega_1\left(1+v_2v_4\varphi^2+v_2\varphi+v_3\varphi+v_3v_2\varphi^2-v_4v_2\varphi^2-\frac{v_2^2}{2}\varphi^2-v_2v_3\varphi^2+v_2v_4\varphi^2-\frac{v_3^2}{2}\varphi^2+v_3v_4\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_2}{2}\varphi^2-\frac{v_3}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
+$v_4>v_2+v_3>v_1\geq{v_3}>v_2$\\
+$v_4>v_2+v_3>v_1\geq{v_2}\geq{v}_3$\\
+$v_4>v_2+v_3\geq{v}_2>{v_1}\geq{v}_3$\\
+$v_4>v_1\geq{v}_2+v_3\geq{v_2}\geq{v}_3$\\
+$v_4>v_1\geq{v}_2+v_3\geq{v_3}>v_2$\\
+    \item Sub case 4.2: $-v_4\geq-v_2-v_3\iff{v_2+v_3\geq{v_4}}$\\
+    \[\int_{\substack{v_4>v_1\geq{v_3}\\
+v_4>v_2}}\psi\omega_1\left(1+v_1\varphi+v_2\varphi-\frac{v_1^2}{2}\varphi^2+v_4v_1\varphi^2-\frac{v_2^2}{2}\varphi^2+v_4v_2\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2-\frac{v_2}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
+$v_2+v_3\geq{v}_4>v_1\geq{v_2}\geq{v}_3$\\
+$v_2+v_3\geq{v}_4>v_1\geq{v_3}>v_2$\\
+$v_2+v_3\geq{v}_4>v_2>{v_1}\geq{v}_3$\\
+    \end{enumerate}
+    \subsubsubsection{Case 5}
+$v_2\geq{v_4}>v_1\geq{v_3}$\\
+\[\int_{\substack{v_4>v_1\geq{v_3}\\
+v_4>v_2}}\psi\omega_1\left(1+v_4\varphi+v_3\varphi+v_3v_4\varphi^2-\frac{v_3^2}{2}\varphi^2-\frac{v_3}{2}\varphi^2\right)\]
+The only possible arrangement here is\\
+$v_2\geq{v_4}>v_1\geq{v_3}$\\
+
+\subsubsubsection{Case 6}
+$v_2\geq{v_4}>v_1$\\
+$v_3>v_1$\\
+\[\int_{\substack{v_2\geq{v_4}>v_1\\v_3>v_1}}\psi\omega_1\left(1+v_4\varphi+v_1\varphi+v_1v_4\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2\right)\]
+$v_2\geq{v}_4>v_3>{v_1}$\\
+$v_2\geq{v}_3\geq{v}_4>{v_1}$\\
+$v_3>v_2\geq{v}_4>{v_1}$\\
+
+\subsubsubsection{Case 7}
+$v_2\geq{v_4}$\\
+$v_3>v_1\geq{v_4}$\\
+\[\int_{\substack{v_2\geq{v_4}\\v_3>v_1\geq{v_4}}}\psi\omega_4\left(1+v_4\varphi+v_1\varphi+v_1v_4\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_4}{2}\varphi^2\right)\]
+$v_2\geq{v}_3>{v}_1\geq{v_4}$\\
+$v_3>v_2>v_1\geq{v_4}$\\
+$v_3>v_1\geq{v}_2\geq{v_4}$\\
+\subsubsubsection{Case 8}
+$v_2\geq{v_4}$\\
+$v_1\geq{v_4}$\\
+$v_1\geq{v_3}$\\
+\begin{enumerate}
+    \item  Sub-case 8.1: $v_1\geq{v_3+v_4}\iff-v_3-v_4\geq{v}_1$
+    \[\int_{\substack{v_2\geq{v_4}\\v_1\geq{v_4}\\v_1\geq{v_3}}}\psi\omega_4\left(1+v_4\varphi+v_3\varphi+v_3v_4\varphi^2\right)\]
+$v_1\geq{v}_3+v_4\geq{v}_3>{v_2}\geq{v}_4$\\
+$v_1\geq{v}_3+v_4\geq{v}_2\geq{v_3}\geq{v}_4$\\
+$v_1\geq{v}_3+v_4\geq{v}_2\geq{v_4}>v_3$\\
+$v_1\geq{v}_2>v_3+v_4\geq{v_4}>v_3$\\
+$v_1\geq{v}_2>v_3+v_4\geq{v_3}\geq{v_4}$\\
+$v_2>v_1\geq{v}_3+v_4\geq{v_3}\geq{v_4}$\\
+$v_2>v_1\geq{v}_3+v_4\geq{v_4}>{v_3}$\\
+\item Sub-case 8.2: $v_3+v_4>v_1\iff-v_1>-v_3-v_4$
+\[\int_{\substack{v_2\geq{v_4}\\v_1\geq{v_4}\\v_1\geq{v_3}}}\psi\omega_4\left(1+v_3\varphi+v_4\varphi-\frac{v_3^2}{2}\varphi^2+v_1v_3\varphi^2-\frac{v_4^2}{2}\varphi^2+v_1v_4\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_3}{2}\varphi^2-\frac{v_4}{2}\varphi^2+\frac{v_1}{2}\varphi^2\right)\]
+$v_3+v_4>v_1\geq{v}_3>{v_2}\geq{v}_4$\\
+$v_3+v_4>v_1\geq{v}_2\geq{v_3}\geq{v}_4$\\
+$v_3+v_4>v_1\geq{v}_2\geq{v_4}>v_3$\\
+$v_3+v_4\geq{v}_2>v_1\geq{v_4}>v_3$\\
+$v_3+v_4>v_2>v_1\geq{v_3}\geq{v}_4$\\
+$v_2>v_3+v_4>v_1\geq{v_4}>v_3$\\
+$v_2\geq{v}_3+v_4>v_1\geq{v_3}\geq{v}_4$\\
+\end{enumerate}
+\pagebreak
+\[
+\frac{{\left(p^{50} t^{28} + p^{43} t^{24} - 2 \, p^{33} t^{18} + p^{32} t^{18} - 2 \, p^{25} t^{14} + p^{18} t^{10} - 2 \, p^{17} t^{10} + p^{7} t^{4} + 1\right)} {\left(p^{25} t^{14} - 1\right)}}{{\left(p^{15} t^{8} - 1\right)} {\left(p^{13} t^{7} + 1\right)}^{2} {\left(p^{13} t^{7} - 1\right)}^{2} {\left(p^{11} t^{6} - 1\right)}^{2} {\left(p^{9} t^{5} + 1\right)} {\left(p^{9} t^{5} - 1\right)} {\left(p^{7} t^{4} - 1\right)}}
+\]
+
+
+\[
+\frac{{\left(p^{26} r^{24} t^{28} + p^{23} r^{20} t^{24} - 2 \, p^{17} r^{16} t^{18} + p^{16} r^{16} t^{18} - 2 \, p^{13} r^{12} t^{14} + p^{10} r^{8} t^{10} - 2 \, p^{9} r^{8} t^{10} + p^{3} r^{4} t^{4} + 1\right)} {\left(p^{13} r^{12} t^{14} - 1\right)}}{{\left(p^{7} r^{8} t^{8} - 1\right)} {\left(p^{7} r^{6} t^{7} + 1\right)}^{2} {\left(p^{7} r^{6} t^{7} - 1\right)}^{2} {\left(p^{7} r^{4} t^{6} - 1\right)}^{2} {\left(p^{5} r^{4} t^{5} + 1\right)} {\left(p^{5} r^{4} t^{5} - 1\right)} {\left(p^{3} r^{4} t^{4} - 1\right)}}
+\]
+\end{document}
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{titlesec} % For \subsubsubsection
+\usepackage{xfrac} % For \sfrac
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notations}[theorem]{Notations}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{theorem2}{Theorem}[section]
+\newtheorem{proposition2}[theorem2]{Proposition}
+\newtheorem{corollary2}[theorem2]{Corollary}
+\newtheorem{lemma2}[theorem2]{Lemma}
+\newtheorem{notations2}[theorem2]{Notations}
+\newtheorem{definition2}[theorem2]{Definition}
+\newtheorem{example2}[theorem2]{Example}
+\newtheorem{remark2}[theorem2]{Remark}
+% Define \subsubsubsection (4th level heading)
+\setcounter{secnumdepth}{4} % Enable numbering for 4 levels
+\setcounter{tocdepth}{4}    % Include in table of contents if needed
+
+\makeatletter
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\makeatother
+
+\title{ComputeIntegral}
+\author{haiml76 }
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+In all the following we denote, for abbreviation:\\
+$\mathcal{L}=\mathcal{L}_{n,p}$ or $\mathcal{L}_{n,p}\otimes_{\mathbb{Q}_p}\mathcal{K}$, depending on the context.\\
+$L=L_{n,p}$ or $L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}$, depending on the context.\\
+$d=\binom{n}{2}=\dim\mathcal{L}$ or $\dim{L}$, depending on the context.\\
+$\gamma_i=\gamma_i\mathcal{L}$ or $\gamma_iL$, depending on the context.\\
+$e_i=e_{i,i+1}$.\\
+\section{Rigidity of the Algebra}
+Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X) : \{y\in{L} : [y,X]\subseteq{I}\}$.\\
+Denote by $L=\mathcal{L}_{n,p}$ our usual algebra over $K$.\\
+\subsection{The $\mathcal{X}$ criterion}
+Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Kx+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
+Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
+where $a_1,a_2,\dots,a_{n-1}$ are not all zero.\\
+Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)\cap\left(L\setminus\gamma_2L\right)$, that is 
+\[y=b_1e_{12}+b_2e_{23}+\cdots+b_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}b_{i,i+r}e_{i,i+r},\] 
+where $b_1,b_2,\dots,b_{n-1}$ are not all zero, such that $[x,y]\in\gamma_3L$.\\
+But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$. Thus
+\[
+[x,y]=\sum_{i=1}^{n-2}\left(a_ib_{i+1}-a_{i+1}b_i\right)e_{i,i+2}+\gamma_3L
+,\]
+hence $[x,y]\in\gamma_3L\iff{a}_ib_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
+a_i&a_{i+1}\\
+b_i&b_{i+1}
+\end{pmatrix}=0$, for every $1\leq{i}\leq{n-2}$.\\
+Assume $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$.\\
+consider the case where $b_j=0$ for some $1\leq{j}\leq{n-1}$, then\\ $a_{j-1}b_j-a_jb_{j-1}=0\iff{b}_{j-1}=0$, and $a_{j}b_{j+1}-a_{j+1}b_j=0\iff{b}_{j+1}=0$, because $a_{j-1},a_j,a_{j+1}\neq{0}$, which implies that either $b_i\neq{0}$ for every $1\leq{i}\leq{n-1}$ or $y\in\gamma_3L$. Hence we also assume that $b_1,b_2,\dots,b_{n-1}$ are all nonzero elements in $K$. But then\\
+\[a_{i}b_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
+a_i&a_{i+1}\\
+b_i&b_{i+1}
+\end{pmatrix}=0\iff\begin{pmatrix}
+    b_i&b_{i+1}
+\end{pmatrix}=c_i\begin{pmatrix}
+    a_i&a_{i+1}
+\end{pmatrix},\]
+for some nonzero element $c_i\in{K}$. Thus\\ 
+\begin{align*}
+&a_1b_2-a_2b_1=0&\iff&\begin{pmatrix}
+    b_1&b_2
+\end{pmatrix}=c_1\begin{pmatrix}
+    a_1&a_2
+\end{pmatrix}.\\
+&a_2b_3-a_3b_2=0&\iff&\begin{pmatrix}
+    b_2&b_3
+\end{pmatrix}=c_2\begin{pmatrix}
+    a_2&a_3
+\end{pmatrix}.\\
+&\vdots&\vdots\\
+&a_{n-2}b_{n-1}-a_{n-1}b_{n-2}=0&\iff&\begin{pmatrix}
+    b_{n-2}&b_{n-1}
+\end{pmatrix}=c_{n-2}\begin{pmatrix}
+    a_{n-2}&a_{n-1}
+\end{pmatrix},
+\end{align*}
+for nonzero elements $c_1,c_2,\dots,c_{n-2}\in{K}$.\\
+But then $c_{i+1}=\frac{b_{i+2}}{a_{i+2}}=\frac{b_{i+1}}{a_{i+1}}$ and $c_{i}=\frac{b_{i+1}}{a_{i+1}}=\frac{b_i}{a_i}$, for every $1\leq{i}\leq{n-2}$, which implies that $c_1=c_2=\cdots=c_{n-2}=c$ for some nonzero element $c\in{K}$, hence \[y=\sum_{i=1}^{n-1}b_ie_{i,i+1}+\gamma_2L=\sum_{i=1}^{n-1}ca_ie_{i,i+1}+\gamma_2L=c\sum_{i=1}^{n-1}a_ie_{i,i+1}+\gamma_2L=cx+\gamma_2L,\]
+which means that $y\in{K}x+\gamma_2L$ for every $x\in{L}$, because the above is true for every $c\in{K}$.
+But we assumed that $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$, hence every $x=a_1e_{12}+\cdots+a_{n-1}e_{n-1,n}$, where all the $a$ coefficients are nonzero elements in $K$, is in $\mathcal{X}$.\\ 
+Hence, we choose $n-1$ linearly-independent vectors of the form \[x_j=\sum_{i=1}^{n-1}a_{ji}e_{i,i+1}\in\mathcal{X},\]
+where $a_{ji}\neq{0}$ for every $1\leq{i,j}\leq{n-1}$, and thus
+\[e_{i,i+1}=\sum_{j=1}^{n-1}a_{ij}x_j,\]
+for all $1\leq{i}\leq{n-1}$, which shows that $\langle
+{x}_1,x_2,\dots,x_{n-1}\rangle=\langle{e}_{12},e_{23},\dots,e_{n-1,n}\rangle$.\\
+Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for every $j\neq{i}$, then $a_ib_{i+1}-a_{i+1}b_i=-a_{i+1}b_i=0$ and $a_{i-1}b_i-a_ib_{i-1}=a_{i-1}b_i=0$ if and only if $b_i=0$. But then $\frac{b_1}{a_1}=\frac{b_2}{a_2}=\cdots=\frac{b_{i-1}}{a_{i-1}}=c_1$ and $\frac{b_{i+1}}{a_{i+1}}=\frac{b_{i+2}}{a_{i+2}}=\cdots=\frac{b_{n-1}}{a_{n-1}}=c_2$, for $c_1,c_2\in{K}$, hence $y=c_1(a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{i-1,i})+c_2(a_{i+1}e_{i+1,i+2}+a_{i+2}e_{i+2,i+3}+\cdots+a_{n-1}e_{n-1,n})+\gamma_2L\notin{K}x+\gamma_2L\implies{x}\notin\mathcal{X}$, which is an example for an element whose centralizers are not necessarily in $Kx+\gamma_2L$.
+\subsection{The $\mathcal{Y}$ criterion}
+Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in{K}$ not all zero.\\
+But \[[x,y]=0\iff\sum_{k=1}^{r-1}a_{j,j+k}b_{j+k,j+r}-a_{j+r,j+k}b_{j,j+k}=0,\]
+for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
+But every expression of the form $a_{jk}b_{kl}$ vanishes, because every $a_{jk}=0$ where $(j,k)\neq(i,i+1)$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
+Hence, a generic $y\in{C}_L(x)$ has the form
+\[
+y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}e_{j,j+r}+b_{i,i+r}e_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}e_{j,j+r}\right],
+\]
+such that the $b$ coefficients are not all zero.\\
+Let $z=d_1e_{12}+\cdots+d_{2,n}e_{2,n}\in{C}_L(y)$, and denote\\
+\begin{flalign*}
+\varphi_{13}&=(b_1d_2-b_2d_1)e_{13}.\\
+\varphi_{24}&=(b_2d_3-b_3d_2)e_{24}.\\
+\vdots\\
+\varphi_{n-2,n}&=(b_{n-2}d_{n-1}-b_{n-1}d_{n-2})e_{n-2,n}.\\
+\varphi_{14}&=(b_1d_{24}-b_{24}d_1+b_{13}d_3-b_3d_{13})e_{14}.\\
+\varphi_{25}&=(b_2d_{35}-b_{35}d_2+b_{24}d_4-b_4d_{24})e_{25}.\\
+\vdots\\
+\varphi_{n-3,n}&=(b_{n-3}d_{n-2,n}-b_{n-2,n}d_{n-3}+b_{n-3,n-1}d_{n-1}-b_{n-1}d_{n-3,n-1})e_{n-3,n}.\\
+\vdots\\
+\varphi_{1n}&=(b_1d_{2,n}-b_{2,n}d_1+b_{13}d_{3,n}-b_{3,n}d_{13}+\cdots+b_{1,n-1}d_{n-1}-b_{n-1}d_{1,n-1})e_{1n}.\\
+\end{flalign*}
+Hence
+\[[z,y]=\sum_{r=2}^{n-1}\sum_{j=1}^{n-r}\varphi_{j,j+r}=0,\]
+implies that $\varphi_{j,j+r}=0$
+for all $2\leq{r}\leq{n-1}$ and $2\leq{j}\leq{n-r}$.\\
+Let $d_{lh}\in{K}$ for some $2\leq{l}\leq{h-1}$, where $(l,h)\neq(i,i+1)$, then for some $1\leq{k}\leq{h-2}$, we have
+\[\varphi_{kh}=\sum_{r=1}^{h-k-1}\left(b_{k,k+r}d_{k+r,h}-b_{k+r,h}d_{k,k+r}\right)e_{kh},\]
+where $b_{kl}d_{lh}$ is one of the expressions in the sum. But all other expressions $b_{kq}d_{qh}$, where $q\neq{l}$, vanish because $b_{kq}=0$. But this implies that\\ $\varphi_{kh}=0\iff{b}_{kl}d_{lh}=0\iff{d}_{lh}=0$, which means that if $y_{kl}=b_{kl}e_{kl}$ and $z_{kl}=d_1e_{i,i+1}+\cdots+d_{1n}e_{1n}\in{C}_L(y_{kl})$, then $d_{lh}=0$.\\
+We can also show that $d_{lh}e_{lh}$ must vanish in any $z_{hk}\in{C}_L(y_{hk})$ by considering 
+\[\varphi_{lk}=\sum_{r=1}^{k-l-1}\left(b_{l,l+r}d_{l+r,k}-b_{l+r,k}d_{l,l+r}\right)e_{lk},\]
+for some $l+2\leq{k}\leq{n}$, and looking at $b_{hk}d_{lh}$.\\
+For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and every $i+1<l\leq{n}$, then $b_{ki}d_i=0$ or $b_{i+1,l}d_i=0$ does not imply that $d_i=0$, so $d_i\in{K}$ can be any nonzero element such that
+\begin{flalign*}
+[b_{ki}e_{ki},d_ie_{i,i+1}]&=0.\\ [b_{i+1,l}e_{i+1,l},d_ie_{i,i+1}]&=0.\\
+\end{flalign*}
+But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{i+1}\}$, then any $z\in{C}_L(B)$ must have $d_{lh}=0$ for all $1\leq{l}<h\leq{n}$, unless $(l,h)=(i,i+1)$, but then $z=d_ie_{i,i+1}=ca_ie_{i,i+1}=cx$ for some $c=\frac{d_i}{a_i}\in{K}$, and all the computation above is up to the center $Z(L)$, hence $z\in{K}x+Z(L
+)$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that $L$ is rigid.
+\section{The Group of Automorphisms}
+\subsection{The General Form of the $\mathcal{L}$-automorphisms}
+\subsubsection{The Matrix Structure}
+Let $\varphi\in\text{Aut}_{K}(\mathcal{L})$, then $\varphi$ is an $d\times{d}$ matrix $A=(a_{ij})\in{M}_d(K)$, where the row $\begin{bmatrix}
+    a_{i,1}&a_{i,2}&\dots&a_{i,d}
+\end{bmatrix}$
+is the image $\varphi(b_i)$ of the $i$th basis element with respect to the natural order $e_1,e_2,\dots,e_{n-1},e_{13},e_{24},\dots,e_{n-2,n},e_{14},\dots,e_{1n}$.\\
+The matrix $A$ is partitioned into $(n-1)\times(n-1)$ blocks, each block $A_{ij}$ is an $(n-i)\times(n-j)$ matrix, forming the map $\varphi_{ij}:\sfrac{\gamma_i}{\gamma_{i+1}}\rightarrow\sfrac{\gamma_j}{\gamma_{j+1}}$.
+
+\subsubsection{The Diagonal of $\varphi$}
+As explained above, we are working with $G_n^0(K)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
+Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\inK$, for every $1\leq{i}\leq{n-1}$.
+\begin{proposition}
+For every $1\leq{i}<j\leq{n}$, $\varphi$ must satisfy $\varphi(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$, where $d=j-i$.
+\end{proposition}
+\begin{proof}
+$\varphi(e_{ij})=\varphi([e_{i},[e_{i+1},[\cdots[e_{j-1},e_j]]]])=[\varphi(e_i),[\varphi(e_{i+1}),[\cdots,[\varphi(e_{j-1}),\varphi(e_j)]]]]=[\lambda_i{e}_i+\gamma_2\mathcal{L},[\lambda_{i+1}e_{i+1}+\gamma_2\mathcal{L},[\cdots,[\lambda_{j-1}e_{j-1}+\gamma_2\mathcal{L},\lambda_j{e}_j+\gamma_2\mathcal{L}]]]]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$.
+\end{proof}
+
+\subsubsection{The Reductive subgroup}
+Let $\varphi\in{G}_n^0(K)$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
+and it is readily seen that $h$ itself is an $\mathcal{L}$-automorphism.\\
+Denote by $H(K):=\{h\in{G}_n^0(K)\}$ the set of all diagonal $\mathcal{L}$-automorphisms.
+\begin{proposition}
+The set $H(K)$ is a subgroup of $G_n^0(K)$.
+\end{proposition}
+\begin{proof}
+Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\inK$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
+\end{proof}
+A simple check would show that $H(K)$ is not normal in $G_n^0(K)$.
+
+\subsection{Basic Decomposition of $\mathcal{L}$-automorphisms}
+\subsubsection{The Unipotent Radical}
+Let $a$ and $h$ be an arbitrary automorphism and a diagonal automorphism, respectively, and let $u=h^{-1}a$, then $a=uh$.
+\begin{proposition}
+The matrix $u=(u_{ij})$ is unitriangular.
+\end{proposition}
+\begin{proof}
+$h=\mathrm{diag}(a_{11},a_{22},\dots)$, which implies that $h^{-1}=\mathrm{diag}(a_{11}^{-1},a_{22}^{-1},\dots)$, thus $u=h^{-1}a$ has $u_{ii}=a_{ii}^{-1}a_{ii}=1$, for all $1\leq{i}\leq{d}$.
+\end{proof}
+From the construction, it is immediate to assert that every $\varphi\in{G}_n^0(K)$ has the unique factorization $\varphi=uh$, an we denote the set $N_n(K):=\{u\in{G}_n^0(K)\}$, the set of all unitriangular $\mathcal{L}$-automorphisms.
+\begin{proposition}
+The set $N_n(K)$ is a normal subgroup of $G_n^0(K)$.
+\end{proposition}
+\begin{proof}
+The product of two unitriangular matrices is itself a triangular matrix. Let $w\in{G}_n^0(K)$ a unitriangular $\mathcal{L}$-automorphism. For any $a\in{G}_n^0$, we have the unique factorization $a=uh$, for some $u\in{N}_n(K)$ and $h\in{H}_n(K)$, thus $awa^{-1}=(uh)w(uh)^{-1}=u(hwh^{-1})u^{-1}$, but then $b=hwh^{-1}=(b_{ij})$ has $b_{ii}=h_{ii}\cdot{1}\cdot{h}_{ii}^{-1}=1$, for all $1\leq{i}\leq{d}$, hence $b$ and therefore $ubu^{-1}$ also belong to $N_n(K)$.
+\end{proof}
+\begin{corollary}
+The group of diagonal $\mathcal{L}$-automorphisms has a basic decomposition $G_n^0(K)=N_n(K)\rtimes{H}_n(K)$.
+\end{corollary}
+This is an immediate result, because $N_n(K)\cap{H}_n(K)=\{I_d\}$.
+\subsection{Full Decomposition of $\mathcal{L}$-automorphisms}
+\subsubsection{The Automorphism $\varphi_r$}
+Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(K)\rightarrow\text{Aut}_{K}(\sfrac{\mathcal{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $d\times{d}$ matrices with $M_{ii}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1j}=0$ for all $j<r$.
+\[\varphi_r=(a_{ij}):=\begin{bmatrix}
+    I_{n-1} &  & M_{1,r} & \cdots & M_{1,n-1} \\
+     & I_{n-2} &  & & \\
+     & & \ddots &  & \\
+          & & & I_2 & \\
+               & & & & 1\\
+\end{bmatrix}.\]
+We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\end{bmatrix}^T$, then $N_{n-1}\congK^{n-1}$. Indeed, the product of any two matrices $A=(a_{ij})$ and $B=(b_{ij})$ in $N_{n-1}$ is a unitriangular matrix with the block $M_{1,n-1}=\begin{bmatrix}
+    c_{1m}&c_{2m}&\dots&c_{n-1,m}
+\end{bmatrix}^T$ where $c_{im}=a_{im}+b_{im}$.
+
+%%
+% The structure of \varphi_{n-2}
+%%
+\subsubsubsection{The Structure of $\varphi_{n-2}$}
+\begin{proposition}
+Let $r=n-2$, and denote the $(1,n-2)$ block of $\varphi_{n-2}$ by $M_{1,n-2}=(m_{ij})$. Then the only nonzero elements in $M_{1,n-2}$ are $m_{11}$, $m_{12}$, $m_{22}$, $m_{n-2,1}$, $m_{n-1,1}$ and $m_{n-1,2}$, and in addition $m_{n-1,2}=-m_{11}$.
+\end{proposition}
+$M_{1,n-2}=\begin{bmatrix}
+m_{11}&m_{12}\\
+&m_{22}\\
+\vdots&\vdots\\
+m_{n-2,1}&\\
+m_{n-1,1}&-m_{11}\\
+\end{bmatrix}$
+\begin{proof}
+We have the following constraints\\
+$\varphi_{n-2}([e_1,e_{1+k}])=[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{1+k})]=m_{1+k,2}[e_1,e_{2,n}]$, but $[e_1,e_{1+k}]=0$ for all $2\leq{k}\leq{n-3}$, which implies that $m_{1+k,2}=0$.\\
+$\varphi_{n-2}([e_{n-1-k},e_{n-1}])=[\varphi_{n-2}(e_{n-1-k}),\varphi_{n-2}(e_{n-1})]=m_{n-1-k,1}[e_{1,n-1},e_{n-1}]$, but $[e_{n-1-k},e_{n-1}]=0$ for all $2\leq{k}\leq{n-3}$, which implies that $m_{n-1-k,1}=0$.
+From this it is clear that the only elements that are not affected by these constraints are the ones listed above.\\
+Also, since $[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{n-1})]=[e_1,m_{n-1,2}e_{2,n}]+[m_{11}e_{1,n-1}e_{n-1}]=\\=(m_{n-1,2}+m_{11})e_{1,n}=0$, we conclude that $m_{n-1,2}=-m_{11}$.
+\end{proof}
+
+%%
+% The structure of \varphi_r for r < n-2
+%%
+\subsubsubsection{The Structure of $\varphi_r$ for $2\leq{r}<n-2$}
+\begin{proposition}
+For $2\leq{r}<n-2$, let $\varphi_r$ be the $\mathcal{L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$, and in addition $m_{i+r,i+1}=-m_{ii}$.
+\end{proposition}
+$M_{1r}=\begin{bmatrix}
+m_{11}&&&\\
+&m_{22}&&\\
+&&\ddots&\\
+&&&m_{n-r,n-r}\\
+\vdots&\vdots&\vdots&\vdots\\
+m_{1+r,1}&&&\\
+&m_{2+r,2}&&\\
+&&\ddots&\\
+&&&m_{n-1,n-r}\\
+\end{bmatrix}$
+\begin{proof}
+We show this in the same way as for $r=n-2$. We need to show also that $m_{12}=0$ and $m_{}$, unlike $\varphi_{n-2}$.\\
+The product $[\varphi_r(e_1),\varphi_r(e_{n-1})]$ has the summand $m_{12}[e_{2,2+r},e_{2+r}]=m_{12}e_{2,r+3}$, since $\varphi_r$ has that every $a_{ij}e_{ij}=0$, where $1<j-i<r$.\\
+But $[\varphi_r(e_1),\varphi_r(e_{n-1})]=0$, which implies that $m_{12}=0$.\\
+Same applies for $[\varphi_r(e_{n-r-2}),\varphi_r(e_{n-1})]$ and the summand $m_{n-1,n-r-1}[e_{n-r-2},e_{n-r-1,n-1}]$.
+\end{proof}
+
+\subsubsection{The Abelian Components}
+\subsubsubsection{The Automorphism $\varphi_{r,k}(a)$}
+Let $a\inK$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ in the following way:
+\[
+    \varphi_{r,k}(a)(e_i)=\begin{cases}
+        e_{k,k+1}+a{e_{k,k+r}} & : i=k\\
+        e_{k+r,k+r+1}-a{e_{k+1,k+r+1}} & : i=k+r\\
+        e_{i,i+1} & : i\notin\{k,k+r\}
+    \end{cases},
+\]
+for some $2\leq{r}\leq{n-2}$ and $0\leq{k}\leq{n-r}$.\\
+Note that we include also the case $k=0$ where the index $i=k=0$ does not exist, and the case $k=n-r$ where the index $i=k+r=n$ does not exist.\\
+\begin{proposition}
+The $\varphi_{r,k}(a)$ extends naturally to an $\mathcal{L}$-automorphism defined in the following way:
+\[
+    \varphi_{r,k}(a)(e_{ij})=\begin{cases}
+        e_{ij}+a{e_{i,k+r}} & : j=k+1\\
+        e_{ij}-a{e_{k+1,j}} & : i=k+r\\
+        e_{ij} & : \text{otherwise}
+    \end{cases},
+\]
+\end{proposition}
+\begin{proof}
+The suggested extension is compatible with the identity:\\ $[\varphi_{r,k}(a)(e_{ij})]:=[\varphi_{r,k}(a)(e_i),[\varphi_{r,k}(a)(e_{i+1}),[\cdots,\varphi_{r,k}(a)(e_{j-1})]\cdots]]=\\=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k+ae_{k,k+r},e_{k+1},\dots,e_{k+r}-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_{j-1},e_j]=$
+\begin{flalign*}
+&=[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&(s_1)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},e_{k+r},e_{k+r+1},\dots,e_j]&(s_2)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},e_k,e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&(s_3)&+\\
+&+[e_{i+1},e_{i+2},\dots,e_{k-1},ae_{k,k+r},e_{k+1},\dots,e_{k+r-1},-ae_{k+1,k+1+r},e_{k+r+1},\dots,e_j]&(s_4)&,
+\end{flalign*}
+for every $1\leq{i}<j\leq{n}-1$, which comes from the fact that for our algebra the brackets operation commutes, that is $[[e_{ij},e_{jk}],e_{kl}]=[e_{ij},[e_{jk},e_{kl}]]$.\\
+But $ae_{k,k+r}$ commutes with $e_{k+1}$, thus $s_2=0$ unless $j-1=k\iff{j=k+1}$. Also in the same way, $-ae_{k+1,k+1+r}$ commutes with $e_{k+r}$, thus $s_3=0$ unless $i=k+r$, and it is readily seen that both conditions are not met together, thus $[\varphi_{r,k}(a)(e_{ij})]$ is either $s_1$, or $s_1+s_2$ or $s_1+s_3$, as defined.
+\end{proof}
+Thus, $\varphi_{r,k}$ has the identity matrices $I_{n-1},I_{n-2},\dots,1$ on its main diagonal, the $(1,r)$ block $M_{1r}=(m_{ij})$ where $m_{kk}$ and $m_{k+r,k+1}$ are the only nonzero elements
+\[\varphi_{r,k}(a):=\begin{bmatrix}
+    I_{n-1} &  & M_{1r} & & \\
+     & I_{n-2} &  & M_{2,r+1} & \\
+     & & \ddots & & \ddots \\
+          & & & I_2 & \\
+               & & & & 1\\
+\end{bmatrix},\]
+where
+\[
+M_{1r}=(m_{ij}):=\begin{bmatrix}
+    & & &\\
+    & a & &\\
+    & & &\\
+    & & -a &\\
+    & & &\\
+\end{bmatrix},
+\]
+that is, $m_{k,k}=a$ and $m_{k+r,k+1}=-a$.
+And the lower blocks $M_{2,r+1},M_{3,r+2},\dots,M_{n-2,n-1}$ may have an element with the value $a$ or $-a$, according to the definition of the extended $\mathcal{L}$-automoprhism.
+\begin{proposition}
+Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\inK\}$, then $N_{r,k}<G_n^0(K)$ and $N_{r,k}\congK$.
+\end{proposition}
+\begin{proof}
+Define a map $\psi:K\rightarrow{N}_{r,k}$ by $\psi(a):=\varphi_{r,k}(a)$ for all $a\inK$.
+Let $a,b\inK$, then $\psi(a)\circ\psi(b)=\varphi_{r,k}(a)\circ\varphi_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\circ\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
+\end{proof}
+
+\subsubsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
+For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\inK$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
+$\varphi_{n-2,k,l}(a)(e_i):=\begin{cases}
+e_k+ae_{l,l+r},&i=k\\
+e_i,&i\neq{k}\\
+\end{cases}$
+\begin{proposition}
+$\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which operates diagonally on $\gamma_2\mathcal{L}_{n,p}$.
+\end{proposition}
+The proof here is similar to the proof for $\varphi_{r,k}(a)$.\\
+We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$, and it is readily seen that $N'_{n-2}:=\{\varphi'_{n-2}(a) : a\inK\}$ and $N''_{n-2}:=\{\varphi''_{n-2}(a) : a\inK\}$ are abelian subgroups of $G_n^0(K)$.
+\subsubsection{The Full Decomposition}
+\begin{proposition}
+\label{prop:psi.automorphism}
+Let $r<n-2$ and let $\varphi_r\in{N}_r$, and denote $M_{1r}=(m_{ij})$. \\
+Let $\psi\in{G}_n^0(K)$ be the $\mathcal{L}$-automorphism defined in the following way:
+\[\psi_r:=\varphi_r\circ\varphi_{r,n-r}(-m_{n-r,n-r})\circ\cdots\circ\varphi_{r,1}(-m_{11})\circ\varphi_{r,0}(-m_{r+1,1}).\]
+Then $\psi_r\in{N_{r+1}}$.
+\end{proposition}
+\begin{proof}
+Denote the $(1,r)$ block in $\varphi$ by $M_{1r}=(m_{ij})$ and the $(1,r)$ block in $\varphi_{r,k}(m_{k+r,k+1})$ by $B_{1r}=(b_{ij})$, and denote the $(1,r)$ block in the product matrix $C=MB$ by $C_{1r}=(c_{ij})$, then $c_{kk}=m_{kk}b_{kk}=m_{kk}+(-m_{kk})$ and $m_{k+r,k+1}b_{k+r,k+1}=m_{k+r,k+1}+(-m_{k+r,k+1})$, which means that $M_{1r}$ and $B_{1r}$ commute and $B_{1r}$ destroys $m_{kk}$ and $m_{k+r,k+1}$ in $M_{1r}$, but then composing all $\varphi_{r,k}$ for $1\leq{r}\leq{n-r}$ on $\varphi_r$ destroys all the nonzero elements in $M_{1r}$, thus $\psi_r\in{N}_{n+1}$.
+\end{proof}
+\begin{proposition}
+Let $r=n-2$, and denote by $\psi_{n-2}$ the $\mathcal{L}$-automorphism \[\psi_{n-2}:=\varphi_{n-2}\circ\varphi'_{n-2}(-a_{12})\circ\varphi''_{n-2}(-a_{n-1,1})\circ\]\[\circ\varphi_{n-2,2}(-a_{n-2,2})\circ\varphi_{n-2,1}(-a_{n-2,1})\circ\varphi_{n-2,0}(-a_{n-2,0}).\]
+Then $\psi_{n-2}\in{N_{n-1}}$.
+\end{proposition}
+Proof is the same as for the previous proposition, with proper adjustments.
+\begin{corollary}
+\label{cor:Nr.decomposition}
+As subgroups of $G_n^0(K)$, we have the following decompositions:\\
+For all $2\leq{r}<{n-2}$:\\ 
+\[N_{r}=N_{r+1}\rtimes(N_{r,0}\rtimes(\cdots\rtimes(N_{r,n-r-1}\rtimes{N_{r,n-r}})\rtimes\cdots)).\]
+For $r=n-2$:\\ 
+\[N_{n-2}=N_{n-1}\rtimes({N_{n-2,0}}\rtimes(N_{n-2,1}\rtimes(N_{n-2,2}\rtimes(N''_{n-2}\rtimes{N'_{n-2}})))).\]
+We conclude that $N_n(K)=N_2(K)$ has the decomposition:\\ $N=N_3\rtimes\left(N_{2,0}\rtimes\cdots\rtimes\left(N_{2,n-3}\rtimes{N}_{2,n-2}\right)\rtimes\cdots\right)=$\\
+$=N_4\rtimes\left(N_{3,0}\rtimes\cdots\rtimes\left(N_{2,0}\rtimes\cdots\rtimes\left(N_{2,n-3}\rtimes{N}_{2,n-2}\right)\rtimes\cdots\right)\rtimes\cdots\right)=$\\
+$\vdots$\\
+$=N_{n-1}\rtimes({N_{n-2,0}}\rtimes(N_{n-2,1}\rtimes(N_{n-2,2}\rtimes(N''_{n-2}\rtimes{N'_{n-2}}))))\rtimes(N_{n-3,0}\rtimes\cdots\rtimes(N_{3,0}\rtimes\cdots\rtimes(N_{2,0}\rtimes\cdots\rtimes(N_{2,n-3}\rtimes{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$,\\
+and this decomposition is unique up to the order of the abelian factors, that is, different orders yield different groups of $\mathcal{L}$-automorphisms that are isomorphic to each other.
+\end{corollary}
+\begin{example}
+Let $n=5$.
+Denote the $(1,4)$ block of $\varphi_4$ by $C_{14}=(c_{ij})$, and denote $c_{i1}=c_i$ where $c_i\inK$, for every $i\in\{1,2,3,4\}$.\\
+Denote the $(1,3)$ block of $\varphi_{3,0}$, $\varphi_{3,1}$, $\varphi_{3,2}$, $\varphi'_3$ and $\varphi''_3$ by $B_{13}=(b_{ij})$.\\
+Denote the $(1,2)$ block of $\varphi_{2,0}$, $\varphi_{2,1}$, $\varphi_{2,2}$ and $\varphi_{2,3}$ by $A_{12}=(a_{ij})$.\\
+
+We compose all the factors of $\varphi_{2,k}$ on each other in the following order:
+\[
+  \varphi_a=\varphi_{2,1}(a_{11})\circ\varphi_{2,2}(a_{22})\circ\varphi_{2,0}(a_{21})\circ\varphi_{2,3}(a_{33})=\]\[=\begin{bmatrix}
+    1 & 0 & 0 & 0 & a_{11} & 0 & 0 & 0 & 0 & 0 \\
+    & 1 & 0 & 0 & a_{21} & a_{22} & 0 & a_{21}a_{22} & 0 & 0 \\
+    & & 1 & 0 & 0 & -a_{11} & a_{33} & 0 & -a_{11}a_{33} & 0 \\
+    & & & 1 & 0 & 0 & -a_{22} & 0 & a_{11}a_{22} & 0 \\
+    & & & & 1 & 0 & 0 & a_{22} & 0 & 0 \\
+    & & & & & 1 & 0 & a_{21} & a_{33} & 0\\
+    & & & & & & 1 & 0 & -a_{11} & 0 \\
+    & & & & & & & 1 & 0 & a_{33} \\
+    & & & & & & & & 1 & a_{21} \\
+    & & & & & & & & & 1 \\
+  \end{bmatrix}
+\]
+
+We compose the following factors of $\varphi_{3,k}$ on each other in the following order:
+\[
+  \varphi_b=\varphi'_3(b_{12})\circ\varphi''_3(b_{41})\circ\varphi_{3,2}(b_{22})\circ\varphi_{3,0}(b_{31})=\]\[=\begin{bmatrix}
+    1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & b_{12} & 0 \\
+    & 1 & 0 & 0 & 0 & 0 & 0 & 0 & b_{22} & 0 \\
+    & & 1 & 0 & 0 & 0 & 0 & b_{31} & 0 & 0 \\
+    & & & 1 & 0 & 0 & 0 & b_{41} & -b_{11} & 0 \\
+    & & & & 1 & 0 & 0 & 0 & 0 & 0 \\
+    & & & & & 1 & 0 & 0 & 0 & 0\\
+    & & & & & & 1 & 0 & 0 & 0 \\
+    & & & & & & & 1 & 0 & 0 \\
+    & & & & & & & & 1 & 0 \\
+    & & & & & & & & & 1 \\
+  \end{bmatrix}
+\]
+
+Now we compose $\varphi_c=\varphi_a\circ\varphi_b$, and we compose:\\
+$M=(m_{ij})=\varphi=\varphi_4\circ\varphi_{3,1}(b_{11})\circ\varphi_c$=\[=
+  \begin{bmatrix}
+    1 & 0 & 0 & 0 & a_{11} & 0 & 0 & b_{11} & b_{12} & b_{12}a_{21}+c_1 \\
+     & 1 & 0 & 0 & a_{21} & a_{22} & 0 & a_{21}a_{22} & b_{22} & b_{22}a_{21}+c_2 \\
+    & & 1 & 0 & 0 & -a_{11} & a_{33} & b_{31} & -a_{11}a_{33} & b_{31}a_{33}+c_3 \\
+    & & & 1 & 0 & 0 & -a_{22} & b_{41} & a_{11}a_{22}-b_{11} & b_{41}a_{33}+c_4 \\
+    & & & & 1 & 0 & 0 & a_{22} & 0 & b_{22} \\
+    & & & & & 1 & 0 & a_{21} & a_{33} & a_{21}a_{33}\\
+    & & & & & & 1 & 0 & -a_{11} & b_{31} \\
+    & & & & & & & 1 & 0 & a_{33} \\
+    & & & & & & & & 1 & a_{21} \\
+    & & & & & & & & & 1 \\
+  \end{bmatrix}.
+\]
+But $c_1,c_2,c_3,c_4$ are arbitrary elements in $K$, thus $m_{i,10}$ where $i\in\{1,2,3,4\}$ are not constrained, hence we can transition them for simplicity:\\
+$b_{12}a_{21}+c_1\rightarrow{c_1}$\\
+$b_{22}a_{21}+c_2\rightarrow{c_2}$\\
+$b_{31}a_{33}+c_3\rightarrow{c_3}$\\
+$b_{41}a_{33}+c_4\rightarrow{c_4}$,\\
+which yields the same form of matrix for $N_n(K$) computed by Berman 3.3.\\
+Indeed, we chose this particular order of composition to achieve this particular form, while choosing a different order would yield an isomorphic group, as mentioned above.
+\end{example}
+\begin{proposition}
+Let $n\geq{4}$, then $G_n^0(\mathbb{Z}_p)$ is a subgroup of $G_n^0(\mathbb{Q}_p)$, and $G_n^0(\mathbb{Z}_p)=N_n^0(\mathbb{Z}_p)\rtimes{H}_n^0(\mathbb{Z}_p)$.
+\end{proposition}
+\begin{proof}
+This comes naturally from the fact that \\
+$H_n(\mathbb{Z}_p)=\{\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots,\lambda_1\lambda_2\cdots\lambda_{n-1}) : \lambda_1,\lambda_2,\dots,\lambda_{n-1}\in\mathbb{Z}_p^\ast\}$, and $N_n(\mathbb{Z}_p)=N_n(\mathbb{Q}_p)\cap{G}_n(\mathbb{Z}_p)$, both are subgroups of $G_n^0(\mathbb{Z}_p)$ whose intersection is trivial, with the same structure as $N_n(\mathbb{Q}_p)$ and $H_n(\mathbb{Q}_p)$, respectively.
+\begin{corollary}
+The subgroup $N_n(\mathbb{Z}_p)$ has the decomposition $N=\tilde{N}_{n-1}\rtimes({\tilde{N}_{n-2,0}}\rtimes(\tilde{N}_{n-2,1}\rtimes(\tilde{N}_{n-2,2}\rtimes(\tilde{N}''_{n-2}\rtimes{\tilde{N}'_{n-2}}))))\rtimes(\tilde{N}_{n-3,0}\rtimes\cdots\rtimes(\tilde{N}_{3,0}\rtimes\cdots\rtimes(\tilde{N}_{2,0}\rtimes\cdots\rtimes(\tilde{N}_{2,n-3}\rtimes\tilde{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$, where $\tilde{N}_{r}=N_{r}\cap{N(\mathbb{Z}_{p})}$ and $\tilde{N}_{r,k}=\{\varphi_{r,k}(a) : a\in\mathbb{Z}_{p}\}$, and this decomposition is unique up to the order of the factors.
+\end{corollary}
+\end{proof}
+\section{Full Decomposition of the Zeta-Function}
+We aim at computing $\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}$, which is the product of the function $|det\varphi|_p^s$ by the measure of domain of integration.
+\subsection{Computation of the Function Under the Integral}
+\begin{proposition}
+Let $n\geq{4}$, and $\varphi\in{G}_n^0(\mathbb{Z}_p)$ for some prime $p$. As seen above, $\varphi$ has the decomposition $\varphi=uh$, where $u\in{N}_n(\mathbb{Z}_p)$ and $h\in{H}_n(\mathbb{Z}_p)$. Then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$, where $\lambda_i=h_{ii}$ for $1\leq{i}\leq{n}-1$.
+\begin{proof}
+Since $\det{u}=1$, it follows that $\det\varphi=\det{h}$, which is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ in $h$, which is $\#\lambda_i(n)=i(n-i)$. This is a simple combinatorial formula that can be proved for $n=5$ by counting the number of $\lambda_1$, $\lambda_2$, $\lambda_3$ and $\lambda_4$, which are $4$, $6$, $6$ and $4$, respectively. For $n+1$, we observe that for each length $l$ we add a new product $\lambda_{n-l+1}\cdots\lambda_{n-1}\lambda_n$, thus we add $i$ times each element $\lambda_i$, which aligns with the formula, because $\#\lambda_i(n+1)=i(n+1-i)=i(n-i)+i=\#\lambda_i(n)+i$.
+\end{proof}
+\end{proposition}
+\subsection{Full Decomposition of the Domain of Integration}
+By applying Fubini's theorem for semidirect products of topological groups \cite[Proposition 28]{Nachbin}, we have that \[\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}=\displaystyle\int_{H^+(\mathbb{Q}_p)}\left(\displaystyle\int_{N_{h}^+}|\det{uh}|_p^sd\mu_{N(\mathbb{Q}_p)}\right)d\mu_{H(\mathbb{Q}_p)},\]
+where \[H^+(\mathbb{Q}_p):=\{\mathrm{diag}(\lambda_{1},\dots,\lambda_{n-1},\lambda_{1}\lambda_{2},\dots,\lambda_{1}\lambda_{2}\cdots\lambda_{n-2}\lambda_{n-1}) : \lambda_{i}\in\mathbb{Z}_{p}\setminus\{0\}\},\]
+that is, $H^+(\mathbb{Q}_p)$ consists of all $h\in{H(\mathbb{Q}_{p})}$ that appear in the decomposition $\varphi=uh$ for some $\varphi\in{G_{n}^{+}(\mathbb{Q}_{p})}$, and, for a given $h\in{H^{+}(\mathbb{Q}_{p})}$, we set $N_{h}^{+}:=\{u\in{N(\mathbb{Q}_{p}) : uh\in{G_{n}^{+}(\mathbb{Q}_{p})}}\}$. The integrand is constant on $N_{h}^{+}$, so computing the inner integral amounts to finding the measure of $N_{h}^+$, which is complicated, but using the decomposition from Corollary \ref{cor:Nr.decomposition}, we can simplify $N_{h}^{+}$ at the price of replacing a single integral by multiple integrals.\\
+Let $\mathcal{N}_{1},\mathcal{N}_{2},\dots,\mathcal{N}_{m}$, where $m=\binom{n}{2}$, be an enumeration of the subgroups
+\[N_{2,n-2},N_{2,n-3},\dots,N_{2,0},N_{3,n-3},\dots,N_{3,0},\dots\]\[\dots,N_{n-2,2},N_{n-2,1},N_{n-2,0},N'_{n-2},N''_{n-2},N_{n-1}.\]
+Every $\varphi\in{G_{n}^{0}(\mathbb{Q}_{p})}$ can be written uniquely as $\varphi=u_{m}\cdots{u_{1}h}$, where $u_{i}\in{\mathcal{N}_{i}}$. Thus, by Fubini \[
+\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{H^{+}}\displaystyle\int_{\mathcal{N}_{1}^{+}(h)}\displaystyle\int_{\mathcal{N}_{2}^{+}(h,u_{1})}\cdots\displaystyle\int_{\mathcal{N}_{m}^{+}(h,u_{1},\dots,u_{m-1})}|\det{h}|_{p}^{s}d\mu_{H}d\mu_{\mathcal{N}_{1}}\cdots{d\mu_{\mathcal{N}_{m}}},\]
+where each $\mu_{\mathcal{N}_{i}}$ is Haar measure on $\mathcal{N}_{i}(\mathbb{Q}_{p})$ normalized so that\\ $\mu_{\mathcal{N}_{i}}(\mathcal{N}_{i}(\mathbb{Z}_{p}))=1$, and \[\mathcal{N}_{i}^{+}(h,u_{1},\dots,u_{i-1}):=\{u_{i}\in\mathcal{N}_{i} : \exists{u_{i+1},\dots,u_{m}}\,\mathrm{such}\,\mathrm{that}\,u_{m}\cdots{u_{1}}h\in{G_{n}^{+}(\mathbb{Q}_{p})}\}.\]
+\section{Computation of the integral}
+We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(K)$.
+We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
+
+We denote by $t=p^{-s}$, where $s$ is the complex parameter of our zeta-function.
+
+Thus, $\psi=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^s=(|\lambda_1|_p^4|\lambda_2|_p^6|\lambda_3|_p^6|\lambda_4|_p^4)^s=(p^{-v_1})^{4s}(p^{-v_2})^{6s}(p^{-v_3})^{6s}(p^{-v_4})^{4s}=(p^{-s})^{4v_1}(p^{-s})^{6v_2}(p^{-s})^{6v_3}(p^{-s})^{4v_4}=t^{4v_1}t^{6v_2}t^{6v_3}t^{4v_4}$.
+
+Now we need to define our domain of integration, and calculate its Haar measure. Since we are computing a $p$-adic integral, we multiply the function to integrate by the domain measure, the result being our desired integral.\\ 
+\subsection{Computation of constraints on $c_1,c_2,c_3,c_4$}
+We compute the constraints on $c_1,c_2,c_3,c_4$ by considering the following product matrix elements:
+\begin{flalign*}
+m_{1,10}&=c_1\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_1\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_1)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{2,10}&=c_2\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_2\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_2)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{3,10}&=c_3\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_3\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_3)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&\\
+m_{4,10}&=c_4\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_4\lambda_2\lambda_3\lambda_1\lambda_1)=v(c_4)+v(\lambda_1)+v(\lambda_2)+v(\lambda_3)+v(\lambda_4)\geq{0}}&
+\end{flalign*}
+Hence we obtain the following constraints:
+\[
+v(c_1),v(c_2),v(c_3),v(c_4)\geq-(v_1+v_2+v_3+v_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{v_1+v_2+v_3+v_4}.\]
+Hence we multiply our integral $4$ times by the same measure $p^{v_1+v_2+v_3+v_4}$, to obtain:
+\[
+\int_{\underline\lambda,\underline{a},\underline{b}}\psi{p}^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
+\]
+\subsection{Computation of constraints on the $b$ elements}
+We consider the following product matrix elements:
+\begin{flalign*}
+m_{1,8}&=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}&\\
+m_{1,9}&=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}&\\
+m_{2,9}&=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}&\\
+m_{3,8}&=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3)}&\\
+m_{4,8}&=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_1+v_2+v_3)}&\\
+m_{5,10}&=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_1+v_2+v_3+v_4)}&\\
+m_{7,10}&=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3+v_4)}&\\
+\end{flalign*}
+But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence $m_{5,10}$ is implied by $m_{2,9}$ and $m_{7,10}$ is implied by $m_{3,8}$.
+\subsubsection{Integration by $b_{12},b_{22},b_{31},b_{41}$}
+By the listed constraints we obtain the measures:
+\begin{flalign*}
+\mu(b_{12})&=p^{v_2+v_3+v_4}.&\\
+\mu(b_{22})&=p^{v_2+v_3+v_4}.&\\
+\mu(b_{31})&=p^{v_1+v_2+v_3}.&\\
+\mu(b_{41})&=p^{v_1+v_2+v_3}.&\\
+\end{flalign*}
+Hence we multiply our integral by these measures, to obtain:
+\[
+\int_{\underline\lambda,\underline{a},b_{11}}\psi{p}^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11})=\]\[=\int_{\underline\lambda,\underline{a},b_{11}}\psi{p}^{6v_1+8v_2+8v_3+6v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11}).
+\]
+\subsubsection{Integration by $b_{11}$}
+We observe that $b_{11}$ appears also in the following product matrix element:
+
+$m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_{p}.$
+
+Hence we have:
+\begin{flalign*}
+b_{11}&\in{p^{-(v_1+v_2+v_3)}}&\\
+a_{11}a_{22}-b_{11}&\in{p^{-(v_2+v_3+v_4)}}\implies{b_{11}\in{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}}&
+\end{flalign*}
+Which means that $b_{11}\in{p^{-(v_1+v_2+v_3)}\mathbb{Z}_p}\cap\left(a_{11}a_{22}+p^{-(v_2+v_3+v_4)}\mathbb{Z}_p\right)$.
+
+We compute $\mu\left(p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap\left(a_{11}a_{22}+p^{-(v_2+v_3+v_4)}\mathbb{Z}_p\right)\right)$, 
+
+the Haar measure of the intersection.
+
+Denote:
+
+$a=a_{11}a_{22}$.
+
+$\alpha=v_1+v_2+v_3$.
+
+$\beta=v_2+v_3+v_4$.
+
+We have the following cases:
+\begin{enumerate}
+    \item $\alpha\geq\beta$ and $\alpha\geq-v_p(a)$.
+
+Let $x\in{\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}}$ be some element in the intersection, but if $x\in{a+p^{-\beta}\mathbb{Z}_p}$ then $x=a+b$, where $b\in{p^{-\beta}\mathbb{Z}_p}\iff{v_p(b)\geq{-\beta}}$, but then $v_p(x)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$.
+
+But $\alpha\geq-v_p(a)\iff{v_p(a)\geq-\alpha}\Rightarrow\min\{v_p(a),-\beta\}\geq\min\{-\alpha,-\beta\}$,
+
+and $\alpha\geq\beta\iff-\beta\geq-\alpha\Rightarrow{v_p(x)\geq\min\{-\alpha,-\beta\}=-\alpha}\Rightarrow{x\in{p^{-\alpha}\mathbb{Z}_p}}$.
+
+But all this shows that $\left(a+p^{-\beta}\mathbb{Z}_p\right)\subseteq{p^{-\alpha}\mathbb{Z}_p}$, which means that \\
+$\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=\left(a+p^{-\beta}\mathbb{Z}_p\right)$.
+
+Hence $\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}\right)=\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\right)=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{v_2+v_3+v_4}$.\\
+\item $\alpha\geq\beta$ and $\alpha<-v_p(a)$.
+Let $x=a+b$ be an element in the intersection as before, hence $v_p(x)=v_p(a+b)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$ and $v_p(x)\geq-\alpha$.
+
+But $\alpha<-v_p(a)\iff{v_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $v_p(x)\geq\min\{v_p(a),-\beta\}\geq\min\{v_p(a),-\alpha\}=v_p(a)$. But $v_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $v_p(x)=\min\{v_p(a),-\alpha\}=v_p(a)$.\\
+But all this shows that $x$ cannot be both in $p^{-\alpha}\mathbb{Z}_p$ and in $\left(a+p^{-\beta}\mathbb{Z}_p\right)$, hence $p^{-\alpha}\mathbb{Z}_p\cap\left(a+p^{-\beta}\mathbb{Z}_p\right)=\phi$.
+\end{enumerate}
+The above is symmetrical to $\beta\geq\alpha\iff-\alpha\geq-\beta$, because if $\beta\geq-v_p(a)\iff{v_p(a)}\geq-\beta$, then $v_p(x)\geq\min\{v_p(a),-\beta\}=-\beta$, but $x\in{p}^{-\alpha}\mathbb{Z}_p\iff{v(x)}\geq-\alpha\geq-\beta\implies{p}^{}$.\\
+Thus, we claim that:
+\[\mu(b_{11})=
+\begin{cases}
+p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,v_p(a)\geq-\max\{\alpha,\beta\}. \\
+0,&\text{if}\,\,\,\,v_p(a)<-\max\{\alpha,\beta\}.
+\end{cases}
+\]
+But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence with multiply our integral by $\mu(b_{11})$, to obtain:
+\[
+\int_{\underline\lambda,\underline{a}}\psi{p}^{6v_1+8v_2+8v_3+6v_4}p^{v_2+v_3+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}\psi{p}^{6v_1+9v_2+9v_3+6v_4+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}),
+\]
+with the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
+We denote: $v_{11}=v_p(a_{11})$, $v_{22}=v_p(a_{22})$ and $\delta=\min\{v_1,v_4\}$.
+\subsection{Computation of constraints on the $a$ elements}
+We have the following constraints:
+\begin{flalign*}
+m_{1,5}&=a_{11}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_1\lambda_2)\geq{0}}\implies{v_{11}}\geq-(v_1+v_2)&\\
+m_{2,5}&=a_{21}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{21}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{21})}\geq-(v_1+v_2)&\\
+m_{2,6}&=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_2\lambda_3)\geq{0}}\implies{v_{22}}\geq-(v_2+v_3)&\\
+m_{3,6}&=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_2\lambda_3)\geq{0}}\implies{v_{11}}\geq-(v_2+v_3)&\\
+m_{3,7}&=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)&\\
+m_{4,7}&=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{v_{22}}\geq-(v_3+v_4)&\\
+m_{7,9}&=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_{11}\geq-(v_2+v_3+v_4)&\\
+m_{5,8}&=a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_1\lambda_2\lambda_3)}\geq{0}\implies{v_p}(a_{22})\geq-(v_1+v_2+v_3)&\\
+m_{6,10}&=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4)\\
+m_{2,8}&=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_{22}+v_p(a_{21})}\geq-(v_1+v_2+v_3)&\\
+m_{3,9}&=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_{11}+v_p(a_{33})}\geq-(v_2+v_3+v_4)&\\
+\end{flalign*}
+We notice that the constraint $m_{6,10}$ is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
+\subsubsection{Computation of constraints on $a_{21}$ and $a_{33}$}
+
+\subsubsubsection{Integration by $a_{33}$}
+We integrate by $a_{33}$ considering $a_{11}$ as a constant. We have the following constraints:
+\begin{enumerate}
+    \item $v_p(a_{33})\geq-v_3-v_4$.
+\item $v_p(a_{33})\geq-v_{11}-v_2-v_3-v_4$.
+\end{enumerate}
+But $-v_{11}-v_2-v_3-v_4\geq{-v_3-v_4}\iff{-v_{11}-v_2}\geq{0}\iff{v_{11}\leq-v_2\leq{0}}$.
+
+And $-v_{11}-v_2-v_3-v_4<{-v_3-v_4}\iff{-v_{11}-v_2}<{0}\iff{v_{11}>-v_2}$.
+
+Hence, $v_p(a_{33})\geq-(v_3+v_4)-\min\{0,v_2+v_{11}\}$ and we multiply out integral by $\mu(a_{33})$, to obtain:
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6v_1+9v_2+6v_3+6v_4+\delta}p^{v_3+v_4}p^{\min\{0,v_2+v_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6v_1+9v_2+10v_3+7v_4+\delta}p^{\min\{0,v_2+v_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
+\]
+We denote: $\gamma=\min\{0,v_2+v_{11}\}$.
+\subsubsubsection{Integration by $a_{21}$}
+We integrate by $a_{21}$ considering $a_{22}$ as a constant. We have the following constraints:
+\begin{enumerate}
+\item $v_p(a_{21})\geq-v_1-v_2$.
+    \item $v_p(a_{21})\geq-v_{22}-v_1-v_2-v_3$.
+    \end{enumerate}
+But $-v_{22}-v_1-v_2-v_3\geq{-v_1-v_2}\iff{-v_{22}-v_3}\geq{0}\iff{v_{22}\leq-v_3\leq{0}}$.
+
+And $-v_{22}-v_1-v_2-v_3<{-v_1-v_2}\iff{-v_{22}-v_3}<{0}\iff{v_{22}>-v_3}$.
+
+And hence, $v_p(a_{21})\geq-(v_1+v_2)-\min\{0,v_3+v_{22}\}$ and we multiply our integral by $\mu(a_{21})$, to obtain:
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\psi{p}^{6v_1+9v_2+10v_3+7v_4+\delta}p^{v_1+v_2+\min\{0,v_3+v_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\psi{p}^{7v_1+10v_2+10v_3+7v_4+\delta+\min\{0,v_3+v_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).\]
+We denote: $\beta=\min\{0,v_3+v_{22}\}$.
+\subsubsection{Computation of constraints on $a_{11}$ and $a_{22}$}
+As seen above, we have the constraint 
+$m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p$, which implies after previous computation that \\
+$v_p(a_{11}a_{22}-b_{11})\geq-(v_2+v_3+\min\{v_1,v_4\})$ if \\
+$v_p({a_{11})+v_p(a_{22}})\geq-(v_2+v_3+\max\{v_1,v_4\})\implies$ \\
+$\implies{v_p}(a_{22})\geq-(v_{11}+v_2+v_3+\max\{v_1,v_4\})$.
+
+Hence, to compute the integral we consider $a_{11}$ as constant, and we integrate by $a_{22}$.
+\subsubsubsection{Integration by $a_{22}$}
+The constraints $m_{2,6}$ and $m_{4,7}$ together imply that\\
+$v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-(v_3+\min\{v_2,v_4\})$, and it is readily seen that the constraint $m_{5,8}$ is already implied by the constraint $m_{2,6}$.
+
+hence, we have the following constraints:
+\begin{enumerate}
+    \item $v_{22}\geq-(v_p(v_{11}+v_2+v_3+\max\{v_1,v_4\})$
+    \item $v_{22}\geq-(v_3+\min\{v_2,v_4\})$
+\end{enumerate}
+Hence, $v_{22}\geq-(v_3+\min\{\min\{v_2,v_4\},v_{11}+v_2+\max\{v_1,v_4\}\})=$ \\
+$=-(v_3+\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\})$.
+We denote $\alpha=\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\}$, and we integrate the expression that is dependent on $a_{22}$ found above, i.e., the measure \\
+$\mu(a_{21})=p^{\min\{0,v_3+v_{22}\}}$:
+
+\[\int_{v_{22}\geq-(v_3+\alpha)}p^{\min\{0,v_3+v_{22}\}}.\]
+
+\[
+\beta=\begin{cases}
+    0,&v_3+v_{22}\geq{0}\iff{v_{22}}\geq{-v_3}\iff\alpha\geq{0}\\
+    v_3+v_{22},&v_3+v_{22}<{0}\iff{v_{22}}<{-v_3}\iff\alpha<{0}
+\end{cases}
+\]
+
+Hence $p^{v_3+(-(v_3+\alpha))}=p^{-\alpha}\leq{p}^{\beta}\leq{p}^0=1$.
+
+We compute all the possible values for $p^{\beta}$ and $\mu(a_{22})$:
+
+\[\begin{matrix}
+v_{22}\geq{-v_3}&p^{\beta}=p^{\min\{0,\geq({v_3}-v_3)\}}=p^0=1&\mu(a_{22})=p^{v_3}\\
+v_{22}={-(v_3+1)}&p^{\beta}=p^{\min\{0,v_3-(v_3+1)\}}=p^{-1}&\mu(a_{22})=p^{v_3+1}-p^{v_3}=p^{v_3+1}(1-p^{-1})\\
+v_{22}={-(v_3+2)}&p^{\beta}=p^{\min\{0,v_3-(v_3+2)\}}=p^{-2}&\mu(a_{22})=p^{v_3+2}-p^{v_3}=p^{v_3+2}(1-p^{-1})\\
+\vdots&\vdots&\vdots\\
+v_{22}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(a_{22})=p^{v_3+\alpha}-p^{v_3+\alpha-1}=p^{v_3+\alpha}(1-p^{-1})\\
+\end{matrix}\]
+All this yields the polynomial: \\
+$p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$, hence we multiply our integral by $\mu(a_{22})$, to obtain:
+\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+10v_3+7v_4+\delta}p^{\gamma}p^{v_3}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
+\subsubsubsection{Integration by $a_{11}$}
+Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Considering the constraint $v_{11}+v_{22}\geq-(v_2+v_3+\delta)$, we check that this is already implied by $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Thus, we integrate by $v_{11}$ under this constraint, where $v_{11}$ depends on $v_1,v_2,v_3,v_4$, to obtain:
+\[\underset{v_{11}\geq-(v_2+\min\{v_1,v_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
+We denote $\beta=\min\{v_1,v_3\}$, $\tilde\delta=\max\{v_1,v_4\}$, $\epsilon=\min\{v_2,v_4\}$ and $\varphi=1-p^{-1}$.\\
+Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(K)$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depends on $3$ choices between pairs of $\lambda$ elements, namely:
+\begin{enumerate}
+    \item $\delta=\min\{v_1,v_4\},\tilde\delta=\max\{v_1,v_4\}$.
+    \item $\beta=\min\{v_1,v_3\}$.
+    \item $\epsilon=\min\{v_2,v_4\}$.
+\end{enumerate}
+Hence we need to break the orthant into $8$ separate cones, created by the $2^3$ different choices for these pairs of elements.
+For each of the $8$ orthants we have $\alpha=
+\begin{cases}
+\epsilon,&\epsilon\leq{v_2+v_{11}+\tilde\delta}\iff{v_{11}}\geq{\epsilon-(v_2+\tilde\delta)}\\
+v_2+v_{11}+\tilde\delta,&\epsilon>{v_2+v_{11}+\tilde\delta}\iff{v_{11}}<{\epsilon-(v_2+\tilde\delta)}\\
+\end{cases}$,
+hence the point $v_{11}=\epsilon-(v_2+\tilde\delta)$ forms a phase transition of $\alpha$ from the fixed value $\epsilon$ into the descending arithmetic sequence $\epsilon-1,\epsilon-2,\dots,v_2-(v_2+\beta)+\tilde\delta=\tilde\delta-\beta$. However, if the $-v_2-\beta>\epsilon-v_2-\tilde\delta\iff-\beta>\epsilon-\tilde\delta\iff\tilde\delta>\epsilon+\beta$, the point of phase transition is out of range. This implies that when both $\tilde\delta\neq\epsilon$ and $\tilde\delta\neq\beta$, we need to break the orthant into two distinct cones, for $\tilde\delta\leq\epsilon+\beta$ and for $\tilde\delta>\epsilon+\beta$. But in case of either $\tilde\delta=\epsilon=v_4$ or $\tilde\delta=\beta=v_1$, then $\tilde\delta\leq\epsilon+\beta$ (because $\tilde\delta,\epsilon,\beta\geq{0}$), hence there is no phase transition for $\alpha$.
+\subsubsubsection{Case 1: $\tilde\delta=v_1,\beta=v_1,\epsilon=v_2$}
+This choice necessarily interprets as $v_3\geq{v_1}\geq{v_4}\geq{v_2}$, but we break the domain of integration into distinct parts, hence we use the convention where
+$\min\{v_i,v_j\}=v_i\iff\begin{cases}
+    v_j>v_i,&j>i\\
+    v_j\geq{v_i},&j<i\\
+\end{cases}$.\\
+Thus, for case $1$ we consider the subdomain where $v_3>v_1\geq{v_4}>v_2$. We observe that $\tilde\delta=\beta$, hence we do not break this subdomain into two cones in the way described above.\\
+We compute $\gamma=\min\{v_{11}+v_2,0\}=\begin{cases}
+    0,&v_{11}\geq-v_2\\
+    v_{11}+v_2<0,&v_{11}<-v_2
+\end{cases}$.\\
+We also compute $\alpha=\min\{\epsilon,v_{11}+v_2+\tilde\delta\}=\begin{cases}
+    v_2,&v_{11}\geq-v_1\\
+    v_2-1,v_2-2,\dots,&-v_1-v_2\leq{v_{11}}<-v_1.
+\end{cases}$.\\
+Also, $p^{7v_1+10v_2+11v_3+7v_4+\delta}=p^{7v_1+10v_2+11v_3+8v_4}$.\\
+We notice that $v_1\geq{v_4}>v_2\implies{v_1}>v_2\iff-v_2>-v_1$, and also that $v_2\geq{0}\iff-v_2\geq-v_2-v_1$, hence we break the integral into three:
+\begin{enumerate}
+    \item $v_{11}\geq-v_2>-v_1$\\
+    $p^{\gamma}=p^{\min\{v_{11}+v_2,0\}}=p^{\min\{\xi,0\}}$, where $\xi\geq{v_2-v_2=0}\implies{p^{\gamma}}=p^0=1$.\\
+    $\alpha=\min\{v_2,v_2+v_{11}+v_1\}=\min\{v_2,\xi\}$, where $\xi\geq{v_2-v_2+v_1=v_1}>v_2\implies\alpha=v_2$.\\
+    $\mu(v_{11})=\mu(p^{-v_2}\mathbb{Z}_p)=p^{-v_2}$.\\
+    Putting all the above together yields the following integral:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(1+v_2\varphi)=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(1+v_2\varphi).\]
+\item $-v_1\leq{v_{11}}\leq-v_2-1$\\
+This means $v_{11}=-(v_2+i)$, where $1\leq{i}\leq{v_1}-v_2$.\\
+$p^{\gamma}=p^{\min\{v_2-(v_2+i),0\}}=p^{\min\{-i,0\}}$, but $i\geq{1}\iff-i\leq-1\implies{p^{\gamma}}=p^{-i}$, where $i$ is in the said range.\\
+$\alpha=\min\{v_2,v_2-(v_2+i)+v_1\}=\min\{v_2,v_1-i\}$, but $i\leq{v_1-v_2}\implies\alpha=\min\{v_2,\xi\}$, where $\xi\geq{v_1}-(v_1-v_2)=v_2\implies\alpha=v_2$.\\
+The measure $\mu(v_{11}=-(v_2+i))=\mu(p^{-(v_2+i)}\mathbb{Z}_p)-\mu(p^{-(v_2+i-1)}\mathbb{Z}_p)=p^{v_2+i}-p^{v_2+i-1}=p^{v_2+i}(1-p^{-1})=p^{v_2+i}\varphi$, hence
+\[p^{\gamma}\mu(v_{11})=\sum_{i=1}^{v_1-v_2}p^{-i}p^{v_2+i}\varphi=\sum_{i=1}^{v_1-v_2}p^{v_2}\varphi=(v_1-v_2)p^{v_2}\varphi.\]
+Thus, we have the following integral:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(v_1-v_2)\varphi(1+v_2\varphi)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(v_1-v_2)(\varphi+v_2\varphi^2).\]
+\item $-v_1-v_2\leq{v_{11}}\leq{-v_1-1}$\\
+This means $v_{11}=-(v_1+i)$, where $1\leq{i}\leq{v_2}$.\\
+$v_1>v_2\iff{v_2-v_1<0}$ and $i\geq{1}$ imply that $v_2-(v_1-i)<0\implies{p^{\gamma}}=p^{v_2-(v_1+i)}$, for all $i$ in the said range.\\
+$\mu(v_{11})=p^{v_1+i}-p^{v_1+i-1}=p^{v_1+i}(1-p^{-1})$.
+$\alpha=\min\{v_2,v_2-(v_1+i)+v_1\}=\min\{v_2,v_2-i\}$, but $i\geq{1}\implies\alpha=v_2-i$, where $i$ is in the said range. This means that at $v_{11}=-v_1-1$ we have a phase transition for $\alpha$.\\
+All the above yields the integral:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\left[\psi{p}^{7v_1+10v_2+11v_3+8v_4}\sum_{i=1}^{v_2}p^{v_2-(v_1+i)}p^{v_1+i}\varphi(1+(v_2-i)\varphi)\right]=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\left[\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}\varphi\sum_{i=1}^{v_2}(1+(v_2-i)\varphi)\right]=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}\varphi(v_2+v_2^2\varphi-\sum_{i=1}^{v_2}i\varphi)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2).\]
+\end{enumerate}
+Thus, our integral for case $1$ is the sum of the above three integrals.\\
+We denote $\omega_1=p^{8v_1+11v_2+11v_3+7v_4}$ and $\omega_4=p^{7v_1+11v_2+11v_3+8v_4}$.\\
+Thus, out integral for this case is:
+\[\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi-v_2\varphi+v_1v_2\varphi^2-v_2^2\varphi^2+v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right).\]
+We denote $\xi=1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2$.\\
+To compute the integral, we need to compute the infinite sum over the subdomain $v_3>v_1\geq{v_4}>v_2$, but we cannot determine the boundaries of the variables $v_1,v_2,v_3,v_4$ in order to compute the sum directly.\\ Instead, we perform a change of variables by noticing first that $v_2\geq{0}$ is the only constraint on the minimal variable $v_2$, so we denote the difference $a=v_2-0=v_2\geq{0}$.\\
+We denote the other differences this way:\\
+$b=v_4-v_2=v_4-a\geq{1}$.\\
+$c=v_1-v_4=v_1-(a+b)\geq{0}$.\\
+$d=v_3-v_1=v_3-(a+b+c)\geq{1}$.\\
+Thus, we obtain the following change of variables:\\
+$v_1=a+b+c$.\\
+$v_2=a$.\\
+$v_3=a+b+c+d$.\\
+$v_4=a+b$.\\
+We use this change of variables for both $\psi\omega_4$ and $\xi$:\\
+$\psi\omega_4=t^{4v_1+6v_2+6v_3+4v_4}{p}^{7v_1+11v_2+11v_3+8v_4}=
+(t^{4v_1}p^{7v_1})(t^{6v_2}p^{11v_2})(t^{6v_3}p^{11v_3})(t^{4v_4}p^{8v_4})=$\\$=(t^4p^7)^{v_1}(t^6p^{11})^{v_2}(t^6p^{11})^{v_3}(t^4p^8)^{v_4}=(t^4p^7)^{a+b+c}(t^6p^{11})^{a}(t^6p^{11})^{a+b+c+d}(t^4p^8)^{a+b}=$\\
+$=(t^{20a}p^{37a})(t^{14a}p^{26b})(t^{10c}p^{18c})(t^{6d}p^{11d})=(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d$.\\
+$\xi=1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2=$\\
+$=1+a\varphi+(a+b+c)\varphi+a(a+b+c)\varphi^2-\frac{a(a+1)}{2}\varphi^2=$\\
+$=1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2$.\\
+Thus, our integral assumes its final form:
+\begin{align*}
+&\int\limits_{\substack{a,c\geq0 \\ b,d\geq1}}\psi\omega_4\xi{d}\mu(a,b,c,d)= \\
+&=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d\left(1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2\right).
+\end{align*}
+Denote 
+\[\sigma=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d,\]
+hence we break our integral in the following way:
+\[\sigma\left(1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2\right)=\]\[=\sigma+2\varphi(a\sigma)+\varphi(b\sigma)+\varphi(c\sigma)-\frac{\varphi^2}{2}(a^2\sigma)+\varphi^2(ab\sigma)+\varphi^2(ac\sigma)-\frac{\varphi^2}{2}(a\sigma).
+\]
+To compute an expression of the form $a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\sigma$,\\
+where $\rho_a,\rho_b,\rho_c,\rho_d\in\{0,1,2\}$, we use Fubini's theorem for infinite sums, which says that:
+\begin{align*}
+&\sigma=\sum_{\overset{\mathclap{\scriptstyle a,c\geq{0}}}{\mathclap{\scriptstyle b,d\geq{1}}}}(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d\\
+&=\sum_{a\geq{0}}(t^{20}p^{37})^a\sum_{b\geq{1}}(t^{14}p^{26})^b\sum_{c\geq{0}}(t^{10}p^{18})^c\sum_{d\geq{1}}(t^{6}p^{11})^d,\\
+\end{align*}
+hence
+\begin{align*}
+&a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\sigma=a^{\rho_a}b^{\rho_b}c^{\rho_c}d^{\rho_d}\left(\sum_{a\geq{0}}(t^{20}p^{37})^a\right)\left(\sum_{b\geq{1}}(t^{14}p^{26})^b\right)\left(\sum_{c\geq{0}}(t^{10}p^{18})^c\right)\left(\sum_{d\geq{1}}(t^{6}p^{11})^d\right)=\\
+&=\left(a^{\rho_a}\sum_{a\geq{0}}(t^{20}p^{37})^a\right)\left(b^{\rho_b}\sum_{b\geq{1}}(t^{14}p^{26})^b\right)\left(c^{\rho_c}\sum_{c\geq{0}}(t^{10}p^{18})^c\right)\left(d^{\rho_d}\sum_{d\geq{1}}(t^{6}p^{11})^d\right).\\
+\end{align*}
+We use the following summation rules:
+\begin{align*}
+&\sum_{a\geq{0}}x^a=\frac{1}{1-x}.\\
+&\sum_{a\geq{1}}x^a=\frac{1}{1-x}-x^0=\frac{1-(1-x)}{1-x}=\frac{x}{1-x}.\\
+&\sum_{a\geq{0}}ax^a=x\sum_{a\geq{0}}ax^{a-1}=x\left(\sum_{a\geq{0}}x^a\right)'=x\left(\frac{1}{1-x}\right)'=\frac{x}{(1-x)^2}.\\
+&\sum_{a\geq{1}}ax^a=\sum_{a\geq{0}}ax^a-0x^0=\frac{x}{(1-x)^2}.\\
+\end{align*}
+For the sum $\sum_{a\geq{0}}a^2x^a$, we use the second derivative:
+\[\left(\sum_{a\geq{0}}x^a\right)''=\left(\sum_{a\geq{0}}ax^{a-1}\right)'=\left(\frac{1}{(1-x)^2}\right)'=\frac{2}{(1-x)^3}=\sum_{a\geq{0}}a(a-1)x^{a-2},\]
+which gives the two remaining rules:
+\begin{align*}
+&\sum_{a\geq{0}}a^2x^a=\frac{x^2+x}{(1-x)^3}.\\
+&\sum_{a\geq{1}}a^2x^a=\frac{x^2+x}{(1-x)^3}-0^2x^0=\frac{x^2+x}{(1-x)^3}.\\
+\end{align*}
+We code the product of series into Sage, to obtain the following rational function:\\
+\[s_1=
+-\frac{{\left(p^{82} t^{44} - 2 \, p^{81} t^{44} + p^{63} t^{34} + p^{55} t^{30} + p^{44} t^{24} - p^{38} t^{20} - p^{27} t^{14} - p^{19} t^{10} + 2 \, p - 1\right)} {\left(p^{18} t^{10} + 1\right)} p^{36} t^{20}}{{\left(p^{37} t^{20} - 1\right)}^{3} {\left(p^{13} t^{7} + 1\right)}^{2} {\left(p^{13} t^{7} - 1\right)}^{2} {\left(p^{11} t^{6} - 1\right)} {\left(p^{9} t^{5} + 1\right)} {\left(p^{9} t^{5} - 1\right)}}
+\]
+\subsubsubsection{Case 2: $\tilde\delta=v_1,\beta=v_3,\epsilon=v_2$}
+Thus we have the following order relations\\
+$v_1\geq{v_3}$.\\
+$v_1\geq{v_4}>v_2$.\\
+We observe that since $\beta\neq\tilde\delta$, we need to break this case into two sub cases
+\begin{enumerate}
+    \item Sub case 2.1: $v_1\geq{v}_2+v_3\iff-v_2-v_3\geq-v_1$\\
+    We do not have a phase transition in this sub case, hence our integral breaks into a sum of two integrals in the general form of the first two integrals of case 1, namely\\
+    \[\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2\right)+\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(\varphi+v_3\varphi+v_2v_3\varphi^2\right)=\]\[=\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2+\varphi+v_3\varphi+v_2v_3\varphi^2\right)\]
+    But this integral breaks again into the sum of the integrals on all the different cones that are formed by linear orders that are compliant with our order relations $v_1\geq{v_3}$, ${v_1\geq{v_4}>v_2}$ and $v_1\geq{v_2}+v_3$, namely\\
+    $v_1\geq{v_2+v_3}\geq{v}_3\geq{v_4}>v_2$\\
+$v_1\geq{v_2+v_3}\geq{v}_4>{v_3}>v_2$\\
+$v_1\geq{v_2+v_3}\geq{v}_4>{v_2}\geq{v}_3$\\
+$v_1\geq{v_4}>v_2+v_3\geq{v_2}\geq{v}_3$\\
+$v_1\geq{v_4}>v_2+v_3\geq{v_3}>v_2$\\
+For each cone we compute a different substitution of variables and the series product that is formed by it, taking their sum yields the rational function for this sub-case.\\
+    \item Sub-case 2.2: $v_2+v_3>v_1\iff-v_1>-v_2+v_3$\\
+     \[\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2\varphi+v_3\varphi-\frac{v_2^2}{2}\varphi^2+v_2v_1\varphi^2-\frac{v_3^2}{2}\varphi^2+v_3v_1\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_2}{2}\varphi^2-\frac{v_3}{2}\varphi^2+\frac{v_1}{2}\varphi^2\right)\]
+$v_2+v_3>v_1\geq{v}_3\geq{v}_4>v_2$\\
+$v_2+v_3>v_1\geq{v}_4>v_3>v_2$\\
+$v_2+v_3>v_1\geq{v}_4>v_2\geq{v_3}$\\
+\end{enumerate}
+\subsubsubsection{Case 3}
+$v_3>v_1$\\
+$v_4>v_1$\\
+$v_4>v_2$\\
+\begin{enumerate}
+    \item Sub case 3.1: $-v_2-v_1>-v_4\iff{v_4>v_2+v_1}$\\
+    \[\int_{\substack{v_3>v_1\\v_4>v_1\\v_4>v_2}}\psi\omega_1\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2\right)\]
+    $v_4>v_1+v_2\geq{v}_3>{v_2}>v_1$\\
+$v_4>v_1+v_2\geq{v}_2\geq{v_3}>v_1$\\
+$v_4>v_1+v_2\geq{v}_3>{v_1}\geq{v}_2$\\
+$v_4>v_3>v_1+v_2\geq{v_1}\geq{v}_2$\\
+$v_4>v_3>v_1+v_2\geq{v_2}>v_1$\\
+$v_3\geq{v}_4>v_1+v_2\geq{v_2}>v_1$\\
+$v_3\geq{v}_4>v_1+v_2\geq{v_1}\geq{v}_2$\\
+    \item Sub case 3.2: $-v_4\geq-v_2-v_1\iff{v_2+v_1\geq{v}_4}$\\
+    \[\int_{\substack{v_3>v_1\\v_4>v_1\\v_4>v_2}}\psi\omega_1\left(1+v_1\varphi+v_2\varphi-\frac{v_1^2}{2}\varphi^2+v_4v_1\varphi^2-\frac{v_2^2}{2}\varphi^2+v_4v_2\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2-\frac{v_2}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
+$v_1+v_2\geq{v}_4>v_3>{v_2}>v_1$\\
+$v_1+v_2\geq{v}_4>v_2\geq{v_3}>v_1$\\
+$v_1+v_2\geq{v}_4>v_3>{v_1}\geq{v}_2$\\
+$v_1+v_2>v_3\geq{v}_4>{v_2}>v_1$\\
+$v_1+v_2>v_3\geq{v}_4>{v_1}\geq{v}_2$\\
+$v_3\geq{v}_1+v_2\geq{v}_4>{v_2}>v_1$\\
+$v_3\geq{v}_1+v_2\geq{v}_4>{v_1}\geq{v}_2$\\
+    \end{enumerate}
+    \subsubsubsection{Case 4}
+$v_4>v_1\geq{v_3}$\\
+$v_4>v_2$\\
+\begin{enumerate}
+    \item Sub case 4.1: ${v_4>v_2+v_3}\iff-v_2-v_3>-v_4$\\
+    \[\int_{\substack{v_4>v_1\geq{v_3}\\
+v_4>v_2}}\psi\omega_1\left(1+v_2v_4\varphi^2+v_2\varphi+v_3\varphi+v_3v_2\varphi^2-v_4v_2\varphi^2-\frac{v_2^2}{2}\varphi^2-v_2v_3\varphi^2+v_2v_4\varphi^2-\frac{v_3^2}{2}\varphi^2+v_3v_4\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_2}{2}\varphi^2-\frac{v_3}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
+$v_4>v_2+v_3>v_1\geq{v_3}>v_2$\\
+$v_4>v_2+v_3>v_1\geq{v_2}\geq{v}_3$\\
+$v_4>v_2+v_3\geq{v}_2>{v_1}\geq{v}_3$\\
+$v_4>v_1\geq{v}_2+v_3\geq{v_2}\geq{v}_3$\\
+$v_4>v_1\geq{v}_2+v_3\geq{v_3}>v_2$\\
+    \item Sub case 4.2: $-v_4\geq-v_2-v_3\iff{v_2+v_3\geq{v_4}}$\\
+    \[\int_{\substack{v_4>v_1\geq{v_3}\\
+v_4>v_2}}\psi\omega_1\left(1+v_1\varphi+v_2\varphi-\frac{v_1^2}{2}\varphi^2+v_4v_1\varphi^2-\frac{v_2^2}{2}\varphi^2+v_4v_2\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2-\frac{v_2}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
+$v_2+v_3\geq{v}_4>v_1\geq{v_2}\geq{v}_3$\\
+$v_2+v_3\geq{v}_4>v_1\geq{v_3}>v_2$\\
+$v_2+v_3\geq{v}_4>v_2>{v_1}\geq{v}_3$\\
+    \end{enumerate}
+    \subsubsubsection{Case 5}
+$v_2\geq{v_4}>v_1\geq{v_3}$\\
+\[\int_{\substack{v_4>v_1\geq{v_3}\\
+v_4>v_2}}\psi\omega_1\left(1+v_4\varphi+v_3\varphi+v_3v_4\varphi^2-\frac{v_3^2}{2}\varphi^2-\frac{v_3}{2}\varphi^2\right)\]
+The only possible arrangement here is\\
+$v_2\geq{v_4}>v_1\geq{v_3}$\\
+
+\subsubsubsection{Case 6}
+$v_2\geq{v_4}>v_1$\\
+$v_3>v_1$\\
+\[\int_{\substack{v_2\geq{v_4}>v_1\\v_3>v_1}}\psi\omega_1\left(1+v_4\varphi+v_1\varphi+v_1v_4\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2\right)\]
+$v_2\geq{v}_4>v_3>{v_1}$\\
+$v_2\geq{v}_3\geq{v}_4>{v_1}$\\
+$v_3>v_2\geq{v}_4>{v_1}$\\
+
+\subsubsubsection{Case 7}
+$v_2\geq{v_4}$\\
+$v_3>v_1\geq{v_4}$\\
+\[\int_{\substack{v_2\geq{v_4}\\v_3>v_1\geq{v_4}}}\psi\omega_4\left(1+v_4\varphi+v_1\varphi+v_1v_4\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_4}{2}\varphi^2\right)\]
+$v_2\geq{v}_3>{v}_1\geq{v_4}$\\
+$v_3>v_2>v_1\geq{v_4}$\\
+$v_3>v_1\geq{v}_2\geq{v_4}$\\
+\subsubsubsection{Case 8}
+$v_2\geq{v_4}$\\
+$v_1\geq{v_4}$\\
+$v_1\geq{v_3}$\\
+\begin{enumerate}
+    \item  Sub-case 8.1: $v_1\geq{v_3+v_4}\iff-v_3-v_4\geq{v}_1$
+    \[\int_{\substack{v_2\geq{v_4}\\v_1\geq{v_4}\\v_1\geq{v_3}}}\psi\omega_4\left(1+v_4\varphi+v_3\varphi+v_3v_4\varphi^2\right)\]
+$v_1\geq{v}_3+v_4\geq{v}_3>{v_2}\geq{v}_4$\\
+$v_1\geq{v}_3+v_4\geq{v}_2\geq{v_3}\geq{v}_4$\\
+$v_1\geq{v}_3+v_4\geq{v}_2\geq{v_4}>v_3$\\
+$v_1\geq{v}_2>v_3+v_4\geq{v_4}>v_3$\\
+$v_1\geq{v}_2>v_3+v_4\geq{v_3}\geq{v_4}$\\
+$v_2>v_1\geq{v}_3+v_4\geq{v_3}\geq{v_4}$\\
+$v_2>v_1\geq{v}_3+v_4\geq{v_4}>{v_3}$\\
+\item Sub-case 8.2: $v_3+v_4>v_1\iff-v_1>-v_3-v_4$
+\[\int_{\substack{v_2\geq{v_4}\\v_1\geq{v_4}\\v_1\geq{v_3}}}\psi\omega_4\left(1+v_3\varphi+v_4\varphi-\frac{v_3^2}{2}\varphi^2+v_1v_3\varphi^2-\frac{v_4^2}{2}\varphi^2+v_1v_4\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_3}{2}\varphi^2-\frac{v_4}{2}\varphi^2+\frac{v_1}{2}\varphi^2\right)\]
+$v_3+v_4>v_1\geq{v}_3>{v_2}\geq{v}_4$\\
+$v_3+v_4>v_1\geq{v}_2\geq{v_3}\geq{v}_4$\\
+$v_3+v_4>v_1\geq{v}_2\geq{v_4}>v_3$\\
+$v_3+v_4\geq{v}_2>v_1\geq{v_4}>v_3$\\
+$v_3+v_4>v_2>v_1\geq{v_3}\geq{v}_4$\\
+$v_2>v_3+v_4>v_1\geq{v_4}>v_3$\\
+$v_2\geq{v}_3+v_4>v_1\geq{v_3}\geq{v}_4$\\
+\end{enumerate}
+\pagebreak
+\[
+\frac{{\left(p^{50} t^{28} + p^{43} t^{24} - 2 \, p^{33} t^{18} + p^{32} t^{18} - 2 \, p^{25} t^{14} + p^{18} t^{10} - 2 \, p^{17} t^{10} + p^{7} t^{4} + 1\right)} {\left(p^{25} t^{14} - 1\right)}}{{\left(p^{15} t^{8} - 1\right)} {\left(p^{13} t^{7} + 1\right)}^{2} {\left(p^{13} t^{7} - 1\right)}^{2} {\left(p^{11} t^{6} - 1\right)}^{2} {\left(p^{9} t^{5} + 1\right)} {\left(p^{9} t^{5} - 1\right)} {\left(p^{7} t^{4} - 1\right)}}
+\]
+
+
+\[
+\frac{{\left(p^{26} r^{24} t^{28} + p^{23} r^{20} t^{24} - 2 \, p^{17} r^{16} t^{18} + p^{16} r^{16} t^{18} - 2 \, p^{13} r^{12} t^{14} + p^{10} r^{8} t^{10} - 2 \, p^{9} r^{8} t^{10} + p^{3} r^{4} t^{4} + 1\right)} {\left(p^{13} r^{12} t^{14} - 1\right)}}{{\left(p^{7} r^{8} t^{8} - 1\right)} {\left(p^{7} r^{6} t^{7} + 1\right)}^{2} {\left(p^{7} r^{6} t^{7} - 1\right)}^{2} {\left(p^{7} r^{4} t^{6} - 1\right)}^{2} {\left(p^{5} r^{4} t^{5} + 1\right)} {\left(p^{5} r^{4} t^{5} - 1\right)} {\left(p^{3} r^{4} t^{4} - 1\right)}}
+\]
+\end{document}
+
 \frac{{\left(p^{26} r^{24} t^{28} + p^{23} r^{20} t^{24} - 2 \, p^{17} r^{16} t^{18} + p^{16} r^{16} t^{18} - 2 \, p^{13} r^{12} t^{14} + p^{10} r^{8} t^{10} - 2 \, p^{9} r^{8} t^{10} + p^{3} r^{4} t^{4} + 1\right)} {\left(p^{13} r^{12} t^{14} - 1\right)}}{{\left(p^{7} r^{8} t^{8} - 1\right)} {\left(p^{7} r^{6} t^{7} + 1\right)}^{2} {\left(p^{7} r^{6} t^{7} - 1\right)}^{2} {\left(p^{7} r^{4} t^{6} - 1\right)}^{2} {\left(p^{5} r^{4} t^{5} + 1\right)} {\left(p^{5} r^{4} t^{5} - 1\right)} {\left(p^{3} r^{4} t^{4} - 1\right)}}
 \]
 \end{document}
