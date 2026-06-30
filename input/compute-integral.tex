@@ -71,23 +71,18 @@ m_{21}&m_{22}&\cdots&m_{2d}\\
 \vdots\\
 m_{n-1,1}&m_{n-1,2}&\cdots&m_{n-1,d}\\
 m_{n1}&m_{n,2}&\cdots&m_{n,d}\\
-\vdots&\vdots&\cdots&\vdots\\
-\vdots&\vdots&\cdots&\vdots\\
+\vdots&\vdots&\vdots&\vdots\\
+\vdots&\vdots&\vdots&\vdots\\
 m_{d-1,1}&m_{d-1,2}&\cdots&m_{d-1,d}\\
 m_{d1}&m_{d2}&\cdots&m_{dd}\\
 \end{bmatrix}\\\]
-Since the elements $\{\gamma_{k}\mathcal{L}_{n,p}\}_{k=1}^{n-1}$ of the lower central series are characteristic subalgebras, $M$ has the block-diagonal form
-\[M=\begin{pmatrix}
-M_{11} & \vline & M_{12} & \vline & M_{13} & \vline & \dots & \vline & M_{1,n-2} & \vline & M_{1,n-1}\\
-\hline
-0 & \vline & M_{22} & \vline & M_{23} & \vline & \dots & \vline & M_{2,n-2} & \vline & M_{2,n-1}\\
-\hline
-\vdots & \vline & \vdots & \vline & \vdots & \vline & \ddots & \vline & \vdots & \vline & \vdots\\
-\hline
-0 & \vline & 0 & \vline & 0 & \vline & \dots & \vline & M_{2,n-2} & \vline & M_{2,n-1}\\
-\hline
-0 & \vline & 0 &\vline & 0 & \vline & \dots & \vline & 0 & \vline & M_{n-1,n-1}\\
-\end{pmatrix}
+Since the elements $\gamma_{k}\mathcal{L}_{n,p}$ where $1\leq{k}\leq{n}-1$ of the lower central series are characteristic subalgebras, $M$ has the block-diagonal form
+\[M=\begin{bmatrix}
+M_{11} & M_{12} & \cdots & M_{1,n-1}\\
+M_{21} & M_{22} & \cdots & M_{2,n-1}\\
+\vdots & \vdots & \vdots & \vdots\\
+M_{n-1,1} & M_{n-1,2} & \cdots & M_{n-1,n-1}\\
+\end{bmatrix}
 \]
 where each block $M_{ij}$ is an $(n-i)\times{(n-j)}$ matrix.\par
 Note that $\begin{pmatrix}
