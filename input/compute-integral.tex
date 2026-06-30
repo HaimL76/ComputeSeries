@@ -6,6 +6,7 @@
 \usepackage{amsthm}
 \usepackage{titlesec} % For \subsubsubsection
 \usepackage{xfrac} % For \sfrac
+\usepackage{arydshln} % For \hdashline
 \newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -50,6 +51,61 @@ $L=L_{n,p}$ or $L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}$, dependi
 $d=\binom{n}{2}=\dim\mathcal{L}$ or $\dim{L}$, depending on the context.\\
 $\gamma_i=\gamma_i\mathcal{L}$ or $\gamma_iL$, depending on the context.\\
 $e_i=e_{i,i+1}$.\\
+\section{Basic Notions}
+\subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
+Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$ with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is, for every $v=a_1e_1+a_2e_2+\cdots+a_{n-1}e_{n-1}+a_{13}e_{13}+\cdots+a_{1n}e_{1n}\in\mathcal{L}$:
+\[
+v\varphi=\begin{bmatrix}
+\varphi_1\\
+\varphi_2\\
+\vdots\\
+\varphi_{n-1}\\
+\varphi_{13}\\
+\vdots\\
+\varphi_{n-2,n}\\
+\vdots\\
+\varphi_{1n}\\
+\end{bmatrix}\\=\begin{bmatrix}
+a_1e_1\\
+a_2e_2\\
+\vdots\\
+a_{n-1}e_{n-1}\\
+a_{13}e_{13}\\
+\vdots\\
+a_{n-2,n}e_{n-2,n}\\
+\vdots\\
+a_{1n}e_{1n}\\
+\end{bmatrix}^T\begin{bmatrix}
+m_{11}&m_{12}&\cdots&m_{1d}\\
+m_{21}&m_{22}&\cdots&m_{2d}\\
+\vdots\\
+m_{n-1,1}&m_{n-1,2}&\cdots&m_{n-1,d}\\
+m_{n1}&m_{n,2}&\cdots&m_{n,d}\\
+\vdots\\
+\vdots\\
+m_{d-1,1}&m_{d-1,2}&\cdots&m_{d-1,d}\\
+m_{d1}&m_{d2}&\cdots&m_{dd}\\
+\end{bmatrix}\\
+\]
+Since the elements $\{\gamma_{k}\mathcal{L}_{n,p}\}_{k=1}^{n-1}$ of the lower central series are characteristic subalgebras, $M$ has the block-diagonal form
+\[M=\begin{pmatrix}
+M_{11} & \vline & M_{12} & \vline & M_{13} & \vline & \dots & \vline & M_{1,n-2} & \vline & M_{1,n-1}\\
+\hline
+0 & \vline & M_{22} & \vline & M_{23} & \vline & \dots & \vline & M_{2,n-2} & \vline & M_{2,n-1}\\
+\hline
+\vdots & \vline & \vdots & \vline & \vdots & \vline & \ddots & \vline & \vdots & \vline & \vdots\\
+\hline
+0 & \vline & 0 & \vline & 0 & \vline & \dots & \vline & M_{2,n-2} & \vline & M_{2,n-1}\\
+\hline
+0 & \vline & 0 &\vline & 0 & \vline & \dots & \vline & 0 & \vline & M_{n-1,n-1}\\
+\end{pmatrix}
+\]
+where each block $M_{ij}$ is an $(n-i)\times{(n-j)}$ matrix.\par
+Note that $\begin{pmatrix}
+M_{11} & \vline & M_{12}\\
+\hline
+0 & \vline & M_{22}\\
+\end{pmatrix}$ gives an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_{3}\mathcal{L}_{n,p}})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
 \section{Base Extension of $L$}
 Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X) : \{y\in{L} : [y,X]\subseteq{I}\}$.\\
 Denote by $L=\mathcal{L}_{n,p}$ our usual algebra over $K$.\\
@@ -212,7 +268,7 @@ Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(K)\rightarrow\text{Au
           & & & I_2 & \\
                & & & & 1\\
 \end{bmatrix}.\]
-We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\end{bmatrix}^T$, then $N_{n-1}\congK^{n-1}$. Indeed, the product of any two matrices $A=(a_{ij})$ and $B=(b_{ij})$ in $N_{n-1}$ is a unitriangular matrix with the block $M_{1,n-1}=\begin{bmatrix}
+We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\end{bmatrix}^T$, then $N_{n-1}\cong{K}^{n-1}$. Indeed, the product of any two matrices $A=(a_{ij})$ and $B=(b_{ij})$ in $N_{n-1}$ is a unitriangular matrix with the block $M_{1,n-1}=\begin{bmatrix}
     c_{1m}&c_{2m}&\dots&c_{n-1,m}
 \end{bmatrix}^T$ where $c_{im}=a_{im}+b_{im}$.
 
@@ -455,11 +511,11 @@ Every $\varphi\in{G_{n}^{0}(\mathbb{Q}_{p})}$ can be written uniquely as $\varph
 where each $\mu_{\mathcal{N}_{i}}$ is Haar measure on $\mathcal{N}_{i}(\mathbb{Q}_{p})$ normalized so that\\ $\mu_{\mathcal{N}_{i}}(\mathcal{N}_{i}(\mathbb{Z}_{p}))=1$, and \[\mathcal{N}_{i}^{+}(h,u_{1},\dots,u_{i-1}):=\{u_{i}\in\mathcal{N}_{i} : \exists{u_{i+1},\dots,u_{m}}\,\mathrm{such}\,\mathrm{that}\,u_{m}\cdots{u_{1}}h\in{G_{n}^{+}(\mathbb{Q}_{p})}\}.\]
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(K)$.
-We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
+We denote by $a_1=a_p(\lambda_1),a_2=a_p(\lambda_2),a_3=a_p(\lambda_3),a_4=a_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
 
 We denote by $t=p^{-s}$, where $s$ is the complex parameter of our zeta-function.
 
-Thus, $\psi=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^s=(|\lambda_1|_p^4|\lambda_2|_p^6|\lambda_3|_p^6|\lambda_4|_p^4)^s=(p^{-v_1})^{4s}(p^{-v_2})^{6s}(p^{-v_3})^{6s}(p^{-v_4})^{4s}=(p^{-s})^{4v_1}(p^{-s})^{6v_2}(p^{-s})^{6v_3}(p^{-s})^{4v_4}=t^{4v_1}t^{6v_2}t^{6v_3}t^{4v_4}$.
+Thus, $\psi=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^s=(|\lambda_1|_p^4|\lambda_2|_p^6|\lambda_3|_p^6|\lambda_4|_p^4)^s=(p^{-a_1})^{4s}(p^{-a_2})^{6s}(p^{-a_3})^{6s}(p^{-a_4})^{4s}=(p^{-s})^{4a_1}(p^{-s})^{6a_2}(p^{-s})^{6a_3}(p^{-s})^{4a_4}=t^{4a_1}t^{6a_2}t^{6a_3}t^{4a_4}$.
 
 Now we need to define our domain of integration, and calculate its Haar measure. Since we are computing a $p$-adic integral, we multiply the function to integrate by the domain measure, the result being our desired integral.\\ 
 \subsection{Computation of constraints on $c_1,c_2,c_3,c_4$}
@@ -472,34 +528,34 @@ m_{4,10}&=c_4\lambda_2\lambda_3\lambda_1\lambda_1\in\mathbb{Z}_p\iff{v(c_4\lambd
 \end{flalign*}
 Hence we obtain the following constraints:
 \[
-v(c_1),v(c_2),v(c_3),v(c_4)\geq-(v_1+v_2+v_3+v_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{v_1+v_2+v_3+v_4}.\]
-Hence we multiply our integral $4$ times by the same measure $p^{v_1+v_2+v_3+v_4}$, to obtain:
+v(c_1),v(c_2),v(c_3),v(c_4)\geq-(a_1+a_2+a_3+a_4)\Rightarrow\mu(c_1),\mu(c_2),\mu(c_3),\mu(c_4)=p^{a_1+a_2+a_3+a_4}.\]
+Hence we multiply our integral $4$ times by the same measure $p^{a_1+a_2+a_3+a_4}$, to obtain:
 \[
-\int_{\underline\lambda,\underline{a},\underline{b}}\psi{p}^{4v_1+4v_2+4v_3+4v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
+\int_{\underline\lambda,\underline{a},\underline{b}}\psi{p}^{4a_1+4a_2+4a_3+4a_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(\underline{b}).
 \]
 \subsection{Computation of constraints on the $b$ elements}
 We consider the following product matrix elements:
 \begin{flalign*}
-m_{1,8}&=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(v_1+v_2+v_3)}&\\
-m_{1,9}&=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(v_2+v_3+v_4)}&\\
-m_{2,9}&=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_2+v_3+v_4)}&\\
-m_{3,8}&=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3)}&\\
-m_{4,8}&=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(v_1+v_2+v_3)}&\\
-m_{5,10}&=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(v_1+v_2+v_3+v_4)}&\\
-m_{7,10}&=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(v_1+v_2+v_3+v_4)}&\\
+m_{1,8}&=b_{11}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{11})\geq-(a_1+a_2+a_3)}&\\
+m_{1,9}&=b_{12}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{12})\geq-(a_2+a_3+a_4)}&\\
+m_{2,9}&=b_{22}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(a_2+a_3+a_4)}&\\
+m_{3,8}&=b_{31}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(a_1+a_2+a_3)}&\\
+m_{4,8}&=b_{41}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\Rightarrow{v(b_{41})\geq-(a_1+a_2+a_3)}&\\
+m_{5,10}&=b_{22}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{22})\geq-(a_1+a_2+a_3+a_4)}&\\
+m_{7,10}&=b_{31}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\Rightarrow{v(b_{31})\geq-(a_1+a_2+a_3+a_4)}&\\
 \end{flalign*}
-But since $v_1,v_2,v_3,v_4\geq{0}$, then $x\geq-(v_1+v_2+v_3)\implies{x}\geq-(v_1+v_2+v_3+v_4)$ and $x\geq-(v_2+v_3+v_4)\implies{x}\geq-(v_1+v_2+v_3+v_4)$, hence $m_{5,10}$ is implied by $m_{2,9}$ and $m_{7,10}$ is implied by $m_{3,8}$.
+But since $a_1,a_2,a_3,a_4\geq{0}$, then $x\geq-(a_1+a_2+a_3)\implies{x}\geq-(a_1+a_2+a_3+a_4)$ and $x\geq-(a_2+a_3+a_4)\implies{x}\geq-(a_1+a_2+a_3+a_4)$, hence $m_{5,10}$ is implied by $m_{2,9}$ and $m_{7,10}$ is implied by $m_{3,8}$.
 \subsubsection{Integration by $b_{12},b_{22},b_{31},b_{41}$}
 By the listed constraints we obtain the measures:
 \begin{flalign*}
-\mu(b_{12})&=p^{v_2+v_3+v_4}.&\\
-\mu(b_{22})&=p^{v_2+v_3+v_4}.&\\
-\mu(b_{31})&=p^{v_1+v_2+v_3}.&\\
-\mu(b_{41})&=p^{v_1+v_2+v_3}.&\\
+\mu(b_{12})&=p^{a_2+a_3+a_4}.&\\
+\mu(b_{22})&=p^{a_2+a_3+a_4}.&\\
+\mu(b_{31})&=p^{a_1+a_2+a_3}.&\\
+\mu(b_{41})&=p^{a_1+a_2+a_3}.&\\
 \end{flalign*}
 Hence we multiply our integral by these measures, to obtain:
 \[
-\int_{\underline\lambda,\underline{a},b_{11}}\psi{p}^{4v_1+4v_2+4v_3+4v_4}p^{2v_1+4v_2+4v_3+2v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11})=\]\[=\int_{\underline\lambda,\underline{a},b_{11}}\psi{p}^{6v_1+8v_2+8v_3+6v_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11}).
+\int_{\underline\lambda,\underline{a},b_{11}}\psi{p}^{4a_1+4a_2+4a_3+4a_4}p^{2a_1+4a_2+4a_3+2a_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11})=\]\[=\int_{\underline\lambda,\underline{a},b_{11}}\psi{p}^{6a_1+8a_2+8a_3+6a_4}d\mu(\underline\lambda)d\mu(\underline{a})d\mu(b_{11}).
 \]
 \subsubsection{Integration by $b_{11}$}
 We observe that $b_{11}$ appears also in the following product matrix element:
@@ -508,12 +564,12 @@ $m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_{p}.$
 
 Hence we have:
 \begin{flalign*}
-b_{11}&\in{p^{-(v_1+v_2+v_3)}}&\\
-a_{11}a_{22}-b_{11}&\in{p^{-(v_2+v_3+v_4)}}\implies{b_{11}\in{a_{11}a_{22}+p^{-(v_2+v_3+v_4)}}}&
+b_{11}&\in{p^{-(a_1+a_2+a_3)}}&\\
+a_{11}a_{22}-b_{11}&\in{p^{-(a_2+a_3+a_4)}}\implies{b_{11}\in{a_{11}a_{22}+p^{-(a_2+a_3+a_4)}}}&
 \end{flalign*}
-Which means that $b_{11}\in{p^{-(v_1+v_2+v_3)}\mathbb{Z}_p}\cap\left(a_{11}a_{22}+p^{-(v_2+v_3+v_4)}\mathbb{Z}_p\right)$.
+Which means that $b_{11}\in{p^{-(a_1+a_2+a_3)}\mathbb{Z}_p}\cap\left(a_{11}a_{22}+p^{-(a_2+a_3+a_4)}\mathbb{Z}_p\right)$.
 
-We compute $\mu\left(p^{-(v_1+v_2+v_3)}\mathbb{Z}_p\cap\left(a_{11}a_{22}+p^{-(v_2+v_3+v_4)}\mathbb{Z}_p\right)\right)$, 
+We compute $\mu\left(p^{-(a_1+a_2+a_3)}\mathbb{Z}_p\cap\left(a_{11}a_{22}+p^{-(a_2+a_3+a_4)}\mathbb{Z}_p\right)\right)$, 
 
 the Haar measure of the intersection.
 
@@ -521,58 +577,58 @@ Denote:
 
 $a=a_{11}a_{22}$.
 
-$\alpha=v_1+v_2+v_3$.
+$\alpha=a_1+a_2+a_3$.
 
-$\beta=v_2+v_3+v_4$.
+$\beta=a_2+a_3+a_4$.
 
 We have the following cases:
 \begin{enumerate}
-    \item $\alpha\geq\beta$ and $\alpha\geq-v_p(a)$.
+    \item $\alpha\geq\beta$ and $\alpha\geq-a_p(a)$.
 
-Let $x\in{\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}}$ be some element in the intersection, but if $x\in{a+p^{-\beta}\mathbb{Z}_p}$ then $x=a+b$, where $b\in{p^{-\beta}\mathbb{Z}_p}\iff{v_p(b)\geq{-\beta}}$, but then $v_p(x)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$.
+Let $x\in{\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}}$ be some element in the intersection, but if $x\in{a+p^{-\beta}\mathbb{Z}_p}$ then $x=a+b$, where $b\in{p^{-\beta}\mathbb{Z}_p}\iff{a_p(b)\geq{-\beta}}$, but then $a_p(x)\geq\min\{a_p(a),a_p(b)\}\geq\min\{a_p(a),-\beta\}$.
 
-But $\alpha\geq-v_p(a)\iff{v_p(a)\geq-\alpha}\Rightarrow\min\{v_p(a),-\beta\}\geq\min\{-\alpha,-\beta\}$,
+But $\alpha\geq-a_p(a)\iff{a_p(a)\geq-\alpha}\Rightarrow\min\{a_p(a),-\beta\}\geq\min\{-\alpha,-\beta\}$,
 
-and $\alpha\geq\beta\iff-\beta\geq-\alpha\Rightarrow{v_p(x)\geq\min\{-\alpha,-\beta\}=-\alpha}\Rightarrow{x\in{p^{-\alpha}\mathbb{Z}_p}}$.
+and $\alpha\geq\beta\iff-\beta\geq-\alpha\Rightarrow{a_p(x)\geq\min\{-\alpha,-\beta\}=-\alpha}\Rightarrow{x\in{p^{-\alpha}\mathbb{Z}_p}}$.
 
 But all this shows that $\left(a+p^{-\beta}\mathbb{Z}_p\right)\subseteq{p^{-\alpha}\mathbb{Z}_p}$, which means that \\
 $\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}=\left(a+p^{-\beta}\mathbb{Z}_p\right)$.
 
-Hence $\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}\right)=\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\right)=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{v_2+v_3+v_4}$.\\
-\item $\alpha\geq\beta$ and $\alpha<-v_p(a)$.
-Let $x=a+b$ be an element in the intersection as before, hence $v_p(x)=v_p(a+b)\geq\min\{v_p(a),v_p(b)\}\geq\min\{v_p(a),-\beta\}$ and $v_p(x)\geq-\alpha$.
+Hence $\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\cap{p^{-\alpha}\mathbb{Z}_p}\right)=\mu\left(\left(a+p^{-\beta}\mathbb{Z}_p\right)\right)=\mu(p^{-\beta}\mathbb{Z}_p)=p^{\beta}=p^{a_2+a_3+a_4}$.\\
+\item $\alpha\geq\beta$ and $\alpha<-a_p(a)$.
+Let $x=a+b$ be an element in the intersection as before, hence $a_p(x)=a_p(a+b)\geq\min\{a_p(a),a_p(b)\}\geq\min\{a_p(a),-\beta\}$ and $a_p(x)\geq-\alpha$.
 
-But $\alpha<-v_p(a)\iff{v_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $v_p(x)\geq\min\{v_p(a),-\beta\}\geq\min\{v_p(a),-\alpha\}=v_p(a)$. But $v_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $v_p(x)=\min\{v_p(a),-\alpha\}=v_p(a)$.\\
+But $\alpha<-a_p(a)\iff{a_p(a)<-\alpha}$ and $\alpha\geq\beta\iff-\beta\geq-\alpha$, hence $a_p(x)\geq\min\{a_p(a),-\beta\}\geq\min\{a_p(a),-\alpha\}=a_p(a)$. But $a_p(a)<-\alpha$ is a strong inequality, thus by a known fact for non-Archimedean valuations $a_p(x)=\min\{a_p(a),-\alpha\}=a_p(a)$.\\
 But all this shows that $x$ cannot be both in $p^{-\alpha}\mathbb{Z}_p$ and in $\left(a+p^{-\beta}\mathbb{Z}_p\right)$, hence $p^{-\alpha}\mathbb{Z}_p\cap\left(a+p^{-\beta}\mathbb{Z}_p\right)=\phi$.
 \end{enumerate}
-The above is symmetrical to $\beta\geq\alpha\iff-\alpha\geq-\beta$, because if $\beta\geq-v_p(a)\iff{v_p(a)}\geq-\beta$, then $v_p(x)\geq\min\{v_p(a),-\beta\}=-\beta$, but $x\in{p}^{-\alpha}\mathbb{Z}_p\iff{v(x)}\geq-\alpha\geq-\beta\implies{p}^{}$.\\
+The above is symmetrical to $\beta\geq\alpha\iff-\alpha\geq-\beta$, because if $\beta\geq-a_p(a)\iff{a_p(a)}\geq-\beta$, then $a_p(x)\geq\min\{a_p(a),-\beta\}=-\beta$, but $x\in{p}^{-\alpha}\mathbb{Z}_p\iff{v(x)}\geq-\alpha\geq-\beta\implies{p}^{}$.\\
 Thus, we claim that:
 \[\mu(b_{11})=
 \begin{cases}
-p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,v_p(a)\geq-\max\{\alpha,\beta\}. \\
-0,&\text{if}\,\,\,\,v_p(a)<-\max\{\alpha,\beta\}.
+p^{\min\{\alpha,\beta\}},&\text{if}\,\,\,\,a_p(a)\geq-\max\{\alpha,\beta\}. \\
+0,&\text{if}\,\,\,\,a_p(a)<-\max\{\alpha,\beta\}.
 \end{cases}
 \]
-But $\max\{\alpha,\beta\}=\max\{v_1+v_2+v_3,v_2+v_3+v_4\}=v_2+v_3+\max\{v_1,v_4\}$, hence with multiply our integral by $\mu(b_{11})$, to obtain:
+But $\max\{\alpha,\beta\}=\max\{a_1+a_2+a_3,a_2+a_3+a_4\}=a_2+a_3+\max\{a_1,a_4\}$, hence with multiply our integral by $\mu(b_{11})$, to obtain:
 \[
-\int_{\underline\lambda,\underline{a}}\psi{p}^{6v_1+8v_2+8v_3+6v_4}p^{v_2+v_3+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}\psi{p}^{6v_1+9v_2+9v_3+6v_4+\min\{v_1,v_4\}}d\mu(\underline\lambda)d\mu(\underline{a}),
+\int_{\underline\lambda,\underline{a}}\psi{p}^{6a_1+8a_2+8a_3+6a_4}p^{a_2+a_3+\min\{a_1,a_4\}}d\mu(\underline\lambda)d\mu(\underline{a})=\]\[=\int_{\underline\lambda,\underline{a}}\psi{p}^{6a_1+9a_2+9a_3+6a_4+\min\{a_1,a_4\}}d\mu(\underline\lambda)d\mu(\underline{a}),
 \]
-with the constraint $v_p(a_{11}a_{22})=v_p(a_{11})+v_p(a_{22})\geq-(v_2+v_3+\min\{v_1,v_4\})$.
-We denote: $v_{11}=v_p(a_{11})$, $v_{22}=v_p(a_{22})$ and $\delta=\min\{v_1,v_4\}$.
+with the constraint $a_p(a_{11}a_{22})=a_p(a_{11})+a_p(a_{22})\geq-(a_2+a_3+\min\{a_1,a_4\})$.
+We denote: $a_{11}=a_p(a_{11})$, $a_{22}=a_p(a_{22})$ and $\delta=\min\{a_1,a_4\}$.
 \subsection{Computation of constraints on the $a$ elements}
 We have the following constraints:
 \begin{flalign*}
-m_{1,5}&=a_{11}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_1\lambda_2)\geq{0}}\implies{v_{11}}\geq-(v_1+v_2)&\\
-m_{2,5}&=a_{21}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{v_p(a_{21}\lambda_1\lambda_2)\geq{0}}\implies{v_p(a_{21})}\geq-(v_1+v_2)&\\
-m_{2,6}&=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_2\lambda_3)\geq{0}}\implies{v_{22}}\geq-(v_2+v_3)&\\
-m_{3,6}&=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{11}\lambda_2\lambda_3)\geq{0}}\implies{v_{11}}\geq-(v_2+v_3)&\\
-m_{3,7}&=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{33})}\geq-(v_3+v_4)&\\
-m_{4,7}&=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{v_{22}}\geq-(v_3+v_4)&\\
-m_{7,9}&=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{v_p}(-a_{11})=v_{11}\geq-(v_2+v_3+v_4)&\\
-m_{5,8}&=a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{22}\lambda_1\lambda_2\lambda_3)}\geq{0}\implies{v_p}(a_{22})\geq-(v_1+v_2+v_3)&\\
-m_{6,10}&=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_p(a_{21})+v_p(a_{33})}\geq-(v_1+v_2+v_3+v_4)\\
-m_{2,8}&=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{v_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{v_{22}+v_p(a_{21})}\geq-(v_1+v_2+v_3)&\\
-m_{3,9}&=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{v_{11}+v_p(a_{33})}\geq-(v_2+v_3+v_4)&\\
+m_{1,5}&=a_{11}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{a_p(a_{11}\lambda_1\lambda_2)\geq{0}}\implies{a_{11}}\geq-(a_1+a_2)&\\
+m_{2,5}&=a_{21}\lambda_1\lambda_2\in\mathbb{Z}_p\implies{a_p(a_{21}\lambda_1\lambda_2)\geq{0}}\implies{a_p(a_{21})}\geq-(a_1+a_2)&\\
+m_{2,6}&=a_{22}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{a_p(a_{22}\lambda_2\lambda_3)\geq{0}}\implies{a_{22}}\geq-(a_2+a_3)&\\
+m_{3,6}&=-a_{11}\lambda_2\lambda_3\in\mathbb{Z}_p\implies{a_p(a_{11}\lambda_2\lambda_3)\geq{0}}\implies{a_{11}}\geq-(a_2+a_3)&\\
+m_{3,7}&=a_{33}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{a_p(a_{33}\lambda_3\lambda_4)\geq{0}}\implies{a_p(a_{33})}\geq-(a_3+a_4)&\\
+m_{4,7}&=-a_{22}\lambda_3\lambda_4\in\mathbb{Z}_p\implies{a_p(a_{22}\lambda_3\lambda_4)\geq{0}}\implies{a_{22}}\geq-(a_3+a_4)&\\
+m_{7,9}&=-a_{11}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{a_p(-a_{11}\lambda_2\lambda_3\lambda_4)}\geq{0}\implies{a_p}(-a_{11})=a_{11}\geq-(a_2+a_3+a_4)&\\
+m_{5,8}&=a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{a_p(a_{22}\lambda_1\lambda_2\lambda_3)}\geq{0}\implies{a_p}(a_{22})\geq-(a_1+a_2+a_3)&\\
+m_{6,10}&=-a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{a_p(a_{21}a_{33}\lambda_1\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{a_p(a_{21})+a_p(a_{33})}\geq-(a_1+a_2+a_3+a_4)\\
+m_{2,8}&=a_{21}a_{22}\lambda_1\lambda_2\lambda_3\in\mathbb{Z}_p\implies{a_p(a_{21}a_{22}\lambda_1\lambda_2\lambda_3)\geq{0}}\implies{a_{22}+a_p(a_{21})}\geq-(a_1+a_2+a_3)&\\
+m_{3,9}&=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{a_p(a_{11}a_{33}\lambda_2\lambda_3\lambda_4)\geq{0}}\implies{a_{11}+a_p(a_{33})}\geq-(a_2+a_3+a_4)&\\
 \end{flalign*}
 We notice that the constraint $m_{6,10}$ is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
 \subsubsection{Computation of constraints on $a_{21}$ and $a_{33}$}
@@ -580,152 +636,152 @@ We notice that the constraint $m_{6,10}$ is already implied by the constraints $
 \subsubsubsection{Integration by $a_{33}$}
 We integrate by $a_{33}$ considering $a_{11}$ as a constant. We have the following constraints:
 \begin{enumerate}
-    \item $v_p(a_{33})\geq-v_3-v_4$.
-\item $v_p(a_{33})\geq-v_{11}-v_2-v_3-v_4$.
+    \item $a_p(a_{33})\geq-a_3-a_4$.
+\item $a_p(a_{33})\geq-a_{11}-a_2-a_3-a_4$.
 \end{enumerate}
-But $-v_{11}-v_2-v_3-v_4\geq{-v_3-v_4}\iff{-v_{11}-v_2}\geq{0}\iff{v_{11}\leq-v_2\leq{0}}$.
+But $-a_{11}-a_2-a_3-a_4\geq{-a_3-a_4}\iff{-a_{11}-a_2}\geq{0}\iff{a_{11}\leq-a_2\leq{0}}$.
 
-And $-v_{11}-v_2-v_3-v_4<{-v_3-v_4}\iff{-v_{11}-v_2}<{0}\iff{v_{11}>-v_2}$.
+And $-a_{11}-a_2-a_3-a_4<{-a_3-a_4}\iff{-a_{11}-a_2}<{0}\iff{a_{11}>-a_2}$.
 
-Hence, $v_p(a_{33})\geq-(v_3+v_4)-\min\{0,v_2+v_{11}\}$ and we multiply out integral by $\mu(a_{33})$, to obtain:
-\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6v_1+9v_2+6v_3+6v_4+\delta}p^{v_3+v_4}p^{\min\{0,v_2+v_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6v_1+9v_2+10v_3+7v_4+\delta}p^{\min\{0,v_2+v_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
+Hence, $a_p(a_{33})\geq-(a_3+a_4)-\min\{0,a_2+a_{11}\}$ and we multiply out integral by $\mu(a_{33})$, to obtain:
+\[\underset{a_{11}+a_{22}\geq-(a_2+a_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6a_1+9a_2+6a_3+6a_4+\delta}p^{a_3+a_4}p^{\min\{0,a_2+a_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{a_{11}+a_{22}\geq-(a_2+a_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6a_1+9a_2+10a_3+7a_4+\delta}p^{\min\{0,a_2+a_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
 \]
-We denote: $\gamma=\min\{0,v_2+v_{11}\}$.
+We denote: $\gamma=\min\{0,a_2+a_{11}\}$.
 \subsubsubsection{Integration by $a_{21}$}
 We integrate by $a_{21}$ considering $a_{22}$ as a constant. We have the following constraints:
 \begin{enumerate}
-\item $v_p(a_{21})\geq-v_1-v_2$.
-    \item $v_p(a_{21})\geq-v_{22}-v_1-v_2-v_3$.
+\item $a_p(a_{21})\geq-a_1-a_2$.
+    \item $a_p(a_{21})\geq-a_{22}-a_1-a_2-a_3$.
     \end{enumerate}
-But $-v_{22}-v_1-v_2-v_3\geq{-v_1-v_2}\iff{-v_{22}-v_3}\geq{0}\iff{v_{22}\leq-v_3\leq{0}}$.
+But $-a_{22}-a_1-a_2-a_3\geq{-a_1-a_2}\iff{-a_{22}-a_3}\geq{0}\iff{a_{22}\leq-a_3\leq{0}}$.
 
-And $-v_{22}-v_1-v_2-v_3<{-v_1-v_2}\iff{-v_{22}-v_3}<{0}\iff{v_{22}>-v_3}$.
+And $-a_{22}-a_1-a_2-a_3<{-a_1-a_2}\iff{-a_{22}-a_3}<{0}\iff{a_{22}>-a_3}$.
 
-And hence, $v_p(a_{21})\geq-(v_1+v_2)-\min\{0,v_3+v_{22}\}$ and we multiply our integral by $\mu(a_{21})$, to obtain:
-\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\psi{p}^{6v_1+9v_2+10v_3+7v_4+\delta}p^{v_1+v_2+\min\{0,v_3+v_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\psi{p}^{7v_1+10v_2+10v_3+7v_4+\delta+\min\{0,v_3+v_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).\]
-We denote: $\beta=\min\{0,v_3+v_{22}\}$.
+And hence, $a_p(a_{21})\geq-(a_1+a_2)-\min\{0,a_3+a_{22}\}$ and we multiply our integral by $\mu(a_{21})$, to obtain:
+\[\underset{a_{11}+a_{22}\geq-(a_2+a_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\psi{p}^{6a_1+9a_2+10a_3+7a_4+\delta}p^{a_1+a_2+\min\{0,a_3+a_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})=\]\[=\underset{a_{11}+a_{22}\geq-(a_2+a_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22}}}\psi{p}^{7a_1+10a_2+10a_3+7a_4+\delta+\min\{0,a_3+a_{22}\}}p^{\gamma}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22}).\]
+We denote: $\beta=\min\{0,a_3+a_{22}\}$.
 \subsubsection{Computation of constraints on $a_{11}$ and $a_{22}$}
 As seen above, we have the constraint 
 $m_{4,9}=(a_{11}a_{22}-b_{11})\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p$, which implies after previous computation that \\
-$v_p(a_{11}a_{22}-b_{11})\geq-(v_2+v_3+\min\{v_1,v_4\})$ if \\
-$v_p({a_{11})+v_p(a_{22}})\geq-(v_2+v_3+\max\{v_1,v_4\})\implies$ \\
-$\implies{v_p}(a_{22})\geq-(v_{11}+v_2+v_3+\max\{v_1,v_4\})$.
+$a_p(a_{11}a_{22}-b_{11})\geq-(a_2+a_3+\min\{a_1,a_4\})$ if \\
+$a_p({a_{11})+a_p(a_{22}})\geq-(a_2+a_3+\max\{a_1,a_4\})\implies$ \\
+$\implies{a_p}(a_{22})\geq-(a_{11}+a_2+a_3+\max\{a_1,a_4\})$.
 
 Hence, to compute the integral we consider $a_{11}$ as constant, and we integrate by $a_{22}$.
 \subsubsubsection{Integration by $a_{22}$}
 The constraints $m_{2,6}$ and $m_{4,7}$ together imply that\\
-$v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-(v_3+\min\{v_2,v_4\})$, and it is readily seen that the constraint $m_{5,8}$ is already implied by the constraint $m_{2,6}$.
+$v(a_{22})\geq\max\{-(a_2+a_3),-(a_3+a_4)\}\geq-(a_3+\min\{a_2,a_4\})$, and it is readily seen that the constraint $m_{5,8}$ is already implied by the constraint $m_{2,6}$.
 
 hence, we have the following constraints:
 \begin{enumerate}
-    \item $v_{22}\geq-(v_p(v_{11}+v_2+v_3+\max\{v_1,v_4\})$
-    \item $v_{22}\geq-(v_3+\min\{v_2,v_4\})$
+    \item $a_{22}\geq-(a_p(a_{11}+a_2+a_3+\max\{a_1,a_4\})$
+    \item $a_{22}\geq-(a_3+\min\{a_2,a_4\})$
 \end{enumerate}
-Hence, $v_{22}\geq-(v_3+\min\{\min\{v_2,v_4\},v_{11}+v_2+\max\{v_1,v_4\}\})=$ \\
-$=-(v_3+\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\})$.
-We denote $\alpha=\min\{v_2,v_4,v_{11}+v_2+\max\{v_1,v_4\}\}$, and we integrate the expression that is dependent on $a_{22}$ found above, i.e., the measure \\
-$\mu(a_{21})=p^{\min\{0,v_3+v_{22}\}}$:
+Hence, $a_{22}\geq-(a_3+\min\{\min\{a_2,a_4\},a_{11}+a_2+\max\{a_1,a_4\}\})=$ \\
+$=-(a_3+\min\{a_2,a_4,a_{11}+a_2+\max\{a_1,a_4\}\})$.
+We denote $\alpha=\min\{a_2,a_4,a_{11}+a_2+\max\{a_1,a_4\}\}$, and we integrate the expression that is dependent on $a_{22}$ found above, i.e., the measure \\
+$\mu(a_{21})=p^{\min\{0,a_3+a_{22}\}}$:
 
-\[\int_{v_{22}\geq-(v_3+\alpha)}p^{\min\{0,v_3+v_{22}\}}.\]
+\[\int_{a_{22}\geq-(a_3+\alpha)}p^{\min\{0,a_3+a_{22}\}}.\]
 
 \[
 \beta=\begin{cases}
-    0,&v_3+v_{22}\geq{0}\iff{v_{22}}\geq{-v_3}\iff\alpha\geq{0}\\
-    v_3+v_{22},&v_3+v_{22}<{0}\iff{v_{22}}<{-v_3}\iff\alpha<{0}
+    0,&a_3+a_{22}\geq{0}\iff{a_{22}}\geq{-a_3}\iff\alpha\geq{0}\\
+    a_3+a_{22},&a_3+a_{22}<{0}\iff{a_{22}}<{-a_3}\iff\alpha<{0}
 \end{cases}
 \]
 
-Hence $p^{v_3+(-(v_3+\alpha))}=p^{-\alpha}\leq{p}^{\beta}\leq{p}^0=1$.
+Hence $p^{a_3+(-(a_3+\alpha))}=p^{-\alpha}\leq{p}^{\beta}\leq{p}^0=1$.
 
 We compute all the possible values for $p^{\beta}$ and $\mu(a_{22})$:
 
 \[\begin{matrix}
-v_{22}\geq{-v_3}&p^{\beta}=p^{\min\{0,\geq({v_3}-v_3)\}}=p^0=1&\mu(a_{22})=p^{v_3}\\
-v_{22}={-(v_3+1)}&p^{\beta}=p^{\min\{0,v_3-(v_3+1)\}}=p^{-1}&\mu(a_{22})=p^{v_3+1}-p^{v_3}=p^{v_3+1}(1-p^{-1})\\
-v_{22}={-(v_3+2)}&p^{\beta}=p^{\min\{0,v_3-(v_3+2)\}}=p^{-2}&\mu(a_{22})=p^{v_3+2}-p^{v_3}=p^{v_3+2}(1-p^{-1})\\
+a_{22}\geq{-a_3}&p^{\beta}=p^{\min\{0,\geq({a_3}-a_3)\}}=p^0=1&\mu(a_{22})=p^{a_3}\\
+a_{22}={-(a_3+1)}&p^{\beta}=p^{\min\{0,a_3-(a_3+1)\}}=p^{-1}&\mu(a_{22})=p^{a_3+1}-p^{a_3}=p^{a_3+1}(1-p^{-1})\\
+a_{22}={-(a_3+2)}&p^{\beta}=p^{\min\{0,a_3-(a_3+2)\}}=p^{-2}&\mu(a_{22})=p^{a_3+2}-p^{a_3}=p^{a_3+2}(1-p^{-1})\\
 \vdots&\vdots&\vdots\\
-v_{22}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(a_{22})=p^{v_3+\alpha}-p^{v_3+\alpha-1}=p^{v_3+\alpha}(1-p^{-1})\\
+a_{22}={-(a_3+\alpha)}&p^{\beta}=p^{\min\{0,a_3-(a_3+\alpha)\}}=p^{-\alpha}&\mu(a_{22})=p^{a_3+\alpha}-p^{a_3+\alpha-1}=p^{a_3+\alpha}(1-p^{-1})\\
 \end{matrix}\]
 All this yields the polynomial: \\
-$p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$, hence we multiply our integral by $\mu(a_{22})$, to obtain:
-\[\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+10v_3+7v_4+\delta}p^{\gamma}p^{v_3}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11})=\]\[=\underset{v_{11}+v_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
+$p^{a_3}+\sum_{i=1}^{\alpha}p^{-i}p^{a_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{a_3}(1-p^{-1})=p^{a_3}(1+\alpha(1-p^{-1}))$, hence we multiply our integral by $\mu(a_{22})$, to obtain:
+\[\underset{a_{11}+a_{22}\geq-(a_2+a_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7a_1+10a_2+10a_3+7a_4+\delta}p^{\gamma}p^{a_3}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11})=\]\[=\underset{a_{11}+a_{22}\geq-(a_2+a_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7a_1+10a_2+11a_3+7a_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
 \subsubsubsection{Integration by $a_{11}$}
-Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Considering the constraint $v_{11}+v_{22}\geq-(v_2+v_3+\delta)$, we check that this is already implied by $v_{11}\geq-(v_2+\min\{v_1,v_3\})$. Thus, we integrate by $v_{11}$ under this constraint, where $v_{11}$ depends on $v_1,v_2,v_3,v_4$, to obtain:
-\[\underset{v_{11}\geq-(v_2+\min\{v_1,v_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7v_1+10v_2+11v_3+7v_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
-We denote $\beta=\min\{v_1,v_3\}$, $\tilde\delta=\max\{v_1,v_4\}$, $\epsilon=\min\{v_2,v_4\}$ and $\varphi=1-p^{-1}$.\\
-Since $v_1,v_2,v_3,v_4\geq{0}$, we consider the domain of integration $G^{+}(K)$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depends on $3$ choices between pairs of $\lambda$ elements, namely:
+Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $a_{11}\geq-(a_2+\min\{a_1,a_3\})$. Considering the constraint $a_{11}+a_{22}\geq-(a_2+a_3+\delta)$, we check that this is already implied by $a_{11}\geq-(a_2+\min\{a_1,a_3\})$. Thus, we integrate by $a_{11}$ under this constraint, where $a_{11}$ depends on $a_1,a_2,a_3,a_4$, to obtain:
+\[\underset{a_{11}\geq-(a_2+\min\{a_1,a_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7a_1+10a_2+11a_3+7a_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
+We denote $\beta=\min\{a_1,a_3\}$, $\tilde\delta=\max\{a_1,a_4\}$, $\epsilon=\min\{a_2,a_4\}$ and $\varphi=1-p^{-1}$.\\
+Since $a_1,a_2,a_3,a_4\geq{0}$, we consider the domain of integration $G^{+}(K)$ only as the $4$-dimensional orthant of nonnegative integers $(\mathbb{Z}_{\geq{0}})^4$. But the function under the integral, as well as its limits, depends on $3$ choices between pairs of $\lambda$ elements, namely:
 \begin{enumerate}
-    \item $\delta=\min\{v_1,v_4\},\tilde\delta=\max\{v_1,v_4\}$.
-    \item $\beta=\min\{v_1,v_3\}$.
-    \item $\epsilon=\min\{v_2,v_4\}$.
+    \item $\delta=\min\{a_1,a_4\},\tilde\delta=\max\{a_1,a_4\}$.
+    \item $\beta=\min\{a_1,a_3\}$.
+    \item $\epsilon=\min\{a_2,a_4\}$.
 \end{enumerate}
 Hence we need to break the orthant into $8$ separate cones, created by the $2^3$ different choices for these pairs of elements.
 For each of the $8$ orthants we have $\alpha=
 \begin{cases}
-\epsilon,&\epsilon\leq{v_2+v_{11}+\tilde\delta}\iff{v_{11}}\geq{\epsilon-(v_2+\tilde\delta)}\\
-v_2+v_{11}+\tilde\delta,&\epsilon>{v_2+v_{11}+\tilde\delta}\iff{v_{11}}<{\epsilon-(v_2+\tilde\delta)}\\
+\epsilon,&\epsilon\leq{a_2+a_{11}+\tilde\delta}\iff{a_{11}}\geq{\epsilon-(a_2+\tilde\delta)}\\
+a_2+a_{11}+\tilde\delta,&\epsilon>{a_2+a_{11}+\tilde\delta}\iff{a_{11}}<{\epsilon-(a_2+\tilde\delta)}\\
 \end{cases}$,
-hence the point $v_{11}=\epsilon-(v_2+\tilde\delta)$ forms a phase transition of $\alpha$ from the fixed value $\epsilon$ into the descending arithmetic sequence $\epsilon-1,\epsilon-2,\dots,v_2-(v_2+\beta)+\tilde\delta=\tilde\delta-\beta$. However, if the $-v_2-\beta>\epsilon-v_2-\tilde\delta\iff-\beta>\epsilon-\tilde\delta\iff\tilde\delta>\epsilon+\beta$, the point of phase transition is out of range. This implies that when both $\tilde\delta\neq\epsilon$ and $\tilde\delta\neq\beta$, we need to break the orthant into two distinct cones, for $\tilde\delta\leq\epsilon+\beta$ and for $\tilde\delta>\epsilon+\beta$. But in case of either $\tilde\delta=\epsilon=v_4$ or $\tilde\delta=\beta=v_1$, then $\tilde\delta\leq\epsilon+\beta$ (because $\tilde\delta,\epsilon,\beta\geq{0}$), hence there is no phase transition for $\alpha$.
-\subsubsubsection{Case 1: $\tilde\delta=v_1,\beta=v_1,\epsilon=v_2$}
-This choice necessarily interprets as $v_3\geq{v_1}\geq{v_4}\geq{v_2}$, but we break the domain of integration into distinct parts, hence we use the convention where
-$\min\{v_i,v_j\}=v_i\iff\begin{cases}
-    v_j>v_i,&j>i\\
-    v_j\geq{v_i},&j<i\\
+hence the point $a_{11}=\epsilon-(a_2+\tilde\delta)$ forms a phase transition of $\alpha$ from the fixed value $\epsilon$ into the descending arithmetic sequence $\epsilon-1,\epsilon-2,\dots,a_2-(a_2+\beta)+\tilde\delta=\tilde\delta-\beta$. However, if the $-a_2-\beta>\epsilon-a_2-\tilde\delta\iff-\beta>\epsilon-\tilde\delta\iff\tilde\delta>\epsilon+\beta$, the point of phase transition is out of range. This implies that when both $\tilde\delta\neq\epsilon$ and $\tilde\delta\neq\beta$, we need to break the orthant into two distinct cones, for $\tilde\delta\leq\epsilon+\beta$ and for $\tilde\delta>\epsilon+\beta$. But in case of either $\tilde\delta=\epsilon=a_4$ or $\tilde\delta=\beta=a_1$, then $\tilde\delta\leq\epsilon+\beta$ (because $\tilde\delta,\epsilon,\beta\geq{0}$), hence there is no phase transition for $\alpha$.
+\subsubsubsection{Case 1: $\tilde\delta=a_1,\beta=a_1,\epsilon=a_2$}
+This choice necessarily interprets as $a_3\geq{a_1}\geq{a_4}\geq{a_2}$, but we break the domain of integration into distinct parts, hence we use the convention where
+$\min\{a_i,a_j\}=a_i\iff\begin{cases}
+    a_j>a_i,&j>i\\
+    a_j\geq{a_i},&j<i\\
 \end{cases}$.\\
-Thus, for case $1$ we consider the subdomain where $v_3>v_1\geq{v_4}>v_2$. We observe that $\tilde\delta=\beta$, hence we do not break this subdomain into two cones in the way described above.\\
-We compute $\gamma=\min\{v_{11}+v_2,0\}=\begin{cases}
-    0,&v_{11}\geq-v_2\\
-    v_{11}+v_2<0,&v_{11}<-v_2
+Thus, for case $1$ we consider the subdomain where $a_3>a_1\geq{a_4}>a_2$. We observe that $\tilde\delta=\beta$, hence we do not break this subdomain into two cones in the way described above.\\
+We compute $\gamma=\min\{a_{11}+a_2,0\}=\begin{cases}
+    0,&a_{11}\geq-a_2\\
+    a_{11}+a_2<0,&a_{11}<-a_2
 \end{cases}$.\\
-We also compute $\alpha=\min\{\epsilon,v_{11}+v_2+\tilde\delta\}=\begin{cases}
-    v_2,&v_{11}\geq-v_1\\
-    v_2-1,v_2-2,\dots,&-v_1-v_2\leq{v_{11}}<-v_1.
+We also compute $\alpha=\min\{\epsilon,a_{11}+a_2+\tilde\delta\}=\begin{cases}
+    a_2,&a_{11}\geq-a_1\\
+    a_2-1,a_2-2,\dots,&-a_1-a_2\leq{a_{11}}<-a_1.
 \end{cases}$.\\
-Also, $p^{7v_1+10v_2+11v_3+7v_4+\delta}=p^{7v_1+10v_2+11v_3+8v_4}$.\\
-We notice that $v_1\geq{v_4}>v_2\implies{v_1}>v_2\iff-v_2>-v_1$, and also that $v_2\geq{0}\iff-v_2\geq-v_2-v_1$, hence we break the integral into three:
+Also, $p^{7a_1+10a_2+11a_3+7a_4+\delta}=p^{7a_1+10a_2+11a_3+8a_4}$.\\
+We notice that $a_1\geq{a_4}>a_2\implies{a_1}>a_2\iff-a_2>-a_1$, and also that $a_2\geq{0}\iff-a_2\geq-a_2-a_1$, hence we break the integral into three:
 \begin{enumerate}
-    \item $v_{11}\geq-v_2>-v_1$\\
-    $p^{\gamma}=p^{\min\{v_{11}+v_2,0\}}=p^{\min\{\xi,0\}}$, where $\xi\geq{v_2-v_2=0}\implies{p^{\gamma}}=p^0=1$.\\
-    $\alpha=\min\{v_2,v_2+v_{11}+v_1\}=\min\{v_2,\xi\}$, where $\xi\geq{v_2-v_2+v_1=v_1}>v_2\implies\alpha=v_2$.\\
-    $\mu(v_{11})=\mu(p^{-v_2}\mathbb{Z}_p)=p^{-v_2}$.\\
+    \item $a_{11}\geq-a_2>-a_1$\\
+    $p^{\gamma}=p^{\min\{a_{11}+a_2,0\}}=p^{\min\{\xi,0\}}$, where $\xi\geq{a_2-a_2=0}\implies{p^{\gamma}}=p^0=1$.\\
+    $\alpha=\min\{a_2,a_2+a_{11}+a_1\}=\min\{a_2,\xi\}$, where $\xi\geq{a_2-a_2+a_1=a_1}>a_2\implies\alpha=a_2$.\\
+    $\mu(a_{11})=\mu(p^{-a_2}\mathbb{Z}_p)=p^{-a_2}$.\\
     Putting all the above together yields the following integral:
-\[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(1+v_2\varphi)=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(1+v_2\varphi).\]
-\item $-v_1\leq{v_{11}}\leq-v_2-1$\\
-This means $v_{11}=-(v_2+i)$, where $1\leq{i}\leq{v_1}-v_2$.\\
-$p^{\gamma}=p^{\min\{v_2-(v_2+i),0\}}=p^{\min\{-i,0\}}$, but $i\geq{1}\iff-i\leq-1\implies{p^{\gamma}}=p^{-i}$, where $i$ is in the said range.\\
-$\alpha=\min\{v_2,v_2-(v_2+i)+v_1\}=\min\{v_2,v_1-i\}$, but $i\leq{v_1-v_2}\implies\alpha=\min\{v_2,\xi\}$, where $\xi\geq{v_1}-(v_1-v_2)=v_2\implies\alpha=v_2$.\\
-The measure $\mu(v_{11}=-(v_2+i))=\mu(p^{-(v_2+i)}\mathbb{Z}_p)-\mu(p^{-(v_2+i-1)}\mathbb{Z}_p)=p^{v_2+i}-p^{v_2+i-1}=p^{v_2+i}(1-p^{-1})=p^{v_2+i}\varphi$, hence
-\[p^{\gamma}\mu(v_{11})=\sum_{i=1}^{v_1-v_2}p^{-i}p^{v_2+i}\varphi=\sum_{i=1}^{v_1-v_2}p^{v_2}\varphi=(v_1-v_2)p^{v_2}\varphi.\]
+\[\int_{a_3>a_1\geq{a_4}>a_2}\psi{p}^{7a_1+10a_2+11a_3+8a_4}p^{a_2}(1+a_2\varphi)=\int_{a_3>a_1\geq{a_4}>a_2}\psi{p}^{7a_1+11a_2+11a_3+8a_4}(1+a_2\varphi).\]
+\item $-a_1\leq{a_{11}}\leq-a_2-1$\\
+This means $a_{11}=-(a_2+i)$, where $1\leq{i}\leq{a_1}-a_2$.\\
+$p^{\gamma}=p^{\min\{a_2-(a_2+i),0\}}=p^{\min\{-i,0\}}$, but $i\geq{1}\iff-i\leq-1\implies{p^{\gamma}}=p^{-i}$, where $i$ is in the said range.\\
+$\alpha=\min\{a_2,a_2-(a_2+i)+a_1\}=\min\{a_2,a_1-i\}$, but $i\leq{a_1-a_2}\implies\alpha=\min\{a_2,\xi\}$, where $\xi\geq{a_1}-(a_1-a_2)=a_2\implies\alpha=a_2$.\\
+The measure $\mu(a_{11}=-(a_2+i))=\mu(p^{-(a_2+i)}\mathbb{Z}_p)-\mu(p^{-(a_2+i-1)}\mathbb{Z}_p)=p^{a_2+i}-p^{a_2+i-1}=p^{a_2+i}(1-p^{-1})=p^{a_2+i}\varphi$, hence
+\[p^{\gamma}\mu(a_{11})=\sum_{i=1}^{a_1-a_2}p^{-i}p^{a_2+i}\varphi=\sum_{i=1}^{a_1-a_2}p^{a_2}\varphi=(a_1-a_2)p^{a_2}\varphi.\]
 Thus, we have the following integral:
-\[\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}(v_1-v_2)\varphi(1+v_2\varphi)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(v_1-v_2)(\varphi+v_2\varphi^2).\]
-\item $-v_1-v_2\leq{v_{11}}\leq{-v_1-1}$\\
-This means $v_{11}=-(v_1+i)$, where $1\leq{i}\leq{v_2}$.\\
-$v_1>v_2\iff{v_2-v_1<0}$ and $i\geq{1}$ imply that $v_2-(v_1-i)<0\implies{p^{\gamma}}=p^{v_2-(v_1+i)}$, for all $i$ in the said range.\\
-$\mu(v_{11})=p^{v_1+i}-p^{v_1+i-1}=p^{v_1+i}(1-p^{-1})$.
-$\alpha=\min\{v_2,v_2-(v_1+i)+v_1\}=\min\{v_2,v_2-i\}$, but $i\geq{1}\implies\alpha=v_2-i$, where $i$ is in the said range. This means that at $v_{11}=-v_1-1$ we have a phase transition for $\alpha$.\\
+\[\int_{a_3>a_1\geq{a_4}>a_2}\psi{p}^{7a_1+10a_2+11a_3+8a_4}p^{a_2}(a_1-a_2)\varphi(1+a_2\varphi)=\]\[=\int_{a_3>a_1\geq{a_4}>a_2}\psi{p}^{7a_1+11a_2+11a_3+8a_4}(a_1-a_2)(\varphi+a_2\varphi^2).\]
+\item $-a_1-a_2\leq{a_{11}}\leq{-a_1-1}$\\
+This means $a_{11}=-(a_1+i)$, where $1\leq{i}\leq{a_2}$.\\
+$a_1>a_2\iff{a_2-a_1<0}$ and $i\geq{1}$ imply that $a_2-(a_1-i)<0\implies{p^{\gamma}}=p^{a_2-(a_1+i)}$, for all $i$ in the said range.\\
+$\mu(a_{11})=p^{a_1+i}-p^{a_1+i-1}=p^{a_1+i}(1-p^{-1})$.
+$\alpha=\min\{a_2,a_2-(a_1+i)+a_1\}=\min\{a_2,a_2-i\}$, but $i\geq{1}\implies\alpha=a_2-i$, where $i$ is in the said range. This means that at $a_{11}=-a_1-1$ we have a phase transition for $\alpha$.\\
 All the above yields the integral:
-\[\int_{v_3>v_1\geq{v_4}>v_2}\left[\psi{p}^{7v_1+10v_2+11v_3+8v_4}\sum_{i=1}^{v_2}p^{v_2-(v_1+i)}p^{v_1+i}\varphi(1+(v_2-i)\varphi)\right]=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\left[\psi{p}^{7v_1+10v_2+11v_3+8v_4}p^{v_2}\varphi\sum_{i=1}^{v_2}(1+(v_2-i)\varphi)\right]=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}\varphi(v_2+v_2^2\varphi-\sum_{i=1}^{v_2}i\varphi)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi{p}^{7v_1+11v_2+11v_3+8v_4}(v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2).\]
+\[\int_{a_3>a_1\geq{a_4}>a_2}\left[\psi{p}^{7a_1+10a_2+11a_3+8a_4}\sum_{i=1}^{a_2}p^{a_2-(a_1+i)}p^{a_1+i}\varphi(1+(a_2-i)\varphi)\right]=\]\[=\int_{a_3>a_1\geq{a_4}>a_2}\left[\psi{p}^{7a_1+10a_2+11a_3+8a_4}p^{a_2}\varphi\sum_{i=1}^{a_2}(1+(a_2-i)\varphi)\right]=\]\[=\int_{a_3>a_1\geq{a_4}>a_2}\psi{p}^{7a_1+11a_2+11a_3+8a_4}\varphi(a_2+a_2^2\varphi-\sum_{i=1}^{a_2}i\varphi)=\]\[=\int_{a_3>a_1\geq{a_4}>a_2}\psi{p}^{7a_1+11a_2+11a_3+8a_4}(a_2\varphi+a_2^2\varphi^2-\frac{a_2(a_2+1)}{2}\varphi^2).\]
 \end{enumerate}
 Thus, our integral for case $1$ is the sum of the above three integrals.\\
-We denote $\omega_1=p^{8v_1+11v_2+11v_3+7v_4}$ and $\omega_4=p^{7v_1+11v_2+11v_3+8v_4}$.\\
+We denote $\omega_1=p^{8a_1+11a_2+11a_3+7a_4}$ and $\omega_4=p^{7a_1+11a_2+11a_3+8a_4}$.\\
 Thus, out integral for this case is:
-\[\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi-v_2\varphi+v_1v_2\varphi^2-v_2^2\varphi^2+v_2\varphi+v_2^2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right)=\]\[=\int_{v_3>v_1\geq{v_4}>v_2}\psi\omega_4\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2\right).\]
-We denote $\xi=1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2$.\\
-To compute the integral, we need to compute the infinite sum over the subdomain $v_3>v_1\geq{v_4}>v_2$, but we cannot determine the boundaries of the variables $v_1,v_2,v_3,v_4$ in order to compute the sum directly.\\ Instead, we perform a change of variables by noticing first that $v_2\geq{0}$ is the only constraint on the minimal variable $v_2$, so we denote the difference $a=v_2-0=v_2\geq{0}$.\\
+\[\int_{a_3>a_1\geq{a_4}>a_2}\psi\omega_4\left(1+a_2\varphi+a_1\varphi-a_2\varphi+a_1a_2\varphi^2-a_2^2\varphi^2+a_2\varphi+a_2^2\varphi^2-\frac{a_2(a_2+1)}{2}\varphi^2\right)=\]\[=\int_{a_3>a_1\geq{a_4}>a_2}\psi\omega_4\left(1+a_2\varphi+a_1\varphi+a_1a_2\varphi^2-\frac{a_2(a_2+1)}{2}\varphi^2\right).\]
+We denote $\xi=1+a_2\varphi+a_1\varphi+a_1a_2\varphi^2-\frac{a_2(a_2+1)}{2}\varphi^2$.\\
+To compute the integral, we need to compute the infinite sum over the subdomain $a_3>a_1\geq{a_4}>a_2$, but we cannot determine the boundaries of the variables $a_1,a_2,a_3,a_4$ in order to compute the sum directly.\\ Instead, we perform a change of variables by noticing first that $a_2\geq{0}$ is the only constraint on the minimal variable $a_2$, so we denote the difference $a=a_2-0=a_2\geq{0}$.\\
 We denote the other differences this way:\\
-$b=v_4-v_2=v_4-a\geq{1}$.\\
-$c=v_1-v_4=v_1-(a+b)\geq{0}$.\\
-$d=v_3-v_1=v_3-(a+b+c)\geq{1}$.\\
+$b=a_4-a_2=a_4-a\geq{1}$.\\
+$c=a_1-a_4=a_1-(a+b)\geq{0}$.\\
+$d=a_3-a_1=a_3-(a+b+c)\geq{1}$.\\
 Thus, we obtain the following change of variables:\\
-$v_1=a+b+c$.\\
-$v_2=a$.\\
-$v_3=a+b+c+d$.\\
-$v_4=a+b$.\\
+$a_1=a+b+c$.\\
+$a_2=a$.\\
+$a_3=a+b+c+d$.\\
+$a_4=a+b$.\\
 We use this change of variables for both $\psi\omega_4$ and $\xi$:\\
-$\psi\omega_4=t^{4v_1+6v_2+6v_3+4v_4}{p}^{7v_1+11v_2+11v_3+8v_4}=
-(t^{4v_1}p^{7v_1})(t^{6v_2}p^{11v_2})(t^{6v_3}p^{11v_3})(t^{4v_4}p^{8v_4})=$\\$=(t^4p^7)^{v_1}(t^6p^{11})^{v_2}(t^6p^{11})^{v_3}(t^4p^8)^{v_4}=(t^4p^7)^{a+b+c}(t^6p^{11})^{a}(t^6p^{11})^{a+b+c+d}(t^4p^8)^{a+b}=$\\
+$\psi\omega_4=t^{4a_1+6a_2+6a_3+4a_4}{p}^{7a_1+11a_2+11a_3+8a_4}=
+(t^{4a_1}p^{7a_1})(t^{6a_2}p^{11a_2})(t^{6a_3}p^{11a_3})(t^{4a_4}p^{8a_4})=$\\$=(t^4p^7)^{a_1}(t^6p^{11})^{a_2}(t^6p^{11})^{a_3}(t^4p^8)^{a_4}=(t^4p^7)^{a+b+c}(t^6p^{11})^{a}(t^6p^{11})^{a+b+c+d}(t^4p^8)^{a+b}=$\\
 $=(t^{20a}p^{37a})(t^{14a}p^{26b})(t^{10c}p^{18c})(t^{6d}p^{11d})=(t^{20}p^{37})^a(t^{14}p^{26})^b(t^{10}p^{18})^c(t^{6}p^{11})^d$.\\
-$\xi=1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2-\frac{v_2(v_2+1)}{2}\varphi^2=$\\
+$\xi=1+a_2\varphi+a_1\varphi+a_1a_2\varphi^2-\frac{a_2(a_2+1)}{2}\varphi^2=$\\
 $=1+a\varphi+(a+b+c)\varphi+a(a+b+c)\varphi^2-\frac{a(a+1)}{2}\varphi^2=$\\
 $=1+2a\varphi+b\varphi+c\varphi-\frac{a^2}{2}\varphi^2+ab\varphi^2+ac\varphi^2-\frac{a}{2}\varphi^2$.\\
 Thus, our integral assumes its final form:
@@ -767,116 +823,116 @@ We code the product of series into Sage, to obtain the following rational functi
 \[s_1=
 -\frac{{\left(p^{82} t^{44} - 2 \, p^{81} t^{44} + p^{63} t^{34} + p^{55} t^{30} + p^{44} t^{24} - p^{38} t^{20} - p^{27} t^{14} - p^{19} t^{10} + 2 \, p - 1\right)} {\left(p^{18} t^{10} + 1\right)} p^{36} t^{20}}{{\left(p^{37} t^{20} - 1\right)}^{3} {\left(p^{13} t^{7} + 1\right)}^{2} {\left(p^{13} t^{7} - 1\right)}^{2} {\left(p^{11} t^{6} - 1\right)} {\left(p^{9} t^{5} + 1\right)} {\left(p^{9} t^{5} - 1\right)}}
 \]
-\subsubsubsection{Case 2: $\tilde\delta=v_1,\beta=v_3,\epsilon=v_2$}
+\subsubsubsection{Case 2: $\tilde\delta=a_1,\beta=a_3,\epsilon=a_2$}
 Thus we have the following order relations\\
-$v_1\geq{v_3}$.\\
-$v_1\geq{v_4}>v_2$.\\
+$a_1\geq{a_3}$.\\
+$a_1\geq{a_4}>a_2$.\\
 We observe that since $\beta\neq\tilde\delta$, we need to break this case into two sub cases
 \begin{enumerate}
-    \item Sub case 2.1: $v_1\geq{v}_2+v_3\iff-v_2-v_3\geq-v_1$\\
+    \item Sub case 2.1: $a_1\geq{v}_2+a_3\iff-a_2-a_3\geq-a_1$\\
     We do not have a phase transition in this sub case, hence our integral breaks into a sum of two integrals in the general form of the first two integrals of case 1, namely\\
-    \[\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2\right)+\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(\varphi+v_3\varphi+v_2v_3\varphi^2\right)=\]\[=\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2+\varphi+v_3\varphi+v_2v_3\varphi^2\right)\]
-    But this integral breaks again into the sum of the integrals on all the different cones that are formed by linear orders that are compliant with our order relations $v_1\geq{v_3}$, ${v_1\geq{v_4}>v_2}$ and $v_1\geq{v_2}+v_3$, namely\\
-    $v_1\geq{v_2+v_3}\geq{v}_3\geq{v_4}>v_2$\\
-$v_1\geq{v_2+v_3}\geq{v}_4>{v_3}>v_2$\\
-$v_1\geq{v_2+v_3}\geq{v}_4>{v_2}\geq{v}_3$\\
-$v_1\geq{v_4}>v_2+v_3\geq{v_2}\geq{v}_3$\\
-$v_1\geq{v_4}>v_2+v_3\geq{v_3}>v_2$\\
+    \[\int_{\substack{a_1\geq{v}_3\\a_1\geq{v}_4>a_2}}\psi\omega_4\left(1+a_2\right)+\int_{\substack{a_1\geq{v}_3\\a_1\geq{v}_4>a_2}}\psi\omega_4\left(\varphi+a_3\varphi+a_2a_3\varphi^2\right)=\]\[=\int_{\substack{a_1\geq{v}_3\\a_1\geq{v}_4>a_2}}\psi\omega_4\left(1+a_2+\varphi+a_3\varphi+a_2a_3\varphi^2\right)\]
+    But this integral breaks again into the sum of the integrals on all the different cones that are formed by linear orders that are compliant with our order relations $a_1\geq{a_3}$, ${a_1\geq{a_4}>a_2}$ and $a_1\geq{a_2}+a_3$, namely\\
+    $a_1\geq{a_2+a_3}\geq{v}_3\geq{a_4}>a_2$\\
+$a_1\geq{a_2+a_3}\geq{v}_4>{a_3}>a_2$\\
+$a_1\geq{a_2+a_3}\geq{v}_4>{a_2}\geq{v}_3$\\
+$a_1\geq{a_4}>a_2+a_3\geq{a_2}\geq{v}_3$\\
+$a_1\geq{a_4}>a_2+a_3\geq{a_3}>a_2$\\
 For each cone we compute a different substitution of variables and the series product that is formed by it, taking their sum yields the rational function for this sub-case.\\
-    \item Sub-case 2.2: $v_2+v_3>v_1\iff-v_1>-v_2+v_3$\\
-     \[\int_{\substack{v_1\geq{v}_3\\v_1\geq{v}_4>v_2}}\psi\omega_4\left(1+v_2\varphi+v_3\varphi-\frac{v_2^2}{2}\varphi^2+v_2v_1\varphi^2-\frac{v_3^2}{2}\varphi^2+v_3v_1\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_2}{2}\varphi^2-\frac{v_3}{2}\varphi^2+\frac{v_1}{2}\varphi^2\right)\]
-$v_2+v_3>v_1\geq{v}_3\geq{v}_4>v_2$\\
-$v_2+v_3>v_1\geq{v}_4>v_3>v_2$\\
-$v_2+v_3>v_1\geq{v}_4>v_2\geq{v_3}$\\
+    \item Sub-case 2.2: $a_2+a_3>a_1\iff-a_1>-a_2+a_3$\\
+     \[\int_{\substack{a_1\geq{v}_3\\a_1\geq{v}_4>a_2}}\psi\omega_4\left(1+a_2\varphi+a_3\varphi-\frac{a_2^2}{2}\varphi^2+a_2a_1\varphi^2-\frac{a_3^2}{2}\varphi^2+a_3a_1\varphi^2-\frac{a_1^2}{2}\varphi^2-\frac{a_2}{2}\varphi^2-\frac{a_3}{2}\varphi^2+\frac{a_1}{2}\varphi^2\right)\]
+$a_2+a_3>a_1\geq{v}_3\geq{v}_4>a_2$\\
+$a_2+a_3>a_1\geq{v}_4>a_3>a_2$\\
+$a_2+a_3>a_1\geq{v}_4>a_2\geq{a_3}$\\
 \end{enumerate}
 \subsubsubsection{Case 3}
-$v_3>v_1$\\
-$v_4>v_1$\\
-$v_4>v_2$\\
+$a_3>a_1$\\
+$a_4>a_1$\\
+$a_4>a_2$\\
 \begin{enumerate}
-    \item Sub case 3.1: $-v_2-v_1>-v_4\iff{v_4>v_2+v_1}$\\
-    \[\int_{\substack{v_3>v_1\\v_4>v_1\\v_4>v_2}}\psi\omega_1\left(1+v_2\varphi+v_1\varphi+v_1v_2\varphi^2\right)\]
-    $v_4>v_1+v_2\geq{v}_3>{v_2}>v_1$\\
-$v_4>v_1+v_2\geq{v}_2\geq{v_3}>v_1$\\
-$v_4>v_1+v_2\geq{v}_3>{v_1}\geq{v}_2$\\
-$v_4>v_3>v_1+v_2\geq{v_1}\geq{v}_2$\\
-$v_4>v_3>v_1+v_2\geq{v_2}>v_1$\\
-$v_3\geq{v}_4>v_1+v_2\geq{v_2}>v_1$\\
-$v_3\geq{v}_4>v_1+v_2\geq{v_1}\geq{v}_2$\\
-    \item Sub case 3.2: $-v_4\geq-v_2-v_1\iff{v_2+v_1\geq{v}_4}$\\
-    \[\int_{\substack{v_3>v_1\\v_4>v_1\\v_4>v_2}}\psi\omega_1\left(1+v_1\varphi+v_2\varphi-\frac{v_1^2}{2}\varphi^2+v_4v_1\varphi^2-\frac{v_2^2}{2}\varphi^2+v_4v_2\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2-\frac{v_2}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
-$v_1+v_2\geq{v}_4>v_3>{v_2}>v_1$\\
-$v_1+v_2\geq{v}_4>v_2\geq{v_3}>v_1$\\
-$v_1+v_2\geq{v}_4>v_3>{v_1}\geq{v}_2$\\
-$v_1+v_2>v_3\geq{v}_4>{v_2}>v_1$\\
-$v_1+v_2>v_3\geq{v}_4>{v_1}\geq{v}_2$\\
-$v_3\geq{v}_1+v_2\geq{v}_4>{v_2}>v_1$\\
-$v_3\geq{v}_1+v_2\geq{v}_4>{v_1}\geq{v}_2$\\
+    \item Sub case 3.1: $-a_2-a_1>-a_4\iff{a_4>a_2+a_1}$\\
+    \[\int_{\substack{a_3>a_1\\a_4>a_1\\a_4>a_2}}\psi\omega_1\left(1+a_2\varphi+a_1\varphi+a_1a_2\varphi^2\right)\]
+    $a_4>a_1+a_2\geq{v}_3>{a_2}>a_1$\\
+$a_4>a_1+a_2\geq{v}_2\geq{a_3}>a_1$\\
+$a_4>a_1+a_2\geq{v}_3>{a_1}\geq{v}_2$\\
+$a_4>a_3>a_1+a_2\geq{a_1}\geq{v}_2$\\
+$a_4>a_3>a_1+a_2\geq{a_2}>a_1$\\
+$a_3\geq{v}_4>a_1+a_2\geq{a_2}>a_1$\\
+$a_3\geq{v}_4>a_1+a_2\geq{a_1}\geq{v}_2$\\
+    \item Sub case 3.2: $-a_4\geq-a_2-a_1\iff{a_2+a_1\geq{v}_4}$\\
+    \[\int_{\substack{a_3>a_1\\a_4>a_1\\a_4>a_2}}\psi\omega_1\left(1+a_1\varphi+a_2\varphi-\frac{a_1^2}{2}\varphi^2+a_4a_1\varphi^2-\frac{a_2^2}{2}\varphi^2+a_4a_2\varphi^2-\frac{a_4^2}{2}\varphi^2-\frac{a_1}{2}\varphi^2-\frac{a_2}{2}\varphi^2+\frac{a_4}{2}\varphi^2\right)\]
+$a_1+a_2\geq{v}_4>a_3>{a_2}>a_1$\\
+$a_1+a_2\geq{v}_4>a_2\geq{a_3}>a_1$\\
+$a_1+a_2\geq{v}_4>a_3>{a_1}\geq{v}_2$\\
+$a_1+a_2>a_3\geq{v}_4>{a_2}>a_1$\\
+$a_1+a_2>a_3\geq{v}_4>{a_1}\geq{v}_2$\\
+$a_3\geq{v}_1+a_2\geq{v}_4>{a_2}>a_1$\\
+$a_3\geq{v}_1+a_2\geq{v}_4>{a_1}\geq{v}_2$\\
     \end{enumerate}
     \subsubsubsection{Case 4}
-$v_4>v_1\geq{v_3}$\\
-$v_4>v_2$\\
+$a_4>a_1\geq{a_3}$\\
+$a_4>a_2$\\
 \begin{enumerate}
-    \item Sub case 4.1: ${v_4>v_2+v_3}\iff-v_2-v_3>-v_4$\\
-    \[\int_{\substack{v_4>v_1\geq{v_3}\\
-v_4>v_2}}\psi\omega_1\left(1+v_2v_4\varphi^2+v_2\varphi+v_3\varphi+v_3v_2\varphi^2-v_4v_2\varphi^2-\frac{v_2^2}{2}\varphi^2-v_2v_3\varphi^2+v_2v_4\varphi^2-\frac{v_3^2}{2}\varphi^2+v_3v_4\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_2}{2}\varphi^2-\frac{v_3}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
-$v_4>v_2+v_3>v_1\geq{v_3}>v_2$\\
-$v_4>v_2+v_3>v_1\geq{v_2}\geq{v}_3$\\
-$v_4>v_2+v_3\geq{v}_2>{v_1}\geq{v}_3$\\
-$v_4>v_1\geq{v}_2+v_3\geq{v_2}\geq{v}_3$\\
-$v_4>v_1\geq{v}_2+v_3\geq{v_3}>v_2$\\
-    \item Sub case 4.2: $-v_4\geq-v_2-v_3\iff{v_2+v_3\geq{v_4}}$\\
-    \[\int_{\substack{v_4>v_1\geq{v_3}\\
-v_4>v_2}}\psi\omega_1\left(1+v_1\varphi+v_2\varphi-\frac{v_1^2}{2}\varphi^2+v_4v_1\varphi^2-\frac{v_2^2}{2}\varphi^2+v_4v_2\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2-\frac{v_2}{2}\varphi^2+\frac{v_4}{2}\varphi^2\right)\]
-$v_2+v_3\geq{v}_4>v_1\geq{v_2}\geq{v}_3$\\
-$v_2+v_3\geq{v}_4>v_1\geq{v_3}>v_2$\\
-$v_2+v_3\geq{v}_4>v_2>{v_1}\geq{v}_3$\\
+    \item Sub case 4.1: ${a_4>a_2+a_3}\iff-a_2-a_3>-a_4$\\
+    \[\int_{\substack{a_4>a_1\geq{a_3}\\
+a_4>a_2}}\psi\omega_1\left(1+a_2a_4\varphi^2+a_2\varphi+a_3\varphi+a_3a_2\varphi^2-a_4a_2\varphi^2-\frac{a_2^2}{2}\varphi^2-a_2a_3\varphi^2+a_2a_4\varphi^2-\frac{a_3^2}{2}\varphi^2+a_3a_4\varphi^2-\frac{a_4^2}{2}\varphi^2-\frac{a_2}{2}\varphi^2-\frac{a_3}{2}\varphi^2+\frac{a_4}{2}\varphi^2\right)\]
+$a_4>a_2+a_3>a_1\geq{a_3}>a_2$\\
+$a_4>a_2+a_3>a_1\geq{a_2}\geq{v}_3$\\
+$a_4>a_2+a_3\geq{v}_2>{a_1}\geq{v}_3$\\
+$a_4>a_1\geq{v}_2+a_3\geq{a_2}\geq{v}_3$\\
+$a_4>a_1\geq{v}_2+a_3\geq{a_3}>a_2$\\
+    \item Sub case 4.2: $-a_4\geq-a_2-a_3\iff{a_2+a_3\geq{a_4}}$\\
+    \[\int_{\substack{a_4>a_1\geq{a_3}\\
+a_4>a_2}}\psi\omega_1\left(1+a_1\varphi+a_2\varphi-\frac{a_1^2}{2}\varphi^2+a_4a_1\varphi^2-\frac{a_2^2}{2}\varphi^2+a_4a_2\varphi^2-\frac{a_4^2}{2}\varphi^2-\frac{a_1}{2}\varphi^2-\frac{a_2}{2}\varphi^2+\frac{a_4}{2}\varphi^2\right)\]
+$a_2+a_3\geq{v}_4>a_1\geq{a_2}\geq{v}_3$\\
+$a_2+a_3\geq{v}_4>a_1\geq{a_3}>a_2$\\
+$a_2+a_3\geq{v}_4>a_2>{a_1}\geq{v}_3$\\
     \end{enumerate}
     \subsubsubsection{Case 5}
-$v_2\geq{v_4}>v_1\geq{v_3}$\\
-\[\int_{\substack{v_4>v_1\geq{v_3}\\
-v_4>v_2}}\psi\omega_1\left(1+v_4\varphi+v_3\varphi+v_3v_4\varphi^2-\frac{v_3^2}{2}\varphi^2-\frac{v_3}{2}\varphi^2\right)\]
+$a_2\geq{a_4}>a_1\geq{a_3}$\\
+\[\int_{\substack{a_4>a_1\geq{a_3}\\
+a_4>a_2}}\psi\omega_1\left(1+a_4\varphi+a_3\varphi+a_3a_4\varphi^2-\frac{a_3^2}{2}\varphi^2-\frac{a_3}{2}\varphi^2\right)\]
 The only possible arrangement here is\\
-$v_2\geq{v_4}>v_1\geq{v_3}$\\
+$a_2\geq{a_4}>a_1\geq{a_3}$\\
 
 \subsubsubsection{Case 6}
-$v_2\geq{v_4}>v_1$\\
-$v_3>v_1$\\
-\[\int_{\substack{v_2\geq{v_4}>v_1\\v_3>v_1}}\psi\omega_1\left(1+v_4\varphi+v_1\varphi+v_1v_4\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2\right)\]
-$v_2\geq{v}_4>v_3>{v_1}$\\
-$v_2\geq{v}_3\geq{v}_4>{v_1}$\\
-$v_3>v_2\geq{v}_4>{v_1}$\\
+$a_2\geq{a_4}>a_1$\\
+$a_3>a_1$\\
+\[\int_{\substack{a_2\geq{a_4}>a_1\\a_3>a_1}}\psi\omega_1\left(1+a_4\varphi+a_1\varphi+a_1a_4\varphi^2-\frac{a_1^2}{2}\varphi^2-\frac{a_1}{2}\varphi^2\right)\]
+$a_2\geq{v}_4>a_3>{a_1}$\\
+$a_2\geq{v}_3\geq{v}_4>{a_1}$\\
+$a_3>a_2\geq{v}_4>{a_1}$\\
 
 \subsubsubsection{Case 7}
-$v_2\geq{v_4}$\\
-$v_3>v_1\geq{v_4}$\\
-\[\int_{\substack{v_2\geq{v_4}\\v_3>v_1\geq{v_4}}}\psi\omega_4\left(1+v_4\varphi+v_1\varphi+v_1v_4\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_4}{2}\varphi^2\right)\]
-$v_2\geq{v}_3>{v}_1\geq{v_4}$\\
-$v_3>v_2>v_1\geq{v_4}$\\
-$v_3>v_1\geq{v}_2\geq{v_4}$\\
+$a_2\geq{a_4}$\\
+$a_3>a_1\geq{a_4}$\\
+\[\int_{\substack{a_2\geq{a_4}\\a_3>a_1\geq{a_4}}}\psi\omega_4\left(1+a_4\varphi+a_1\varphi+a_1a_4\varphi^2-\frac{a_4^2}{2}\varphi^2-\frac{a_4}{2}\varphi^2\right)\]
+$a_2\geq{v}_3>{v}_1\geq{a_4}$\\
+$a_3>a_2>a_1\geq{a_4}$\\
+$a_3>a_1\geq{v}_2\geq{a_4}$\\
 \subsubsubsection{Case 8}
-$v_2\geq{v_4}$\\
-$v_1\geq{v_4}$\\
-$v_1\geq{v_3}$\\
+$a_2\geq{a_4}$\\
+$a_1\geq{a_4}$\\
+$a_1\geq{a_3}$\\
 \begin{enumerate}
-    \item  Sub-case 8.1: $v_1\geq{v_3+v_4}\iff-v_3-v_4\geq{v}_1$
-    \[\int_{\substack{v_2\geq{v_4}\\v_1\geq{v_4}\\v_1\geq{v_3}}}\psi\omega_4\left(1+v_4\varphi+v_3\varphi+v_3v_4\varphi^2\right)\]
-$v_1\geq{v}_3+v_4\geq{v}_3>{v_2}\geq{v}_4$\\
-$v_1\geq{v}_3+v_4\geq{v}_2\geq{v_3}\geq{v}_4$\\
-$v_1\geq{v}_3+v_4\geq{v}_2\geq{v_4}>v_3$\\
-$v_1\geq{v}_2>v_3+v_4\geq{v_4}>v_3$\\
-$v_1\geq{v}_2>v_3+v_4\geq{v_3}\geq{v_4}$\\
-$v_2>v_1\geq{v}_3+v_4\geq{v_3}\geq{v_4}$\\
-$v_2>v_1\geq{v}_3+v_4\geq{v_4}>{v_3}$\\
-\item Sub-case 8.2: $v_3+v_4>v_1\iff-v_1>-v_3-v_4$
-\[\int_{\substack{v_2\geq{v_4}\\v_1\geq{v_4}\\v_1\geq{v_3}}}\psi\omega_4\left(1+v_3\varphi+v_4\varphi-\frac{v_3^2}{2}\varphi^2+v_1v_3\varphi^2-\frac{v_4^2}{2}\varphi^2+v_1v_4\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_3}{2}\varphi^2-\frac{v_4}{2}\varphi^2+\frac{v_1}{2}\varphi^2\right)\]
-$v_3+v_4>v_1\geq{v}_3>{v_2}\geq{v}_4$\\
-$v_3+v_4>v_1\geq{v}_2\geq{v_3}\geq{v}_4$\\
-$v_3+v_4>v_1\geq{v}_2\geq{v_4}>v_3$\\
-$v_3+v_4\geq{v}_2>v_1\geq{v_4}>v_3$\\
-$v_3+v_4>v_2>v_1\geq{v_3}\geq{v}_4$\\
-$v_2>v_3+v_4>v_1\geq{v_4}>v_3$\\
-$v_2\geq{v}_3+v_4>v_1\geq{v_3}\geq{v}_4$\\
+    \item  Sub-case 8.1: $a_1\geq{a_3+a_4}\iff-a_3-a_4\geq{v}_1$
+    \[\int_{\substack{a_2\geq{a_4}\\a_1\geq{a_4}\\a_1\geq{a_3}}}\psi\omega_4\left(1+a_4\varphi+a_3\varphi+a_3a_4\varphi^2\right)\]
+$a_1\geq{v}_3+a_4\geq{v}_3>{a_2}\geq{v}_4$\\
+$a_1\geq{v}_3+a_4\geq{v}_2\geq{a_3}\geq{v}_4$\\
+$a_1\geq{v}_3+a_4\geq{v}_2\geq{a_4}>a_3$\\
+$a_1\geq{v}_2>a_3+a_4\geq{a_4}>a_3$\\
+$a_1\geq{v}_2>a_3+a_4\geq{a_3}\geq{a_4}$\\
+$a_2>a_1\geq{v}_3+a_4\geq{a_3}\geq{a_4}$\\
+$a_2>a_1\geq{v}_3+a_4\geq{a_4}>{a_3}$\\
+\item Sub-case 8.2: $a_3+a_4>a_1\iff-a_1>-a_3-a_4$
+\[\int_{\substack{a_2\geq{a_4}\\a_1\geq{a_4}\\a_1\geq{a_3}}}\psi\omega_4\left(1+a_3\varphi+a_4\varphi-\frac{a_3^2}{2}\varphi^2+a_1a_3\varphi^2-\frac{a_4^2}{2}\varphi^2+a_1a_4\varphi^2-\frac{a_1^2}{2}\varphi^2-\frac{a_3}{2}\varphi^2-\frac{a_4}{2}\varphi^2+\frac{a_1}{2}\varphi^2\right)\]
+$a_3+a_4>a_1\geq{v}_3>{a_2}\geq{v}_4$\\
+$a_3+a_4>a_1\geq{v}_2\geq{a_3}\geq{v}_4$\\
+$a_3+a_4>a_1\geq{v}_2\geq{a_4}>a_3$\\
+$a_3+a_4\geq{v}_2>a_1\geq{a_4}>a_3$\\
+$a_3+a_4>a_2>a_1\geq{a_3}\geq{v}_4$\\
+$a_2>a_3+a_4>a_1\geq{a_4}>a_3$\\
+$a_2\geq{v}_3+a_4>a_1\geq{a_3}\geq{v}_4$\\
 \end{enumerate}
 \pagebreak
 \[
