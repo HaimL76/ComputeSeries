@@ -50,7 +50,7 @@ $L=L_{n,p}$ or $L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}$, dependi
 $d=\binom{n}{2}=\dim\mathcal{L}$ or $\dim{L}$, depending on the context.\\
 $\gamma_i=\gamma_i\mathcal{L}$ or $\gamma_iL$, depending on the context.\\
 $e_i=e_{i,i+1}$.\\
-\section{Rigidity of the Algebra}
+\section{Base Extension of $L$}
 Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X) : \{y\in{L} : [y,X]\subseteq{I}\}$.\\
 Denote by $L=\mathcal{L}_{n,p}$ our usual algebra over $K$.\\
 \subsection{The $\mathcal{X}$ criterion}
@@ -147,8 +147,9 @@ For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and
 But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{i+1}\}$, then any $z\in{C}_L(B)$ must have $d_{lh}=0$ for all $1\leq{l}<h\leq{n}$, unless $(l,h)=(i,i+1)$, but then $z=d_ie_{i,i+1}=ca_ie_{i,i+1}=cx$ for some $c=\frac{d_i}{a_i}\in{K}$, and all the computation above is up to the center $Z(L)$, hence $z\in{K}x+Z(L
 )$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that $L$ is rigid.
 \subsection{Rigidity and Base Extension}
-Let $L=\mathcal{L}_{n,p}$ be our $\mathbb{Q}_p$-algebra, and let $M=L\otimes\mathcal{O}_K$ be the tensor product extending $L$ with scalars from $\mathcal{O}_K$, then the rigidity of $L$ shown above implies the following:\\
-Define $\psi:\text{Aut}_{\mathbb{Q}_p}\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{M}{Z\otimes\mathcal{O}_K})$ where $Z=Z(L)$ is the center of $L$, and denote by $J=\ker\psi$, then 
+Denote by $L=\mathcal{L}_{n,p}$ our $\mathbb{Q}_p$-algebra, and denote by $\mathcal{O}=\mathcal{O}_K$, and denote by $M=L\otimes\mathcal{O}_K$ the tensor product extending $L$ with scalars from $\mathcal{O}_K$, and denote by $N=Z\otimes\mathcal{O}_K$ where $Z=Z(L)$ is the center of $L$, then the rigidity of $L$ shown above implies the following (see \cite[\S{3.7}]{BermanGlazerSchein}):\\
+Define $\psi:\text{Aut}_{\mathbb{Q}_p}(M)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{M}{N})$, and denote by $J=\ker\psi$, then $\text{Aut}_{\mathbb{Q}_p}(M)=(J\cdot\text{Aut}_{\mathcal{O}_K}(M))\rtimes\text{Aut}_{\mathbb{Q}_p}(\mathcal{O}_K)$. This decomposition shows that instead of constructing a $\mathbb{Q}_p$-linear $M$-automorphism where $\dim{L}\otimes_{\mathbb{Q}_p}\mathcal{O}_K=(n-1)\times{d}_K$, we construct first an $\mathcal{O}_K$-linear $M$-automorphism where $\dim{L}\otimes_{\mathcal{O}_K}\mathcal{O}_K=n-1$, and we take its product with $J$, as both $\text{Aut}_{\mathcal{O}_K}(M)$ and $J$ contain $d\times{d}$ elements operating on the same basis.
+But $J=\ker\psi$ consists of all the $d\times{d}$ matrices $M=(m_{ij})$ with only the block $n-1$, that is, only $m_{d,i}$ where $1\leq{i}\leq{n}-1$ are nonzero elements.
 \section{The Group of Automorphisms}
 \subsection{The General Form of the $\mathcal{L}$-automorphisms}
 \subsubsection{The Matrix Structure}
@@ -160,7 +161,7 @@ The matrix $A$ is partitioned into $(n-1)\times(n-1)$ blocks, each block $A_{ij}
 
 \subsubsection{The Diagonal of $\varphi$}
 As explained above, we are working with $G_n^0(K)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
-Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\inK$, for every $1\leq{i}\leq{n-1}$.
+Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\in{K}$, for every $1\leq{i}\leq{n-1}$.
 \begin{proposition}
 For every $1\leq{i}<j\leq{n}$, $\varphi$ must satisfy $\varphi(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$, where $d=j-i$.
 \end{proposition}
@@ -420,7 +421,7 @@ $b_{12}a_{21}+c_1\rightarrow{c_1}$\\
 $b_{22}a_{21}+c_2\rightarrow{c_2}$\\
 $b_{31}a_{33}+c_3\rightarrow{c_3}$\\
 $b_{41}a_{33}+c_4\rightarrow{c_4}$,\\
-which yields the same form of matrix for $N_n(K$) computed by Berman 3.3.\\
+which yields the same form of matrix for $N_n(K$) computed by \cite[\S{3.3}]{BermanThesis}\\
 Indeed, we chose this particular order of composition to achieve this particular form, while choosing a different order would yield an isomorphic group, as mentioned above.
 \end{example}
 \begin{proposition}
@@ -885,4 +886,11 @@ $v_2\geq{v}_3+v_4>v_1\geq{v_3}\geq{v}_4$\\
 \[
 \frac{{\left(p^{26} r^{24} t^{28} + p^{23} r^{20} t^{24} - 2 \, p^{17} r^{16} t^{18} + p^{16} r^{16} t^{18} - 2 \, p^{13} r^{12} t^{14} + p^{10} r^{8} t^{10} - 2 \, p^{9} r^{8} t^{10} + p^{3} r^{4} t^{4} + 1\right)} {\left(p^{13} r^{12} t^{14} - 1\right)}}{{\left(p^{7} r^{8} t^{8} - 1\right)} {\left(p^{7} r^{6} t^{7} + 1\right)}^{2} {\left(p^{7} r^{6} t^{7} - 1\right)}^{2} {\left(p^{7} r^{4} t^{6} - 1\right)}^{2} {\left(p^{5} r^{4} t^{5} + 1\right)} {\left(p^{5} r^{4} t^{5} - 1\right)} {\left(p^{3} r^{4} t^{4} - 1\right)}}
 \]
+\begin{thebibliography}{2}
+\bibitem{BermanThesis} M. N. Berman,
+Proisomorphic zeta functions of groups, Ph.D. thesis, University of Oxford,
+2005.
+
+\bibitem{BermanGlazerSchein} M. N. Berman, I. Glazer and M. M. Schein, Pro-isomorphic zeta functions of nilpotent groups and Lie rings under base extension, Trans. Amer. Math. Soc. 375 (2022), 1051–1100.
+\end{thebibliography}
 \end{document}
