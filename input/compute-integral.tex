@@ -55,7 +55,7 @@ $e_i=e_{i,i+1}$.\\
 \subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
 Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$ with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is, for every $v=a_1e_1+a_2e_2+\cdots+a_{n-1}e_{n-1}+a_{13}e_{13}+\cdots+a_{1n}e_{1n}\in\mathcal{L}$:
 \[
-v\varphi=\begin{bmatrix}
+v\varphi=v\begin{bmatrix}
 \varphi_1\\
 \varphi_2\\
 \vdots\\
@@ -85,6 +85,16 @@ m_{n1}&m_{n,2}&\cdots&m_{n,d}\\
 \vdots\\
 m_{d-1,1}&m_{d-1,2}&\cdots&m_{d-1,d}\\
 m_{d1}&m_{d2}&\cdots&m_{dd}\\
+\end{bmatrix}\\=\]\[=\begin{bmatrix}
+a_1(m_{11}e_1+m_{12}e_2+\cdots+m_{1d})\\
+a_2(m_{21}e_1+m_{22}e_2+\cdots+m_{2d})\\
+\vdots\\
+a_{n-1}(m_{n-1,1}e_1+\cdots+m_{n-1,d}e_{1n})\\
+a_n(m_{n1}e_1+m_{n2}e_2+\cdots+m_{n,d}e_{1n})\\
+\vdots\\
+\vdots\\
+a_{d-1}(m_{d-1,1}e_1+\cdots+m_{d-1,d}e_{1n})\\
+a_d(m_{d1}e_1+m_{d2}e_2+\cdots+m_{dd}e_{1n})\\
 \end{bmatrix}\\
 \]
 Since the elements $\{\gamma_{k}\mathcal{L}_{n,p}\}_{k=1}^{n-1}$ of the lower central series are characteristic subalgebras, $M$ has the block-diagonal form
