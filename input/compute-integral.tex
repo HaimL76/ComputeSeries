@@ -51,7 +51,86 @@ $L=L_{n,p}$ or $L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}$, dependi
 $d=\binom{n}{2}=\dim\mathcal{L}$ or $\dim{L}$, depending on the context.\\
 $\gamma_i=\gamma_i\mathcal{L}$ or $\gamma_iL$, depending on the context.\\
 $e_i=e_{i,i+1}$.\\
+
+\section{General Background}
+
+\subsection{Pro-Isomorphic Subgroup Growth}
+\begin{definition}
+\label{def:pro.isomorphic}
+Let $G$ be a group. A subgroup $H\leq G$ is called \textbf{pro-isomorphic} if $\widehat{H}\cong\widehat{G}$, where $\widehat{H}$ and $\widehat{G}$ are the profinite closures of $H$ and $G$, respectively.
+\end{definition}
+We denote by \[a_{n}^{\wedge}(G):=|\{H\leq G : \widehat{H}\cong\widehat{G}, [G:H]=n\}|\]
+the number of pro-isomorphic subgroups of $G$ of index $n$, which is finite as the total number of subgroups of index $n$ is itself finite, see, for instance \cite[Corollary 1.1.2]{LubotzkySegal}.
+
+\begin{definition}
+\label{def:zeta.function}
+Let $G$ be a finitely-generated group, we define the zeta function $\zeta_{G}^{\wedge}(s)$ to be the Dirichlet series $\sum_{n=1}^{\infty}a_{n}^{\wedge}(G){n}^{-s}$. 
+\end{definition}
+Similar zeta functions are defined also for $a_{n}^{\leq}(G)$ and $a_{n}^{\trianglelefteq}(G)$, that is the number of general subgroups and the number of normal subgroups, respectively.
+\begin{proposition}
+Let $G$ be a $\mathcal{T}$-group, i.e. finitely-generated, nilpotent and torsion-free group, then $\zeta_{G}^{\wedge}(s)$ has the following properties:\
+\begin{enumerate}
+    \item There exist constants $b$ and $C$ such that $a_{n}^{\leq}(G)\leq{C}{n}^{b}$ for all $n\in\mathbb{N}$, thus $\zeta_{G}^{\wedge}(s)$ converges on some right half plane $\mathrm{Re}\,s>\alpha$, and the abscissae of convergence \[\alpha^{\wedge}:=\inf\{\alpha : \zeta_{G}^{\wedge}(s)\,\mathrm{converges}\,\mathrm{on}\,\mathrm{Re}\,s>\alpha\}\] are known to be rational numbers, see \cite[Theorem 7.2]{HrushovskiMartinRideau}.
+
+\item We have the Euler decomposition $\zeta_{G}^{\wedge}(s)=\prod_{p}\zeta_{G,p}^{\wedge}(s)$, where the product runs over all primes $p$ and where $\zeta_{G,p}^{\wedge}(s)=\sum_{k=0}^{\infty}a_{p^k}^{\wedge}(G)p^{-ks}$\\ \cite[Proposition 4]{GrunewaldSegalSmith}.
+
+\item For all primes $p$, there is a rational function $W_{p}^{\wedge}\in\mathbb{Q}(X)$ such that $\zeta_{G,p}^{\wedge}(s)=W_{p}^{\wedge}(p^{-s})$ \cite[Theorem 1]{GrunewaldSegalSmith}.
+\end{enumerate}
+\end{proposition}
+Here again, similar properties apply also for general and normal subgroups.
+\begin{definition}
+We say that $\zeta_{L,p}^{\wedge}$ is a \textbf{finitely uniform} zeta function, if there is a finite set of rational functions $W_{1}^{\wedge}(X,Y),\dots,W_{r}^{\wedge}(X,Y)\in\mathbb{Q}(X,Y)$, such that for every $p$, there is some $1\leq{i}\leq{r}$ for which $\zeta_{G,p}^{\wedge}(s)=W_{i}^{\wedge}(p,p^{-s})$. When $r=1$ we say that $\zeta_{L,p}^{\wedge}$ is \textbf{uniform}.
+\end{definition}
+
+\begin{definition}
+We say that a rational function $W_{i}^{\wedge}$ satisfies a \textbf{functional equation} if $W_{i}^{\wedge}(X^{-1},Y^{-1})=\pm{X}^{a}{Y}^{b}{W_{i}^{\wedge}(X,Y)}$, where $a,b\in\mathbb{N}\cup\{0\}$. The factor $X^{a}Y^{b}$ is called the \textbf{symmetry factor}. See a comprehensive discussion on functional equations for zeta functions in \cite{Voll}.
+\end{definition}
+
+In the case of pro-isomorphic zeta functions, there are results showing, under restrictive conditions, that $\zeta_{G,p}^{\wedge}(s)$ is uniform and satisfies a functional equation; see \cite[Theorem B]{DuSautoyLubotzky} and \cite[Theorem 1.1]{Berman}. However, there are examples of $G$ of nilpotency class $4$ such that $\zeta_{G,p}^{\wedge}(s)$ is uniform but does not satisfy a functional equation \cite[Theorem 1.1]{BermanKlopsch}. Thus any general theorem guaranteeing functional equations must assume some conditions.
+
+If any Dirichlet series, in particular $\zeta_{G}^{\ast}(s)$, convergences on some subset of $\mathbb{C}$, one may reconstruct its coefficients $a_{n}^{\ast}(G)$, the sequence of our interest, using Perron's formula, which is an implementation of a reverse Mellin transform; see, for instance, \cite[Theorem 5.1]{MontgomeryVaughan}.\par
+
+As an example, we consider the set of $n\times{n}$ elementary  matrices $M=(m_{ij})$ with $1$ on the main diagonal, and $m_{k,k+1}=\pm{1}$ for $1\leq{k}\leq{n}-1$, and zero elsewhere. We observe that this set generates a multiplicative group of unipotent matrices over $\mathbb{Z}$.
+\subsection{Linearization}
+We may transfer the ideas from the above discussion about groups to a linear context, where we can use tools from linear algebra.
+If $L$ is a $\mathbb{Z}$-Lie algebra, namely a free $\mathbb{Z}$-module of finite rank with a Lie bracket operation, then consider the number $a_{n}^{\wedge}(L)$ of subalgebras $M\leq L$ of index $n$ such that $M\otimes_{\mathbb{Z}}\mathbb{Z}_p\cong L\otimes_{\mathbb{Z}}\mathbb{Z}_p$ for all primes $p$. It is known that $a_{n}^{\wedge}(L)<\infty$ for all $n\in\mathbb{N}$. The Dirichlet series $\zeta_{L}^{\wedge}(s):=\sum_{n=1}^{\infty}{a_{n}^{\wedge}}(L)n^{-s}$ is called the \textbf{pro-isomorphic zeta function} of $L$. By the Mal'cev correspondence, to every $\mathcal{T}$-group $G$ one may associate a Lie algebra $L=L(G)$ such that $\zeta_{G,p}^{\wedge}(s)=\zeta_{L,p}^{\wedge}(s)$ for all but finitely many primes $p$. If $G$ has nilpotency class $2$, one may obtain the equality for all primes \cite[Theorem 4.1]{GrunewaldSegalSmith}.\par
+Let $L$ be a $\mathbb{Z}$-Lie algebra. Choose a basis $(b_1,\dots,b_r)$, where $r=\mathrm{rank}\,L$. Let $\mathcal{L}_{p}=L\otimes_{\mathbb{Z}}\mathbb{Q}_p$, for any prime $p$. This is a $\mathbb{Q}_p$-Lie algebra, and our choice of basis allows us to identify the automorphism group $G(\mathbb{Q}_p)=Aut_{\mathbb{Q}_p}(\mathcal{L}_{p})$ with a subgroup of $GL_r(\mathbb{Q}_p)$. Note that $\mathcal{L}_{p}$ contains a $\mathbb{Z}_p$-lattice $L_{p}=L\otimes_{\mathbb{Z}}\mathbb{Z}_p$. If $\varphi\in G(\mathbb{Q}_p)$, then $\varphi(L_{p})=L_{p}$ if and only if $\varphi\in G(\mathbb{Z}_p)=G(\mathbb{Q}_p)\cap GL_r(\mathbb{Z}_p)$. Similarly, $\varphi(L_{p})\subseteq L_{p}$ if and only if $\varphi\in G^{+}(\mathbb{Q}_p):=G(\mathbb{Q}_p)\cap {M}_r(\mathbb{Z}_p)$, where ${M}_r(\mathbb{Z}_p)$ is the collection of $r\times r$ matrices with entries in $\mathbb{Z}_p$. Note that $G^{+}(\mathbb{Q}_p)$ is a monoid, not a group.\par
+We consider automorphisms as acting from the right, hence, we observe that there is a bijection between the set $G(\mathbb{Z}_p)\backslash G^{+}(\mathbb{Q}_p)$ of right cosets of $G(\mathbb{Z}_p)$ and the set $\{M\leq L_{p} : M\cong L_{p}\}$ of $\mathbb{Z}_{p}$-subalgebras of $L_{p}$ which are isomorphic to $L_{p}$ itself. This bijection takes $G(\mathbb{Z}_p)g$ to $M=\varphi(L_{p})$, for $\varphi\in G(\mathbb{Z}_p)g$.
+Observe that $[L_{p}:M]=|\det\varphi|_p^{-1}$, where $|\cdot|_p$ is the $p$-adic norm on $\mathbb{Q}_{p}$ (recall that $|p|_{p}=p^{-1}$), and therefore,
+\begin{equation}
+\label{eq:proisomorphic.zeta}
+\zeta_{L,p}^{\wedge}(s)=\underset{\overset{\scriptscriptstyle M\leq L_{p}}{\scriptscriptstyle M\cong L_{p}}}{\sum}[L_{p}:M]^{-s}=\underset{\scriptscriptstyle G(\mathbb{Z}_p)\varphi\in G(\mathbb{Z}_p)\backslash G^{+}(\mathbb{Q}_p)}{\sum}|\det\varphi|_p^s.
+\end{equation}
+
+\subsection{$p$-adic Integration}
+We fix a specific right Haar measure $\mu$ on the locally compact group $G(\mathbb{Q}_{p})$ by normalizing $\mu(G(\mathbb{Z}_p))=1$. Now we are able to express $\zeta_{L,p}^{\wedge}(s)$ as a $p$-adic integral, as first done by Grunewald, Segal and Smith \cite[Proposition 4.2]{GrunewaldSegalSmith}. Since $|\det{g}|_{p}^{s}$ is constant on right cosets of $G(\mathbb{Z}_{p})$, we have \[|\det\varphi|_{p}^{s}=\displaystyle\int_{G(\mathbb{Z}_p)\varphi}{|\det{g}|_{p}^{s}}d\mu(g).\]
+By \eqref{eq:proisomorphic.zeta}, we have \[\zeta_{L,p}^{\wedge}(s)=\underset{\scriptscriptstyle G(\mathbb{Z}_p)\varphi\in G(\mathbb{Z}_p)\backslash{G^{+}(\mathbb{Q}_p)}}{\sum}|\det\varphi|_{p}^{s}=\underset{\scriptscriptstyle{G(\mathbb{Z}_p)}\varphi\in G(\mathbb{Z}_p)\backslash{G^{+}(\mathbb{Q}_p)}}{\sum}\displaystyle{\int_{G(\mathbb{Z}_p)\varphi}}{|\det{g}|_{p}^{s}}d\mu(g),\]
+which results in \begin{equation}
+\label{eq:p-adic.integral}
+\zeta_{L,p}^{\wedge}(s)=\displaystyle\int_{G^{+}(\mathbb{Q}_p)}{|\det{g}|_{p}^{s}}d\mu(g).
+\end{equation}
+
 \section{Basic Notions}
+
+\subsection{The Lie algebras $L_{n}$}
+Let $R$ be a commutative ring, and let $L_{n}(R)$ be the set of strictly upper triangular $n\times{n}$ matrices with elements in $R$. The commutator Lie bracket $[A,B]=AB-BA$ gives $L_{n}(R)$ the structure of a nilpotent $R$-Lie algebra. Set $L_{n}=L_{n}(\mathbb{Z})$ and $\mathcal{L}_{n}=L_{n}(\mathbb{Q})$, while $L_{n,p}=L_{n}(\mathbb{Z}_{p})$ and $\mathcal{L}_{n,p}=L_{n}(\mathbb{Q}_{p})$.
+
+Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsewhere. Then $B:=\{e_{ij} : 1\leq{i}<{j}\leq{n}\}$ is a basis of $L_{n}$, which we order as follows: $(e_{12},\dots,e_{n-1,n},e_{13},\dots,e_{n-2,n},e_{14},\dots,e_{n-3,n},\dots,e_{1n})$. In other words we order the elements of $B$ so that $e_{ij}<e_{kl}$ if either $j-i<l-k$ or if $j-i=l-k$ and $i<k$. The cardinality of $B$ is $\binom{n}{2}$, thus We denote by $d=\text{rank}{L}_n=\binom{n}{2}$ the rank of $L_n$ as a free $\mathbb{Z}$-module. Note that $\gamma_{1}L_{n},\dots,\gamma_{n-1}L_{n}$ are spanned by final segments of $B$. The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
+\begin{remark}
+Let $U_n(R)$ be the group of $n\times{n}$ upper unitriangular matrices over $R$. By the Mal'cev correspondence, ${\zeta^\wedge_{U_{n}(\mathbb{Z}_{p})}}(s)={\zeta^\wedge_{L_{n,p}}}(s)$, for all but finitely many primes $p$. This relates the subject of our research to the group-theoretic motivation presented at the beginning of this paper.
+\end{remark}
+\begin{proposition}
+The standard Lie brackets operation on $L_n$ gives the following multiplication rule:
+$[e_{ij},e_{kl}]=\begin{cases}
+e_{il},&j=k\\
+-e_{kj},&i=l\\
+0,&\text{otherwise}\\
+\end{cases}$
+\end{proposition}
+\begin{proof}
+Suppose that $j=k\implies{i<l}$, then $e_{ij}e_{jl}=e_{il}$ but $e_{jl}e_{ij}=0$, thus $[e_{ij},e_{jl}]=e_{il}$, the rest may be checked in the same way.
+\end{proof}
+
 \subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
 Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$ with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
 \[
@@ -218,7 +297,7 @@ Denote by $H(K):=\{h\in{G}_n^0(K)\}$ the set of all diagonal $\mathcal{L}$-autom
 The set $H(K)$ is a subgroup of $G_n^0(K)$.
 \end{proposition}
 \begin{proof}
-Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\inK$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
+Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\in{K}$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
 \end{proof}
 A simple check would show that $H(K)$ is not normal in $G_n^0(K)$.
 
@@ -305,7 +384,7 @@ Same applies for $[\varphi_r(e_{n-r-2}),\varphi_r(e_{n-1})]$ and the summand $m_
 
 \subsubsection{The Abelian Components}
 \subsubsubsection{The Automorphism $\varphi_{r,k}(a)$}
-Let $a\inK$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ in the following way:
+Let $a\in{K}$, we define a map $\varphi_{r,k}(a):\sfrac{\mathcal{L}}{\gamma_2}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ in the following way:
 \[
     \varphi_{r,k}(a)(e_i)=\begin{cases}
         e_{k,k+1}+a{e_{k,k+r}} & : i=k\\
@@ -357,15 +436,15 @@ M_{1r}=(m_{ij}):=\begin{bmatrix}
 that is, $m_{k,k}=a$ and $m_{k+r,k+1}=-a$.
 And the lower blocks $M_{2,r+1},M_{3,r+2},\dots,M_{n-2,n-1}$ may have an element with the value $a$ or $-a$, according to the definition of the extended $\mathcal{L}$-automoprhism.
 \begin{proposition}
-Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\inK\}$, then $N_{r,k}<G_n^0(K)$ and $N_{r,k}\congK$.
+Fix $r$ and $k$, and let $N_{r,k}:=\{N_{r,k}(a) : a\in{K}\}$, then $N_{r,k}<G_n^0(K)$ and $N_{r,k}\cong{K}$.
 \end{proposition}
 \begin{proof}
-Define a map $\psi:K\rightarrow{N}_{r,k}$ by $\psi(a):=\varphi_{r,k}(a)$ for all $a\inK$.
-Let $a,b\inK$, then $\psi(a)\circ\psi(b)=\varphi_{r,k}(a)\circ\varphi_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\circ\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
+Define a map $\psi:K\rightarrow{N}_{r,k}$ by $\psi(a):=\varphi_{r,k}(a)$ for all $a\in{K}$.
+Let $a,b\in{K}$, then $\psi(a)\circ\psi(b)=\varphi_{r,k}(a)\circ\varphi_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\circ\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
 \end{proof}
 
 \subsubsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
-For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\inK$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
+For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\in{K}$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
 $\varphi_{n-2,k,l}(a)(e_i):=\begin{cases}
 e_k+ae_{l,l+r},&i=k\\
 e_i,&i\neq{k}\\
@@ -374,7 +453,7 @@ e_i,&i\neq{k}\\
 $\varphi_{n-2,k,l}(a)$ extends to and $\mathcal{L}_{n,p}$-automorphism which operates diagonally on $\gamma_2\mathcal{L}_{n,p}$.
 \end{proposition}
 The proof here is similar to the proof for $\varphi_{r,k}(a)$.\\
-We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$, and it is readily seen that $N'_{n-2}:=\{\varphi'_{n-2}(a) : a\inK\}$ and $N''_{n-2}:=\{\varphi''_{n-2}(a) : a\inK\}$ are abelian subgroups of $G_n^0(K)$.
+We denote $\varphi'_{n-2}(a):=\varphi_{n-2,1,2}(a)$ and $\varphi''_{n-2}(a):=\varphi_{n-2,n-1,1}(a)$, and it is readily seen that $N'_{n-2}:=\{\varphi'_{n-2}(a) : a\in{K}\}$ and $N''_{n-2}:=\{\varphi''_{n-2}(a) : a\in{K}\}$ are abelian subgroups of $G_n^0(K)$.
 \subsubsection{The Full Decomposition}
 \begin{proposition}
 \label{prop:psi.automorphism}
@@ -406,7 +485,7 @@ and this decomposition is unique up to the order of the abelian factors, that is
 \end{corollary}
 \begin{example}
 Let $n=5$.
-Denote the $(1,4)$ block of $\varphi_4$ by $C_{14}=(c_{ij})$, and denote $c_{i1}=c_i$ where $c_i\inK$, for every $i\in\{1,2,3,4\}$.\\
+Denote the $(1,4)$ block of $\varphi_4$ by $C_{14}=(c_{ij})$, and denote $c_{i1}=c_i$ where $c_i\in{K}$, for every $i\in\{1,2,3,4\}$.\\
 Denote the $(1,3)$ block of $\varphi_{3,0}$, $\varphi_{3,1}$, $\varphi_{3,2}$, $\varphi'_3$ and $\varphi''_3$ by $B_{13}=(b_{ij})$.\\
 Denote the $(1,2)$ block of $\varphi_{2,0}$, $\varphi_{2,1}$, $\varphi_{2,2}$ and $\varphi_{2,3}$ by $A_{12}=(a_{ij})$.\\
 
@@ -932,6 +1011,46 @@ $a_2\geq{v}_3+a_4>a_1\geq{a_3}\geq{v}_4$\\
 Proisomorphic zeta functions of groups, Ph.D. thesis, University of Oxford,
 2005.
 
+\bibitem{Berman}
+M. N. Berman,
+Uniformity and functional equations for local zeta functions of
+K-split
+algebraic groups, Amer. J. Math.
+133
+(2011), 1–27.
+
 \bibitem{BermanGlazerSchein} M. N. Berman, I. Glazer and M. M. Schein, Pro-isomorphic zeta functions of nilpotent groups and Lie rings under base extension, Trans. Amer. Math. Soc. 375 (2022), 1051–1100.
+
+\bibitem{BermanKlopsch}
+M. N. Berman and B. Klopsch,
+A nilpotent group without local functional equations
+for pro-isomorphic subgroups, J. Group Theory
+18
+(2015), 489–510.
+
+\bibitem{DuSautoyLubotzky} M. P. F. du Sautoy and A. Lubotzky, Functional equations and uniformity for
+local zeta functions of nilpotent groups, Amer. J. Math. 118 (1996), 39–90.
+
+\bibitem{GrunewaldSegalSmith} F. J. Grunewald, D. Segal and G. C. Smith, Subgroups of finite index in nilpotent groups,
+Invent. Math. 93 (1988), 185–223.
+
+\bibitem{HrushovskiMartinRideau}
+ E. Hrushovski, B. Martin and S. Rideau,
+Definable equivalence relations and
+zeta functions of groups, J. Eur. Math. Soc. (JEMS)
+20
+(2018), 2467–2537. 
+
+\bibitem{LubotzkySegal}
+A. Lubotzky and D. Segal, Subgroup growth, Progress in Mathematics, vol. 212,
+ Birkhäuser Verlag, Basel, 2003.
+
+ \bibitem{Voll}
+ C. Voll,
+Functional equations for zeta
+functions of groups and rings, Ann. of Math.
+(2)
+172
+(2010), 1181–1218.
 \end{thebibliography}
 \end{document}
