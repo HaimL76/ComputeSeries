@@ -576,8 +576,18 @@ Every $\varphi\in{G_{n}^{0}(\mathbb{Q}_{p})}$ can be written uniquely as $\varph
 \zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{H^{+}}\displaystyle\int_{\mathcal{N}_{1}^{+}(h)}\displaystyle\int_{\mathcal{N}_{2}^{+}(h,u_{1})}\cdots\displaystyle\int_{\mathcal{N}_{d}^{+}(h,u_{1},\dots,u_{d-1})}|\det{h}|_{p}^{s}d\mu_{H}d\mu_{\mathcal{N}_{1}}\cdots{d\mu_{\mathcal{N}_d}},\]
 where each $\mu_{\mathcal{N}_{i}}$ is Haar measure on $\mathcal{N}_{i}(\mathbb{Q}_{p})$ normalized so that\\ $\mu_{\mathcal{N}_{i}}(\mathcal{N}_{i}(\mathbb{Z}_{p}))=1$, and \[\mathcal{N}_{i}^{+}(h,u_{1},\dots,u_{i-1}):=\{u_{i}\in\mathcal{N}_{i} : \exists{u_{i+1},\dots,u_d}\,\mathrm{such}\,\mathrm{that}\,u_d\cdots{u_{1}}h\in{G_{n}^{+}(\mathbb{Q}_{p})}\}.\]
 
-This decomposition gives us the strategy to compute our integral. We start by computing $\psi=|h|_p^s=|\prod_{i=1}^{n-1}\lambda_i^{i(n-i)}|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$.\\
-We then integrate $\psi$ over $G^+(\mathbb{Q})$ as an iterated integral, which means that we multiply $\psi$ repeatedly by the measures of $\mathcal{N}^+_d,\mathcal{N}^+_{d-1},\dots,\mathcal{N}^+_1$, where for each $\mathcal{N}^+_i$ we fix the other variables as constants, thus expressing the measures of the currently computed variables by these constants, resulting finally in expressing the measures of $\mathcal{N}_d\rtimes\mathcal{N}_{d-1}\rtimes\cdots\rtimes\mathcal{N}_1$ as dependent on $H^+$, that is, we reduce the measure on $G^+(\mathbb{Q}_p)$ to the measure of the subspace spanned by $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$, constrained such that $\lambda_i\in\mathbb{Z}_p\iff{v}_p(\lambda_i)\geq{0}$, for every $1\leq{i}\leq{n-1}$, which means that the computation of the integral comes up to computing multivariate series. This dependency may yield different expressions for different orders between the measures of the $\lambda$ variables, for that we shall divide our subspace to separate cones $\{C_j\}_{j\in{J}}$, such that $C_k\cap{C}_l=\phi$ for every $k,l\in{J}$ and $\bigcup_{j\in{J}}C_j=H^+$.
+This decomposition gives us the following recipe for computing our integral:\\
+Denote by $v_i=v_p(\lambda_i)$ the $p$-adic valuation of each of the $\lambda$ variables.
+\begin{enumerate}
+    \item Set $\psi=|h|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^s=\prod_{i=1}^{n-1}p^{i(n-i)sv_i}$, the integrand function.
+    \item Starting from $j=d$, fix the elements of $\mathcal{N}_k$ for all $k<j$ as constants, and compute the $p$-adic valuations of the elements of $\mathcal{N}_j$ as constrained by the valuations of the fixed constants.\\
+    Multiply $\mu_{\mathcal{N}_{n-1}}$ by $\psi$, and then multiply repeatedly $\mu_{\mathcal{N}_i}$ for each $i$ by the accumulated result, to obtain the computed inner integral,w which we denote by $I=\psi\mu_{\mathcal{N}_d}\mu_{\mathcal{N}_{d-1}}\cdots\mu_{\mathcal{N}_1}$.
+    \item The computation of the inner integral yields an expression containing only the valuations $v_i$ of the $\lambda$ elements, but since $v_i\geq{0}$ for every $1\leq{i}\leq{n-1}$, multiplying the accumulated result by $\mu_H$ yields a multivariate infinite series over the $p$-adic vector subspace $v_1,v_2,\dots,v_{n-1}\geq{0}$, that is, $\zeta_{L,p}^{\wedge}(s)=$
+    \[=\sum_{v_1,v_2,\dots,v_{n-1}\geq{0}}I(v_1,v_2,\dots,v_{n-1}),\]
+    which, again by Fubini, can be computed as the product of $n-1$ infinite series:
+    \[\sum_{v_1\geq{0}}\sum_{v_2\geq{0}}\cdots\sum_{v_{n-1}\geq{0}}I(v_1,v_2,\dots,v_{n-1})=\sum_{v_1\geq{0}}I(v_1)\sum_{v_2\geq{0}}I(v_2)\cdots\sum_{v_{n-1}\geq{0}}I(v_{n-1}),\]
+    where $I(v_i)$ is the part of the inner integral that depends only on $v_i$.
+    \end{enumerate}
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(K)$.
 We denote by $a_1=a_p(\lambda_1),a_2=a_p(\lambda_2),a_3=a_p(\lambda_3),a_4=a_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
@@ -1050,6 +1060,9 @@ zeta functions of groups, J. Eur. Math. Soc. (JEMS)
 \bibitem{LubotzkySegal}
 A. Lubotzky and D. Segal, Subgroup growth, Progress in Mathematics, vol. 212,
  Birkhäuser Verlag, Basel, 2003.
+
+\bibitem{Nachbin}
+L. Nachbin, The Haar Integral. D. Van Nostrand, 1965.
 
  \bibitem{Voll}
  C. Voll,
