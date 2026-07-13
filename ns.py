@@ -41,7 +41,15 @@ def create_n_r(n: int, d: int, left: int, r: int):
     for k in range(n - r + 1):
         create_n_r_k(n=n, d=d, left=left, r=r, k=k, symbol=symbol)
 
-def get_image(r: int, k: int, i: int, symbol: str):
+def get_image(r: int, k: int, i: int, j: int, symbol: str):
+    diff: int = j - i
+
+    if diff > 1:
+        left_image = get_image(r=r, k=k, i=i, j=j - 1, symbol=symbol)
+        right_image = get_image(r=r, k=k, i=j - 1, j=j, symbol=symbol)
+
+        return left_image
+
     symb: str = symbol
 
     if symb:
@@ -55,26 +63,42 @@ def get_image(r: int, k: int, i: int, symbol: str):
     
     else:
         return [(None, i, i + 1)]
+    
+def print_image(elements: list[tuple], r: int, k: int, i: int):
+    if isinstance(elements, list):
+        for element in elements:
+            if isinstance(element, tuple) and len(element) == 3:
+                symb: str = element[0]
+                idx_i: int = element[1]
+                idx_j: int = element[2]
+
+                diff: int = idx_j - idx_i
+
+                left: int = get_left(diff, idx_i)
+
+                if symb:
+                    print(f"N_{r}_{k}[idx({i}),idx({left})]={symb}")#{symbol}_{{{k}{k}}}")
 
 def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
     for i in range(1, n):
-        elements: list[tuple] = get_image(r, k, i, symbol=symbol)
+        elements: list[tuple] = get_image(r, k, i, i + 1, symbol=symbol)
 
         if isinstance(elements, list):
-            for element in elements:
-                if isinstance(element, tuple) and len(element) == 3:
-                    symb: str = element[0]
-                    idx_i: int = element[1]
-                    idx_j: int = element[2]
+            print_image(elements=elements, r=r, k=k, i=i)
 
-                    diff: int = idx_j - idx_i
+        for r in range(2, n - 1):
+            j: int = i + 1
 
-                    left: int = get_left(diff, idx_i)
+            if j <= n:
+                i0: int = j - r
 
-                    if symb:
-                        print(f"N_{r}_{k}[idx({i}),idx({left})]={symb}")#{symbol}_{{{k}{k}}}")
+                if i0 >= 1:
+                    print(f"r: {r}, k: {k}, e_{{{i0}{j}}}")
 
+                    elements: list[tuple] = get_image(r=r, k=k, i=i0, j=j, symbol=symbol)
 
+                    if isinstance(elements, list):
+                        print_image(elements=elements, r=r, k=k, i=i)
 
 
     return
