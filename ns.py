@@ -34,6 +34,7 @@ def create_n(n: int):
         left += (n - r)
 
 def create_n_r(n: int, d: int, left: int, r: int):
+    ##print(f"create_n_r, n: {n}, r: {r}")
     symbol_index: int = r - 2
 
     symbol: str = symbols[symbol_index]
@@ -80,25 +81,31 @@ def print_image(elements: list[tuple], r: int, k: int, i: int):
                     print(f"N_{r}_{k}[idx({i}),idx({left})]={symb}")#{symbol}_{{{k}{k}}}")
 
 def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
+##    print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}")
     for i in range(1, n):
+        #print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}, i: {i}")
+        if k == 0 and i == r and r == 2:
+            _ = 0
+
         elements: list[tuple] = get_image(r, k, i, i + 1, symbol=symbol)
 
         if isinstance(elements, list):
             print_image(elements=elements, r=r, k=k, i=i)
 
-        for r in range(2, n - 1):
+        if False:
+        #for r0 in range(2, n - 1):
             j: int = i + 1
 
             if j <= n:
-                i0: int = j - r
+                i0: int = j - r0
 
                 if i0 >= 1:
-                    print(f"r: {r}, k: {k}, e_{{{i0}{j}}}")
+                    ##print(f"r: {r}, k: {k}, e_{{{i0}{j}}}")
 
-                    elements: list[tuple] = get_image(r=r, k=k, i=i0, j=j, symbol=symbol)
+                    elements: list[tuple] = get_image(r=r0, k=k, i=i0, j=j, symbol=symbol)
 
                     if isinstance(elements, list):
-                        print_image(elements=elements, r=r, k=k, i=i)
+                        print_image(elements=elements, r=r0, k=k, i=i)
 
 
     return
