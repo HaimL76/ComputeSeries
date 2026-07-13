@@ -1,0 +1,29 @@
+def idx(i: int):
+	return i - 1
+
+a00,a11,a22,a33,b00,b11,b22 = var("a00,a11,a22,a33,b00,b11,b22")
+
+N_2_0=matrix(SR, 10, 10, 1)
+N_2_0[idx(2),idx(5)]=-a00
+N_2_1=matrix(SR, 10, 10, 1)
+N_2_1[idx(1),idx(5)]=a11
+N_2_1[idx(3),idx(6)]=-a11
+N_2_2=matrix(SR, 10, 10, 1)
+N_2_2[idx(2),idx(6)]=a22
+N_2_2[idx(4),idx(7)]=-a22
+N_2_3=matrix(SR, 10, 10, 1)
+N_2_3[idx(3),idx(7)]=a33
+N_3_0=matrix(SR, 10, 10, 1)
+N_3_0[idx(3),idx(8)]=-b00
+N_3_1=matrix(SR, 10, 10, 1)
+N_3_1[idx(1),idx(8)]=b11
+N_3_1[idx(4),idx(9)]=-b11
+N_3_2=matrix(SR, 10, 10, 1)
+N_3_2[idx(2),idx(9)]=b22
+print(N_2_0)
+print(N_2_1)
+print(N_2_2)
+print(N_2_3)
+print(N_3_0)
+print(N_3_1)
+print(N_3_2)

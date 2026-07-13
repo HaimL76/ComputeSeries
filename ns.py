@@ -4,8 +4,11 @@ def main():
     n: int = 5
 
     global lefts
+    global list_symbols
 
     lefts = [0] * (n - 1)
+
+    list_symbols = []
 
     left: int = 1
 
@@ -14,7 +17,25 @@ def main():
 
         left += (n - i - 1)
 
-    create_n(n=n)
+    list_strs: list[str] = create_n(n=n)
+
+    if isinstance(list_strs, list) and len(list_strs) > 0:
+        with open("ns_sage.txt", "w") as f:
+            f.write("def idx(i: int):\n")
+            f.write("\treturn i - 1\n\n")
+
+            if isinstance(list_symbols, list) and len(list_symbols) > 0:
+                str_symbols = ",".join(list_symbols)
+
+                f.write(f"{str_symbols} = var(\"{str_symbols}\")\n\n")
+
+            for s in list_strs:
+                if s:
+                    f.write(f"{s}\n")
+
+            for r in range(2, n - 1):
+                for k in range(n - r + 1):
+                    f.write(f"print(N_{r}_{k})\n")
 
 def get_left(r: int, i: int):
     index: int = r - 1
@@ -24,23 +45,36 @@ def get_left(r: int, i: int):
     return left_offset - 1 + i
 
 def create_n(n: int):
+    list_strs: list[str] = []
+
     d: int =  int(n * (n - 1) / 2)
 
     left: int = n - 1
 
     for r in range(2, n - 1):
-        create_n_r(n=n, d=d, left=left, r=r)
+        list_strs0: list[str] = create_n_r(n=n, d=d, left=left, r=r)
+
+        if isinstance(list_strs0, list) and len(list_strs0) > 0:
+            list_strs += list_strs0
 
         left += (n - r)
 
+    return list_strs
+
 def create_n_r(n: int, d: int, left: int, r: int):
+    list_strs: list[str] = []
     ##print(f"create_n_r, n: {n}, r: {r}")
     symbol_index: int = r - 2
 
     symbol: str = symbols[symbol_index]
 
     for k in range(n - r + 1):
-        create_n_r_k(n=n, d=d, left=left, r=r, k=k, symbol=symbol)
+        list_strs0: list[str] = create_n_r_k(n=n, d=d, left=left, r=r, k=k, symbol=symbol)
+
+        if isinstance(list_strs0, list) and len(list_strs0) > 0:
+            list_strs += list_strs0
+
+    return list_strs
 
 def get_image(r: int, k: int, i: int, j: int, symbol: str):
     diff: int = j - i
@@ -54,34 +88,51 @@ def get_image(r: int, k: int, i: int, j: int, symbol: str):
     symb: str = symbol
 
     if symb:
-        symb = f"{symb}_{{{k}{k}}}"
+        symb = f"{symb}{k}{k}"
+
+        if symb and symb not in list_symbols:
+            list_symbols.append(symb)
 
     if i == k:
-        return [(None, i, i + 1), (symb, k, k + r)]
+        return [(i, i + 1), (k, k + r, symb)]
     
     elif i == (k + r):
-        return [(None, i, i + 1), (f"-{symb}", k + 1, k + 1 + r)]
+        return [(i, i + 1), (k + 1, k + 1 + r, symb, True)]
     
     else:
-        return [(None, i, i + 1)]
+        return [(i, i + 1)]
     
 def print_image(elements: list[tuple], r: int, k: int, i: int):
     if isinstance(elements, list):
         for element in elements:
-            if isinstance(element, tuple) and len(element) == 3:
-                symb: str = element[0]
-                idx_i: int = element[1]
-                idx_j: int = element[2]
+            if isinstance(element, tuple) and len(element) > 1:
+                symb: str = None
+
+                idx_i: int = element[0]
+                idx_j: int = element[1]
+
+                if len(element) > 2:
+                    symb = element[2]
+
+                    if symb and len(element) > 3:
+                        is_minus: bool = element[3]
+
+                        if is_minus:
+                            symb = f"-{symb}"
 
                 diff: int = idx_j - idx_i
 
                 left: int = get_left(diff, idx_i)
 
                 if symb:
-                    print(f"N_{r}_{k}[idx({i}),idx({left})]={symb}")#{symbol}_{{{k}{k}}}")
+                    return f"N_{r}_{k}[idx({i}),idx({left})]={symb}"
 
 def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
-##    print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}")
+    s: str = f"N_{r}_{k}=matrix(SR, {d}, {d}, 1)"
+
+    list_strs: list[str] = [s]
+    ##    print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}")
+    
     for i in range(1, n):
         #print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}, i: {i}")
         if k == 0 and i == r and r == 2:
@@ -90,7 +141,10 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
         elements: list[tuple] = get_image(r, k, i, i + 1, symbol=symbol)
 
         if isinstance(elements, list):
-            print_image(elements=elements, r=r, k=k, i=i)
+            s: str = print_image(elements=elements, r=r, k=k, i=i)
+
+            if s:
+                list_strs.append(s)
 
         if False:
         #for r0 in range(2, n - 1):
@@ -108,7 +162,8 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
                         print_image(elements=elements, r=r0, k=k, i=i)
 
 
-    return
+    return list_strs
+
     print(f"N_{r}_{k}=matrix(SR, {d}, {d}, 1)")
 
     top: int = 1
