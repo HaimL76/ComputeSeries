@@ -41,24 +41,24 @@ def create_n_r(n: int, d: int, left: int, r: int):
     for k in range(n - r + 1):
         create_n_r_k(n=n, d=d, left=left, r=r, k=k, symbol=symbol)
 
-def get_image(r: int, k: int, i: int):
+def get_image(r: int, k: int, i: int, symbol: str):
     if i == k:
-        return [(None, i, i + 1), ("a", k, k + r)]
+        return [(None, i, i + 1), (symbol, k, k + r)]
     
     elif i == (k + r):
-        return [(None, i, i + 1), ("-a", k + 1, k + 1 + r)]
+        return [(None, i, i + 1), (f"-{symbol}", k + 1, k + 1 + r)]
     
     else:
         return [(None, i, i + 1)]
 
 def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
     for i in range(1, n):
-        elements: list[tuple] = get_image(r, k, i)
+        elements: list[tuple] = get_image(r, k, i, symbol=symbol)
 
         if isinstance(elements, list):
             for element in elements:
                 if isinstance(element, tuple) and len(element) == 3:
-                    symbol: str = element[0]
+                    symb: str = element[0]
                     idx_i: int = element[1]
                     idx_j: int = element[2]
 
@@ -66,8 +66,8 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
 
                     left: int = get_left(diff, idx_i)
 
-                    if symbol:
-                        print(f"N_{r}_{k}[idx({i}),idx({left})]={symbol}")#{symbol}_{{{k}{k}}}")
+                    if symb:
+                        print(f"N_{r}_{k}[idx({i}),idx({left})]={symb}")#{symbol}_{{{k}{k}}}")
 
 
 
