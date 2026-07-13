@@ -42,11 +42,16 @@ def create_n_r(n: int, d: int, left: int, r: int):
         create_n_r_k(n=n, d=d, left=left, r=r, k=k, symbol=symbol)
 
 def get_image(r: int, k: int, i: int, symbol: str):
+    symb: str = symbol
+
+    if symb:
+        symb = f"{symb}_{{{k}{k}}}"
+
     if i == k:
-        return [(None, i, i + 1), (symbol, k, k + r)]
+        return [(None, i, i + 1), (symb, k, k + r)]
     
     elif i == (k + r):
-        return [(None, i, i + 1), (f"-{symbol}", k + 1, k + 1 + r)]
+        return [(None, i, i + 1), (f"-{symb}", k + 1, k + 1 + r)]
     
     else:
         return [(None, i, i + 1)]
