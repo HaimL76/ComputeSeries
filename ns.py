@@ -190,7 +190,7 @@ def get_image(r: int, k: int, i: int, j: int, symbol: str):
     else:
         return [(i, i + 1)]
     
-def get_image_string(elements: list[tuple], r: int, k: int, i: int):
+def get_image_string(elements: list[tuple], r: int, k: int, i: int, j: int):
     if isinstance(elements, list):
         for element in elements:
             if isinstance(element, tuple) and len(element) > 1:
@@ -212,8 +212,12 @@ def get_image_string(elements: list[tuple], r: int, k: int, i: int):
 
                 left: int = get_left(diff, idx_i)
 
+                diff = j - i
+
+                top = get_left(diff, i)
+
                 if symb:
-                    return f"N_{r}_{k}[idx({i}),idx({left})]={symb}"
+                    return f"N_{r}_{k}[idx({top}),idx({left})]={symb}"
 
 def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
     aut: str = f"N_{r}_{k}"
@@ -221,7 +225,6 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
     s: str = f"{aut}=matrix(SR, {d}, {d}, 1)"
 
     list_strs: list[str] = [s]
-    ##    print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}")
     
     for r0 in range(1, n):
         for i in range(1, n - r0 + 1):
@@ -233,7 +236,7 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
                 if s0:
                     print(f"{aut}(e{i}{i+r0}) = {s0}")
 
-                s: str = get_image_string(elements=elements, r=r, k=k, i=i)
+                s: str = get_image_string(elements=elements, r=r, k=k, i=i, j=(i + r0))
 
                 if s:
                     list_strs.append(s)
