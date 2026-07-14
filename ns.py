@@ -35,7 +35,7 @@ def main():
 
             for r in range(2, n - 1):
                 for k in range(n - r + 1):
-                    f.write(f"print(N_{r}_{k})\n")
+                    f.write(f"print(f\"N_{r}_{k}=\\n{{N_{r}_{k}}}\")\n")
 
 def get_left(r: int, i: int):
     index: int = r - 1
@@ -125,6 +125,37 @@ def multiply_images(image_left: list[tuple], image_right: list[tuple]):
 
     return elements
 
+def print_element(element: tuple):
+    s: str = ""
+
+    i: int = element[0]
+    j: int = element[1]
+
+    symb: str = None
+
+    if len(element) > 2:
+        symb = element[2]
+
+    if symb:
+        s = symb
+
+    s += f"e{i}{j}"
+
+    return s
+
+def print_image(elements: list[tuple]):
+    s: str = None
+
+    for element in elements:
+        s0: str = print_element(element=element)
+
+        if s0:
+            if isinstance(s, str):
+                s = f"{s} + {s0}"
+            else:
+                s = s0
+
+    return s
 
 def get_image(r: int, k: int, i: int, j: int, symbol: str):
     diff: int = j - i
@@ -159,7 +190,7 @@ def get_image(r: int, k: int, i: int, j: int, symbol: str):
     else:
         return [(i, i + 1)]
     
-def print_image(elements: list[tuple], r: int, k: int, i: int):
+def get_image_string(elements: list[tuple], r: int, k: int, i: int):
     if isinstance(elements, list):
         for element in elements:
             if isinstance(element, tuple) and len(element) > 1:
@@ -185,19 +216,24 @@ def print_image(elements: list[tuple], r: int, k: int, i: int):
                     return f"N_{r}_{k}[idx({i}),idx({left})]={symb}"
 
 def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
-    s: str = f"N_{r}_{k}=matrix(SR, {d}, {d}, 1)"
+    aut: str = f"N_{r}_{k}"
+
+    s: str = f"{aut}=matrix(SR, {d}, {d}, 1)"
 
     list_strs: list[str] = [s]
     ##    print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}")
     
-    for r0 in range(1, n - 1):
-        for i in range(1, n - r0):
-        #print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}, i: {i}")
-
+    for r0 in range(1, n):
+        for i in range(1, n - r0 + 1):
             elements: list[tuple] = get_image(r, k, i, i + r0, symbol=symbol)
 
             if isinstance(elements, list):
-                s: str = print_image(elements=elements, r=r, k=k, i=i)
+                s0: str = print_image(elements)
+
+                if s0:
+                    print(f"{aut}(e{i}{i+r0}) = {s0}")
+
+                s: str = get_image_string(elements=elements, r=r, k=k, i=i)
 
                 if s:
                     list_strs.append(s)

@@ -6,11 +6,14 @@ a21,a11,a22,a33,b31,b11,b22 = var("a21,a11,a22,a33,b31,b11,b22")
 N_2_0=matrix(SR, 10, 10, 1)
 N_2_0[idx(2),idx(5)]=-a21
 N_2_0[idx(2),idx(8)]=-a21
+N_2_0[idx(2),idx(10)]=-a21
 N_2_1=matrix(SR, 10, 10, 1)
 N_2_1[idx(1),idx(5)]=a11
 N_2_1[idx(3),idx(6)]=-a11
+N_2_1[idx(3),idx(9)]=-a11
 N_2_2=matrix(SR, 10, 10, 1)
 N_2_2[idx(2),idx(6)]=a22
+N_2_2[idx(4),idx(7)]=-a22
 N_2_2[idx(1),idx(8)]=a22
 N_2_3=matrix(SR, 10, 10, 1)
 N_2_3[idx(3),idx(7)]=a33
@@ -18,15 +21,17 @@ N_2_3[idx(2),idx(9)]=a33
 N_2_3[idx(1),idx(10)]=a33
 N_3_0=matrix(SR, 10, 10, 1)
 N_3_0[idx(3),idx(8)]=-b31
+N_3_0[idx(3),idx(10)]=-b31
 N_3_1=matrix(SR, 10, 10, 1)
 N_3_1[idx(1),idx(8)]=b11
+N_3_1[idx(4),idx(9)]=-b11
 N_3_2=matrix(SR, 10, 10, 1)
 N_3_2[idx(2),idx(9)]=b22
 N_3_2[idx(1),idx(10)]=b22
-print(N_2_0)
-print(N_2_1)
-print(N_2_2)
-print(N_2_3)
-print(N_3_0)
-print(N_3_1)
-print(N_3_2)
+print(f"N_2_0=\n{N_2_0}")
+print(f"N_2_1=\n{N_2_1}")
+print(f"N_2_2=\n{N_2_2}")
+print(f"N_2_3=\n{N_2_3}")
+print(f"N_3_0=\n{N_3_0}")
+print(f"N_3_1=\n{N_3_1}")
+print(f"N_3_2=\n{N_3_2}")
