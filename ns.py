@@ -88,7 +88,14 @@ def get_image(r: int, k: int, i: int, j: int, symbol: str):
     symb: str = symbol
 
     if symb:
-        symb = f"{symb}{k}{k}"
+        i1: int = k
+        j1: int = k
+
+        if k == 0:
+            i1 = r
+            j1 = 1
+
+        symb = f"{symb}{i1}{j1}"
 
         if symb and symb not in list_symbols:
             list_symbols.append(symb)
