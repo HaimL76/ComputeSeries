@@ -76,14 +76,53 @@ def create_n_r(n: int, d: int, left: int, r: int):
 
     return list_strs
 
+def multiply_images(image_left: list[tuple], image_right: list[tuple]):
+    elements: list[tuple] = []
+
+    for element_left in image_left:
+        for element_right in image_right:
+            i_left = element_left[0]
+            i_right = element_right[0]
+
+            j_left = element_left[1]
+            j_right = element_right[1]
+
+            symb_left: str = None
+            symb_right: str = None
+
+            if len(element_left) > 2:
+                symb_left = element_left[2]
+
+            if len(element_right) > 2:
+                symb_right = element_right[2]
+
+            symb: str = symb_left or symb_right
+
+            if symb_left and symb_right:
+                symb = "*".join([symb_left, symb_right])
+
+            element: tuple = None
+
+            if j_left == i_right:
+                element = (i_left, j_right, symb)
+
+            if i_left == j_right:
+                element = (i_right, j_left, symb)
+
+            if isinstance(element, tuple):
+                elements.append(element)
+
+    return elements
+
+
 def get_image(r: int, k: int, i: int, j: int, symbol: str):
     diff: int = j - i
 
     if diff > 1:
-        left_image = get_image(r=r, k=k, i=i, j=j - 1, symbol=symbol)
-        right_image = get_image(r=r, k=k, i=j - 1, j=j, symbol=symbol)
+        image_left = get_image(r=r, k=k, i=i, j=j - 1, symbol=symbol)
+        image_right = get_image(r=r, k=k, i=j - 1, j=j, symbol=symbol)
 
-        return left_image
+        return multiply_images(image_left=image_left, image_right=image_right)
 
     symb: str = symbol
 
@@ -140,34 +179,17 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
     list_strs: list[str] = [s]
     ##    print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}")
     
-    for i in range(1, n):
+    for r0 in range(1, 3):
+        for i in range(1, n - r0):
         #print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}, i: {i}")
-        if k == 0 and i == r and r == 2:
-            _ = 0
 
-        elements: list[tuple] = get_image(r, k, i, i + 1, symbol=symbol)
+            elements: list[tuple] = get_image(r, k, i, i + r0, symbol=symbol)
 
-        if isinstance(elements, list):
-            s: str = print_image(elements=elements, r=r, k=k, i=i)
+            if isinstance(elements, list):
+                s: str = print_image(elements=elements, r=r, k=k, i=i)
 
-            if s:
-                list_strs.append(s)
-
-        if False:
-        #for r0 in range(2, n - 1):
-            j: int = i + 1
-
-            if j <= n:
-                i0: int = j - r0
-
-                if i0 >= 1:
-                    ##print(f"r: {r}, k: {k}, e_{{{i0}{j}}}")
-
-                    elements: list[tuple] = get_image(r=r0, k=k, i=i0, j=j, symbol=symbol)
-
-                    if isinstance(elements, list):
-                        print_image(elements=elements, r=r0, k=k, i=i)
-
+                if s:
+                    list_strs.append(s)
 
     return list_strs
 
