@@ -90,11 +90,22 @@ def multiply_images(image_left: list[tuple], image_right: list[tuple]):
             symb_left: str = None
             symb_right: str = None
 
+            is_minus_left: bool = False
+            is_minus_right: bool = False
+
             if len(element_left) > 2:
                 symb_left = element_left[2]
 
+                if len(element_left) > 3:
+                    is_minus_left = element_left[3]
+
             if len(element_right) > 2:
                 symb_right = element_right[2]
+
+                if len(element_right) > 3:
+                    is_minus_right = element_right[3]
+
+            is_minus: bool = is_minus_left != is_minus_right
 
             symb: str = symb_left or symb_right
 
@@ -104,10 +115,10 @@ def multiply_images(image_left: list[tuple], image_right: list[tuple]):
             element: tuple = None
 
             if j_left == i_right:
-                element = (i_left, j_right, symb)
+                element = (i_left, j_right, symb, is_minus)
 
             if i_left == j_right:
-                element = (i_right, j_left, symb)
+                element = (i_right, j_left, symb, not is_minus)
 
             if isinstance(element, tuple):
                 elements.append(element)
@@ -179,7 +190,7 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
     list_strs: list[str] = [s]
     ##    print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}")
     
-    for r0 in range(1, 3):
+    for r0 in range(1, n - 1):
         for i in range(1, n - r0):
         #print(f"\tcreate_n_r_k, n: {n}, r: {r}, k: {k}, i: {i}")
 
@@ -192,19 +203,5 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
                     list_strs.append(s)
 
     return list_strs
-
-    print(f"N_{r}_{k}=matrix(SR, {d}, {d}, 1)")
-
-    top: int = 1
-    size_vertical: int = n - 1
-
-    for i in range(n - 1):
-        bottom: int = top + size_vertical - 1
-
-        if k < bottom:
-            print(f"N_{r}_{k}[idx({k}),idx({left+k})]={symbol}_{{{k}{k}}}")
-
-        if (k + r) < bottom:
-            print(f"N_{r}_{k}[idx({k+r}),idx({left+k+1})]=-{symbol}_{{{k}{k}}}")
 
 main()

@@ -5,7 +5,7 @@ a21,a11,a22,a33,b31,b11,b22 = var("a21,a11,a22,a33,b31,b11,b22")
 
 N_2_0=matrix(SR, 10, 10, 1)
 N_2_0[idx(2),idx(5)]=-a21
-N_2_0[idx(2),idx(8)]=a21
+N_2_0[idx(2),idx(8)]=-a21
 N_2_1=matrix(SR, 10, 10, 1)
 N_2_1[idx(1),idx(5)]=a11
 N_2_1[idx(3),idx(6)]=-a11
@@ -15,6 +15,7 @@ N_2_2[idx(1),idx(8)]=a22
 N_2_3=matrix(SR, 10, 10, 1)
 N_2_3[idx(3),idx(7)]=a33
 N_2_3[idx(2),idx(9)]=a33
+N_2_3[idx(1),idx(10)]=a33
 N_3_0=matrix(SR, 10, 10, 1)
 N_3_0[idx(3),idx(8)]=-b31
 N_3_1=matrix(SR, 10, 10, 1)
