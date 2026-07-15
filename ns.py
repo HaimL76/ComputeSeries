@@ -51,7 +51,7 @@ def create_n(n: int):
 
     left: int = n - 1
 
-    for r in range(2, n - 1):
+    for r in range(2, n ):
         list_strs0: list[str] = create_n_r(n=n, d=d, left=left, r=r)
 
         if isinstance(list_strs0, list) and len(list_strs0) > 0:
@@ -63,7 +63,7 @@ def create_n(n: int):
 
 def create_n_r(n: int, d: int, left: int, r: int):
     list_strs: list[str] = []
-    ##print(f"create_n_r, n: {n}, r: {r}")
+
     symbol_index: int = r - 2
 
     symbol: str = symbols[symbol_index]
@@ -246,7 +246,13 @@ def get_image_string(elements: list[tuple], r: int, k: int, i: int, j: int):
                     return f"N_{r}_{k}[idx({top}),idx({left})]={symb}"
 
 def create_n_r_k(n: int, d: int, left: int, r: int, k: int, l: int, symbol: str):
-    aut: str = f"N_{r}_{k}"
+    aut: str = f"N_{r}"
+
+    if r < (n - 1):
+        aut = f"{aut}_{k}"
+    else:
+        if k == 0:
+            return None
 
     if l > 0:
         aut = f"N_{r}"
