@@ -69,10 +69,21 @@ def create_n_r(n: int, d: int, left: int, r: int):
     symbol: str = symbols[symbol_index]
 
     for k in range(n - r + 1):
-        list_strs0: list[str] = create_n_r_k(n=n, d=d, left=left, r=r, k=k, symbol=symbol)
+        list_strs0: list[str] = create_n_r_k(n=n, d=d, left=left, r=r, k=k, l=0, symbol=symbol)
 
         if isinstance(list_strs0, list) and len(list_strs0) > 0:
             list_strs += list_strs0
+
+    if (r == (n - 2)):
+        list_strs1: list[str] = create_n_r_k(n=n, d=d, left=left, r=r, k=1, l=2, symbol=symbol)
+
+        if isinstance(list_strs1, list) and len(list_strs1) > 0:
+            list_strs += list_strs1
+
+        list_strs2: list[str] = create_n_r_k(n=n, d=d, left=left, r=r, k=(n - 1), l=1, symbol=symbol)
+
+        if isinstance(list_strs2, list) and len(list_strs2) > 0:
+            list_strs += list_strs2
 
     return list_strs
 
@@ -164,12 +175,12 @@ def print_image(elements: list[tuple]):
 
     return s
 
-def get_image(r: int, k: int, i: int, j: int, symbol: str):
+def get_image(n: int, r: int, k: int, i: int, j: int, l: int, symbol: str):
     diff: int = j - i
 
     if diff > 1:
-        image_left = get_image(r=r, k=k, i=i, j=j - 1, symbol=symbol)
-        image_right = get_image(r=r, k=k, i=j - 1, j=j, symbol=symbol)
+        image_left = get_image(n=n, r=r, k=k, i=i, j=j - 1, l=l, symbol=symbol)
+        image_right = get_image(n=n, r=r, k=k, i=j - 1, j=j, l=l, symbol=symbol)
 
         return multiply_images(image_left=image_left, image_right=image_right)
 
@@ -183,19 +194,27 @@ def get_image(r: int, k: int, i: int, j: int, symbol: str):
             i1 = r
             j1 = 1
 
-        symb = f"{symb}{i1}{j1}"
+        symb0: str = f"{symb}{i1}{j1}"
 
-        if symb and symb not in list_symbols:
-            list_symbols.append(symb)
+        if symb0 and symb0 not in list_symbols:
+            list_symbols.append(symb0)
 
-    if i == k:
-        return [(i, i + 1), (k, k + r, symb)]
+    list_images: list[tuple] = None
+
+    list_images = [(i, i + 1)]
+
+    if l == 0:
+        if i == k:
+            list_images.append((k, k + r, symb0))
     
-    elif i == (k + r):
-        return [(i, i + 1), (k + 1, k + 1 + r, symb, True)]
-    
+        elif i == (k + r):
+            list_images.append((k + 1, k + 1 + r, symb0, True))
     else:
-        return [(i, i + 1)]
+        if i == k:
+            symb1: str = f"{symb}{k}{l}"
+            list_images.append((l,l + r, symb1))
+
+    return list_images
     
 def get_image_string(elements: list[tuple], r: int, k: int, i: int, j: int):
     if isinstance(elements, list):
@@ -226,8 +245,14 @@ def get_image_string(elements: list[tuple], r: int, k: int, i: int, j: int):
                 if symb:
                     return f"N_{r}_{k}[idx({top}),idx({left})]={symb}"
 
-def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
+def create_n_r_k(n: int, d: int, left: int, r: int, k: int, l: int, symbol: str):
     aut: str = f"N_{r}_{k}"
+
+    if l > 0:
+        aut = f"N_{r}"
+
+        for l0 in range(l):
+            aut = f"{aut}p"
 
     s: str = f"{aut}=matrix(SR, {d}, {d}, 1)"
 
@@ -235,7 +260,7 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, symbol: str):
     
     for r0 in range(1, n):
         for i in range(1, n - r0 + 1):
-            elements: list[tuple] = get_image(r, k, i, i + r0, symbol=symbol)
+            elements: list[tuple] = get_image(n=n, r=r, k=k, i=i, j=(i + r0), l=l, symbol=symbol)
 
             if isinstance(elements, list):
                 s0: str = print_image(elements)
