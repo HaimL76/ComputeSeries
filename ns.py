@@ -204,15 +204,19 @@ def get_image(n: int, r: int, k: int, i: int, j: int, l: int, symbol: str):
     list_images = [(i, i + 1)]
 
     if l == 0:
-        if i == k:
-            list_images.append((k, k + r, symb0))
+        if r == (n - 1):
+            symb2: str = f"{symb}{i}"
+            list_images.append((1, 1 + r, symb2))
+        else:
+            if i == k:
+                list_images.append((k, k + r, symb0))
     
-        elif i == (k + r):
-            list_images.append((k + 1, k + 1 + r, symb0, True))
+            elif i == (k + r):
+                list_images.append((k + 1, k + 1 + r, symb0, True))
     else:
         if i == k:
             symb1: str = f"{symb}{k}{l}"
-            list_images.append((l,l + r, symb1))
+            list_images.append((l, l + r, symb1))
 
     return list_images
     
