@@ -46,16 +46,20 @@ def get_left(r: int, i: int):
 
 def create_n(n: int):
     list_strs: list[str] = []
+    list_auts: list[str] = []
 
     d: int =  int(n * (n - 1) / 2)
 
     left: int = n - 1
 
     for r in range(2, n ):
-        list_strs0: list[str] = create_n_r(n=n, d=d, left=left, r=r)
+        list_strs0, list_auts0 = create_n_r(n=n, d=d, left=left, r=r)
 
         if isinstance(list_strs0, list) and len(list_strs0) > 0:
             list_strs += list_strs0
+
+        if isinstance(list_auts0, list) and len(list_auts0) > 0:
+            list_auts += list_auts0
 
         left += (n - r)
 
@@ -63,29 +67,41 @@ def create_n(n: int):
 
 def create_n_r(n: int, d: int, left: int, r: int):
     list_strs: list[str] = []
+    list_auts: list[str] = []
 
     symbol_index: int = r - 2
 
     symbol: str = symbols[symbol_index]
 
+    aut: str = None
+
     for k in range(n - r + 1):
-        list_strs0: list[str] = create_n_r_k(n=n, d=d, left=left, r=r, k=k, l=0, symbol=symbol)
+        aut, list_strs0 = create_n_r_k(n=n, d=d, left=left, r=r, k=k, l=0, symbol=symbol)
 
         if isinstance(list_strs0, list) and len(list_strs0) > 0:
             list_strs += list_strs0
+            
+            if aut:
+                list_auts.append(aut)
 
     if (r == (n - 2)):
-        list_strs1: list[str] = create_n_r_k(n=n, d=d, left=left, r=r, k=1, l=2, symbol=symbol)
+        aut, list_strs1 = create_n_r_k(n=n, d=d, left=left, r=r, k=1, l=2, symbol=symbol)
+
+        if aut:
+            list_auts.append(aut)
 
         if isinstance(list_strs1, list) and len(list_strs1) > 0:
             list_strs += list_strs1
 
-        list_strs2: list[str] = create_n_r_k(n=n, d=d, left=left, r=r, k=(n - 1), l=1, symbol=symbol)
+        aut, list_strs2 = create_n_r_k(n=n, d=d, left=left, r=r, k=(n - 1), l=1, symbol=symbol)
+
+        if aut:
+            list_auts.append(aut)
 
         if isinstance(list_strs2, list) and len(list_strs2) > 0:
             list_strs += list_strs2
 
-    return list_strs
+    return list_strs, list_auts
 
 def multiply_images(image_left: list[tuple], image_right: list[tuple]):
     elements: list[tuple] = []
@@ -256,7 +272,7 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, l: int, symbol: str)
         aut = f"{aut}_{k}"
     else:
         if k == 0:
-            return None
+            return None, None
 
     if l > 0:
         aut = f"N_{r}"
@@ -283,6 +299,6 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, l: int, symbol: str)
                 if s:
                     list_strs.append(s)
 
-    return list_strs
+    return aut, list_strs
 
 main()
