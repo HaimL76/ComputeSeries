@@ -133,25 +133,32 @@ def print_element(element: tuple):
 
     symb: str = None
 
+    is_minus: bool = False
+
     if len(element) > 2:
         symb = element[2]
+
+        if len(element) > 3:
+            is_minus = element[3]
 
     if symb:
         s = symb
 
     s += f"e{i}{j}"
 
-    return s
+    return is_minus, s
 
 def print_image(elements: list[tuple]):
     s: str = None
 
     for element in elements:
-        s0: str = print_element(element=element)
+        is_minus, s0 = print_element(element=element)
 
         if s0:
             if isinstance(s, str):
-                s = f"{s} + {s0}"
+                sign: str = "-" if is_minus else "+"
+
+                s = f"{s} {sign} {s0}"
             else:
                 s = s0
 
