@@ -1,7 +1,9 @@
-symbols: list[str] = ['a', 'b', 'c']
+symbols: list[str] = ['a', 'b', 'c', 'd']
 
 def main():
     n: int = 5
+
+    d: int = int(n * (n - 1) / 2)
 
     global lefts
     global list_symbols
@@ -17,7 +19,7 @@ def main():
 
         left += (n - i - 1)
 
-    list_strs, list_auts = create_n(n=n)
+    list_strs, list_auts = create_n(n=n, d=d)
 
     index: int = 0
 
@@ -50,15 +52,40 @@ def main():
             list_maps_c: tuple[str, list[str]] = "Nc", ["Nb", "Na"]
             list_maps_d: tuple[str, list[str]] = "N", ["Nc", "N_3_1", "N_4"]
 
-            list_maps: list[tuple[str, list[str]]] = [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
+            list_maps: list[tuple[str, list[str]]] = []# [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
 
-            for list_map in list_maps:
-                map_name: str = list_map[0]
+            if not (isinstance(list_maps, list) and len(list_maps) > 0) and isinstance(list_auts, list) and len(list_auts) > 0:
+                list_maps = [("N", list_auts)]
 
-                str_maps: str = "*".join(list_map[1])
+            if isinstance(list_maps, list) and len(list_maps) > 0:
+                for list_map in list_maps:
+                    map_name: str = list_map[0]
 
-                f.write(f"{map_name}={str_maps}\n")
-                f.write(f"print(f\"{map_name}=\\n{{{map_name}}}\")\n")
+                    str_maps: str = "*".join(list_map[1])
+
+                    f.write(f"{map_name}={str_maps}\n")
+                    f.write(f"print(f\"{map_name}=\\n{{{map_name}}}\")\n")
+
+            list_strs_h: list[str] = create_h(n=n, d=d)
+
+            if isinstance(list_strs_h, list) and len(list_strs_h) > 0:
+                for s in list_strs_h:
+                    f.write(f"{s}\n")
+
+def create_h(n: int, d: int):
+    list_strs: list[str] = []
+
+    s: str = f"H=matrix(SR, {d}, {d}, 1)"
+
+    list_strs.append(s)
+
+    for i in range(1, n):
+        for j in range(1, n - i + 1):
+            s = "*".join([f"l{k}" for k in range(j, j + i)])
+
+            list_strs.append(s)
+
+    return list_strs
 
 def get_left(r: int, i: int):
     index: int = r - 1
@@ -67,11 +94,12 @@ def get_left(r: int, i: int):
 
     return left_offset - 1 + i
 
-def create_n(n: int):
+def create_n(n: int, d: int):
     list_strs: list[str] = []
     list_auts: list[str] = []
 
-    d: int =  int(n * (n - 1) / 2)
+    if d < 1:
+        d = int(n * (n - 1) / 2)
 
     left: int = n - 1
 
