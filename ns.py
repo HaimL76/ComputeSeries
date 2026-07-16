@@ -19,6 +19,13 @@ def main():
 
     list_strs, list_auts = create_n(n=n)
 
+    index: int = 0
+
+    if isinstance(list_auts, list) and len(list_auts) > 0:
+        for aut in list_auts:
+            print(f"aut[{index}]={aut}")
+            index += 1
+
     if isinstance(list_strs, list) and len(list_strs) > 0:
         with open("ns_sage.txt", "w") as f:
             f.write("def idx(i: int):\n")
