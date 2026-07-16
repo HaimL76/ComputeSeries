@@ -247,7 +247,8 @@ def get_image(n: int, r: int, k: int, i: int, j: int, l: int, symbol: str):
                 list_images.append((k, k + r, symb0))
     
             elif i == (k + r):
-                list_images.append((k + 1, k + 1 + r, symb0, True))
+                is_minus: bool = k > 0
+                list_images.append((k + 1, k + 1 + r, symb0, is_minus))
     else:
         if i == k:
             symb1: str = f"{symb}{k}{l}"
