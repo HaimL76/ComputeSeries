@@ -1,7 +1,9 @@
 def idx(i: int):
 	return i - 1
 
-a21,a11,a22,a33,b31,b11,b22,b12,b44,b41,c11,c1,c2,c3,c4 = var("a21,a11,a22,a33,b31,b11,b22,b12,b44,b41,c11,c1,c2,c3,c4")
+a21,a11,a22,a33,b31,b11,b22,b12,b44,b41,c11,c1,c2,c3,c4=var("a21,a11,a22,a33,b31,b11,b22,b12,b44,b41,c11,c1,c2,c3,c4")
+
+l1,l2,l3,l4=var("l1,l2,l3,l4")
 
 N_2_0=matrix(SR, 10, 10, 1)
 N_2_0[idx(2),idx(5)]=a21
@@ -60,3 +62,6 @@ H[idx(7),idx(7)]=l3*l4
 H[idx(8),idx(8)]=l1*l2*l3
 H[idx(9),idx(9)]=l2*l3*l4
 H[idx(10),idx(10)]=l1*l2*l3*l4
+print(f"H={H}")
+M=N*H
+print(f"M={M}")

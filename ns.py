@@ -36,7 +36,11 @@ def main():
             if isinstance(list_symbols, list) and len(list_symbols) > 0:
                 str_symbols = ",".join(list_symbols)
 
-                f.write(f"{str_symbols} = var(\"{str_symbols}\")\n\n")
+                f.write(f"{str_symbols}=var(\"{str_symbols}\")\n\n")
+                
+                str_l: str = ",".join([f"l{i}" for i in range(1, n)])
+                
+                f.write(f"{str_l}=var(\"{str_l}\")\n\n")
 
             if isinstance(list_strs, list) and len(list_strs) > 0:
                 for s in list_strs:
@@ -71,6 +75,11 @@ def main():
             if isinstance(list_strs_h, list) and len(list_strs_h) > 0:
                 for s in list_strs_h:
                     f.write(f"{s}\n")
+
+                f.write(f"print(f\"H={{H}}\")\n")
+
+                f.write(f"M=N*H\n")
+                f.write(f"print(f\"M={{M}}\")\n")
 
 def create_h(n: int, d: int):
     list_strs: list[str] = []
