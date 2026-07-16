@@ -38,6 +38,21 @@ def main():
                 for aut in list_auts:
                     f.write(f"print(f\"{aut}=\\n{{{aut}}}\")\n")
 
+            list_maps_a: tuple[str, list[str]] = "Na", ["N_2_3", "N_2_0", "N_2_2", "N_2_1"]
+            list_maps_b: tuple[str, list[str]] = "Nb", ["N_3_0", "N_3_2", "N_3pp", "N_3p"]
+            list_maps_c: tuple[str, list[str]] = "Nc", ["Nb", "Na"]
+            list_maps_d: tuple[str, list[str]] = "N", ["Nc", "N_3_1", "N_4"]
+
+            list_maps: list[tuple[str, list[str]]] = [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
+
+            for list_map in list_maps:
+                map_name: str = list_map[0]
+
+                str_maps: str = "*".join(list_map[1])
+
+                f.write(f"{map_name}={str_maps}\n")
+                f.write(f"print(f\"{map_name}=\\n{{{map_name}}}\")\n")
+
 def get_left(r: int, i: int):
     index: int = r - 1
 
