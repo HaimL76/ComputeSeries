@@ -79,11 +79,14 @@ def create_h(n: int, d: int):
 
     list_strs.append(s)
 
+    k: int = 1
+
     for i in range(1, n):
         for j in range(1, n - i + 1):
             s = "*".join([f"l{k}" for k in range(j, j + i)])
 
-            list_strs.append(s)
+            list_strs.append(f"H[idx({k}),idx({k})]={s}")
+            k += 1
 
     return list_strs
 
