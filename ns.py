@@ -17,7 +17,7 @@ def main():
 
         left += (n - i - 1)
 
-    list_strs: list[str] = create_n(n=n)
+    list_strs, list_auts = create_n(n=n)
 
     if isinstance(list_strs, list) and len(list_strs) > 0:
         with open("ns_sage.txt", "w") as f:
@@ -29,13 +29,14 @@ def main():
 
                 f.write(f"{str_symbols} = var(\"{str_symbols}\")\n\n")
 
-            for s in list_strs:
-                if s:
-                    f.write(f"{s}\n")
+            if isinstance(list_strs, list) and len(list_strs) > 0:
+                for s in list_strs:
+                    if s:
+                        f.write(f"{s}\n")
 
-            for r in range(2, n - 1):
-                for k in range(n - r + 1):
-                    f.write(f"print(f\"N_{r}_{k}=\\n{{N_{r}_{k}}}\")\n")
+            if isinstance(list_auts, list) and len(list_auts) > 0:
+                for aut in list_auts:
+                    f.write(f"print(f\"{aut}=\\n{{{aut}}}\")\n")
 
 def get_left(r: int, i: int):
     index: int = r - 1
@@ -63,7 +64,7 @@ def create_n(n: int):
 
         left += (n - r)
 
-    return list_strs
+    return list_strs, list_auts
 
 def create_n_r(n: int, d: int, left: int, r: int):
     list_strs: list[str] = []
@@ -223,6 +224,9 @@ def get_image(n: int, r: int, k: int, i: int, j: int, l: int, symbol: str):
         if r == (n - 1):
             symb2: str = f"{symb}{i}"
             list_images.append((1, 1 + r, symb2))
+
+            if symb2 and symb2 not in list_symbols:
+                list_symbols.append(symb2)
         else:
             if i == k:
                 list_images.append((k, k + r, symb0))
@@ -234,9 +238,12 @@ def get_image(n: int, r: int, k: int, i: int, j: int, l: int, symbol: str):
             symb1: str = f"{symb}{k}{l}"
             list_images.append((l, l + r, symb1))
 
+            if symb1 and symb1 not in list_symbols:
+                list_symbols.append(symb1)
+
     return list_images
     
-def get_image_string(elements: list[tuple], r: int, k: int, i: int, j: int):
+def get_image_string(aut: str, elements: list[tuple], r: int, k: int, i: int, j: int):
     if isinstance(elements, list):
         for element in elements:
             if isinstance(element, tuple) and len(element) > 1:
@@ -263,7 +270,7 @@ def get_image_string(elements: list[tuple], r: int, k: int, i: int, j: int):
                 top = get_left(diff, i)
 
                 if symb:
-                    return f"N_{r}_{k}[idx({top}),idx({left})]={symb}"
+                    return f"{aut}[idx({top}),idx({left})]={symb}"
 
 def create_n_r_k(n: int, d: int, left: int, r: int, k: int, l: int, symbol: str):
     aut: str = f"N_{r}"
@@ -294,7 +301,7 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, l: int, symbol: str)
                 if s0:
                     print(f"{aut}(e{i}{i+r0}) = {s0}")
 
-                s: str = get_image_string(elements=elements, r=r, k=k, i=i, j=(i + r0))
+                s: str = get_image_string(aut=aut, elements=elements, r=r, k=k, i=i, j=(i + r0))
 
                 if s:
                     list_strs.append(s)
