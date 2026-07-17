@@ -73,6 +73,11 @@ H[idx(7),idx(7)]=l3*l4
 H[idx(8),idx(8)]=l1*l2*l3
 H[idx(9),idx(9)]=l2*l3*l4
 H[idx(10),idx(10)]=l1*l2*l3*l4
-print(f"H={H}")
+print(f"H=\n{H}")
 M=N*H
-print(f"M={M}")
+print(f"M=\n{M}")
+for i in range(1, 10):
+	for j in range(1, 10):
+		m=M[i][j]
+		if m != 0:
+			print(f"m{i}{j}={m}")

@@ -85,10 +85,16 @@ def main():
                 for s in list_strs_h:
                     f.write(f"{s}\n")
 
-                f.write(f"print(f\"H={{H}}\")\n")
+                f.write(f"print(f\"H=\\n{{H}}\")\n")
 
                 f.write(f"M=N*H\n")
-                f.write(f"print(f\"M={{M}}\")\n")
+                f.write(f"print(f\"M=\\n{{M}}\")\n")
+
+                f.write(f"for i in range(1, {d}):\n")
+                f.write(f"\tfor j in range(1, {d}):\n")
+                f.write(f"\t\tm=M[i][j]\n")
+                f.write(f"\t\tif m != 0:\n")
+                f.write(f"\t\t\tprint(f\"m{{i}}{{j}}={{m}}\")\n")
 
 def change_variables_right_block(n: int, d: int, aut: str):
     list_strs: list[str] = []
