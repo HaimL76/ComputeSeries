@@ -56,7 +56,7 @@ def main():
             list_maps_c: tuple[str, list[str]] = "Nc", ["Nb", "Na"]
             list_maps_d: tuple[str, list[str]] = "N", ["Nc", "N_3_1", "N_4"]
 
-            list_maps: list[tuple[str, list[str]]] = []# [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
+            list_maps: list[tuple[str, list[str]]] = [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
 
             if not (isinstance(list_maps, list) and len(list_maps) > 0) and isinstance(list_auts, list) and len(list_auts) > 0:
                 list_maps = [("N", list_auts)]
@@ -70,6 +70,15 @@ def main():
                     f.write(f"{map_name}={str_maps}\n")
                     f.write(f"print(f\"{map_name}=\\n{{{map_name}}}\")\n")
 
+            list_strs_right: list[str] = change_variables_right_block(n=n, d=d, aut="N")
+
+            if isinstance(list_strs_right, list) and len(list_strs_right) > 0:
+                for s in list_strs_right:
+                    if s:
+                        f.write(s)
+
+                f.write(f"print(f\"N=\\n{{N}}\")\n")
+
             list_strs_h: list[str] = create_h(n=n, d=d)
 
             if isinstance(list_strs_h, list) and len(list_strs_h) > 0:
@@ -80,6 +89,18 @@ def main():
 
                 f.write(f"M=N*H\n")
                 f.write(f"print(f\"M={{M}}\")\n")
+
+def change_variables_right_block(n: int, d: int, aut: str):
+    list_strs: list[str] = []
+
+    symbol: str = symbols[n - 3]
+
+    for i in range(1, n):
+        s: str = f"{aut}[idx({i}),idx({d})]={symbol}{i}"
+
+        list_strs.append(f"{s}\n")
+
+    return list_strs
 
 def create_h(n: int, d: int):
     list_strs: list[str] = []
@@ -347,7 +368,7 @@ def create_n_r_k(n: int, d: int, left: int, r: int, k: int, l: int, symbol: str)
     if l > 0:
         aut = f"N_{r}"
 
-        for l0 in range(l):
+        for l0 in range(3 - l):
             aut = f"{aut}p"
 
     s: str = f"{aut}=matrix(SR, {d}, {d}, 1)"
