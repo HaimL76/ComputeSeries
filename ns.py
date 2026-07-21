@@ -88,7 +88,8 @@ def main():
                 f.write(f"print(f\"H=\\n{{H}}\")\n")
 
                 f.write(f"M=N*H\n")
-                f.write(f"print(f\"\\\\begin{{matrix}}\")\n")
+
+                f.write("print(\"\\\\begin{{align*}}\")\n")
 
                 d1: int = d + 1
 
@@ -109,7 +110,7 @@ def main():
 
                     #f.write(f"print({{s}})\n")
 
-                f.write(f"print(f\"\\\\end{{matrix}}\")\n")
+                f.write("print(\"\\\\end{{align*}}\")\n")
 
             if False:
 
