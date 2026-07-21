@@ -61,7 +61,7 @@ N[idx(1),idx(10)]=c1
 N[idx(2),idx(10)]=c2
 N[idx(3),idx(10)]=c3
 N[idx(4),idx(10)]=c4
-print(f"N=\n{N}")
+print(f"\\[N={latex(N)}\\]")
 H=matrix(SR, 10, 10, 1)
 H[idx(1),idx(1)]=l1
 H[idx(2),idx(2)]=l2
@@ -75,9 +75,405 @@ H[idx(9),idx(9)]=l2*l3*l4
 H[idx(10),idx(10)]=l1*l2*l3*l4
 print(f"H=\n{H}")
 M=N*H
-print(f"M=\n{M}")
-for i in range(1, 10):
-	for j in range(1, 10):
-		m=M[i][j]
-		if m != 0:
-			print(f"m{i}{j}={m}")
+print(f"\\begin{matrix}")
+m_1_1=M[idx(1),idx(1)]
+if m_1_1 != 0:
+	print(f"m_1_1={m_1_1}")
+
+m_1_2=M[idx(1),idx(2)]
+if m_1_2 != 0:
+	print(f"m_1_2={m_1_2}")
+
+m_1_3=M[idx(1),idx(3)]
+if m_1_3 != 0:
+	print(f"m_1_3={m_1_3}")
+
+m_1_4=M[idx(1),idx(4)]
+if m_1_4 != 0:
+	print(f"m_1_4={m_1_4}")
+
+m_1_5=M[idx(1),idx(5)]
+if m_1_5 != 0:
+	print(f"m_1_5={m_1_5}")
+
+m_1_6=M[idx(1),idx(6)]
+if m_1_6 != 0:
+	print(f"m_1_6={m_1_6}")
+
+m_1_7=M[idx(1),idx(7)]
+if m_1_7 != 0:
+	print(f"m_1_7={m_1_7}")
+
+m_1_8=M[idx(1),idx(8)]
+if m_1_8 != 0:
+	print(f"m_1_8={m_1_8}")
+
+m_1_9=M[idx(1),idx(9)]
+if m_1_9 != 0:
+	print(f"m_1_9={m_1_9}")
+
+m_1_10=M[idx(1),idx(10)]
+if m_1_10 != 0:
+	print(f"m_1_10={m_1_10}")
+
+m_2_1=M[idx(2),idx(1)]
+if m_2_1 != 0:
+	print(f"m_2_1={m_2_1}")
+
+m_2_2=M[idx(2),idx(2)]
+if m_2_2 != 0:
+	print(f"m_2_2={m_2_2}")
+
+m_2_3=M[idx(2),idx(3)]
+if m_2_3 != 0:
+	print(f"m_2_3={m_2_3}")
+
+m_2_4=M[idx(2),idx(4)]
+if m_2_4 != 0:
+	print(f"m_2_4={m_2_4}")
+
+m_2_5=M[idx(2),idx(5)]
+if m_2_5 != 0:
+	print(f"m_2_5={m_2_5}")
+
+m_2_6=M[idx(2),idx(6)]
+if m_2_6 != 0:
+	print(f"m_2_6={m_2_6}")
+
+m_2_7=M[idx(2),idx(7)]
+if m_2_7 != 0:
+	print(f"m_2_7={m_2_7}")
+
+m_2_8=M[idx(2),idx(8)]
+if m_2_8 != 0:
+	print(f"m_2_8={m_2_8}")
+
+m_2_9=M[idx(2),idx(9)]
+if m_2_9 != 0:
+	print(f"m_2_9={m_2_9}")
+
+m_2_10=M[idx(2),idx(10)]
+if m_2_10 != 0:
+	print(f"m_2_10={m_2_10}")
+
+m_3_1=M[idx(3),idx(1)]
+if m_3_1 != 0:
+	print(f"m_3_1={m_3_1}")
+
+m_3_2=M[idx(3),idx(2)]
+if m_3_2 != 0:
+	print(f"m_3_2={m_3_2}")
+
+m_3_3=M[idx(3),idx(3)]
+if m_3_3 != 0:
+	print(f"m_3_3={m_3_3}")
+
+m_3_4=M[idx(3),idx(4)]
+if m_3_4 != 0:
+	print(f"m_3_4={m_3_4}")
+
+m_3_5=M[idx(3),idx(5)]
+if m_3_5 != 0:
+	print(f"m_3_5={m_3_5}")
+
+m_3_6=M[idx(3),idx(6)]
+if m_3_6 != 0:
+	print(f"m_3_6={m_3_6}")
+
+m_3_7=M[idx(3),idx(7)]
+if m_3_7 != 0:
+	print(f"m_3_7={m_3_7}")
+
+m_3_8=M[idx(3),idx(8)]
+if m_3_8 != 0:
+	print(f"m_3_8={m_3_8}")
+
+m_3_9=M[idx(3),idx(9)]
+if m_3_9 != 0:
+	print(f"m_3_9={m_3_9}")
+
+m_3_10=M[idx(3),idx(10)]
+if m_3_10 != 0:
+	print(f"m_3_10={m_3_10}")
+
+m_4_1=M[idx(4),idx(1)]
+if m_4_1 != 0:
+	print(f"m_4_1={m_4_1}")
+
+m_4_2=M[idx(4),idx(2)]
+if m_4_2 != 0:
+	print(f"m_4_2={m_4_2}")
+
+m_4_3=M[idx(4),idx(3)]
+if m_4_3 != 0:
+	print(f"m_4_3={m_4_3}")
+
+m_4_4=M[idx(4),idx(4)]
+if m_4_4 != 0:
+	print(f"m_4_4={m_4_4}")
+
+m_4_5=M[idx(4),idx(5)]
+if m_4_5 != 0:
+	print(f"m_4_5={m_4_5}")
+
+m_4_6=M[idx(4),idx(6)]
+if m_4_6 != 0:
+	print(f"m_4_6={m_4_6}")
+
+m_4_7=M[idx(4),idx(7)]
+if m_4_7 != 0:
+	print(f"m_4_7={m_4_7}")
+
+m_4_8=M[idx(4),idx(8)]
+if m_4_8 != 0:
+	print(f"m_4_8={m_4_8}")
+
+m_4_9=M[idx(4),idx(9)]
+if m_4_9 != 0:
+	print(f"m_4_9={m_4_9}")
+
+m_4_10=M[idx(4),idx(10)]
+if m_4_10 != 0:
+	print(f"m_4_10={m_4_10}")
+
+m_5_1=M[idx(5),idx(1)]
+if m_5_1 != 0:
+	print(f"m_5_1={m_5_1}")
+
+m_5_2=M[idx(5),idx(2)]
+if m_5_2 != 0:
+	print(f"m_5_2={m_5_2}")
+
+m_5_3=M[idx(5),idx(3)]
+if m_5_3 != 0:
+	print(f"m_5_3={m_5_3}")
+
+m_5_4=M[idx(5),idx(4)]
+if m_5_4 != 0:
+	print(f"m_5_4={m_5_4}")
+
+m_5_5=M[idx(5),idx(5)]
+if m_5_5 != 0:
+	print(f"m_5_5={m_5_5}")
+
+m_5_6=M[idx(5),idx(6)]
+if m_5_6 != 0:
+	print(f"m_5_6={m_5_6}")
+
+m_5_7=M[idx(5),idx(7)]
+if m_5_7 != 0:
+	print(f"m_5_7={m_5_7}")
+
+m_5_8=M[idx(5),idx(8)]
+if m_5_8 != 0:
+	print(f"m_5_8={m_5_8}")
+
+m_5_9=M[idx(5),idx(9)]
+if m_5_9 != 0:
+	print(f"m_5_9={m_5_9}")
+
+m_5_10=M[idx(5),idx(10)]
+if m_5_10 != 0:
+	print(f"m_5_10={m_5_10}")
+
+m_6_1=M[idx(6),idx(1)]
+if m_6_1 != 0:
+	print(f"m_6_1={m_6_1}")
+
+m_6_2=M[idx(6),idx(2)]
+if m_6_2 != 0:
+	print(f"m_6_2={m_6_2}")
+
+m_6_3=M[idx(6),idx(3)]
+if m_6_3 != 0:
+	print(f"m_6_3={m_6_3}")
+
+m_6_4=M[idx(6),idx(4)]
+if m_6_4 != 0:
+	print(f"m_6_4={m_6_4}")
+
+m_6_5=M[idx(6),idx(5)]
+if m_6_5 != 0:
+	print(f"m_6_5={m_6_5}")
+
+m_6_6=M[idx(6),idx(6)]
+if m_6_6 != 0:
+	print(f"m_6_6={m_6_6}")
+
+m_6_7=M[idx(6),idx(7)]
+if m_6_7 != 0:
+	print(f"m_6_7={m_6_7}")
+
+m_6_8=M[idx(6),idx(8)]
+if m_6_8 != 0:
+	print(f"m_6_8={m_6_8}")
+
+m_6_9=M[idx(6),idx(9)]
+if m_6_9 != 0:
+	print(f"m_6_9={m_6_9}")
+
+m_6_10=M[idx(6),idx(10)]
+if m_6_10 != 0:
+	print(f"m_6_10={m_6_10}")
+
+m_7_1=M[idx(7),idx(1)]
+if m_7_1 != 0:
+	print(f"m_7_1={m_7_1}")
+
+m_7_2=M[idx(7),idx(2)]
+if m_7_2 != 0:
+	print(f"m_7_2={m_7_2}")
+
+m_7_3=M[idx(7),idx(3)]
+if m_7_3 != 0:
+	print(f"m_7_3={m_7_3}")
+
+m_7_4=M[idx(7),idx(4)]
+if m_7_4 != 0:
+	print(f"m_7_4={m_7_4}")
+
+m_7_5=M[idx(7),idx(5)]
+if m_7_5 != 0:
+	print(f"m_7_5={m_7_5}")
+
+m_7_6=M[idx(7),idx(6)]
+if m_7_6 != 0:
+	print(f"m_7_6={m_7_6}")
+
+m_7_7=M[idx(7),idx(7)]
+if m_7_7 != 0:
+	print(f"m_7_7={m_7_7}")
+
+m_7_8=M[idx(7),idx(8)]
+if m_7_8 != 0:
+	print(f"m_7_8={m_7_8}")
+
+m_7_9=M[idx(7),idx(9)]
+if m_7_9 != 0:
+	print(f"m_7_9={m_7_9}")
+
+m_7_10=M[idx(7),idx(10)]
+if m_7_10 != 0:
+	print(f"m_7_10={m_7_10}")
+
+m_8_1=M[idx(8),idx(1)]
+if m_8_1 != 0:
+	print(f"m_8_1={m_8_1}")
+
+m_8_2=M[idx(8),idx(2)]
+if m_8_2 != 0:
+	print(f"m_8_2={m_8_2}")
+
+m_8_3=M[idx(8),idx(3)]
+if m_8_3 != 0:
+	print(f"m_8_3={m_8_3}")
+
+m_8_4=M[idx(8),idx(4)]
+if m_8_4 != 0:
+	print(f"m_8_4={m_8_4}")
+
+m_8_5=M[idx(8),idx(5)]
+if m_8_5 != 0:
+	print(f"m_8_5={m_8_5}")
+
+m_8_6=M[idx(8),idx(6)]
+if m_8_6 != 0:
+	print(f"m_8_6={m_8_6}")
+
+m_8_7=M[idx(8),idx(7)]
+if m_8_7 != 0:
+	print(f"m_8_7={m_8_7}")
+
+m_8_8=M[idx(8),idx(8)]
+if m_8_8 != 0:
+	print(f"m_8_8={m_8_8}")
+
+m_8_9=M[idx(8),idx(9)]
+if m_8_9 != 0:
+	print(f"m_8_9={m_8_9}")
+
+m_8_10=M[idx(8),idx(10)]
+if m_8_10 != 0:
+	print(f"m_8_10={m_8_10}")
+
+m_9_1=M[idx(9),idx(1)]
+if m_9_1 != 0:
+	print(f"m_9_1={m_9_1}")
+
+m_9_2=M[idx(9),idx(2)]
+if m_9_2 != 0:
+	print(f"m_9_2={m_9_2}")
+
+m_9_3=M[idx(9),idx(3)]
+if m_9_3 != 0:
+	print(f"m_9_3={m_9_3}")
+
+m_9_4=M[idx(9),idx(4)]
+if m_9_4 != 0:
+	print(f"m_9_4={m_9_4}")
+
+m_9_5=M[idx(9),idx(5)]
+if m_9_5 != 0:
+	print(f"m_9_5={m_9_5}")
+
+m_9_6=M[idx(9),idx(6)]
+if m_9_6 != 0:
+	print(f"m_9_6={m_9_6}")
+
+m_9_7=M[idx(9),idx(7)]
+if m_9_7 != 0:
+	print(f"m_9_7={m_9_7}")
+
+m_9_8=M[idx(9),idx(8)]
+if m_9_8 != 0:
+	print(f"m_9_8={m_9_8}")
+
+m_9_9=M[idx(9),idx(9)]
+if m_9_9 != 0:
+	print(f"m_9_9={m_9_9}")
+
+m_9_10=M[idx(9),idx(10)]
+if m_9_10 != 0:
+	print(f"m_9_10={m_9_10}")
+
+m_10_1=M[idx(10),idx(1)]
+if m_10_1 != 0:
+	print(f"m_10_1={m_10_1}")
+
+m_10_2=M[idx(10),idx(2)]
+if m_10_2 != 0:
+	print(f"m_10_2={m_10_2}")
+
+m_10_3=M[idx(10),idx(3)]
+if m_10_3 != 0:
+	print(f"m_10_3={m_10_3}")
+
+m_10_4=M[idx(10),idx(4)]
+if m_10_4 != 0:
+	print(f"m_10_4={m_10_4}")
+
+m_10_5=M[idx(10),idx(5)]
+if m_10_5 != 0:
+	print(f"m_10_5={m_10_5}")
+
+m_10_6=M[idx(10),idx(6)]
+if m_10_6 != 0:
+	print(f"m_10_6={m_10_6}")
+
+m_10_7=M[idx(10),idx(7)]
+if m_10_7 != 0:
+	print(f"m_10_7={m_10_7}")
+
+m_10_8=M[idx(10),idx(8)]
+if m_10_8 != 0:
+	print(f"m_10_8={m_10_8}")
+
+m_10_9=M[idx(10),idx(9)]
+if m_10_9 != 0:
+	print(f"m_10_9={m_10_9}")
+
+m_10_10=M[idx(10),idx(10)]
+if m_10_10 != 0:
+	print(f"m_10_10={m_10_10}")
+
+print(f"\\end{matrix}")

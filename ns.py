@@ -1,4 +1,4 @@
-symbols: list[str] = ['a', 'b', 'c', 'd']
+symbols: list[str] = ['a', 'b', 'c', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 def main():
     n: int = 5
@@ -77,7 +77,7 @@ def main():
                     if s:
                         f.write(s)
 
-                f.write(f"print(f\"N=\\n{{N}}\")\n")
+                f.write(f"print(f\"\\\\[N={{latex(N)}}\\\\]\")\n")
 
             list_strs_h: list[str] = create_h(n=n, d=d)
 
@@ -88,7 +88,30 @@ def main():
                 f.write(f"print(f\"H=\\n{{H}}\")\n")
 
                 f.write(f"M=N*H\n")
-                f.write(f"print(f\"M=\\n{{M}}\")\n")
+                f.write(f"print(f\"\\\\begin{{matrix}}\")\n")
+
+                d1: int = d + 1
+
+                for i in range(1, d1):
+                    i1: int = i + 1
+
+                    #f.write(f"s=\"\"\n")
+
+                    for j in range(1, d1):
+                        j1: int = j + 1
+
+                        matrix_element: str = f"m_{i}_{j}"
+
+                        f.write(f"{matrix_element}=M[idx({i}),idx({j})]\n")
+
+                        f.write(f"if {matrix_element} != 0:\n")
+                        f.write(f"\tprint(f\"{matrix_element}={{{matrix_element}}}\")\n\n")
+
+                    #f.write(f"print({{s}})\n")
+
+                f.write(f"print(f\"\\\\end{{matrix}}\")\n")
+
+            if False:
 
                 d1: int = d + 1
 
@@ -96,7 +119,37 @@ def main():
                 f.write(f"\tfor j in range(1, {d1}):\n")
                 f.write(f"\t\tm=M[idx(i)][idx(j)]\n")
                 f.write(f"\t\tif m != 0:\n")
-                f.write(f"\t\t\tprint(f\"m{{i}},{{j}}={{m}}\")\n")
+                f.write(f"\t\t\tprint(f\"\\\\[m_{{{{{{i}},{{j}}}}}}={{latex(m)}}\\\\]\")\n")
+
+            return
+
+            j = 1
+
+            for r in range(1, n):
+                for i in range(1, n - r + 1):
+                    base_element: str = f"e_{i}_{i + r}"
+
+                    j1: int = j + 1
+
+                    f.write(f"{base_element}=M[idx({j}):idx({j1}),idx(1):idx({d1})]\n")
+
+                    j += 1
+
+            for r in range(1, n):
+                for i in range(1, n - r + 1):
+                    base_element: str = f"e_{i}_{i + r}"
+
+                    f.write(f"print(f\"{base_element}={{{base_element}}}\")\n")
+
+            for r in range(1, n):
+                for i in range(1, n - r + 1):
+                    base_element: str = f"e_{i}_{i + r}"
+
+                    f.write(f"A={base_element}\n")
+
+                    for k in range(4):
+                        f.write(f"A=A*M\n")
+                        f.write(f"print(f\"A={{A}}\")\n")
 
 def change_variables_right_block(n: int, d: int, aut: str):
     list_strs: list[str] = []
