@@ -1,5 +1,7 @@
 symbols: list[str] = ['a', 'b', 'c', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+lambda_symbol: str = "lambda"
+
 def main():
     n: int = 5
 
@@ -38,7 +40,7 @@ def main():
 
                 f.write(f"{str_symbols}=var(\"{str_symbols}\")\n\n")
                 
-                str_l: str = ",".join([f"l{i}" for i in range(1, n)])
+                str_l: str = ",".join([f"{lambda_symbol}{i}" for i in range(1, n)])
                 
                 f.write(f"{str_l}=var(\"{str_l}\")\n\n")
 
@@ -175,7 +177,7 @@ def create_h(n: int, d: int):
 
     for i in range(1, n):
         for j in range(1, n - i + 1):
-            s = "*".join([f"l{k}" for k in range(j, j + i)])
+            s = "*".join([f"{lambda_symbol}{k}" for k in range(j, j + i)])
 
             list_strs.append(f"H[idx({k}),idx({k})]={s}")
             k += 1
