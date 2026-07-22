@@ -1,0 +1,435 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath} % For align* environment
+
+\title{aut_n6}
+\author{haiml76 }
+\date{July 2026}
+
+\begin{document}
+
+\section{n=5}
+\begin{align*}
+&m_{1,5}=a_{11} \lambda_{1} \lambda_{2}\\
+&m_{1,8}=b_{11} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{1,9}=b_{12} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{1,10}=c_{1} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{2,5}=a_{21} \lambda_{1} \lambda_{2}\\
+&m_{2,6}=a_{22} \lambda_{2} \lambda_{3}\\
+&m_{2,8}=a_{21} a_{22} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{2,9}=b_{22} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{2,10}=c_{2} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{3,6}=-a_{11} \lambda_{2} \lambda_{3}\\
+&m_{3,7}=a_{33} \lambda_{3} \lambda_{4}\\
+&m_{3,8}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{3,9}=-a_{11} a_{33} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{3,10}=c_{3} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{4,7}=-a_{22} \lambda_{3} \lambda_{4}\\
+&m_{4,8}=b_{41} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{4,9}={\left(a_{11} a_{22} - b_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{4,10}=c_{4} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{5,8}=a_{22} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{5,10}=b_{22} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+\end{align*}
+\begin{align*}
+&m_{6,8}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{6,9}=a_{33} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{6,10}=a_{21} a_{33} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{7,9}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{7,10}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{8,10}=a_{33} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{9,10}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+\end{align*}
+\newpage
+\section{n=6}
+\begin{align*}
+&m_{1,6}=a_{11} \lambda_{1} \lambda_{2}\\
+&m_{1,10}={\left(a_{11} a_{22} + b_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{1,13}={\left(a_{11} a_{22} a_{33} + a_{11} b_{22} + c_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{1,14}=c_{12} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{1,15}=d_{1} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{2,6}=a_{21} \lambda_{1} \lambda_{2}\\
+&m_{2,7}=a_{22} \lambda_{2} \lambda_{3}\\
+&m_{2,10}=a_{21} a_{22} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{2,11}={\left(a_{22} a_{33} + b_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{2,13}={\left(a_{21} a_{22} a_{33} + a_{21} b_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{2,14}={\left(a_{22} a_{33} a_{44} + a_{22} b_{33} + c_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{2,15}=d_{2} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{3,7}=-a_{11} \lambda_{2} \lambda_{3}\\
+&m_{3,8}=a_{33} \lambda_{3} \lambda_{4}\\
+&m_{3,10}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{3,11}=-a_{11} a_{33} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{3,12}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{3,13}=a_{33} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{3,14}=-{\left(a_{11} a_{33} a_{44} + a_{11} b_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{3,15}=d_{3} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+\end{align*}
+\begin{align*}
+&m_{4,8}=-a_{22} \lambda_{3} \lambda_{4}\\
+&m_{4,9}=a_{44} \lambda_{4} \lambda_{5}\\
+&m_{4,11}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{4,12}=-a_{22} a_{44} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{4,13}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{4,14}=-a_{44} b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{4,15}=d_{4} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{5,9}=-a_{33} \lambda_{4} \lambda_{5}\\
+&m_{5,12}=-b_{22} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{5,13}=c_{51} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{5,14}={\left(a_{33} b_{11} - c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{5,15}=d_{5} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{6,10}=a_{22} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{6,13}={\left(a_{22} a_{33} + b_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{6,15}={\left(a_{22} a_{33} a_{44} + a_{22} b_{33} + c_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{7,10}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{7,11}=a_{33} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{7,13}=a_{21} a_{33} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{7,14}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{7,15}={\left(a_{21} a_{33} a_{44} + a_{21} b_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+\end{align*}
+\begin{align*}
+&m_{8,11}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{8,12}=a_{44} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{8,13}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{8,14}=-a_{11} a_{44} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{8,15}=a_{44} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{9,12}=-a_{22} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{9,14}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{9,15}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{10,13}=a_{33} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{10,15}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{11,13}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{11,14}=a_{44} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{11,15}=a_{21} a_{44} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{12,14}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{12,15}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{13,15}=a_{44} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{14,15}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+\end{align*}
+\newpage
+\section{n=7}
+\begin{align*}
+&m_{1,7}=a_{11} \lambda_{1} \lambda_{2}\\
+&m_{1,12}={\left(a_{11} a_{22} + b_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{1,16}={\left(a_{11} a_{22} a_{33} + a_{11} b_{22} + c_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{1,19}={\left(a_{11} a_{22} a_{33} a_{44} + {\left(a_{11} a_{22} + b_{11}\right)} b_{33} + a_{11} c_{22} + d_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{1,20}=d_{12} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{1,21}=f_{1} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{2,7}=a_{21} \lambda_{1} \lambda_{2}\\
+&m_{2,8}=a_{22} \lambda_{2} \lambda_{3}\\
+&m_{2,12}=a_{21} a_{22} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{2,13}={\left(a_{22} a_{33} + b_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{2,16}={\left(a_{21} a_{22} a_{33} + a_{21} b_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{2,17}={\left(a_{22} a_{33} a_{44} + a_{22} b_{33} + c_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{2,19}={\left(a_{21} a_{22} a_{33} a_{44} + a_{21} a_{22} b_{33} + a_{21} c_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{2,20}={\left(a_{22} a_{33} a_{44} a_{55} + {\left(a_{22} a_{33} + b_{22}\right)} b_{44} + a_{22} c_{33} + d_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{2,21}=f_{2} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{3,8}=-a_{11} \lambda_{2} \lambda_{3}\\
+&m_{3,9}=a_{33} \lambda_{3} \lambda_{4}\\
+&m_{3,12}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{3,13}=-a_{11} a_{33} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{3,14}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{3} \lambda_{4} \lambda_{5}\\
+\end{align*}
+\begin{align*}
+&m_{3,16}=a_{33} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{3,17}=-{\left(a_{11} a_{33} a_{44} + a_{11} b_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{3,18}={\left(a_{33} a_{44} a_{55} + a_{33} b_{44} + c_{33}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{3,19}={\left(a_{33} a_{44} b_{31} + b_{31} b_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{3,20}=-{\left(a_{11} a_{33} a_{44} a_{55} + a_{11} a_{33} b_{44} + a_{11} c_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{3,21}=f_{3} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{4,9}=-a_{22} \lambda_{3} \lambda_{4}\\
+&m_{4,10}=a_{44} \lambda_{4} \lambda_{5}\\
+&m_{4,13}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{4,14}=-a_{22} a_{44} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{4,15}={\left(a_{44} a_{55} + b_{44}\right)} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{4,16}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{4,17}=-a_{44} b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{4,18}=-{\left(a_{22} a_{44} a_{55} + a_{22} b_{44}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{4,19}=-{\left(a_{22} a_{44} b_{31} - a_{44} c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{4,20}=-{\left(a_{44} a_{55} b_{11} + b_{11} b_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{4,21}=f_{4} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{5,10}=-a_{33} \lambda_{4} \lambda_{5}\\
+&m_{5,11}=a_{55} \lambda_{5} \lambda_{6}\\
+&m_{5,14}=-b_{22} \lambda_{3} \lambda_{4} \lambda_{5}\\
+\end{align*}
+\begin{align*}
+&m_{5,15}=-a_{33} a_{55} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{5,17}={\left(a_{33} b_{11} - c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{5,18}=-a_{55} b_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{5,19}=-{\left(a_{33} c_{41} - d_{51}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{5,20}={\left(a_{33} a_{55} b_{11} - a_{55} c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{5,21}=f_{5} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{6,11}=-a_{44} \lambda_{5} \lambda_{6}\\
+&m_{6,15}=-b_{33} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{6,18}={\left(a_{44} b_{22} - c_{22}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{6,19}=d_{61} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{6,20}={\left(a_{44} c_{11} - d_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{6,21}=f_{6} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{7,12}=a_{22} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{7,16}={\left(a_{22} a_{33} + b_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{7,19}={\left(a_{22} a_{33} a_{44} + a_{22} b_{33} + c_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{7,21}={\left(a_{22} a_{33} a_{44} a_{55} + {\left(a_{22} a_{33} + b_{22}\right)} b_{44} + a_{22} c_{33} + d_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{8,12}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{8,13}=a_{33} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{8,16}=a_{21} a_{33} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{8,17}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+\end{align*}
+\begin{align*}
+&m_{8,19}={\left(a_{21} a_{33} a_{44} + a_{21} b_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{8,20}={\left(a_{33} a_{44} a_{55} + a_{33} b_{44} + c_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{8,21}={\left(a_{21} a_{33} a_{44} a_{55} + a_{21} a_{33} b_{44} + a_{21} c_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{9,13}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{9,14}=a_{44} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{9,16}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{9,17}=-a_{11} a_{44} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{9,18}={\left(a_{44} a_{55} + b_{44}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{9,19}=a_{44} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{9,20}=-{\left(a_{11} a_{44} a_{55} + a_{11} b_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{9,21}={\left(a_{44} a_{55} b_{31} + b_{31} b_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{10,14}=-a_{22} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{10,15}=a_{55} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{10,17}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{10,18}=-a_{22} a_{55} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{10,19}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{10,20}=-a_{55} b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{10,21}=-{\left(a_{22} a_{55} b_{31} - a_{55} c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{11,15}=-a_{33} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{11,18}=-b_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+\end{align*}
+\begin{align*}
+&m_{11,20}={\left(a_{33} b_{11} - c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{11,21}=-{\left(a_{33} c_{41} - d_{51}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{12,16}=a_{33} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{12,19}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{12,21}={\left(a_{33} a_{44} a_{55} + a_{33} b_{44} + c_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{13,16}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{13,17}=a_{44} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{13,19}=a_{21} a_{44} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{13,20}={\left(a_{44} a_{55} + b_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{13,21}={\left(a_{21} a_{44} a_{55} + a_{21} b_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{14,17}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{14,18}=a_{55} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{14,19}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{14,20}=-a_{11} a_{55} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{14,21}=a_{55} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{15,18}=-a_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{15,20}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{15,21}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{16,19}=a_{44} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{16,21}={\left(a_{44} a_{55} + b_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+\end{align*}
+\begin{align*}
+&m_{17,19}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{17,20}=a_{55} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{17,21}=a_{21} a_{55} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{18,20}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{18,21}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{19,21}=a_{55} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{20,21}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+\end{align*}
+\newpage
+\section{n=7}
+\begin{align*}
+&m_{1,8}=a_{11} \lambda_{1} \lambda_{2}\\
+&m_{1,14}={\left(a_{11} a_{22} + b_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{1,19}={\left(a_{11} a_{22} a_{33} + a_{11} b_{22} + c_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{1,23}={\left(a_{11} a_{22} a_{33} a_{44} + {\left(a_{11} a_{22} + b_{11}\right)} b_{33} + a_{11} c_{22} + d_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{1,26}={\left(a_{11} a_{22} a_{33} a_{44} a_{55} + {\left(a_{11} a_{22} a_{33} + a_{11} b_{22}\right)} b_{44} + {\left(a_{11} a_{22} + b_{11}\right)} c_{33} + a_{11} d_{22} + f_{11}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{1,27}=f_{12} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{1,28}=g_{1} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{2,8}=a_{21} \lambda_{1} \lambda_{2}\\
+&m_{2,9}=a_{22} \lambda_{2} \lambda_{3}\\
+&m_{2,14}=a_{21} a_{22} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{2,15}={\left(a_{22} a_{33} + b_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{2,19}={\left(a_{21} a_{22} a_{33} + a_{21} b_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{2,20}={\left(a_{22} a_{33} a_{44} + a_{22} b_{33} + c_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{2,23}={\left(a_{21} a_{22} a_{33} a_{44} + a_{21} a_{22} b_{33} + a_{21} c_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{2,24}={\left(a_{22} a_{33} a_{44} a_{55} + {\left(a_{22} a_{33} + b_{22}\right)} b_{44} + a_{22} c_{33} + d_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{2,26}={\left(a_{21} a_{22} a_{33} a_{44} a_{55} + a_{21} a_{22} c_{33} + {\left(a_{21} a_{22} a_{33} + a_{21} b_{22}\right)} b_{44} + a_{21} d_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{2,27}={\left(a_{22} a_{33} a_{44} a_{55} a_{66} + {\left(a_{22} a_{33} a_{44} + a_{22} b_{33}\right)} b_{55} + {\left(a_{22} a_{33} + b_{22}\right)} c_{44} + a_{22} d_{33} + f_{22}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{2,28}=g_{2} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{3,9}=-a_{11} \lambda_{2} \lambda_{3}\\
+&m_{3,10}=a_{33} \lambda_{3} \lambda_{4}\\
+\end{align*}
+\begin{align*}
+&m_{3,14}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{3,15}=-a_{11} a_{33} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{3,16}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{3,19}=a_{33} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{3,20}=-{\left(a_{11} a_{33} a_{44} + a_{11} b_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{3,21}={\left(a_{33} a_{44} a_{55} + a_{33} b_{44} + c_{33}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{3,23}={\left(a_{33} a_{44} b_{31} + b_{31} b_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{3,24}=-{\left(a_{11} a_{33} a_{44} a_{55} + a_{11} a_{33} b_{44} + a_{11} c_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{3,25}={\left(a_{33} a_{44} a_{55} a_{66} + {\left(a_{33} a_{44} + b_{33}\right)} b_{55} + a_{33} c_{44} + d_{33}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{3,26}={\left(a_{33} a_{44} a_{55} b_{31} + a_{33} b_{31} b_{44} + b_{31} c_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{3,27}=-{\left(a_{11} a_{33} a_{44} a_{55} a_{66} + a_{11} a_{33} c_{44} + {\left(a_{11} a_{33} a_{44} + a_{11} b_{33}\right)} b_{55} + a_{11} d_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{3,28}=g_{3} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{4,10}=-a_{22} \lambda_{3} \lambda_{4}\\
+&m_{4,11}=a_{44} \lambda_{4} \lambda_{5}\\
+&m_{4,15}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{4,16}=-a_{22} a_{44} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{4,17}={\left(a_{44} a_{55} + b_{44}\right)} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{4,19}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{4,20}=-a_{44} b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{4,21}=-{\left(a_{22} a_{44} a_{55} + a_{22} b_{44}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+\end{align*}
+\begin{align*}
+&m_{4,22}={\left(a_{44} a_{55} a_{66} + a_{44} b_{55} + c_{44}\right)} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{4,23}=-{\left(a_{22} a_{44} b_{31} - a_{44} c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{4,24}=-{\left(a_{44} a_{55} b_{11} + b_{11} b_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{4,25}=-{\left(a_{22} a_{44} a_{55} a_{66} + a_{22} a_{44} b_{55} + a_{22} c_{44}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{4,26}=-{\left(a_{22} a_{44} a_{55} b_{31} + a_{22} b_{31} b_{44} - {\left(a_{44} a_{55} + b_{44}\right)} c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{4,27}=-{\left(a_{44} a_{55} a_{66} b_{11} + a_{44} b_{11} b_{55} + b_{11} c_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{4,28}=g_{4} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{5,11}=-a_{33} \lambda_{4} \lambda_{5}\\
+&m_{5,12}=a_{55} \lambda_{5} \lambda_{6}\\
+&m_{5,16}=-b_{22} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{5,17}=-a_{33} a_{55} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{5,18}={\left(a_{55} a_{66} + b_{55}\right)} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{5,20}={\left(a_{33} b_{11} - c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{5,21}=-a_{55} b_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{5,22}=-{\left(a_{33} a_{55} a_{66} + a_{33} b_{55}\right)} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{5,23}=-{\left(a_{33} c_{41} - d_{51}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{5,24}={\left(a_{33} a_{55} b_{11} - a_{55} c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{5,25}=-{\left(a_{55} a_{66} b_{22} + b_{22} b_{55}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{5,26}=-{\left(a_{33} a_{55} c_{41} - a_{55} d_{51}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{5,27}={\left(a_{33} a_{55} a_{66} b_{11} + a_{33} b_{11} b_{55} - {\left(a_{55} a_{66} + b_{55}\right)} c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+\end{align*}
+\begin{align*}
+&m_{5,28}=g_{5} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{6,12}=-a_{44} \lambda_{5} \lambda_{6}\\
+&m_{6,13}=a_{66} \lambda_{6} \lambda_{7}\\
+&m_{6,17}=-b_{33} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{6,18}=-a_{44} a_{66} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{6,21}={\left(a_{44} b_{22} - c_{22}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{6,22}=-a_{66} b_{33} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{6,24}={\left(a_{44} c_{11} - d_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{6,25}={\left(a_{44} a_{66} b_{22} - a_{66} c_{22}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{6,26}=-{\left(b_{33} c_{41} + a_{44} d_{51} - f_{61}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{6,27}={\left(a_{44} a_{66} c_{11} - a_{66} d_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{6,28}=g_{6} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{7,13}=-a_{55} \lambda_{6} \lambda_{7}\\
+&m_{7,18}=-b_{44} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{7,22}={\left(a_{55} b_{33} - c_{33}\right)} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{7,25}={\left(a_{55} c_{22} - d_{22}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{7,26}=f_{71} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{7,27}={\left(b_{44} c_{11} + a_{55} d_{11} - f_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{7,28}=g_{7} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{8,14}=a_{22} \lambda_{1} \lambda_{2} \lambda_{3}\\
+\end{align*}
+\begin{align*}
+&m_{8,19}={\left(a_{22} a_{33} + b_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{8,23}={\left(a_{22} a_{33} a_{44} + a_{22} b_{33} + c_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{8,26}={\left(a_{22} a_{33} a_{44} a_{55} + {\left(a_{22} a_{33} + b_{22}\right)} b_{44} + a_{22} c_{33} + d_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{8,28}={\left(a_{22} a_{33} a_{44} a_{55} a_{66} + {\left(a_{22} a_{33} a_{44} + a_{22} b_{33}\right)} b_{55} + {\left(a_{22} a_{33} + b_{22}\right)} c_{44} + a_{22} d_{33} + f_{22}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{9,14}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3}\\
+&m_{9,15}=a_{33} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{9,19}=a_{21} a_{33} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{9,20}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{9,23}={\left(a_{21} a_{33} a_{44} + a_{21} b_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{9,24}={\left(a_{33} a_{44} a_{55} + a_{33} b_{44} + c_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{9,26}={\left(a_{21} a_{33} a_{44} a_{55} + a_{21} a_{33} b_{44} + a_{21} c_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{9,27}={\left(a_{33} a_{44} a_{55} a_{66} + {\left(a_{33} a_{44} + b_{33}\right)} b_{55} + a_{33} c_{44} + d_{33}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{9,28}={\left(a_{21} a_{33} a_{44} a_{55} a_{66} + a_{21} a_{33} c_{44} + {\left(a_{21} a_{33} a_{44} + a_{21} b_{33}\right)} b_{55} + a_{21} d_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{10,15}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{10,16}=a_{44} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{10,19}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{10,20}=-a_{11} a_{44} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{10,21}={\left(a_{44} a_{55} + b_{44}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{10,23}=a_{44} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{10,24}=-{\left(a_{11} a_{44} a_{55} + a_{11} b_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+\end{align*}
+\begin{align*}
+&m_{10,25}={\left(a_{44} a_{55} a_{66} + a_{44} b_{55} + c_{44}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{10,26}={\left(a_{44} a_{55} b_{31} + b_{31} b_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{10,27}=-{\left(a_{11} a_{44} a_{55} a_{66} + a_{11} a_{44} b_{55} + a_{11} c_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{10,28}={\left(a_{44} a_{55} a_{66} b_{31} + a_{44} b_{31} b_{55} + b_{31} c_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{11,16}=-a_{22} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{11,17}=a_{55} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{11,20}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{11,21}=-a_{22} a_{55} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{11,22}={\left(a_{55} a_{66} + b_{55}\right)} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{11,23}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{11,24}=-a_{55} b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{11,25}=-{\left(a_{22} a_{55} a_{66} + a_{22} b_{55}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{11,26}=-{\left(a_{22} a_{55} b_{31} - a_{55} c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{11,27}=-{\left(a_{55} a_{66} b_{11} + b_{11} b_{55}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{11,28}=-{\left(a_{22} a_{55} a_{66} b_{31} + a_{22} b_{31} b_{55} - {\left(a_{55} a_{66} + b_{55}\right)} c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{12,17}=-a_{33} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{12,18}=a_{66} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{12,21}=-b_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{12,22}=-a_{33} a_{66} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{12,24}={\left(a_{33} b_{11} - c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+\end{align*}
+\begin{align*}
+&m_{12,25}=-a_{66} b_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{12,26}=-{\left(a_{33} c_{41} - d_{51}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{12,27}={\left(a_{33} a_{66} b_{11} - a_{66} c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{12,28}=-{\left(a_{33} a_{66} c_{41} - a_{66} d_{51}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{13,18}=-a_{44} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{13,22}=-b_{33} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{13,25}={\left(a_{44} b_{22} - c_{22}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{13,27}={\left(a_{44} c_{11} - d_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{13,28}=-{\left(b_{33} c_{41} + a_{44} d_{51} - f_{61}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{14,19}=a_{33} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{14,23}={\left(a_{33} a_{44} + b_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{14,26}={\left(a_{33} a_{44} a_{55} + a_{33} b_{44} + c_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{14,28}={\left(a_{33} a_{44} a_{55} a_{66} + {\left(a_{33} a_{44} + b_{33}\right)} b_{55} + a_{33} c_{44} + d_{33}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{15,19}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4}\\
+&m_{15,20}=a_{44} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{15,23}=a_{21} a_{44} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{15,24}={\left(a_{44} a_{55} + b_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{15,26}={\left(a_{21} a_{44} a_{55} + a_{21} b_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{15,27}={\left(a_{44} a_{55} a_{66} + a_{44} b_{55} + c_{44}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{15,28}={\left(a_{21} a_{44} a_{55} a_{66} + a_{21} a_{44} b_{55} + a_{21} c_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+\end{align*}
+\begin{align*}
+&m_{16,20}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{16,21}=a_{55} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{16,23}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{16,24}=-a_{11} a_{55} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{16,25}={\left(a_{55} a_{66} + b_{55}\right)} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{16,26}=a_{55} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{16,27}=-{\left(a_{11} a_{55} a_{66} + a_{11} b_{55}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{16,28}={\left(a_{55} a_{66} b_{31} + b_{31} b_{55}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{17,21}=-a_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{17,22}=a_{66} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{17,24}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{17,25}=-a_{22} a_{66} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{17,26}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{17,27}=-a_{66} b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{17,28}=-{\left(a_{22} a_{66} b_{31} - a_{66} c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{18,22}=-a_{33} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{18,25}=-b_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{18,27}={\left(a_{33} b_{11} - c_{11}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{18,28}=-{\left(a_{33} c_{41} - d_{51}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{19,23}=a_{44} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+\end{align*}
+\begin{align*}
+&m_{19,26}={\left(a_{44} a_{55} + b_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{19,28}={\left(a_{44} a_{55} a_{66} + a_{44} b_{55} + c_{44}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{20,23}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5}\\
+&m_{20,24}=a_{55} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{20,26}=a_{21} a_{55} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{20,27}={\left(a_{55} a_{66} + b_{55}\right)} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{20,28}={\left(a_{21} a_{55} a_{66} + a_{21} b_{55}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{21,24}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{21,25}=a_{66} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{21,26}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{21,27}=-a_{11} a_{66} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{21,28}=a_{66} b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{22,25}=-a_{22} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{22,27}=-b_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{22,28}=-{\left(a_{22} b_{31} - c_{41}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{23,26}=a_{55} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{23,28}={\left(a_{55} a_{66} + b_{55}\right)} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{24,26}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6}\\
+&m_{24,27}=a_{66} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{24,28}=a_{21} a_{66} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+\end{align*}
+\begin{align*}
+&m_{25,27}=-a_{11} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{25,28}=b_{31} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{26,28}=a_{66} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+&m_{27,28}=a_{21} \lambda_{1} \lambda_{2} \lambda_{3} \lambda_{4} \lambda_{5} \lambda_{6} \lambda_{7}\\
+\end{align*}
+\end{document}

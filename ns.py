@@ -5,7 +5,7 @@ lambda_symbol: str = "lambda"
 print_count: int = 20
 
 def main():
-    n: int = 5
+    n: int = 8
 
     d: int = int(n * (n - 1) / 2)
 
@@ -68,7 +68,7 @@ def main():
             list_maps_c: tuple[str, list[str]] = "Nc", ["Nb", "Na"]
             list_maps_d: tuple[str, list[str]] = "N", ["Nc", "N_3_1", "N_4"]
 
-            list_maps: list[tuple[str, list[str]]] = [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
+            list_maps: list[tuple[str, list[str]]] = []#[list_maps_a, list_maps_b, list_maps_c, list_maps_d]
 
             if not (isinstance(list_maps, list) and len(list_maps) > 0) and isinstance(list_auts, list) and len(list_auts) > 0:
                 list_maps = [("N", list_auts)]
@@ -122,7 +122,7 @@ def main():
                         f.write(f"\tif print_counter<1:\n")
                         f.write("\t\tprint(\"\\\\begin{align*}\")\n\n")
 
-                        f.write(f"\tprint(f\"&m_{{{{{i},{j}}}}}&={{latex({matrix_element})}}\\\\\\\\\")\n")
+                        f.write(f"\tprint(f\"&m_{{{{{i},{j}}}}}={{latex({matrix_element})}}\\\\\\\\\")\n")
                         f.write(f"\tprint_counter+=1\n\n")
 
                         f.write(f"\tif print_counter>={print_count}:\n")
