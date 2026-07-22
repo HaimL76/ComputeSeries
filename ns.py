@@ -106,7 +106,7 @@ def main():
                         f.write(f"{matrix_element}=M[idx({i}),idx({j})]\n")
 
                         f.write(f"if {matrix_element} != 0:\n")
-                        f.write(f"\tprint(f\"m_{{{{{i},{j}}}}}={{latex({matrix_element})}}\\\\\\\\\")\n\n")
+                        f.write(f"\tprint(f\"m_{{{{{i},{j}}}}}&={{latex({matrix_element})}}\\\\\\\\\")\n\n")
 
                     #f.write(f"print({{s}})\n")
 
