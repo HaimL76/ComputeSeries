@@ -2,6 +2,8 @@ symbols: list[str] = ['a', 'b', 'c', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 
 lambda_symbol: str = "lambda"
 
+print_count: int = 20
+
 def main():
     n: int = 5
 
@@ -39,6 +41,14 @@ def main():
                 str_symbols = ",".join(list_symbols)
 
                 f.write(f"{str_symbols}=var(\"{str_symbols}\")\n\n")
+
+                f.write(f"list_vars: list = [{str_symbols}]\n\n")
+
+                f.write("def is_constraint(exp):\n")
+                f.write("\tvars = exp.variables()\n\n")
+                f.write("\tfor v in list_vars:\n")
+                f.write("\t\tif v in vars:\n")
+                f.write("\t\t\treturn True\n\n")
                 
                 str_l: str = ",".join([f"{lambda_symbol}{i}" for i in range(1, n)])
                 
@@ -91,7 +101,7 @@ def main():
 
                 f.write(f"M=N*H\n")
 
-                f.write("print(\"\\\\begin{align*}\")\n")
+                f.write(f"print_counter=0\n\n")
 
                 d1: int = d + 1
 
@@ -107,12 +117,20 @@ def main():
 
                         f.write(f"{matrix_element}=M[idx({i}),idx({j})]\n")
 
-                        f.write(f"if {matrix_element} != 0:\n")
-                        f.write(f"\tprint(f\"m_{{{{{i},{j}}}}}&={{latex({matrix_element})}}\\\\\\\\\")\n\n")
+                        f.write(f"if {matrix_element} != 0 and is_constraint({matrix_element}):\n")
 
-                    #f.write(f"print({{s}})\n")
+                        f.write(f"\tif print_counter<1:\n")
+                        f.write("\t\tprint(\"\\\\begin{align*}\")\n\n")
 
-                f.write("print(\"\\\\end{align*}\")\n")
+                        f.write(f"\tprint(f\"&m_{{{{{i},{j}}}}}&={{latex({matrix_element})}}\\\\\\\\\")\n")
+                        f.write(f"\tprint_counter+=1\n\n")
+
+                        f.write(f"\tif print_counter>={print_count}:\n")
+                        f.write(f"\t\tprint_counter=0\n")
+                        f.write("\t\tprint(\"\\\\end{align*}\")\n\n")
+
+                f.write(f"if print_counter>0:\n")
+                f.write("\tprint(\"\\\\end{align*}\")\n\n")
 
             if False:
 
