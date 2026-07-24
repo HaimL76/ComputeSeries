@@ -162,12 +162,17 @@ def main():
 
                                 s_minus0: str = "-".join(list_minus0)
 
-                                s: str = f"{s_plus0}-{s_minus0}"
+                                s_a: str = f"{s_plus0}-{s_minus0}"
+                                s_b: str = f"M[idx({top}),idx({left})]"
 
                                 #print(f"{image}=M[idx({top}),idx({left})]={s}")
-                                print(f"{image}={s}")
-                                f.write(f"{image}={s}\n")
-                                f.write(f"print(f\"{image}={{{image}}}\")\n")
+                                print(f"{image}_a={s_a}")
+                                f.write(f"{image}_a={s_a}\n")
+                                f.write(f"print(f\"{image}_a={{{image}_a}}\")\n")
+
+                                print(f"{image}_b={s_b}")
+                                f.write(f"{image}_b={s_b}\n")
+                                f.write(f"print(f\"{image}_b={{{image}_b}}\")\n")
 
                 f.write(f"print_counter=0\n\n")
 
