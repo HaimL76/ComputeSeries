@@ -5,9 +5,10 @@ lambda_symbol: str = "lambda"
 print_count: int = 20
 
 def main():
-    n: int = 8
+    n: int = 5
 
     d: int = int(n * (n - 1) / 2)
+    d1: int = d + 1
 
     global lefts
     global list_symbols
@@ -68,7 +69,7 @@ def main():
             list_maps_c: tuple[str, list[str]] = "Nc", ["Nb", "Na"]
             list_maps_d: tuple[str, list[str]] = "N", ["Nc", "N_3_1", "N_4"]
 
-            list_maps: list[tuple[str, list[str]]] = []#[list_maps_a, list_maps_b, list_maps_c, list_maps_d]
+            list_maps: list[tuple[str, list[str]]] = [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
 
             if not (isinstance(list_maps, list) and len(list_maps) > 0) and isinstance(list_auts, list) and len(list_auts) > 0:
                 list_maps = [("N", list_auts)]
@@ -100,6 +101,39 @@ def main():
                 f.write(f"print(f\"H=\\n{{H}}\")\n")
 
                 f.write(f"M=N*H\n")
+
+                for r in range(1, n):
+                    for i in range(1, n - r + 1):
+                        j: int = i + r
+
+                        for r0 in range(1, n):
+                            for i0 in range(1, n - r0 + 1):
+                                j0: int = i0 + r0
+
+                                for k in range(i, j):
+                                    for r1 in range(1, n):
+                                        for i1 in range(1, n - r1 + 1):
+                                            j1: int = i1 + r1
+
+                                            list_es: list[str] = []
+
+                                            for i2 in range(i1 + 1, j1):
+                                                diff1: int = i2 - i1
+                                                diff2: int = j1 - i2
+
+                                                left1: int = get_left(diff1, i1)
+                                                left2: int = get_left(diff2, i2)
+
+                                                list_es.append(f"e_{i1}_{i2}_e_{i2}_{j1}=M_{left1}_{left2}")
+
+                                            str_es: str = "+".join(list_es)
+
+                                            print(f"M_{k},{k + 1}[{i1},{j1}]={str_es}")
+
+                                    #for k0 in range(1, d1):
+                                     #   image: str = f"M_e_{i}_{j}_{i0}_{j0}"
+                                      #  f.write(f"{image}=M[idx({k}),idx({k0})]\n")
+                                       # f.write(f"print(f\"{image}={{{image}}}\")\n")
 
                 f.write(f"print_counter=0\n\n")
 
