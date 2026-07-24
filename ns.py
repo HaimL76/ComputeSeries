@@ -134,11 +134,21 @@ def main():
                                         s_left: str = f"e_{i0}_{l}"
                                         s_right: str = f"e_{l}_{j0}"
 
-                                        s_plus0: str = f"[{s_left},{s_right}]"
-                                        list_plus0.append(s_plus0)
+                                        top_k: int = get_left(1, k)
+                                        top_k1: int = get_left(1, k1)
+
+                                        left_k: int = get_left(l - i0, i0)
+                                        left_k1: int = get_left(j0 - l, l)
+
+                                        s_plus0: str = f"[{s_left},{s_right}]=M[idx({top_k}),idx({left_k})]*M[idx({top_k1}),idx({left_k1})]"
+
+                                        str_plus: str = f"M[idx({top_k}),idx({left_k})]*M[idx({top_k1}),idx({left_k1})]"
+                                        str_minus: str = f"M[idx({top_k}),idx({left_k1})]*M[idx({top_k1}),idx({left_k})]"
+
+                                        list_plus0.append(str_plus)
 
                                         s_minus0 = f"[{s_right},{s_left}]"
-                                        list_minus0.append(s_minus0)
+                                        list_minus0.append(str_minus)
 
                                     s_plus: str = f"[{element_left},{element_right}]"
                                     #s_minus: str = f"[{element_right},{element_left}]"
@@ -152,7 +162,7 @@ def main():
 
                                 s_minus0: str = "-".join(list_minus0)
 
-                                s: str = f"{s_plus}={s_plus0}-{s_minus0}"
+                                s: str = f"{s_plus0}-{s_minus0}"
 
                                 print(f"{image}=M[idx({top}),idx({left})]={s}")
 
