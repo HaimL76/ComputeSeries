@@ -90,7 +90,7 @@ def main():
                     if s:
                         f.write(s)
 
-                f.write(f"print(f\"\\\\[N={{latex(N)}}\\\\]\")\n")
+                #TODO: TODO: TODO: f.write(f"print(f\"\\\\[N={{latex(N)}}\\\\]\")\n")
 
             list_strs_h: list[str] = create_h(n=n, d=d)
 
@@ -130,6 +130,8 @@ def main():
 
                                     list_idx: list[str] = []
 
+                                    f.write(f"{image}_a=1\n")
+
                                     for l in range(i0 + 1, j0):
                                         s_left: str = f"e_{i0}_{l}"
                                         s_right: str = f"e_{l}_{j0}"
@@ -144,6 +146,8 @@ def main():
 
                                         str_plus: str = f"M[idx({top_k}),idx({left_k})]*M[idx({top_k1}),idx({left_k1})]"
                                         str_minus: str = f"M[idx({top_k}),idx({left_k1})]*M[idx({top_k1}),idx({left_k})]"
+
+                                        f.write(f"{image}_a*=({str_plus}-{str_minus})\n")
 
                                         list_plus0.append(str_plus)
 
@@ -166,8 +170,8 @@ def main():
                                 s_b: str = f"M[idx({top}),idx({left})]"
 
                                 #print(f"{image}=M[idx({top}),idx({left})]={s}")
-                                print(f"{image}_a={s_a}")
-                                f.write(f"{image}_a={s_a}\n")
+                                #print(f"{image}_a={s_a}")
+                                #f.write(f"{image}_a={s_a}\n")
                                 f.write(f"print(f\"{image}_a={{{image}_a}}\")\n")
 
                                 print(f"{image}_b={s_b}")
