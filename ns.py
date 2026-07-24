@@ -110,30 +110,51 @@ def main():
                             for i0 in range(1, n - r0 + 1):
                                 j0: int = i0 + r0
 
-                                for k in range(i, j):
-                                    for r1 in range(1, n):
-                                        for i1 in range(1, n - r1 + 1):
-                                            j1: int = i1 + r1
+                                top: int = get_left(r, i)
+                                left: int = get_left(r0, i0)
 
-                                            list_es: list[str] = []
+                                image: str = f"M_e_{i}_{j}[e_{i0}_{j0}]"
 
-                                            for i2 in range(i1 + 1, j1):
-                                                diff1: int = i2 - i1
-                                                diff2: int = j1 - i2
+                                list_plus: list[str] = []
+                                #list_minus: list[str] = []
+                                
+                                list_plus0: list[str] = []
+                                list_minus0: list[str] = []
 
-                                                left1: int = get_left(diff1, i1)
-                                                left2: int = get_left(diff2, i2)
+                                for k in range(i, j - 1):
+                                    k1: int = k + 1
+                                    k2: int = k1 + 1
 
-                                                list_es.append(f"e_{i1}_{i2}_e_{i2}_{j1}=M_{left1}_{left2}")
+                                    element_left: str = f"e_{k}_{k1}"
+                                    element_right: str = f"e_{k1}_{k2}"
 
-                                            str_es: str = "+".join(list_es)
+                                    list_idx: list[str] = []
 
-                                            print(f"M_{k},{k + 1}[{i1},{j1}]={str_es}")
+                                    for l in range(i0 + 1, j0):
+                                        s_left: str = f"e_{i0}_{l}"
+                                        s_right: str = f"e_{l}_{j0}"
 
-                                    #for k0 in range(1, d1):
-                                     #   image: str = f"M_e_{i}_{j}_{i0}_{j0}"
-                                      #  f.write(f"{image}=M[idx({k}),idx({k0})]\n")
-                                       # f.write(f"print(f\"{image}={{{image}}}\")\n")
+                                        s_plus0: str = f"[{s_left},{s_right}]"
+                                        list_plus0.append(s_plus0)
+
+                                        s_minus0 = f"[{s_right},{s_left}]"
+                                        list_minus0.append(s_minus0)
+
+                                    s_plus: str = f"[{element_left},{element_right}]"
+                                    #s_minus: str = f"[{element_right},{element_left}]"
+
+                                    list_plus.append(s_plus)
+                                    #list_minus.append(s_minus)
+
+                                s_plus: str = "+".join(list_plus)
+
+                                s_plus0: str = "+".join(list_plus0)#s_minus: str = "-".join(list_minus)
+
+                                s_minus0: str = "-".join(list_minus0)
+
+                                s: str = f"{s_plus}={s_plus0}-{s_minus0}"
+
+                                print(f"{image}=M[idx({top}),idx({left})]={s}")
 
                 f.write(f"print_counter=0\n\n")
 
