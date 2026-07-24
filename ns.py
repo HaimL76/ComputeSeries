@@ -102,18 +102,18 @@ def main():
 
                 f.write(f"M=N*H\n")
 
-                for r in range(1, n):
+                for r in range(2, n):
                     for i in range(1, n - r + 1):
                         j: int = i + r
 
-                        for r0 in range(1, n):
+                        for r0 in range(2, n):
                             for i0 in range(1, n - r0 + 1):
                                 j0: int = i0 + r0
 
                                 top: int = get_left(r, i)
                                 left: int = get_left(r0, i0)
 
-                                image: str = f"M_e_{i}_{j}[e_{i0}_{j0}]"
+                                image: str = f"m_{i}_{j}_{i0}_{j0}"
 
                                 list_plus: list[str] = []
                                 #list_minus: list[str] = []
@@ -164,7 +164,10 @@ def main():
 
                                 s: str = f"{s_plus0}-{s_minus0}"
 
-                                print(f"{image}=M[idx({top}),idx({left})]={s}")
+                                #print(f"{image}=M[idx({top}),idx({left})]={s}")
+                                print(f"{image}={s}")
+                                f.write(f"{image}={s}\n")
+                                f.write(f"print(f\"{image}={{{image}}}\")\n")
 
                 f.write(f"print_counter=0\n\n")
 
