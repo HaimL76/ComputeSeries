@@ -5,7 +5,7 @@ lambda_symbol: str = "lambda"
 print_count: int = 20
 
 def main():
-    n: int = 5
+    n: int = 6
 
     d: int = int(n * (n - 1) / 2)
     d1: int = d + 1
@@ -69,7 +69,7 @@ def main():
             list_maps_c: tuple[str, list[str]] = "Nc", ["Nb", "Na"]
             list_maps_d: tuple[str, list[str]] = "N", ["Nc", "N_3_1", "N_4"]
 
-            list_maps: list[tuple[str, list[str]]] = [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
+            list_maps: list[tuple[str, list[str]]] = []# [list_maps_a, list_maps_b, list_maps_c, list_maps_d]
 
             if not (isinstance(list_maps, list) and len(list_maps) > 0) and isinstance(list_auts, list) and len(list_auts) > 0:
                 list_maps = [("N", list_auts)]
@@ -323,11 +323,13 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
             str2: str = f"m_{i1}_{j2}__{i}_{j}=M[idx({top0}),idx({left0})]"
 
             str3: str = f"diff_{i1}_{j2}__{i}_{j}=m_{i1}_{j1}_{i2}_{j2}__{i}_{j}-m_{i1}_{j2}__{i}_{j}"
+            str3a: str = f"diff_{i1}_{j2}__{i}_{j}_a=diff_{i1}_{j2}__{i}_{j}.simplify_full()"
 
             str1a: str = f"print(f\"m_{i1}_{j1}_{i2}_{j2}__{i}_{j}={{m_{i1}_{j1}_{i2}_{j2}__{i}_{j}}}\")"
             str2a: str = f"print(f\"m_{i1}_{j2}__{i}_{j}={{m_{i1}_{j2}__{i}_{j}}}\")"
 
             str4: str = f"print(f\"diff_{i1}_{j2}__{i}_{j}={{diff_{i1}_{j2}__{i}_{j}}}\")"
+            str4a: str = f"print(f\"diff_{i1}_{j2}__{i}_{j}_a={{diff_{i1}_{j2}__{i}_{j}_a}}\")"
 
             #print(str1)
             #print(str2)
@@ -339,9 +341,11 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
             list_strs.append(str1)
             list_strs.append(str2)
             list_strs.append(str3)
+            list_strs.append(str3a)
             list_strs.append(str1a)
             list_strs.append(str2a)
             list_strs.append(str4)
+            list_strs.append(str4a)
 
     return list_strs
 
