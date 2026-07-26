@@ -108,13 +108,20 @@ def main():
 
                         #print(f"e_{i,j}")
                         
-                        list_images: list[str] = multiply_element_images(n=n, i1=i, j1=i+1, i2=i+1, j2=j)
+                        list_images: list[str] = []
+
+                        for i0 in range(i + 1, j):
+                            print(f"e_{i}_{j}=[e_{i}_{i0},e_{i0}_{j}]")
+                            list_images0: list[str] = multiply_element_images(n=n, i1=i, j1=i0, i2=i0, j2=j)
+
+                            if list_images0:
+                                list_images += list_images0
 
                         if list_images:
                             for image in list_images:
                                 f.write(f"{image}\n")
 
-                for r in range(2, n):
+                for r in range(2, 2):#n):
                     for i in range(1, n - r + 1):
                         j: int = i + r
 
@@ -280,7 +287,7 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
         for i in range(1, n - r + 1):
             j: int = i + r
 
-            print(f"{r}, e_{i}_{j}")
+            #print(f"{r}, e_{i}_{j}")
 
             list_strs0: list[str] = []
 
@@ -292,10 +299,10 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
                 left1 = get_left(rr1, i)
                 left2 = get_left(rr2, i0)
 
-                print(f"m_{i1}_{j1}__{i}_{i0}=M[idx({top1}),idx({left1})]")
-                print(f"m_{i2}_{j2}__{i0}_{j}=M[idx({top2}),idx({left2})]")
-                print(f"m_{i1}_{j1}__{i0}_{j}=M[idx({top1}),idx({left2})]")
-                print(f"m_{i2}_{j2}__{i}_{i0}=M[idx({top2}),idx({left1})]")
+                #print(f"m_{i1}_{j1}__{i}_{i0}=M[idx({top1}),idx({left1})]")
+                #print(f"m_{i2}_{j2}__{i0}_{j}=M[idx({top2}),idx({left2})]")
+                #print(f"m_{i1}_{j1}__{i0}_{j}=M[idx({top1}),idx({left2})]")
+                #print(f"m_{i2}_{j2}__{i}_{i0}=M[idx({top2}),idx({left1})]")
 
                 #print(f"M_{top1,left1}, M_{top2,left2}")
 
@@ -322,12 +329,12 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
 
             str4: str = f"print(f\"diff_{i1}_{j2}__{i}_{j}={{diff_{i1}_{j2}__{i}_{j}}}\")"
 
-            print(str1)
-            print(str2)
-            print(str3)
-            print(str1a)
-            print(str2a)
-            print(str4)
+            #print(str1)
+            #print(str2)
+            #print(str3)
+            #print(str1a)
+            #print(str2a)
+            #print(str4)
 
             list_strs.append(str1)
             list_strs.append(str2)
