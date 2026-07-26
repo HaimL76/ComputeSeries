@@ -317,16 +317,23 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
 
             str3: str = f"diff_{i1}_{j2}__{i}_{j}=m_{i1}_{j1}_{i2}_{j2}__{i}_{j}-m_{i1}_{j2}__{i}_{j}"
 
-            str4: str = f"print(\"diff_{i1}_{j2}__{i}_{j}={{diff_{i1}_{j2}__{i}_{j}}}\")"
+            str1a: str = f"print(f\"m_{i1}_{j1}_{i2}_{j2}__{i}_{j}={{m_{i1}_{j1}_{i2}_{j2}__{i}_{j}}}\")"
+            str2a: str = f"print(f\"m_{i1}_{j2}__{i}_{j}={{m_{i1}_{j2}__{i}_{j}}}\")"
+
+            str4: str = f"print(f\"diff_{i1}_{j2}__{i}_{j}={{diff_{i1}_{j2}__{i}_{j}}}\")"
 
             print(str1)
             print(str2)
             print(str3)
+            print(str1a)
+            print(str2a)
             print(str4)
 
             list_strs.append(str1)
             list_strs.append(str2)
             list_strs.append(str3)
+            list_strs.append(str1a)
+            list_strs.append(str2a)
             list_strs.append(str4)
 
     return list_strs
