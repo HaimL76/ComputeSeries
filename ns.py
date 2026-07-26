@@ -295,7 +295,7 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
 
                 #print(f"M_{top1,left1}, M_{top2,left2}")
 
-                list_strs0.append(f"m_{i1}_{j1}__{i}_{i0}*m_{i2}_{j2}__{i0}_{j}-m_{i1}_{j1}__{i0}_{j}*m_{i2}_{j2}__{i}_{i0}")
+                list_strs0.append(f"M[idx({top1}),idx({left1})]*M[idx({top2}),idx({left2})]-M[idx({top1}),idx({left2})]*M[idx({top2}),idx({left1})]")
 
             str0: str = "+".join(list_strs0)
 
