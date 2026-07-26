@@ -103,8 +103,10 @@ def main():
                 f.write(f"M=N*H\n")
 
                 for r in range(2, n):
-                    for i in range(1, n - r):
+                    for i in range(1, n - r + 1):
                         j: int = i + r
+
+                        #print(f"e_{i,j}")
                         
                         multiply_element_images(n=n, i1=i, j1=i+1, i2=i+1, j2=j)
 
@@ -256,12 +258,40 @@ def main():
                         f.write(f"print(f\"A={{A}}\")\n")
 
 def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
+    r1: int = j1 - i1
+    r2: int = j2 - i2
+
+    top1: int = get_left(r1, i1)
+    top2: int = get_left(r2, i2)
+
+    print(f"[e_{i1,j1}], [e_{i2,j2}]")
+
+    #print(f"[e_{i1,j1}]=M_{top1}, [e_{i2,j2}]=M_{top2}")
+
+    list_strs: list[str] = []
+
     for r in range(2, n):
         for i in range(1, n - r + 1):
+            list_strs: list[str] = []
+
             j: int = i + r
 
+            #print(f"m_e_{i}_{j}=M_{top1,left1}, M_{top2,left2}")
+
             for i0 in range(i + 1, j):
-                print(f"{r}, [e_{i,i0},e_{i0,j}]")
+                #print(f"{r}, [e_{i,i0},e_{i0,j}]")
+                rr1: int = i0 - i
+                rr2: int = j - i0
+
+                left1 = get_left(rr1, i)
+                left2 = get_left(rr2, i0)
+
+                print(f"m_{i1}_{j1}_{i}_{i0}=M[{top1},{left1}]")
+                print(f"m_{i2}_{j2}_{i0}_{j}=M[{top2},{left2}]")
+                print(f"m_{i1}_{j1}_{i0}_{j}=M[{top1},{left2}]")
+                print(f"m_{i2}_{j2}_{i}_{i0}=M[{top2},{left1}]")
+
+                #print(f"M_{top1,left1}, M_{top2,left2}")
 
 def change_variables_right_block(n: int, d: int, aut: str):
     list_strs: list[str] = []
