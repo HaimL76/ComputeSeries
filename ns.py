@@ -276,6 +276,8 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
         for i in range(1, n - r + 1):
             j: int = i + r
 
+            print(f"{r}, e_{i}_{j}")
+
             list_strs0: list[str] = []
 
             for i0 in range(i + 1, j):
@@ -286,10 +288,10 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
                 left1 = get_left(rr1, i)
                 left2 = get_left(rr2, i0)
 
-                print(f"m_{i1}_{j1}__{i}_{i0}=M[{top1},{left1}]")
-                print(f"m_{i2}_{j2}__{i0}_{j}=M[{top2},{left2}]")
-                print(f"m_{i1}_{j1}__{i0}_{j}=M[{top1},{left2}]")
-                print(f"m_{i2}_{j2}__{i}_{i0}=M[{top2},{left1}]")
+                print(f"m_{i1}_{j1}__{i}_{i0}=M[idx({top1}),idx({left1})]")
+                print(f"m_{i2}_{j2}__{i0}_{j}=M[idx({top2}),idx({left2})]")
+                print(f"m_{i1}_{j1}__{i0}_{j}=M[idx({top1}),idx({left2})]")
+                print(f"m_{i2}_{j2}__{i}_{i0}=M[idx({top2}),idx({left1})]")
 
                 #print(f"M_{top1,left1}, M_{top2,left2}")
 
@@ -305,7 +307,7 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
 
             list_strs.append(str1)
 
-        return list_strs
+    return list_strs
 
 def change_variables_right_block(n: int, d: int, aut: str):
     list_strs: list[str] = []
