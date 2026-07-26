@@ -103,6 +103,12 @@ def main():
                 f.write(f"M=N*H\n")
 
                 for r in range(2, n):
+                    for i in range(1, n - r):
+                        j: int = i + r
+                        
+                        multiply_element_images(n=n, i1=i, j1=i+1, i2=i+1, j2=j)
+
+                for r in range(2, n):
                     for i in range(1, n - r + 1):
                         j: int = i + r
 
@@ -174,7 +180,7 @@ def main():
                                 #f.write(f"{image}_a={s_a}\n")
                                 f.write(f"print(f\"{image}_a={{{image}_a}}\")\n")
 
-                                print(f"{image}_b={s_b}")
+                                #print(f"{image}_b={s_b}")
                                 f.write(f"{image}_b={s_b}\n")
                                 f.write(f"print(f\"{image}_b={{{image}_b}}\")\n")
 
@@ -248,6 +254,14 @@ def main():
                     for k in range(4):
                         f.write(f"A=A*M\n")
                         f.write(f"print(f\"A={{A}}\")\n")
+
+def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
+    for r in range(2, n):
+        for i in range(1, n - r + 1):
+            j: int = i + r
+
+            for i0 in range(i + 1, j):
+                print(f"{r}, [e_{i,i0},e_{i0,j}]")
 
 def change_variables_right_block(n: int, d: int, aut: str):
     list_strs: list[str] = []
