@@ -108,7 +108,11 @@ def main():
 
                         #print(f"e_{i,j}")
                         
-                        multiply_element_images(n=n, i1=i, j1=i+1, i2=i+1, j2=j)
+                        list_images: list[str] = multiply_element_images(n=n, i1=i, j1=i+1, i2=i+1, j2=j)
+
+                        if list_images:
+                            for image in list_images:
+                                f.write(f"{image}\n")
 
                 for r in range(2, n):
                     for i in range(1, n - r + 1):
@@ -303,9 +307,27 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
 
             str1: str = f"m_{i1}_{j1}_{i2}_{j2}__{i}_{j}={str0}"
 
+            rr0: int = j2 - i1
+            rr1: int = j - i
+
+            top0: int = get_left(rr0, i1)
+            left0: int = get_left(rr1, i)
+
+            str2: str = f"m_{i1}_{j2}__{i}_{j}=M[idx({top0}),idx({left0})]"
+
+            str3: str = f"diff_{i1}_{j2}__{i}_{j}=m_{i1}_{j1}_{i2}_{j2}__{i}_{j}-m_{i1}_{j2}__{i}_{j}"
+
+            str4: str = f"print(\"diff_{i1}_{j2}__{i}_{j}={{diff_{i1}_{j2}__{i}_{j}}}\")"
+
             print(str1)
+            print(str2)
+            print(str3)
+            print(str4)
 
             list_strs.append(str1)
+            list_strs.append(str2)
+            list_strs.append(str3)
+            list_strs.append(str4)
 
     return list_strs
 
