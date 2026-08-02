@@ -121,82 +121,6 @@ def main():
                             for image in list_images:
                                 f.write(f"{image}\n")
 
-                for r in range(2, 2):#n):
-                    for i in range(1, n - r + 1):
-                        j: int = i + r
-
-                        for r0 in range(2, n):
-                            for i0 in range(1, n - r0 + 1):
-                                j0: int = i0 + r0
-
-                                top: int = get_left(r, i)
-                                left: int = get_left(r0, i0)
-
-                                image: str = f"m_{i}_{j}_{i0}_{j0}"
-
-                                list_plus: list[str] = []
-                                #list_minus: list[str] = []
-                                
-                                list_plus0: list[str] = []
-                                list_minus0: list[str] = []
-
-                                for k in range(i, j - 1):
-                                    k1: int = k + 1
-                                    k2: int = k1 + 1
-
-                                    element_left: str = f"e_{k}_{k1}"
-                                    element_right: str = f"e_{k1}_{k2}"
-
-                                    list_idx: list[str] = []
-
-                                    f.write(f"{image}_a=1\n")
-
-                                    for l in range(i0 + 1, j0):
-                                        s_left: str = f"e_{i0}_{l}"
-                                        s_right: str = f"e_{l}_{j0}"
-
-                                        top_k: int = get_left(1, k)
-                                        top_k1: int = get_left(1, k1)
-
-                                        left_k: int = get_left(l - i0, i0)
-                                        left_k1: int = get_left(j0 - l, l)
-
-                                        s_plus0: str = f"[{s_left},{s_right}]=M[idx({top_k}),idx({left_k})]*M[idx({top_k1}),idx({left_k1})]"
-
-                                        str_plus: str = f"M[idx({top_k}),idx({left_k})]*M[idx({top_k1}),idx({left_k1})]"
-                                        str_minus: str = f"M[idx({top_k}),idx({left_k1})]*M[idx({top_k1}),idx({left_k})]"
-
-                                        f.write(f"{image}_a*=({str_plus}-{str_minus})\n")
-
-                                        list_plus0.append(str_plus)
-
-                                        s_minus0 = f"[{s_right},{s_left}]"
-                                        list_minus0.append(str_minus)
-
-                                    s_plus: str = f"[{element_left},{element_right}]"
-                                    #s_minus: str = f"[{element_right},{element_left}]"
-
-                                    list_plus.append(s_plus)
-                                    #list_minus.append(s_minus)
-
-                                s_plus: str = "+".join(list_plus)
-
-                                s_plus0: str = "+".join(list_plus0)#s_minus: str = "-".join(list_minus)
-
-                                s_minus0: str = "-".join(list_minus0)
-
-                                s_a: str = f"{s_plus0}-{s_minus0}"
-                                s_b: str = f"M[idx({top}),idx({left})]"
-
-                                #print(f"{image}=M[idx({top}),idx({left})]={s}")
-                                #print(f"{image}_a={s_a}")
-                                #f.write(f"{image}_a={s_a}\n")
-                                f.write(f"print(f\"{image}_a={{{image}_a}}\")\n")
-
-                                #print(f"{image}_b={s_b}")
-                                f.write(f"{image}_b={s_b}\n")
-                                f.write(f"print(f\"{image}_b={{{image}_b}}\")\n")
-
                 f.write(f"print_counter=0\n\n")
 
                 d1: int = d + 1
@@ -207,6 +131,9 @@ def main():
                     #f.write(f"s=\"\"\n")
 
                     for j in range(1, d1):
+                        if i < n and j == d:
+                            continue
+
                         j1: int = j + 1
 
                         matrix_element: str = f"m_{i}_{j}"
@@ -227,46 +154,6 @@ def main():
 
                 f.write(f"if print_counter>0:\n")
                 f.write("\tprint(\"\\\\end{align*}\")\n\n")
-
-            if False:
-
-                d1: int = d + 1
-
-                f.write(f"for i in range(1, {d1}):\n")
-                f.write(f"\tfor j in range(1, {d1}):\n")
-                f.write(f"\t\tm=M[idx(i)][idx(j)]\n")
-                f.write(f"\t\tif m != 0:\n")
-                f.write(f"\t\t\tprint(f\"\\\\[m_{{{{{{i}},{{j}}}}}}={{latex(m)}}\\\\]\")\n")
-
-            return
-
-            j = 1
-
-            for r in range(1, n):
-                for i in range(1, n - r + 1):
-                    base_element: str = f"e_{i}_{i + r}"
-
-                    j1: int = j + 1
-
-                    f.write(f"{base_element}=M[idx({j}):idx({j1}),idx(1):idx({d1})]\n")
-
-                    j += 1
-
-            for r in range(1, n):
-                for i in range(1, n - r + 1):
-                    base_element: str = f"e_{i}_{i + r}"
-
-                    f.write(f"print(f\"{base_element}={{{base_element}}}\")\n")
-
-            for r in range(1, n):
-                for i in range(1, n - r + 1):
-                    base_element: str = f"e_{i}_{i + r}"
-
-                    f.write(f"A={base_element}\n")
-
-                    for k in range(4):
-                        f.write(f"A=A*M\n")
-                        f.write(f"print(f\"A={{A}}\")\n")
 
 def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
     d: dict = {}
