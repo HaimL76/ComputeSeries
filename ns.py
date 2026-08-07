@@ -90,7 +90,7 @@ def main():
                     if s:
                         f.write(s)
 
-                #TODO: TODO: TODO: f.write(f"print(f\"\\\\[N={{latex(N)}}\\\\]\")\n")
+                f.write(f"print(f\"\\\\[N={{latex(N)}}\\\\]\")\n")
 
             list_strs_h: list[str] = create_h(n=n, d=d)
 
@@ -101,6 +101,8 @@ def main():
                 f.write(f"print(f\"H=\\n{{H}}\")\n")
 
                 f.write(f"M=N*H\n")
+
+                f.write(f"print(f\"\\\\[M={{latex(M)}}\\\\]\")\n")
 
                 for r in range(2, n):
                     for i in range(1, n - r + 1):
