@@ -166,34 +166,20 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
     top1: int = get_left(r1, i1)
     top2: int = get_left(r2, i2)
 
-    #print(f"[e_{i1,j1}], [e_{i2,j2}]")
-
-    #print(f"[e_{i1,j1}]=M_{top1}, [e_{i2,j2}]=M_{top2}")
-
     list_strs: list[str] = []
 
     for r in range(2, n):
         for i in range(1, n - r + 1):
             j: int = i + r
 
-            #print(f"{r}, e_{i}_{j}")
-
             list_strs0: list[str] = []
 
             for i0 in range(i + 1, j):
-                #print(f"{r}, [e_{i,i0},e_{i0,j}]")
                 rr1: int = i0 - i
                 rr2: int = j - i0
 
                 left1 = get_left(rr1, i)
                 left2 = get_left(rr2, i0)
-
-                #print(f"m_{i1}_{j1}__{i}_{i0}=M[idx({top1}),idx({left1})]")
-                #print(f"m_{i2}_{j2}__{i0}_{j}=M[idx({top2}),idx({left2})]")
-                #print(f"m_{i1}_{j1}__{i0}_{j}=M[idx({top1}),idx({left2})]")
-                #print(f"m_{i2}_{j2}__{i}_{i0}=M[idx({top2}),idx({left1})]")
-
-                #print(f"M_{top1,left1}, M_{top2,left2}")
 
                 list_strs0.append(f"M[idx({top1}),idx({left1})]*M[idx({top2}),idx({left2})]-M[idx({top1}),idx({left2})]*M[idx({top2}),idx({left1})]")
 
@@ -201,7 +187,13 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
 
             list_strs += list_strs0
 
-            str1: str = f"m_{i1}_{j1}_{i2}_{j2}__{i}_{j}={str0}"
+            var_name: str = f"m_{i1}_{j1}_{i2}_{j2}__{i}_{j}"
+
+            str1: str = f"{var_name}={str0}"
+            str1b: str = f"print(f\"{var_name}={str0}\")"
+
+            list_strs.append(str1)
+            list_strs.append(str1b)
 
             rr0: int = j2 - i1
             rr1: int = j - i
@@ -209,7 +201,25 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
             top0: int = get_left(rr0, i1)
             left0: int = get_left(rr1, i)
 
-            str2: str = f"m_{i1}_{j2}__{i}_{j}=M[idx({top0}),idx({left0})]"
+            var_name: str = f"m_{i1}_{j2}__{i}_{j}"
+            str0: str = f"M[idx({top0}),idx({left0})]"
+
+            str2: str = f"{var_name}={str0}"
+            str2b: str = f"print(f\"{var_name}={str0}\")"
+
+            list_strs.append(str2)
+            list_strs.append(str2b)
+
+            var_name: str = f"diff_{i1}_{j2}__{i}_{j}"
+            var1: str = f"m_{i1}_{j1}_{i2}_{j2}__{i}_{j}"
+            var2: str = f"m_{i1}_{j2}__{i}_{j}"
+            diff: str = f"{var_name}={var1}-{var2}"
+            diff1: str = f"{var_name}={var_name}.simplify_full()"
+            diff2: str = f"print(f\"{var1}-{var2}={{{var_name}}}\")"
+
+            list_strs.append(diff)
+            list_strs.append(diff1)
+            list_strs.append(diff2)
 
             str3: str = f"diff_{i1}_{j2}__{i}_{j}=m_{i1}_{j1}_{i2}_{j2}__{i}_{j}-m_{i1}_{j2}__{i}_{j}"
             str3a: str = f"diff_{i1}_{j2}__{i}_{j}_a=diff_{i1}_{j2}__{i}_{j}.simplify_full()"
@@ -220,21 +230,16 @@ def multiply_element_images(n: int, i1: int, j1: int, i2: int, j2: int):
             str4: str = f"print(f\"diff_{i1}_{j2}__{i}_{j}={{diff_{i1}_{j2}__{i}_{j}}}\")"
             str4a: str = f"print(f\"diff_{i1}_{j2}__{i}_{j}_a={{diff_{i1}_{j2}__{i}_{j}_a}}\")"
 
-            #print(str1)
-            #print(str2)
-            #print(str3)
-            #print(str1a)
-            #print(str2a)
-            #print(str4)
-
-            list_strs.append(str1)
-            list_strs.append(str2)
-            list_strs.append(str3)
-            list_strs.append(str3a)
-            list_strs.append(str1a)
-            list_strs.append(str2a)
-            list_strs.append(str4)
-            list_strs.append(str4a)
+            #list_strs.append(str1)
+            #list_strs.append(str1b)
+            #list_strs.append(str2b)
+            #list_strs.append(str2)
+            #list_strs.append(str3)
+            #list_strs.append(str3a)
+            #list_strs.append(str1a)
+            #list_strs.append(str2a)
+            #list_strs.append(str4)
+            #list_strs.append(str4a)
 
     return list_strs
 
