@@ -156,50 +156,10 @@ Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\{\v
 By \ref{lem:multiplication-rule}, for every $1\leq{i}<j\leq{n}$ we have the following identity: 
 \begin{equation*}
 \begin{split}\varphi(e_{ij})=\varphi([e_i,[e_{i+1},[\dots[e_{n-2},e_{n-1}]\dots]]])=\\
-=[\varphi(e_i),[\varphi(e_{i+1}),[\dots[\varphi(e_{n-2}),\varphi(e_{n-1})]\dots]]]
+=[\varphi(e_i),[\varphi(e_{i+1}),[\dots[\varphi(e_{n-2}),\varphi(e_{n-1})]\dots]]].
 \end{split}
 \end{equation*}
 \end{proof}
-\subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
-Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$ with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
-\[
-\varphi=(m_{ij})=\begin{bmatrix}
-\varphi_1\\
-\varphi_2\\
-\vdots\\
-\varphi_{n-1}\\
-\varphi_{13}\\
-\vdots\\
-\varphi_{n-2,n}\\
-\vdots\\
-\varphi_{1n}\\
-\end{bmatrix}\\=\begin{bmatrix}
-m_{11}&m_{12}&\cdots&m_{1d}\\
-m_{21}&m_{22}&\cdots&m_{2d}\\
-\vdots\\
-m_{n-1,1}&m_{n-1,2}&\cdots&m_{n-1,d}\\
-m_{n1}&m_{n,2}&\cdots&m_{n,d}\\
-\vdots&\vdots&\vdots&\vdots\\
-\vdots&\vdots&\vdots&\vdots\\
-m_{d-1,1}&m_{d-1,2}&\cdots&m_{d-1,d}\\
-m_{d1}&m_{d2}&\cdots&m_{dd}\\
-\end{bmatrix}\\,\]
-where $\varphi_{ij}=\varphi(e_{ij})$.\\
-Note that by \ref{lem:derived-filtration}, the elements $\gamma_{k}\mathcal{L}_{n,p}$ where $1\leq{k}\leq{n}-1$ of the lower central series are characteristic sub-algebras, thus $M$ has the block-diagonal form
-\[M=\begin{bmatrix}
-M_{11} & M_{12} & \cdots &\cdots & M_{1,n-1}\\
-0 & M_{22} & \cdots &\cdots& M_{2,n-1}\\
-\vdots & \vdots & \vdots & \vdots&\vdots\\
-0 & 0 & \cdots & M_{n-2,n-2}&M_{n-2,n-1}\\
-0 & 0 & \cdots&0 & M_{n-1,n-1}\\
-\end{bmatrix}
-\]
-where each block $M_{ij}$ is an $(n-i)\times{(n-j)}$ matrix.\par
-Also note that $\begin{bmatrix}
-M_{11} & M_{12}\\
-0 & M_{22}\\
-\end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
-We give a full description of the $\mathcal{L}$-automorphisms in section $\ref{sec:aut-group}$.
 \section{Base Extension of $L$}
 We generalize this discussion to an arbitrary field $K$.
 Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X) : \{y\in{L} : [y,X]\subseteq{I}\}$.\\
@@ -303,15 +263,45 @@ Define $\psi:\text{Aut}_{\mathbb{Q}_p}(M)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\s
 But $J=\ker\psi$ consists of all the $d\times{d}$ matrices $M=(m_{ij})$ with only the block $n-1$, that is, only $m_{d,i}$ where $1\leq{i}\leq{n}-1$ are nonzero elements, and the natural map $z\mapsto{z}\otimes{1}$ enables the operation. Thus, unless stated otherwise, we shall denote $\mathcal{L}=\mathcal{L}\otimes_{\mathbb{Q}_p}K$ and $L=L\otimes_{\mathbb{Q}_p}\mathcal{O}_K$.
 We shall give this a more concrete form when we explain the computation for $\zeta_{L_{5,p}}^{\wedge}(s)$.
 \section{The Group of Automorphisms}
-\label{sec:aut-group}
-\subsection{The General Form of the $\mathcal{L}$-automorphisms}
-\subsubsection{The Matrix Structure}
-Let $\varphi\in\text{Aut}_{K}(\mathcal{L})$, then $\varphi$ is an $d\times{d}$ matrix $A=(a_{ij})\in{M}_d(K)$, where the row $\begin{bmatrix}
-    a_{i,1}&a_{i,2}&\dots&a_{i,d}
-\end{bmatrix}$
-is the image $\varphi(b_i)$ of the $i$th basis element with respect to the natural order $e_1,e_2,\dots,e_{n-1},e_{13},e_{24},\dots,e_{n-2,n},e_{14},\dots,e_{1n}$.\\
-The matrix $A$ is partitioned into $(n-1)\times(n-1)$ blocks, each block $A_{ij}$ is an $(n-i)\times(n-j)$ matrix, forming the map $\varphi_{ij}:\sfrac{\gamma_i}{\gamma_{i+1}}\rightarrow\sfrac{\gamma_j}{\gamma_{j+1}}$.
-
+\subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
+Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$ with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
+\[
+\varphi=(m_{ij})=\begin{bmatrix}
+\varphi_1\\
+\varphi_2\\
+\vdots\\
+\varphi_{n-1}\\
+\varphi_{13}\\
+\vdots\\
+\varphi_{n-2,n}\\
+\vdots\\
+\varphi_{1n}\\
+\end{bmatrix}\\=\begin{bmatrix}
+m_{11}&m_{12}&\cdots&m_{1d}\\
+m_{21}&m_{22}&\cdots&m_{2d}\\
+\vdots\\
+m_{n-1,1}&m_{n-1,2}&\cdots&m_{n-1,d}\\
+m_{n1}&m_{n,2}&\cdots&m_{n,d}\\
+\vdots&\vdots&\vdots&\vdots\\
+\vdots&\vdots&\vdots&\vdots\\
+m_{d-1,1}&m_{d-1,2}&\cdots&m_{d-1,d}\\
+m_{d1}&m_{d2}&\cdots&m_{dd}\\
+\end{bmatrix}\\,\]
+where $\varphi_{ij}=\varphi(e_{ij})$.\\
+Note that by \ref{lem:derived-filtration}, the elements $\gamma_{k}\mathcal{L}_{n,p}$ where $1\leq{k}\leq{n}-1$ of the lower central series are characteristic sub-algebras, thus $M$ has the block-diagonal form
+\[M=\begin{bmatrix}
+M_{11} & M_{12} & \cdots &\cdots & M_{1,n-1}\\
+0 & M_{22} & \cdots &\cdots& M_{2,n-1}\\
+\vdots & \vdots & \vdots & \vdots&\vdots\\
+0 & 0 & \cdots & M_{n-2,n-2}&M_{n-2,n-1}\\
+0 & 0 & \cdots&0 & M_{n-1,n-1}\\
+\end{bmatrix}
+\]
+where each block $M_{ij}$ is an $(n-i)\times{(n-j)}$ matrix.\par
+Also note that $\begin{bmatrix}
+M_{11} & M_{12}\\
+0 & M_{22}\\
+\end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
 \subsubsection{The Diagonal of $\varphi$}
 As explained above, we are working with $G_n^0(K)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
 Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\in{K}$, for every $1\leq{i}\leq{n-1}$.
