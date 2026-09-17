@@ -194,6 +194,7 @@ Also note that $\begin{bmatrix}
 M_{11} & M_{12}\\
 0 & M_{22}\\
 \end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
+We give a full description of the $\mathcal{L}$-automorphisms in section $\ref{sec:aut-group}$.
 \section{Base Extension of $L$}
 We generalize this discussion to an arbitrary field $K$.
 Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X) : \{y\in{L} : [y,X]\subseteq{I}\}$.\\
@@ -290,13 +291,14 @@ For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and
 [b_{ki}e_{ki},d_ie_{i,i+1}]&=0.\\ [b_{i+1,l}e_{i+1,l},d_ie_{i,i+1}]&=0.\\
 \end{flalign*}
 But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{i+1}\}$, then any $z\in{C}_L(B)$ must have $d_{lh}=0$ for all $1\leq{l}<h\leq{n}$, unless $(l,h)=(i,i+1)$, but then $z=d_ie_{i,i+1}=ca_ie_{i,i+1}=cx$ for some $c=\frac{d_i}{a_i}\in{K}$, and all the computation above is up to the center $Z(L)$, hence $z\in{K}x+Z(L
-)$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that $L$ is rigid.
+)$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that $\mathcal{L}$ is rigid.
 \subsection{Rigidity and Base Extension}
 Denote by $L=\mathcal{L}_{n,p}$ our $\mathbb{Q}_p$-algebra, and denote by $\mathcal{O}=\mathcal{O}_K$, and denote by $M=L\otimes\mathcal{O}_K$ the tensor product extending $L$ with scalars from $\mathcal{O}_K$, and denote by $N=Z\otimes\mathcal{O}_K$ where $Z=Z(L)$ is the center of $L$, then the rigidity of $L$ shown above implies the following (see \cite[\S{3.7}]{BermanGlazerSchein}):\\
 Define $\psi:\text{Aut}_{\mathbb{Q}_p}(M)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{M}{N})$, and denote by $J=\ker\psi$, then $\text{Aut}_{\mathbb{Q}_p}(M)=(J\cdot\text{Aut}_{\mathcal{O}_K}(M))\rtimes\text{Aut}_{\mathbb{Q}_p}(\mathcal{O}_K)$. This decomposition shows that instead of constructing a $\mathbb{Q}_p$-linear $M$-automorphism where $\dim{L}\otimes_{\mathbb{Q}_p}\mathcal{O}_K=(n-1)\times{d}_K$, we construct first an $\mathcal{O}_K$-linear $M$-automorphism where $\dim{L}\otimes_{\mathcal{O}_K}\mathcal{O}_K=n-1$, and we take its product with $J$, as both $\text{Aut}_{\mathcal{O}_K}(M)$ and $J$ contain $d\times{d}$ elements operating on the same basis.
 But $J=\ker\psi$ consists of all the $d\times{d}$ matrices $M=(m_{ij})$ with only the block $n-1$, that is, only $m_{d,i}$ where $1\leq{i}\leq{n}-1$ are nonzero elements, and the natural map $z\mapsto{z}\otimes{1}$ enables the operation. Thus, unless stated otherwise, we shall denote $\mathcal{L}=\mathcal{L}\otimes_{\mathbb{Q}_p}K$ and $L=L\otimes_{\mathbb{Q}_p}\mathcal{O}_K$.
 We shall give this a more concrete form when we explain the computation for $\zeta_{L_{5,p}}^{\wedge}(s)$.
 \section{The Group of Automorphisms}
+\label{sec:aut-group}
 \subsection{The General Form of the $\mathcal{L}$-automorphisms}
 \subsubsection{The Matrix Structure}
 Let $\varphi\in\text{Aut}_{K}(\mathcal{L})$, then $\varphi$ is an $d\times{d}$ matrix $A=(a_{ij})\in{M}_d(K)$, where the row $\begin{bmatrix}
