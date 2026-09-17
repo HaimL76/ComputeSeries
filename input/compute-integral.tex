@@ -79,7 +79,7 @@ Let $G$ be a $\mathcal{T}$-group, i.e. finitely-generated, nilpotent and torsion
 \end{proposition}
 Here again, similar properties apply also for general and normal subgroups.
 \begin{definition}
-We say that $\zeta_{L,p}^{\wedge}$ is a \textbf{finitely uniform} zeta function, if there is a finite set of rational functions $W_{1}^{\wedge}(X,Y),\dots,W_{r}^{\wedge}(X,Y)\in\mathbb{Q}(X,Y)$, such that for every $p$, there is some $1\leq{i}\leq{r}$ for which $\zeta_{G,p}^{\wedge}(s)=W_{i}^{\wedge}(p,p^{-s})$. When $r=1$ we say that $\zeta_{L,p}^{\wedge}$ is \textbf{uniform}.
+We say that $\zeta_{G,p}^{\wedge}$ is a \textbf{finitely uniform} zeta function, if there is a finite set of rational functions $W_{1}^{\wedge}(X,Y),\dots,W_{r}^{\wedge}(X,Y)\in\mathbb{Q}(X,Y)$, such that for every $p$, there is some $1\leq{i}\leq{r}$ for which $\zeta_{G,p}^{\wedge}(s)=W_{i}^{\wedge}(p,p^{-s})$. When $r=1$ we say that $\zeta_{G,p}^{\wedge}$ is \textbf{uniform}.
 \end{definition}
 
 \begin{definition}
@@ -123,24 +123,19 @@ Let $U_n(R)$ be the group of $n\times{n}$ upper unitriangular matrices over $R$.
 \end{remark}
 \begin{lemma}
 \label{lem:multiplication-rule}
-The standard Lie brackets operation on $L_n$ gives the following multiplication rule:
-$[e_{ij},e_{kl}]=\begin{cases}
+The standard Lie brackets operation on basis elements of $\mathcal{L}_n$ gives the following multiplication rule:
+\[[e_{ij},e_{kl}]=\begin{cases}
 e_{il},&j=k\\
 -e_{kj},&i=l\\
 0,&\text{otherwise}\\
-\end{cases}$
+\end{cases}\]
 \end{lemma}
 \begin{proof}
-Suppose that $j=k\implies{i<l}$, then $e_{ij}e_{jl}=e_{il}$ but $e_{jl}e_{ij}=0$, thus $[e_{ij},e_{jl}]=e_{il}$, the rest may be checked in a similar way.
+Suppose that $j=k\implies{i<l}$, then $e_{ij}e_{jl}=e_{il}$ but $e_{jl}e_{ij}=0$, thus $[e_{ij},e_{jl}]=e_{il}$, the rest may be verified in a similar way.
 \end{proof}
-Every $L$-automorphism $\varphi$ must comply to this rule, thus our computation of the $L$-automorphism group is essentially based on the identity $[\varphi(e_{ij}),\varphi(e_{kl})]\in\{\varphi(e_{il}),-\varphi(e_{kj}),0\}$ that is implied by it.
+Every $\mathcal{L}$-automorphism $\varphi$ must comply to this rule, thus our computation of the $\mathcal{L}$-automorphism group is essentially based on the identity $[\varphi(e_{ij}),\varphi(e_{kl})]\in\{\varphi(e_{il}),-\varphi(e_{kj}),0\}$ that is implied by it.
 \subsection{The $\mathcal{L}$-automorphisms}
 We hereby present a set of lemmas that explain the structure of $\mathcal{L}$-automorphisms, prior to the detailed discussion on them.
-\begin{lemma}
-\label{lem:diff-1-images}
-Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi(\mathcal{L})$ is generated as a Lie algebra by $\varphi(\sfrac{\mathcal{L}}{\gamma_2})$. 
-This is an immediate result of \ref{lem:multiplication-rule}.
-\end{lemma}
 \begin{lemma}
 \label{lem:derived-filtration}
 Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is preserving the lower central series structure of $\mathcal{L}$, that is, $\varphi(\gamma_k\mathcal{L})=\gamma_k\mathcal{L}$ for every $1\leq{k}\leq{n}-1$.
@@ -152,6 +147,13 @@ and then
 \varphi(x)=\sum_{r=k}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}\varphi(e_{i,i+r})
 ,\]
 but $e_{i,i+r}=[e_{i,i+k-1},e_{i+k-1,i+r}]$ by \ref{lem:multiplication-rule}, thus $\varphi(a_{i,i+r}e_{i,i+r})=a_{i,i+r}[\varphi(e_{i,i+k-1}),\varphi(e_{i+k-1,i+r})]$, and by the assumption $\varphi(e_{i,i+k-1})\in\gamma_{k-1}\mathcal{L}$, thus $\varphi(e_{i,i+r})\in[\gamma_{k-1}\mathcal{L},\mathcal{L}]=\gamma_k\mathcal{L}$, which holds for every $k\leq{r}\leq{n-1}$, thus it holds for $\varphi(x)$ being a linear combination of $\varphi(e_{i,i+r})$, and since $\varphi$ is an automorphism, it hold also for the inverse $\varphi^{-1}$.
+\end{proof}
+\begin{lemma}
+\label{lem:diff-1-images}
+Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\{\varphi(e_i) : 1\leq{i}\leq{n}-1\}$ determines $\varphi(\mathcal{L})$. 
+\end{lemma}
+\begin{proof}
+We define $\varphi_i:\sfrac{\mathcal{L}}{\gamma_i}\rightarrow\sfrac{\mathcal{L}}{\gamma_i}$ by $\varphi_i(x+\gamma_i\mathcal{L}):=\varphi(x)+\varphi(\gamma_i\mathcal{L})$, and since $\varphi(\gamma_i\mathcal{L})=\gamma_i\mathcal{L}$ by \ref{lem:derived-filtration}, then $\varphi_i$ is well defined on equivalence classes modulo $\gamma_i\mathcal{L}$, and for $i=2$ these are exactly $\{e_i : 1\leq{i}\leq{n-1}\}$. But since $\varphi(e_{ij})=[\varphi(e_i),[\varphi(e_{i+1}),[\dots[\varphi(e_{n-2}),\varphi(e_{n-1})]\dots]]]$
 \end{proof}
 \subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
 Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$ with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
@@ -178,12 +180,13 @@ m_{d-1,1}&m_{d-1,2}&\cdots&m_{d-1,d}\\
 m_{d1}&m_{d2}&\cdots&m_{dd}\\
 \end{bmatrix}\\,\]
 where $\varphi_{ij}=\varphi(e_{ij})$.\\
-Note that elements $\gamma_{k}\mathcal{L}_{n,p}$ where $1\leq{k}\leq{n}-1$ of the lower central series are characteristic subalgebras, $M$ has the block-diagonal form
+Note that by \ref{lem:derived-filtration}, the elements $\gamma_{k}\mathcal{L}_{n,p}$ where $1\leq{k}\leq{n}-1$ of the lower central series are characteristic sub-algebras, thus $M$ has the block-diagonal form
 \[M=\begin{bmatrix}
-M_{11} & M_{12} & \cdots & M_{1,n-1}\\
-M_{21} & M_{22} & \cdots & M_{2,n-1}\\
-\vdots & \vdots & \vdots & \vdots\\
-M_{n-1,1} & M_{n-1,2} & \cdots & M_{n-1,n-1}\\
+M_{11} & M_{12} & \cdots &\cdots & M_{1,n-1}\\
+0 & M_{22} & \cdots &\cdots& M_{2,n-1}\\
+\vdots & \vdots & \vdots & \vdots&\vdots\\
+0 & 0 & \cdots & M_{n-2,n-2}&M_{n-2,n-1}\\
+0 & 0 & \cdots&0 & M_{n-1,n-1}\\
 \end{bmatrix}
 \]
 where each block $M_{ij}$ is an $(n-i)\times{(n-j)}$ matrix.\par
@@ -1081,6 +1084,8 @@ zeta functions of groups, J. Eur. Math. Soc. (JEMS)
 \bibitem{LubotzkySegal}
 A. Lubotzky and D. Segal, Subgroup growth, Progress in Mathematics, vol. 212,
  Birkhäuser Verlag, Basel, 2003.
+
+\bibitem{MontgomeryVaughan} H. L. Montgomery and R. C. Vaughan, Multiplicative Number Theory I. Classical Theory, Cambridge Studies in Advanced Mathematics 97.
 
 \bibitem{Nachbin}
 L. Nachbin, The Haar Integral. D. Van Nostrand, 1965.
