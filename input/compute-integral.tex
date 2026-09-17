@@ -190,13 +190,14 @@ M_{11} & M_{12} & \cdots &\cdots & M_{1,n-1}\\
 \end{bmatrix}
 \]
 where each block $M_{ij}$ is an $(n-i)\times{(n-j)}$ matrix.\par
-Note that $\begin{bmatrix}
+Also note that $\begin{bmatrix}
 M_{11} & M_{12}\\
 0 & M_{22}\\
-\end{bmatrix}$ gives an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
+\end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
 \section{Base Extension of $L$}
+We generalize this discussion to an arbitrary field $K$.
 Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X) : \{y\in{L} : [y,X]\subseteq{I}\}$.\\
-Denote by $L=\mathcal{L}_{n,p}$ our usual algebra over $K$.\\
+Denote by $L=\mathcal{L}_{n,p}$ our usual algebra over $K$, that is $\mathcal{L}:=\langle{e}_{ij} : 1\leq{i}<j\leq{n}\rangle$ with scalars in $K$.\\
 \subsection{The $\mathcal{X}$ criterion}
 Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Kx+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
 Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
