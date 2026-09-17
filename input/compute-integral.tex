@@ -153,7 +153,12 @@ but $e_{i,i+r}=[e_{i,i+k-1},e_{i+k-1,i+r}]$ by \ref{lem:multiplication-rule}, th
 Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\{\varphi(e_i) : 1\leq{i}\leq{n}-1\}$ determines $\varphi(\mathcal{L})$. 
 \end{lemma}
 \begin{proof}
-We define $\varphi_i:\sfrac{\mathcal{L}}{\gamma_i}\rightarrow\sfrac{\mathcal{L}}{\gamma_i}$ by $\varphi_i(x+\gamma_i\mathcal{L}):=\varphi(x)+\varphi(\gamma_i\mathcal{L})$, and since $\varphi(\gamma_i\mathcal{L})=\gamma_i\mathcal{L}$ by \ref{lem:derived-filtration}, then $\varphi_i$ is well defined on equivalence classes modulo $\gamma_i\mathcal{L}$, and for $i=2$ these are exactly $\{e_i : 1\leq{i}\leq{n-1}\}$. But since $\varphi(e_{ij})=[\varphi(e_i),[\varphi(e_{i+1}),[\dots[\varphi(e_{n-2}),\varphi(e_{n-1})]\dots]]]$
+By \ref{lem:multiplication-rule}, for every $1\leq{i}<j\leq{n}$ we have the following identity: 
+\begin{equation*}
+\begin{split}\varphi(e_{ij})=\varphi([e_i,[e_{i+1},[\dots[e_{n-2},e_{n-1}]\dots]]])=\\
+=[\varphi(e_i),[\varphi(e_{i+1}),[\dots[\varphi(e_{n-2}),\varphi(e_{n-1})]\dots]]]
+\end{split}
+\end{equation*}
 \end{proof}
 \subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
 Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$ with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
