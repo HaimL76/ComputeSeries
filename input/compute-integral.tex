@@ -160,7 +160,7 @@ By \ref{lem:multiplication-rule}, for every $1\leq{i}<j\leq{n}$ we have the foll
 \end{proof}
 \section{Base Extension of $L$}
 We generalize this discussion to an arbitrary field $K$.
-Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X) : \{y\in{L} : [y,X]\subseteq{I}\}$.\\
+Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):=\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X):=\{y\in{L} : [y,X]\subseteq{I}\}$.\\
 Denote by $L=\mathcal{L}_{n,p}$ our usual algebra over $K$, that is $\mathcal{L}:=\langle{e}_{ij} : 1\leq{i}<j\leq{n}\rangle$ with scalars in $K$.\\
 \subsection{The $\mathcal{X}$ criterion}
 Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Kx+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
@@ -262,7 +262,7 @@ But $J=\ker\psi$ consists of all the $d\times{d}$ matrices $M=(m_{ij})$ with onl
 We shall give this a more concrete form when we explain the computation for $\zeta_{L_{5,p}}^{\wedge}(s)$.
 \section{The Group of Automorphisms}
 \subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
-Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$ with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
+Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$, where $d=\binom{n}{2}$, with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
 \[
 \varphi=(m_{ij})=\begin{bmatrix}
 \varphi_{12}\\
@@ -286,7 +286,7 @@ m_{d-1,1}&m_{d-1,2}&\cdots&m_{d-1,d}\\
 m_{d1}&m_{d2}&\cdots&m_{dd}\\
 \end{bmatrix}\\,\]
 where $\varphi_{ij}=\varphi(e_{ij})$.\\
-Note that by \ref{lem:derived-filtration}, the elements $\gamma_{k}\mathcal{L}_{n,p}$ where $1\leq{k}\leq{n}-1$ of the lower central series are characteristic sub-algebras, thus $M$ has the block-diagonal form
+Note that by \ref{lem:derived-filtration}, the elements $\gamma_{k}\mathcal{L}_{n,p}$, where $1\leq{k}\leq{n}-1$, of the lower central series are characteristic sub-algebras, thus $M$ has the block-diagonal form
 \[M=\begin{bmatrix}
 M_{11} & M_{12} & \cdots &\cdots & M_{1,n-1}\\
 0 & M_{22} & \cdots &\cdots& M_{2,n-1}\\
@@ -300,12 +300,27 @@ Also note that $\begin{bmatrix}
 M_{11} & M_{12}\\
 0 & M_{22}\\
 \end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
+\subsection{The subgroup $G_n^0(K)$}
+Define $\eta\in{G_{n}(K)}$ by $\eta(e_{ij}):=(-1)^{j-i-1}e_{n+1-j,n+1-i}$, for $1\leq{i}<{j}\leq{n}$. Replacing $\varphi$ by $\varphi\eta$ if necessary, we may assume without loss of generality that $M_{11}$ is diagonal, because:
+\begin{lemma}
+The map $\eta$ is indeed in $G_n(K)$, that is, it is a $\mathcal{L}$-automorphism which complies with the multiplication rule of $\mathcal{L}$.
+\end{lemma}
+\begin{proof}
+For every $1\leq{i}<j\leq{n}$, we have by \ref{lem:multiplication-rule}:
+\begin{align*}\eta(e_{ij})=\\
+=&(-1)^{j-i-1}e_{n+1-j,n+1-i}\\
+=&(-1)^{j-i+1-1-1}e_{n+1-j,n+1-(i+1)+1}\\=&(-1)^{j-(i+1)-1}(-1)[e_{n+1-j,n-i},e_{n-i,n+1-(i+1)+1}]\\
+=&-[(-1)^{j-(i+1)-1}e_{n+1-j,n+1-(i+1)},e_{n+1-(i+1),n-i+1}]\\
+=&[e_{n+1-(i+1),n+1-i},(-1)^{j-(i+1)-1}e_{n+1-j,n+1-(i+1)}]\\
+=&[\eta(e_i),\eta(e_{i+1,j}).]
+\end{align*}
+\end{proof}
+. Indeed, let $G_{n}^{0}(K)<{G_{n}(K)}$ be the subgroup of automorphisms with diagonal block $M_{11}$, then $G_{n}(K)=G_{n}^{0}(\mathbb{Q}_{p})\coprod{G_{n}(\mathbb{Q}_{p})}\eta$, and as in \cite[Proposition 2.1]{DuSautoyLubotzky} we may replace the domain of integration in \eqref{eq:p-adic.integral} by $G_{n}^{0}(\mathbb{Q}_{p})\cap{G_{n}^{+}(\mathbb{Q}_{p})}$ after a suitable renormalization of the Haar measure. We proceed to determine $G_{n}^{0}(\mathbb{Q}_{p})$.
 \subsubsection{The Diagonal of $\varphi$}
-As explained above, we are working with $G_n^0(K)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms. We partition $M$ into $(n-1)\times(n-1)$ blocks, each block $M_{kl}$ is a restriction of 
-Denote $\varphi(e_i)=\lambda_i{e}_i+\gamma_2\mathcal{L}$, where $\lambda_i\in{K}$, for every $1\leq{i}\leq{n-1}$.
-\begin{proposition}
-For every $1\leq{i}<j\leq{n}$, $\varphi$ must satisfy $\varphi(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$, where $d=j-i$.
-\end{proposition}
+As explained above, we are working with $G_n^0(K)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms.
+\begin{lemma}
+For every $1\leq{i}<j\leq{n}$, an $\mathcal{L}$-automorphism $\varphi$ must satisfy $\varphi(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$, where $d=j-i$.
+\end{lemma}
 \begin{proof}
 $\varphi(e_{ij})=\varphi([e_{i},[e_{i+1},[\cdots[e_{j-1},e_j]]]])=[\varphi(e_i),[\varphi(e_{i+1}),[\cdots,[\varphi(e_{j-1}),\varphi(e_j)]]]]=[\lambda_i{e}_i+\gamma_2\mathcal{L},[\lambda_{i+1}e_{i+1}+\gamma_2\mathcal{L},[\cdots,[\lambda_{j-1}e_{j-1}+\gamma_2\mathcal{L},\lambda_j{e}_j+\gamma_2\mathcal{L}]]]]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$.
 \end{proof}
