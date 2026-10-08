@@ -308,19 +308,33 @@ For every $x\in{B}$, the dimension of the centralizer $C(x)$ is invariant under 
 \end{lemma}
 \begin{proof}
 We observe that $C(x)$ is a sub $\mathcal{L}$-algebra, because, for every $y,z\in{C}(x)$ we have 
-$[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$, and the rest is following.
+$[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$, and the rest is following from this.
 \end{proof}
 \begin{lemma}
-Let $e_{ij},e_{kl}\in{B}$ be basis elements of $\mathcal{L}$, then $\dim{C}(e_{ij}+e_{kl})\leq\dim{C}(e_{ij})\cap\dim{C}(e_{kl})$.
+Let $x\in\{e_1,e_2,\dots,e_{n-1}\}$, then $\dim{C}(x+y)\leq\dim{C}(x)$, for any $y\in\mathcal{L}$.
 \end{lemma}
 \begin{proof}
-Let $e_{gh}\in{C}(e_{ij}+e_{kl})\cap{B}$, that is, $[e_{gh},e_{ij}+e_{kl}]=[e_{gh},e_{ij}]+[e_{gh},e_{kl}]=0$, which means that either $[e_{gh},e_{ij}]=[e_{gh},e_{kl}]=0\implies{e}_{gh}\in{C}(e_{ij})\cap{C}(e_{kl})$, or $[e_{gh},e_{ij}]=-[e_{gh},e_{kl}]=[e_{kl},e_{gh}]$, but then $k=g$ and $l=h$, which means that $[e_{gh},e_{kl}]=[e_{gh},e_{gh}]=0$, but then $[e_{gh},e_{ij}]=[e_{gh},e_{kl}]=0$ again, but all this means that $e_{gh}\in{C}(e_{ij})\cap{C}(e_{kl})$.
+It is sufficient to show that $C(x+y)\subseteq{C}(x)$. Let $z\in{C}(x+y)$, that is $[z,x+y]=[z,x]+[z,y]=0$.
+We assume $n=3$ (that is the $\mathcal{L}$-algebra coming from the Heisenberg Group), we choose $x=e_1$ and we denote 
+\begin{align*}y&=a_1e_1+a_2e_2+a_3e_{13}\\ 
+z&=b_1e_1+b_2e_2+b_3e_{13},\\ 
+\end{align*}
+for some $a,b\in{K}$, then 
+\begin{align*}
+[z,x+y]&=\\
+&=[b_1e_1+b_2e_2+b_3e_{13},(1+a_1)e_1+a_2e_2+a_3e_{13}]\\
+&=b_1a_2[e_1,e_2]-b_2(1+a_1)[e_1,e_2]\\
+&=[b_1a_2-b_2(1+a_1)]e_{13}=0\\
+\end{align*}
+$\implies{b}_1a_2=b_2(1+a_1)$
 \end{proof}
-\begin{lemma}
-Let $x=e_1$ or $x=e_{n-1}$, then $\varphi(x)\in\{e_1,e_{n-1}\}$.
-\end{lemma}
+\begin{corollary}
+Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in\{e_1,e_{n-1}\}$.
+\end{corollary}
 \begin{proof}
-Without loss of generality, let $x=e_1$, then the only basis elements that do not commute with $e_1$ are $e_{2,2_r}$ for every $1\leq{r}\leq{n-2}$
+Let $y=e_1$, then the only basis elements $z\in{B}$ such that $[z,y]\neq0$ are $e_{2,2+r}$ for all $1\leq{r}\leq{n-2}$.
+Now let $y=e_{n-1}$, then the only basis elements that do not commute with $y$ are $e_{n-1-r,n-1}$ for the same range of $r$, which implies that $\dim{C}(e_1)=\dim{C}(e_{n-1})=\dim\mathcal{L}-(n-2)$.
+Now let $y=e_i$ for any $1<i<n-1$, then then only basis elements that do not commute with $y$ are $e_{i-r,i}$ for all $1\leq{r}\leq{i-1}$ and $e_{i+1,i+1+k}$ for all $1\leq{k}\leq{n-i-1}$, then $\dim{C}(y)=\dim\mathcal{L}-(n-i-1+i+1)=\dim\mathcal{L}-(n-i-1+i+1)$
 \end{proof}
 \subsection{The subgroup $G_n^0(K)$}
 On the set $B_1$ we define the bijection $e_i\overset{\eta}{\longleftrightarrow}e_{n-i}$, and we claim that: 
