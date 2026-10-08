@@ -301,6 +301,27 @@ Also note that $\begin{bmatrix}
 M_{11} & M_{12}\\
 0 & M_{22}\\
 \end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
+\subsection{The general form of $G_n(K)$}
+\begin{lemma}
+Denote $C=C_{\mathcal{L}}$.
+For every $x\in{B}$, the dimension of the centralizer $C(x)$ is invariant under automorphism, that is, $\dim{C(\varphi(x))}=\dim{C}(x)$.
+\end{lemma}
+\begin{proof}
+We observe that $C(x)$ is a sub $\mathcal{L}$-algebra, because, for every $y,z\in{C}(x)$ we have 
+$[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$, and the rest is following.
+\end{proof}
+\begin{lemma}
+Let $e_{ij},e_{kl}\in{B}$ be basis elements of $\mathcal{L}$, then $\dim{C}(e_{ij}+e_{kl})\leq\dim{C}(e_{ij})\cap\dim{C}(e_{kl})$.
+\end{lemma}
+\begin{proof}
+Let $e_{gh}\in{C}(e_{ij}+e_{kl})\cap{B}$, that is, $[e_{gh},e_{ij}+e_{kl}]=[e_{gh},e_{ij}]+[e_{gh},e_{kl}]=0$, which means that either $[e_{gh},e_{ij}]=[e_{gh},e_{kl}]=0\implies{e}_{gh}\in{C}(e_{ij})\cap{C}(e_{kl})$, or $[e_{gh},e_{ij}]=-[e_{gh},e_{kl}]=[e_{kl},e_{gh}]$, but then $k=g$ and $l=h$, which means that $[e_{gh},e_{kl}]=[e_{gh},e_{gh}]=0$, but then $[e_{gh},e_{ij}]=[e_{gh},e_{kl}]=0$ again, but all this means that $e_{gh}\in{C}(e_{ij})\cap{C}(e_{kl})$.
+\end{proof}
+\begin{lemma}
+Let $x=e_1$ or $x=e_{n-1}$, then $\varphi(x)\in\{e_1,e_{n-1}\}$.
+\end{lemma}
+\begin{proof}
+Without loss of generality, let $x=e_1$, then the only basis elements that do not commute with $e_1$ are $e_{2,2_r}$ for every $1\leq{r}\leq{n-2}$
+\end{proof}
 \subsection{The subgroup $G_n^0(K)$}
 On the set $B_1$ we define the bijection $e_i\overset{\eta}{\longleftrightarrow}e_{n-i}$, and we claim that: 
 \begin{lemma}
