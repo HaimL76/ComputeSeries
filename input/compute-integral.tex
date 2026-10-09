@@ -303,12 +303,36 @@ M_{11} & M_{12}\\
 \end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
 \subsection{The general form of $G_n(K)$}
 \begin{lemma}
-Denote $C=C_{\mathcal{L}}$.
-For every $x\in{B}$, the dimension of the centralizer $C(x)$ is invariant under automorphism, that is, $\dim{C(\varphi(x))}=\dim{C}(x)$.
+\label{lem:centralizer_dimension}
+Let $L$ be any Lie $K$-algebra, and denote $C=C_L$.
+For every $x\in{L}$, the dimension of the centralizer $C(x)$ is invariant under automorphism, that is, $\dim{C(\varphi(x))}=\dim{C}(x)$.
 \end{lemma}
 \begin{proof}
-We observe that $C(x)$ is a sub $\mathcal{L}$-algebra, because, for every $y,z\in{C}(x)$ we have 
+We observe that $C(x)$ is a sub $K$-algebra of $L$, because, for every $y,z\in{C}(x)$ we have 
 $[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$, and the rest is following from this.
+\end{proof}
+\begin{corollary}
+Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in\{e_1,e_{n-1}\}$.
+\end{corollary}
+\begin{proof}
+Let $\pi:\mathcal{L}\rightarrow\sfrac{\mathcal{L}}{\gamma_2}$ be the canonical quotient map, then $(\varphi\pi)(x)=\varphi(x+\gamma_2\mathcal{L})=x+\gamma_2\mathcal{L}$.
+Denote $A(e_i)=\sfrac{\mathcal{L}}{\gamma_2}\setminus{C}_{\sfrac{\mathcal{L}}{\gamma_2}}(e_i)$, for all $1\leq{i}\leq{n-1}$, then
+\[A(e_i)=
+\begin{cases}
+\langle{e}_2\rangle,&i=1\\
+\langle{e}_{j-1},e_{j+1}\rangle,&2\leq{j}\leq{n}-2\\
+\langle{e}_{n-2}\rangle,&i=n-1,\\
+\end{cases}
+\]
+which shows that $\varphi(e_1)$ can be either $e_1$ or $e_{n-1}$, because $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_1}}(e_1)=\dim\sfrac{\mathcal{L}}{\gamma_2}-\dim{A}(e_1)=(n-1)-1=\dim\sfrac{\mathcal{L}}{\gamma_2}-\dim{A}(e_{n-1})=\dim{C}_{\sfrac{\mathcal{L}}{\gamma_1}}(e_{n-1})$, but if $\varphi(e_1)=e_j$, where $2\leq{j}\leq{n-2}$, then $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_1}}(e_j)=\dim\sfrac{\mathcal{L}}{\gamma_2}-\dim{A}(e_j)=(n-1)-2\neq\dim{C}_{\sfrac{\mathcal{L}}{\gamma_1}}(e_1)$, which contradicts \ref{lem:centralizer_dimension}, and the same applies also for $\varphi(e_{n-1})$.
+\end{proof}
+
+
+\begin{lemma}
+Let $x\in\mathcal{L}$, then $y\in{C}(x)$ if and only if $\varphi(y)\in{C}(\varphi(x))$.
+\end{lemma}
+\begin{proof}
+This is immediate because $\varphi$ is an automorphism, and then: \[[y,x]=0\implies[\varphi(y),\varphi(x)]=\varphi([y,x])=0\implies[y,x]=0.\]
 \end{proof}
 \begin{lemma}
 Let $x\in\{e_1,e_2,\dots,e_{n-1}\}$, then $\dim{C}(x+y)\leq\dim{C}(x)$, for any $y\in\mathcal{L}$.
@@ -334,7 +358,7 @@ Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in\{e_1,e_{n-1}\}$.
 \begin{proof}
 Let $y=e_1$, then the only basis elements $z\in{B}$ such that $[z,y]\neq0$ are $e_{2,2+r}$ for all $1\leq{r}\leq{n-2}$.
 Now let $y=e_{n-1}$, then the only basis elements that do not commute with $y$ are $e_{n-1-r,n-1}$ for the same range of $r$, which implies that $\dim{C}(e_1)=\dim{C}(e_{n-1})=\dim\mathcal{L}-(n-2)$.
-Now let $y=e_i$ for any $1<i<n-1$, then then only basis elements that do not commute with $y$ are $e_{i-r,i}$ for all $1\leq{r}\leq{i-1}$ and $e_{i+1,i+1+k}$ for all $1\leq{k}\leq{n-i-1}$, then $\dim{C}(y)=\dim\mathcal{L}-(n-i-1+i+1)=\dim\mathcal{L}-(n-i-1+i+1)$
+Now let $y=e_i$ for any $1<i<n-1$, then the only basis elements that do not commute with $y$ are $e_{i-r,i}$ for all $1\leq{r}\leq{i-1}$ and $e_{i+1,i+1+k}$ for all $1\leq{k}\leq{n-i-1}$, then $\dim{C}(y)=\dim\mathcal{L}-(i-1+n-i-1)=\dim\mathcal{L}-(n-2)$
 \end{proof}
 \subsection{The subgroup $G_n^0(K)$}
 On the set $B_1$ we define the bijection $e_i\overset{\eta}{\longleftrightarrow}e_{n-i}$, and we claim that: 
