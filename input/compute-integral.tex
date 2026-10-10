@@ -147,6 +147,11 @@ and then
 ,\]
 but $e_{i,i+r}=[e_{i,i+k-1},e_{i+k-1,i+r}]$ by \ref{lem:multiplication-rule}, thus $\varphi(a_{i,i+r}e_{i,i+r})=a_{i,i+r}[\varphi(e_{i,i+k-1}),\varphi(e_{i+k-1,i+r})]$, and by the assumption $\varphi(e_{i,i+k-1})\in\gamma_{k-1}\mathcal{L}$, thus $\varphi(e_{i,i+r})\in[\gamma_{k-1}\mathcal{L},\mathcal{L}]=\gamma_k\mathcal{L}$, which holds for every $k\leq{r}\leq{n-1}$, thus it holds for $\varphi(x)$ being a linear combination of $\varphi(e_{i,i+r})$, and since $\varphi$ is an automorphism, it hold also for the inverse $\varphi^{-1}$.
 \end{proof}
+\begin{corollary}
+\label{cor:main-diag-block}
+Let $\varphi\in{G}_n(\mathbb{Q}_p)$, then for every $e_{i,i+r}$, where $1\leq{i}\leq{n-1}$ and $1\leq{r}\leq{n-i}$, we have that $\varphi(e_{i,i+r})=e_{j,j+r}+y$, for some $1\leq{j}\leq{n-1}$ and $y\in\mathcal{L}$.
+In other words, if $x\in\gamma_i\mathcal{L}\setminus\gamma_{i+1}\mathcal{L}$, for some $1\leq{i}\leq{n-1}$, then so is $\varphi(x)$.
+\end{corollary}
 \begin{lemma}
 \label{lem:diff-1-images}
 Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\{\varphi(e_i) : 1\leq{i}\leq{n}-1\}$ determines $\varphi(\mathcal{L})$. 
@@ -320,7 +325,7 @@ Denote $A(e_i)=\sfrac{\mathcal{L}}{\gamma_2}\setminus{C}_{\sfrac{\mathcal{L}}{\g
 \[A(e_i)=
 \begin{cases}
 \langle{e}_2\rangle,&i=1\\
-\langle{e}_{i-1},e_{i+1}\rangle,&2\leq{j}\leq{n}-2\\
+\langle{e}_{i-1},e_{i+1}\rangle,&2\leq{i}\leq{n}-2\\
 \langle{e}_{n-2}\rangle,&i=n-1,\\
 \end{cases}
 \]
