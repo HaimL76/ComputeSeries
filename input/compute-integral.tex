@@ -146,13 +146,15 @@ We hereby present a set of lemmas that explain the structure of $\mathcal{L}$-au
 Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is preserving the lower central series structure of $\mathcal{L}$, that is, $\varphi(\gamma_k\mathcal{L})=\gamma_k\mathcal{L}$ for every $1\leq{k}\leq{n}-1$.
 \end{lemma}
 \begin{proof}
-Trivial for $k=1$, then for $k>1$, let \[x=\sum_{r=k}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r}\in\gamma_k\mathcal{L},\]
+Trivial for $k=1$.
+For $k>1$, let \[x=\sum_{r=k}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r}\in\gamma_k\mathcal{L},\]
 and then
 \[
 \varphi(x)=\sum_{r=k}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}\varphi(e_{i,i+r})
 ,\]
-but $e_{i,i+r}=[e_{i,i+k-1},e_{i+k-1,i+r}]$ by \ref{lem:multiplication-rule}, thus \[\varphi(a_{i,i+r}e_{i,i+r})=a_{i,i+r}[\varphi(e_{i,i+k-1}),\varphi(e_{i+k-1,i+r})],\] 
-and by the assumption $\varphi(e_{i,i+k-1})\in\gamma_{k-1}\mathcal{L}$, thus $\varphi(e_{i,i+r})\in[\gamma_{k-1}\mathcal{L},\mathcal{L}]=\gamma_k\mathcal{L}$, which holds for every $k\leq{r}\leq{n-1}$, thus it holds for $\varphi(x)$ being a linear combination of $\varphi(e_{i,i+r})$, which means that $\gamma_k\mathcal{L}\subseteq\gamma_k\mathcal{L}$, but since $\varphi^{-1}\in{G}_n(\mathbb{Q}_p)$ is an automorphism, it follows that also $\varphi(\gamma_k\mathcal{L})\subseteq\gamma_k\mathcal{L}$.
+but $e_{i,i+r}=[e_{i,i+r-1},e_{i+r-1,i+r}]$ by \ref{lem:multiplication-rule}, thus \[\varphi(e_{i,i+r})=[\varphi(e_{i,i+r-1}),\varphi(e_{i+r-1,i+r})],\] 
+but $k\leq{r}\leq{n-1}$, hence $e_{i,i+r-1}\in\gamma_{k-1}\mathcal{L}$,
+and by the assumption $\varphi(e_{i,i+r-1})\in\gamma_{k-1}\mathcal{L}$, thus $\varphi(e_{i,i+r})\in[\gamma_{k-1}\mathcal{L},\mathcal{L}]=\gamma_k\mathcal{L}$, which holds for every $r$, thus it holds for $\varphi(x)$ being a linear combination of $\varphi(e_{i,i+r})$, which means that $\varphi(\gamma_k\mathcal{L})\subseteq\gamma_k\mathcal{L}$, but since $\varphi^{-1}\in{G}_n(\mathbb{Q}_p)$ is also an $\mathcal{L}$-automorphism, it follows that  $\varphi^{-1}(\gamma_k\mathcal{L})\subseteq\gamma_k\mathcal{L}\implies\gamma_k\mathcal{L}\subseteq\varphi(\gamma_k\mathcal{L})$.
 \end{proof}
 \begin{corollary}
 \label{cor:main-diag-block}
