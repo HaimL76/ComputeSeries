@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
-\usepackage{amsmath}
+\usepackage[fleqn]{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{amsthm}
@@ -46,11 +46,17 @@
 \begin{document}
 
 \maketitle
-In all the following we denote, for abbreviation:\\
-$L=L_{n,p}$ or $L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}$, depending on the context.\\
-$d=\binom{n}{2}=\dim\mathcal{L}$ or $\dim{L}$, depending on the context.\\
-$\gamma_i=\gamma_i\mathcal{L}$ or $\gamma_iL$, depending on the context.\\
+In all the following we denote, for abbreviation:
+\begin{align*}
+L&=L_{n,p}\text{\,or\,} L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}.\\
+d&=\binom{n}{2}=\dim\mathcal{L}\text{\,or\,}\dim{L}.\\
+\gamma_i&=\gamma_i\mathcal{L}\text{\,or\,}\gamma_iL.\\
+\end{align*}
 
+In all the following we use the following conventions:
+\begin{flalign*}
+\gamma_1L=L.\\
+\end{flalign*}
 \section{General Background}
 
 \subsection{Pro-Isomorphic Subgroup Growth}
@@ -145,13 +151,17 @@ and then
 \[
 \varphi(x)=\sum_{r=k}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}\varphi(e_{i,i+r})
 ,\]
-but $e_{i,i+r}=[e_{i,i+k-1},e_{i+k-1,i+r}]$ by \ref{lem:multiplication-rule}, thus $\varphi(a_{i,i+r}e_{i,i+r})=a_{i,i+r}[\varphi(e_{i,i+k-1}),\varphi(e_{i+k-1,i+r})]$, and by the assumption $\varphi(e_{i,i+k-1})\in\gamma_{k-1}\mathcal{L}$, thus $\varphi(e_{i,i+r})\in[\gamma_{k-1}\mathcal{L},\mathcal{L}]=\gamma_k\mathcal{L}$, which holds for every $k\leq{r}\leq{n-1}$, thus it holds for $\varphi(x)$ being a linear combination of $\varphi(e_{i,i+r})$, and since $\varphi$ is an automorphism, it hold also for the inverse $\varphi^{-1}$.
+but $e_{i,i+r}=[e_{i,i+k-1},e_{i+k-1,i+r}]$ by \ref{lem:multiplication-rule}, thus \[\varphi(a_{i,i+r}e_{i,i+r})=a_{i,i+r}[\varphi(e_{i,i+k-1}),\varphi(e_{i+k-1,i+r})],\] 
+and by the assumption $\varphi(e_{i,i+k-1})\in\gamma_{k-1}\mathcal{L}$, thus $\varphi(e_{i,i+r})\in[\gamma_{k-1}\mathcal{L},\mathcal{L}]=\gamma_k\mathcal{L}$, which holds for every $k\leq{r}\leq{n-1}$, thus it holds for $\varphi(x)$ being a linear combination of $\varphi(e_{i,i+r})$, which means that $\gamma_k\mathcal{L}\subseteq\gamma_k\mathcal{L}$, but since $\varphi^{-1}\in{G}_n(\mathbb{Q}_p)$ is an automorphism, it follows that also $\varphi(\gamma_k\mathcal{L})\subseteq\gamma_k\mathcal{L}$.
 \end{proof}
 \begin{corollary}
 \label{cor:main-diag-block}
-Let $\varphi\in{G}_n(\mathbb{Q}_p)$, then for every $e_{i,i+r}$, where $1\leq{i}\leq{n-1}$ and $1\leq{r}\leq{n-i}$, we have that $\varphi(e_{i,i+r})=e_{j,j+r}+y$, for some $1\leq{j}\leq{n-1}$ and $y\in\mathcal{L}$.
-In other words, if $x\in\gamma_i\mathcal{L}\setminus\gamma_{i+1}\mathcal{L}$, for some $1\leq{i}\leq{n-1}$, then so is $\varphi(x)$.
+Let $\varphi\in{G}_n(\mathbb{Q}_p)$, then for every $e_{i,i+r}$, where $1\leq{i}\leq{n-1}$ and $1\leq{r}\leq{n-i}$, we have that $\varphi(e_{i,i+r})=a_je_{j,j+r}+y$, for some $1\leq{j}\leq{n-1}$ and $a_j\in\mathbb{Q}_p$ and $y\in\mathcal{L}$.
+In other words, if $x\in\gamma_r\mathcal{L}\setminus\gamma_{r+1}\mathcal{L}$, for some $1\leq{r}\leq{n-1}$, then also $\varphi(x)\in\gamma_r\mathcal{L}\setminus\gamma_{r+1}\mathcal{L}$.
 \end{corollary}
+\begin{proof}
+Let $e_{i,i+r}\in\gamma_r\mathcal{L}$ but $\varphi(e_{i,i+r})\in\gamma_k\mathcal{L}$, for some $k>r$, then let $\pi:\mathcal{L}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ be the canonical quotient map, and then.
+\end{proof}
 \begin{lemma}
 \label{lem:diff-1-images}
 Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\{\varphi(e_i) : 1\leq{i}\leq{n}-1\}$ determines $\varphi(\mathcal{L})$. 
