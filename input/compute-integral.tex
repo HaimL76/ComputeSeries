@@ -46,16 +46,17 @@
 \begin{document}
 
 \maketitle
-In all the following we denote, for abbreviation:
+In all the following we may denote, for abbreviation:
 \begin{align*}
 L&=L_{n,p}\text{\,or\,} L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}.\\
 d&=\binom{n}{2}=\dim\mathcal{L}\text{\,or\,}\dim{L}.\\
 \gamma_i&=\gamma_i\mathcal{L}\text{\,or\,}\gamma_iL.\\
 \end{align*}
 
-In all the following we use the following conventions:
+In all the following we may use the following conventions:
 \begin{flalign*}
-\gamma_1L=L.\\
+\gamma_1L&=L.\\
+K&=\mathbb{Q}_p\text{\,or\,}\mathbb{Q}_p[\lambda_1,\lambda_2,\dots,\lambda_d].\\
 \end{flalign*}
 \section{General Background}
 
@@ -279,10 +280,10 @@ Define $\psi:\text{Aut}_{\mathbb{Q}_p}(M)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\s
 But $J=\ker\psi$ consists of all the $d\times{d}$ matrices $M=(m_{ij})$ with only the block $n-1$, that is, only $m_{d,i}$ where $1\leq{i}\leq{n}-1$ are nonzero elements, and the natural map $z\mapsto{z}\otimes{1}$ enables the operation. Thus, unless stated otherwise, we shall denote $\mathcal{L}=\mathcal{L}\otimes_{\mathbb{Q}_p}K$ and $L=L\otimes_{\mathbb{Q}_p}\mathcal{O}_K$.
 We shall give this a more concrete form when we explain the computation for $\zeta_{L_{5,p}}^{\wedge}(s)$.
 \section{The Group of Automorphisms}
-\subsection{Representing Matrices of Automorphisms of $\mathcal{L}_{n,p}$}
-Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$, where $d=\binom{n}{2}$, with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
+\subsection{Representing Matrices of $\mathcal{L}$-Automorphisms}
+Let $\varphi\in{G_{n}}(K)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$, where $d=\binom{n}{2}$, with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
 \[
-\varphi=(m_{ij})=\begin{bmatrix}
+\varphi=(m_{ij})=\begin{bmatrix*}[l]
 \varphi_{12}\\
 \varphi_{23}\\
 \vdots\\
@@ -292,7 +293,7 @@ Let $\varphi\in{G_{n}}(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\v
 \varphi_{n-2,n}\\
 \vdots\\
 \varphi_{1n}\\
-\end{bmatrix}\\=\begin{bmatrix}
+\end{bmatrix*}=\begin{bmatrix*}[l]
 m_{11}&m_{12}&\cdots&m_{1d}\\
 m_{21}&m_{22}&\cdots&m_{2d}\\
 \vdots\\
@@ -302,7 +303,7 @@ m_{n1}&m_{n,2}&\cdots&m_{n,d}\\
 \vdots&\vdots&\vdots&\vdots\\
 m_{d-1,1}&m_{d-1,2}&\cdots&m_{d-1,d}\\
 m_{d1}&m_{d2}&\cdots&m_{dd}\\
-\end{bmatrix}\\,\]
+\end{bmatrix*}\\,\]
 where $\varphi_{ij}=\varphi(e_{ij})$.\\
 Note that by \ref{lem:derived-filtration}, the elements $\gamma_{k}\mathcal{L}_{n,p}$, where $1\leq{k}\leq{n}-1$, of the lower central series are characteristic sub-algebras, thus $M$ has the block-diagonal form
 \[M=\begin{bmatrix}
@@ -320,14 +321,24 @@ M_{11} & M_{12}\\
 \end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{\mathcal{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
 \subsection{The general form of $G_n(K)$}
 \begin{lemma}
+\label{lem:centralizer_subgroup}
+Let $L$ be any Lie $K$-algebra, and denote $C=C_L$, then $C(x)\leq{L}$, for every $x\in{L}$.
+\end{lemma}
+\begin{proof}
+For every $y,z\in{C}(x)$ we have 
+$[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$.
+\end{proof}\begin{lemma}
+\label{lem:centralizer_image}
+Let $L$ be any Lie $K$-algebra, then $\varphi(C(x))=C(\varphi(x))$, for every $x\in{L}$.
+\end{lemma}
+\begin{proof}
+Let $y\in{C}(x)$, that is $[y,x]=0$, then $[\varphi(y),\varphi(x)]=\varphi([y,x])=0$, hence $\varphi(C(x))\subseteq{C}(\varphi(x))$.
+\end{proof}
+\begin{lemma}
 \label{lem:centralizer_dimension}
 Let $L$ be any Lie $K$-algebra, and denote $C=C_L$.
 For every $x\in{L}$, the dimension of the centralizer $C(x)$ is invariant under automorphism, that is, $\dim{C(\varphi(x))}=\dim{C}(x)$.
 \end{lemma}
-\begin{proof}
-We observe that $C(x)$ is a sub $K$-algebra of $L$, because, for every $y,z\in{C}(x)$ we have 
-$[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$, and the rest is following from this.
-\end{proof}
 \begin{corollary}
 Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in\{e_1,e_{n-1}\}$.
 \end{corollary}
