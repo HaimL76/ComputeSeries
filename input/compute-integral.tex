@@ -144,26 +144,28 @@ Every $\mathcal{L}$-automorphism $\varphi$ must comply to this rule, thus our co
 We hereby present a set of lemmas that explain the structure of $\mathcal{L}$-automorphisms, prior to the detailed discussion on them.
 \begin{lemma}
 \label{lem:derived-filtration}
-Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is preserving the lower central series structure of $\mathcal{L}$, that is, $\varphi(\gamma_k\mathcal{L})=\gamma_k\mathcal{L}$ for every $1\leq{k}\leq{n}-1$.
+Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is preserving the lower central series structure of $\mathcal{L}$, that is, $\varphi(\gamma_r\mathcal{L})=\gamma_r\mathcal{L}$ for every $1\leq{r}\leq{n}-1$.
 \end{lemma}
 \begin{proof}
-Trivial for $k=1$.
-For $k>1$, let \[x=\sum_{r=k}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r}\in\gamma_k\mathcal{L},\]
+Trivial for $r=1$.
+For $r>1$, let \[x=\sum_{k=r}^{n-1}\sum_{i=1}^{n-r}a_{i,i+k}e_{i,i+k}\in\gamma_r\mathcal{L},\]
 and then
 \[
-\varphi(x)=\sum_{r=k}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}\varphi(e_{i,i+r})
+\varphi(x)=\sum_{k=r}^{n-1}\sum_{i=1}^{n-r}a_{i,i+k}\varphi(e_{i,i+k})
 ,\]
-but $e_{i,i+r}=[e_{i,i+r-1},e_{i+r-1,i+r}]$ by \ref{lem:multiplication-rule}, thus \[\varphi(e_{i,i+r})=[\varphi(e_{i,i+r-1}),\varphi(e_{i+r-1,i+r})],\] 
-but $k\leq{r}\leq{n-1}$, hence $e_{i,i+r-1}\in\gamma_{k-1}\mathcal{L}$,
-and by the assumption $\varphi(e_{i,i+r-1})\in\gamma_{k-1}\mathcal{L}$, thus $\varphi(e_{i,i+r})\in[\gamma_{k-1}\mathcal{L},\mathcal{L}]=\gamma_k\mathcal{L}$, which holds for every $r$, thus it holds for $\varphi(x)$ being a linear combination of $\varphi(e_{i,i+r})$, which means that $\varphi(\gamma_k\mathcal{L})\subseteq\gamma_k\mathcal{L}$, but $\varphi^{-1}\in{G}_n(\mathbb{Q}_p)$ is also an $\mathcal{L}$-automorphism, it follows that $\gamma_k\mathcal{L}=\varphi^{-1}(\varphi(\gamma_k\mathcal{L}))\subseteq\varphi(\gamma_k\mathcal{L})$.
+but $e_{i,i+k}=[e_{i,i+k-1},e_{i+k-1,i+k}]$ by \ref{lem:multiplication-rule}, thus \[\varphi(e_{i,i+k})=[\varphi(e_{i,i+k-1}),\varphi(e_{i+k-1,i+k})],\] 
+but $r\leq{k}\leq{n-1}$, hence $e_{i,i+k-1}\in\gamma_{r-1}\mathcal{L}$,
+and by the assumption $\varphi(e_{i,i+r-1})\in\gamma_{r-1}\mathcal{L}$, thus $\varphi(e_{i,i+k})\in[\gamma_{r-1}\mathcal{L},\mathcal{L}]=\gamma_r\mathcal{L}$, which holds for every $r$, thus it holds for $\varphi(x)$ being a linear combination of $\varphi(e_{i,i+r})$, which means that $\varphi(\gamma_r\mathcal{L})\subseteq\gamma_r\mathcal{L}$, but $\varphi^{-1}\in{G}_n(\mathbb{Q}_p)$ is also an $\mathcal{L}$-automorphism, it follows that $\gamma_r\mathcal{L}=\varphi^{-1}(\varphi(\gamma_r\mathcal{L}))\subseteq\varphi(\gamma_r\mathcal{L})$.
 \end{proof}
 \begin{corollary}
 \label{cor:main-diag-block}
-Let $\varphi\in{G}_n(\mathbb{Q}_p)$, then for every $e_{i,i+r}$, where $1\leq{i}\leq{n-1}$ and $1\leq{r}\leq{n-i}$, we have that $\varphi(e_{i,i+r})=a_je_{j,j+r}+y$, for some $1\leq{j}\leq{n-1}$ and $a_j\in\mathbb{Q}_p$ and $y\in\mathcal{L}$.
-In other words, if $x\in\gamma_r\mathcal{L}\setminus\gamma_{r+1}\mathcal{L}$, for some $1\leq{r}\leq{n-1}$, then also $\varphi(x)\in\gamma_r\mathcal{L}\setminus\gamma_{r+1}\mathcal{L}$.
+Let $\varphi\in{G}_n(K)$, if $x\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$, for some $1\leq{r}<k\leq{n-1}$, then also $\varphi(x)\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$.
 \end{corollary}
+\begin{lemma}
+Let $\gamma_r\mathcal{L}$ be a sub-algebra, and let $\varphi$ be a $\gamma_r\mathcal{L}$-automorphism, then $\varphi$ induces a $\sfrac{\gamma_r}{\gamma_k}$-automorphism for any $r<k\leq{n-1}$.
+\end{lemma}
 \begin{proof}
-Let $e_{i,i+r}\in\gamma_r\mathcal{L}$ but $\varphi(e_{i,i+r})\in\gamma_k\mathcal{L}$, for some $k>r$, then let $\pi:\mathcal{L}\rightarrow\sfrac{\mathcal{L}}{\gamma_{r+1}}$ be the canonical quotient map, and then.
+Let $z=x+y$, where $x\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$ and $y\in\gamma_k\mathcal{L}$, then by \ref{lem:derived-filtration}, $\varphi(z)=\varphi(x)+\varphi(y)=\varphi(x)+\gamma_k\mathcal{L}$.
 \end{proof}
 \begin{lemma}
 \label{lem:diff-1-images}
@@ -332,13 +334,13 @@ $[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[
 Let $L$ be any Lie $K$-algebra, then $\varphi(C(x))=C(\varphi(x))$, for every $x\in{L}$.
 \end{lemma}
 \begin{proof}
-Let $y\in{C}(x)$, that is $[y,x]=0$, then $[\varphi(y),\varphi(x)]=\varphi([y,x])=0$, hence $\varphi(C(x))\subseteq{C}(\varphi(x))$.
+Let $y\in{C}(x)$, that is $[y,x]=0$, then $[\varphi(y),\varphi(x)]=\varphi([y,x])=0$, hence $\varphi(C(x))\subseteq{C}(\varphi(x))$
+Let $z\in{C}(\varphi(X))$, that is, $[z,\varphi(x)]=0$, then $[\varphi^{-1}(z),x]=\varphi^{-1}([z,\varphi(x)])=0$, which means that $\varphi^{-1}(z)\in{C}(x)$, and hence $C(\varphi(x))\subseteq\varphi(C(x))$.
 \end{proof}
-\begin{lemma}
-\label{lem:centralizer_dimension}
-Let $L$ be any Lie $K$-algebra, and denote $C=C_L$.
-For every $x\in{L}$, the dimension of the centralizer $C(x)$ is invariant under automorphism, that is, $\dim{C(\varphi(x))}=\dim{C}(x)$.
-\end{lemma}
+\begin{corollary}
+\label{cor:centralizer_dimension}
+Let $L$ be any Lie $K$-algebra, then for every $x\in{L}$, the dimension of the centralizer $C(x)$ is invariant under automorphism, that is, $\dim{C(\varphi(x))}=\dim{C}(x)$.
+\end{corollary}
 \begin{corollary}
 Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in\{e_1,e_{n-1}\}$.
 \end{corollary}
