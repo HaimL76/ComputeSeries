@@ -8,6 +8,7 @@
 \usepackage{titlesec} % For \subsubsubsection
 \usepackage{xfrac} % For \sfrac
 \usepackage{arydshln} % For \hdashline
+\usepackage{tikz-cd}
 \newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -57,6 +58,7 @@ In all the following we may use the following conventions:
 \begin{flalign*}
 \gamma_1L&=L.\\
 K&=\mathbb{Q}_p\text{\,or\,}\mathbb{Q}_p[\lambda_1,\lambda_2,\dots,\lambda_d].\\
+\pi&:L\rightarrow\sfrac{L}{I}.\\
 \end{flalign*}
 \section{General Background}
 
@@ -165,7 +167,18 @@ Let $\varphi\in{G}_n(K)$, if $x\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L
 Let $\gamma_r\mathcal{L}$ be a sub-algebra, and let $\varphi$ be a $\gamma_r\mathcal{L}$-automorphism, then $\varphi$ induces a $\sfrac{\gamma_r}{\gamma_k}$-automorphism for any $r<k\leq{n-1}$.
 \end{lemma}
 \begin{proof}
-Let $z=x+y$, where $x\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$ and $y\in\gamma_k\mathcal{L}$, then by \ref{lem:derived-filtration}, $\varphi(z)=\varphi(x)+\varphi(y)=\varphi(x)+\gamma_k\mathcal{L}$.
+Let $z=x+y$, where $x\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$ and $y\in\gamma_k\mathcal{L}$, then by \ref{cor:main-diag-block}, $(\pi\varphi)(z)=\pi(\varphi(x)+\varphi(y))\in\pi(\varphi(x))+\pi(\gamma_k\mathcal{L})=[\varphi(x)]\in\sfrac{\gamma_r}{\gamma_k}$, where $\pi:\gamma_r\rightarrow\sfrac{\gamma_r}{\gamma_k}$ is the canonical quotient map.
+Take $v=x+u$ for some $y\neq{u}\in\gamma_k\mathcal{L}$, then $(\pi\varphi)(v)=[\varphi(x)]$ in the same way, thus $\pi\varphi$ is well-defined on elements of $\gamma_r\mathcal{L}$, hence it commutes with $\varphi\pi$:
+\[
+\begin{tikzcd}
+\gamma_r\mathcal{L} \arrow[r, "\varphi", blue] \arrow[d, "\pi", green]
+& \gamma_r\mathcal{L}
+\arrow[d, "\pi", green] \\
+\sfrac{\gamma_r}{\gamma_k} \arrow[r, red, "\varphi", blue]
+& \sfrac{\gamma_r}{\gamma_k}
+\end{tikzcd},
+\]
+but the same applies for $\varphi^{-1}$, it follows that $\varphi\pi$ defines a $\sfrac{\gamma_r}{\gamma_k}$-automorphism.
 \end{proof}
 \begin{lemma}
 \label{lem:diff-1-images}
