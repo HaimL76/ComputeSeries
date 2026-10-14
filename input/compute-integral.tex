@@ -367,8 +367,7 @@ However, $C_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i+x)=C_{\sfrac{\mathcal{L}}{\gamma
 Let $\varphi\in{G}_n(K)$, then the upper left block $M_{11}$ of $\varphi$ is either diagonal or anti-diagonal.
 \end{proposition}
 \begin{proof}
-Without loss of generality, assume that $\varphi(e_1)\in{e}_1+\gamma_2\mathcal{L}$, and consider $\varphi(e_2)$.
-But 
+Without loss of generality, assume that $\varphi(e_1)\in{e}_1+\gamma_2\mathcal{L}$, then:
 \[\varphi(e_{13})=[\varphi(e_1),\varphi(e_2)]\in[e_1,\varphi(e_2)]+[\gamma_2\mathcal{L},\varphi(e_2)]=[e_1,\varphi(e_2)]+\gamma_3\mathcal{L},\]
 and since by $\ref{lem:derived-filtration}$, $\varphi(e_{13})\in\gamma_2\mathcal{L}\setminus\gamma_3\mathcal{L}$, it follows that $\varphi(e_2)\in{e}_2+\gamma_2\mathcal{L}$, which implies that $\varphi(e_{13})\in{e}_{13}+\gamma_3\mathcal{L}$. Computing the same way for all $3\leq{i}\leq{n-1}$ shows that $\varphi(e_i)\in{e}_i+\gamma_2\mathcal{L}$. Assuming that $\varphi(e_1)\in{e}_{n-1}+\gamma_2\mathcal{L}$ and using the same considerations, shows that $\varphi(e_i)\in{e}_{n-i}+\gamma_2\mathcal{L}$.
 \end{proof}
@@ -406,20 +405,17 @@ The overlook of $\eta$ as a matrix is then
 \end{bmatrix}.
 \]
 Replacing $\varphi$ by $\varphi\eta$ if necessary, we may assume without loss of generality that $M_{11}$ is diagonal, because
-$G_{n}^{0}(K)$ is the set of all $\mathcal{L}$-automorphisms with diagonal block $M_{11}$, which is trivially verified as a subgroup of $G_n(K)$
-
-
-
-then $G_{n}(K)=G_{n}^{0}(\mathbb{Q}_{p})\coprod{G_{n}(\mathbb{Q}_{p})}\eta$, and as in \cite[Proposition 2.1]{DuSautoyLubotzky} we may replace the domain of integration in \eqref{eq:p-adic.integral} by $G_{n}^{0}(\mathbb{Q}_{p})\cap{G_{n}^{+}(\mathbb{Q}_{p})}$ after a suitable renormalization of the Haar measure. We proceed to determine $G_{n}^{0}(\mathbb{Q}_{p})$.
+$G_{n}(K)=G_{n}^{0}(\mathbb{Q}_{p})\coprod{G_{n}^{0}(\mathbb{Q}_{p})}\eta$, and as in \cite[Proposition 2.1]{DuSautoyLubotzky} we may replace the domain of integration in \eqref{eq:p-adic.integral} by $G_{n}^{0}(\mathbb{Q}_{p})\cap{G_{n}^{+}(\mathbb{Q}_{p})}$ after a suitable renormalization of the Haar measure. We proceed to determine $G_{n}^{0}(\mathbb{Q}_{p})$.
 \subsubsection{The Diagonal of $\varphi$}
-As explained above, we are working with $G_n^0(K)$, the subgroup of all unitriangular $\mathcal{L}$-automorphisms.
+As explained above, we are working with $G_n^0(K)$, the subgroup of all diagonal $\mathcal{L}$-automorphisms.
 \begin{lemma}
-For every $1\leq{i}<j\leq{n}$, an $\mathcal{L}$-automorphism $\varphi$ must satisfy $\varphi(e_{ij})=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$, where $d=j-i$.
+Let $\varphi$ be an $\mathcal{L}$-automorphism with $M_{11}=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1})$, that is,  $\varphi(e_k)\in\lambda_ke_k+\gamma_2\mathcal{L}$, for all $1\leq{k}\leq{n}-1$, then $\varphi$ must satisfy that $\varphi(e_{ij})\in\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{j-i+1}\mathcal{L}$, for any $1\leq{i}<j\leq{n-1}$.
 \end{lemma}
 \begin{proof}
-$\varphi(e_{ij})=\varphi([e_{i},[e_{i+1},[\cdots[e_{j-1},e_j]]]])=[\varphi(e_i),[\varphi(e_{i+1}),[\cdots,[\varphi(e_{j-1}),\varphi(e_j)]]]]=[\lambda_i{e}_i+\gamma_2\mathcal{L},[\lambda_{i+1}e_{i+1}+\gamma_2\mathcal{L},[\cdots,[\lambda_{j-1}e_{j-1}+\gamma_2\mathcal{L},\lambda_j{e}_j+\gamma_2\mathcal{L}]]]]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{d+1}\mathcal{L}$.
+By induction on $r=j-i$, as $r=1$ is the assumption of $M_{11}$. For $r>1$, we have $\varphi(e_{ij})=\varphi([e_{i,j-1},e_{j-1}])$.
+But by the induction base for $r-1$, we have
+$[\varphi(e_{i,j-1}),\varphi(e_{j-1})]\in[\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}e_{i,j-1}+\gamma_r\mathcal{L},\lambda_{j-1}e_{j-1}+\gamma_2\mathcal{L}]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_je_{ij}+\gamma_{r+1}\mathcal{L}$.
 \end{proof}
-
 \subsubsection{The Reductive subgroup}
 Let $\varphi\in{G}_n^0(K)$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
 and it is readily seen that $h$ itself is an $\mathcal{L}$-automorphism.\\
