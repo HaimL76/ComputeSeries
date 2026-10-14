@@ -362,38 +362,6 @@ Denote $A(e_i)=\mathcal{L}\setminus{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)$, fo
 which means that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_1)=\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_{n-1})=\dim(\sfrac{\mathcal{L}}{\gamma_3}\setminus{A}(e_1))=\dim(\sfrac{\mathcal{L}}{\gamma_3}\setminus{A}(e_{n-1}))=\dim\sfrac{\mathcal{L}}{\gamma_3}-2=2n-5$, but for any other $i\notin\{1,n-1\}$, $\dim{A}(e_i)>2$, which implies that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)<2n-5$, and it is immediate that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}\left(\sum_{i=1}^{n-1}a_ie_i\right)<\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_1)$.
 However, $C_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i+x)=C_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)$ for any $x\in\gamma_2\mathcal{L}$, because $[x,\mathcal{L}]\subset\gamma_3\mathcal{L}$, it follows that $\varphi(e_1)\in{e}_1+\gamma_2\mathcal{L}$ or $\varphi(e_1)\in{e}_{n-1}+\gamma_2\mathcal{L}$, and the same applies for $\varphi(e_{n-1})$.
 \end{proof}
-\begin{lemma}
-Let $x\in\mathcal{L}$, then $y\in{C}(x)$ if and only if $\varphi(y)\in{C}(\varphi(x))$.
-\end{lemma}
-\begin{proof}
-This is immediate because $\varphi$ is an automorphism, and then: \[[y,x]=0\implies[\varphi(y),\varphi(x)]=\varphi([y,x])=0\implies[y,x]=0.\]
-\end{proof}
-\begin{lemma}
-Let $x\in\{e_1,e_2,\dots,e_{n-1}\}$, then $\dim{C}(x+y)\leq\dim{C}(x)$, for any $y\in\mathcal{L}$.
-\end{lemma}
-\begin{proof}
-It is sufficient to show that $C(x+y)\subseteq{C}(x)$. Let $z\in{C}(x+y)$, that is $[z,x+y]=[z,x]+[z,y]=0$.
-We assume $n=3$ (that is the $\mathcal{L}$-algebra coming from the Heisenberg Group), we choose $x=e_1$ and we denote 
-\begin{align*}y&=a_1e_1+a_2e_2+a_3e_{13}\\ 
-z&=b_1e_1+b_2e_2+b_3e_{13},\\ 
-\end{align*}
-for some $a,b\in{K}$, then 
-\begin{align*}
-[z,x+y]&=\\
-&=[b_1e_1+b_2e_2+b_3e_{13},(1+a_1)e_1+a_2e_2+a_3e_{13}]\\
-&=b_1a_2[e_1,e_2]-b_2(1+a_1)[e_1,e_2]\\
-&=[b_1a_2-b_2(1+a_1)]e_{13}=0\\
-\end{align*}
-$\implies{b}_1a_2=b_2(1+a_1)$
-\end{proof}
-\begin{corollary}
-Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in\{e_1,e_{n-1}\}$.
-\end{corollary}
-\begin{proof}
-Let $y=e_1$, then the only basis elements $z\in{B}$ such that $[z,y]\neq0$ are $e_{2,2+r}$ for all $1\leq{r}\leq{n-2}$.
-Now let $y=e_{n-1}$, then the only basis elements that do not commute with $y$ are $e_{n-1-r,n-1}$ for the same range of $r$, which implies that $\dim{C}(e_1)=\dim{C}(e_{n-1})=\dim\mathcal{L}-(n-2)$.
-Now let $y=e_i$ for any $1<i<n-1$, then the only basis elements that do not commute with $y$ are $e_{i-r,i}$ for all $1\leq{r}\leq{i-1}$ and $e_{i+1,i+1+k}$ for all $1\leq{k}\leq{n-i-1}$, then $\dim{C}(y)=\dim\mathcal{L}-(i-1+n-i-1)=\dim\mathcal{L}-(n-2)$
-\end{proof}
 \subsection{The subgroup $G_n^0(K)$}
 On the set $B_1$ we define the bijection $e_i\overset{\eta}{\longleftrightarrow}e_{n-i}$, and we claim that: 
 \begin{lemma}
