@@ -362,6 +362,20 @@ Denote $A(e_i)=\mathcal{L}\setminus{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)$, fo
 which means that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_1)=\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_{n-1})=\dim(\sfrac{\mathcal{L}}{\gamma_3}\setminus{A}(e_1))=\dim(\sfrac{\mathcal{L}}{\gamma_3}\setminus{A}(e_{n-1}))=\dim\sfrac{\mathcal{L}}{\gamma_3}-2=2n-5$, but for any other $i\notin\{1,n-1\}$, $\dim{A}(e_i)>2$, which implies that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)<2n-5$, and it is immediate that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}\left(\sum_{i=1}^{n-1}a_ie_i\right)<\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_1)$.
 However, $C_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i+x)=C_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)$ for any $x\in\gamma_2\mathcal{L}$, because $[x,\mathcal{L}]\subset\gamma_3\mathcal{L}$, it follows that $\varphi(e_1)\in{e}_1+\gamma_2\mathcal{L}$ or $\varphi(e_1)\in{e}_{n-1}+\gamma_2\mathcal{L}$, and the same applies for $\varphi(e_{n-1})$.
 \end{proof}
+\begin{proposition}
+\label{prop:block-diag-anti-diag}
+Let $\varphi\in{G}_n(K)$, then the upper left block $M_{11}$ of $\varphi$ is either diagonal or anti-diagonal.
+\end{proposition}
+\begin{proof}
+Without loss of generality, assume that $\varphi(e_1)\in{e}_1+\gamma_2\mathcal{L}$, and consider $\varphi(e_2)$.
+But 
+\[\varphi(e_{13})=[\varphi(e_1),\varphi(e_2)]\in[e_1,\varphi(e_2)]+[\gamma_2\mathcal{L},\varphi(e_2)]=[e_1,\varphi(e_2)]+\gamma_3\mathcal{L},\]
+and since by $\ref{lem:derived-filtration}$, $\varphi(e_{13})\in\gamma_2\mathcal{L}\setminus\gamma_3\mathcal{L}$, it follows that $\varphi(e_2)\in{e}_2+\gamma_2\mathcal{L}$, which implies that $\varphi(e_{13})\in{e}_{13}+\gamma_3\mathcal{L}$. Computing the same way for all $3\leq{i}\leq{n-1}$ shows that $\varphi(e_i)\in{e}_i+\gamma_2\mathcal{L}$. Assuming that $\varphi(e_1)\in{e}_{n-1}+\gamma_2\mathcal{L}$ and using the same considerations, shows that $\varphi(e_i)\in{e}_{n-i}+\gamma_2\mathcal{L}$.
+\end{proof}
+\begin{corollary}
+\label{cor:matrix-diag-anti-diag}
+Let $\varphi\in{G}_n(K)$, then the blocks $M_{11},M_{22},\dots,M_{n-1,n-1}$ on the main block diagonal are either diagonal or anti-diagonal. In case they are diagonal, then $\varphi$ is diagonal, and it is immediate that all diagonal $\varphi$ form a subgroup which we denote by $G_n^0(K)<G_n(K)$.
+\end{corollary}
 \subsection{The subgroup $G_n^0(K)$}
 On the set $B_1$ we define the bijection $e_i\overset{\eta}{\longleftrightarrow}e_{n-i}$, and we claim that: 
 \begin{lemma}
