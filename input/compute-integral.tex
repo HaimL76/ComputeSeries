@@ -345,7 +345,7 @@ For every $y,z\in{C}(x)$ we have
 $[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$.
 \end{proof}
 \begin{corollary}
-Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in\{e_1+y,e_{n-1}+z\}$, where $y,z\in\gamma_2\mathcal{L}$.
+Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in{e}_1+\gamma_2\mathcal{L}$ or $\varphi(x)\in{e}_{n-1}+\gamma_2\mathcal{L}$.
 \end{corollary}
 \begin{proof}
 By \ref{lem:quotient-automorphism}, $\varphi$ induces an $\sfrac{\mathcal{L}}{\gamma_3}$-automorphism.
@@ -359,7 +359,8 @@ Denote $A(e_i)=\mathcal{L}\setminus{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)$, fo
 \langle{e}_{n-2},e_{n-3,n-1}\rangle,&i=n-1,\\
 \end{cases},
 \]
-which means that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_1)=\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_{n-1})=\dim(\sfrac{\mathcal{L}}{\gamma_3}\setminus{A}(e_1))=\dim(\sfrac{\mathcal{L}}{\gamma_3}\setminus{A}(e_{n-1}))=\dim\sfrac{\mathcal{L}}{\gamma_3}-2=2n-5$, but for any other $i\notin\{1,n-1\}$, $\dim{A}(e_i)>2$, which implies that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)<2n-5$.
+which means that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_1)=\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_{n-1})=\dim(\sfrac{\mathcal{L}}{\gamma_3}\setminus{A}(e_1))=\dim(\sfrac{\mathcal{L}}{\gamma_3}\setminus{A}(e_{n-1}))=\dim\sfrac{\mathcal{L}}{\gamma_3}-2=2n-5$, but for any other $i\notin\{1,n-1\}$, $\dim{A}(e_i)>2$, which implies that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)<2n-5$, and it is immediate that $\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}\left(\sum_{i=1}^{n-1}a_ie_i\right)<\dim{C}_{\sfrac{\mathcal{L}}{\gamma_3}}(e_1)$.
+However, $C_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i+x)=C_{\sfrac{\mathcal{L}}{\gamma_3}}(e_i)$ for any $x\in\gamma_2\mathcal{L}$, because $[x,\mathcal{L}]\subset\gamma_3\mathcal{L}$, it follows that $\varphi(e_1)\in{e}_1+\gamma_2\mathcal{L}$ or $\varphi(e_1)\in{e}_{n-1}+\gamma_2\mathcal{L}$, and the same applies for $\varphi(e_{n-1})$.
 \end{proof}
 \begin{lemma}
 Let $x\in\mathcal{L}$, then $y\in{C}(x)$ if and only if $\varphi(y)\in{C}(\varphi(x))$.
