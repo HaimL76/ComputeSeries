@@ -409,12 +409,20 @@ $G_{n}(K)=G_{n}^{0}(\mathbb{Q}_{p})\coprod{G_{n}^{0}(\mathbb{Q}_{p})}\eta$, and 
 \subsubsection{The Diagonal of $\varphi$}
 As explained above, we are working with $G_n^0(K)$, the subgroup of all diagonal $\mathcal{L}$-automorphisms.
 \begin{lemma}
+\label{lem:automorphism-diagonal}
 Let $\varphi$ be an $\mathcal{L}$-automorphism with $M_{11}=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1})$, that is,  $\varphi(e_k)\in\lambda_ke_k+\gamma_2\mathcal{L}$, for all $1\leq{k}\leq{n}-1$, then $\varphi$ must satisfy that $\varphi(e_{ij})\in\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{j-i+1}\mathcal{L}$, for any $1\leq{i}<j\leq{n-1}$.
 \end{lemma}
 \begin{proof}
 By induction on $r=j-i$, as $r=1$ is the assumption of $M_{11}$. For $r>1$, we have $\varphi(e_{ij})=\varphi([e_{i,j-1},e_{j-1}])$.
 But by the induction base for $r-1$, we have
 $[\varphi(e_{i,j-1}),\varphi(e_{j-1})]\in[\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}e_{i,j-1}+\gamma_r\mathcal{L},\lambda_{j-1}e_{j-1}+\gamma_2\mathcal{L}]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_je_{ij}+\gamma_{r+1}\mathcal{L}$.
+\end{proof}
+\begin{lemma}
+\label{lem:automorphism-determinant}
+Let $\varphi$ be an $\mathcal{L}$-automorphism with $M_{11}=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1})$, then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$.
+\end{lemma}
+\begin{proof}
+By the structure of the diagonal of $\varphi$ given in $\ref{lem:automorphism-diagonal}$, the determinant of $\varphi$ is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ in $h$, which is $\#\lambda_i(n)=i(n-i)$. This is a simple combinatorial formula that can be proved for $n=5$ by counting the number of $\lambda_1$, $\lambda_2$, $\lambda_3$ and $\lambda_4$, which are $4$, $6$, $6$ and $4$, respectively. For $n+1$, we observe that for each length $l$ we add a new product $\lambda_{n-l+1}\cdots\lambda_{n-1}\lambda_n$, thus we add $i$ times each element $\lambda_i$, which aligns with the formula, because $\#\lambda_i(n+1)=i(n+1-i)=i(n-i)+i=\#\lambda_i(n)+i$.
 \end{proof}
 \subsubsection{The Reductive subgroup}
 Let $\varphi\in{G}_n^0(K)$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
