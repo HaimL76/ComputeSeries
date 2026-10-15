@@ -422,7 +422,21 @@ $[\varphi(e_{i,j-1}),\varphi(e_{j-1})]\in[\lambda_i\lambda_{i+1}\cdots\lambda_{j
 Let $\varphi$ be an $\mathcal{L}$-automorphism with $M_{11}=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1})$, then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$.
 \end{lemma}
 \begin{proof}
-By the structure of the diagonal of $\varphi$ given in $\ref{lem:automorphism-diagonal}$, the determinant of $\varphi$ is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ in $h$, which is $\#\lambda_i(n)=i(n-i)$. This is a simple combinatorial formula that can be proved for $n=5$ by counting the number of $\lambda_1$, $\lambda_2$, $\lambda_3$ and $\lambda_4$, which are $4$, $6$, $6$ and $4$, respectively. For $n+1$, we observe that for each length $l$ we add a new product $\lambda_{n-l+1}\cdots\lambda_{n-1}\lambda_n$, thus we add $i$ times each element $\lambda_i$, which aligns with the formula, because $\#\lambda_i(n+1)=i(n+1-i)=i(n-i)+i=\#\lambda_i(n)+i$.
+By the structure of the main diagonal of $\varphi$ given in $\ref{lem:automorphism-diagonal}$, the determinant  $\det\varphi$ is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ on the diagonal, which is $\#\lambda_i(n)=i(n-i)$. We prove this formula by induction, for $n=4$ the diagonal of $\varphi$ is $\mathrm{diag}(\lambda_1,\lambda_2,\lambda_3,\lambda_1\lambda_2,\lambda_2\lambda_3,\lambda_1\lambda_2\lambda_3)$, and we count the elements:
+\begin{flalign*}
+\#\lambda_1(4)&3=1(4-1)\\
+\#\lambda_2(4)&4=2(4-2)\\
+\#\lambda_3(4)&3=3(4-3)\\
+\end{flalign*}
+For $n>4$, we enumerate the products that are added with the new element $\lambda_n$ by $l$ their length:
+\begin{align*}
+l=1&:\lambda_n\\
+l=2&:\lambda_{n-1}\lambda_n\\
+l=3&:\lambda_{n-2}\lambda_{n-1}\lambda_n\\
+\vdots\\
+l=n&:\lambda_1\lambda_2\cdots\lambda_{n-2}\lambda_{n-1}\lambda_n,\\
+\end{align*}
+hence every $\lambda_i$ is added $i$ times, but $\#\lambda_i(n-1)=i(n-1-i)$, by the assumption, thus $\#\lambda_i(n)=\lambda_i(n-1)+i=\#\lambda_i(n)$, which proves the induction step, it follows that the determinant is the product $\prod_{i=1}^{n-1}\lambda_i^{i(n-i)}$, hence its $p$-adic absolute value is as stated.
 \end{proof}
 \subsubsection{The Reductive subgroup}
 Let $\varphi\in{G}_n^0(K)$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
