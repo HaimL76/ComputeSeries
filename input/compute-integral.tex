@@ -416,27 +416,6 @@ By induction on $r=j-i$, as $r=1$ is the assumption of $M_{11}$. For $r>1$, we h
 But by the induction base for $r-1$, we have
 $[\varphi(e_{i,j-1}),\varphi(e_{j-1})]\in[\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}e_{i,j-1}+\gamma_r\mathcal{L},\lambda_{j-1}e_{j-1}+\gamma_2\mathcal{L}]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_je_{ij}+\gamma_{r+1}\mathcal{L}$.
 \end{proof}
-\begin{lemma}
-\label{lem:automorphism-determinant}
-Let $\varphi$ be an $\mathcal{L}$-automorphism with $M_{11}=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1})$, then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$.
-\end{lemma}
-\begin{proof}
-By the structure of the main diagonal of $\varphi$ given in $\ref{lem:automorphism-diagonal}$, the determinant  $\det\varphi$ is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ on the diagonal, which is $\#\lambda_i(n)=i(n-i)$. We prove this formula by induction, for $n=4$ the diagonal of $\varphi$ is $\mathrm{diag}(\lambda_1,\lambda_2,\lambda_3,\lambda_1\lambda_2,\lambda_2\lambda_3,\lambda_1\lambda_2\lambda_3)$, and we count the elements:
-\begin{flalign*}
-\#\lambda_1(4)&3=1(4-1)\\
-\#\lambda_2(4)&4=2(4-2)\\
-\#\lambda_3(4)&3=3(4-3)\\
-\end{flalign*}
-For $n>4$, we enumerate the products that are added with the new element $\lambda_n$ by $l$ their length:
-\begin{align*}
-l=1&:\lambda_n\\
-l=2&:\lambda_{n-1}\lambda_n\\
-l=3&:\lambda_{n-2}\lambda_{n-1}\lambda_n\\
-\vdots\\
-l=n&:\lambda_1\lambda_2\cdots\lambda_{n-2}\lambda_{n-1}\lambda_n,\\
-\end{align*}
-hence every $\lambda_i$ is added $i$ times, but $\#\lambda_i(n-1)=i(n-1-i)$, by the assumption, thus $\#\lambda_i(n)=\lambda_i(n-1)+i=\#\lambda_i(n)$, which proves the induction step, it follows that the determinant is the product $\prod_{i=1}^{n-1}\lambda_i^{i(n-i)}$, hence its $p$-adic absolute value is as stated.
-\end{proof}
 \subsubsection{The Reductive subgroup}
 Let $\varphi\in{G}_n^0(K)$ be an $\mathcal{L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
 and it is readily seen that $h$ itself is an $\mathcal{L}$-automorphism.\\
@@ -704,14 +683,28 @@ The subgroup $N_n(\mathbb{Z}_p)$ has the decomposition $N=\tilde{N}_{n-1}\rtimes
 \end{proof}
 \section{Full Decomposition of the Zeta-Function}
 We aim at computing $\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}$, which is the product of the function $|det\varphi|_p^s$ by the measure of domain of integration.\\
-
 \subsection{Computation of the Function Under the Integral}
 \begin{proposition}
-Let $n\geq{4}$, and $\varphi\in{G}_n^0(\mathbb{Z}_p)$ for some prime $p$. As seen above, $\varphi$ has the decomposition $\varphi=uh$, where $u\in{N}_n(\mathbb{Z}_p)$ and $h\in{H}_n(\mathbb{Z}_p)$. Then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$, where $\lambda_i=h_{ii}$ for $1\leq{i}\leq{n}-1$.
-\begin{proof}
-Since $\det{u}=1$, it follows that $\det\varphi=\det{h}$, which is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ in $h$, which is $\#\lambda_i(n)=i(n-i)$. This is a simple combinatorial formula that can be proved for $n=5$ by counting the number of $\lambda_1$, $\lambda_2$, $\lambda_3$ and $\lambda_4$, which are $4$, $6$, $6$ and $4$, respectively. For $n+1$, we observe that for each length $l$ we add a new product $\lambda_{n-l+1}\cdots\lambda_{n-1}\lambda_n$, thus we add $i$ times each element $\lambda_i$, which aligns with the formula, because $\#\lambda_i(n+1)=i(n+1-i)=i(n-i)+i=\#\lambda_i(n)+i$.
-\end{proof}
+\label{prop:automorphism-determinant}
+Let $\varphi$ be an $\mathcal{L}$-automorphism with $M_{11}=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1})$, then $|\det\varphi|_p^s=\prod_{i=1}^{n-1}|\lambda_i|_p^{i(n-i)s}$.
 \end{proposition}
+\begin{proof}
+By the structure of the main diagonal of $\varphi$ given in $\ref{lem:automorphism-diagonal}$, the determinant  $\det\varphi$ is the product of all the occurrences of $\lambda_1,\lambda_2,\dots,\lambda_{n-1}$ on the diagonal, which is $\#\lambda_i(n)=i(n-i)$. We prove this formula by induction, for $n=4$ the diagonal of $\varphi$ is $\mathrm{diag}(\lambda_1,\lambda_2,\lambda_3,\lambda_1\lambda_2,\lambda_2\lambda_3,\lambda_1\lambda_2\lambda_3)$, and we count the elements:
+\begin{flalign*}
+\#\lambda_1(4)&3=1(4-1)\\
+\#\lambda_2(4)&4=2(4-2)\\
+\#\lambda_3(4)&3=3(4-3)\\
+\end{flalign*}
+For $n>4$, we enumerate the products that are added with the new element $\lambda_n$ by $l$ their length:
+\begin{align*}
+l=1&:\lambda_n\\
+l=2&:\lambda_{n-1}\lambda_n\\
+l=3&:\lambda_{n-2}\lambda_{n-1}\lambda_n\\
+\vdots\\
+l=n&:\lambda_1\lambda_2\cdots\lambda_{n-2}\lambda_{n-1}\lambda_n,\\
+\end{align*}
+hence every $\lambda_i$ is added $i$ times, but $\#\lambda_i(n-1)=i(n-1-i)$, by the assumption, thus $\#\lambda_i(n)=\lambda_i(n-1)+i=\#\lambda_i(n)$, which proves the induction step, it follows that the determinant is the product $\prod_{i=1}^{n-1}\lambda_i^{i(n-i)}$, hence its $p$-adic absolute value is as stated.
+\end{proof}
 \subsection{Full Decomposition of the Domain of Integration}
 By applying Fubini's theorem for semidirect products of topological groups \cite[Proposition 28]{Nachbin}, we have that \[\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}=\displaystyle\int_{H^+(\mathbb{Q}_p)}\left(\displaystyle\int_{N_{h}^+}|\det{uh}|_p^sd\mu_{N(\mathbb{Q}_p)}\right)d\mu_{H(\mathbb{Q}_p)},\]
 where \[H^+(\mathbb{Q}_p):=\{\mathrm{diag}(\lambda_{1},\dots,\lambda_{n-1},\lambda_{1}\lambda_{2},\dots,\lambda_{1}\lambda_{2}\cdots\lambda_{n-2}\lambda_{n-1}) : \lambda_{i}\in\mathbb{Z}_{p}\setminus\{0\}\},\]
