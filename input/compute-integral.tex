@@ -161,7 +161,7 @@ and by the assumption $\varphi(e_{i,i+r-1})\in\gamma_{r-1}\mathcal{L}$, thus $\v
 \end{proof}
 \begin{corollary}
 \label{cor:main-diag-block}
-Let $\varphi\in{G}_n(K)$, if $x\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$, for some $1\leq{r}<k\leq{n-1}$, then also $\varphi(x)\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$.
+Let $\varphi\in{G}_n(\mathbb{Q}_p)$, if $x\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$, for some $1\leq{r}<k\leq{n-1}$, then also $\varphi(x)\in\gamma_r\mathcal{L}\setminus\gamma_k\mathcal{L}$.
 \end{corollary}
 \begin{lemma}
 \label{lem:quotient-automorphism}
@@ -198,22 +198,28 @@ We generalize this discussion to an arbitrary field $K$.
 Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):=\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X):=\{y\in{L} : [y,X]\subseteq{I}\}$.\\
 Denote by $L=\mathcal{L}_{n,p}$ our usual algebra over $K$, that is $\mathcal{L}:=\langle{e}_{ij} : 1\leq{i}<j\leq{n}\rangle$ with scalars in $K$.\\
 \subsection{The $\mathcal{X}$ criterion}
+\label{x-criterion}
 Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Kx+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
 Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
 where $v_1,v_2,\dots,a_{n-1}$ are not all zero.\\
 Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)\cap\left(L\setminus\gamma_2L\right)$, that is 
 \[y=b_1e_{12}+b_2e_{23}+\cdots+b_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}b_{i,i+r}e_{i,i+r},\] 
-where $b_1,b_2,\dots,b_{n-1}$ are not all zero, such that $[x,y]\in\gamma_3L$.\\
-But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$. Thus
+where $b_1,b_2,\dots,b_{n-1}$ are not all zero, and $[x,y]\in\gamma_3L$.\\
+But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$, hence
 \[
 [x,y]=\sum_{i=1}^{n-2}\left(a_ib_{i+1}-a_{i+1}b_i\right)e_{i,i+2}+\gamma_3L
 ,\]
-hence $[x,y]\in\gamma_3L\iff{a}_ib_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
+thus $[x,y]\in\gamma_3L\iff{a}_ib_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
 a_i&a_{i+1}\\
 b_i&b_{i+1}
 \end{pmatrix}=0$, for every $1\leq{i}\leq{n-2}$.\\
-Assume $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$.\\
-consider the case where $b_j=0$ for some $1\leq{j}\leq{n-1}$, then\\ $a_{j-1}b_j-a_jb_{j-1}=0\iff{b}_{j-1}=0$, and $a_{j}b_{j+1}-a_{j+1}b_j=0\iff{b}_{j+1}=0$, because $a_{j-1},a_j,a_{j+1}\neq{0}$, which implies that either $b_i\neq{0}$ for every $1\leq{i}\leq{n-1}$ or $y\in\gamma_3L$. Hence we also assume that $b_1,b_2,\dots,b_{n-1}$ are all nonzero elements in $K$. But then\\
+Assume that $a_i\neq{0}$ for all $1\leq{i}\leq{n-1}$.\\
+consider the case where $b_j=0$ for some $1\leq{j}\leq{n-1}$, and since $a_{j-1},a_j,a_{j+1}\neq{0}$, we have that:
+\begin{align*}
+a_{j-1}b_j-a_jb_{j-1}=0&\iff{b}_{j-1}=0\\ 
+a_{j}b_{j+1}-a_{j+1}b_j=0&\iff{b}_{j+1}=0,\\
+\end{align*}
+hence we assume also that $b_i\neq{0}$ for all $1\leq{i}\leq{n-1}$, but then:
 \[a_{i}b_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
 a_i&a_{i+1}\\
 b_i&b_{i+1}
@@ -252,6 +258,7 @@ for all $1\leq{i}\leq{n-1}$, which shows that $\langle
 {x}_1,x_2,\dots,x_{n-1}\rangle=\langle{e}_{12},e_{23},\dots,e_{n-1,n}\rangle$.\\
 Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for every $j\neq{i}$, then $a_ib_{i+1}-a_{i+1}b_i=-a_{i+1}b_i=0$ and $a_{i-1}b_i-a_ib_{i-1}=a_{i-1}b_i=0$ if and only if $b_i=0$. But then $\frac{b_1}{v_1}=\frac{b_2}{v_2}=\cdots=\frac{b_{i-1}}{a_{i-1}}=c_1$ and $\frac{b_{i+1}}{a_{i+1}}=\frac{b_{i+2}}{a_{i+2}}=\cdots=\frac{b_{n-1}}{a_{n-1}}=c_2$, for $c_1,c_2\in{K}$, hence $y=c_1(a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{i-1,i})+c_2(a_{i+1}e_{i+1,i+2}+a_{i+2}e_{i+2,i+3}+\cdots+a_{n-1}e_{n-1,n})+\gamma_2L\notin{K}x+\gamma_2L\implies{x}\notin\mathcal{X}$, which is an example for an element whose centralizers are not necessarily in $Kx+\gamma_2L$.
 \subsection{The $\mathcal{Y}$ criterion}
+\label{y-criterion}
 Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in{K}$ not all zero.\\
 But \[[x,y]=0\iff\sum_{k=1}^{r-1}a_{j,j+k}b_{j+k,j+r}-a_{j+r,j+k}b_{j,j+k}=0,\]
 for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
@@ -291,8 +298,11 @@ For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and
 But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{i+1}\}$, then any $z\in{C}_L(B)$ must have $d_{lh}=0$ for all $1\leq{l}<h\leq{n}$, unless $(l,h)=(i,i+1)$, but then $z=d_ie_{i,i+1}=ca_ie_{i,i+1}=cx$ for some $c=\frac{d_i}{a_i}\in{K}$, and all the computation above is up to the center $Z(L)$, hence $z\in{K}x+Z(L
 )$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that $\mathcal{L}$ is rigid.
 \subsection{Rigidity and Base Extension}
-Denote by $L=\mathcal{L}_{n,p}$ our $\mathbb{Q}_p$-algebra, and denote by $\mathcal{O}=\mathcal{O}_K$, and denote by $M=L\otimes\mathcal{O}_K$ the tensor product extending $L$ with scalars from $\mathcal{O}_K$, and denote by $N=Z\otimes\mathcal{O}_K$ where $Z=Z(L)$ is the center of $L$, then the rigidity of $L$ shown above implies the following (see \cite[\S{3.7}]{BermanGlazerSchein}):\\
-Define $\psi:\text{Aut}_{\mathbb{Q}_p}(M)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{M}{N})$, and denote by $J=\ker\psi$, then $\text{Aut}_{\mathbb{Q}_p}(M)=(J\cdot\text{Aut}_{\mathcal{O}_K}(M))\rtimes\text{Aut}_{\mathbb{Q}_p}(\mathcal{O}_K)$. This decomposition shows that instead of constructing a $\mathbb{Q}_p$-linear $M$-automorphism where $\dim{L}\otimes_{\mathbb{Q}_p}\mathcal{O}_K=(n-1)\times{d}_K$, we construct first an $\mathcal{O}_K$-linear $M$-automorphism where $\dim{L}\otimes_{\mathcal{O}_K}\mathcal{O}_K=n-1$, and we take its product with $J$, as both $\text{Aut}_{\mathcal{O}_K}(M)$ and $J$ contain $d\times{d}$ elements operating on the same basis.
+We apply the general discussion in \ref{x-criterion} and \ref{y-criterion} to number fields of the form $K=\mathbb{Q}_p[\lambda_1,\lambda_2,\dots,\lambda_{f-1}]$, that is, $f$-dimensional algebraic extensions of $\mathbb{Q}_p$, including the case $f=1$, that is, $K=\mathbb{Q}_p$. 
+For any $K$, denote by $\mathcal{O}_K$ its ring of integers.
+Denote by $\mathcal{L}=\mathcal{L}_{n,p}\otimes{K}$ the extension of scalars of our $\mathbb{Q}_p$-algebra to a $K$-algebra, and by $L=L_{n,p}\otimes\mathcal{O}_K$ the extension of scalars of our $\mathbb{Z}_p$-algebra to an $\mathcal{O}_K$-algebra. 
+Also denote $Z=Z_{n,p}\otimes\mathcal{O}_K$ where $Z_{n,p}$ is the center of our algebra over $\mathbb{Q}_p$ and $\mathbb{Z}_p$, which immediately identifies as the center of the extended $\mathcal{L}$ and $L$, then the rigidity of $L$ shown above implies the following (see \cite[\S{3.7}]{BermanGlazerSchein}):\\
+Define $\psi:\text{Aut}_{\mathbb{Q}_p}(L)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{L}{Z})$, and denote by $J=\ker\psi$, then $\text{Aut}_{\mathbb{Q}_p}(L)=(J\cdot\text{Aut}_{\mathcal{O}_K}(L))\rtimes\text{Aut}_{\mathbb{Q}_p}(\mathcal{O}_K)$. This decomposition shows that instead of constructing a $\mathbb{Q}_p$-linear $L$-automorphism where $\dim{L}\otimes_{\mathbb{Q}_p}\mathcal{O}_K=d\times{f}$, we construct first an $\mathcal{O}_K$-linear $L$-automorphism where $\dim{L}\otimes_{\mathcal{O}_K}\mathcal{O}_K=f$, and we take its product with $J$, as both $\text{Aut}_{\mathcal{O}_K}(L)$ and $J$ contain $d\times{d}$ elements operating on the same basis.
 But $J=\ker\psi$ consists of all the $d\times{d}$ matrices $M=(m_{ij})$ with only the block $n-1$, that is, only $m_{d,i}$ where $1\leq{i}\leq{n}-1$ are nonzero elements, and the natural map $z\mapsto{z}\otimes{1}$ enables the operation. Thus, unless stated otherwise, we shall denote $\mathcal{L}=\mathcal{L}\otimes_{\mathbb{Q}_p}K$ and $L=L\otimes_{\mathbb{Q}_p}\mathcal{O}_K$.
 We shall give this a more concrete form when we explain the computation for $\zeta_{L_{5,p}}^{\wedge}(s)$.
 \section{The Group of Automorphisms}
