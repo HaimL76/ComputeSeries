@@ -102,6 +102,7 @@ If any Dirichlet series, in particular $\zeta_{G}^{\ast}(s)$, convergences on so
 Consider the set $\{E_k\}$ of $n\times{n}$ elementary matrices with $1$ on the main diagonal and $1$ in the $(k,k+1)$ entry for some index $1\leq{k}\leq{n}-1$, and zero elsewhere, and it is easy to see that $E_k^{-1}$ is the same matrix but with $-1$ in the $(k,k+1)$ entry, and that $(E_k)^r$ for some $r\in\mathbb{N}$ is the same as $E_k$ but with $r$ in the entry $(k,k+1)$, and thus $(E_k^{-1})^r=(E_k)^{-r}$. Considering all the commutators of the form $[E_k,E_l]=E_kE_lE_k^{-1}E_l^{-1}$, we observe that $U_n:=\langle{E_k}\rangle$ is a finitely-generated group of matrices over $\mathbb{Z}$ and that $U_n\cong\mathbb{Z}^d$ for $d=\binom{n}{2}$, and that it is therefore torsion-free, that it is also nilpotent.
 \end{example}
 \subsection{Linearization}
+\label{linearization}
 We may transfer the ideas from the above discussion about groups to a linear context, where we can use tools from linear algebra.
 If $L$ is a $\mathbb{Z}$-Lie algebra, namely a free $\mathbb{Z}$-module of finite rank with a Lie bracket operation, then consider the number $a_{n}^{\wedge}(L)$ of subalgebras $M\leq L$ of index $n$ such that $M\otimes_{\mathbb{Z}}\mathbb{Z}_p\cong L\otimes_{\mathbb{Z}}\mathbb{Z}_p$ for all primes $p$. It is known that $a_{n}^{\wedge}(L)<\infty$ for all $n\in\mathbb{N}$. The Dirichlet series $\zeta_{L}^{\wedge}(s):=\sum_{n=1}^{\infty}{a_{n}^{\wedge}}(L)n^{-s}$ is called the \textbf{pro-isomorphic zeta function} of $L$. By the Mal'cev correspondence, to every $\mathcal{T}$-group $G$ one may associate a Lie algebra $L=L(G)$ such that $\zeta_{G,p}^{\wedge}(s)=\zeta_{L,p}^{\wedge}(s)$ for all but finitely many primes $p$. If $G$ has nilpotency class $2$, one may obtain the equality for all primes \cite[Theorem 4.1]{GrunewaldSegalSmith}.\par
 Let $L$ be a $\mathbb{Z}$-Lie algebra. Choose a basis $(b_1,\dots,b_r)$, where $r=\mathrm{rank}\,L$. Let $\mathcal{L}_{p}=L\otimes_{\mathbb{Z}}\mathbb{Q}_p$, for any prime $p$. This is a $\mathbb{Q}_p$-Lie algebra, and our choice of basis allows us to identify the automorphism group $G(\mathbb{Q}_p)=Aut_{\mathbb{Q}_p}(\mathcal{L}_{p})$ with a subgroup of $GL_r(\mathbb{Q}_p)$. Note that $\mathcal{L}_{p}$ contains a $\mathbb{Z}_p$-lattice $L_{p}=L\otimes_{\mathbb{Z}}\mathbb{Z}_p$. If $\varphi\in G(\mathbb{Q}_p)$, then $\varphi(L_{p})=L_{p}$ if and only if $\varphi\in G(\mathbb{Z}_p)=G(\mathbb{Q}_p)\cap GL_r(\mathbb{Z}_p)$. Similarly, $\varphi(L_{p})\subseteq L_{p}$ if and only if $\varphi\in G^{+}(\mathbb{Q}_p):=G(\mathbb{Q}_p)\cap {M}_r(\mathbb{Z}_p)$, where ${M}_r(\mathbb{Z}_p)$ is the collection of $r\times r$ matrices with entries in $\mathbb{Z}_p$. Note that $G^{+}(\mathbb{Q}_p)$ is a monoid, not a group.\par
@@ -121,15 +122,23 @@ which results in \begin{equation}
 \end{equation}
 
 \section{Basic Notions}
-
+In all the following, refer to \ref{linearization} for the general mathematical background.
 \subsection{The Lie algebras $\mathcal{L}$ and $L$}
+\subsection{The matrix algebras $\mathcal{L}_n$ and $L_n$}
+\label{R-algebra-definition}
 Let $R$ be a commutative ring, and let $L_{n}(R)$ be the set of strictly upper triangular $n\times{n}$ matrices with elements in $R$. The commutator Lie bracket $[A,B]=AB-BA$ gives $L_{n}(R)$ the structure of a nilpotent $R$-Lie algebra.
-We usually denote by $\mathcal{L}_n(K)$ the Lie algebra for $R=K$ where $K$ is some field, and by $L_n(\mathcal{O}_K)$ the Lie algebra over the ring of integers of $K$, and we shall omit the ring notation $R$ or the rank notation $n$ when they are implied from the context.
+We usually denote by $\mathcal{L}_n(K)$ the Lie algebra for $R=K$ where $K$ is some field, and by $L_n(\mathcal{O}_K)$ the Lie algebra over the ring of integers of $K$, and we shall omit the ring notation or the rank notation $n$ when they are implied from the context.
+\subsection{The $p$-adic algebras $\mathcal{L}_{n,p}$ and $L_{n,p}$}
+\label{p-adic-algebra-definition}
 We start with $K=\mathbb{Q}_p$ the field of $p$-adic numbers and its ring of integers $\mathbb{Z}_p$, for this we may use the notations $\mathcal{L}_{n,p}$ and $L_{n,p}$, respectively, and we shall omit also the $p$ notation, when possible.
-Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsewhere. Then $B:=\{e_{ij} : 1\leq{i}<{j}\leq{n}\}$ is a basis of $L_{n}$, which we order as follows: $(e_{12},\dots,e_{n-1,n},e_{13},\dots,e_{n-2,n},e_{14},\dots,e_{n-3,n},\dots,e_{1n})$, that is, $e_{ij}<e_{kl}$ if either $j-i<l-k$ or if $j-i=l-k$ and $i<k$. We may write $e_i$ to denote $e_{i,i+1}$, for abbreviation, and denote by $B_1:=\{e_1,e_2,\dots,e_{n-1}\}$ the set of these elements. The cardinality of $B$ is $\binom{n}{2}$, thus We denote by $d=\text{rank}{L}_n=\binom{n}{2}$ the rank of $L_n$ as a free $\mathbb{Z}$-module. Note that $\gamma_{1}L_{n},\dots,\gamma_{n-1}L_{n}$ are spanned by final segments of $B$. The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
+\subsection{The basis of the Lie algebra $L$}
+Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsewhere. Then $B:=\{e_{ij} : 1\leq{i}<{j}\leq{n}\}$ is a basis of $L_{n}$, which we order as follows: $(e_{12},\dots,e_{n-1,n},e_{13},\dots,e_{n-2,n},e_{14},\dots,e_{n-3,n},\dots,e_{1n})$, that is, $e_{ij}<e_{kl}$ if either $j-i<l-k$ or if $j-i=l-k$ and $i<k$. We will usually write $e_i$ to denote $e_{i,i+1}$, and we shall denote by $B_1:=\{e_1,e_2,\dots,e_{n-1}\}$ the set of elements of this form. The cardinality of $B$ is $\binom{n}{2}$, thus we denote by $d=\text{rank}{L}_n=\binom{n}{2}$ the rank of $L_n$ as a free $R$-module. Note that $\gamma_{1}L_{n},\dots,\gamma_{n-1}L_{n}$ are spanned by final segments of $B$. 
+\subsection{The zeta functions $\zeta_{L_{n,p}}^{\wedge}(s)$}
+The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
 \begin{remark}
 Let $U_n(R)$ be the group of $n\times{n}$ upper unitriangular matrices over $R$. By the Mal'cev correspondence, ${\zeta^\wedge_{U_{n}(\mathbb{Z}_{p})}}(s)={\zeta^\wedge_{L_{n,p}}}(s)$, for all but finitely many primes $p$. This relates the subject of our research to the group-theoretic motivation presented at the beginning of this paper.
 \end{remark}
+\subsection{The Lie algebra operation}
 \begin{lemma}
 \label{lem:multiplication-rule}
 The standard Lie brackets operation on basis elements of $\mathcal{L}_n$ gives the following multiplication rule:
