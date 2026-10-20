@@ -300,11 +300,27 @@ But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{
 \subsection{Rigidity and Base Extension}
 We apply the general discussion in \ref{x-criterion} and \ref{y-criterion} to number fields of the form $K=\mathbb{Q}_p[\lambda_1,\lambda_2,\dots,\lambda_{f-1}]$, that is, $f$-dimensional algebraic extensions of $\mathbb{Q}_p$, including the case $f=1$, that is, $K=\mathbb{Q}_p$. 
 For any $K$, denote by $\mathcal{O}_K$ its ring of integers.
-Denote by $\mathcal{L}=\mathcal{L}_{n,p}\otimes{K}$ the extension of scalars of our $\mathbb{Q}_p$-algebra to a $K$-algebra, and by $L=L_{n,p}\otimes\mathcal{O}_K$ the extension of scalars of our $\mathbb{Z}_p$-algebra to an $\mathcal{O}_K$-algebra. 
+Denote by $\mathcal{L}=\mathcal{L}_{n,p}\otimes{K}$ the extension of scalars of our $\mathbb{Q}_p$-algebra to a $K$-algebra, and by $L=L_{n,p}\otimes\mathcal{O}_K$ the extension of scalars of our $\mathbb{Z}_p$-algebra to an $\mathcal{O}_K$-algebra, and denote, as above, $d=\binom{n}{2}$, the rank of $\mathcal{L}$ and $L$. 
 Also denote $Z=Z_{n,p}\otimes\mathcal{O}_K$ where $Z_{n,p}$ is the center of our algebra over $\mathbb{Q}_p$ and $\mathbb{Z}_p$, which immediately identifies as the center of the extended $\mathcal{L}$ and $L$, then the rigidity of $L$ shown above implies the following (see \cite[\S{3.7}]{BermanGlazerSchein}):\\
-Define $\psi:\text{Aut}_{\mathbb{Q}_p}(L)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{L}{Z})$, and denote by $J=\ker\psi$, then $\text{Aut}_{\mathbb{Q}_p}(L)=(J\cdot\text{Aut}_{\mathcal{O}_K}(L))\rtimes\text{Aut}_{\mathbb{Q}_p}(\mathcal{O}_K)$. This decomposition shows that instead of constructing a $\mathbb{Q}_p$-linear $L$-automorphism where $\dim{L}\otimes_{\mathbb{Q}_p}\mathcal{O}_K=d\times{f}$, we construct first an $\mathcal{O}_K$-linear $L$-automorphism where $\dim{L}\otimes_{\mathcal{O}_K}\mathcal{O}_K=f$, and we take its product with $J$, as both $\text{Aut}_{\mathcal{O}_K}(L)$ and $J$ contain $d\times{d}$ elements operating on the same basis.
-But $J=\ker\psi$ consists of all the $d\times{d}$ matrices $M=(m_{ij})$ with only the block $n-1$, that is, only $m_{d,i}$ where $1\leq{i}\leq{n}-1$ are nonzero elements, and the natural map $z\mapsto{z}\otimes{1}$ enables the operation. Thus, unless stated otherwise, we shall denote $\mathcal{L}=\mathcal{L}\otimes_{\mathbb{Q}_p}K$ and $L=L\otimes_{\mathbb{Q}_p}\mathcal{O}_K$.
+Let $\psi:\text{Aut}_{\mathbb{Q}_p}(L)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{L}{Z})$ be the canonical map from $G_n(K)$ to the automorphisms on $\sfrac{L}{Z}$, and denote $J=\ker\psi$, then $\text{Aut}_{\mathbb{Q}_p}(L)=(J\cdot\text{Aut}_{\mathcal{O}_K}(L))\rtimes\text{Aut}_{\mathbb{Q}_p}(L_{n,p})$. This decomposition shows that instead of constructing a $\mathbb{Z}_p$-linear automorphism over $L$ where $\dim{L}_{/\mathbb{Z}_p}=\dim{L}_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_K=d\times{f}$, we construct first an $\mathcal{O}_K$-linear automorphism over $L$ where $\dim{L}_{/\mathcal{O}_K}=f$, and we take its product with $J$, as both $\text{Aut}_{\mathcal{O}_K}(L)$ and $J$ contain $d\times{d}$ matrices operating on the same basis elements.
+But $\ker\psi$ consists of all the automorphisms $\varphi$ that fix every basis element not in the center of $L$, that is, $\varphi(e_{ij})\in{e}_{ij}+Z$, for every $e_{ij}\in{B}\setminus\{e_{1n}\}$, which implies that
+the matrix $\varphi=(m_{ij})$ has $m_{kk}=1$ for all $1\leq{k}\leq{d-1}$, and $m_{ld}$ is any scalar in $K$ for all $1\leq{l}\leq{d}$, and all the other elements are zero:
+\[
+\varphi=(m_{ij})=\begin{bmatrix*}[l]
+1&\cdots&\cdots&\cdots&\cdots&\cdots&m_{1d}\\
+&1&\cdots&\cdots&\cdots&\cdots&m_{2d}\\
+&&\ddots&&&&\vdots\\
+&&&1&\cdots&\cdots&m_{n-1,d}\\
+&&&&\ddots&\cdots&\vdots\\
+&&&&&1&m_{d-1,d}\\
+&&&&&&m_{dd}\\
+\end{bmatrix*}.\]
+We shall display a more accurate structure for the matrices in $J$ once we establish the general form of the matrices representing the $L$-automorphisms.
+This construction enables us to compute our zeta functions over any number field $K$ and its ring of integers $\mathcal{O}_K$ in a similar way to the computation over $\mathbb{Q}_p$ and $\mathbb{Z}_p$.
 We shall give this a more concrete form when we explain the computation for $\zeta_{L_{5,p}}^{\wedge}(s)$.
+
+
+$z\mapsto{z}\otimes{1}$
 \section{The Group of Automorphisms}
 \subsection{Representing Matrices of $\mathcal{L}$-Automorphisms}
 Let $\varphi\in{G_{n}}(K)$ be an $\mathcal{L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$, where $d=\binom{n}{2}$, with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
