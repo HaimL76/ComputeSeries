@@ -142,29 +142,26 @@ We start with $R=\mathbb{Z}$, for which we have the Dirichlet series as we expla
 Considering $\mathbb{Z}_p$ the ring of $p$-adic integers, we construct a $\mathbb{Z}_p$-Lie algebra $L_n(\mathbb{Z}_p)$ as explained in \ref{R-algebra-basic-definition}, and we claim the following:
 \begin{lemma}
 \label{lem:L-tensor-p-adic-integers}
-We have an isomorphism $L_n(\mathbb{Z}_p)\cong{L}_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$, and $\text{rank}L_n(\mathbb{Z}_p)=\text{rank}L_n(\mathbb{Z})=d$ as a free $\mathbb{Z}_p$-module.
+There is a natural isomorphism $L_n(\mathbb{Z}_p)\cong{L}_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$ through the bijection $e_{ij}\overset{\psi}{\longleftrightarrow}e_{ij}\otimes1$.
 \end{lemma}
 \begin{proof}
-The construction of both $L_n(\mathbb{Z}_p)$ and $L_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$ as $\mathbb{Z}$-algebras is immediate from the inclusion $\iota:\mathbb{Z}\rightarrow\mathbb{Z}_p$, which induces the maps: 
-\begin{itemize}
-    \item[] 
-$mX\rightarrow(\iota(m)I)X$, for any $m\in\mathbb{Z}$ and $X\in{L}_n(\mathbb{Z}_p)$.
-    \item[] 
-$m(Y\otimes\lambda)\rightarrow{Y}\otimes\iota(m)\lambda$, for any $m\in\mathbb{Z}$, $\lambda\in\mathbb{Z}_p$ and $Y\in{L}_n(\mathbb{Z})$.
-\end{itemize}
-Let $e_{ij}\in{L}_n(\mathbb{Z}_p)$ be a matrix defined as in \ref{R-algebra-basis} over the $p$-adic integers, then $\lambda_{ij}{e}_{ij}=(\lambda_{ij}{I})e_{ij}$ is the matrix with $\lambda_{ij}$ in the $(i,j)$ entry, for some $\lambda_{ij}\in\mathbb{Z}_p$, and $0$ elsewhere, and it is clear that all the $\mathbb{Z}_p$-linear combinations of elements of this form, along with the bracket operation described in \ref{R-algebra-basic-definition}, generate the entire $L_n(\mathbb{Z}_p)$.
-We denote by $\psi$ the bijection $e_{ij}\overset{\psi}\longleftrightarrow{e}_{ij}\otimes{1}$, which extends to scalar multiplication by $\psi(\lambda_{ij}e_{ij})=\lambda_{ij}\psi(e_{ij})=\lambda_{ij}(e_{ij}\otimes{1})=e_{ij}\otimes\lambda_{ij}$, thus extends to linear combinations of such elements.
-Since the set $\{e_{ij}\otimes{1} : 1\leq{i}<j\leq{n}\}$ forms a basis of $L_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$, it is implied by considering $\psi^{-1}$ that $L_n(\mathbb{Z}_p)$ is a $d$-dimensional free module over $\mathbb{Z}_p$.
+Let $B_p=B\otimes_\mathbb{Z}\mathbb{Z}_p:=\{e_{ij}\otimes{1}:1\leq{i}<j\leq{n}\}$, then $B_p$ forms a basis of $L_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$, because \[x=\sum_{1\leq{i}<j\leq{n}}a_{ij}(e_{ij}\otimes1)=\sum_{1\leq{i}<j\leq{n}}(a_{ij}e_{ij}\otimes1)=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes1,\]
+where $a_{ij}\in\mathbb{Z}$, and 
+\[bx=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes(1b)=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes{b},\]
+where $b\in\mathbb{Z}_p$. 
 \end{proof}
 \begin{notation}
 We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constructed above. We omit the $p$ or $n$ notations when implied from the context.
 \end{notation}
-This construction is essential to our work, which is based on the theory of $p$-adic numbers, next we show that it is compatible with the fundamental notions of zeta functions on integer numbers.
+This construction is essential to our work, which is based on the theory of $p$-adic numbers, next we show that it is compatible with the fundamental notions of zeta functions on the integer numbers.
 \subsection{The zeta functions $\zeta_{L_{n,p}}^{\wedge}(s)$}
 The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
 \begin{remark}
 Let $U_n(R)$ be the group of $n\times{n}$ upper unitriangular matrices over $R$. By the Mal'cev correspondence, ${\zeta^\wedge_{U_{n}(\mathbb{Z}_{p})}}(s)={\zeta^\wedge_{L_{n,p}}}(s)$, for all but finitely many primes $p$. This relates the subject of our research to the group-theoretic motivation presented at the beginning of this paper.
 \end{remark}
+\begin{lemma}
+
+\end{lemma}
 \subsection{The Lie algebra operation}
 \begin{lemma}
 \label{lem:multiplication-rule}
