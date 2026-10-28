@@ -139,16 +139,16 @@ Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsew
 \subsection{The $p$-adic algebra $L_{n,p}$}
 \label{p-adic-algebra-definition}
 We start with $R=\mathbb{Z}$, for which we have the Dirichlet series as we explain later in details.
-Considering $\mathbb{Z}_p$ the ring of $p$-adic integers, we construct a $\mathbb{Z}_p$-Lie algebra $L_n(\mathbb{Z}_p)$ as explained in \ref{R-algebra-basic-definition}, and we claim the following:
+Considering $\mathbb{Z}_p$ the ring of $p$-adic integers, we construct a $\mathbb{Z}_p$-Lie algebra $L_n(\mathbb{Z}_p)$ which is a free $\mathbb{Z}_p$-module, as explained in \ref{R-algebra-basic-definition}, and we claim the following:
 \begin{lemma}
 \label{lem:L-tensor-p-adic-integers}
 There is a natural isomorphism $L_n(\mathbb{Z}_p)\cong{L}_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$ through the bijection $e_{ij}\overset{\psi}{\longleftrightarrow}e_{ij}\otimes1$.
 \end{lemma}
 \begin{proof}
-Let $B_p=B\otimes_\mathbb{Z}\mathbb{Z}_p:=\{e_{ij}\otimes{1}:1\leq{i}<j\leq{n}\}$, then $B_p$ forms a basis of $L_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$, because \[x=\sum_{1\leq{i}<j\leq{n}}a_{ij}(e_{ij}\otimes1)=\sum_{1\leq{i}<j\leq{n}}(a_{ij}e_{ij}\otimes1)=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes1,\]
-where $a_{ij}\in\mathbb{Z}$, and 
-\[bx=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes(1b)=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes{b},\]
-where $b\in\mathbb{Z}_p$. 
+Let $B_p=B\otimes_\mathbb{Z}\mathbb{Z}_p:=\{e_{ij}\otimes{1}:1\leq{i}<j\leq{n}\}$, then $B_p$ forms a $\mathbb{Z}$-basis of $L_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$, because \[x=\sum_{1\leq{i}<j\leq{n}}a_{ij}(e_{ij}\otimes1)=\sum_{1\leq{i}<j\leq{n}}(a_{ij}e_{ij}\otimes1)=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes1,\]
+where $a_{ij}\in\mathbb{Z}$, and since
+\[bx=b\left(\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes1\right)=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes(1b)=\left(\sum_{1\leq{i}<j\leq{n}}a_{ij}e_{ij}\right)\otimes{b},\]
+where $b\in\mathbb{Z}_p$, we get that $B_p$ is a $\mathbb{Z}_p$-basis by extension of scalars, and $\psi$ forms a bijection $B\overset{\psi}{\longleftrightarrow}B_p$ between the two bases, which complies with the direct construction of $L_n(\mathbb{Z}_p)$. 
 \end{proof}
 \begin{notation}
 We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constructed above. We omit the $p$ or $n$ notations when implied from the context.
