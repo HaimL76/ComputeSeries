@@ -138,7 +138,7 @@ We may denote by ${L}_n(K)$ the $K$-Lie algebra over some field $K$, usually the
 Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsewhere. Then $B:=\{e_{ij} : 1\leq{i}<{j}\leq{n}\}$ is a basis of $L_{n}$, which we order as follows: $(e_{12},\dots,e_{n-1,n},e_{13},\dots,e_{n-2,n},e_{14},\dots,e_{n-3,n},\dots,e_{1n})$, that is, $e_{ij}<e_{kl}$ if either $j-i<l-k$ or if $j-i=l-k$ and $i<k$. We will usually write $e_i$ to denote $e_{i,i+1}$, and we shall denote by $B_1:=\{e_1,e_2,\dots,e_{n-1}\}$ the set of elements of this form. The cardinality of $B$ is $\binom{n}{2}$, thus we denote by $d=\text{rank}{L}_n=\binom{n}{2}$ the rank of $L_n$ as a free $R$-module. Note that the elements of the lower central series $\gamma_{1}L_{n},\dots,\gamma_{n-1}L_{n}$ are spanned by final segments of $B$. 
 \subsection{The $p$-adic algebra $L_{n,p}$}
 \label{p-adic-algebra-definition}
-We start with $R=\mathbb{Z}$, for which we have the Dirichlet series as we explain later in details.
+We start with $R=\mathbb{Z}$, for which we utilize the Euler decomposition for computing the zeta function, as we explain later in details.
 Considering $\mathbb{Z}_p$ the ring of $p$-adic integers, we construct a $\mathbb{Z}_p$-Lie algebra $L_n(\mathbb{Z}_p)$ which is a free $\mathbb{Z}_p$-module, as explained in \ref{R-algebra-basic-definition}, and we claim the following:
 \begin{lemma}
 \label{lem:L-tensor-p-adic-integers}
@@ -151,9 +151,19 @@ where $a_{ij}\in\mathbb{Z}$, and since
 where $b\in\mathbb{Z}_p$, we get that $B_p$ is a $\mathbb{Z}_p$-basis by extension of scalars, and $\psi$ forms a bijection $B\overset{\psi}{\longleftrightarrow}B_p$ between the two bases, which complies with the direct construction of $L_n(\mathbb{Z}_p)$. 
 \end{proof}
 \begin{notation}
-We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constructed above. We omit the $p$ or $n$ notations when implied from the context.
+We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constructed above. We omit the $p$ or $n$ notations when implied from the context, as from now on we shall generally talk about the Lie algebra over $\mathbb{Z}_p$, unless stated else.
 \end{notation}
 This construction is essential to our work, which is based on the theory of $p$-adic numbers, next we show that it is compatible with the fundamental notions of zeta functions on the integer numbers.
+\subsection{The extension algebra $L_K$}
+Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$, and let $\mathcal{O}_K$ be its ring of integers, and we construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$. We claim the following:
+\begin{lemma}
+There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p)$ as free $\mathbb{Z}$-modules.
+\end{lemma}
+\begin{proof}
+Denote $\mathcal{O}_{K,p}:=\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$.
+Since both $\mathcal{O}_K$ and $\mathbb{Z}_p$ contain $\mathbb{Z}$ as a sub-ring, it follows that $\mathcal{O}_{K,p}$ has the structure of a $\mathbb{Z}$-module by $z(x\otimes{y})=(zx)\otimes{y}=x\otimes(zy)$, for every $z\in\mathbb{Z}$,
+and also that $\mathcal{O}_{K,p}$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(\mathcal{O}_{K,p}):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(\mathcal{O}_{K,p})$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(\mathcal{O}_{K,p})$ and the $\mathbb{Z}$-basis of $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p$.
+\end{proof}
 \subsection{The zeta functions $\zeta_{L_{n,p}}^{\wedge}(s)$}
 The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
 \begin{remark}
