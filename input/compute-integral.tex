@@ -136,6 +136,14 @@ We may denote by ${L}_n(K)$ the $K$-Lie algebra over some field $K$, usually the
 \subsubsection{The basis of $L_n$}
 \label{R-algebra-basis}
 Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsewhere. Then $B:=\{e_{ij} : 1\leq{i}<{j}\leq{n}\}$ is a basis of $L_{n}$, which we order as follows: $(e_{12},\dots,e_{n-1,n},e_{13},\dots,e_{n-2,n},e_{14},\dots,e_{n-3,n},\dots,e_{1n})$, that is, $e_{ij}<e_{kl}$ if either $j-i<l-k$ or if $j-i=l-k$ and $i<k$. We will usually write $e_i$ to denote $e_{i,i+1}$, and we shall denote by $B_1:=\{e_1,e_2,\dots,e_{n-1}\}$ the set of elements of this form. The cardinality of $B$ is $\binom{n}{2}$, thus we denote by $d=\text{rank}{L}_n=\binom{n}{2}$ the rank of $L_n$ as a free $R$-module. Note that the elements of the lower central series $\gamma_{1}L_{n},\dots,\gamma_{n-1}L_{n}$ are spanned by final segments of $B$. 
+\subsubsection{Direct product of $L_n$}
+\begin{lemma}
+\label{lem:direct-product}
+Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings, then \[L_n\left(\prod_{i=1}^mR_i\right)\cong\prod_{i=1}^m{L}_n(R_i).\]
+\end{lemma}
+\begin{proof}
+Denote $R=\prod_{i=1}^mR_i$, which is well-defined as a commutative ring, with $1_R=(1_{R_1},1_{R_2},\dots,1_{R_m})$ as the multiplicative identity. Then we have the bijection $\left(e_{ij}(1_{R_1}),e_{ij}(1_{R_2}),\dots,e_{ij}(1_{R_m})\right)\overset{\psi}{\longleftrightarrow}e_{ij}\left((1_{R_1},1_{R_2},\dots,1_{R_m}d)\right)$, where the latter is the matrix defined in \ref{R-algebra-basis} with $1_R$ in $(i,j)$.
+\end{proof}
 \subsection{The $p$-adic algebra $L_{n,p}$}
 \label{p-adic-algebra-definition}
 We start with $R=\mathbb{Z}$, for which we utilize the Euler decomposition for computing the zeta function, as we explain later in details.
@@ -162,7 +170,7 @@ There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L
 \begin{proof}
 Denote $\mathcal{O}_{K,p}:=\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$.
 Since both $\mathcal{O}_K$ and $\mathbb{Z}_p$ contain $\mathbb{Z}$ as a sub-ring, it follows that $\mathcal{O}_{K,p}$ has the structure of a $\mathbb{Z}$-module by $z(x\otimes{y})=(zx)\otimes{y}=x\otimes(zy)$, for every $z\in\mathbb{Z}$,
-and also that $\mathcal{O}_{K,p}$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(\mathcal{O}_{K,p}):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(\mathcal{O}_{K,p})$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(\mathcal{O}_{K,p})$ and the $\mathbb{Z}$-basis of $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p$.
+and also that $\mathcal{O}_{K,p}$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(\mathcal{O}_{K,p}):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(\mathcal{O}_{K,p})$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(\mathcal{O}_{K,p})$ and the $\mathbb{Z}$-basis of $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p$, which complies as as ring isomorphism by $\psi[(e_{ij}\otimes1)(e_{kl}\otimes1)]=\psi([e_{ij},e_{kl}]\otimes1]=[e_{ij},e_{kl}](1\otimes1)$.
 \end{proof}
 \subsection{The zeta functions $\zeta_{L_{n,p}}^{\wedge}(s)$}
 The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
