@@ -144,6 +144,16 @@ Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings, then \[L_n\left(\prod_{i=1}^
 \begin{proof}
 Denote $R=\prod_{i=1}^mR_i$, which is well-defined as a commutative ring, with $1_R=(1_{R_1},1_{R_2},\dots,1_{R_m})$ as the multiplicative identity. Then we have the bijection $\left(e_{ij}(1_{R_1}),e_{ij}(1_{R_2}),\dots,e_{ij}(1_{R_m})\right)\overset{\psi}{\longleftrightarrow}e_{ij}\left((1_{R_1},1_{R_2},\dots,1_{R_m}d)\right)$, where the latter is the matrix defined in \ref{R-algebra-basis} with $1_R$ in $(i,j)$.
 \end{proof}
+\subsubsection{Tensor product of $L_n$}
+\begin{lemma}
+\label{lem:tensor-product}
+Let $M$ and $N$ be two $\mathbb{Z}$-modules, which are also extension rings of $\mathbb{Z}$, then there is an isomorphism $L_n(M)\otimes_\mathbb{Z}N\cong{L}_n(M\otimes_\mathbb{Z}N)$ as free $\mathbb{Z}$-modules.
+\end{lemma}
+\begin{proof}
+Denote $P=M\otimes_\mathbb{Z}N$.
+Since both $M$ and $N$ contain $\mathbb{Z}$ as a sub-ring, it follows that $P$ has the structure of a $\mathbb{Z}$-module by $z(x\otimes{y})=(zx)\otimes{y}=x\otimes(zy)$, for every $z\in\mathbb{Z}$,
+and also that $P$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(P):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(P)$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(P)$ and the $\mathbb{Z}$-basis of $L_n(M)\otimes_\mathbb{Z}N$, which complies as as ring isomorphism by $\psi[(e_{ij}\otimes1)(e_{kl}\otimes1)]=\psi([e_{ij},e_{kl}]\otimes1)=[e_{ij},e_{kl}](1\otimes1)$.
+\end{proof}
 \subsection{The $p$-adic algebra $L_{n,p}$}
 \label{p-adic-algebra-definition}
 We start with $R=\mathbb{Z}$, for which we utilize the Euler decomposition for computing the zeta function, as we explain later in details.
@@ -170,8 +180,10 @@ There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L
 \begin{proof}
 Denote $\mathcal{O}_{K,p}:=\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$.
 Since both $\mathcal{O}_K$ and $\mathbb{Z}_p$ contain $\mathbb{Z}$ as a sub-ring, it follows that $\mathcal{O}_{K,p}$ has the structure of a $\mathbb{Z}$-module by $z(x\otimes{y})=(zx)\otimes{y}=x\otimes(zy)$, for every $z\in\mathbb{Z}$,
-and also that $\mathcal{O}_{K,p}$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(\mathcal{O}_{K,p}):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(\mathcal{O}_{K,p})$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(\mathcal{O}_{K,p})$ and the $\mathbb{Z}$-basis of $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p$, which complies as as ring isomorphism by $\psi[(e_{ij}\otimes1)(e_{kl}\otimes1)]=\psi([e_{ij},e_{kl}]\otimes1]=[e_{ij},e_{kl}](1\otimes1)$.
+and also that $\mathcal{O}_{K,p}$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(\mathcal{O}_{K,p}):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(\mathcal{O}_{K,p})$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(\mathcal{O}_{K,p})$ and the $\mathbb{Z}$-basis of $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p$, which complies as as ring isomorphism by $\psi[(e_{ij}\otimes1)(e_{kl}\otimes1)]=\psi([e_{ij},e_{kl}]\otimes1)=[e_{ij},e_{kl}](1\otimes1)$.
 \end{proof}
+Let $p\in\mathbb{Z}$ be a prime number, and let $p\mathcal{O}_K$ be an ideal in $\mathcal{O}_K$, since $\mathcal{O}_K$ is known to be a Dedekind domain, it has a unique factorization to prime ideals $p\mathcal{O}_K=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$ in $K$.
+Since every $\mathfrak{p}_i$ is a prime hence a maximal ideal in $\mathcal{O}_K$, we denote by $K_i=K_{\mathfrak{p}_i}:=\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$ the residue field modulo $\mathfrak{p}_i$
 \subsection{The zeta functions $\zeta_{L_{n,p}}^{\wedge}(s)$}
 The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
 \begin{remark}
