@@ -146,6 +146,36 @@ Denote $R=\prod_{i=1}^mR_i$, which is well-defined as a commutative ring, with $
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma}
+\label{lem:ring-Z-module}
+Let $R$ be a commutative ring, then $R$ has a canonical structure as a $\mathbb{Z}$-module which complies with the ring structure, that is, the ring multiplication commutes with the $\mathbb{Z}$-module operation.
+\end{lemma}
+\begin{proof}
+Considering $R$ as an additive abelian group, $R$ is uniquely determined as a $\mathbb{Z}$-module by mapping $1r\longrightarrow{r}$ and $mr\longrightarrow\underbrace{r+\cdots+r}_{m\,\text{times}}$, for every $r\in{R}$ and $m\in\mathbb{Z}$.
+Let $m,k\in\mathbb{Z}$ and $r,s\in{R}$, then
+\begin{align*}
+(mr)(ks)=\\
+&=(\underbrace{r+\cdots+r}_{m\,\text{times}})(\underbrace{s+\cdots+s}_{k\,\text{times}})=r\underbrace{\underbrace{(s+\cdots+s)}_{k\,\text{times}}+\cdots+r\underbrace{(s+\cdots+s)}_{k\,\text{times}}}_{m\,\text{times}}\\
+&=\underbrace{\underbrace{rs+\cdots+rs}_{k\,\text{times}}+\cdots+\underbrace{rs+\cdots+rs}_{k\,\text{times}}}_{w\,\text{times}}=m(k(rs))=(mk)(rs).
+\end{align*}
+\end{proof}
+Denote $P=M\otimes_\mathbb{Z}N$.
+Since both $M$ and $N$ contain $\mathbb{Z}$ as a sub-ring, it follows that $P$ has the structure of a $\mathbb{Z}$-module by $z(x\otimes{y})=(zx)\otimes{y}=x\otimes(zy)$, for every $z\in\mathbb{Z}$,
+and also that $P$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(P):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(P)$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(P)$ and the $\mathbb{Z}$-basis of $L_n(M)\otimes_\mathbb{Z}N$, which complies as as ring isomorphism by $\psi[(e_{ij}\otimes1)(e_{kl}\otimes1)]=\psi([e_{ij},e_{kl}]\otimes1)=[e_{ij},e_{kl}](1\otimes1)$.
+
+
+
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+\begin{lemma}
 \label{lem:tensor-product}
 Let $M$ and $N$ be two $\mathbb{Z}$-modules, which are also extension rings of $\mathbb{Z}$, then there is an isomorphism $L_n(M)\otimes_\mathbb{Z}N\cong{L}_n(M\otimes_\mathbb{Z}N)$ as free $\mathbb{Z}$-modules.
 \end{lemma}
