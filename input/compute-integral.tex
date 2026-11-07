@@ -152,7 +152,7 @@ Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $e_{ij}e
 \begin{lemma}
 \label{lem:direct-product}
 Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity, then we have a ring isomorphism \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
-which complies also as an isomorphism of free $\mathbb{Z}$-modules of rank $md$.
+which complies also as an isomorphism of free modules of rank $md$.
 \end{lemma}
 \begin{proof}
 We denote by $(e_k
@@ -175,65 +175,33 @@ Let $m,k\in\mathbb{Z}$ and $r,s\in{R}$, then
 \begin{lemma}
 \label{lem:tensor-Ok-Zp}
 \end{lemma}
-Let $R$ and $S$ be rings, then \[L_n(R)\otimes_\mathbb{Z}S\cong{L}_n(R\otimes_\mathbb{Z}S),\]
+Let $R$ and $S$ be rings with a multiplicative identity, then \[L_n(R)\otimes_\mathbb{Z}S\cong{L}_n(R\otimes_\mathbb{Z}S),\]
 as $\mathbb{Z}$-modules and as rings.
 \begin{proof}
-Denote $T=R\otimes_\mathbb{Z}S$.
-By \ref{lem:ring-Z-module}, both $R$ and $S$ assume the structure of a $\mathbb{Z}$-module which complies with the ring structure, hence we obtain the $\mathbb{Z}$-module operation on $T$ by:
-\[m(r\otimes{s})=\underbrace{r\otimes{s}+\cdots+r\otimes{s}}_{m\,\text{times}}=\left(\sum_{i=1}^mr\right)\otimes{s}=(mr)\otimes{s},\]
-for every $m\in\mathbb{Z}$, $r\in{R}$, $s\in{S}$, and we verify that $m(r\otimes{s})=r\otimes(ms)$ in a similar way.
-In addition, we have the tensor product multiplication defined as $(r\otimes{s})(u\otimes{v})=(ru)\otimes(sv)$, and hence $(mr\otimes{s})(ku\otimes{v})=(mrku)\otimes(sv)=(mk)(ru)\otimes(sv)$, for every $r\in{R}$, $s\in{S}$, $m,k\in\mathbb{Z}$.
-But $L_n$ is itself a ring of matrices over $R$, forming an abelian group under matrix addition.
-Let $m,z\in{R}$ and let $g=e_{ij}(m)$ and $h=e_{kl}(z)$ in ${L}_n(R)$ be two matrices with $m$ in location $(i,j)$ of $g$ and $z$ in location $(k,l)$ of $h$, then
+By \ref{lem:ring-Z-module}, both $R$ and $S$ assume the structure of a $\mathbb{Z}$-module which complies with the ring structure, thus we have the canonical definition of $T=R\otimes_\mathbb{Z}S$ by:
 \begin{align*}
-\left(ag\otimes{s}\right)\left(bh\otimes{w}\right)=\\
-&=\left(\underbrace{(g+\cdots+g)}_{a\,\text{times}}\otimes{s}\right)\left(\underbrace{(h+\cdots+h)}_{b\,\text{times}}\otimes{w}\right)=\\
-&=\left(e_{ij}(am)\otimes{s}\right)\left(e_{kl}(bz)\otimes{w}\right)=[e_{ij}(am),e_{kl}(bz)]\otimes(sw)=\\
-&=(ab)[g,h]\otimes(sw).
+m(r\otimes{s})=\\
+&=\left(\sum_{i=1}^mr\right)\otimes{s}=mr\otimes{s}\\
+&=r\otimes\left(\sum_{i=1}^ms\right)=r\otimes{m}s,
 \end{align*}
-for $a,b\in\mathbb{Z}$ and $s,w\in{S}$.
-We now look at $L_n(T)$, and we denote $g=e_{ij}(r\otimes{s})$, the matrix with $r\otimes{s}$ in location $(i,j)$, and $h=e_{kl}(u\otimes{v})$, the matrix with $u\otimes{v}$ in location $(k,l)$, then
+for every $m\in\mathbb{Z}$ and $r\otimes{s}\in{T}$. 
+Let $(e_T)_{ij}\in{L}_n(T)$ be the matrix with $1\otimes1$ in location $(i,j)$, then it is clear that these matrices form a basis of $L_n$ over $T$.
+Let $(e_R)_{ij}$ be the matrix with $1_R$ in location $(i,j)$, and we define also $L_n(R)\otimes_\mathbb{Z}S$ by:
 \begin{align*}
-(ag)(bh)=\\
-&=[\underbrace{(g+\cdots+g)}_{a\,\text{times}},\underbrace{(h+\cdots+h)}_{b\,\text{times}}]=\\
-&=[\underbrace{g,\underbrace{(h+\cdots+h)}_{b\,\text{times}}]+\cdots+[g,\underbrace{(h+\cdots+h)}_{b\,\text{times}}}_{a\,\text{times}}]=\\
-&=\underbrace{[g,e_{kl}(bu\otimes{v})]+\cdots+[g,e_{kl}(bu\otimes{v})]}_{a\,\text{times}}=\\&=[\underbrace{g+\cdots+g}_{a\,\text{times}},e_{kl}(bu\otimes{v})]=[e_{ij}(ar\otimes{s}),e_{kl}(bu\otimes{v})]\\
-&=(ab)[g,h],
+m((e_R)_{ij}\otimes{s})=\\
+&=\left(\sum_{i=1}^m(e_R)_{ij}\right)\otimes{s}=m(e_R)_{ij}\otimes{s}\\
+&=(e_R)_{ij}\otimes\left(\sum_{i=1}^ms\right)=(e_R)_{ij}\otimes{m}s,
 \end{align*}
-for every $a,b\in\mathbb{Z}$, $r,u\in{R}$ and $s,v\in{S}$.
-We define the map \[e_{ij}(r)\otimes{s}\overset{\psi}{\longrightarrow}e_{ij}(r\otimes{s}),\]
-for every $r\in{R}$ and $s\in{S}$, and we verify that
+and clearly the tensor elements $(e_R)\otimes{s}$ form an $R$-basis of $L_n(R)\otimes_\mathbb{Z}S$.
+We define a bijection $(e_R)_{ij}\otimes1\overset{\psi}{\longleftrightarrow}(e_T)_{ij}$, which also complies as a ring isomorphism, because 
 \begin{align*}
-\psi\left((e_{ij}(r)\otimes{s})(e_{jk}(u)\otimes{v})\right)=\\
-&=\psi\left([e_{ij}(r),e_{jk}(u)]\otimes(sv)\right)=\\
-&=\psi(e_{ik}(ru)\otimes(sv))=e_{ik}(ru\otimes{s}v)=\\
-&=e_{ik}\left((r\otimes{s})(u\otimes{v})\right)=\\
-&=[e_{ij}\left((r\otimes{s})(u\otimes{v})\right),e_{jk}\left((r\otimes{s})(u\otimes{v})\right)]
+\psi\left(((e_R)_{ij}\otimes1))((e_R)_{jk}\otimes1)\right)=\\
+&=\psi([(e_R)_{ij},(e_R)_{jk}]\otimes1)=\\
+&=\psi((e_R)_{ik}\otimes1)=(e_T)_{ik}=\\
+&=[(e_T)_{ij},(e_T)_{jk}]=\\
+&=[\psi((e_R)_{ij}\otimes1),\psi((e_R)_{jk}\otimes1)].
 \end{align*}
 \end{proof}
-
-
-
-
-
-
-
-Since both $M$ and $N$ contain $\mathbb{Z}$ as a sub-ring, it follows that $P$ has the structure of a $\mathbb{Z}$-module by $z(x\otimes{y})=(zx)\otimes{y}=x\otimes(zy)$, for every $z\in\mathbb{Z}$,
-and also that $P$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(P):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(P)$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(P)$ and the $\mathbb{Z}$-basis of $L_n(M)\otimes_\mathbb{Z}N$, which complies as as ring isomorphism by $\psi[(e_{ij}\otimes1)(e_{kl}\otimes1)]=\psi([e_{ij},e_{kl}]\otimes1)=[e_{ij},e_{kl}](1\otimes1)$.
-
-
-
-
-
-
-\end{proof}
-
-
-
-
-
-
-
 \begin{lemma}
 \label{lem:tensor-product}
 Let $M$ and $N$ be two $\mathbb{Z}$-modules, which are also extension rings of $\mathbb{Z}$, then there is an isomorphism $L_n(M)\otimes_\mathbb{Z}N\cong{L}_n(M\otimes_\mathbb{Z}N)$ as free $\mathbb{Z}$-modules.
