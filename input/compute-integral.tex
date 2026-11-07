@@ -202,29 +202,6 @@ We define a bijection $(e_R)_{ij}\otimes1\overset{\psi}{\longleftrightarrow}(e_T
 &=[\psi((e_R)_{ij}\otimes1),\psi((e_R)_{jk}\otimes1)].
 \end{align*}
 \end{proof}
-\begin{lemma}
-\label{lem:tensor-product}
-Let $M$ and $N$ be two $\mathbb{Z}$-modules, which are also extension rings of $\mathbb{Z}$, then there is an isomorphism $L_n(M)\otimes_\mathbb{Z}N\cong{L}_n(M\otimes_\mathbb{Z}N)$ as free $\mathbb{Z}$-modules.
-\end{lemma}
-\begin{proof}
-Since every ring $R$ has the structure of a $\mathbb{Z}$-module, by considering, for every $z,w\in\mathbb{Z}$ and every $r,s\in{R}$:
-\begin{enumerate}
-\item $z(r+s)=\underbrace{(r+s)+\cdots+(r+s)}_{z\,\text{times}}=\underbrace{r+\cdots+r}_{z\,\text{times}}+\underbrace{s+\cdots+s}_{z\,\text{times}}=zr+zs$.
-\item 
-$z(wr)=\underbrace{wr+\cdots+wr}_{z\,\text{times}}=\underbrace{\underbrace{r+\cdots+r}_{w\,\text{times}}+\cdots+\underbrace{r+\cdots+r}_{w\,\text{times}}}_{z\,\text{times}}=(zw)r$.
-\item 
-$1r=\underbrace{r}_{1\,\text{time}}=r$.
-\end{enumerate}
-We also need to verify that the operation of $\mathbb{Z}$ on $R$ complies with multiplication in $R$, that is, for every $z,w,r,s$ as above, the product of every two elements $zr,ws\in{R}$ is the product of the integer scalars $wz\in\mathbb{Z}$ multiplied by the product of the ring elements $rs\in{R}$:
-\begin{align*}
-(zr)(ws)=\\
-&=(\underbrace{r+\cdots+r}_{z\,\text{times}})(\underbrace{s+\cdots+s}_{w\,\text{times}})=\underbrace{(\underbrace{r+\cdots+r}_{z\,\text{times}})s+\cdots+(\underbrace{r+\cdots+r}_{z\,\text{times}})s}_{w\,\text{times}}\\
-&=\underbrace{\underbrace{rs+\cdots+rs}_{z\,\text{times}}+\cdots+\underbrace{rs+\cdots+rs}_{z\,\text{times}}}_{w\,\text{times}}=w(z(rs))=(wz)(rs).
-\end{align*}
-Denote $P=M\otimes_\mathbb{Z}N$.
-Since both $M$ and $N$ contain $\mathbb{Z}$ as a sub-ring, it follows that $P$ has the structure of a $\mathbb{Z}$-module by $z(x\otimes{y})=(zx)\otimes{y}=x\otimes(zy)$, for every $z\in\mathbb{Z}$,
-and also that $P$ has the structure of a commutative ring by defining $(a\otimes{b})(x\otimes{y})=(ax)\otimes(by)$, with $1\otimes1$ as the multiplicative identity. Denote by $e_{ij}(1\otimes1)$ the matrix defined in \ref{R-algebra-basis} with $1\otimes1$ in $(i,j)$, then clearly the set $B(P):=\{e_{ij}(1\otimes1):1\leq{i}<j\leq{n}\}$ is a $\mathbb{Z}$-basis of $L_n(P)$ and we have a  bijection $e_{ij}\otimes1\overset{\psi}{\longleftrightarrow}e_{ij}(1\otimes1)$ between $B(P)$ and the $\mathbb{Z}$-basis of $L_n(M)\otimes_\mathbb{Z}N$, which complies as as ring isomorphism by $\psi[(e_{ij}\otimes1)(e_{kl}\otimes1)]=\psi([e_{ij},e_{kl}]\otimes1)=[e_{ij},e_{kl}](1\otimes1)$.
-\end{proof}
 \subsection{The $p$-adic algebra $L_{n,p}$}
 \label{p-adic-algebra-definition}
 We start with $R=\mathbb{Z}$, for which we utilize the Euler decomposition for computing the zeta function, as we explain later in details.
