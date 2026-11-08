@@ -9,6 +9,7 @@
 \usepackage{xfrac} % For \sfrac
 \usepackage{arydshln} % For \hdashline
 \usepackage{tikz-cd}
+
 \newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -19,15 +20,6 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
 
-\newtheorem{theorem2}{Theorem}[section]
-\newtheorem{proposition2}[theorem2]{Proposition}
-\newtheorem{corollary2}[theorem2]{Corollary}
-\newtheorem{lemma2}[theorem2]{Lemma}
-\newtheorem{notations2}[theorem2]{Notations}
-\newtheorem{definition2}[theorem2]{Definition}
-\newtheorem{notation2}[theorem]{Notation}
-\newtheorem{example2}[theorem2]{Example}
-\newtheorem{remark2}[theorem2]{Remark}
 % Define \subsubsubsection (4th level heading)
 \setcounter{secnumdepth}{4} % Enable numbering for 4 levels
 \setcounter{tocdepth}{4}    % Include in table of contents if needed
@@ -39,6 +31,9 @@
 \titleformat{\subsubsubsection}
   {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
 \titlespacing*{\subsubsubsection}
+
+\newtheorem{lemma2}[subsubsubsection]{Lemma}
+
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \makeatother
 
@@ -136,7 +131,7 @@ We may denote by ${L}_n(K)$ the $K$-Lie algebra over some field $K$, usually the
 \subsubsection{The basis of $L_n$}
 \label{R-algebra-basis}
 Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsewhere. Then $B:=\{e_{ij} : 1\leq{i}<{j}\leq{n}\}$ is a basis of $L_{n}$, which we order as follows: $(e_{12},\dots,e_{n-1,n},e_{13},\dots,e_{n-2,n},e_{14},\dots,e_{n-3,n},\dots,e_{1n})$, that is, $e_{ij}<e_{kl}$ if either $j-i<l-k$ or if $j-i=l-k$ and $i<k$. We will usually write $e_i$ to denote $e_{i,i+1}$, and we shall denote by $B_1:=\{e_1,e_2,\dots,e_{n-1}\}$ the set of elements of this form. The cardinality of $B$ is $\binom{n}{2}$, thus we denote by $d=\text{rank}{L}_n=\binom{n}{2}$ the rank of $L_n$ as a free $R$-module. Note that the elements of the lower central series $\gamma_{1}L_{n},\dots,\gamma_{n-1}L_{n}$ are spanned by final segments of $B$. 
-\begin{lemma}
+\begin{lemma2}
 \label{lem:multiplication-rule}
 The standard Lie brackets operation on the basis elements of $L$ gives the following multiplication rule:
 \[[e_{ij},e_{kl}]=\begin{cases}
@@ -144,25 +139,25 @@ e_{il},&j=k\\
 -e_{kj},&i=l\\
 0,&\text{otherwise}\\
 \end{cases}\]
-\end{lemma}
+\end{lemma2}
 \begin{proof}
 Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $e_{ij}e_{jl}=e_{il}$ but $e_{jl}e_{ij}=0$, thus $[e_{ij},e_{jl}]=e_{il}-0=e_{il}$, and the rest may be verified in a similar way.
 \end{proof}
 \subsubsection{Direct product of $L_n$}
-\begin{lemma}
+\begin{lemma2}
 \label{lem:direct-product}
 Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity, then we have a ring isomorphism \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
 which complies also as an isomorphism of free modules of rank $md$.
-\end{lemma}
+\end{lemma2}
 \begin{proof}
 We denote by $(e_k
 )_{ij}\in{L}_n(R_k)$ the matrix with $1_k$ in location $(i,j)$, and by $(e_{ij})_k\in{L}_n(\prod{R}_k)$ the matrix with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, and we define the bijection $(e_k)_{ij}\overset{\psi}{\longleftrightarrow}(e_{ij})_k$. It is clear that the matrices $(e_k)_{ij}$ form a basis of $L_n$ over $R_k$, and the matrices $(e_{ij})_k$ form a basis of $L_n$ over $\prod{R}_k$, hence $\psi$ is an isomorphism between $L_n(\prod{R}_k)$ and $\prod{L}_n(R_k)$.
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
-\begin{lemma}
+\begin{lemma2}
 \label{lem:ring-Z-module}
 Let $R$ be a ring, then $R$ has a canonical structure as a $\mathbb{Z}$-module which complies with the ring structure, that is, the ring multiplication commutes with the $\mathbb{Z}$-module operation.
-\end{lemma}
+\end{lemma2}
 \begin{proof}
 Considering $R$ as an additive abelian group, $R$ is uniquely determined as a $\mathbb{Z}$-module by mapping $1r\longrightarrow{r}$ and $mr\longrightarrow\underbrace{r+\cdots+r}_{m\,\text{times}}$, for every $r\in{R}$ and $m\in\mathbb{Z}$.
 Let $m,k\in\mathbb{Z}$ and $r,s\in{R}$, then
@@ -172,11 +167,11 @@ Let $m,k\in\mathbb{Z}$ and $r,s\in{R}$, then
 &=(mk)rs.
 \end{align*}
 \end{proof}
-\begin{lemma}
+\begin{lemma2}
 \label{lem:tensor-r-s}
-\end{lemma}
 Let $R$ and $S$ be rings with a multiplicative identity, then \[L_n(R)\otimes_\mathbb{Z}S\cong{L}_n(R\otimes_\mathbb{Z}S),\]
 as $\mathbb{Z}$-modules and as rings.
+\end{lemma2}
 \begin{proof}
 By \ref{lem:ring-Z-module}, both $R$ and $S$ assume the structure of a $\mathbb{Z}$-module which complies with the ring structure, thus we have the canonical definition of $T=R\otimes_\mathbb{Z}S$ by:
 \begin{align*}
@@ -213,10 +208,7 @@ Considering $\mathbb{Z}_p$ the ring of $p$-adic integers, we construct a $\mathb
 \begin{lemma}
 \label{lem:L-tensor-p-adic-integers}
 There is a natural isomorphism $L_n(\mathbb{Z}_p)\cong{L}_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$ through the bijection $(e_p)_{ij}\overset{\psi}{\longleftrightarrow}e_{ij}\otimes1$, where $(e_p)_{ij}\in{L}_n(\mathbb{Z}_p)$ is the matrix with $1$ in location $(i,j)$.
-\end{lemma}
-\begin{proof}
-We define $L_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$ as in \ref{lem:tensor-r-s}, where $R=\mathbb{Z}$ and $S=\mathbb{Z}_p$, and it is immediate that the elements $e_{ij}\otimes1$ form a $\mathbb{Z}_p$-basis of $L_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$, and that the matrices $(e_p)_{ij}$ form a basis of $L_n$ over $\mathbb{Z}_p$, then $\psi$ is a bijection between the two bases and the rest is following. 
-\end{proof}
+This is exactly \ref{lem:tensor-r-s} with $R=\mathbb{Z}$ and $S=\mathbb{Z}_p$.
 \begin{notation}
 We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constructed above. We omit the $p$ or $n$ notations when implied from the context, as from now on we shall generally talk about the Lie algebra over $\mathbb{Z}_p$, unless stated else.
 \end{notation}
@@ -225,10 +217,18 @@ This construction is essential to our work, which is based on the theory of $p$-
 Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$, and let $\mathcal{O}_K$ be its ring of integers. We construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$, and we claim the following:
 \begin{lemma}
 There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p)$ as free $\mathbb{Z}$-modules.
-This is exactly \ref{lem:tensor-r-s} with $M=\mathcal{O}_K$ and $N=\mathbb{Z}_p$.
+This is exactly \ref{lem:tensor-r-s} with $R=\mathcal{O}_K$ and $S=\mathbb{Z}_p$.
+Since $\mathcal{O}_K$ is finitely generated over $\mathbb{Z}$ with $f=[\mathcal{O}_K:\mathbb{Z}]$, then $\mathrm{rank}{L}_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p=df$.
 \end{lemma}
-Let $p\in\mathbb{Z}$ be a prime number, and let $p\mathcal{O}_K$ be an ideal in $\mathcal{O}_K$, since $\mathcal{O}_K$ is known to be a Dedekind domain, it has a unique factorization to prime ideals $p\mathcal{O}_K=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$ in $K$.
-Since every $\mathfrak{p}_i$ is a prime hence a maximal ideal in $\mathcal{O}_K$, we denote by $K_i=K_{\mathfrak{p}_i}:=\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$ the residue field modulo $\mathfrak{p}_i$
+Let $p\in\mathbb{Z}$ be a prime number, and let $(p)=p\mathcal{O}_K$ be an ideal in $\mathcal{O}_K$, since $\mathcal{O}_K$ is known to be a Dedekind domain, the $(p)$ has a unique factorization to prime ideals $(p)=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$ in $\mathcal{O}_K$.
+Since every $\mathfrak{p}_i$ is a prime hence a maximal ideal in $\mathcal{O}_K$, we denote by $K_{\mathfrak{p}_i}:=\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$ its residue field modulo $\mathfrak{p}_i$, and by $\mathcal{O}_{\mathfrak{p}_i}$ the ring of integers of $K_{\mathfrak{p}_i}$, and we denote by $f_i=[\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}:\sfrac{\mathbb{Z}}{(p)}]$ the degree of the residue field extension in index $i$, and it is well-known that
+the degree of the field extension $K_{/\mathbb{Q}}$ is \[[K:\mathbb{Q}]=\sum_{i=1}^rg_if_i.\]
+\begin{lemma}
+\label{lem:tensor-ok-zp}
+\[
+\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\cong\prod_{i=1}^r\mathcal{O}_{\mathfrak{p}_i}
+\]
+\end{lemma}
 \subsection{The zeta functions $\zeta_{L_{n,p}}^{\wedge}(s)$}
 The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
 \begin{remark}
