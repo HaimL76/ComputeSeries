@@ -225,17 +225,23 @@ We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constru
 This construction is essential to our work, which is based on the theory of $p$-adic numbers, next we show that it is compatible with the fundamental notions of zeta functions on the integer numbers.
 \subsection{The extension algebra $L_K$}
 Let $p\in\mathbb{Z}$ be some prime integer, then $\mathbb{Z}_p$ is a local ring whose only ideals are of the form $\cdots{p}^{k+1}\mathbb{Z}_p\subset{p}^{k}\mathbb{Z}_p\subset{p}^{k-1}\mathbb{Z}_p\cdots\subset{p}\mathbb{Z}$, with $p\mathbb{Z}$ being its unique maximal ideal, thus $\mathbb{Z}_p$ is a discrete valuation ring.
-
-
-
-
-Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$, and let $\mathcal{O}_K$ be its ring of integers. We construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$, and we claim the following:
+Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$, and let $\mathcal{O}_K$ be its ring of integers, then $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}$-module of rank $f$, and we have the following claim:
+\begin{lemma}
+\label{free-zp-module}
+The ring of integers $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}_p$-module by extension of scalars.
+\end{lemma}
+\begin{proof}
+We look at the tensor product $\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$, then
+\[m(x\otimes1)=\left(\sum_{i=1}^mx\right)\otimes1=mx\otimes1=x\otimes\left(\sum_{i=1}^m1\right)=x\otimes{m}1=x\otimes{m},\]
+\end{proof}
+for every $m\in\mathbb{Z}$ and $x$ in the $\mathbb{Z}$-basis of ${O}_K$, which shows that the tensor product is indeed a free $\mathbb{Z}$-module of rank $f$, with all the elements in the form of $x\otimes1$ as its basis over $\mathbb{Z}$.
+We construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$, and we claim the following:
 \begin{lemma}
 There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p)$ as free $\mathbb{Z}$-modules.
 This is exactly \ref{lem:tensor-r-s} with $R=\mathcal{O}_K$ and $S=\mathbb{Z}_p$.
 Since $\mathcal{O}_K$ is finitely generated over $\mathbb{Z}$ with $f=[\mathcal{O}_K:\mathbb{Z}]$, then $\mathrm{rank}{L}_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p=df$.
 \end{lemma}
-Let $p\in\mathbb{Z}$ be a prime number, and let $(p)=p\mathcal{O}_K$ be an ideal in $\mathcal{O}_K$, since $\mathcal{O}_K$ is known to be a Dedekind domain, the $(p)$ has a unique factorization to prime ideals $(p)=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$ in $\mathcal{O}_K$.
+Let $p\in\mathbb{Z}$ be a prime number, and let $\mathfrak{p}=p\mathcal{O}_K$ be an ideal in $\mathcal{O}_K$, since $\mathcal{O}_K$ is known to be a Dedekind domain, then $\mathfrak{p}$ has a unique factorization to prime ideals, that is, $\mathfrak{p}=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$ in $\mathcal{O}_K$.
 Since every $\mathfrak{p}_i$ is a prime hence a maximal ideal in $\mathcal{O}_K$, we denote by $K_{\mathfrak{p}_i}:=\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$ its residue field modulo $\mathfrak{p}_i$, and by $\mathcal{O}_{\mathfrak{p}_i}$ the ring of integers of $K_{\mathfrak{p}_i}$, and we denote by $f_i=[\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}:\sfrac{\mathbb{Z}}{(p)}]$ the degree of the residue field extension in index $i$, and it is well-known that
 the degree of the field extension $K_{/\mathbb{Q}}$ is \[[K:\mathbb{Q}]=\sum_{i=1}^rg_if_i.\]
 \begin{lemma}
