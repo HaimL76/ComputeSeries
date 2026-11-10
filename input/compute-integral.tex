@@ -151,7 +151,15 @@ which complies also as an isomorphism of free modules of rank $md$.
 \end{lemma2}
 \begin{proof}
 We denote by $(e_k
-)_{ij}\in{L}_n(R_k)$ the matrix with $1_k$ in location $(i,j)$, and by $(e_{ij})_k\in{L}_n(\prod{R}_k)$ the matrix with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, and we define the bijection $(e_k)_{ij}\overset{\psi}{\longleftrightarrow}(e_{ij})_k$. It is clear that the matrices $(e_k)_{ij}$ form a basis of $L_n$ over $R_k$, and the matrices $(e_{ij})_k$ form a basis of $L_n$ over $\prod{R}_k$, hence $\psi$ is an isomorphism between $L_n(\prod{R}_k)$ and $\prod{L}_n(R_k)$.
+)_{ij}\in{L}_n(R_k)$ the matrix with $1_k$ in location $(i,j)$, and by $(e_{ij})_k\in{L}_n(\prod{R}_k)$ the matrix with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, and we define the bijection $(e_k)_{ij}\overset{\psi}{\longleftrightarrow}(e_{ij})_k$. It is clear that since the matrices $(e_k)_{ij}$ form a basis of $L_n$ over $R_k$, then $\{(e_k)_{ij}:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $\prod{L}_n(R_k)$.
+It is also clear that since the matrices $(e_{ij})_k$ form a basis of $L_n$ over  $R_k$, then $\{(e_{ij})_k:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $L_n(\prod{R}_k)$, hence $\psi$ is an isomorphism between $L_n(\prod{R}_k)$ and $\prod{L}_n(R_k)$ as free $\mathbb{Z}$-modules.
+Let $x=(e_{ij})_k$ and $y=(e_{jh})_k$ be two matrices in the basis of $L_n(\prod{R}_k)$, then
+\begin{align*}
+\psi(xy)=\\
+&=\psi([(e_{ij})_k,(e_{jh})_k])=\psi((e_{ih})_k)=\\
+&=(e_k)_{ih}=[(e_k)_{ij},(e_k)_{ih}]=[\psi((e_{ij})_k),\psi((e_{jh})_k)]=\\
+&=[\psi(x),\psi(y)].
+\end{align*}
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma2}
