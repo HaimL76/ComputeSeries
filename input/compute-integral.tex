@@ -158,8 +158,9 @@ Let $x=(e_{ij})_k$ and $y=(e_{jh})_k$ be two matrices in the basis of $L_n(\prod
 \psi(xy)=\\
 &=\psi([(e_{ij})_k,(e_{jh})_k])=\psi((e_{ih})_k)=\\
 &=(e_k)_{ih}=[(e_k)_{ij},(e_k)_{ih}]=[\psi((e_{ij})_k),\psi((e_{jh})_k)]=\\
-&=[\psi(x),\psi(y)].
+&=[\psi(x),\psi(y)],
 \end{align*}
+which shows that $\psi$ complies also as a ring isomorphism.
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma2}
@@ -217,11 +218,17 @@ Considering $\mathbb{Z}_p$ the ring of $p$-adic integers, we construct a $\mathb
 \label{lem:L-tensor-p-adic-integers}
 There is a natural isomorphism $L_n(\mathbb{Z}_p)\cong{L}_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$ through the bijection $(e_p)_{ij}\overset{\psi}{\longleftrightarrow}e_{ij}\otimes1$, where $(e_p)_{ij}\in{L}_n(\mathbb{Z}_p)$ is the matrix with $1$ in location $(i,j)$.
 This is exactly \ref{lem:tensor-r-s} with $R=\mathbb{Z}$ and $S=\mathbb{Z}_p$.
+\end{lemma}
 \begin{notation}
 We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constructed above. We omit the $p$ or $n$ notations when implied from the context, as from now on we shall generally talk about the Lie algebra over $\mathbb{Z}_p$, unless stated else.
 \end{notation}
 This construction is essential to our work, which is based on the theory of $p$-adic numbers, next we show that it is compatible with the fundamental notions of zeta functions on the integer numbers.
 \subsection{The extension algebra $L_K$}
+Let $p\in\mathbb{Z}$ be some prime integer, then $\mathbb{Z}_p$ is a local ring whose only ideals are of the form $\cdots{p}^{k+1}\mathbb{Z}_p\subset{p}^{k}\mathbb{Z}_p\subset{p}^{k-1}\mathbb{Z}_p\cdots\subset{p}\mathbb{Z}$, with $p\mathbb{Z}$ being its unique maximal ideal, thus $\mathbb{Z}_p$ is a discrete valuation ring.
+
+
+
+
 Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$, and let $\mathcal{O}_K$ be its ring of integers. We construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$, and we claim the following:
 \begin{lemma}
 There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p)$ as free $\mathbb{Z}$-modules.
