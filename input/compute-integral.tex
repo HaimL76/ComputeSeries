@@ -184,7 +184,7 @@ as $\mathbb{Z}$-modules and as rings.
 \begin{proof}
 By \ref{lem:ring-Z-module}, both $R$ and $S$ assume the structure of a $\mathbb{Z}$-module which complies with the ring structure, thus we have the canonical definition of $T=R\otimes_\mathbb{Z}S$ by:
 \begin{align*}
-m(r\otimes{s})=\\
+m(r\otimes{s})=\sum_{i=1}^m(r\otimes{s})=\\
 &=\left(\sum_{i=1}^mr\right)\otimes{s}=mr\otimes{s}\\
 &=r\otimes\left(\sum_{i=1}^ms\right)=r\otimes{m}s,
 \end{align*}
@@ -192,7 +192,7 @@ for every $m\in\mathbb{Z}$ and $r\otimes{s}\in{T}$.
 Let $(e_T)_{ij}\in{L}_n(T)$ be the matrix with $1\otimes1$ in location $(i,j)$, then it is clear that these matrices form a basis of $L_n$ over $T$.
 Let $(e_R)_{ij}$ be the matrix with $1_R$ in location $(i,j)$, and we define also $L_n(R)\otimes_\mathbb{Z}S$ by:
 \begin{align*}
-m((e_R)_{ij}\otimes{s})=\\
+m((e_R)_{ij}\otimes{s})=\sum_{i=1}^m((e_R)_{ij}\otimes{s})=\\
 &=\left(\sum_{i=1}^m(e_R)_{ij}\right)\otimes{s}=m(e_R)_{ij}\otimes{s}\\
 &=(e_R)_{ij}\otimes\left(\sum_{i=1}^ms\right)=(e_R)_{ij}\otimes{m}s,
 \end{align*}
@@ -233,8 +233,9 @@ The ring of integers $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}_p$-
 \begin{proof}
 We look at the tensor product $\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$, then
 \[m(x\otimes1)=\left(\sum_{i=1}^mx\right)\otimes1=mx\otimes1=x\otimes\left(\sum_{i=1}^m1\right)=x\otimes{m}1=x\otimes{m},\]
-\end{proof}
 for every $m\in\mathbb{Z}$ and $x$ in the $\mathbb{Z}$-basis of ${O}_K$, which shows that the tensor product is indeed a free $\mathbb{Z}$-module of rank $f$, with all the elements in the form of $x\otimes1$ as its basis over $\mathbb{Z}$.
+To show that it is indeed a $\mathbb{Z}_p$-module, we consider the inclusion map $\iota:\mathbb{Z}\longrightarrow\mathbb{Z}_p$, and we map $\iota(m)(x\otimes1)=$
+\end{proof}
 We construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$, and we claim the following:
 \begin{lemma}
 There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p)$ as free $\mathbb{Z}$-modules.
