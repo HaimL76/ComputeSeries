@@ -163,17 +163,30 @@ We denote by
 \[
 (e_k)_{ij}\in{L}_n(R_k)
 \]
-the matrix with $1_k$ in location $(i,j)$.
+the matrix with $1_k$ in location $(i,j)$, and by
+\begin{align*}
+\overline{a_k(e_k)_{ij}}=\\
+&=(0,\dots,a_k(e_k)_{ij},\dots,0)=\\
+&=a_k(0,\dots,(e_k)_{ij},\dots,0)=a_k\overline{(e_k)_{ij}}\in\prod_{r=1}^mL_n(R_r).
+\end{align*}
+the vector in the direct product of the $R_k$-modules.
 We define the map 
 \[\psi:L_n(R)\longrightarrow\prod_{k=1}^mL_n(R_k)\]
 by 
 \[
-\psi\left(\sum_{k=1}^ma_k(e_{ij})_k\right)=\sum_{k=1}^ma_k(e_k)_{ij}=\sum_{k=1}^ma_k\psi((e_{ij})_k).
+\psi\left(\sum_{k=1}^ma_k(e_{ij})_k\right)=\sum_{k=1}^m\left(\overline{a_k(e_k)_{ij}}\right)=\sum_{k=1}^m\left(a_k\overline{(e_k)_{ij}}\right)=\sum_{k=1}^m\left(a_k\psi((e_{ij})_k)\right).
 \]
-Let $(e_{ij})_k\in{R}_k$ and $(e_{ij})_h\in{R}_h$, for some $1\leq{k}<h\leq{m}$, then 
-\[\psi((e_{ij})_k)+\psi((e_{ij})_h)=(e_k)_{ij}+(e_h)_{ij}\]
-
-
+Let
+\begin{itemize}
+\item[] $(e_{ij})_k\in{L}_n(R)$ is the matrix with $(0,\dots,1_k,\dots,0)$ in location $(i,j)$, and
+\item[] $(e_{jr})_k\in{L}_n(R)$ is the matrix with $(0,\dots,1_k,\dots,0)$ in location $(j,r)$, and
+\item[] $(e_k)_{ij}\in{L}_n(R)$ is the vector $(0,\dots,(e_k)_{ij},\dots,0)$ in location $(i,j)$, and
+\item[] $(e_k)_{jr}\in{L}_n(R)$ is the matrix with $(0,\dots,1_k,\dots,0)$ in location $(j,r)$,
+\end{itemize}
+then by \ref{lem:multiplication-rule} we verify that
+\[
+\psi([(e_{ij})_k,(e_{jr})_k])=\psi((e_{ir})_k)=(e_k)_{ir}=[(e_k)_{ij},(e_k)_{jr}]=[\psi((e_k)_{ij}),\psi((e_k)_{jr}],
+\]
 
 bijection $(e_k)_{ij}\overset{\psi}{\longleftrightarrow}(e_{ij})_k$. It is clear that since the matrices $(e_k)_{ij}$ form a basis of $L_n$ over $R_k$, then $\{(e_k)_{ij}:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $\prod{L}_n(R_k)$.
 It is also clear that since the matrices $(e_{ij})_k$ form a basis of $L_n$ over  $R_k$, then $\{(e_{ij})_k:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $L_n(\prod{R}_k)$, hence $\psi$ is an isomorphism between $L_n(\prod{R}_k)$ and $\prod{L}_n(R_k)$ as free $\mathbb{Z}$-modules.
