@@ -146,12 +146,36 @@ Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $e_{ij}e
 \subsubsection{Direct product of $L_n$}
 \begin{lemma2}
 \label{lem:direct-product}
-Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity, then we have a ring isomorphism \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
+Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity $1_k=1_{R_k}\in{R}_k$, then we have a ring isomorphism \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
 which complies also as an isomorphism of free modules of rank $md$.
 \end{lemma2}
 \begin{proof}
-We denote by $(e_k
-)_{ij}\in{L}_n(R_k)$ the matrix with $1_k$ in location $(i,j)$, and by $(e_{ij})_k\in{L}_n(\prod{R}_k)$ the matrix with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, and we define the bijection $(e_k)_{ij}\overset{\psi}{\longleftrightarrow}(e_{ij})_k$. It is clear that since the matrices $(e_k)_{ij}$ form a basis of $L_n$ over $R_k$, then $\{(e_k)_{ij}:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $\prod{L}_n(R_k)$.
+We denote by
+\[
+R=\prod_{k=1}^mR_k\] 
+the direct product of the rings $R_1,\dots,R_m$.
+We denote by \[(e_{ij})_k\in{L}_n(R)\] 
+the matrix with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, hence the matrix with $1_R=(1_{R_1},\dots,1_{k-1},1_k,1_{k+1},\dots,1_m)$ in location $(i,j)$ is:
+\[
+(e_{ij})_R=\sum_{k=1}^m(e_{ij})_k\in{L}_n(R).
+\]
+We denote by
+\[
+(e_k)_{ij}\in{L}_n(R_k)
+\]
+the matrix with $1_k$ in location $(i,j)$.
+We define the map 
+\[\psi:L_n(R)\longrightarrow\prod_{k=1}^mL_n(R_k)\]
+by 
+\[
+\psi\left(\sum_{k=1}^ma_k(e_{ij})_k\right)=\sum_{k=1}^ma_k(e_k)_{ij}=\sum_{k=1}^ma_k\psi((e_{ij})_k).
+\]
+Let $(e_{ij})_k\in{R}_k$ and $(e_{ij})_h\in{R}_h$, for some $1\leq{k}<h\leq{m}$, then 
+\[\psi((e_{ij})_k)+\psi((e_{ij})_h)=(e_k)_{ij}+(e_h)_{ij}\]
+
+
+
+bijection $(e_k)_{ij}\overset{\psi}{\longleftrightarrow}(e_{ij})_k$. It is clear that since the matrices $(e_k)_{ij}$ form a basis of $L_n$ over $R_k$, then $\{(e_k)_{ij}:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $\prod{L}_n(R_k)$.
 It is also clear that since the matrices $(e_{ij})_k$ form a basis of $L_n$ over  $R_k$, then $\{(e_{ij})_k:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $L_n(\prod{R}_k)$, hence $\psi$ is an isomorphism between $L_n(\prod{R}_k)$ and $\prod{L}_n(R_k)$ as free $\mathbb{Z}$-modules.
 Let $x=(e_{ij})_k$ and $y=(e_{jh})_k$ be two matrices in the basis of $L_n(\prod{R}_k)$, then
 \begin{align*}
@@ -231,10 +255,9 @@ Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional ex
 The ring of integers $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}_p$-module by extension of scalars.
 \end{lemma}
 \begin{proof}
-We look at the tensor product $\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$, then
-\[m(x\otimes1)=\left(\sum_{i=1}^mx\right)\otimes1=mx\otimes1=x\otimes\left(\sum_{i=1}^m1\right)=x\otimes{m}1=x\otimes{m},\]
-for every $m\in\mathbb{Z}$ and $x$ in the $\mathbb{Z}$-basis of ${O}_K$, which shows that the tensor product is indeed a free $\mathbb{Z}$-module of rank $f$, with all the elements in the form of $x\otimes1$ as its basis over $\mathbb{Z}$.
-To show that it is indeed a $\mathbb{Z}_p$-module, we consider the inclusion map $\iota:\mathbb{Z}\longrightarrow\mathbb{Z}_p$, and we map $\iota(m)(x\otimes1)=$
+We look at the tensor product $\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$, which complies as a $\mathbb{Z}$-module as in the proof of \ref{lem:tensor-r-s}, and we define 
+\[a(x\otimes1)=x\otimes(a1)=x\otimes{a},\] 
+for every $a\in\mathbb{Z}_p$.
 \end{proof}
 We construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$, and we claim the following:
 \begin{lemma}
