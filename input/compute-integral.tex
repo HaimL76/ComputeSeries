@@ -149,6 +149,9 @@ Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $e_{ij}e
 Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity $1_k=1_{R_k}\in{R}_k$, then we have a ring isomorphism \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
 which complies also as an isomorphism of free modules of rank $md$.
 \end{lemma2}
+\begin{remark}
+Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket operation and will be denoted by $[x,y]$ for every $x,y\in{L}_n(\prod{R}_k)$, while the multiplication of $\prod{L}_n(R_k)$ is defined by component-wise multiplication and will be denoted by $uv$ for every $u,v\in\prod{L}_n(R_k)$.
+\end{remark}
 \begin{proof}
 We denote by
 \[
@@ -178,26 +181,18 @@ by
 \]
 Let
 \begin{itemize}
-\item[] $(e_{ij})_k\in{L}_n(R)$ is the matrix with $(0,\dots,1_k,\dots,0)$ in location $(i,j)$, and
-\item[] $(e_{jr})_k\in{L}_n(R)$ is the matrix with $(0,\dots,1_k,\dots,0)$ in location $(j,r)$, and
-\item[] $(e_k)_{ij}\in{L}_n(R)$ is the vector $(0,\dots,(e_k)_{ij},\dots,0)$ in location $(i,j)$, and
-\item[] $(e_k)_{jr}\in{L}_n(R)$ is the matrix with $(0,\dots,1_k,\dots,0)$ in location $(j,r)$,
+\item[] $(e_{ij})_k\in{L}_n(R)$ be the matrix with $(0,\dots,1_k,\dots,0)$ in location $(i,j)$, and
+\item[] $(e_{jr})_k\in{L}_n(R)$ be the matrix with $(0,\dots,1_k,\dots,0)$ in location $(j,r)$,
 \end{itemize}
-then by \ref{lem:multiplication-rule} we verify that
-\[
-\psi([(e_{ij})_k,(e_{jr})_k])=\psi((e_{ir})_k)=(e_k)_{ir}=[(e_k)_{ij},(e_k)_{jr}]=[\psi((e_k)_{ij}),\psi((e_k)_{jr}],
-\]
-
-bijection $(e_k)_{ij}\overset{\psi}{\longleftrightarrow}(e_{ij})_k$. It is clear that since the matrices $(e_k)_{ij}$ form a basis of $L_n$ over $R_k$, then $\{(e_k)_{ij}:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $\prod{L}_n(R_k)$.
-It is also clear that since the matrices $(e_{ij})_k$ form a basis of $L_n$ over  $R_k$, then $\{(e_{ij})_k:1\leq{k}\leq{m},\,1\leq{i}<j\leq{n}\}$ form a basis of $L_n(\prod{R}_k)$, hence $\psi$ is an isomorphism between $L_n(\prod{R}_k)$ and $\prod{L}_n(R_k)$ as free $\mathbb{Z}$-modules.
-Let $x=(e_{ij})_k$ and $y=(e_{jh})_k$ be two matrices in the basis of $L_n(\prod{R}_k)$, then
+then by \ref{lem:multiplication-rule} and by the multiplication in $R$ we have
 \begin{align*}
-\psi(xy)=\\
-&=\psi([(e_{ij})_k,(e_{jh})_k])=\psi((e_{ih})_k)=\\
-&=(e_k)_{ih}=[(e_k)_{ij},(e_k)_{ih}]=[\psi((e_{ij})_k),\psi((e_{jh})_k)]=\\
-&=[\psi(x),\psi(y)],
+\psi([(e_{ij})_k,(e_{jr})_k])=\\
+&=\psi((e_{ir})_k)=\overline{(e_k)_{ir}}=(0,\dots,(e_k)_{ir},\dots,0)=\\
+&=(0,\dots,[(e_k)_{ij},(e_k)_{jr}],\dots,0)=\\
+&=(0,\dots,(e_k)_{ij},\dots,0)(0,\dots,(e_k)_{jr},\dots,0)=\\
+&=\overline{(e_k)_{ij})}\cdot\overline{(e_k)_{jr})}=\psi((e_{ij})_k)\psi((e_{jr})_k),
 \end{align*}
-which shows that $\psi$ complies also as a ring isomorphism.
+which shows that $\psi$ complies with the multiplication in the rings, and it is clear that $\ker\psi=0$, and that $\psi$ has an inverse $\psi^{-1}$ which maps back $\overline{(e_k)_{ij}}\overset{\psi^{-1}}{\longrightarrow}(e_{ij})_k$, hence $\psi$ is an isomorphism.
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma2}
