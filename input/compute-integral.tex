@@ -172,7 +172,7 @@ the matrix with $1_k$ in location $(i,j)$, and by
 &=(0,\dots,a_k(e_k)_{ij},\dots,0)=\\
 &=a_k(0,\dots,(e_k)_{ij},\dots,0)=a_k\overline{(e_k)_{ij}}\in\prod_{r=1}^mL_n(R_r).
 \end{align*}
-the vector in the direct product of the $R_k$-modules.
+the vector in the direct product of the rings.
 We define the map 
 \[\psi:L_n(R)\longrightarrow\prod_{k=1}^mL_n(R_k)\]
 by 
@@ -192,7 +192,13 @@ then by \ref{lem:multiplication-rule} and by the multiplication in $R$ we have
 &=(0,\dots,(e_k)_{ij},\dots,0)(0,\dots,(e_k)_{jr},\dots,0)=\\
 &=\overline{(e_k)_{ij})}\cdot\overline{(e_k)_{jr})}=\psi((e_{ij})_k)\psi((e_{jr})_k),
 \end{align*}
-which shows that $\psi$ complies with the multiplication in the rings, and it is clear that $\ker\psi=0$, and that $\psi$ has an inverse $\psi^{-1}$ which maps back $\overline{(e_k)_{ij}}\overset{\psi^{-1}}{\longrightarrow}(e_{ij})_k$, hence $\psi$ is an isomorphism.
+which shows that $\psi$ complies with the ring multiplication, and it is clear that $\ker\psi=0$, and that $\psi$ has an inverse $\psi^{-1}$ which maps back $\overline{(e_k)_{ij}}\overset{\psi^{-1}}{\longrightarrow}(e_{ij})_k$, hence $\psi$ is a ring isomorphism.
+Fix some $1\leq{k}\leq{m}$ and $1\leq{i}<j\leq{n}$, and denote by $(E_{ij})_k:\{a(e_{ij})_k:a\in{R}\}$ which is clearly a sub $R$-module of $L_n(R)$, because $a(e_{ij})_k+b(e_{ij})_k=(a+b)(e_{ij})_k$, and $a(e_{ij})_k\cdot{b}(e_{ij})_k=(ab)(e_{ij})_k$ for every $a,b\in{R}$.
+Denote by \[E_{ij}:=\bigoplus_{1\leq{k}\leq{m}}(E_{ij})_k,\]
+and it is immediate to verify that $a(e_{ij})_k+b(e_{ij})_h$ and $a(e_{ij})_k\cdot{b}(e_{ij})_h$ are in $E_{ij}$ for every $1\leq{k},h\leq{m}$, thus $E_{ij}$ is a free sub $R$-module of $L_n(R)$ with $\{(E_{ij})_1,\dots,(E_{ij})_m\}$ as an $R$-basis, thus of rank $m$.
+Clearly, 
+\[L_n(R)=\bigoplus_{1\leq{i}<j\leq{n}}E_{ij}=\bigoplus_{1\leq{i}<j\leq{n}}\left(\bigoplus_{1\leq{k}\leq{m}}(E_{ij})_k\right),\]
+hence $L_n(R)$ is a free $R$-module of rank $dm$.
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma2}
