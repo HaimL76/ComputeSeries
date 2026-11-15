@@ -196,25 +196,21 @@ And we extend this also to the multiplication:
 \begin{align*}
 \psi(a_Rb_R)=\\
 &=\psi\left(\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^ma_{ij,k}(e_{ij})_k\right)\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^mb_{ij,k}(e_{ij})_k\right)\right)=\\
-&=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\left[a_{ij,k}(e_{ij})_k),b_{gh,r}(e_{gh})_r)\right]\right)
+&=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{g}<h\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\left[a_{ij,k}(e_{ij})_k,b_{gh,r}(e_{gh})_r\right]\right)
 \end{align*}
 by \ref{lem:multiplication-rule} and by multiplication in $R$, the only elements that do not vanish in the sum are of the form $[a_{ij,k}(e_{ij})_k),b_{jh,k}(e_{jh})_k]=a_{ij,k}b_{jh,k}(e_{ih})_k$, and hence
 \begin{align*}
 \psi(a_Rb_R)=\\
 &=\psi\left(\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^ma_{ij,k}b_{jh,k}(e_{ih})_k\right)=\\
-&=\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}=\\
+&=\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}\\
 &=\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
-&=\sum_{k=1}^m\sum_{1\leq{i}<h\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\cdot\overline{b_{jh,k}(e_k)_{jh}}=\\
+&=\sum_{k=1}^m\sum_{1\leq{i}<h\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\cdot\overline{b_{jh,k}(e_k)_{jh}}.
+\end{align*}
+\begin{align*}
+\psi(a_Rb_R)=\\
 &=a_\Pi{b}_\Pi=\psi(a_R)\psi(b_R),
 \end{align*}
-and it is clear that $\psi$ is a bijection, hence an isomorphism between $L_n(R)$ and $\prod{L}_n(R_k)$. From this construction we obtain the structure of both rings as the direct sums
-\[
-L_n(R)=\bigoplus_{1\leq{i}<j\leq{n}}E_{ij}=\bigoplus_{1\leq{i}<j\leq{n}}\bigoplus_{k=1}^m\left(E_{ij}\right)_k,
-\]
-\[
-\prod_{k=1}^m{L}_n(R_k)=\bigoplus_{k=1}^m{E}_k=\bigoplus_{k=1}^m\bigoplus_{1\leq{i}<j\leq{n}}\left(E_k\right)_{ij},
-\]
-with scalars from $R$, thus they form isomorphic $R$-modules of rank $md$, where $d=\binom{n}{2}$.
+and it is clear that $\psi$ is a bijection, hence a ring isomorphism between $L_n(R)$ and $\prod{L}_n(R_k)$, which complies also as an isomorphism between $R$-modules.
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma2}
