@@ -204,12 +204,23 @@ by \ref{lem:multiplication-rule} and by multiplication in $R$, the only elements
 &=\psi\left(\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^ma_{ij,k}b_{jh,k}(e_{ih})_k\right)=\\
 &=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}\\
 &=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
-&=\sum_{k=1}^m\sum_{1\leq{i}<j<h\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\cdot\overline{b_{jh,k}(e_k)_{jh}},
 \end{align*}
-the latter is due to the identity $\left((a_1,\dots,a_m)\overline{(e_k)_{ij}}\right)\left((b_1,\dots,b_m)\overline{(e_k)_{jh}}\right)=(0,\dots,0,[a_k(e_k)_{ij},b_k(e_k)_{jh}],0\dots,0)$.
+The same consideration of vanishing elements applies also separately for $L_n(R_k)$, hence we have the following identify:
 \begin{align*}
 \psi(a_Rb_R)=\\
-&=a_\Pi{b}_\Pi=\psi(a_R)\psi(b_R),
+&=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
+&=\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{g}<h\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\overline{\left[a_{ij,k}(e_k)_{gh},b_{gh,r}(e_r)_{gh}\right]}=\\
+&=\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{g}<h\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\overline{\left[a_{ij,k}(e_k)_{gh},b_{gh,r}(e_r)_{gh}\right]}=\\
+&=\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{g}<h\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\overline{a_{ij,k}(e_k)_{gh}}\cdot\overline{b_{gh,r}(e_r)_{gh}}
+\end{align*}
+the latter is due to the identity: 
+\begin{align*}
+\left(\overline{r}\cdot\overline{(e_k)_{ij}}\right)\left(\overline{s}\cdot\overline{(e_k)_{jh}}\right)=\\
+&=\left((r_1,\dots,r_m)\overline{(e_k)_{ij}}\right)\left((s_1,\dots,s_m)\overline{(e_k)_{jh}}\right)\\
+&=(0,\dots,r_k(e_k)_{ij}\dots,0)(0,\dots,s_k(e_k)_{jh}\dots,0)=\\
+&=(0,\dots,[r_k(e_k)_{ij},s_k(e_k)_{jh}]\dots,0)=\\
+&=[(0,\dots,r_k(e_k)_{ij},\dots,0),(0,\dots,s_k(e_k)_{jh},\dots,0)]=\\
+&=[\overline{r}\cdot\overline{(e_k)_{ij}},\overline{s}\cdot\overline{(e_k)_{jh}}].
 \end{align*}
 and it is clear that $\psi$ is a bijection, hence a ring isomorphism between $L_n(R)$ and $\prod{L}_n(R_k)$, which complies also as an isomorphism between $R$-modules.
 \end{proof}
