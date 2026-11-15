@@ -200,6 +200,20 @@ then the mapping on the addition is defined in the natural way as
 &=a_\Pi+b_\Pi=\psi(a_R)+\psi(b_R),
 \end{align*}
 where $a_{ij,k},b_{ij,k}\in{R}_k$.
+And we extend this also to the multiplication:
+\begin{align*}
+\psi(a_Rb_R)=\\
+&=\psi\left(\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^ma_{ij,k}(e_{ij})_k\right)\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^mb_{ij,k}(e_{ij})_k\right)\right)=\\
+&=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\left[a_{ij,k}(e_{ij})_k),b_{gh,r}(e_{gh})_r)\right]\right)
+\end{align*}
+by \ref{lem:multiplication-rule} and by multiplication in $R$, The only elements that do not vanish in the sum are of the form $[a_{ij,k}(e_{ij})_k),b_{jh,k}(e_{jh})_k]=a_{ij,k}b_{jh,k}(e_{ih})_k$, and hence
+\begin{align*}
+\psi(a_Rb_R)=\\
+&=\psi\left(\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^ma_{ij,k}b_{jh,k}(e_{ih})_k\right)=\\
+&=\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}=\\
+&=\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
+&=\sum_{k=1}^m\sum_{1\leq{i}<h\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\cdot\overline{b_{jh,k}(e_k)_{jh}}=\\
+\end{align*}
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma2}
