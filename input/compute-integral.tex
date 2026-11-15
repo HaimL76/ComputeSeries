@@ -155,20 +155,15 @@ Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket op
 \end{remark2}
 \begin{proof}
 We denote by $R=\prod_{k=1}^mR_k$ the direct product of the rings $R_1,\dots,R_m$.
-We denote by $(r_ke_{ij})_k\in{L}_n(R)$ the matrix with $\overline{r_k}=(0,\dots,0,r_k,0,\dots,0)$ in location $(i,j)$, where $r_k\in{R}_k$, in particular we denote by $(e_{ij})_k$ the matrix with $\overline{1_k}=(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, where $1_k$ is the multiplicative identity of $R_k$ and therefore $(r_ke_{ij})_k=\overline{r_k}(e_{ij})_k$.
-From this construction we can define the operation of $R$ on $L_n(R)$ by \[(s_1,\dots,s_m)\sum_{k=1}^m(r_ke_{ij})_k\longrightarrow\sum_{k=1}^m(r_ks_k)(e_{ij})_k,\]
-where $r_k,s_k\in{R}_k$, which clearly assigns $L_n(R)$ the structure of an $R$-module.
-We fix $k,i,j$ and denote 
-\[(E_{ij})_k:=\left\{(r_ke_{ij})_k:r_k\in{R}_k\right\},\]
-then we fix $i,j$ and denote
-\[E_{ij}:=\left\{\sum_{k=1}^m(r_ke_{ij})_k:r_k\in{R}_k\right\},\]
-and it is clear that all the elements of $L_n(R)$ assume the form
+We denote by $(r_ke_{ij})_k\in{L}_n(R)$ the matrix with $\overline{r_k}=(0,\dots,0,r_k,0,\dots,0)$ in location $(i,j)$, where $r_k\in{R}_k$, in particular we denote by $(e_{ij})_k$ the matrix with $\overline{1_k}=(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, where $1_k$ is the multiplicative identity of $R_k$ and therefore $(r_ke_{ij})_k=\overline{r_k}(e_{ij})_k$, and it is clear that all the elements of $L_n(R)$ assume the form
 \[
-a_R=\sum_{1\leq{i}<j\leq{n}}a_{ij}=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(r_ke_{ij})_k,
+a_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(r_ke_{ij})_k.
 \]
-and it is clear that all the elements of the form $(e_{ij})_k$ are linearly independent, thus form an $R$-basis of $L_n(R)$.
+From this construction we can define the operation of $R$ on $L_n(R)$ by \[(s_1,\dots,s_m)\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(r_ke_{ij})_k\longrightarrow\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{r_ks_k}(e_{ij})_k,\]
+where $r_k,s_k\in{R}_k$, which clearly assigns $L_n(R)$ the structure of an $R$-module.
+It is also clear that all the elements of the form $(e_{ij})_k$ are $R$-linearly independent, thus form an $R$-basis of $L_n(R)$.
 We denote by $(r_ke_k)_{ij}\in{L}_n(R_k)$
-the matrix with $r_k\in{R}_k$ in location $(i,j)$, in particular we denote by $(e_k)_{ij}$ the matrix with $1_k$ in location $(i,j)$, therefore $(r_ke_k)_{ij}=r_k(e_k)_{ji}$.
+the matrix with $r_k\in{R}_k$ in location $(i,j)$, in particular we denote by $(e_k)_{ij}$ the matrix with $1_k$ in location $(i,j)$, therefore $(r_ke_k)_{ij}=r_k(e_k)_{ij}$.
 We denote by $\overline{(r_ke_k)_{ij}}=(0,0\dots,0,(r_ke_k)_{ij},0,\dots,0)\in\prod{L}_n(R_k)$ the vector with $(r_ke_k)_{ij}$ in index $k$, and define the multiplication in $\prod{L}_n(R_k)$ by 
 \[\overline{r_k}\cdot\overline{(e_k)_{ij}}=(r_ke_k)_{ij},\] 
 where $\overline{r_k}=(0,\dots,0,r_k,0,\cdots,0)\in{R}$.
