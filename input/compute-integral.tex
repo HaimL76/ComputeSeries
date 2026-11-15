@@ -211,7 +211,7 @@ The same consideration of vanishing elements applies also separately for $L_n(R_
 &=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
 &=\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{g}<h\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{gh,r}(e_r)_{gh}\right]}=\\
 &=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\sum_{1\leq{g}<h\leq{n}}\sum_{r=1}^m\left[\overline{a_{ij,k}(e_k)_{ij}},\overline{b_{gh,r}(e_r)_{gh}}\right]=\\
-&=\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}(e_k)_{ij}}\right)\left(\sum_{1\leq{g}<h\leq{n}}\sum_{r=1}^m\cdot\overline{b_{gh,r}(e_r)_{gh}}\right)=\\
+&=\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}(e_k)_{ij}}\right)\left(\sum_{1\leq{g}<h\leq{n}}\sum_{r=1}^m\overline{b_{gh,r}(e_r)_{gh}}\right)=\\
 &=a_\Pi{b}_\Pi=\psi(a_R)\psi(b_R),
 \end{align*}
 due to the identity: 
@@ -228,16 +228,13 @@ and it is clear that $\psi$ is a bijection, hence a ring isomorphism between $L_
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma2}
 \label{lem:ring-Z-module}
-Let $R$ be a ring, then $R$ has a canonical structure as a $\mathbb{Z}$-module which complies with the ring structure, that is, the ring multiplication commutes with the $\mathbb{Z}$-module operation.
+Let $R$ be a ring, then $R$ has a canonical structure as a $\mathbb{Z}$-module which complies with the ring structure, that is, for every $r,s\in{R}$ and $m\in\mathbb{Z}$, we have the identity: $m(rs)=(mr)s$.
 \end{lemma2}
 \begin{proof}
-Considering $R$ as an additive abelian group, $R$ is uniquely determined as a $\mathbb{Z}$-module by mapping $1r\longrightarrow{r}$ and $mr\longrightarrow\underbrace{r+\cdots+r}_{m\,\text{times}}$, for every $r\in{R}$ and $m\in\mathbb{Z}$.
-Let $m,k\in\mathbb{Z}$ and $r,s\in{R}$, then
-\begin{align*}
-(mr)(ks)=\\
-&=\left(\sum_{i=1}^mr\right)\left(\sum_{j=1}^ks\right)=\sum_{i=1}^m\left(r\sum_{j=1}^ks\right)=\sum_{i=1}^m\sum_{j=1}^krs=\\
-&=(mk)rs.
-\end{align*}
+Considering $R$ as an additive abelian group, $R$ is uniquely determined as a $\mathbb{Z}$-module by mapping $1r\longrightarrow{r}$ and $mr\longrightarrow\underbrace{r+\cdots+r}_{m\,\text{times}}$, for every $r\in{R}$ and $m\in\mathbb{Z}$, thus
+\[
+(mr)s=\left(\sum_{i=1}^mr\right)s=\sum_{i=1}^m\left(rs\right)=m\left(rs\right),\]
+for every $s\in{R}$.
 \end{proof}
 \begin{lemma2}
 \label{lem:tensor-r-s}
