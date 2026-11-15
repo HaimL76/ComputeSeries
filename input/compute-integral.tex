@@ -188,7 +188,7 @@ then the mapping on the addition is defined in the natural way as
 &=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(a_{ij,k}+b_{ij,k})(e_{ij})_k\right)=\\
 &=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{(a_{ij,k}+b_{ij,k})(e_k)_{ij}}=\\
 &=\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{a_{ij,k}(e_k)_{ij}+b_{ij,k}(e_k)_{ij}}=\\
-&=\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}+\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{b_{ij,k}(e_k)_{ij}}=\\
+&=\left(\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\right)+\left(\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{b_{ij,k}(e_k)_{ij}}\right)=\\
 &=a_\Pi+b_\Pi=\psi(a_R)+\psi(b_R),
 \end{align*}
 where $a_{ij,k},b_{ij,k}\in{R}_k$.
@@ -198,7 +198,7 @@ And we extend this also to the multiplication:
 &=\psi\left(\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^ma_{ij,k}(e_{ij})_k\right)\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^mb_{ij,k}(e_{ij})_k\right)\right)=\\
 &=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\left[a_{ij,k}(e_{ij})_k),b_{gh,r}(e_{gh})_r)\right]\right)
 \end{align*}
-by \ref{lem:multiplication-rule} and by multiplication in $R$, The only elements that do not vanish in the sum are of the form $[a_{ij,k}(e_{ij})_k),b_{jh,k}(e_{jh})_k]=a_{ij,k}b_{jh,k}(e_{ih})_k$, and hence
+by \ref{lem:multiplication-rule} and by multiplication in $R$, the only elements that do not vanish in the sum are of the form $[a_{ij,k}(e_{ij})_k),b_{jh,k}(e_{jh})_k]=a_{ij,k}b_{jh,k}(e_{ih})_k$, and hence
 \begin{align*}
 \psi(a_Rb_R)=\\
 &=\psi\left(\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^ma_{ij,k}b_{jh,k}(e_{ih})_k\right)=\\
