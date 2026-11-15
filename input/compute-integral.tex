@@ -151,7 +151,7 @@ Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity 
 which complies also as an isomorphism of free $R$-modules of rank $md$.
 \end{lemma2}
 \begin{remark2}
-Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket operation and will be denoted by $[x,y]$ for every $x,y\in{L}_n(\prod{R}_k)$, while the multiplication in $\prod{L}_n(R_k)$ is defined by component-wise multiplication (which is the bracket operation on each component separately), and will be denoted by $uv$ for every $u,v\in\prod{L}_n(R_k)$.
+Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket operation and will be denoted by $[x,y]$ for every $x,y\in{L}_n(\prod{R}_k)$, while the multiplication in $\prod{L}_n(R_k)$ is defined by component-wise multiplication (which is the bracket operation on each component separately), and will be denoted by $\overline{u}\cdot\overline{v}$ for every $\overline{u},\overline{v}\in\prod{L}_n(R_k)$.
 \end{remark2}
 \begin{proof}
 We denote by $R=\prod_{k=1}^mR_k$ the direct product of the rings $R_1,\dots,R_m$.
@@ -202,7 +202,7 @@ by \ref{lem:multiplication-rule} and by multiplication in $R$, the only elements
 \begin{align*}
 \psi(a_Rb_R)=\\
 &=\psi\left(\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^ma_{ij,k}b_{jh,k}(e_{ih})_k\right)=\\
-&=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}\\
+&=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}=\\
 &=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
 \end{align*}
 The same consideration of vanishing elements applies also separately for $L_n(R_k)$, hence we have the following identify:
@@ -214,7 +214,7 @@ The same consideration of vanishing elements applies also separately for $L_n(R_
 &=\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}(e_k)_{ij}}\right)\left(\sum_{1\leq{g}<h\leq{n}}\sum_{r=1}^m\overline{b_{gh,r}(e_r)_{gh}}\right)=\\
 &=a_\Pi{b}_\Pi=\psi(a_R)\psi(b_R),
 \end{align*}
-due to the identity: 
+the latter is due to the identity: 
 \begin{align*}
 \left(\overline{r}\cdot\overline{(e_k)_{ij}}\right)\left(\overline{s}\cdot\overline{(e_k)_{jh}}\right)=\\
 &=\left((r_1,\dots,r_m)\overline{(e_k)_{ij}}\right)\left((s_1,\dots,s_m)\overline{(e_k)_{jh}}\right)\\
@@ -255,7 +255,7 @@ Let $(e_R)_{ij}$ be the matrix with $1_R$ in location $(i,j)$, and we define als
 m((e_R)_{ij}\otimes{s})=\\
 &=\sum_{i=1}^m((e_R)_{ij}\otimes{s})=\\
 &=\left(\sum_{i=1}^m(e_R)_{ij}\right)\otimes{s}=m(e_R)_{ij}\otimes{s}\\
-&=(e_R)_{ij}\otimes\left(\sum_{i=1}^ms\right)=(e_R)_{ij}\otimes{m}s,
+&=(e_R)_{ij}\otimes\left(\sum_{i=1}^ms\right)=(e_R)_{ij}\otimes{s}m,
 \end{align*}
 and clearly the tensor elements $(e_R)\otimes{s}$ form an $R$-basis of $L_n(R)\otimes_\mathbb{Z}S$.
 We define a bijection $(e_R)_{ij}\otimes1\overset{\psi}{\longleftrightarrow}(e_T)_{ij}$, which also complies as a ring isomorphism, because 
@@ -293,7 +293,7 @@ The ring of integers $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}_p$-
 \end{lemma}
 \begin{proof}
 We look at the tensor product $\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$, which complies as a $\mathbb{Z}$-module as in the proof of \ref{lem:tensor-r-s}, and we define 
-\[a(x\otimes1)=x\otimes(a1)=x\otimes{a},\] 
+\[a(x\otimes1)=x\otimes1a=x\otimes{a},\] 
 for every $a\in\mathbb{Z}_p$.
 \end{proof}
 We construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$, and we claim the following:
