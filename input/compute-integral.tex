@@ -148,7 +148,7 @@ Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $e_{ij}e
 \begin{lemma2}
 \label{lem:direct-product}
 Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity $1_k=1_{R_k}\in{R}_k$, then we have a ring isomorphism \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
-which complies also as an isomorphism of free modules.
+which complies also as an isomorphism of free $R$-modules of rank $md$.
 \end{lemma2}
 \begin{remark2}
 Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket operation and will be denoted by $[x,y]$ for every $x,y\in{L}_n(\prod{R}_k)$, while the multiplication in $\prod{L}_n(R_k)$ is defined by component-wise multiplication (which is the bracket operation on each component separately), and will be denoted by $uv$ for every $u,v\in\prod{L}_n(R_k)$.
@@ -157,35 +157,30 @@ Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket op
 We denote by $R=\prod_{k=1}^mR_k$ the direct product of the rings $R_1,\dots,R_m$.
 We denote by $(r_ke_{ij})_k\in{L}_n(R)$ the matrix with $\overline{r_k}=(0,\dots,0,r_k,0,\dots,0)$ in location $(i,j)$, where $r_k\in{R}_k$, in particular we denote by $(e_{ij})_k$ the matrix with $\overline{1_k}=(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, where $1_k$ is the multiplicative identity of $R_k$ and therefore $(r_ke_{ij})_k=\overline{r_k}(e_{ij})_k$, and it is clear that all the elements of $L_n(R)$ assume the form
 \[
-a_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(r_ke_{ij})_k.
+a_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{r_k}(e_{ij})_k.
 \]
-From this construction we can define the operation of $R$ on $L_n(R)$ by \[(s_1,\dots,s_m)\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(r_ke_{ij})_k\longrightarrow\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{r_ks_k}(e_{ij})_k,\]
+From this construction we can define the operation of $R$ on $L_n(R)$ by \[(s_1,\dots,s_m)\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(r_ke_{ij})_k\longrightarrow\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{s_kr_k}(e_{ij})_k,\]
 where $r_k,s_k\in{R}_k$, which clearly assigns $L_n(R)$ the structure of an $R$-module.
 It is also clear that all the elements of the form $(e_{ij})_k$ are $R$-linearly independent, thus form an $R$-basis of $L_n(R)$.
 We denote by $(r_ke_k)_{ij}\in{L}_n(R_k)$
 the matrix with $r_k\in{R}_k$ in location $(i,j)$, in particular we denote by $(e_k)_{ij}$ the matrix with $1_k$ in location $(i,j)$, therefore $(r_ke_k)_{ij}=r_k(e_k)_{ij}$.
-We denote by $\overline{(r_ke_k)_{ij}}=(0,0\dots,0,(r_ke_k)_{ij},0,\dots,0)\in\prod{L}_n(R_k)$ the vector with $(r_ke_k)_{ij}$ in index $k$, and define the multiplication in $\prod{L}_n(R_k)$ by 
-\[\overline{r_k}\cdot\overline{(e_k)_{ij}}=(r_ke_k)_{ij},\] 
-where $\overline{r_k}=(0,\dots,0,r_k,0,\cdots,0)\in{R}$.
-Fix $k,i,j$ and denote 
-\[(E_k)_{ij}:=\left\{\overline{(r_ke_k)_{ij}}:r_k\in{R}_k\right\}\].
-Then fix $k$ and denote by 
-\[E_k:=\left\{\sum_{1\leq{i}<j\leq{n}}\overline{(r_ke_k)_{ij}}:r_k\in{R}_k\right\},\]
-and it is clear that all the elements of $\prod{L}_n(R_k)$ assume the form
+We denote by $\overline{(r_ke_k)_{ij}}=\overline{r_k}\cdot\overline{(e_k)_{ij}}=(0,0\dots,0,(r_ke_k)_{ij},0,\dots,0)\in\prod{L}_n(R_k)$ the vector with $(r_ke_k)_{ij}$ in index $k$, and it is clear that all the elements of $\prod{L}_n(R_k)$ assume the form
 \[
-a_\Pi=\sum_{k=1}^ma_k,
+a_\Pi=\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{r_k}\cdot\overline{(e_k)_{ij}},
 \]
-where $a_k\in{E}_k$.
+and we define an operation of $R$ on $\prod{L}_n(R_k)$ by 
+\[(s_1,\dots,s_m)\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{r_k}\cdot\overline{(e_k)_{ij}}\longrightarrow\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{s_kr_k}\cdot\overline{(e_k)_{ij}},\]
+which assigns $\prod{L}_n(R_k)$ also the structure of an $R$-module.
 We define the map 
 \[\psi:L_n(R)\longrightarrow\prod_{k=1}^mL_n(R_k)\]
-by 
+on basis elements by the bijection
 \[
-\psi\left(r_k(e_{ij})_k)\right):=\overline{r_k(e_k)_{ij}},
+(e_{ij})_k\overset{\psi}{\longleftrightarrow}\overline{(e_k)_{ij}},
 \]
-in words, every matrix $(e_{ij})_k$ with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$ maps to the vector $(0,\dots,0,(e_k)_{ij},0,\dots,0)$ where in index $k$ we have the matrix in $L_n(R_k)$ with $r_k$ in location $(i,j)$, and it is clear that if 
-\[a_R=\sum_{1\leq{i}<j\leq{n}}a_{ij}\in{L}_n(R)\]
+in words, every matrix $(e_{ij})_k$ with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$ is mapped to the vector $\overline{(e_k)_{ij}}=(0,\dots,0,(e_k)_{ij},0,\dots,0)$ which has in index $k$ the matrix in $L_n(R_k)$ with $r_k$ in location $(i,j)$, and it is clear that if 
+\[a_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}}(e_{ij})_k\in{L}_n(R)\]
 and
-\[b_R=\sum_{1\leq{i}<j\leq{n}}b_{ij}\in{L}_n(R),\]
+\[b_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{b_{ij,k}}(e_{ij})_k\in{L}_n(R),\]
 then the mapping on the addition is defined in the natural way as
 \begin{align*}
 \psi(a_R+b_R)=\\
