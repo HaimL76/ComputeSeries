@@ -201,11 +201,12 @@ And we extend this also to the multiplication:
 by \ref{lem:multiplication-rule} and by multiplication in $R$, the only elements that do not vanish in the sum are of the form $[a_{ij,k}(e_{ij})_k),b_{jh,k}(e_{jh})_k]=a_{ij,k}b_{jh,k}(e_{ih})_k$, and hence
 \begin{align*}
 \psi(a_Rb_R)=\\
-&=\psi\left(\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^ma_{ij,k}b_{jh,k}(e_{ih})_k\right)=\\
-&=\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}\\
-&=\sum_{1\leq{i}<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
-&=\sum_{k=1}^m\sum_{1\leq{i}<h\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\cdot\overline{b_{jh,k}(e_k)_{jh}}.
+&=\psi\left(\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^ma_{ij,k}b_{jh,k}(e_{ih})_k\right)=\\
+&=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}\\
+&=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
+&=\sum_{k=1}^m\sum_{1\leq{i}<j<h\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\cdot\overline{b_{jh,k}(e_k)_{jh}},
 \end{align*}
+the latter is due to the identity $\left((a_1,\dots,a_m)\overline{(e_k)_{ij}}\right)\left((b_1,\dots,b_m)\overline{(e_k)_{jh}}\right)=(0,\dots,0,[a_k(e_k)_{ij},b_k(e_k)_{jh}],0\dots,0)$.
 \begin{align*}
 \psi(a_Rb_R)=\\
 &=a_\Pi{b}_\Pi=\psi(a_R)\psi(b_R),
