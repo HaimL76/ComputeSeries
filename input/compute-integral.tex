@@ -33,6 +33,7 @@
 \titlespacing*{\subsubsubsection}
 
 \newtheorem{lemma2}[subsubsubsection]{Lemma}
+\newtheorem{remark2}[subsubsubsection]{Remark}
 
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \makeatother
@@ -147,58 +148,57 @@ Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $e_{ij}e
 \begin{lemma2}
 \label{lem:direct-product}
 Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity $1_k=1_{R_k}\in{R}_k$, then we have a ring isomorphism \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
-which complies also as an isomorphism of free modules of rank $md$.
+which complies also as an isomorphism of free modules.
 \end{lemma2}
-\begin{remark}
+\begin{remark2}
 Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket operation and will be denoted by $[x,y]$ for every $x,y\in{L}_n(\prod{R}_k)$, while the multiplication in $\prod{L}_n(R_k)$ is defined by component-wise multiplication (which is the bracket operation of the $m$ components), and will be denoted by $uv$ for every $u,v\in\prod{L}_n(R_k)$.
-\end{remark}
+\end{remark2}
 \begin{proof}
-We denote by
+We denote by $R=\prod_{k=1}^mR_k$ the direct product of the rings $R_1,\dots,R_m$.
+We denote by $(r_ke_{ij})_k\in{L}_n(R)$ the matrix with $(0,\dots,0,r_k,0,\dots,0)$ in location $(i,j)$, where $r_k\in{R}_k$, in particular we denote $(e_{ij})_k$ the matrix with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, where $1_k$ is the multiplicative identity of $R_k$ and therefore $(r_ke_{ij})_k=r_k(e_{ij})_k$.
+We fix $k,i,j$ and denote 
+\[(E_{ij})_k:=\left\{r_k(e_{ij})_k:r_k\in{R}_k\right\},\]
+then we fix $i,j$ and denote
+\[E_{ij}:=\left\{\sum_{k=1}^mr_k(e_{ij})_k:r_k\in{R}_k\right\},\]
+and it is clear that all the elements of $L_n(R)$ assume the form
 \[
-R=\prod_{k=1}^mR_k\] 
-the direct product of the rings $R_1,\dots,R_m$.
-We denote by \[(e_{ij})_k\in{L}_n(R)\] 
-the matrix with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, hence the matrix with $1_R=(1_{R_1},\dots,1_{k-1},1_k,1_{k+1},\dots,1_m)$ in location $(i,j)$ is:
-\[
-(e_{ij})_R=\sum_{k=1}^m(e_{ij})_k\in{L}_n(R).
+a_R=\sum_{1\leq{I}<j\leq{n}}a_{ij},
 \]
-We denote by
+where $a_{ij}\in{E}_{ij}$.
+We denote by $(r_ke_k)_{ij}\in{L}_n(R_k)$
+the matrix with $r_k\in{R}_k$ in location $(i,j)$, in particular we denote by $(e_k)_{ij}$ the matrix with $1_k$ in location $(i,j)$, therefore $(r_ke_k)_{ij}=r_k(e_k)_{ji}$.
+We denote by $\overline{(r_ke_k)_{ij}}=(0,0\dots,0,(r_ke_k)_{ij},0,\dots,0)\in\prod{L}_n(R_k)$ the vector with $(r_ke_k)_{ij}$ in index $k$, and define the multiplication in $\prod{L}_n(R_k)$ by 
+\[\overline{r_k}\cdot\overline{(e_k)_{ij}}=(r_ke_k)_{ij},\] 
+where $\overline{r_k}=(0,\dots,0,r_k,0,\cdots,0)\in{R}$.
+Fix $k,i,j$ and denote 
+\[(E_k)_{ij}:=\left\{\overline{(r_ke_k)_{ij}}:r_k\in{R}_k\right\}\].
+Then fix $k$ and denote by 
+\[E_k:=\left\{\sum_{1\leq{i}<j\leq{n}}\overline{(r_ke_k)_{ij}}:r_k\in{R}_k\right\},\]
+and it is clear that all the elements of $\prod{L}_n(R_k)$ assume the form
 \[
-(e_k)_{ij}\in{L}_n(R_k)
+a_\Pi=\sum_{k=1}^ma_k,
 \]
-the matrix with $1_k$ in location $(i,j)$, and by
-\begin{align*}
-\overline{a_k(e_k)_{ij}}=\\
-&=(0,\dots,a_k(e_k)_{ij},\dots,0)=\\
-&=a_k(0,\dots,(e_k)_{ij},\dots,0)=a_k\overline{(e_k)_{ij}}\in\prod_{r=1}^mL_n(R_r).
-\end{align*}
-the vector in the direct product of the rings.
+where $a_k\in{E}_k$.
 We define the map 
 \[\psi:L_n(R)\longrightarrow\prod_{k=1}^mL_n(R_k)\]
 by 
 \[
-\psi\left(\sum_{k=1}^ma_k(e_{ij})_k\right)=\sum_{k=1}^m\left(\overline{a_k(e_k)_{ij}}\right)=\sum_{k=1}^m\left(a_k\overline{(e_k)_{ij}}\right)=\sum_{k=1}^m\left(a_k\psi((e_{ij})_k)\right).
+\psi\left(r_k(e_{ij})_k)\right):=\overline{r_k(e_k)_{ij}},
 \]
-Let
-\begin{itemize}
-\item[] $(e_{ij})_k\in{L}_n(R)$ be the matrix with $(0,\dots,1_k,\dots,0)$ in location $(i,j)$, and
-\item[] $(e_{jr})_k\in{L}_n(R)$ be the matrix with $(0,\dots,1_k,\dots,0)$ in location $(j,r)$,
-\end{itemize}
-then by \ref{lem:multiplication-rule} and by the multiplication in $R$ we have
+in words, every matrix $(e_{ij})_k$ with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$ maps to the vector $(0,\dots,0,(e_k)_{ij},0,\dots,0)$ where in index $k$ we have the matrix in $L_n(R_k)$ with $r_k$ in location $(i,j)$, and it is clear that if 
+\[a_R=\sum_{1\leq{i}<j\leq{n}}a_{ij}\in{L}_n(R)\]
+and
+\[b_R=\sum_{1\leq{i}<j\leq{n}}b_{ij}\in{L}_n(R),\]
+then the mapping on the addition is defined in the natural way as
 \begin{align*}
-\psi([(e_{ij})_k,(e_{jr})_k])=\\
-&=\psi((e_{ir})_k)=\overline{(e_k)_{ir}}=(0,\dots,(e_k)_{ir},\dots,0)=\\
-&=(0,\dots,[(e_k)_{ij},(e_k)_{jr}],\dots,0)=\\
-&=(0,\dots,(e_k)_{ij},\dots,0)(0,\dots,(e_k)_{jr},\dots,0)=\\
-&=\overline{(e_k)_{ij})}\cdot\overline{(e_k)_{jr})}=\psi((e_{ij})_k)\psi((e_{jr})_k),
+\psi(a_R+b_R)=\\
+&=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^ma_{ij,k}(e_{ij})_k+\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^mb_{ij,k}(e_{ij})_k\right)=\\
+&=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(a_{ij,k}+b_{ij,k})(e_{ij})_k\right)=\\
+&=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{(a_{ij,k}+b_{ij,k})(e_k)_{ij}}=\\
+&=\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{a_{ij,k}(e_k)_{ij}+b_{ij,k}(e_k)_{ij}}=\\
+&=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}(e_k)_{ij}}+\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{b_{ij,k}(e_k)_{ij}}=\\
+&=\psi(a_R)+\psi(b_R).
 \end{align*}
-which shows that $\psi$ complies with the ring multiplication, and it is clear that $\ker\psi=0$, and that $\psi$ has an inverse $\psi^{-1}$ which maps back $\overline{(e_k)_{ij}}\overset{\psi^{-1}}{\longrightarrow}(e_{ij})_k$, hence $\psi$ is a ring isomorphism.
-Fix some $1\leq{k}\leq{m}$ and $1\leq{i}<j\leq{n}$, and denote by $(E_{ij})_k:\{a(e_{ij})_k:a\in{R}\}$ which is clearly a sub $R$-module of $L_n(R)$, because $a(e_{ij})_k+b(e_{ij})_k=(a+b)(e_{ij})_k$, and $a(e_{ij})_k\cdot{b}(e_{ij})_k=(ab)(e_{ij})_k$ for every $a,b\in{R}$.
-Denote by \[E_{ij}:=\bigoplus_{1\leq{k}\leq{m}}(E_{ij})_k,\]
-and it is immediate to verify that $a(e_{ij})_k+b(e_{ij})_h$ and $a(e_{ij})_k\cdot{b}(e_{ij})_h$ are in $E_{ij}$ for every $1\leq{k},h\leq{m}$, thus $E_{ij}$ is a free sub $R$-module of $L_n(R)$ with $\{(E_{ij})_1,\dots,(E_{ij})_m\}$ as an $R$-basis, thus of rank $m$.
-Clearly, 
-\[L_n(R)=\bigoplus_{1\leq{i}<j\leq{n}}E_{ij}=\bigoplus_{1\leq{i}<j\leq{n}}\left(\bigoplus_{1\leq{k}\leq{m}}(E_{ij})_k\right),\]
-hence $L_n(R)$ is a free $R$-module of rank $dm$.
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma2}
