@@ -151,11 +151,11 @@ Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity 
 which complies also as an isomorphism of free $R$-modules of rank $md$.
 \end{lemma2}
 \begin{remark2}
-Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket operation and will be denoted by $[x,y]$ for every $x,y\in{L}_n(\prod{R}_k)$, while the multiplication in $\prod{L}_n(R_k)$ is defined by component-wise multiplication (which is the bracket operation on each component separately), and will be denoted by $\overline{u}\cdot\overline{v}$ for every $\overline{u},\overline{v}\in\prod{L}_n(R_k)$.
+Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket operation and will be denoted by $[x,y]$ for every $x,y\in{L}_n(\prod{R}_k)$, while the multiplication in $\prod{L}_n(R_k)$ is defined by component-wise multiplication, induced by the bracket operation on each component separately, and will be denoted by $\overline{u}\cdot\overline{v}$ for every $\overline{u},\overline{v}\in\prod{L}_n(R_k)$.
 \end{remark2}
 \begin{proof}
 We denote by $R=\prod_{k=1}^mR_k$ the direct product of the rings $R_1,\dots,R_m$.
-We denote by $(r_ke_{ij})_k\in{L}_n(R)$ the matrix with $\overline{r_k}=(0,\dots,0,r_k,0,\dots,0)$ in location $(i,j)$, where $r_k\in{R}_k$, in particular we denote by $(e_{ij})_k$ the matrix with $\overline{1_k}=(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, where $1_k$ is the multiplicative identity of $R_k$ and therefore $(r_ke_{ij})_k=\overline{r_k}(e_{ij})_k$, and it is clear that all the elements of $L_n(R)$ assume the form
+We denote by $(r_ke_{ij})_k\in{L}_n(R)$ the matrix with $\overline{r_k}=(0,\dots,0,r_k,0,\dots,0)$ in location $(i,j)$, where $r_k\in{R}_k$, in particular we denote by $(e_{ij})_k$ the matrix with $\overline{1_k}=(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, and therefore $(r_ke_{ij})_k=\overline{r_k}(e_{ij})_k$, and it is clear that all the elements of $L_n(R)$ assume the form
 \[
 a_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{r_k}(e_{ij})_k.
 \]
@@ -177,11 +177,11 @@ on basis elements by the bijection
 \[
 (e_{ij})_k\overset{\psi}{\longleftrightarrow}\overline{(e_k)_{ij}},
 \]
-in words, every matrix $(e_{ij})_k$ with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$ is mapped to the vector $\overline{(e_k)_{ij}}=(0,\dots,0,(e_k)_{ij},0,\dots,0)$ which has in index $k$ the matrix in $L_n(R_k)$ with $r_k$ in location $(i,j)$, and it is clear that if 
+in words, every matrix $(e_{ij})_k$ with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$ is mapped to the vector $\overline{(e_k)_{ij}}=(0,\dots,0,(e_k)_{ij},0,\dots,0)$ which has in index $k$ the matrix in $L_n(R_k)$ with $1_k$ in location $(i,j)$, and it is clear that if 
 \[a_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}}(e_{ij})_k\in{L}_n(R)\]
 and
 \[b_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{b_{ij,k}}(e_{ij})_k\in{L}_n(R),\]
-then the mapping on the addition is defined in the natural way as
+where $a_{ij,k},b_{ij,k}\in{R}_k$, then the mapping on the addition is defined in the natural way as:
 \begin{align*}
 \psi(a_R+b_R)=\\
 &=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^ma_{ij,k}(e_{ij})_k+\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^mb_{ij,k}(e_{ij})_k\right)=\\
@@ -189,10 +189,9 @@ then the mapping on the addition is defined in the natural way as
 &=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{(a_{ij,k}+b_{ij,k})(e_k)_{ij}}=\\
 &=\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{a_{ij,k}(e_k)_{ij}+b_{ij,k}(e_k)_{ij}}=\\
 &=\left(\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\right)+\left(\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{b_{ij,k}(e_k)_{ij}}\right)=\\
-&=a_\Pi+b_\Pi=\psi(a_R)+\psi(b_R),
+&=a_\Pi+b_\Pi=\psi(a_R)+\psi(b_R).
 \end{align*}
-where $a_{ij,k},b_{ij,k}\in{R}_k$.
-And we extend this also to the multiplication:
+We extend this also to the multiplication:
 \begin{align*}
 \psi(a_Rb_R)=\\
 &=\psi\left(\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^ma_{ij,k}(e_{ij})_k\right)\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^mb_{ij,k}(e_{ij})_k\right)\right)=\\
@@ -285,8 +284,8 @@ We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constru
 \end{notation}
 This construction is essential to our work, which is based on the theory of $p$-adic numbers, next we show that it is compatible with the fundamental notions of zeta functions on the integer numbers.
 \subsection{The extension algebra $L_K$}
-Let $p\in\mathbb{Z}$ be some prime integer, then $\mathbb{Z}_p$ is a local ring whose only ideals are of the form $\cdots{p}^{k+1}\mathbb{Z}_p\subset{p}^{k}\mathbb{Z}_p\subset{p}^{k-1}\mathbb{Z}_p\cdots\subset{p}\mathbb{Z}$, with $p\mathbb{Z}$ being its unique maximal ideal, thus $\mathbb{Z}_p$ is a discrete valuation ring.
-Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$, and let $\mathcal{O}_K$ be its ring of integers, then $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}$-module of rank $f$, and we have the following claim:
+Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$ where $[K:\mathbb{Q}]=f$, and let $\mathcal{O}_K$ be its ring of integers, then $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}$-module of rank $f$.
+Let $p\in\mathbb{Z}$ be some prime integer, then $\mathbb{Z}_p$ is a local ring whose only ideals are of the form $\cdots{p}^{k+1}\mathbb{Z}_p\subset{p}^{k}\mathbb{Z}_p\subset{p}^{k-1}\mathbb{Z}_p\cdots\subset{p}\mathbb{Z}$, with $(p)=p\mathbb{Z}$ being its unique maximal ideal, thus $\mathbb{Z}_p$ is a discrete valuation ring, and we have the following claim:
 \begin{lemma}
 \label{free-zp-module}
 The ring of integers $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}_p$-module by extension of scalars.
@@ -296,17 +295,25 @@ We look at the tensor product $\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$, whi
 \[a(x\otimes1)=x\otimes1a=x\otimes{a},\] 
 for every $a\in\mathbb{Z}_p$.
 \end{proof}
+\begin{notation}
+We denote by $\mathcal{O}_{K,p}=\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$ the tensor product constructed above, and we may omit the prime $p$ notation when it is clear from the context.
+\end{notation}
+Denote by $\mathfrak{p}=p\mathcal{O}_{K,p}$ the ideal in $\mathcal{O}_{K,p}$ generated by $p$, and since $\mathcal{O}_{K,p}$ is known to be a Dedekind ring, then $\mathfrak{p}$ has a unique factorization $\mathfrak{p}=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$, where $\mathfrak{p}_1,\dots,\mathfrak{p}_r$ are all prime ideals in $\mathcal{O}_{K,p}$.
+since every prime ideal in a Dedekind ring is maximal, then the quotient $K_{\mathfrak{p}_i}:=\sfrac{\mathcal{O}_{K,p}}{\mathfrak{p}_i}$ forms a field for every $1\leq{i}\leq{r}$, and by the Chinese Remainder Theorem, we have an isomorphism:
+\[\sfrac{\mathcal{O}_{K,p}}{\mathfrak{p}}\cong\prod_{i=1}^r\sfrac{\mathcal{O}_{K,p}}{\mathfrak{p}_i}.\]
+
 We construct the same Lie algebra over $\mathcal{O}_K$, that is $L_n(\mathcal{O}_K)$, and we claim the following:
 \begin{lemma}
 There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p)$ as free $\mathbb{Z}$-modules.
 This is exactly \ref{lem:tensor-r-s} with $R=\mathcal{O}_K$ and $S=\mathbb{Z}_p$.
 Since $\mathcal{O}_K$ is finitely generated over $\mathbb{Z}$ with $f=[\mathcal{O}_K:\mathbb{Z}]$, then $\mathrm{rank}{L}_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p=df$.
 \end{lemma}
-Let $p\in\mathbb{Z}$ be a prime number, and let $\mathfrak{p}=p\mathcal{O}_K$ be an ideal in $\mathcal{O}_K$, since $\mathcal{O}_K$ is known to be a Dedekind domain, then $\mathfrak{p}$ has a unique factorization to prime ideals, that is, $\mathfrak{p}=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$ in $\mathcal{O}_K$.
+
 Since every $\mathfrak{p}_i$ is a prime hence a maximal ideal in $\mathcal{O}_K$, we denote by $K_{\mathfrak{p}_i}:=\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$ its residue field modulo $\mathfrak{p}_i$, and by $\mathcal{O}_{\mathfrak{p}_i}$ the ring of integers of $K_{\mathfrak{p}_i}$, and we denote by $f_i=[\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}:\sfrac{\mathbb{Z}}{(p)}]$ the degree of the residue field extension in index $i$, and it is well-known that
 the degree of the field extension $K_{/\mathbb{Q}}$ is \[[K:\mathbb{Q}]=\sum_{i=1}^rg_if_i.\]
 \begin{lemma}
 \label{lem:tensor-ok-zp}
+we have an isomorphism of $\mathbb{Z}$-modules:
 \[
 \mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\cong\prod_{i=1}^r\mathcal{O}_{\mathfrak{p}_i}
 \]
