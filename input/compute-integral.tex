@@ -147,93 +147,64 @@ Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $e_{ij}e
 \subsubsection{Direct product of $L_n$}
 \begin{lemma2}
 \label{lem:direct-product}
-Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity $1_k=1_{R_k}\in{R}_k$, then we have a ring isomorphism \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
-which complies also as an isomorphism of free $R$-modules of rank $md$.
-\end{lemma2}
-\begin{remark2}
-Notice that the multiplication in $L_n(\prod{R}_k)$ is defined by the bracket operation and will be denoted by $[x,y]$ for every $x,y\in{L}_n(\prod{R}_k)$, while the multiplication in $\prod{L}_n(R_k)$ is defined by component-wise multiplication, induced by the bracket operation on each component separately, and will be denoted by $\overline{u}\cdot\overline{v}$ for every $\overline{u},\overline{v}\in\prod{L}_n(R_k)$.
-\end{remark2}
-\begin{proof}
-We denote by $R=\prod_{k=1}^mR_k$ the direct product of the rings $R_1,\dots,R_m$.
-We denote by $(r_ke_{ij})_k\in{L}_n(R)$ the matrix with $\overline{r_k}=(0,\dots,0,r_k,0,\dots,0)$ in location $(i,j)$, where $r_k\in{R}_k$, in particular we denote by $(e_{ij})_k$ the matrix with $\overline{1_k}=(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$, and therefore $(r_ke_{ij})_k=\overline{r_k}(e_{ij})_k$, and it is clear that all the elements of $L_n(R)$ assume the form
-\[
-a_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{r_k}(e_{ij})_k.
-\]
-From this construction we can define the operation of $R$ on $L_n(R)$ by \[(s_1,\dots,s_m)\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(r_ke_{ij})_k\longrightarrow\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{s_kr_k}(e_{ij})_k,\]
-where $r_k,s_k\in{R}_k$, which clearly assigns $L_n(R)$ the structure of an $R$-module.
-It is also clear that all the elements of the form $(e_{ij})_k$ are $R$-linearly independent, thus form an $R$-basis of $L_n(R)$.
-We denote by $(r_ke_k)_{ij}\in{L}_n(R_k)$
-the matrix with $r_k\in{R}_k$ in location $(i,j)$, in particular we denote by $(e_k)_{ij}$ the matrix with $1_k$ in location $(i,j)$, therefore $(r_ke_k)_{ij}=r_k(e_k)_{ij}$.
-We denote by $\overline{(r_ke_k)_{ij}}=\overline{r_k}\cdot\overline{(e_k)_{ij}}=(0,0\dots,0,(r_ke_k)_{ij},0,\dots,0)\in\prod{L}_n(R_k)$ the vector with $(r_ke_k)_{ij}$ in index $k$, and it is clear that all the elements of $\prod{L}_n(R_k)$ assume the form
-\[
-a_\Pi=\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{r_k}\cdot\overline{(e_k)_{ij}},
-\]
-and we define an operation of $R$ on $\prod{L}_n(R_k)$ by 
-\[(s_1,\dots,s_m)\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{r_k}\cdot\overline{(e_k)_{ij}}\longrightarrow\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{s_kr_k}\cdot\overline{(e_k)_{ij}},\]
-which assigns $\prod{L}_n(R_k)$ also the structure of an $R$-module.
-We define the map 
-\[\psi:L_n(R)\longrightarrow\prod_{k=1}^mL_n(R_k)\]
-on basis elements by the bijection
-\[
-(e_{ij})_k\overset{\psi}{\longleftrightarrow}\overline{(e_k)_{ij}},
-\]
-in words, every matrix $(e_{ij})_k$ with $(0,\dots,0,1_k,0,\dots,0)$ in location $(i,j)$ is mapped to the vector $\overline{(e_k)_{ij}}=(0,\dots,0,(e_k)_{ij},0,\dots,0)$ which has in index $k$ the matrix in $L_n(R_k)$ with $1_k$ in location $(i,j)$, and it is clear that if 
-\[a_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}}(e_{ij})_k\in{L}_n(R)\]
-and
-\[b_R=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{b_{ij,k}}(e_{ij})_k\in{L}_n(R),\]
-where $a_{ij,k},b_{ij,k}\in{R}_k$, then the mapping on the addition is defined in the natural way as:
-\begin{align*}
-\psi(a_R+b_R)=\\
-&=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^ma_{ij,k}(e_{ij})_k+\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^mb_{ij,k}(e_{ij})_k\right)=\\
-&=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m(a_{ij,k}+b_{ij,k})(e_{ij})_k\right)=\\
-&=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{(a_{ij,k}+b_{ij,k})(e_k)_{ij}}=\\
-&=\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{a_{ij,k}(e_k)_{ij}+b_{ij,k}(e_k)_{ij}}=\\
-&=\left(\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{a_{ij,k}(e_k)_{ij}}\right)+\left(\sum_{k=1}^m\sum_{1\leq{i}<j\leq{n}}\overline{b_{ij,k}(e_k)_{ij}}\right)=\\
-&=a_\Pi+b_\Pi=\psi(a_R)+\psi(b_R).
-\end{align*}
-We extend this also to the multiplication:
-\begin{align*}
-\psi(a_Rb_R)=\\
-&=\psi\left(\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^ma_{ij,k}(e_{ij})_k\right)\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^mb_{ij,k}(e_{ij})_k\right)\right)=\\
-&=\psi\left(\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{g}<h\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\left[a_{ij,k}(e_{ij})_k,b_{gh,r}(e_{gh})_r\right]\right)
-\end{align*}
-by \ref{lem:multiplication-rule} and by multiplication in $R$, the only elements that do not vanish in the sum are of the form $[a_{ij,k}(e_{ij})_k),b_{jh,k}(e_{jh})_k]=a_{ij,k}b_{jh,k}(e_{ih})_k$, and hence
-\begin{align*}
-\psi(a_Rb_R)=\\
-&=\psi\left(\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^ma_{ij,k}b_{jh,k}(e_{ih})_k\right)=\\
-&=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}b_{jh,k}(e_k)_{ih}}=\\
-&=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
-\end{align*}
-The same consideration of vanishing elements applies also separately for $L_n(R_k)$, hence we have the following identify:
-\begin{align*}
-\psi(a_Rb_R)=\\
-&=\sum_{1\leq{i}<j<h\leq{n}}\sum_{k=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{jh,k}(e_k)_{jh}\right]}=\\
-&=\sum_{1\leq{i}<j\leq{n}}\sum_{1\leq{g}<h\leq{n}}\sum_{k=1}^m\sum_{r=1}^m\overline{\left[a_{ij,k}(e_k)_{ij},b_{gh,r}(e_r)_{gh}\right]}=\\
-&=\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\sum_{1\leq{g}<h\leq{n}}\sum_{r=1}^m\left[\overline{a_{ij,k}(e_k)_{ij}},\overline{b_{gh,r}(e_r)_{gh}}\right]=\\
-&=\left(\sum_{1\leq{i}<j\leq{n}}\sum_{k=1}^m\overline{a_{ij,k}(e_k)_{ij}}\right)\left(\sum_{1\leq{g}<h\leq{n}}\sum_{r=1}^m\overline{b_{gh,r}(e_r)_{gh}}\right)=\\
-&=a_\Pi{b}_\Pi=\psi(a_R)\psi(b_R),
-\end{align*}
-the latter is due to the identity: 
-\begin{align*}
-\left(\overline{r}\cdot\overline{(e_k)_{ij}}\right)\left(\overline{s}\cdot\overline{(e_k)_{jh}}\right)=\\
-&=\left((r_1,\dots,r_m)\overline{(e_k)_{ij}}\right)\left((s_1,\dots,s_m)\overline{(e_k)_{jh}}\right)\\
-&=(0,\dots,r_k(e_k)_{ij}\dots,0)(0,\dots,s_k(e_k)_{jh}\dots,0)=\\
-&=(0,\dots,[r_k(e_k)_{ij},s_k(e_k)_{jh}]\dots,0)=\\
-&=[(0,\dots,r_k(e_k)_{ij},\dots,0),(0,\dots,s_k(e_k)_{jh},\dots,0)]=\\
-&=[\overline{r}\cdot\overline{(e_k)_{ij}},\overline{s}\cdot\overline{(e_k)_{jh}}].
-\end{align*}
-and it is clear that $\psi$ is a bijection, hence a ring isomorphism between $L_n(R)$ and $\prod{L}_n(R_k)$, which complies also as an isomorphism between $R$-modules.
-\end{proof}
-\subsubsection{Tensor product of $L_n$}
-\begin{lemma2}
-\label{lem:ring-Z-module}
-Let $R$ be a ring, then $R$ has a canonical structure as a $\mathbb{Z}$-module which complies with the ring structure, that is, for every $r,s\in{R}$ and $m\in\mathbb{Z}$, we have the identity: $m(rs)=(mr)s$.
+Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity $1_k=1_{R_k}\in{R}_k$, and let $R=\prod_{k=1}^mR_k$ be their direct product, then we have a ring isomorphism: \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
+which in particular is an isomorphism of free $R$-modules of rank $d$.
 \end{lemma2}
 \begin{proof}
-Considering $R$ as an additive abelian group, $R$ is uniquely determined as a $\mathbb{Z}$-module by mapping $1r\longrightarrow{r}$ and $mr\longrightarrow\underbrace{r+\cdots+r}_{m\,\text{times}}$, for every $r\in{R}$ and $m\in\mathbb{Z}$, thus
+We denote by $a_{ij,k}\in{R}_k$ an arbitrary element, and we denote $\overline{a_{ij}}=(a_{ij,1},\dots,a_{ij,m})\in{R}$,
+then every element $A_R\in{L}_n(R)$ is of the form:
 \[
-(mr)s=\left(\sum_{i=1}^mr\right)s=\sum_{i=1}^m\left(rs\right)=m\left(rs\right),\]
-for every $s\in{R}$.
+A_R=\begin{bmatrix}
+\overline{a_{11}}&\overline{a_{12}}&\cdots&\overline{a_{1n}}\\
+&\overline{a_{22}}&\cdots&\overline{a_{2n}}\\
+&&\ddots&\overline{a_{3n}}\\
+&&&\vdots\\
+&&&\overline{a_{nn}}\\
+\end{bmatrix}.
+\]
+Let $A_k\in{L}_n(R_k)$, then every element in $\prod_{k=1}^mL_n(R_k)$ is of the form:
+\[
+A_\Pi=\left(A_1,\dots,A_m\right),\]
+that is, 
+\[
+A_\Pi=\left(\begin{bmatrix}
+a_{11,1}&a_{12,1}&\cdots&a_{1n,1}\\
+&a_{22,1}&\cdots&a_{2n,1}\\
+&&\ddots&a_{3n,1}\\
+&&&\vdots\\
+&&&a_{nn,1}\\
+\end{bmatrix}
+,\dots
+,\begin{bmatrix}
+a_{11,m}&a_{12,m}&\cdots&a_{1n,m}\\
+&a_{22,m}&\cdots&a_{2n,m}\\
+&&\ddots&a_{3n,m}\\
+&&&\vdots\\
+&&&a_{nn,m}\\
+\end{bmatrix}.\right)\]
+We define the map $\psi:L_n(R)\longrightarrow\prod_{k=1}^mL_n(R_k)$ by
+$A_R\overset{\psi}{\longrightarrow}A_\Pi$,
+which is clearly a bijection, and it is also clear that $\psi(A_R+C_R)=A_\Pi+C_\Pi=\psi(A_R)+\psi(C_R)$.
+The product matrix $[A_R,C_R]=A_RC_R-C_RA_R$ consists of elements of the form
+\begin{align*}
+b_{ij}=\\
+&=\sum_{r=i}^n\overline{a_{ir}}\cdot\overline{c_{rj}}-\sum_{r=i}^n\overline{c_{ir}}\cdot\overline{a_{rj}}=\\
+&=\sum_{r=i}^n\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1},\dots,a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right)=\\
+&=\left(\sum_{r=i}^n\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1}\right),\dots,\sum_{r=i}^n\left(a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right)\right)
+\end{align*}
+in location $(i,j)$, then each element $b_{ij}$ is mapped by $\psi$ to location $(i,j)$ in each matrix $L_n(R_k)$:
+\[
+\sum_{r=i}^n\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1}\right),\dots,\sum_{r=i}^n\left(a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right).
+\]
+We verify that $[A_k,C_k]\in{L}_n(R_k)$ is the matrix with elements of the form 
+\[\sum_{r=i}^n\left(a_{ir,k}c_{rj,k}-c_{ir,k}a_{rj,k}\right),\]
+for every $1\leq{i}<j\leq{n}$, and hence:
+\begin{align*}
+\psi\left([A_R,C_R]\right)=\\
+&=([A_1,C_1],\dots,[A_m,C_m])=\\
+&=[(A_1,\dots,A_m),(C_1,\dots,C_m)]=\\
+&=[\psi(A_R),\psi(C_R)].
+\end{align*}
 \end{proof}
 \begin{lemma2}
 \label{lem:tensor-r-s}
@@ -285,7 +256,8 @@ We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constru
 This construction is essential to our work, which is based on the theory of $p$-adic numbers, next we show that it is compatible with the fundamental notions of zeta functions on the integer numbers.
 \subsection{The extension algebra $L_K$}
 Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$ where $[K:\mathbb{Q}]=f$, and let $\mathcal{O}_K$ be its ring of integers, then $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}$-module of rank $f$.
-Let $p\in\mathbb{Z}$ be some prime integer, then $\mathbb{Z}_p$ is a local ring whose only ideals are of the form $\cdots{p}^{k+1}\mathbb{Z}_p\subset{p}^{k}\mathbb{Z}_p\subset{p}^{k-1}\mathbb{Z}_p\cdots\subset{p}\mathbb{Z}_p$, with $(p)=p\mathbb{Z}_p$ being its unique maximal ideal, thus $\mathbb{Z}_p$ is a discrete valuation ring, and we have the following claim:
+Let $p\in\mathbb{Z}$ be some prime integer, then $\mathbb{Z}_p$ is a local ring whose only ideals are of the form $\cdots\subset(p^{k+1})\subset(p^k)\subset(p^{k-1})\subset\cdots\subset(p)\subset\mathbb{Z}_p$, where $(p^k)=p^k\mathbb{Z}_p$ for every $k>0$, with $(p)$ being its unique maximal ideal, thus $\mathbb{Z}_p$ is a discrete valuation ring, and in particular a principal ideal domain, therefore $\mathcal{O}_K$ is a free $\mathbb{Z}_p$ module of rank $f$. Denote by $\mathfrak{p}=p\mathcal{O}_K$ the ideal in $\mathcal{O}_K$ generated by $p$, then $\sfrac{\mathcal{O}_K}{\mathfrak{p}}$ has the structure of a $\sfrac{\mathbb{Z}_p}{(p)}$-vector space of rank $f$. 
+We have the following claim:
 \begin{lemma}
 \label{free-zp-module}
 The ring of integers $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}_p$-module by extension of scalars.
@@ -299,7 +271,7 @@ for every $a\in\mathbb{Z}_p$.
 We denote by $\mathcal{O}_{K,p}=\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$ the tensor product constructed above, and we may omit the prime $p$ notation when it is implied by the context.
 In all the following, we use $\mathcal{O}_K$ to denote $\mathcal{O}_{K,p}$, unless stated otherwise.
 \end{notation}
-Denote by $\mathfrak{p}=p\mathcal{O}_K$ the ideal in $\mathcal{O}_K$ generated by $p$, and since $\mathcal{O}_K$ is known to be a Dedekind ring, then $\mathfrak{p}$ has a unique factorization $\mathfrak{p}=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$, where $\mathfrak{p}_1,\dots,\mathfrak{p}_r$ are all prime ideals in $\mathcal{O}_K$.
+Since $\mathcal{O}_K$ is known to be a Dedekind ring, then $\mathfrak{p}$ has a unique factorization $\mathfrak{p}=\mathfrak{p}_1^{g_1}\mathfrak{p}_2^{g_2}\cdots\mathfrak{p}_r^{g_r}$, where $\mathfrak{p}_1,\dots,\mathfrak{p}_r$ are all prime ideals in $\mathcal{O}_K$.
 Since every prime ideal in a Dedekind ring is maximal, then the quotient $K_{\mathfrak{p}_i}:=\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$ forms a residue field for every $1\leq{i}\leq{r}$. We have the following chain of maps:
 \[
 \mathcal{O}_K\overset{\pi}{\longrightarrow}\sfrac{\mathcal{O}_K}{\mathfrak{p}}\overset{\psi_i}{\longrightarrow}\sfrac{\mathcal{O}_K}{\mathfrak{p}_i},
