@@ -69,12 +69,12 @@ We denote by \[a_{n}^{\wedge}(G):=|\{H\leq G : \widehat{H}\cong\widehat{G}, [G:H
 the number of pro-isomorphic subgroups of $G$ of index $n$, which is finite as the total number of subgroups of index $n$ is itself finite, see, for instance \cite[Corollary 1.1.2]{LubotzkySegal}.
 
 \begin{definition}
-\label{def:zeta.function}
+\label{def:zeta-function}
 Let $G$ be a finitely-generated group, we define the zeta function $\zeta_{G}^{\wedge}(s)$ to be the Dirichlet series $\sum_{n=1}^{\infty}a_{n}^{\wedge}(G){n}^{-s}$. 
 \end{definition}
 Similar zeta functions are defined also for $a_{n}^{\leq}(G)$ and $a_{n}^{\trianglelefteq}(G)$, that is the number of general subgroups and the number of normal subgroups, respectively.
 \begin{proposition}
-\label{prop:T-group-zeta-function}
+\label{prop:t-group-zeta-function}
 Let $G$ be a $\mathcal{T}$-group, i.e. finitely-generated, nilpotent and torsion-free group, then $\zeta_{G}^{\wedge}(s)$ has the following properties:\
 \begin{enumerate}
     \item There exist constants $b$ and $C$ such that $a_{n}^{\leq}(G)\leq{C}{n}^{b}$ for all $n\in\mathbb{N}$, thus $\zeta_{G}^{\wedge}(s)$ converges on some right half plane $\mathrm{Re}\,s>\alpha$, and the abscissae of convergence \[\alpha^{\wedge}:=\inf\{\alpha : \zeta_{G}^{\wedge}(s)\,\mathrm{converges}\,\mathrm{on}\,\mathrm{Re}\,s>\alpha\}\] are known to be rational numbers, see \cite[Theorem 7.2]{HrushovskiMartinRideau}.
@@ -122,7 +122,6 @@ which results in \begin{equation}
 
 \section{Basic Notions}
 In all the following, refer to \ref{linearization} for the general mathematical background.
-\subsection{The Lie algebra ${L}$}
 \subsection{The matrix algebra $L_n$}
 \label{R-algebra-definition}
 \subsubsection{Basic definition}
@@ -205,7 +204,20 @@ for every $1\leq{i}<j\leq{n}$, and hence:
 &=[(A_1,\dots,A_m),(C_1,\dots,C_m)]=\\
 &=[\psi(A_R),\psi(C_R)].
 \end{align*}
-Let $e_{R,ij}\in{L}_n(R)$ be the matrix with $1_R=\left(1_{R_1},\dots,1_{R_m}\right)$ in location $(i,j)$, then it is clear that all the matrices of this form for every $1\leq{i}<j\leq{n}$ form an $R$-basis of $L_n(R)$. Let $e_{k,ij}\in{L}_n(R_k)$ be the matrix with $1_k$ in location $(i,j)$, and let $\overline{r}=\left(r_1,\dots,r_m\right)\in{R}$, we have the operation $r\left(e_{1,ij},\dots,e_{m,ij}\right)=\left(r_1,\dots,r_m\right)\left(e_{1,ij},\dots,e_{m,ij}\right)=(r_1e_{1,ij},\dots,r_me_{m,ij})$, and clearly all the vectors $\left(e_{1,ij},\dots,e_{m,ij}\right)$ for every $1\leq{i}<j\leq{n}$ are $R$-linearly independent, hence they form an $R$-basis of $\prod_{k=1}^mL_n(R_k)$, and the bijection $e_{R,ij}\overset{\psi}{\longleftrightarrow}(e_{1,ij},\dots,e_{m,ij})$ between the two bases establishes the ring isomorphism as an isomoprhism between $R$-modules.
+Let $e_{R,ij}\in{L}_n(R)$ be the matrix with $1_R=\left(1_{R_1},\dots,1_{R_m}\right)$ in location $(i,j)$, then it is clear that all the matrices of this form for every $1\leq{i}<j\leq{n}$ form an $R$-basis of $L_n(R)$. Let $e_{k,ij}\in{L}_n(R_k)$ be the matrix with $1_k$ in location $(i,j)$, and let $\overline{r}=\left(r_1,\dots,r_m\right)\in{R}$, we have the operation $r\left(e_{1,ij},\dots,e_{m,ij}\right)=\left(r_1,\dots,r_m\right)\left(e_{1,ij},\dots,e_{m,ij}\right)=(r_1e_{1,ij},\dots,r_me_{m,ij})$, and clearly all the vectors $\left(e_{1,ij},\dots,e_{m,ij}\right)$ for every $1\leq{i}<j\leq{n}$ are $R$-linearly independent, hence they form an $R$-basis of $\prod_{k=1}^mL_n(R_k)$, and the bijection $e_{R,ij}\overset{\psi}{\longleftrightarrow}(e_{1,ij},\dots,e_{m,ij})$ between the two bases establishes the ring isomorphism as an isomorphism between $R$-modules.
+\end{proof}
+\subsubsection{Tensor product of $L_n$}
+\begin{lemma2}
+\label{lem:ring-z-module}
+Let $R$ be a ring, then $R$ has the natural structure of a $\mathbb{Z}$-module.
+\end{lemma2}
+\begin{proof}
+The additive group $(R,+)$ of $R$ is abelian, thus we define the operation of $\mathbb{Z}$ on $R$ by $rm\longrightarrow\underbrace{m+\cdots+m}_{r\,\text{times}}$, for every $m\in{R}$ and every $r\in\mathbb{Z}$.
+From this we obtain all the properties of $R$ as a $\mathbb{Z}$-module, and we observe that for every $r,s\in\mathbb{Z}$ and every $m,n\in{R}$, we have that 
+\[
+(rm)(sn)=\left(\sum_{i=1}^rm\right)\left(\sum_{j=1}^sn\right)=\sum_{i=1}^r\left(m\sum_{j=1}^sn\right)=\sum_{i=1}^r\sum_{j=1}^smn=(rs)(mn),
+\]
+for every $r,s\in\mathbb{Z}$ and every $m,n\in{R}$, which shows that the ring operation of $R$ commutes with the operation of $\mathbb{Z}$ on $R$.
 \end{proof}
 \begin{lemma2}
 \label{lem:tensor-r-s}
@@ -213,7 +225,7 @@ Let $R$ and $S$ be rings with a multiplicative identity, then \[L_n(R)\otimes_\m
 as $\mathbb{Z}$-modules and as rings.
 \end{lemma2}
 \begin{proof}
-By \ref{lem:ring-Z-module}, both $R$ and $S$ assume the structure of a $\mathbb{Z}$-module which complies with the ring structure, thus we have the canonical definition of $T=R\otimes_\mathbb{Z}S$ by:
+By \ref{lem:ring-z-module}, both $R$ and $S$ assume the structure of a $\mathbb{Z}$-module which complies with the ring structure, thus we have the canonical definition of $T=R\otimes_\mathbb{Z}S$ by:
 \begin{align*}
 m(r\otimes{s})=\sum_{i=1}^m(r\otimes{s})=\\
 &=\left(\sum_{i=1}^mr\right)\otimes{s}=mr\otimes{s}\\
