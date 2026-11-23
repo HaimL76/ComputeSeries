@@ -34,6 +34,7 @@
 
 \newtheorem{lemma2}[subsubsubsection]{Lemma}
 \newtheorem{remark2}[subsubsubsection]{Remark}
+\newtheorem{corollary2}[subsubsubsection]{Corollary}
 
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \makeatother
@@ -283,17 +284,23 @@ where $\psi_i$ is well-defined by the identity $\sfrac{\mathcal{O}_K}{\mathfrak{
 is also well-defined, and by the Chinese Remainder Theorem it is surjective, and it implies that $\ker\psi=0+\mathfrak{p}\implies\ker\left(\psi\circ\pi\right)=\mathfrak{p}$, which implies that 
 \[\sfrac{\mathcal{O}_{K}}{\mathfrak{p}}\cong\prod_{i=1}^r\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}.\]
 \subsubsection{Extensions over $\mathbb{Z}_p$}
-We transfer all the above to the ring of $p$-adic integers by considering $\mathbb{Z}_p=\underset{\longleftarrow}{\lim}\sfrac{\mathbb{Z}}{p^n\mathbb{Z}}$ as a the base ring and $\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K$ as the extension ring, that is, the ring of integers of an extension field $K_{/\mathbb{Q}_p}$, and we have the following identity:
-\[
-\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K=\left(\underset{\longleftarrow}{\lim}\sfrac{\mathbb{Z}}{p^n\mathbb{Z}}\right)\otimes_\mathbb{Z}\mathcal{O}_K=\underset{\longleftarrow}{\lim}\left(\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K\right)=\underset{\longleftarrow}{\lim}\left(\sfrac{\mathcal{O}_K}{p^n\mathcal{O}_K}\right),
-\]
-thus $\mathcal{O}_K$ assumes the structure of a free $\mathbb{Z}_p$-module of rank $f$
+We transfer all the above to the ring of $p$-adic integers by considering $\mathbb{Z}_p=\underset{\longleftarrow}{\lim}\sfrac{\mathbb{Z}}{p^n\mathbb{Z}}$ as a the base ring and $\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K$ as the extension ring, that is, the ring of integers of an extension field $K_{/\mathbb{Q}_p}$, and we have the following identities:
+\begin{align*}
+\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K=\\
+&=\left(\underset{\longleftarrow}{\lim}\sfrac{\mathbb{Z}}{p^n\mathbb{Z}}\right)\otimes_\mathbb{Z}\mathcal{O}_K=\underset{\longleftarrow}{\lim}\left(\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K\right)=\\
+&=\underset{\longleftarrow}{\lim}\left(\sfrac{\mathcal{O}_K}{\mathfrak{p}^n}\right)=\underset{\longleftarrow}{\lim}\left(\prod_{i=1}^r\sfrac{\mathcal{O}_K}{\mathfrak{p}_i^{g_in}}\right)=\prod_{i=1}^r\mathcal{O}_{K_{\mathfrak{p}_i}},
+\end{align*}
+where $K_{\mathfrak{p}_i}=\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$, thus $\mathcal{O}_K$ assumes the structure of a free $\mathbb{Z}_p$-module of rank $f$
 and $\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$ has the structure of an $f_i$-dimensional $\sfrac{\mathbb{Z}_p}{(p)}$-vector space.
 We construct the same Lie algebra $L_n(\mathcal{O}_K)$, and we claim the following:
-\begin{lemma}
+\begin{lemma2}
 There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p)$ as free $\mathcal{O}_K$-modules of rank $d$, but since $\mathcal{O}_K$ itself is a free $\mathbb{Z}_p$-module of rank $f$, then $L_n(\mathcal{O}_K)$ is a free module of rank $df$ over $\mathbb{Z}_p$.
 This is exactly \ref{lem:tensor-r-s} with $R=\mathcal{O}_K$ and $S=\mathbb{Z}_p$.
-\end{lemma}
+\end{lemma2}
+\begin{corollary2}
+\[
+L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K)\cong{L}_n\left(\prod_{i=1}^r\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}\right)\cong\prod_{i=1}^r{L}_n(\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}).\]
+\end{corollary2}
 \subsection{The zeta functions $\zeta_{L_{n,p}}^{\wedge}(s)$}
 The aim of our research is to study the pro-isomorphic zeta function of $L_{n}$. Berman has computed $\zeta_{L_{4,p}}^{\wedge}(s)$ explicitly for all $p$ \cite[\S{3.3.7}]{BermanThesis} and has shown that $\zeta_{L_{5,p}}^{\wedge}(s)$ are uniform \cite[Proposition 3.12]{BermanThesis}.
 \begin{remark}
