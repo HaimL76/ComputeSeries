@@ -36,7 +36,6 @@
 \newtheorem{remark2}[subsubsubsection]{Remark}
 \newtheorem{corollary2}[subsubsubsection]{Corollary}
 
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \makeatother
 
 \title{ComputeIntegral}
@@ -46,21 +45,7 @@
 \begin{document}
 
 \maketitle
-In all the following we may denote, for abbreviation:
-\begin{align*}
-L&=L_{n,p}\text{\,or\,} L_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_{\mathcal{K}}.\\
-d&=\binom{n}{2}=\dim{L}\text{\,or\,}\dim{L}.\\
-\gamma_i&=\gamma_i{L}\text{\,or\,}\gamma_iL.\\
-\end{align*}
-
-In all the following we may use the following conventions:
-\begin{flalign*}
-\gamma_1L&=L.\\
-K&=\mathbb{Q}_p\text{\,or\,}\mathbb{Q}_p[\lambda_1,\lambda_2,\dots,\lambda_d].\\
-\pi&:L\rightarrow\sfrac{L}{I}.\\
-\end{flalign*}
 \section{General Background}
-
 \subsection{Pro-Isomorphic Subgroup Growth}
 \begin{definition}
 \label{def:pro.isomorphic}
@@ -284,6 +269,7 @@ where $\psi_i$ is well-defined by the identity $\sfrac{\mathcal{O}_K}{\mathfrak{
 is also well-defined, and by the Chinese Remainder Theorem it is surjective, and it implies that $\ker\psi=0+\mathfrak{p}\implies\ker\left(\psi\circ\pi\right)=\mathfrak{p}$, which implies that 
 \[\sfrac{\mathcal{O}_{K}}{\mathfrak{p}}\cong\prod_{i=1}^r\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}.\]
 \subsubsection{Extensions over $\mathbb{Z}_p$}
+\label{zp-base-extension}
 We transfer all the above to the ring of $p$-adic integers by considering $\mathbb{Z}_p=\underset{\longleftarrow}{\lim}\sfrac{\mathbb{Z}}{p^n\mathbb{Z}}$ as a the base ring and $\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K$ as the extension ring, that is, the ring of integers of an extension field $K_{/\mathbb{Q}_p}$, and we have the following identities:
 \begin{align*}
 \mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K=\\
@@ -309,18 +295,19 @@ The aim of our research is to study the pro-isomorphic zeta function $\zeta_{L_n
 \begin{remark}
 Let $U_n(R)$ be the group of $n\times{n}$ upper unitriangular matrices over $R$. By the Mal'cev correspondence, ${\zeta^\wedge_{U_{n}(\mathbb{Z}_{p})}}(s)={\zeta^\wedge_{L_{n,p}}}(s)$, for all but finitely many primes $p$. This relates the subject of our research to the group-theoretic motivation presented at the beginning of this paper.
 \end{remark}
-Moreover, we want to study the structure of the zeta functions $\zeta^\wedge_{L_{n,p}(\mathcal{O}_K)}(s)$ on any base extension of $L_{n,p}$ as constructed above.
-\subsection{The Lie algebra operation}
-Every $L$-automorphism $\varphi$ must comply to this rule, hence our computation of the $L$-automorphism group is essentially based on the identity \[[\varphi(e_{ij}),\varphi(e_{kl})]=\begin{cases}
+Moreover, we want to study the structure of the zeta functions $\zeta^\wedge_{L_{n,p}(\mathcal{O}_K)}(s)$ on any finite-dimensional base extension of $L_{n,p}$ as constructed above. As we explain later, our algebra $L_n$ has properties which allow this computation for essentially the same effort as for $L_n(\mathbb{Z}_p)$ itself.
+\subsection{The $L_{n,p}$-automorphisms}
+We present a set of lemmas that explain the structure of $L_{n,p}$-automorphisms, prior to the detailed discussion on them. Throughout this subsection, we denote $L:=L_{n,p}$ for abbreviation.
+\begin{lemma}
+Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $L$-automorphism, then $\varphi$ must comply with the multiplication rule of $L$, as established in \ref{lem:multiplication-rule}, that is: \[[\varphi(e_{ij}),\varphi(e_{kl})]=\varphi([e_{ij},e_{kl}])=\begin{cases}
 \varphi(e_{il}),&j=k\\
 -\varphi(e_{kj}),&i=l\\
 0,&\text{otherwise}\\
-\end{cases}\]that is implied by it.
-\subsection{The $L$-automorphisms}
-We present a set of lemmas that explain the structure of ${L}$-automorphisms, prior to the detailed discussion on them.
+\end{cases}.\]
+\end{lemma}
 \begin{lemma}
 \label{lem:derived-filtration}
-Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an ${L}$-automorphism, then $\varphi$ is preserving the lower central series structure of ${L}$, that is, $\varphi(\gamma_r{L})=\gamma_r{L}$ for every $1\leq{r}\leq{n}-1$.
+Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $L_n$-automorphism, then $\varphi$ is preserving the lower central series structure of ${L}$, that is, $\varphi(\gamma_r{L})=\gamma_r{L}$ for every $1\leq{r}\leq{n}-1$.
 \end{lemma}
 \begin{proof}
 Trivial for $r=1$.
@@ -367,7 +354,11 @@ By \ref{lem:multiplication-rule}, for every $1\leq{i}<j\leq{n}$ we have the foll
 \end{split}
 \end{equation*}
 \end{proof}
-\section{Base Extension of $L$}
+\subsection{The $L_{n,p}(\mathcal{O}_K)$-automorphisms}
+\subsubsection{Basic construction}
+
+
+
 We generalize this discussion to an arbitrary field $K$.
 Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):=\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X):=\{y\in{L} : [y,X]\subseteq{I}\}$.\\
 Denote by $L={L}_{n,p}$ our usual algebra over $K$, that is ${L}:=\langle{e}_{ij} : 1\leq{i}<j\leq{n}\rangle$ with scalars in $K$.\\
