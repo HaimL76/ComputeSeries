@@ -33,6 +33,7 @@
 \titlespacing*{\subsubsubsection}
 
 \newtheorem{lemma2}[subsubsubsection]{Lemma}
+\newtheorem{proposition2}[subsubsubsection]{Proposition}
 \newtheorem{remark2}[subsubsubsection]{Remark}
 \newtheorem{corollary2}[subsubsubsection]{Corollary}
 
@@ -106,7 +107,7 @@ which results in \begin{equation}
 \zeta_{L,p}^{\wedge}(s)=\displaystyle\int_{G^{+}(\mathbb{Q}_p)}{|\det{g}|_{p}^{s}}d\mu(g).
 \end{equation}
 
-\section{Basic Notions}
+\section{The $\mathbb{Z}_p$-Lie algebra $L_n$}
 In all the following, refer to \ref{linearization} for the general mathematical background.
 \subsection{The matrix algebra $L_n$}
 \label{R-algebra-definition}
@@ -296,6 +297,7 @@ The aim of our research is to study the pro-isomorphic zeta function $\zeta_{L_n
 Let $U_n(R)$ be the group of $n\times{n}$ upper unitriangular matrices over $R$. By the Mal'cev correspondence, ${\zeta^\wedge_{U_{n}(\mathbb{Z}_{p})}}(s)={\zeta^\wedge_{L_{n,p}}}(s)$, for all but finitely many primes $p$. This relates the subject of our research to the group-theoretic motivation presented at the beginning of this paper.
 \end{remark}
 Moreover, we want to study the structure of the zeta functions $\zeta^\wedge_{L_{n,p}(\mathcal{O}_K)}(s)$ on any finite-dimensional base extension of $L_{n,p}$ as constructed above. As we explain later, our algebra $L_n$ has properties which allow this computation for essentially the same effort as for $L_n(\mathbb{Z}_p)$ itself.
+\section{The automorphism group of $L_n$}
 \subsection{The $L_{n,p}$-automorphisms}
 We present a set of lemmas that explain the structure of $L_{n,p}$-automorphisms, prior to the detailed discussion on them. Throughout this subsection, we denote $L:=L_{n,p}$ for abbreviation.
 \begin{lemma}
@@ -354,140 +356,8 @@ By \ref{lem:multiplication-rule}, for every $1\leq{i}<j\leq{n}$ we have the foll
 \end{split}
 \end{equation*}
 \end{proof}
-\subsection{The $L_{n,p}(\mathcal{O}_K)$-automorphisms}
-\subsubsection{Basic construction}
-
-
-
-We generalize this discussion to an arbitrary field $K$.
-Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):=\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X):=\{y\in{L} : [y,X]\subseteq{I}\}$.\\
-Denote by $L={L}_{n,p}$ our usual algebra over $K$, that is ${L}:=\langle{e}_{ij} : 1\leq{i}<j\leq{n}\rangle$ with scalars in $K$.\\
-\subsection{The $\mathcal{X}$ criterion}
-\label{x-criterion}
-Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Kx+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
-Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
-where $v_1,v_2,\dots,a_{n-1}$ are not all zero.\\
-Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)\cap\left(L\setminus\gamma_2L\right)$, that is 
-\[y=b_1e_{12}+b_2e_{23}+\cdots+b_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}b_{i,i+r}e_{i,i+r},\] 
-where $b_1,b_2,\dots,b_{n-1}$ are not all zero, and $[x,y]\in\gamma_3L$.\\
-But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$, hence
-\[
-[x,y]=\sum_{i=1}^{n-2}\left(a_ib_{i+1}-a_{i+1}b_i\right)e_{i,i+2}+\gamma_3L
-,\]
-thus $[x,y]\in\gamma_3L\iff{a}_ib_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
-a_i&a_{i+1}\\
-b_i&b_{i+1}
-\end{pmatrix}=0$, for every $1\leq{i}\leq{n-2}$.\\
-Assume that $a_i\neq{0}$ for all $1\leq{i}\leq{n-1}$.\\
-consider the case where $b_j=0$ for some $1\leq{j}\leq{n-1}$, and since $a_{j-1},a_j,a_{j+1}\neq{0}$, we have that:
-\begin{align*}
-a_{j-1}b_j-a_jb_{j-1}=0&\iff{b}_{j-1}=0\\ 
-a_{j}b_{j+1}-a_{j+1}b_j=0&\iff{b}_{j+1}=0,\\
-\end{align*}
-hence we assume also that $b_i\neq{0}$ for all $1\leq{i}\leq{n-1}$, but then:
-\[a_{i}b_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
-a_i&a_{i+1}\\
-b_i&b_{i+1}
-\end{pmatrix}=0\iff\begin{pmatrix}
-    b_i&b_{i+1}
-\end{pmatrix}=c_i\begin{pmatrix}
-    a_i&a_{i+1}
-\end{pmatrix},\]
-for some nonzero element $c_i\in{K}$. Thus\\ 
-\begin{align*}
-&a_1b_2-a_2b_1=0&\iff&\begin{pmatrix}
-    b_1&b_2
-\end{pmatrix}=c_1\begin{pmatrix}
-    v_1&v_2
-\end{pmatrix}.\\
-&a_2b_3-a_3b_2=0&\iff&\begin{pmatrix}
-    b_2&b_3
-\end{pmatrix}=c_2\begin{pmatrix}
-    v_2&v_3
-\end{pmatrix}.\\
-&\vdots&\vdots\\
-&a_{n-2}b_{n-1}-a_{n-1}b_{n-2}=0&\iff&\begin{pmatrix}
-    b_{n-2}&b_{n-1}
-\end{pmatrix}=c_{n-2}\begin{pmatrix}
-    a_{n-2}&a_{n-1}
-\end{pmatrix},
-\end{align*}
-for nonzero elements $c_1,c_2,\dots,c_{n-2}\in{K}$.\\
-But then $c_{i+1}=\frac{b_{i+2}}{a_{i+2}}=\frac{b_{i+1}}{a_{i+1}}$ and $c_{i}=\frac{b_{i+1}}{a_{i+1}}=\frac{b_i}{a_i}$, for every $1\leq{i}\leq{n-2}$, which implies that $c_1=c_2=\cdots=c_{n-2}=c$ for some nonzero element $c\in{K}$, hence \[y=\sum_{i=1}^{n-1}b_ie_{i,i+1}+\gamma_2L=\sum_{i=1}^{n-1}ca_ie_{i,i+1}+\gamma_2L=c\sum_{i=1}^{n-1}a_ie_{i,i+1}+\gamma_2L=cx+\gamma_2L,\]
-which means that $y\in{K}x+\gamma_2L$ for every $x\in{L}$, because the above is true for every $c\in{K}$.
-But we assumed that $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$, hence every $x=a_1e_{12}+\cdots+a_{n-1}e_{n-1,n}$, where all the $a$ coefficients are nonzero elements in $K$, is in $\mathcal{X}$.\\ 
-Hence, we choose $n-1$ linearly-independent vectors of the form \[x_j=\sum_{i=1}^{n-1}a_{ji}e_{i,i+1}\in\mathcal{X},\]
-where $a_{ji}\neq{0}$ for every $1\leq{i,j}\leq{n-1}$, and thus
-\[e_{i,i+1}=\sum_{j=1}^{n-1}a_{ij}x_j,\]
-for all $1\leq{i}\leq{n-1}$, which shows that $\langle
-{x}_1,x_2,\dots,x_{n-1}\rangle=\langle{e}_{12},e_{23},\dots,e_{n-1,n}\rangle$.\\
-Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for every $j\neq{i}$, then $a_ib_{i+1}-a_{i+1}b_i=-a_{i+1}b_i=0$ and $a_{i-1}b_i-a_ib_{i-1}=a_{i-1}b_i=0$ if and only if $b_i=0$. But then $\frac{b_1}{v_1}=\frac{b_2}{v_2}=\cdots=\frac{b_{i-1}}{a_{i-1}}=c_1$ and $\frac{b_{i+1}}{a_{i+1}}=\frac{b_{i+2}}{a_{i+2}}=\cdots=\frac{b_{n-1}}{a_{n-1}}=c_2$, for $c_1,c_2\in{K}$, hence $y=c_1(a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{i-1,i})+c_2(a_{i+1}e_{i+1,i+2}+a_{i+2}e_{i+2,i+3}+\cdots+a_{n-1}e_{n-1,n})+\gamma_2L\notin{K}x+\gamma_2L\implies{x}\notin\mathcal{X}$, which is an example for an element whose centralizers are not necessarily in $Kx+\gamma_2L$.
-\subsection{The $\mathcal{Y}$ criterion}
-\label{y-criterion}
-Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in{K}$ not all zero.\\
-But \[[x,y]=0\iff\sum_{k=1}^{r-1}a_{j,j+k}b_{j+k,j+r}-a_{j+r,j+k}b_{j,j+k}=0,\]
-for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
-But every expression of the form $a_{jk}b_{kl}$ vanishes, because every $a_{jk}=0$ where $(j,k)\neq(i,i+1)$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
-Hence, a generic $y\in{C}_L(x)$ has the form
-\[
-y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}e_{j,j+r}+b_{i,i+r}e_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}e_{j,j+r}\right],
-\]
-such that the $b$ coefficients are not all zero.\\
-Let $z=d_1e_{12}+\cdots+d_{2,n}e_{2,n}\in{C}_L(y)$, and denote\\
-\begin{flalign*}
-\varphi_{13}&=(b_1d_2-b_2d_1)e_{13}.\\
-\varphi_{24}&=(b_2d_3-b_3d_2)e_{24}.\\
-\vdots\\
-\varphi_{n-2,n}&=(b_{n-2}d_{n-1}-b_{n-1}d_{n-2})e_{n-2,n}.\\
-\varphi_{14}&=(b_1d_{24}-b_{24}d_1+b_{13}d_3-b_3d_{13})e_{14}.\\
-\varphi_{25}&=(b_2d_{35}-b_{35}d_2+b_{24}d_4-b_4d_{24})e_{25}.\\
-\vdots\\
-\varphi_{n-3,n}&=(b_{n-3}d_{n-2,n}-b_{n-2,n}d_{n-3}+b_{n-3,n-1}d_{n-1}-b_{n-1}d_{n-3,n-1})e_{n-3,n}.\\
-\vdots\\
-\varphi_{1n}&=(b_1d_{2,n}-b_{2,n}d_1+b_{13}d_{3,n}-b_{3,n}d_{13}+\cdots+b_{1,n-1}d_{n-1}-b_{n-1}d_{1,n-1})e_{1n}.\\
-\end{flalign*}
-Hence
-\[[z,y]=\sum_{r=2}^{n-1}\sum_{j=1}^{n-r}\varphi_{j,j+r}=0,\]
-implies that $\varphi_{j,j+r}=0$
-for all $2\leq{r}\leq{n-1}$ and $2\leq{j}\leq{n-r}$.\\
-Let $d_{lh}\in{K}$ for some $2\leq{l}\leq{h-1}$, where $(l,h)\neq(i,i+1)$, then for some $1\leq{k}\leq{h-2}$, we have
-\[\varphi_{kh}=\sum_{r=1}^{h-k-1}\left(b_{k,k+r}d_{k+r,h}-b_{k+r,h}d_{k,k+r}\right)e_{kh},\]
-where $b_{kl}d_{lh}$ is one of the expressions in the sum. But all other expressions $b_{kq}d_{qh}$, where $q\neq{l}$, vanish because $b_{kq}=0$. But this implies that\\ $\varphi_{kh}=0\iff{b}_{kl}d_{lh}=0\iff{d}_{lh}=0$, which means that if $y_{kl}=b_{kl}e_{kl}$ and $z_{kl}=d_1e_{i,i+1}+\cdots+d_{1n}e_{1n}\in{C}_L(y_{kl})$, then $d_{lh}=0$.\\
-We can also show that $d_{lh}e_{lh}$ must vanish in any $z_{hk}\in{C}_L(y_{hk})$ by considering 
-\[\varphi_{lk}=\sum_{r=1}^{k-l-1}\left(b_{l,l+r}d_{l+r,k}-b_{l+r,k}d_{l,l+r}\right)e_{lk},\]
-for some $l+2\leq{k}\leq{n}$, and looking at $b_{hk}d_{lh}$.\\
-For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and every $i+1<l\leq{n}$, then $b_{ki}d_i=0$ or $b_{i+1,l}d_i=0$ does not imply that $d_i=0$, so $d_i\in{K}$ can be any nonzero element such that
-\begin{flalign*}
-[b_{ki}e_{ki},d_ie_{i,i+1}]&=0.\\ [b_{i+1,l}e_{i+1,l},d_ie_{i,i+1}]&=0.\\
-\end{flalign*}
-But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{i+1}\}$, then any $z\in{C}_L(B)$ must have $d_{lh}=0$ for all $1\leq{l}<h\leq{n}$, unless $(l,h)=(i,i+1)$, but then $z=d_ie_{i,i+1}=ca_ie_{i,i+1}=cx$ for some $c=\frac{d_i}{a_i}\in{K}$, and all the computation above is up to the center $Z(L)$, hence $z\in{K}x+Z(L
-)$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that ${L}$ is rigid.
-\subsection{Rigidity and Base Extension}
-We apply the general discussion in \ref{x-criterion} and \ref{y-criterion} to number fields of the form $K=\mathbb{Q}_p[\lambda_1,\lambda_2,\dots,\lambda_{f-1}]$, that is, $f$-dimensional algebraic extensions of $\mathbb{Q}_p$, including the case $f=1$, that is, $K=\mathbb{Q}_p$. 
-For any $K$, denote by $\mathcal{O}_K$ its ring of integers.
-Denote by ${L}={L}_{n,p}\otimes{K}$ the extension of scalars of our $\mathbb{Q}_p$-algebra to a $K$-algebra, and by $L=L_{n,p}\otimes\mathcal{O}_K$ the extension of scalars of our $\mathbb{Z}_p$-algebra to an $\mathcal{O}_K$-algebra, and denote, as above, $d=\binom{n}{2}$, the rank of ${L}$ and $L$. 
-Also denote $Z=Z_{n,p}\otimes\mathcal{O}_K$ where $Z_{n,p}$ is the center of our algebra over $\mathbb{Q}_p$ and $\mathbb{Z}_p$, which immediately identifies as the center of the extended ${L}$ and $L$, then the rigidity of $L$ shown above implies the following (see \cite[\S{3.7}]{BermanGlazerSchein}):\\
-Let $\psi:\text{Aut}_{\mathbb{Q}_p}(L)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{L}{Z})$ be the canonical map from $G_n(K)$ to the automorphisms on $\sfrac{L}{Z}$, and denote $J=\ker\psi$, then $\text{Aut}_{\mathbb{Q}_p}(L)=(J\cdot\text{Aut}_{\mathcal{O}_K}(L))\rtimes\text{Aut}_{\mathbb{Q}_p}(L_{n,p})$. This decomposition shows that instead of constructing a $\mathbb{Z}_p$-linear automorphism over $L$ where $\dim{L}_{/\mathbb{Z}_p}=\dim{L}_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_K=\dim{{L}_{n,p}}_{/\mathbb{Z}_p}\times\dim(\mathcal{O}_K)_{/\mathbb{Z}_p}=d\times{f}$, we construct first an $\mathcal{O}_K$-linear automorphism over $L$ where $\dim{L}_{/\mathcal{O}_K}=d$, and we take its product with $J$, as both $\text{Aut}_{\mathcal{O}_K}(L)$ and $J$ contain $d\times{d}$ matrices operating on the same basis elements.
-But $\ker\psi$ consists of all the automorphisms $\varphi$ that fix every basis element not in the center of $L$, that is, $\varphi(e_{ij})\in{e}_{ij}+Z$, for every $e_{ij}\in{B}\setminus\{e_{1n}\}$, which implies that
-the matrix $\varphi=(m_{ij})$ has $m_{kk}=1$ for all $1\leq{k}\leq{d-1}$, and $m_{ld}$ is any scalar in $K$ for all $1\leq{l}\leq{d}$, and all the other elements are zero:
-\[
-\varphi=(m_{ij})=\begin{bmatrix*}[l]
-1&\cdots&\cdots&\cdots&\cdots&\cdots&m_{1d}\\
-&1&\cdots&\cdots&\cdots&\cdots&m_{2d}\\
-&&\ddots&&&&\vdots\\
-&&&1&\cdots&\cdots&m_{n-1,d}\\
-&&&&\ddots&\cdots&\vdots\\
-&&&&&1&m_{d-1,d}\\
-&&&&&&m_{dd}\\
-\end{bmatrix*}.\]
-We shall display a more accurate structure for the matrices in $J$ once we establish the general form of the matrices representing the $L$-automorphisms.
-This construction enables us to compute our zeta functions over any number field $K$ and its ring of integers $\mathcal{O}_K$ in a similar way to the computation over $\mathbb{Q}_p$ and $\mathbb{Z}_p$.
-We shall give this a more concrete form when we explain the computation for $\zeta_{L_{5,p}}^{\wedge}(s)$.
-
-
-$z\mapsto{z}\otimes{1}$
-\section{The Group of Automorphisms}
-\subsection{Representing Matrices of ${L}$-Automorphisms}
+\subsection{The Group Structure}
+\subsubsection{Representing Matrices of ${L}$-Automorphisms}
 Let $\varphi\in{G_{n}}(K)$ be an ${L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$, where $d=\binom{n}{2}$, with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
 \[
 \varphi=(m_{ij})=\begin{bmatrix*}[l]
@@ -526,18 +396,18 @@ Also note that $\begin{bmatrix}
 M_{11} & M_{12}\\
 0 & M_{22}\\
 \end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
-\subsection{The general form of $G_n(K)$}
-\begin{lemma}
+\subsubsection{The general form of $G_n(K)$}
+\begin{lemma2}
 \label{lem:centralizer_subgroup}
 Let $L$ be any Lie $K$-algebra, and denote $C=C_L$, then $C(x)\leq{L}$, for every $x\in{L}$.
-\end{lemma}
+\end{lemma2}
 \begin{proof}
 For every $y,z\in{C}(x)$ we have 
 $[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$.
 \end{proof}
-\begin{corollary}
+\begin{corollary2}
 Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in{e}_1+\gamma_2{L}$ or $\varphi(x)\in{e}_{n-1}+\gamma_2{L}$.
-\end{corollary}
+\end{corollary2}
 \begin{proof}
 By \ref{lem:quotient-automorphism}, $\varphi$ induces an $\sfrac{{L}}{\gamma_k}$-automorphism for every $2\leq{k}\leq{n-1}$. Since $\sfrac{\gamma_r}{\gamma_{r+1}}$ abelian and $\sfrac{\gamma_r}{\gamma_{r+2}}$ is not, for every $1\leq{k}\leq{n-2}$, we consider the quotient $\sfrac{{L}}{\gamma_3}$, and we denote $A(e_i)={L}\setminus{C}_{\sfrac{{L}}{\gamma_3}}(e_i)$, for every $1\leq{i}\leq{n}-1$, then:
 \[A(e_i)=
@@ -565,7 +435,7 @@ and since by $\ref{lem:derived-filtration}$, $\varphi(e_{13})\in\gamma_2{L}\setm
 \label{cor:matrix-diag-anti-diag}
 Let $\varphi\in{G}_n(K)$, then the blocks $M_{11},M_{22},\dots,M_{n-1,n-1}$ on the main block diagonal are either diagonal or anti-diagonal. In case they are diagonal, then $\varphi$ is diagonal, and it is immediate that all diagonal $\varphi$ form a subgroup which we denote by $G_n^0(K)<G_n(K)$.
 \end{corollary}
-\subsection{The subgroup $G_n^0(K)$}
+\subsubsection{The subgroup $G_n^0(K)$}
 On the set $B_1$ we define the bijection $e_i\overset{\eta}{\longleftrightarrow}e_{n-i}$, and we claim that: 
 \begin{lemma}
 The map $\eta$ can be extended to an ${L}$-automorphism whose operation on the elements of $B$ is $\eta(e_{ij}):=(-1)^{j-i-1}e_{n+1-j,n+1-i}$, for all $1\leq{i}<j\leq{n}$.
@@ -919,6 +789,151 @@ Denote by $v_i=v_p(\lambda_i)$ the $p$-adic valuation of each of the $\lambda$ v
     \[\sum_{v_1\geq{0}}\sum_{v_2\geq{0}}\cdots\sum_{v_{n-1}\geq{0}}I(v_1,v_2,\dots,v_{n-1})=\sum_{v_1\geq{0}}I(v_1)\sum_{v_2\geq{0}}I(v_2)\cdots\sum_{v_{n-1}\geq{0}}I(v_{n-1}),\]
     where $I(v_i)$ is the part of the inner integral which depends only on $v_i$.
     \end{enumerate}
+\subsection{The $L_{n,p}(\mathcal{O}_K)$-automorphisms}
+\subsubsection{Basic construction}
+Let $L_{n,p}(\mathcal{O}_K)$ be a Lie-algebra over an extension field $K$ of $\mathbb{Q}_p$, as constructed in \ref{zp-base-extension}, then every $L_n(\mathcal{O}_K)$-automorphism is a $d\times{d}$ invertible matrix which complies with the multiplication rule of the algebra.
+Since every scalar $a\in\mathcal{O}_K$ is a vector $(a_1,\dots,a_r)\in\mathbb{Z}_p^r$, that is, the $\mathbb{Z}_p$-basis of $L_n(\mathcal{O}_K)$ consists of element of the form $e_{ij}\otimes\lambda_h$, where $1\leq{i}<j\leq{n}$ and $1\leq{h}\leq{r}$, then every $\mathbb{Z}$-automorphism is operating on $rd$ basis elements, hence it is an $rd\times{r}d$ invertible matrix which complies with the ring multiplication, this matrix being also an $(n-1)\times(n-1)$ block matrix, where block $(i,j)$ is of size $f(n-i)\times{f}(n-j)$.
+This implies that transferring the method of zeta-function computation for an arbitrary $\mathbb{Z}_p$-Lie algebra $L$ through $p$-adic integration to the computation of the zeta-function for an extension algebra $L\otimes_\mathbb{Z}\mathcal{O}_K$ is not necessarily immediate.
+However, for our algebra $L_n$ transferring the computation of $\zeta_{L_{n,p}}^{\wedge}(s)$ to the computation of $\zeta_{L_{n,p}(\mathcal{O}_K)}^{\wedge}(s)$ can be done straight forward, by the following claim:
+\begin{proposition2}
+Let $L$ be a finite-dimensional nilpotent $\mathbb{Z}_p$-Lie algebra \textbf{which satisfies the rigidity criteria}, then 
+\[
+\text{Aut}_{\mathbb{Z}_p}L\otimes_\mathbb{Z}\mathcal{O}_K=\left(J\cdot\text{Aut}_{\mathcal{O}_K}L\otimes_\mathbb{Z}\mathcal{O}_K\right)\rtimes\text{Aut}_{\mathbb{Z}_p}\mathcal{O}_K,
+\]
+where $J=\ker\pi$ is the kernel of the map \[
+\pi:\text{Aut}_{\mathbb{Z}_p}(L\otimes_\mathbb{Z}\mathcal{O}_K)\longrightarrow\text{Aut}_{\mathbb{Z}_p}\left(\sfrac{\left(L\otimes_\mathbb{Z}\mathcal{O}_K\right)}{\left(Z\otimes_\mathbb{Z}\mathcal{O}_K\right)}\right),\]
+where $Z<L$ is the center of $L$.
+\end{proposition2}
+Every matrix $\psi\in{J}$ is essentially an $rd\times{rd}$ matrix with $1$ on the main diagonal, $f(n-1)$ arbitrary elements of $\mathbb{Z}_p$ in block $()$
+\subsubsection{The rigidity criteria}
+
+We generalize this discussion to an arbitrary field $K$.
+Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):=\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X):=\{y\in{L} : [y,X]\subseteq{I}\}$.\\
+Denote by $L={L}_{n,p}$ our usual algebra over $K$, that is ${L}:=\langle{e}_{ij} : 1\leq{i}<j\leq{n}\rangle$ with scalars in $K$.\\
+\subsection{The $\mathcal{X}$ criterion}
+\label{x-criterion}
+Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Kx+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
+Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
+where $v_1,v_2,\dots,a_{n-1}$ are not all zero.\\
+Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)\cap\left(L\setminus\gamma_2L\right)$, that is 
+\[y=b_1e_{12}+b_2e_{23}+\cdots+b_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}b_{i,i+r}e_{i,i+r},\] 
+where $b_1,b_2,\dots,b_{n-1}$ are not all zero, and $[x,y]\in\gamma_3L$.\\
+But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$, hence
+\[
+[x,y]=\sum_{i=1}^{n-2}\left(a_ib_{i+1}-a_{i+1}b_i\right)e_{i,i+2}+\gamma_3L
+,\]
+thus $[x,y]\in\gamma_3L\iff{a}_ib_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
+a_i&a_{i+1}\\
+b_i&b_{i+1}
+\end{pmatrix}=0$, for every $1\leq{i}\leq{n-2}$.\\
+Assume that $a_i\neq{0}$ for all $1\leq{i}\leq{n-1}$.\\
+consider the case where $b_j=0$ for some $1\leq{j}\leq{n-1}$, and since $a_{j-1},a_j,a_{j+1}\neq{0}$, we have that:
+\begin{align*}
+a_{j-1}b_j-a_jb_{j-1}=0&\iff{b}_{j-1}=0\\ 
+a_{j}b_{j+1}-a_{j+1}b_j=0&\iff{b}_{j+1}=0,\\
+\end{align*}
+hence we assume also that $b_i\neq{0}$ for all $1\leq{i}\leq{n-1}$, but then:
+\[a_{i}b_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
+a_i&a_{i+1}\\
+b_i&b_{i+1}
+\end{pmatrix}=0\iff\begin{pmatrix}
+    b_i&b_{i+1}
+\end{pmatrix}=c_i\begin{pmatrix}
+    a_i&a_{i+1}
+\end{pmatrix},\]
+for some nonzero element $c_i\in{K}$. Thus\\ 
+\begin{align*}
+&a_1b_2-a_2b_1=0&\iff&\begin{pmatrix}
+    b_1&b_2
+\end{pmatrix}=c_1\begin{pmatrix}
+    v_1&v_2
+\end{pmatrix}.\\
+&a_2b_3-a_3b_2=0&\iff&\begin{pmatrix}
+    b_2&b_3
+\end{pmatrix}=c_2\begin{pmatrix}
+    v_2&v_3
+\end{pmatrix}.\\
+&\vdots&\vdots\\
+&a_{n-2}b_{n-1}-a_{n-1}b_{n-2}=0&\iff&\begin{pmatrix}
+    b_{n-2}&b_{n-1}
+\end{pmatrix}=c_{n-2}\begin{pmatrix}
+    a_{n-2}&a_{n-1}
+\end{pmatrix},
+\end{align*}
+for nonzero elements $c_1,c_2,\dots,c_{n-2}\in{K}$.\\
+But then $c_{i+1}=\frac{b_{i+2}}{a_{i+2}}=\frac{b_{i+1}}{a_{i+1}}$ and $c_{i}=\frac{b_{i+1}}{a_{i+1}}=\frac{b_i}{a_i}$, for every $1\leq{i}\leq{n-2}$, which implies that $c_1=c_2=\cdots=c_{n-2}=c$ for some nonzero element $c\in{K}$, hence \[y=\sum_{i=1}^{n-1}b_ie_{i,i+1}+\gamma_2L=\sum_{i=1}^{n-1}ca_ie_{i,i+1}+\gamma_2L=c\sum_{i=1}^{n-1}a_ie_{i,i+1}+\gamma_2L=cx+\gamma_2L,\]
+which means that $y\in{K}x+\gamma_2L$ for every $x\in{L}$, because the above is true for every $c\in{K}$.
+But we assumed that $a_i\neq{0}$ for every $1\leq{i}\leq{n-1}$, hence every $x=a_1e_{12}+\cdots+a_{n-1}e_{n-1,n}$, where all the $a$ coefficients are nonzero elements in $K$, is in $\mathcal{X}$.\\ 
+Hence, we choose $n-1$ linearly-independent vectors of the form \[x_j=\sum_{i=1}^{n-1}a_{ji}e_{i,i+1}\in\mathcal{X},\]
+where $a_{ji}\neq{0}$ for every $1\leq{i,j}\leq{n-1}$, and thus
+\[e_{i,i+1}=\sum_{j=1}^{n-1}a_{ij}x_j,\]
+for all $1\leq{i}\leq{n-1}$, which shows that $\langle
+{x}_1,x_2,\dots,x_{n-1}\rangle=\langle{e}_{12},e_{23},\dots,e_{n-1,n}\rangle$.\\
+Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for every $j\neq{i}$, then $a_ib_{i+1}-a_{i+1}b_i=-a_{i+1}b_i=0$ and $a_{i-1}b_i-a_ib_{i-1}=a_{i-1}b_i=0$ if and only if $b_i=0$. But then $\frac{b_1}{v_1}=\frac{b_2}{v_2}=\cdots=\frac{b_{i-1}}{a_{i-1}}=c_1$ and $\frac{b_{i+1}}{a_{i+1}}=\frac{b_{i+2}}{a_{i+2}}=\cdots=\frac{b_{n-1}}{a_{n-1}}=c_2$, for $c_1,c_2\in{K}$, hence $y=c_1(a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{i-1,i})+c_2(a_{i+1}e_{i+1,i+2}+a_{i+2}e_{i+2,i+3}+\cdots+a_{n-1}e_{n-1,n})+\gamma_2L\notin{K}x+\gamma_2L\implies{x}\notin\mathcal{X}$, which is an example for an element whose centralizers are not necessarily in $Kx+\gamma_2L$.
+\subsection{The $\mathcal{Y}$ criterion}
+\label{y-criterion}
+Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in{K}$ not all zero.\\
+But \[[x,y]=0\iff\sum_{k=1}^{r-1}a_{j,j+k}b_{j+k,j+r}-a_{j+r,j+k}b_{j,j+k}=0,\]
+for all $2\leq{r}\leq{n-1}$ and $1\leq{j}\leq{n}-r$.\\
+But every expression of the form $a_{jk}b_{kl}$ vanishes, because every $a_{jk}=0$ where $(j,k)\neq(i,i+1)$, which implies that $a_{i,i+1}b_{i+1,r}=0\iff{b_{i+1,r}=0}$ for all $i+2\leq{r}\leq{n}$, and that $a_{i,i+1}b_{k,i}=0\iff{b_{k,i}=0}$ for all $1\leq{k}\leq{i-1}$.\\
+Hence, a generic $y\in{C}_L(x)$ has the form
+\[
+y=\sum_{r=1}^{n-1}\left[\sum_{j=1}^{i-r-1}b_{j,j+r}e_{j,j+r}+b_{i,i+r}e_{i,i+r}+\sum_{j=i+2}^{n-r}b_{j,j+r}e_{j,j+r}\right],
+\]
+such that the $b$ coefficients are not all zero.\\
+Let $z=d_1e_{12}+\cdots+d_{2,n}e_{2,n}\in{C}_L(y)$, and denote\\
+\begin{flalign*}
+\varphi_{13}&=(b_1d_2-b_2d_1)e_{13}.\\
+\varphi_{24}&=(b_2d_3-b_3d_2)e_{24}.\\
+\vdots\\
+\varphi_{n-2,n}&=(b_{n-2}d_{n-1}-b_{n-1}d_{n-2})e_{n-2,n}.\\
+\varphi_{14}&=(b_1d_{24}-b_{24}d_1+b_{13}d_3-b_3d_{13})e_{14}.\\
+\varphi_{25}&=(b_2d_{35}-b_{35}d_2+b_{24}d_4-b_4d_{24})e_{25}.\\
+\vdots\\
+\varphi_{n-3,n}&=(b_{n-3}d_{n-2,n}-b_{n-2,n}d_{n-3}+b_{n-3,n-1}d_{n-1}-b_{n-1}d_{n-3,n-1})e_{n-3,n}.\\
+\vdots\\
+\varphi_{1n}&=(b_1d_{2,n}-b_{2,n}d_1+b_{13}d_{3,n}-b_{3,n}d_{13}+\cdots+b_{1,n-1}d_{n-1}-b_{n-1}d_{1,n-1})e_{1n}.\\
+\end{flalign*}
+Hence
+\[[z,y]=\sum_{r=2}^{n-1}\sum_{j=1}^{n-r}\varphi_{j,j+r}=0,\]
+implies that $\varphi_{j,j+r}=0$
+for all $2\leq{r}\leq{n-1}$ and $2\leq{j}\leq{n-r}$.\\
+Let $d_{lh}\in{K}$ for some $2\leq{l}\leq{h-1}$, where $(l,h)\neq(i,i+1)$, then for some $1\leq{k}\leq{h-2}$, we have
+\[\varphi_{kh}=\sum_{r=1}^{h-k-1}\left(b_{k,k+r}d_{k+r,h}-b_{k+r,h}d_{k,k+r}\right)e_{kh},\]
+where $b_{kl}d_{lh}$ is one of the expressions in the sum. But all other expressions $b_{kq}d_{qh}$, where $q\neq{l}$, vanish because $b_{kq}=0$. But this implies that\\ $\varphi_{kh}=0\iff{b}_{kl}d_{lh}=0\iff{d}_{lh}=0$, which means that if $y_{kl}=b_{kl}e_{kl}$ and $z_{kl}=d_1e_{i,i+1}+\cdots+d_{1n}e_{1n}\in{C}_L(y_{kl})$, then $d_{lh}=0$.\\
+We can also show that $d_{lh}e_{lh}$ must vanish in any $z_{hk}\in{C}_L(y_{hk})$ by considering 
+\[\varphi_{lk}=\sum_{r=1}^{k-l-1}\left(b_{l,l+r}d_{l+r,k}-b_{l+r,k}d_{l,l+r}\right)e_{lk},\]
+for some $l+2\leq{k}\leq{n}$, and looking at $b_{hk}d_{lh}$.\\
+For $d_i$, we observe that since $b_{ki}=b_{i+1,l}=0$ for every $1\leq{k}<i$ and every $i+1<l\leq{n}$, then $b_{ki}d_i=0$ or $b_{i+1,l}d_i=0$ does not imply that $d_i=0$, so $d_i\in{K}$ can be any nonzero element such that
+\begin{flalign*}
+[b_{ki}e_{ki},d_ie_{i,i+1}]&=0.\\ [b_{i+1,l}e_{i+1,l},d_ie_{i,i+1}]&=0.\\
+\end{flalign*}
+But all this implies that if $B=\{b_{kl} : 1\leq{k}<l\leq{n},\,l\neq{i},\,k\neq{i+1}\}$, then any $z\in{C}_L(B)$ must have $d_{lh}=0$ for all $1\leq{l}<h\leq{n}$, unless $(l,h)=(i,i+1)$, but then $z=d_ie_{i,i+1}=ca_ie_{i,i+1}=cx$ for some $c=\frac{d_i}{a_i}\in{K}$, and all the computation above is up to the center $Z(L)$, hence $z\in{K}x+Z(L
+)$. But this is true for all $1\leq{i}\leq{n-1}$, which shows that if $E=\{e_{i,i+1},e_{i+1,i+2},\dots,e_{n-1,n}\}$ is the generating set of $L$, then $E\subseteq\mathcal{Y}$, but then we conclude from both criteria $\mathcal{X}$ and $\mathcal{Y}$ that ${L}$ is rigid.
+\subsection{Rigidity and Base Extension}
+We apply the general discussion in \ref{x-criterion} and \ref{y-criterion} to number fields of the form $K=\mathbb{Q}_p[\lambda_1,\lambda_2,\dots,\lambda_{f-1}]$, that is, $f$-dimensional algebraic extensions of $\mathbb{Q}_p$, including the case $f=1$, that is, $K=\mathbb{Q}_p$. 
+For any $K$, denote by $\mathcal{O}_K$ its ring of integers.
+Denote by ${L}={L}_{n,p}\otimes{K}$ the extension of scalars of our $\mathbb{Q}_p$-algebra to a $K$-algebra, and by $L=L_{n,p}\otimes\mathcal{O}_K$ the extension of scalars of our $\mathbb{Z}_p$-algebra to an $\mathcal{O}_K$-algebra, and denote, as above, $d=\binom{n}{2}$, the rank of ${L}$ and $L$. 
+Also denote $Z=Z_{n,p}\otimes\mathcal{O}_K$ where $Z_{n,p}$ is the center of our algebra over $\mathbb{Q}_p$ and $\mathbb{Z}_p$, which immediately identifies as the center of the extended ${L}$ and $L$, then the rigidity of $L$ shown above implies the following (see \cite[\S{3.7}]{BermanGlazerSchein}):\\
+Let $\psi:\text{Aut}_{\mathbb{Q}_p}(L)\rightarrow\text{Aut}_{\mathbb{Q}_p}(\sfrac{L}{Z})$ be the canonical map from $G_n(K)$ to the automorphisms on $\sfrac{L}{Z}$, and denote $J=\ker\psi$, then $\text{Aut}_{\mathbb{Q}_p}(L)=(J\cdot\text{Aut}_{\mathcal{O}_K}(L))\rtimes\text{Aut}_{\mathbb{Q}_p}(L_{n,p})$. This decomposition shows that instead of constructing a $\mathbb{Z}_p$-linear automorphism over $L$ where $\dim{L}_{/\mathbb{Z}_p}=\dim{L}_{n,p}\otimes_{\mathbb{Z}_p}\mathcal{O}_K=\dim{{L}_{n,p}}_{/\mathbb{Z}_p}\times\dim(\mathcal{O}_K)_{/\mathbb{Z}_p}=d\times{f}$, we construct first an $\mathcal{O}_K$-linear automorphism over $L$ where $\dim{L}_{/\mathcal{O}_K}=d$, and we take its product with $J$, as both $\text{Aut}_{\mathcal{O}_K}(L)$ and $J$ contain $d\times{d}$ matrices operating on the same basis elements.
+But $\ker\psi$ consists of all the automorphisms $\varphi$ that fix every basis element not in the center of $L$, that is, $\varphi(e_{ij})\in{e}_{ij}+Z$, for every $e_{ij}\in{B}\setminus\{e_{1n}\}$, which implies that
+the matrix $\varphi=(m_{ij})$ has $m_{kk}=1$ for all $1\leq{k}\leq{d-1}$, and $m_{ld}$ is any scalar in $K$ for all $1\leq{l}\leq{d}$, and all the other elements are zero:
+\[
+\varphi=(m_{ij})=\begin{bmatrix*}[l]
+1&\cdots&\cdots&\cdots&\cdots&\cdots&m_{1d}\\
+&1&\cdots&\cdots&\cdots&\cdots&m_{2d}\\
+&&\ddots&&&&\vdots\\
+&&&1&\cdots&\cdots&m_{n-1,d}\\
+&&&&\ddots&\cdots&\vdots\\
+&&&&&1&m_{d-1,d}\\
+&&&&&&m_{dd}\\
+\end{bmatrix*}.\]
+We shall display a more accurate structure for the matrices in $J$ once we establish the general form of the matrices representing the $L$-automorphisms.
+This construction enables us to compute our zeta functions over any number field $K$ and its ring of integers $\mathcal{O}_K$ in a similar way to the computation over $\mathbb{Q}_p$ and $\mathbb{Z}_p$.
+We shall give this a more concrete form when we explain the computation for $\zeta_{L_{5,p}}^{\wedge}(s)$.
+
+
+$z\mapsto{z}\otimes{1}$
 \section{Computation of the integral}
 We want to integrate the function $\psi:=|\det{M}|_p^s=|\lambda_1^4\lambda_2^6\lambda_3^6\lambda_4^4|_p^{s}$ over the monoid $G^+(K)$.
 We denote by $v_1=v_p(\lambda_1),v_2=v_p(\lambda_2),v_3=v_p(\lambda_3),v_4=v_p(\lambda_4)$ the $p$-adic valuations of the elements on the main diagonal of $M_{11}$ the top-left block of the product matrix $M$.
