@@ -83,7 +83,7 @@ We say that a rational function $W_{i}^{\wedge}$ satisfies a \textbf{functional 
 
 In the case of pro-isomorphic zeta functions, there are results showing, under restrictive conditions, that $\zeta_{G,p}^{\wedge}(s)$ is uniform and satisfies a functional equation; see \cite[Theorem B]{DuSautoyLubotzky} and \cite[Theorem 1.1]{Berman}. However, there are examples of $G$ of nilpotency class $4$ such that $\zeta_{G,p}^{\wedge}(s)$ is uniform but does not satisfy a functional equation \cite[Theorem 1.1]{BermanKlopsch}. Thus any general theorem guaranteeing functional equations must assume some conditions.
 
-If any Dirichlet series, in particular $\zeta_{G}^{\ast}(s)$, convergences on some subset of $\mathbb{C}$, one may reconstruct its coefficients $a_{n}^{\ast}(G)$, the sequence of our interest, using Perron's formula, which is an implementation of a reverse Mellin transform; see, for instance, \cite[Theorem 5.1]{MontgomeryVaughan}.\par
+If any Dirichlet series, in particular $\zeta_{G}^{\wedge}(s)$, convergences on some subset of $\mathbb{C}$, one may reconstruct its coefficients $a_{n}^{\wedge}(G)$, the sequence of our interest, using Perron's formula, which is an implementation of a reverse Mellin transform; see, for instance, \cite[Theorem 5.1]{MontgomeryVaughan}.\par
 
 \begin{example}
 Consider the set $\{E_k\}$ of $n\times{n}$ elementary matrices with $1$ on the main diagonal and $1$ in the $(k,k+1)$ entry for some index $1\leq{k}\leq{n}-1$, and zero elsewhere, and it is easy to see that $E_k^{-1}$ is the same matrix but with $-1$ in the $(k,k+1)$ entry, and that $(E_k)^r$ for some $r\in\mathbb{N}$ is the same as $E_k$ but with $r$ in the entry $(k,k+1)$, and thus $(E_k^{-1})^r=(E_k)^{-r}$. Considering all the commutators of the form $[E_k,E_l]=E_kE_lE_k^{-1}E_l^{-1}$, we observe that $U_n:=\langle{E_k}\rangle$ is a finitely-generated group of matrices over $\mathbb{Z}$ and that $U_n\cong\mathbb{Z}^d$ for $d=\binom{n}{2}$, and that it is therefore torsion-free, that it is also nilpotent.
@@ -107,15 +107,14 @@ which results in \begin{equation}
 \label{eq:p-adic.integral}
 \zeta_{L,p}^{\wedge}(s)=\displaystyle\int_{G^{+}(\mathbb{Q}_p)}{|\det{g}|_{p}^{s}}d\mu(g).
 \end{equation}
-
+We show in this paper how all this applies to the particular $\mathbb{Z}_p$-Lie algebra which is the target of our study.
 \section{The $\mathbb{Z}_p$-Lie algebra $L_n$}
-In all the following, refer to \ref{linearization} for the general mathematical background.
 \subsection{The matrix algebra $L_n$}
 \label{R-algebra-definition}
 \subsubsection{Basic definition}
 \label{R-algebra-basic-definition}
 Let $R$ be a commutative ring, and let $L_{n}(R)$ be the set of strictly upper triangular $n\times{n}$ matrices with elements in $R$. The standard commutator bracket $[X,Y]=XY-YX$ for every $X,Y\in{L}_n(R)$ gives $L_{n}(R)$ the structure of a nilpotent $R$-Lie algebra.
-We may denote by ${L}_n(K)$ the $K$-Lie algebra over some field $K$, usually the fraction field of the ring of our interest, and we shall omit the ring notation or the rank notation $n$ when they are implied from the context.
+We may denote by ${L}_n(K)$ the $K$-Lie algebra over some field $K$, usually the fraction field of the ring of our interest, and we shall write $L_n$ when the ring is implied from the context.
 \subsubsection{The basis of $L_n$}
 \label{R-algebra-basis}
 Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsewhere. Then $B:=\{e_{ij} : 1\leq{i}<{j}\leq{n}\}$ is a basis of $L_{n}$, which we order as follows: $(e_{12},\dots,e_{n-1,n},e_{13},\dots,e_{n-2,n},e_{14},\dots,e_{n-3,n},\dots,e_{1n})$, that is, $e_{ij}<e_{kl}$ if either $j-i<l-k$ or if $j-i=l-k$ and $i<k$. We will usually write $e_i$ to denote $e_{i,i+1}$, and we shall denote by $B_1:=\{e_1,e_2,\dots,e_{n-1}\}$ the set of elements of this form. The cardinality of $B$ is $\binom{n}{2}$, thus we denote by $d=\text{rank}{L}_n=\binom{n}{2}$ the rank of $L_n$ as a free $R$-module. Note that the elements of the lower central series $\gamma_{1}L_{n},\dots,\gamma_{n-1}L_{n}$ are spanned by final segments of $B$. 
@@ -168,31 +167,34 @@ a_{11,m}&a_{12,m}&\cdots&a_{1n,m}\\
 &&\ddots&a_{3n,m}\\
 &&&\vdots\\
 &&&a_{nn,m}\\
-\end{bmatrix}.\right)\]
+\end{bmatrix}\right).\]
 We define the map $\psi:L_n(R)\longrightarrow\prod_{k=1}^mL_n(R_k)$ by
 $A_R\overset{\psi}{\longrightarrow}A_\Pi$,
 which is clearly a bijection, and it is also clear that $\psi(A_R+C_R)=A_\Pi+C_\Pi=\psi(A_R)+\psi(C_R)$.
-The product matrix $[A_R,C_R]=A_RC_R-C_RA_R$ consists of elements of the form
+The product matrix $B_R=[A_R,C_R]=A_RC_R-C_RA_R$ consists of elements of the form:
 \begin{align*}
 b_{ij}=\\
-&=\sum_{r=i}^n\overline{a_{ir}}\cdot\overline{c_{rj}}-\sum_{r=i}^n\overline{c_{ir}}\cdot\overline{a_{rj}}=\\
-&=\sum_{r=i}^n\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1},\dots,a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right)=\\
-&=\left(\sum_{r=i}^n\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1}\right),\dots,\sum_{r=i}^n\left(a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right)\right)
+&=\sum_{r=i}^j\overline{a_{ir}}\cdot\overline{c_{rj}}-\sum_{r=i}^j\overline{c_{ir}}\cdot\overline{a_{rj}}=\\
+&=\sum_{r=i}^j\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1},\dots,a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right)=\\
+&=\left(\sum_{r=i}^j\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1}\right),\dots,\sum_{r=i}^j\left(a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right)\right)
 \end{align*}
-in location $(i,j)$, then each element $b_{ij}$ is mapped by $\psi$ to location $(i,j)$ in each matrix $L_n(R_k)$:
+in the $(i,j)$ entry, then each element $b_{ij}$ is mapped by $\psi$ to the $(i,j)$ entry in each matrix $L_n(R_k)$:
 \[
-\sum_{r=i}^n\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1}\right),\dots,\sum_{r=i}^n\left(a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right).
+\sum_{r=i}^j\left(a_{ir,1}c_{rj,1}-c_{ir,1}a_{rj,1}\right),\dots,\sum_{r=i}^j\left(a_{ir,m}c_{rj,m}-c_{ir,m}a_{rj,m}\right).
 \]
 We verify that $[A_k,C_k]\in{L}_n(R_k)$ is the matrix with elements of the form 
-\[\sum_{r=i}^n\left(a_{ir,k}c_{rj,k}-c_{ir,k}a_{rj,k}\right),\]
+\[\sum_{r=i}^j\left(a_{ir,k}c_{rj,k}-c_{ir,k}a_{rj,k}\right),\]
 for every $1\leq{i}<j\leq{n}$, and hence:
 \begin{align*}
-\psi\left([A_R,C_R]\right)=\\
-&=([A_1,C_1],\dots,[A_m,C_m])=\\
-&=[(A_1,\dots,A_m),(C_1,\dots,C_m)]=\\
+\psi\left([A_R,C_R]\right)&=\\
+&=([A_1,C_1],\dots,[A_m,C_m])&=\\
+&=(A_1C_1-C_1A_1,\dots,A_mC_m-C_mA_m)&=\\
+&=(A_1C_1,\dots,A_mC_m)-(C_1A_1,\dots,C_mA_m)&=\\
+&=(A_1,\dots,A_m)(C_1,\dots,C_m)-(C_1,\dots,C_m)(A_1,\dots,A_m)&=\\
+&=[(A_1,\dots,A_m),(C_1,\dots,C_m)]&=\\
 &=[\psi(A_R),\psi(C_R)].
 \end{align*}
-Let $e_{R,ij}\in{L}_n(R)$ be the matrix with $1_R=\left(1_{R_1},\dots,1_{R_m}\right)$ in location $(i,j)$, then it is clear that all the matrices of this form for every $1\leq{i}<j\leq{n}$ form an $R$-basis of $L_n(R)$. Let $e_{k,ij}\in{L}_n(R_k)$ be the matrix with $1_k$ in location $(i,j)$, and let $\overline{r}=\left(r_1,\dots,r_m\right)\in{R}$, we have the operation $r\left(e_{1,ij},\dots,e_{m,ij}\right)=\left(r_1,\dots,r_m\right)\left(e_{1,ij},\dots,e_{m,ij}\right)=(r_1e_{1,ij},\dots,r_me_{m,ij})$, and clearly all the vectors $\left(e_{1,ij},\dots,e_{m,ij}\right)$ for every $1\leq{i}<j\leq{n}$ are $R$-linearly independent, hence they form an $R$-basis of $\prod_{k=1}^mL_n(R_k)$, and the bijection $e_{R,ij}\overset{\psi}{\longleftrightarrow}(e_{1,ij},\dots,e_{m,ij})$ between the two bases establishes the ring isomorphism as an isomorphism between $R$-modules.
+Let $e_{R,ij}\in{L}_n(R)$ be the matrix with $1_R=\left(1_{R_1},\dots,1_{R_m}\right)$ in the $(i,j)$ entry, then it is clear that all the matrices of this form for every $1\leq{i}<j\leq{n}$ form an $R$-basis of $L_n(R)$. Let $e_{k,ij}\in{L}_n(R_k)$ be the matrix with $1_k$ in the $(i,j)$ entry, and let $\overline{r}=\left(r_1,\dots,r_m\right)\in{R}$, we have the operation $r\left(e_{1,ij},\dots,e_{m,ij}\right)=\left(r_1,\dots,r_m\right)\left(e_{1,ij},\dots,e_{m,ij}\right)=(r_1e_{1,ij},\dots,r_me_{m,ij})$, and clearly all the vectors $\left(e_{1,ij},\dots,e_{m,ij}\right)$ for every $1\leq{i}<j\leq{n}$ are $R$-linearly independent, hence they form an $R$-basis of $\prod_{k=1}^mL_n(R_k)$, and the bijection $e_{R,ij}\overset{\psi}{\longleftrightarrow}(e_{1,ij},\dots,e_{m,ij})$ between the two bases establishes the ring isomorphism as an isomorphism between $R$-modules.
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
 \begin{lemma4}
@@ -201,7 +203,7 @@ Let $R$ be a ring, then $R$ has the natural structure of a $\mathbb{Z}$-module.
 \end{lemma4}
 \begin{proof}
 The additive group $(R,+)$ of $R$ is abelian, thus we define the operation of $\mathbb{Z}$ on $R$ by $rm\longrightarrow\underbrace{m+\cdots+m}_{r\,\text{times}}$, for every $m\in{R}$ and every $r\in\mathbb{Z}$.
-From this we obtain all the properties of $R$ as a $\mathbb{Z}$-module, and we observe that for every $r,s\in\mathbb{Z}$ and every $m,n\in{R}$, we have that 
+From this we obtain all the properties of $R$ as a $\mathbb{Z}$-module, and we also have that: 
 \[
 (rm)(sn)=\left(\sum_{i=1}^rm\right)\left(\sum_{j=1}^sn\right)=\sum_{i=1}^r\left(m\sum_{j=1}^sn\right)=\sum_{i=1}^r\sum_{j=1}^smn=(rs)(mn),
 \]
