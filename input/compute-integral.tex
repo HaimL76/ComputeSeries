@@ -20,22 +20,23 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
 
-% Define \subsubsubsection (4th level heading)
-\setcounter{secnumdepth}{4} % Enable numbering for 4 levels
-\setcounter{tocdepth}{4}    % Include in table of contents if needed
-
 \makeatletter
-\titleclass{\subsubsubsection}{straight}[\subsubsection]
-\newcounter{subsubsubsection}[subsubsection]
-\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
-\titleformat{\subsubsubsection}
-  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
-\titlespacing*{\subsubsubsection}
 
-\newtheorem{lemma2}[subsubsubsection]{Lemma}
-\newtheorem{proposition2}[subsubsubsection]{Proposition}
-\newtheorem{remark2}[subsubsubsection]{Remark}
-\newtheorem{corollary2}[subsubsubsection]{Corollary}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{-0ex}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\subparagraph}
+{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}
+{-0ex}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\newtheorem{lemma4}[paragraph]{Lemma}
+\newtheorem{proposition4}[paragraph]{Proposition}
+\newtheorem{remark4}[paragraph]{Remark}
+\newtheorem{corollary4}[paragraph]{Corollary}
 
 \makeatother
 
@@ -118,7 +119,7 @@ We may denote by ${L}_n(K)$ the $K$-Lie algebra over some field $K$, usually the
 \subsubsection{The basis of $L_n$}
 \label{R-algebra-basis}
 Let $e_{ij}\in{L_{n}}$ be the matrix with $1$ in the $(i,j)$ entry and $0$ elsewhere. Then $B:=\{e_{ij} : 1\leq{i}<{j}\leq{n}\}$ is a basis of $L_{n}$, which we order as follows: $(e_{12},\dots,e_{n-1,n},e_{13},\dots,e_{n-2,n},e_{14},\dots,e_{n-3,n},\dots,e_{1n})$, that is, $e_{ij}<e_{kl}$ if either $j-i<l-k$ or if $j-i=l-k$ and $i<k$. We will usually write $e_i$ to denote $e_{i,i+1}$, and we shall denote by $B_1:=\{e_1,e_2,\dots,e_{n-1}\}$ the set of elements of this form. The cardinality of $B$ is $\binom{n}{2}$, thus we denote by $d=\text{rank}{L}_n=\binom{n}{2}$ the rank of $L_n$ as a free $R$-module. Note that the elements of the lower central series $\gamma_{1}L_{n},\dots,\gamma_{n-1}L_{n}$ are spanned by final segments of $B$. 
-\begin{lemma2}
+\begin{lemma4}
 \label{lem:multiplication-rule}
 The standard Lie brackets operation on the basis elements of $L$ gives the following multiplication rule:
 \[[e_{ij},e_{kl}]=\begin{cases}
@@ -126,16 +127,16 @@ e_{il},&j=k\\
 -e_{kj},&i=l\\
 0,&\text{otherwise}\\
 \end{cases}\]
-\end{lemma2}
+\end{lemma4}
 \begin{proof}
 Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $e_{ij}e_{jl}=e_{il}$ but $e_{jl}e_{ij}=0$, thus $[e_{ij},e_{jl}]=e_{il}-0=e_{il}$, and the rest may be verified in a similar way.
 \end{proof}
 \subsubsection{Direct product of $L_n$}
-\begin{lemma2}
+\begin{lemma4}
 \label{lem:direct-product}
 Let $R_1,R_2,\dots,R_{m}$ be $m$ commutative rings with multiplicative identity $1_k=1_{R_k}\in{R}_k$, and let $R=\prod_{k=1}^mR_k$ be their direct product, then we have a ring isomorphism: \[L_n\left(\prod_{k=1}^mR_k\right)\cong\prod_{k=1}^m{L}_n(R_k),\]
 which in particular is an isomorphism of free $R$-modules of rank $d$.
-\end{lemma2}
+\end{lemma4}
 \begin{proof}
 We denote by $a_{ij,k}\in{R}_k$ an arbitrary element, and we denote $\overline{a_{ij}}=(a_{ij,1},\dots,a_{ij,m})\in{R}$,
 then every element $A_R\in{L}_n(R)$ is of the form:
@@ -194,10 +195,10 @@ for every $1\leq{i}<j\leq{n}$, and hence:
 Let $e_{R,ij}\in{L}_n(R)$ be the matrix with $1_R=\left(1_{R_1},\dots,1_{R_m}\right)$ in location $(i,j)$, then it is clear that all the matrices of this form for every $1\leq{i}<j\leq{n}$ form an $R$-basis of $L_n(R)$. Let $e_{k,ij}\in{L}_n(R_k)$ be the matrix with $1_k$ in location $(i,j)$, and let $\overline{r}=\left(r_1,\dots,r_m\right)\in{R}$, we have the operation $r\left(e_{1,ij},\dots,e_{m,ij}\right)=\left(r_1,\dots,r_m\right)\left(e_{1,ij},\dots,e_{m,ij}\right)=(r_1e_{1,ij},\dots,r_me_{m,ij})$, and clearly all the vectors $\left(e_{1,ij},\dots,e_{m,ij}\right)$ for every $1\leq{i}<j\leq{n}$ are $R$-linearly independent, hence they form an $R$-basis of $\prod_{k=1}^mL_n(R_k)$, and the bijection $e_{R,ij}\overset{\psi}{\longleftrightarrow}(e_{1,ij},\dots,e_{m,ij})$ between the two bases establishes the ring isomorphism as an isomorphism between $R$-modules.
 \end{proof}
 \subsubsection{Tensor product of $L_n$}
-\begin{lemma2}
+\begin{lemma4}
 \label{lem:ring-z-module}
 Let $R$ be a ring, then $R$ has the natural structure of a $\mathbb{Z}$-module.
-\end{lemma2}
+\end{lemma4}
 \begin{proof}
 The additive group $(R,+)$ of $R$ is abelian, thus we define the operation of $\mathbb{Z}$ on $R$ by $rm\longrightarrow\underbrace{m+\cdots+m}_{r\,\text{times}}$, for every $m\in{R}$ and every $r\in\mathbb{Z}$.
 From this we obtain all the properties of $R$ as a $\mathbb{Z}$-module, and we observe that for every $r,s\in\mathbb{Z}$ and every $m,n\in{R}$, we have that 
@@ -206,11 +207,11 @@ From this we obtain all the properties of $R$ as a $\mathbb{Z}$-module, and we o
 \]
 for every $r,s\in\mathbb{Z}$ and every $m,n\in{R}$, which shows that the ring operation of $R$ commutes with the operation of $\mathbb{Z}$ on $R$.
 \end{proof}
-\begin{lemma2}
+\begin{lemma4}
 \label{lem:tensor-r-s}
 Let $R$ and $S$ be rings with a multiplicative identity, then \[L_n(R)\otimes_\mathbb{Z}S\cong{L}_n(R\otimes_\mathbb{Z}S),\]
 as $\mathbb{Z}$-modules and as rings.
-\end{lemma2}
+\end{lemma4}
 \begin{proof}
 By \ref{lem:ring-z-module}, both $R$ and $S$ assume the structure of a $\mathbb{Z}$-module which complies with the ring structure, thus we have the canonical definition of $T=R\otimes_\mathbb{Z}S$ by:
 \begin{align*}
@@ -280,14 +281,14 @@ We transfer all the above to the ring of $p$-adic integers by considering $\math
 where $K_{\mathfrak{p}_i}=\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$, thus $\mathcal{O}_K$ assumes the structure of a free $\mathbb{Z}_p$-module of rank $f$
 and $\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}$ has the structure of an $f_i$-dimensional $\sfrac{\mathbb{Z}_p}{(p)}$-vector space.
 We construct the same Lie algebra $L_n(\mathcal{O}_K)$, and we claim the following:
-\begin{lemma2}
+\begin{lemma4}
 There is an isomorphism $L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p)$ as free $\mathcal{O}_K$-modules of rank $d$, but since $\mathcal{O}_K$ itself is a free $\mathbb{Z}_p$-module of rank $f$, then $L_n(\mathcal{O}_K)$ is a free module of rank $df$ over $\mathbb{Z}_p$.
 This is exactly \ref{lem:tensor-r-s} with $R=\mathcal{O}_K$ and $S=\mathbb{Z}_p$.
-\end{lemma2}
-\begin{corollary2}
+\end{lemma4}
+\begin{corollary4}
 \[
 L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p\cong{L}_n(\mathbb{Z}_p\otimes_\mathbb{Z}\mathcal{O}_K)\cong{L}_n\left(\prod_{i=1}^r\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}\right)\cong\prod_{i=1}^r{L}_n(\sfrac{\mathcal{O}_K}{\mathfrak{p}_i}).\]
-\end{corollary2}
+\end{corollary4}
 \begin{notation}
 We denote by $L_{n,p}(\mathcal{O}_K):=L_n(\mathcal{O}_K)\otimes_\mathbb{Z}\mathbb{Z}_p$, the Lie algebra over $\mathcal{O}_K$.
 \end{notation}
@@ -299,7 +300,7 @@ Let $U_n(R)$ be the group of $n\times{n}$ upper unitriangular matrices over $R$.
 Moreover, we want to study the structure of the zeta functions $\zeta^\wedge_{L_{n,p}(\mathcal{O}_K)}(s)$ on any finite-dimensional base extension of $L_{n,p}$ as constructed above. As we explain later, our algebra $L_n$ has properties which allow this computation for essentially the same effort as for $L_n(\mathbb{Z}_p)$ itself.
 \section{The automorphism group of $L_n$}
 \subsection{The $L_{n,p}$-automorphisms}
-We present a set of lemmas that explain the structure of $L_{n,p}$-automorphisms, prior to the detailed discussion on them. Throughout this subsection, we denote $L:=L_{n,p}$ for abbreviation.
+We present a set of lemmas that explain the structure of $L_{n,p}$-automorphisms, prior to the detailed discussion on them.
 \begin{lemma}
 Let $\varphi\in{G}_n(\mathbb{Q}_p)$ be an $L$-automorphism, then $\varphi$ must comply with the multiplication rule of $L$, as established in \ref{lem:multiplication-rule}, that is: \[[\varphi(e_{ij}),\varphi(e_{kl})]=\varphi([e_{ij},e_{kl}])=\begin{cases}
 \varphi(e_{il}),&j=k\\
@@ -357,7 +358,7 @@ By \ref{lem:multiplication-rule}, for every $1\leq{i}<j\leq{n}$ we have the foll
 \end{equation*}
 \end{proof}
 \subsection{The Group Structure}
-\subsubsection{Representing Matrices of ${L}$-Automorphisms}
+\subsubsection{Representing Matrices of $L_n$-Automorphisms}
 Let $\varphi\in{G_{n}}(K)$ be an ${L}$-automorphism, then $\varphi$ is a $d\times{d}$ matrix over $\mathbb{Q}_p$, where $d=\binom{n}{2}$, with respect to the ordered basis $B$, where $\varphi$ acts from the right on row vectors, that is:
 \[
 \varphi=(m_{ij})=\begin{bmatrix*}[l]
@@ -397,17 +398,17 @@ M_{11} & M_{12}\\
 0 & M_{22}\\
 \end{bmatrix}$ forms an element of $Aut_{\mathbb{Q}_{p}}(\sfrac{{L}_{n,p}}{\gamma_3})$. Berman determined this automorphism group for all $n$ and $p$ \cite[Proposition 3.6]{BermanThesis}. It follows that the block $M_{11}$ must be either diagonal or anti-diagonal.
 \subsubsection{The general form of $G_n(K)$}
-\begin{lemma2}
+\begin{lemma4}
 \label{lem:centralizer_subgroup}
 Let $L$ be any Lie $K$-algebra, and denote $C=C_L$, then $C(x)\leq{L}$, for every $x\in{L}$.
-\end{lemma2}
+\end{lemma4}
 \begin{proof}
 For every $y,z\in{C}(x)$ we have 
 $[x,y+z]=[x,y]+[x,z]=0+0=0$, and by the Jacobi identity we have $-[x,[y,z]]=[z,[x,y]]+[y,[z,x]]=[z,0]+[y,0]=0$.
 \end{proof}
-\begin{corollary2}
+\begin{corollary4}
 Let $x\in\{e_1,e_{n-1}\}$, then $\varphi(x)\in{e}_1+\gamma_2{L}$ or $\varphi(x)\in{e}_{n-1}+\gamma_2{L}$.
-\end{corollary2}
+\end{corollary4}
 \begin{proof}
 By \ref{lem:quotient-automorphism}, $\varphi$ induces an $\sfrac{{L}}{\gamma_k}$-automorphism for every $2\leq{k}\leq{n-1}$. Since $\sfrac{\gamma_r}{\gamma_{r+1}}$ abelian and $\sfrac{\gamma_r}{\gamma_{r+2}}$ is not, for every $1\leq{k}\leq{n-2}$, we consider the quotient $\sfrac{{L}}{\gamma_3}$, and we denote $A(e_i)={L}\setminus{C}_{\sfrac{{L}}{\gamma_3}}(e_i)$, for every $1\leq{i}\leq{n}-1$, then:
 \[A(e_i)=
@@ -422,19 +423,19 @@ By \ref{lem:quotient-automorphism}, $\varphi$ induces an $\sfrac{{L}}{\gamma_k}$
 which means that $\dim{C}_{\sfrac{{L}}{\gamma_3}}(e_1)=\dim{C}_{\sfrac{{L}}{\gamma_3}}(e_{n-1})=\dim(\sfrac{{L}}{\gamma_3}\setminus{A}(e_1))=\dim(\sfrac{{L}}{\gamma_3}\setminus{A}(e_{n-1}))=\dim\sfrac{{L}}{\gamma_3}-2=2n-5$, but for any other $i\notin\{1,n-1\}$, $\dim{A}(e_i)>2$, which implies that $\dim{C}_{\sfrac{{L}}{\gamma_3}}(e_i)<2n-5$, and it is immediate that $\dim{C}_{\sfrac{{L}}{\gamma_3}}\left(\sum_{i=1}^{n-1}a_ie_i\right)<\dim{C}_{\sfrac{{L}}{\gamma_3}}(e_1)$.
 However, $C_{\sfrac{{L}}{\gamma_3}}(e_i+x)=C_{\sfrac{{L}}{\gamma_3}}(e_i)$ for any $x\in\gamma_2{L}$, because $[x,{L}]\subset\gamma_3{L}$, it follows that $\varphi(e_1)\in{e}_1+\gamma_2{L}$ or $\varphi(e_1)\in{e}_{n-1}+\gamma_2{L}$, and the same applies for $\varphi(e_{n-1})$.
 \end{proof}
-\begin{proposition}
+\begin{proposition4}
 \label{prop:block-diag-anti-diag}
 Let $\varphi\in{G}_n(K)$, then the upper left block $M_{11}$ of $\varphi$ is either diagonal or anti-diagonal.
-\end{proposition}
+\end{proposition4}
 \begin{proof}
 Without loss of generality, assume that $\varphi(e_1)\in{e}_1+\gamma_2{L}$, then:
 \[\varphi(e_{13})=[\varphi(e_1),\varphi(e_2)]\in[e_1,\varphi(e_2)]+[\gamma_2{L},\varphi(e_2)]=[e_1,\varphi(e_2)]+\gamma_3{L},\]
 and since by $\ref{lem:derived-filtration}$, $\varphi(e_{13})\in\gamma_2{L}\setminus\gamma_3{L}$, it follows that $\varphi(e_2)\in{e}_2+\gamma_2{L}$, which implies that $\varphi(e_{13})\in{e}_{13}+\gamma_3{L}$. Computing the same way for all $3\leq{i}\leq{n-1}$ shows that $\varphi(e_i)\in{e}_i+\gamma_2{L}$. Assuming that $\varphi(e_1)\in{e}_{n-1}+\gamma_2{L}$ and using the same considerations, shows that $\varphi(e_i)\in{e}_{n-i}+\gamma_2{L}$.
 \end{proof}
-\begin{corollary}
+\begin{corollary4}
 \label{cor:matrix-diag-anti-diag}
 Let $\varphi\in{G}_n(K)$, then the blocks $M_{11},M_{22},\dots,M_{n-1,n-1}$ on the main block diagonal are either diagonal or anti-diagonal. In case they are diagonal, then $\varphi$ is diagonal, and it is immediate that all diagonal $\varphi$ form a subgroup which we denote by $G_n^0(K)<G_n(K)$.
-\end{corollary}
+\end{corollary4}
 \subsubsection{The subgroup $G_n^0(K)$}
 On the set $B_1$ we define the bijection $e_i\overset{\eta}{\longleftrightarrow}e_{n-i}$, and we claim that: 
 \begin{lemma}
@@ -468,48 +469,49 @@ Replacing $\varphi$ by $\varphi\eta$ if necessary, we may assume without loss of
 $G_{n}(K)=G_{n}^{0}(\mathbb{Q}_{p})\coprod{G_{n}^{0}(\mathbb{Q}_{p})}\eta$, and as in \cite[Proposition 2.1]{DuSautoyLubotzky} we may replace the domain of integration in \eqref{eq:p-adic.integral} by $G_{n}^{0}(\mathbb{Q}_{p})\cap{G_{n}^{+}(\mathbb{Q}_{p})}$ after a suitable renormalization of the Haar measure. We proceed to determine $G_{n}^{0}(\mathbb{Q}_{p})$.
 \subsubsection{The Diagonal of $\varphi$}
 As explained above, we are working with $G_n^0(K)$, the subgroup of all diagonal ${L}$-automorphisms.
-\begin{lemma}
+\begin{lemma4}
 \label{lem:automorphism-diagonal}
-Let $\varphi$ be an ${L}$-automorphism with $M_{11}=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1})$, that is,  $\varphi(e_k)\in\lambda_ke_k+\gamma_2{L}$, for all $1\leq{k}\leq{n}-1$, then $\varphi$ must satisfy that $\varphi(e_{ij})\in\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{j-i+1}{L}$, for any $1\leq{i}<j\leq{n-1}$.
-\end{lemma}
+Let $\varphi$ be an $L_n$-automorphism with $M_{11}=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_{n-1})$, that is,  $\varphi(e_k)\in\lambda_ke_k+\gamma_2{L}$, for all $1\leq{k}\leq{n}-1$, then $\varphi$ must satisfy that $\varphi(e_{ij})\in\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_j{e}_{ij}+\gamma_{j-i+1}{L}$, for any $1\leq{i}<j\leq{n-1}$.
+\end{lemma4}
 \begin{proof}
 By induction on $r=j-i$, as $r=1$ is the assumption of $M_{11}$. For $r>1$, we have $\varphi(e_{ij})=\varphi([e_{i,j-1},e_{j-1}])$.
 But by the induction base for $r-1$, we have
 $[\varphi(e_{i,j-1}),\varphi(e_{j-1})]\in[\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}e_{i,j-1}+\gamma_r{L},\lambda_{j-1}e_{j-1}+\gamma_2{L}]=\lambda_i\lambda_{i+1}\cdots\lambda_{j-1}\lambda_je_{ij}+\gamma_{r+1}{L}$.
 \end{proof}
+\subsection{Basic Decomposition of $L_n$-automorphisms}
 \subsubsection{The Reductive subgroup}
-Let $\varphi\in{G}_n^0(K)$ be an ${L}$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
-and it is readily seen that $h$ itself is an ${L}$-automorphism.\\
+Let $\varphi\in{G}_n^0(K)$ be an $L_n$-automorphism formed as a matrix $a=(a_{ij})$, and let $h$ be the matrix with only the main diagonal of $a$, that is \[h=\mathrm{diag}(a_{11},a_{22},\dots,a_{n-1,n-1}),a_{11}a_{22},\dots,a_{n-3}a_{n-2},a_{n-2}a_{n-1},\dots,a_{11}a_{22}\cdots{a}_{n-1}),\]
+and it is readily seen that $h$ itself is an $L_n$-automorphism.\\
 Denote by $H(K):=\{h\in{G}_n^0(K)\}$ the set of all diagonal ${L}$-automorphisms.
-\begin{proposition}
+\begin{lemma4}
 The set $H(K)$ is a subgroup of $G_n^0(K)$.
-\end{proposition}
+\end{lemma4}
 \begin{proof}
 Let $A=\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,\dots)$ and $B=\mathrm{diag}(\delta_1,\delta_2,\dots,\delta_1\delta_2,\dots)$, for some $\lambda_1,\lambda_2,\dots,\lambda_{n-1},\delta_1,\delta_2,\dots,\delta_{n-1}\in{K}$, then $AB=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots\lambda_1\lambda_2\delta_1\delta_2,\dots)=\mathrm{diag}(\lambda_1\delta_1,\lambda_2\delta_2,\dots(\lambda_1\delta_1)(\lambda_2\delta_2),\dots).$
 \end{proof}
-A simple check would show that $H(K)$ is not normal in $G_n^0(K)$.
-
-\subsection{Basic Decomposition of ${L}$-automorphisms}
+A simple check would show that $H(K)$ is not necessarily normal in $G_n^0(K)$.
 \subsubsection{The Unipotent Radical}
 Let $a$ and $h$ be an arbitrary automorphism and a diagonal automorphism, respectively, and let $u=h^{-1}a$, then $a=uh$.
-\begin{proposition}
+\begin{lemma4}
+\label{lem:u-unitriangular}
 The matrix $u=(u_{ij})$ is unitriangular.
-\end{proposition}
+\end{lemma4}
 \begin{proof}
 $h=\mathrm{diag}(a_{11},a_{22},\dots)$, which implies that $h^{-1}=\mathrm{diag}(a_{11}^{-1},a_{22}^{-1},\dots)$, thus $u=h^{-1}a$ has $u_{ii}=a_{ii}^{-1}a_{ii}=1$, for all $1\leq{i}\leq{d}$.
 \end{proof}
-From the construction, it is immediate to assert that every $\varphi\in{G}_n^0(K)$ has the unique factorization $\varphi=uh$, an we denote the set $N_n(K):=\{u\in{G}_n^0(K)\}$, the set of all unitriangular ${L}$-automorphisms.
-\begin{proposition}
+From the construction, it is immediate to assert that every $\varphi\in{G}_n^0(K)$ has the unique factorization $\varphi=uh$, an we denote the set $N_n(K):=\{u\in{G}_n^0(K)\}$, the set of all unitriangular $L_n$-automorphisms.
+\begin{lemma4}
+\label{lem:n-normal-subgroup}
 The set $N_n(K)$ is a normal subgroup of $G_n^0(K)$.
-\end{proposition}
+\end{lemma4}
 \begin{proof}
 The product of two unitriangular matrices is itself a triangular matrix. Let $w\in{G}_n^0(K)$ a unitriangular ${L}$-automorphism. For any $a\in{G}_n^0$, we have the unique factorization $a=uh$, for some $u\in{N}_n(K)$ and $h\in{H}_n(K)$, thus $awa^{-1}=(uh)w(uh)^{-1}=u(hwh^{-1})u^{-1}$, but then $b=hwh^{-1}=(b_{ij})$ has $b_{ii}=h_{ii}\cdot{1}\cdot{h}_{ii}^{-1}=1$, for all $1\leq{i}\leq{d}$, hence $b$ and therefore $ubu^{-1}$ also belong to $N_n(K)$.
 \end{proof}
-\begin{corollary}
+\begin{corollary4}
 The group of diagonal ${L}$-automorphisms has a basic decomposition $G_n^0(K)=N_n(K)\rtimes{H}_n(K)$.
-\end{corollary}
+\end{corollary4}
 This is an immediate result, because $N_n(K)\cap{H}_n(K)=\{I_d\}$.
-\subsection{Full Decomposition of ${L}$-automorphisms}
+\subsection{Full Decomposition of $L_n$-automorphisms}
 \subsubsection{The Automorphism $\varphi_r$}
 Fix $1\leq{r}\leq{n}-2$, and consider the map $\pi_r:G_n^0(K)\rightarrow\text{Aut}_{K}(\sfrac{{L}_{n,p}}{\gamma_r})$, we denote $\varphi_r:=\ker\pi_r$, which forms as the set $N_r$ of all $d\times{d}$ matrices with $M_{ii}=I_{n-1}$ for all $1\leq{i}\leq{n-1}$, and $M_{1j}=0$ for all $j<r$.
 \[\varphi_r=(a_{ij}):=\begin{bmatrix}
@@ -526,7 +528,7 @@ We observe that since $M_{1,n-1}=\begin{bmatrix}a_{1m}&a_{2m}&\dots&a_{n-1,m}\en
 %%
 % The structure of \varphi_{n-2}
 %%
-\subsubsubsection{The Structure of $\varphi_{n-2}$}
+\subsubsection{The Structure of $\varphi_{n-2}$}
 \begin{proposition}
 Let $r=n-2$, and denote the $(1,n-2)$ block of $\varphi_{n-2}$ by $M_{1,n-2}=(m_{ij})$. Then the only nonzero elements in $M_{1,n-2}$ are $m_{11}$, $m_{12}$, $m_{22}$, $m_{n-2,1}$, $m_{n-1,1}$ and $m_{n-1,2}$, and in addition $m_{n-1,2}=-m_{11}$.
 \end{proposition}
@@ -548,10 +550,10 @@ Also, since $[\varphi_{n-2}(e_1),\varphi_{n-2}(e_{n-1})]=[e_1,m_{n-1,2}e_{2,n}]+
 %%
 % The structure of \varphi_r for r < n-2
 %%
-\subsubsubsection{The Structure of $\varphi_r$ for $2\leq{r}<n-2$}
-\begin{proposition}
+\subsubsection{The Structure of $\varphi_r$ for $2\leq{r}<n-2$}
+\begin{proposition4}
 For $2\leq{r}<n-2$, let $\varphi_r$ be the ${L}-automorphism$ as described, and denote $M_{1r}=(m_{ij})$. Then the only nonzero elements in $M_{1r}$ are $m_{ii}$ and $m_{i+r,i+1}$, for $1\leq{i}\leq{n-r}$, and in addition $m_{i+r,i+1}=-m_{ii}$.
-\end{proposition}
+\end{proposition4}
 $M_{1r}=\begin{bmatrix}
 m_{11}&&&\\
 &m_{22}&&\\
@@ -571,7 +573,7 @@ Same applies for $[\varphi_r(e_{n-r-2}),\varphi_r(e_{n-1})]$ and the summand $m_
 \end{proof}
 
 \subsubsection{The Abelian Components}
-\subsubsubsection{The Automorphism $\varphi_{r,k}(a)$}
+\subsubsection{The Automorphism $\varphi_{r,k}(a)$}
 Let $a\in{K}$, we define a map $\varphi_{r,k}(a):\sfrac{{L}}{\gamma_2}\rightarrow\sfrac{{L}}{\gamma_{r+1}}$ in the following way:
 \[
     \varphi_{r,k}(a)(e_i)=\begin{cases}
@@ -631,7 +633,7 @@ Define a map $\psi:K\rightarrow{N}_{r,k}$ by $\psi(a):=\varphi_{r,k}(a)$ for all
 Let $a,b\in{K}$, then $\psi(a)\circ\psi(b)=\varphi_{r,k}(a)\circ\varphi_{r,k}(b)$ is a unitriangular matrix with the block $M_{1,r}=(m_{ij})$ that contains the elements $m_{k,k}=a+b$ and $m_{k+r,k+1}=-(a+b)$, thus $\psi(a)\circ\psi(b)=\psi(a+b)$ and $\ker\psi=0$. 
 \end{proof}
 
-\subsubsubsection{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
+\paragraph{The Automorphisms $\varphi'_{n-2}(a)$ and $\varphi''_{n-2}(a)$}
 For $r=n-2$, let $(k,l)\in\{(1,2),(n-1,n)\}$, and let $a\in{K}$. We define the map $\varphi_{n-2,k,l}(a)$ in the following way\\
 $\varphi_{n-2,k,l}(a)(e_i):=\begin{cases}
 e_k+ae_{l,l+r},&i=k\\
@@ -742,7 +744,7 @@ $H_n(\mathbb{Z}_p)=\{\mathrm{diag}(\lambda_1,\lambda_2,\dots,\lambda_1\lambda_2,
 The subgroup $N_n(\mathbb{Z}_p)$ has the decomposition $N=\tilde{N}_{n-1}\rtimes({\tilde{N}_{n-2,0}}\rtimes(\tilde{N}_{n-2,1}\rtimes(\tilde{N}_{n-2,2}\rtimes(\tilde{N}''_{n-2}\rtimes{\tilde{N}'_{n-2}}))))\rtimes(\tilde{N}_{n-3,0}\rtimes\cdots\rtimes(\tilde{N}_{3,0}\rtimes\cdots\rtimes(\tilde{N}_{2,0}\rtimes\cdots\rtimes(\tilde{N}_{2,n-3}\rtimes\tilde{N}_2,n-2)\rtimes\cdots)\rtimes\cdots))$, where $\tilde{N}_{r}=N_{r}\cap{N(\mathbb{Z}_{p})}$ and $\tilde{N}_{r,k}=\{\varphi_{r,k}(a) : a\in\mathbb{Z}_{p}\}$, and this decomposition is unique up to the order of the factors.
 \end{corollary}
 \end{proof}
-\section{Full Decomposition of the Zeta-Function}
+\subsection{Full Decomposition of the Zeta-Function}
 We aim at computing $\zeta_{L_{n,p}}^{\wedge}(s)=\displaystyle\int_{G_{n}^{+}(\mathbb{Q}_p)}|\det{\varphi}|_p^sd\mu_{G_{n}(\mathbb{Z}_p)\varphi}$, which is the product of the function $|det\varphi|_p^s$ by the measure of domain of integration.\\
 \subsection{The function Under the integral}
 \begin{proposition}
@@ -795,7 +797,7 @@ Let $L_{n,p}(\mathcal{O}_K)$ be a Lie-algebra over an extension field $K$ of $\m
 Since every scalar $a\in\mathcal{O}_K$ is a vector $(a_1,\dots,a_r)\in\mathbb{Z}_p^r$, that is, the $\mathbb{Z}_p$-basis of $L_n(\mathcal{O}_K)$ consists of element of the form $e_{ij}\otimes\lambda_h$, where $1\leq{i}<j\leq{n}$ and $1\leq{h}\leq{r}$, then every $\mathbb{Z}$-automorphism is operating on $rd$ basis elements, hence it is an $rd\times{r}d$ invertible matrix which complies with the ring multiplication, this matrix being also an $(n-1)\times(n-1)$ block matrix, where block $(i,j)$ is of size $f(n-i)\times{f}(n-j)$.
 This implies that transferring the method of zeta-function computation for an arbitrary $\mathbb{Z}_p$-Lie algebra $L$ through $p$-adic integration to the computation of the zeta-function for an extension algebra $L\otimes_\mathbb{Z}\mathcal{O}_K$ is not necessarily immediate.
 However, for our algebra $L_n$ transferring the computation of $\zeta_{L_{n,p}}^{\wedge}(s)$ to the computation of $\zeta_{L_{n,p}(\mathcal{O}_K)}^{\wedge}(s)$ can be done straight forward, by the following claim:
-\begin{proposition2}
+\begin{proposition4}
 Let $L$ be a finite-dimensional nilpotent $\mathbb{Z}_p$-Lie algebra \textbf{which satisfies the rigidity criteria}, then 
 \[
 \text{Aut}_{\mathbb{Z}_p}L\otimes_\mathbb{Z}\mathcal{O}_K=\left(J\cdot\text{Aut}_{\mathcal{O}_K}L\otimes_\mathbb{Z}\mathcal{O}_K\right)\rtimes\text{Aut}_{\mathbb{Z}_p}\mathcal{O}_K,
@@ -803,30 +805,57 @@ Let $L$ be a finite-dimensional nilpotent $\mathbb{Z}_p$-Lie algebra \textbf{whi
 where $J=\ker\pi$ is the kernel of the map \[
 \pi:\text{Aut}_{\mathbb{Z}_p}(L\otimes_\mathbb{Z}\mathcal{O}_K)\longrightarrow\text{Aut}_{\mathbb{Z}_p}\left(\sfrac{\left(L\otimes_\mathbb{Z}\mathcal{O}_K\right)}{\left(Z\otimes_\mathbb{Z}\mathcal{O}_K\right)}\right),\]
 where $Z<L$ is the center of $L$.
-\end{proposition2}
-Every matrix $\psi\in{J}$ is essentially an $rd\times{rd}$ matrix with $1$ on the main diagonal, $f(n-1)$ arbitrary elements of $\mathbb{Z}_p$ in block $()$
+\end{proposition4}
+Every matrix $\psi\in{J}$ is essentially an $rd\times{rd}$ matrix with $1$ on the main diagonal, $f(n-1)$ arbitrary elements of $\mathbb{Z}_p$ in the upper-right block $(1,n-1)$, and $0$ elsewhere:
+\[
+\begin{bmatrix}
+1&&&&&&*&\cdots&*\\
+&1&&&&&*&\cdots&*\\
+&&\ddots&&&&\vdots&\cdots&\vdots\\
+&&&1&&&*&\cdots&*\\
+&&&&1&&&&\\
+&&&&&&\ddots&&\\
+&&&&&&&1&\\
+&&&&&&&&1\\
+\end{bmatrix},
+\]
+that is 
+\[\psi(e_{ij}\otimes\lambda_h)=\begin{cases}
+e_{ij}\otimes\lambda_h+a_{ij,h},&j-i=1\\
+e_{ij}\otimes\lambda_h,&\text{otherwise}\\
+\end{cases},
+\]
+where $a_{ij,h}\in\mathbb{Z}_p$.
 \subsubsection{The rigidity criteria}
+We generalize this discussion to an arbitrary ring $R$ and an arbitrary $R$-algebra $L$.
+Let $L$ be some $R$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$ the centralizer of $x$ relative to $I$. 
+If $I=0$ then we call $C_L(x):=\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X):=\{y\in{L} : [y,X]\subseteq{I}\}$.
+If $L$ satisfies the two following criteria:
+\begin{enumerate}
+    \item $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Rx+\gamma_2L\}$ generates $L$.
+    \item $\mathcal{Y}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(C_{\sfrac{L}{\gamma_3}}(x))=Rx+\gamma_2L\}$ generates $L$.
+\end{enumerate}
+Then $L$ is called rigid.
+Next we prove that the rigidity criteria hold for our $\mathbb{Z}_p$-Lie algebra $L_n$.
 
-We generalize this discussion to an arbitrary field $K$.
-Let $L$ be some $K$-algebra, and let $I<L$ be an ideal of $L$, We denote by $C_{\sfrac{L}{I}}(x):=\{y\in{L} : [x,y]\in{I}\}$, if $I=0$ then we call $C_L(x):=\{y\in{L} : [y,x]=0\}$ the centralizer of $x$ in $L$, and if $X\subseteq{L}$ then $C_{\sfrac{L}{I}}(X):=\{y\in{L} : [y,X]\subseteq{I}\}$.\\
-Denote by $L={L}_{n,p}$ our usual algebra over $K$, that is ${L}:=\langle{e}_{ij} : 1\leq{i}<j\leq{n}\rangle$ with scalars in $K$.\\
-\subsection{The $\mathcal{X}$ criterion}
+\paragraph{The $\mathcal{X}$ criterion}
 \label{x-criterion}
-Let $\mathcal{X}:=\{x\in{L}\setminus\gamma_2L : C_{\sfrac{L}{\gamma_3}}(x)=Kx+\gamma_2L\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L$.\\
-Let $x\in{L}\setminus\gamma_2{L}$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
+Let $\mathcal{X}:=\{x\in{L}_n\setminus\gamma_2L_n : C_{\sfrac{L_n}{\gamma_3}}(x)=Kx+\gamma_2L_n\}$, we need to verify that $\mathcal{X}$ generates the entire algebra $L_n$.\\
+Let $x\in{L}_n\setminus\gamma_2{L}_n$, that is\\  \[x=a_1e_{12}+a_2e_{23}+\cdots+a_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}a_{i,i+r}e_{i,i+r},\] 
 where $v_1,v_2,\dots,a_{n-1}$ are not all zero.\\
-Let $y\in{C}_{\sfrac{L}{\gamma_3}}(x)\cap\left(L\setminus\gamma_2L\right)$, that is 
+Let $y\in{C}_{\sfrac{L_n}{\gamma_3}}(x)\cap\left(L_n\setminus\gamma_2L_n\right)$, that is 
 \[y=b_1e_{12}+b_2e_{23}+\cdots+b_{n-1}e_{n-1,n}+\sum_{r=2}^{n-1}\sum_{i=1}^{n-r}b_{i,i+r}e_{i,i+r},\] 
-where $b_1,b_2,\dots,b_{n-1}$ are not all zero, and $[x,y]\in\gamma_3L$.\\
-But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$, hence
+where $b_1,b_2,\dots,b_{n-1}$ are not all zero, and $[x,y]\in\gamma_3L_n$.\\
+But $[b_{i,i+r}e_{i,i+r},x]\in\gamma_3L_n$, for every $2\leq{r}\leq{n-1}$ and $1\leq{i}\leq{n-r}$, hence
 \[
 [x,y]=\sum_{i=1}^{n-2}\left(a_ib_{i+1}-a_{i+1}b_i\right)e_{i,i+2}+\gamma_3L
 ,\]
 thus $[x,y]\in\gamma_3L\iff{a}_ib_{i+1}-a_{i+1}b_i=0\iff\det\begin{pmatrix}
 a_i&a_{i+1}\\
 b_i&b_{i+1}
-\end{pmatrix}=0$, for every $1\leq{i}\leq{n-2}$.\\
-Assume that $a_i\neq{0}$ for all $1\leq{i}\leq{n-1}$.\\
+\end{pmatrix}=0$, 
+for every $1\leq{i}\leq{n-2}$.
+Assume that $a_i\neq{0}$ for all $1\leq{i}\leq{n-1}$.
 consider the case where $b_j=0$ for some $1\leq{j}\leq{n-1}$, and since $a_{j-1},a_j,a_{j+1}\neq{0}$, we have that:
 \begin{align*}
 a_{j-1}b_j-a_jb_{j-1}=0&\iff{b}_{j-1}=0\\ 
@@ -870,7 +899,8 @@ where $a_{ji}\neq{0}$ for every $1\leq{i,j}\leq{n-1}$, and thus
 for all $1\leq{i}\leq{n-1}$, which shows that $\langle
 {x}_1,x_2,\dots,x_{n-1}\rangle=\langle{e}_{12},e_{23},\dots,e_{n-1,n}\rangle$.\\
 Assume $a_i=0$ for some $2\leq{i}\leq{n-2}$, and assume that $a_j\neq{0}$ for every $j\neq{i}$, then $a_ib_{i+1}-a_{i+1}b_i=-a_{i+1}b_i=0$ and $a_{i-1}b_i-a_ib_{i-1}=a_{i-1}b_i=0$ if and only if $b_i=0$. But then $\frac{b_1}{v_1}=\frac{b_2}{v_2}=\cdots=\frac{b_{i-1}}{a_{i-1}}=c_1$ and $\frac{b_{i+1}}{a_{i+1}}=\frac{b_{i+2}}{a_{i+2}}=\cdots=\frac{b_{n-1}}{a_{n-1}}=c_2$, for $c_1,c_2\in{K}$, hence $y=c_1(a_1e_{1,2}+a_2e_{2,3}+\cdots+a_{n-1}e_{i-1,i})+c_2(a_{i+1}e_{i+1,i+2}+a_{i+2}e_{i+2,i+3}+\cdots+a_{n-1}e_{n-1,n})+\gamma_2L\notin{K}x+\gamma_2L\implies{x}\notin\mathcal{X}$, which is an example for an element whose centralizers are not necessarily in $Kx+\gamma_2L$.
-\subsection{The $\mathcal{Y}$ criterion}
+
+\paragraph{The $\mathcal{Y}$ criterion}
 \label{y-criterion}
 Let $x=a_ie_{i,i+1}$ for some $1\leq{i}\leq{n-1}$, and let a centralizer element be $y=b_1e_{12}+\cdots+b_{1,n-1}e_{1,n-1}\in{C}_L(x)$, for some $b_1,\dots,b_{1,n-1}\in{K}$ not all zero.\\
 But \[[x,y]=0\iff\sum_{k=1}^{r-1}a_{j,j+k}b_{j+k,j+r}-a_{j+r,j+k}b_{j,j+k}=0,\]
@@ -1058,7 +1088,7 @@ m_{3,9}&=-a_{11}a_{33}\lambda_2\lambda_3\lambda_4\in\mathbb{Z}_p\implies{v_p(a_{
 We notice that the constraint $m_{6,10}$ is already implied by the constraints $m_{2,5}$ and $m_{3,7}$.
 \subsubsection{Computation of constraints on $a_{21}$ and $a_{33}$}
 
-\subsubsubsection{Integration by $a_{33}$}
+\paragraph{Integration by $a_{33}$}
 We integrate by $a_{33}$ considering $a_{11}$ as a constant. We have the following constraints:
 \begin{enumerate}
     \item $v_p(a_{33})\geq-v_3-v_4$.
@@ -1072,7 +1102,7 @@ Hence, $v_p(a_{33})\geq-(v_3+v_4)-\min\{0,v_2+a_{11}\}$ and we multiply out inte
 \[\underset{a_{11}+a_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6a_1+9a_2+6a_3+6a_4+\delta}p^{v_3+v_4}p^{\min\{0,v_2+a_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21})=\]\[=\underset{a_{11}+a_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11},a_{22},a_{21}}}\psi{p}^{6a_1+9a_2+10a_3+7a_4+\delta}p^{\min\{0,v_2+a_{11}\}}d\mu(\underline\lambda)d\mu(a_{11})\mu(a_{22})\mu(a_{21}).
 \]
 We denote: $\gamma=\min\{0,v_2+a_{11}\}$.
-\subsubsubsection{Integration by $a_{21}$}
+\paragraph{Integration by $a_{21}$}
 We integrate by $a_{21}$ considering $a_{22}$ as a constant. We have the following constraints:
 \begin{enumerate}
 \item $v_p(a_{21})\geq-v_1-v_2$.
@@ -1093,7 +1123,7 @@ $v_p({a_{11})+v_p(a_{22}})\geq-(v_2+v_3+\max\{v_1,v_4\})\implies$ \\
 $\implies{v_p}(a_{22})\geq-(a_{11}+v_2+v_3+\max\{v_1,v_4\})$.
 
 Hence, to compute the integral we consider $a_{11}$ as constant, and we integrate by $a_{22}$.
-\subsubsubsection{Integration by $a_{22}$}
+\paragraph{Integration by $a_{22}$}
 The constraints $m_{2,6}$ and $m_{4,7}$ together imply that\\
 $v(a_{22})\geq\max\{-(v_2+v_3),-(v_3+v_4)\}\geq-(v_3+\min\{v_2,v_4\})$, and it is readily seen that the constraint $m_{5,8}$ is already implied by the constraint $m_{2,6}$.
 
@@ -1130,7 +1160,7 @@ a_{22}={-(v_3+\alpha)}&p^{\beta}=p^{\min\{0,v_3-(v_3+\alpha)\}}=p^{-\alpha}&\mu(
 All this yields the polynomial: \\
 $p^{v_3}+\sum_{i=1}^{\alpha}p^{-i}p^{v_3+i}(1-p^{-1})=p^{3}+\alpha{p}^{v_3}(1-p^{-1})=p^{v_3}(1+\alpha(1-p^{-1}))$, hence we multiply our integral by $\mu(a_{22})$, to obtain:
 \[\underset{a_{11}+a_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7a_1+10a_2+10a_3+7a_4+\delta}p^{\gamma}p^{v_3}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11})=\]\[=\underset{a_{11}+a_{22}\geq-(v_2+v_3+\delta)}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7a_1+10a_2+11a_3+7a_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
-\subsubsubsection{Integration by $a_{11}$}
+\paragraph{Integration by $a_{11}$}
 Constraint $m_{1,5}$ and $m_{3,6}$ together imply that $a_{11}\geq-(v_2+\min\{v_1,v_3\})$. Considering the constraint $a_{11}+a_{22}\geq-(v_2+v_3+\delta)$, we check that this is already implied by $a_{11}\geq-(v_2+\min\{v_1,v_3\})$. Thus, we integrate by $a_{11}$ under this constraint, where $a_{11}$ depends on $v_1,v_2,v_3,v_4$, to obtain:
 \[\underset{a_{11}\geq-(v_2+\min\{v_1,v_3\})}{\int_{\underline\lambda,a_{11}}}\psi{p}^{7a_1+10a_2+11a_3+7a_4+\delta}p^{\gamma}(1+\alpha(1-p^{-1}))d\mu(\underline\lambda)d\mu(a_{11}).\]
 We denote $\beta=\min\{v_1,v_3\}$, $\tilde\delta=\max\{v_1,v_4\}$, $\epsilon=\min\{v_2,v_4\}$ and $\varphi=1-p^{-1}$.\\
@@ -1147,7 +1177,7 @@ For each of the $8$ orthants we have $\alpha=
 v_2+a_{11}+\tilde\delta,&\epsilon>{v_2+a_{11}+\tilde\delta}\iff{a_{11}}<{\epsilon-(v_2+\tilde\delta)}\\
 \end{cases}$,
 hence the point $a_{11}=\epsilon-(v_2+\tilde\delta)$ forms a phase transition of $\alpha$ from the fixed value $\epsilon$ into the descending arithmetic sequence $\epsilon-1,\epsilon-2,\dots,v_2-(v_2+\beta)+\tilde\delta=\tilde\delta-\beta$. However, if the $-v_2-\beta>\epsilon-v_2-\tilde\delta\iff-\beta>\epsilon-\tilde\delta\iff\tilde\delta>\epsilon+\beta$, the point of phase transition is out of range. This implies that when both $\tilde\delta\neq\epsilon$ and $\tilde\delta\neq\beta$, we need to break the orthant into two distinct cones, for $\tilde\delta\leq\epsilon+\beta$ and for $\tilde\delta>\epsilon+\beta$. But in case of either $\tilde\delta=\epsilon=v_4$ or $\tilde\delta=\beta=v_1$, then $\tilde\delta\leq\epsilon+\beta$ (because $\tilde\delta,\epsilon,\beta\geq{0}$), hence there is no phase transition for $\alpha$.
-\subsubsubsection{Case 1: $\tilde\delta=v_1,\beta=v_1,\epsilon=v_2$}
+\subparagraph{Case 1: $\tilde\delta=v_1,\beta=v_1,\epsilon=v_2$}
 This choice necessarily interprets as $v_3\geq{v_1}\geq{v_4}\geq{v_2}$, but we break the domain of integration into distinct parts, hence we use the convention where
 $\min\{a_i,a_j\}=a_i\iff\begin{cases}
     a_j>a_i,&j>i\\
@@ -1248,7 +1278,7 @@ We code the product of series into Sage, to obtain the following rational functi
 \[s_1=
 -\frac{{\left(p^{82} t^{44} - 2 \, p^{81} t^{44} + p^{63} t^{34} + p^{55} t^{30} + p^{44} t^{24} - p^{38} t^{20} - p^{27} t^{14} - p^{19} t^{10} + 2 \, p - 1\right)} {\left(p^{18} t^{10} + 1\right)} p^{36} t^{20}}{{\left(p^{37} t^{20} - 1\right)}^{3} {\left(p^{13} t^{7} + 1\right)}^{2} {\left(p^{13} t^{7} - 1\right)}^{2} {\left(p^{11} t^{6} - 1\right)} {\left(p^{9} t^{5} + 1\right)} {\left(p^{9} t^{5} - 1\right)}}
 \]
-\subsubsubsection{Case 2: $\tilde\delta=v_1,\beta=v_3,\epsilon=v_2$}
+\subparagraph{Case 2: $\tilde\delta=v_1,\beta=v_3,\epsilon=v_2$}
 Thus we have the following order relations\\
 $v_1\geq{v_3}$.\\
 $v_1\geq{v_4}>v_2$.\\
@@ -1270,7 +1300,7 @@ $v_2+v_3>v_1\geq{v}_3\geq{v}_4>v_2$\\
 $v_2+v_3>v_1\geq{v}_4>v_3>v_2$\\
 $v_2+v_3>v_1\geq{v}_4>v_2\geq{v_3}$\\
 \end{enumerate}
-\subsubsubsection{Case 3}
+\subparagraph{Case 3}
 $v_3>v_1$\\
 $v_4>v_1$\\
 $v_4>v_2$\\
@@ -1294,7 +1324,7 @@ $v_1+v_2>v_3\geq{v}_4>{v_1}\geq{v}_2$\\
 $v_3\geq{v}_1+v_2\geq{v}_4>{v_2}>v_1$\\
 $v_3\geq{v}_1+v_2\geq{v}_4>{v_1}\geq{v}_2$\\
     \end{enumerate}
-    \subsubsubsection{Case 4}
+    \subparagraph{Case 4}
 $v_4>v_1\geq{v_3}$\\
 $v_4>v_2$\\
 \begin{enumerate}
@@ -1313,14 +1343,14 @@ $v_2+v_3\geq{v}_4>v_1\geq{v_2}\geq{v}_3$\\
 $v_2+v_3\geq{v}_4>v_1\geq{v_3}>v_2$\\
 $v_2+v_3\geq{v}_4>v_2>{v_1}\geq{v}_3$\\
     \end{enumerate}
-    \subsubsubsection{Case 5}
+    \subparagraph{Case 5}
 $v_2\geq{v_4}>v_1\geq{v_3}$\\
 \[\int_{\substack{v_4>v_1\geq{v_3}\\
 v_4>v_2}}\psi\omega_1\left(1+v_4\varphi+v_3\varphi+a_3a_4\varphi^2-\frac{v_3^2}{2}\varphi^2-\frac{v_3}{2}\varphi^2\right)\]
 The only possible arrangement here is\\
 $v_2\geq{v_4}>v_1\geq{v_3}$\\
 
-\subsubsubsection{Case 6}
+\subparagraph{Case 6}
 $v_2\geq{v_4}>v_1$\\
 $v_3>v_1$\\
 \[\int_{\substack{v_2\geq{v_4}>v_1\\v_3>v_1}}\psi\omega_1\left(1+v_4\varphi+v_1\varphi+a_1a_4\varphi^2-\frac{v_1^2}{2}\varphi^2-\frac{v_1}{2}\varphi^2\right)\]
@@ -1328,14 +1358,14 @@ $v_2\geq{v}_4>v_3>{v_1}$\\
 $v_2\geq{v}_3\geq{v}_4>{v_1}$\\
 $v_3>v_2\geq{v}_4>{v_1}$\\
 
-\subsubsubsection{Case 7}
+\subparagraph{}{Case 7}
 $v_2\geq{v_4}$\\
 $v_3>v_1\geq{v_4}$\\
 \[\int_{\substack{v_2\geq{v_4}\\v_3>v_1\geq{v_4}}}\psi\omega_4\left(1+v_4\varphi+v_1\varphi+a_1a_4\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_4}{2}\varphi^2\right)\]
 $v_2\geq{v}_3>{v}_1\geq{v_4}$\\
 $v_3>v_2>v_1\geq{v_4}$\\
 $v_3>v_1\geq{v}_2\geq{v_4}$\\
-\subsubsubsection{Case 8}
+\subparagraph{Case 8}
 $v_2\geq{v_4}$\\
 $v_1\geq{v_4}$\\
 $v_1\geq{v_3}$\\
