@@ -221,8 +221,8 @@ m(r\otimes{s})=\sum_{i=1}^m(r\otimes{s})=\\
 &=\left(\sum_{i=1}^mr\right)\otimes{s}=mr\otimes{s}\\
 &=r\otimes\left(\sum_{i=1}^ms\right)=r\otimes{s}m,
 \end{align*}
-for every $m\in\mathbb{Z}$ and $r\otimes{s}\in{T}$. 
-Let $(e_T)_{ij}\in{L}_n(T)$ be the matrix with $1\otimes1$ in location $(i,j)$, then it is clear that these matrices form a basis of $L_n$ over $T$.
+for every $r\in{R}$, $s\in{S}$ and $m\in\mathbb{Z}$. 
+Let $(e_T)_{ij}\in{L}_n(T)$ be the matrix with $1_T=1_R\otimes1_S$ in the $(i,j)$ entry, then it is clear that these matrices form a $\mathbb{Z}$-basis of $L_n$ over $T$.
 Let $(e_R)_{ij}$ be the matrix with $1_R$ in location $(i,j)$, and we define also $L_n(R)\otimes_\mathbb{Z}S$ by:
 \begin{align*}
 m((e_R)_{ij}\otimes{s})=\\
@@ -246,17 +246,14 @@ Let $R$ and $S$ be rings with multiplicative identity, where $R$ is an $f$-dimen
 \end{corollary}
 \subsection{The $p$-adic algebra $L_{n,p}$}
 \label{p-adic-algebra-definition}
-We start with $R=\mathbb{Z}$, for which we utilize the Euler decomposition for computing the zeta function, as we explain later in details.
-Considering $\mathbb{Z}_p$ the ring of $p$-adic integers, we construct a $\mathbb{Z}_p$-Lie algebra $L_n(\mathbb{Z}_p)$ which is a free $\mathbb{Z}_p$-module, as explained in \ref{R-algebra-basic-definition}, and we claim the following:
+We start with $L_n(\mathbb{Z})$, for which we have the Euler decomposition, and we transfer the question of computing its zeta function to the question of computing the zeta function of its local components $L_{n,p}$, as explained in \ref{linearization}.
+Considering $\mathbb{Z}_p$ the ring of $p$-adic integers, we construct a $\mathbb{Z}_p$-Lie algebra $L_{n,p}:=L_n(\mathbb{Z}_p)$ which is a free $\mathbb{Z}_p$-module, as explained in \ref{R-algebra-basic-definition}, and we claim the following:
 \begin{lemma}
 \label{lem:L-tensor-p-adic-integers}
-There is a natural isomorphism $L_n(\mathbb{Z}_p)\cong{L}_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$ through the bijection $(e_p)_{ij}\overset{\psi}{\longleftrightarrow}e_{ij}\otimes1$, where $(e_p)_{ij}\in{L}_n(\mathbb{Z}_p)$ is the matrix with $1$ in location $(i,j)$.
+There is a natural isomorphism $L_n(\mathbb{Z}_p)\cong{L}_n(\mathbb{Z})\otimes_\mathbb{Z}\mathbb{Z}_p$ through the bijection $(e_p)_{ij}\overset{\psi}{\longleftrightarrow}e_{ij}\otimes1$, where $(e_p)_{ij}\in{L}_n(\mathbb{Z}_p)$ is the matrix with $1$ in the $(i,j)$ entry.
 This is exactly \ref{lem:tensor-r-s} with $R=\mathbb{Z}$ and $S=\mathbb{Z}_p$.
 \end{lemma}
-\begin{notation}
-We denote by $L_{n,p}:=L_n(\mathbb{Z}_p)$ the $\mathbb{Z}_p$-Lie algebra constructed above. We omit the $p$ or $n$ notations when implied from the context, as from now on we shall generally talk about the Lie algebra over $\mathbb{Z}_p$, unless stated else.
-\end{notation}
-This construction is essential to our work, which is based on the theory of $p$-adic numbers, next we show that it is compatible with the fundamental notions of zeta functions on the integer numbers.
+This construction is essential to our work, which is based on the theory of $p$-adic integration, as we show later in this paper.
 \subsection{The extension algebra $L_K$}
 \subsubsection{Basic construction}
 Let $K_{/\mathbb{Q}}$ be a number field, that is, $K$ is a finite-dimensional extension of $\mathbb{Q}$ where $[K:\mathbb{Q}]=f$, and let $\mathcal{O}_K$ be its ring of integers, then $\mathcal{O}_K$ has the structure of a free $\mathbb{Z}$-module of rank $f$.
@@ -1360,7 +1357,7 @@ $v_2\geq{v}_4>v_3>{v_1}$\\
 $v_2\geq{v}_3\geq{v}_4>{v_1}$\\
 $v_3>v_2\geq{v}_4>{v_1}$\\
 
-\subparagraph{}{Case 7}
+\subparagraph{Case 7}
 $v_2\geq{v_4}$\\
 $v_3>v_1\geq{v_4}$\\
 \[\int_{\substack{v_2\geq{v_4}\\v_3>v_1\geq{v_4}}}\psi\omega_4\left(1+v_4\varphi+v_1\varphi+a_1a_4\varphi^2-\frac{v_4^2}{2}\varphi^2-\frac{v_4}{2}\varphi^2\right)\]
