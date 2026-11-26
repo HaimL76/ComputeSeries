@@ -130,7 +130,20 @@ The standard Lie brackets operation on the basis elements of $L$ gives the follo
 \end{cases}\]
 \end{lemma4}
 \begin{proof}
-Suppose that $j=k\implies{i<l}$, then the matrix operation implies that $\e_{ij}\e_{jl}=\e_{il}$ but $\e_{jl}\e_{ij}=0$, thus $[\e_{ij},\e_{jl}]=\e_{il}-0=\e_{il}$, and the rest may be verified in a similar way.
+We observe that $\e_{ij}\e_{kl}$ has $1$ in the $(i,l)$ entry if and only if $j=k$, hence, if $j=k$ we have:
+\[
+[\e_{ij},\e_{kl}]=\e_{ij}\e_{kl}-\e_{kl}\e_{ij}=\e_{il}-0=\e_{il},
+\]
+because $i<j=k<l$. if $l=i$ we have:
+\[
+[\e_{ij},\e_{kl}]=\e_{ij}\e_{kl}-\e_{kl}\e_{ij}=0-\e_{kj}=\e_{kj},
+\]
+because $k<l=i<j$.
+Else, we have:
+\[
+[\e_{ij},\e_{kl}]=0,
+\]
+because $\e_{ij}\e_{kl}=\e_{kl}\e_{ij}=0$.
 \end{proof}
 \subsubsection{Direct product of $L_n$}
 \begin{lemma4}
