@@ -218,11 +218,8 @@ Let $R$ be a ring, then $R$ has the natural structure of a $\mathbb{Z}$-module.
 \end{lemma4}
 \begin{proof}
 The additive group $(R,+)$ of $R$ is abelian, thus we define the operation of $\mathbb{Z}$ on $R$ by $rm\longrightarrow\underbrace{m+\cdots+m}_{r\,\text{times}}$, for every $m\in{R}$ and every $r\in\mathbb{Z}$.
-From this we obtain all the properties of $R$ as a $\mathbb{Z}$-module, and we also have that: 
-\[
-(rm)(sn)=\left(\sum_{i=1}^rm\right)\left(\sum_{j=1}^sn\right)=\sum_{i=1}^r\left(m\sum_{j=1}^sn\right)=\sum_{i=1}^r\sum_{j=1}^smn=(rs)(mn),
-\]
-for every $r,s\in\mathbb{Z}$ and every $m,n\in{R}$, which shows that the ring operation of $R$ commutes with the operation of $\mathbb{Z}$ on $R$.
+From this it is clear that $1m\longrightarrow\underbrace{m}_{1\,\text{times}}=m$, and that $r(sm)\longrightarrow\underbrace{sm+\cdots+sm}_{r\,\text{times}}=\underbrace{\underbrace{m+\cdots+m}_{s\,\text{times}}+\cdots+\underbrace{m+\cdots+m}_{s\,\text{times}}}_{r\,\text{times}}=(rs)m$, for every $r,s\in\mathbb{Z}$ and every $m\in{R}$.
+In addition, we observe that $r(mn)=\underbrace{mn+\cdots+mn}_{r\,\text{times}}=(\underbrace{m+\cdots+m}_{r\,\text{times}})n=(rm)n$, which shows that the operation of $\mathbb{Z}$ on ${R}$ commutes with the multiplication in $R$. 
 \end{proof}
 \begin{lemma4}
 \label{lem:tensor-r-s}
